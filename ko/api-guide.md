@@ -38,7 +38,7 @@ Content-Type: application/json
 }
 ```
 
-</details>
+
 
 <details>
   <summary><strong>실패 응답</strong></summary>
@@ -84,10 +84,6 @@ x-Autu-Token: {tokenID}
 #### 요청 본문
 
 이 API는 요청 본문을 요구하지 않습니다.
-
-<details>
-  <summary><strong>HTTP</strong></summary>
-
 
 ### 응답
 
