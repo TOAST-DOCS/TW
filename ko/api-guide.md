@@ -37,8 +37,7 @@ Content-Type: application/json
     ...
 }
 ```
-
-
+</details>
 
 <details>
   <summary><strong>실패 응답</strong></summary>
