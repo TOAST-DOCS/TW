@@ -63,7 +63,7 @@ X-Auth-Token: {tokenId}
 </details>
 
 | 이름 | 타입 | 설명 |
-|---|---|---|---|
+|---|---|---|
 | snapshots | Array | 스냅숏 정보 객체 목록 |
 | snapshots.status | Enum | 스냅숏 상태 |
 | snapshots.description | String | 스냅숏 설명 |
@@ -125,7 +125,7 @@ X-Auth-Token: {tokenId}
 
 
 | 이름 | 타입 | 설명 |
-|---|---|---|---|
+|---|---|---|
 | snapshots | Array | 스냅숏 상세 정보 객체 목록 |
 | snapshots.status | Enum | 스냅숏 상태 |
 | snapshots.description | String | 스냅숏 설명 |
@@ -187,7 +187,7 @@ X-Auth-Token: {tokenId}
 </details>
 
 | 이름 | 타입 | 설명 |
-|---|---|---|---|
+|---|---|---|
 | snapshot | Object | 스냅숏 상세 정보 객체 |
 | snapshot.status | Enum | 스냅숏 상태 |
 | snapshot.description | String | 스냅숏 설명 |
@@ -271,7 +271,7 @@ X-Auth-Token: {tokenId}
 </details>
 
 | 이름 | 타입 | 설명 |
-|---|---|---|---|
+|---|---|---|
 | snapshot | Object | 스냅숏 상세 정보 객체 |
 | snapshot.status | Enum | 스냅숏 상태 |
 | snapshot.description | String | 스냅숏 설명 |
