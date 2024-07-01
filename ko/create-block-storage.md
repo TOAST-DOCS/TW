@@ -12,19 +12,19 @@
 * **설명**: 블록 스토리지에 대한 설명을 입력하세요.
 * **블록 스토리지 타입**: 블록 스토리지 타입은 필요한 I/O 성능 및 암호화 여부에 따라 **HDD**, **SSD**, **Encrypted HDD**, **Encrypted SSD**를 선택할 수 있습니다.
 
-> ![info_대지 1](<img src="https://github.com/TOAST-DOCS/TW/assets/108712260/d0af2873-4b6c-49ff-881d-c44ffbf5a78a" width="30" />)<br>
+> ![info_20](https://github.com/TOAST-DOCS/TW/assets/108712260/18af3bab-5953-47de-99c9-2ec7c4681a3e)<br>
 > **Encrypted HDD**, **Encrypted SSD**를 선택하여 암호화 블록 스토리지를 생성할 수 있습니다. 암호화 블록 스토리지는 NHN Cloud의 [Secure Key Manager](https://www.nhncloud.com/kr/service/security/secure-key-manager) 서비스에서 관리하는 대칭 키를 사용해 암호화됩니다. 따라서 암호화 블록 스토리지를 만들기 위해서는 미리 Secure Key Manager 서비스에서 대칭 키를 생성해야 합니다.
 >
 > * 암호화, 복호화로 인하여 일반 블록 스토리지 타입(**HDD**, **SSD**)에 비해 I/O 성능이 저하될 수 있습니다.
 > * 암호화 블록 스토리지를 생성할 때 등록한 대칭 키 ID는 변경할 수 없습니다. 대칭 키를 변경하려면 Secure Key Manager 서비스에서 키 회전을 사용해야 합니다.
 > * 암호화 블록 스토리지를 선택한 후 키 회전 버튼을 통해 이전 버전의 키로 암호화된 블록 스토리지를 최신 버전의 키로 재암호화할 수 있습니다.
 
-> ![caution_30](https://github.com/TOAST-DOCS/TW/assets/108712260/d1bf7671-343c-42b3-9e67-fb64ce621f5f)<br>
+> ![caution_20](https://github.com/TOAST-DOCS/TW/assets/108712260/1b917fa1-f3b8-45ec-b336-9c22ef4d3bdc)<br>
 > Secure Key Manager 서비스에서 암호화 블록 스토리지에 설정한 대칭 키를 삭제한 뒤, 해당 블록 스토리지를 인스턴스에서 연결 해제하면 다시 복호화 할 수 없습니다. 대칭 키를 실수로 삭제하지 않도록 주의하여 관리해야 합니다.
 
 * **블록 스토리지 크기**: 슬라이더를 클릭한 뒤 드래그해 블록 스토리지 크기를 조정할 수 있습니다. 또는 입력 필드에 직접 입력할 수도 있습니다. 블록 스토리지는 1GB\~2,048GB까지 생성할 수 있습니다.
 
-> ![caution](https://github.com/TOAST-DOCS/TW/assets/108712260/47d7da82-a174-4707-87cc-4dbf49869811)<br>
+> ![caution_20](https://github.com/TOAST-DOCS/TW/assets/108712260/1b917fa1-f3b8-45ec-b336-9c22ef4d3bdc)<br>
 > **블록 스토리지 타입**과 **블록 스토리지 크기**에 따라 비용이 부과됩니다.
 
 * **가용성 영역**: 블록 스토리지를 연결할 인스턴스가 위치한 가용성 영역을 선택하세요.
