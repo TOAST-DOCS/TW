@@ -56,7 +56,7 @@ X-Auth-Token: {tokenId}
 </details>
 
 | 이름 | 타입 | 설명 |
-|---|---|---|---|
+|---|---|---|
 | volume_types | Array | 블록 스토리지 타입 객체 목록 |
 | volume_types.id |  UUID | 블록 스토리지 타입 ID |
 | volume_types.name | String | 블록 스토리지 타입 이름 |

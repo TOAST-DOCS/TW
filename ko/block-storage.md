@@ -81,7 +81,7 @@ X-Auth-Token: {tokenId}
 </details>
 
 | 이름 | 속성 | 설명 |
-|---|---|---|---|
+|---|---|---|
 | volumes | Array | 블록 스토리지 객체 목록 |
 | volumes.id | UUID | 블록 스토리지 ID |
 | volumes.links | Object | 블록 스토리지 리소스 링크 참조 객체 |
@@ -163,7 +163,7 @@ X-Auth-Token: {tokenId}
 </details>
 
 | 이름 | 타입 | 설명 |
-|---|---|---|---|
+|---|---|---|
 | volumes | Array | 블록 스토리지 상세 정보 객체 목록 |
 | volumes.attachments | Object | 블록 스토리지 연결 정보 객체 |
 | volumes.attachments.server_id | UUID | 블록 스토리지가 연결된 인스턴스 ID |
@@ -404,7 +404,7 @@ X-Auth-Token: {tokenId}
 
 
 | 이름 | 타입 | 설명 |
-|---|---|---|---|
+|---|---|---|
 | volume | Object | 블록 스토리지 상세 정보 객체 |
 | volume.attachments | Object | 블록 스토리지 연결 정보 객체 |
 | volume.links | Object | 블록 스토리지 리소스 링크 참조 객체 |
@@ -461,6 +461,7 @@ X-Auth-Token: {tokenId}
 
 
 ## 블록 스토리지로 이미지 생성하기
+
 블록 스토리지로부터 이미지를 생성합니다. 
 
 > [알림]
@@ -561,7 +562,7 @@ X-Auth-Token: {tokenId}
 
 
 | 이름 | 타입 | 설명 |
-|---|---|---|---|
+|---|---|---|
 | os-volume_upload_image | Object | 블록 스토리지 이미지 생성 응답 객체 |
 | os-volume_upload_image.status | String | 블록 스토리지 상태 |
 | os-volume_upload_image.image_name | String | 이미지 이름 |
