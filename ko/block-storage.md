@@ -270,7 +270,7 @@ X-Auth-Token: {tokenId}
 </details>
 
 | 이름 | 타입 | 설명 |
-|---|---|---|---|
+|---|---|---|
 | volumes | Array | 블록 스토리지 상세 정보 객체 목록 |
 | volumes.attachments | Object | 블록 스토리지 연결 정보 객체 |
 | volumes.attachments.server_id | UUID | 블록 스토리지가 연결된 인스턴스 ID |
