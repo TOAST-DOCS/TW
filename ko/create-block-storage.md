@@ -12,7 +12,7 @@
 * **설명**: 블록 스토리지에 대한 설명을 입력하세요.
 * **블록 스토리지 타입**: 블록 스토리지 타입은 필요한 I/O 성능 및 암호화 여부에 따라 **HDD**, **SSD**, **Encrypted HDD**, **Encrypted SSD**를 선택할 수 있습니다.
 
-> ![info_대지 1](https://github.com/TOAST-DOCS/TW/assets/108712260/d0af2873-4b6c-49ff-881d-c44ffbf5a78a){: width="30%" height="30%"}<br>
+> ![info_대지 1](<img src="https://github.com/TOAST-DOCS/TW/assets/108712260/d0af2873-4b6c-49ff-881d-c44ffbf5a78a" width="30%")<br>
 > **Encrypted HDD**, **Encrypted SSD**를 선택하여 암호화 블록 스토리지를 생성할 수 있습니다. 암호화 블록 스토리지는 NHN Cloud의 [Secure Key Manager](https://www.nhncloud.com/kr/service/security/secure-key-manager) 서비스에서 관리하는 대칭 키를 사용해 암호화됩니다. 따라서 암호화 블록 스토리지를 만들기 위해서는 미리 Secure Key Manager 서비스에서 대칭 키를 생성해야 합니다.
 >
 > * 암호화, 복호화로 인하여 일반 블록 스토리지 타입(**HDD**, **SSD**)에 비해 I/O 성능이 저하될 수 있습니다.
