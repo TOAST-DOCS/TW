@@ -11,6 +11,7 @@ NHN Cloud의 Block Storage는 인스턴스에 할당하여 사용할 수 있는 
 이 문서에서는 NHN Cloud Block Storage 서비스의 주요 기능에 대해 살펴보고 Block Storage 서비스에서 사용하는 용어와 요금 체계를 안내합니다.
 
 ## 주요 기능
+![bs_00_800](https://github.com/TOAST-DOCS/TW/assets/108712260/3de7498b-803b-497a-adbc-4b925d334ab5)
 
 * 인스턴스를 삭제해도 데이터를 보관할 수 있습니다.
 * 추가적인 디스크 공간을 확보할 수 있습니다.
@@ -34,15 +35,19 @@ NHN Cloud의 Block Storage는 인스턴스에 할당하여 사용할 수 있는 
 <!-- 아래 요금 표는 예시이며, 서비스 특성에 따라 자유롭게 변경 및 활용이 가능합니다. -->
 
 블록 스토리지는 생성한 시점부터 요금이 부과되며, 생성 시 설정한 블록 스토리지의 크기에 따라 요금이 부과됩니다. 스냅숏의 경우 원본 블록 스토리지의 크기에 따라 요금이 부과됩니다.
-(VAT 별도)<table><tr>| @cols=2:과금 구분
-
- | @rows=2:과금 기준 | @rows=2:요금 </tr>| ----- | ----- | ----- | --- |
-<tr>| 타입 | IOPS </tr><tr>| HDD | - | @rows=7:10GB당 사용 시간 누적 | 1.4원/시간 </tr><tr>| SSD | - | 1.6원/시간 </tr><tr>| Encrypted HDD | - | 1.4원/시간 </tr><tr>| Encrypted SSD | - | 1.6원/시간 </tr><tr>| u2 전용 스토리지 | 2,000 IOPS 이하 | 1원/시간 </tr></table>
+(VAT 별도)
+| 타입 | IOPS | 과금 기준 | 요금 |
+| --- | ---- | ----- | --- |
+| HDD | - | 10GB당 사용 시간 누적 | 1.4원/시간 |
+| SSD | - | 10GB당 사용 시간 누적 | 1.6원/시간 |
+| Encrypted HDD | - | 10GB당 사용 시간 누적 | 1.4원/시간 |
+| Encrypted SSD | - | 10GB당 사용 시간 누적 | 1.6원/시간 |
+| u2 전용 스토리지 | 2,000 IOPS 이하 | 10GB당 사용 시간 누적 | 1원/시간 |
 
 > ![caution_20](https://github.com/TOAST-DOCS/TW/assets/108712260/1b917fa1-f3b8-45ec-b336-9c22ef4d3bdc)<br>
 > 블록 스토리지를 다른 리전에 복사할 경우 복사된 블록 스토리지의 용량 요금이 청구됩니다.
 
-> ![info_20](https://github.com/TOAST-DOCS/TW/assets/108712260/18af3bab-5953-47de-99c9-2ec7c4681a3e)<br>
+> ![info_20](https://github.com/TOAST-DOCS/TW/assets/108712260/18af3bab-5953-47de-99c9-2ec7c4681a3e){: .align-left}<br>
 >
 > * 1GB=1024^3바이트입니다.
 > * u2 전용 스토리지를 사용하려면 다음 서비스 정책을 참고하세요.
@@ -54,21 +59,24 @@ NHN Cloud의 Block Storage는 인스턴스에 할당하여 사용할 수 있는 
 <br>
 ### Snapshot
 
-(VAT 별도)<table><tr>| 과금 구분
+(VAT 별도)
+| 과금 구분 | 과금 기준 | 요금 |
+| ----- | ----- | --- |
+| HDD | 10GB당 사용 시간 누적 | 0.14원/시간 |
+| SSD | 10GB당 사용 시간 누적 | 0.16원/시간 |
+| Encrypted HDD | 10GB당 사용 시간 누적 | 0.14원/시간 |
+| Encrypted SSD | 10GB당 사용 시간 누적 | 0.16원/시간 |
 
- | 과금 기준 | 요금 </tr>| ----- | ----- | --- |
-<tr>| HDD | @rows=5:100GB당 사용 시간 누적 | 0.14원/시간 </tr><tr>| SSD | 0.16원/시간 </tr><tr>| Encrypted HDD | 0.14원/시간 </tr><tr>| Encrypted SSD | 0.16원/시간 </tr></table>
-
-> ![caution_20](https://github.com/TOAST-DOCS/TW/assets/108712260/1b917fa1-f3b8-45ec-b336-9c22ef4d3bdc)<br>
+> ![caution_20](https://github.com/TOAST-DOCS/TW/assets/108712260/1b917fa1-f3b8-45ec-b336-9c22ef4d3bdc){: .align-left}<br>
 > 블록 스토리지 크기만큼 스냅숏 이용 요금이 청구됩니다.
 
 <br>
 ### Network
 
-(VAT 별도)<table><tr>| 과금 구분
+(VAT 별도)
+| 과금 구분 | 과금 구간 | 과금 기준 | 요금 |
+| ----- | ----- | ----- | --- |
+| 다른 리전 간 트래픽 | 1GB 이하<br>1GB 초과 | 무료 제공<br>1GB당 | 0원<br>100원 |
 
- | 과금 구간 | 과금 기준 | 요금 </tr>| ----- | ----- | ----- | --- |
-<tr>| @rows=3:다른 리전 간 트래픽 </tr><tr>| 1GB 이하 | 무료 제공 | 0원 </tr><tr>| 1GB 초과 | 1GB당 | 100원 </tr></table>
-
-> ![caution_20](https://github.com/TOAST-DOCS/TW/assets/108712260/1b917fa1-f3b8-45ec-b336-9c22ef4d3bdc)<br>
+> ![caution_20](https://github.com/TOAST-DOCS/TW/assets/108712260/1b917fa1-f3b8-45ec-b336-9c22ef4d3bdc){: .align-left}<br>
 > 블록 스토리지를 다른 리전에 복사하는 경우 리전 간 전송된 데이터에 대해 요금이 청구됩니다.
