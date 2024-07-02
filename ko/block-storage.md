@@ -29,7 +29,7 @@
 
 현재 테넌트에 속한 블록 스토리지 목록을 반환합니다.
 
-## 요청
+### 요청
 
 ```
 GET /v2/{tenantId}/volumes
@@ -51,7 +51,7 @@ X-Auth-Token: {tokenId}
 이 API는 요청 본문을 요구하지 않습니다.
 
 
-## 응답
+### 응답
 
 <details><summary>응답 예시</summary>
 <p>
@@ -93,7 +93,7 @@ X-Auth-Token: {tokenId}
 
 현재 테넌트에 속한 블록 스토리지 목록을 반환합니다.
 
-## 요청
+### 요청
 
 ```
 GET /v2/{tenantId}/volumes/detail
@@ -114,7 +114,7 @@ X-Auth-Token: {tokenId}
 
 이 API는 요청 본문을 요구하지 않습니다.
 
-## 응답
+### 응답
 
 <details><summary>응답 예시</summary>
 <p>
@@ -202,7 +202,7 @@ X-Auth-Token: {tokenId}
 
 지정한 블록 스토리지의 상세 정보를 반환합니다.
 
-## 요청
+### 요청
 
 ```
 GET /v2/{tenantId}/volumes/{volumeId}
@@ -222,8 +222,7 @@ X-Auth-Token: {tokenId}
 
 이 API는 요청 본문을 요구하지 않습니다.
 
-## 응답
-
+### 응답
 
 <details><summary>응답 예시</summary>
 <p>
@@ -311,12 +310,14 @@ X-Auth-Token: {tokenId}
 > [알림]
 > 블록 스토리지는 생성 직후 즉시 사용할 수 없습니다. 블록 스토리지 상태를 조회해서 `available` 상태인 것을 확인한 후 사용합니다.
 
-## 요청
+### 요청
 
 ```
 POST /v2/{tenantId}/volumes
 X-Auth-Token: {tokenId}
 ```
+
+### 요청 파라미터
 
 | 이름 | 구분 | 타입 | 필수 | 설명                        |
 |---|---|---|---|---------------------------|
@@ -361,8 +362,7 @@ X-Auth-Token: {tokenId}
 | volume.nhn_encryption.skm_appkey | Body | String | N | Secure Key Manager 상품의 앱키 |
 | volume.nhn_encryption.skm_key_id | Body | String | N | 암호화 블록 스토리지 생성에 사용할 Secure Key Manager의 대칭 키 ID |
 
-
-## 응답
+### 응답
 
 <details><summary>응답 예시</summary>
 <p>
@@ -430,13 +430,11 @@ X-Auth-Token: {tokenId}
 | volume.nhn_encryption.skm_key_version | Integer | 암호화 블록 스토리지 생성에 사용할 Secure Key Manager의 대칭 키 버전 |
 | volume.nhn_encryption.skm_key_id | String | 암호화 블록 스토리지 생성에 사용할 Secure Key Manager의 대칭 키 ID |
 
-
-
 ## 블록 스토리지 삭제하기
 
 지정한 블록 스토리지를 삭제합니다. 연결되어 있거나 스냅숏이 생성된 블록 스토리지는 삭제할 수 없습니다.
 
-## 요청
+### 요청
 
 ```
 DELETE /v2/{tenantId}/volumes/{volumeId}
@@ -455,10 +453,9 @@ X-Auth-Token: {tokenId}
 
 이 API는 요청 본문을 요구하지 않습니다.
 
-## 응답
+### 응답
 
 이 API는 응답 본문을 반환하지 않습니다.
-
 
 ## 블록 스토리지로 이미지 생성하기
 
@@ -467,7 +464,7 @@ X-Auth-Token: {tokenId}
 > [알림]
 > 이미지 생성 이후 기본적인 초기화 작업을 위해 최소 100KB의 여유 공간이 필요합니다. 남은 공간이 이보다 작을 경우 초기화 작업이 실패할 수 있습니다.
 
-## 요청
+### 요청
 
 ```
 POST /v2/{tenantId}/volumes/{volumeId}/action
@@ -514,7 +511,7 @@ X-Auth-Token: {tokenId}
 | os-volume_upload_image.visibility | Body | String | N | 이미지 가시성<br>`private`, `shared` 중 하나 |
 | os-volume_upload_image.protected | Body | Boolean | N | 이미지 보호 여부</br>protected=true인 경우 수정 및 삭제가 불가 |
 
-## 응답
+### 응답
 
 <details><summary>응답 예시</summary>
 <p>

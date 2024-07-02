@@ -1,9 +1,10 @@
 # 블록 스토리지 타입
+
 ## 블록 스토리지 타입 목록 보기
 
 블록 스토리지 타입의 목록을 조회합니다.
 
-## 요청
+### 요청
 
 ```
 GET /v2/{tenantId}/types
@@ -22,7 +23,7 @@ X-Auth-Token: {tokenId}
 이 API는 요청 본문을 요구하지 않습니다.
 
 
-## 응답
+### 응답
 
 <details><summary>응답 예시</summary>
 <p>
