@@ -57,6 +57,7 @@ NHN Cloud의 Block Storage는 인스턴스에 할당하여 사용할 수 있는 
 >     * 중요한 데이터를 저장하거나 프로그램을 설치하려면 HDD 또는 SSD 사용을 권장합니다.
 
 <br>
+
 ### Snapshot
 
 (VAT 별도)
@@ -71,6 +72,7 @@ NHN Cloud의 Block Storage는 인스턴스에 할당하여 사용할 수 있는 
 > 블록 스토리지 크기만큼 스냅숏 이용 요금이 청구됩니다.
 
 <br>
+
 ### Network
 
 (VAT 별도)
