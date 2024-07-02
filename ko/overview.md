@@ -47,7 +47,7 @@ NHN Cloud의 Block Storage는 인스턴스에 할당하여 사용할 수 있는 
 > ![caution_20](https://github.com/TOAST-DOCS/TW/assets/108712260/1b917fa1-f3b8-45ec-b336-9c22ef4d3bdc)<br>
 > 블록 스토리지를 다른 리전에 복사할 경우 복사된 블록 스토리지의 용량 요금이 청구됩니다.
 
-> ![info_20](https://github.com/TOAST-DOCS/TW/assets/108712260/18af3bab-5953-47de-99c9-2ec7c4681a3e){: .align-left}<br>
+> ![info_20](https://github.com/TOAST-DOCS/TW/assets/108712260/18af3bab-5953-47de-99c9-2ec7c4681a3e)<br>
 >
 > * 1GB=1024^3바이트입니다.
 > * u2 전용 스토리지를 사용하려면 다음 서비스 정책을 참고하세요.
@@ -67,7 +67,7 @@ NHN Cloud의 Block Storage는 인스턴스에 할당하여 사용할 수 있는 
 | Encrypted HDD | 10GB당 사용 시간 누적 | 0.14원/시간 |
 | Encrypted SSD | 10GB당 사용 시간 누적 | 0.16원/시간 |
 
-> ![caution_20](https://github.com/TOAST-DOCS/TW/assets/108712260/1b917fa1-f3b8-45ec-b336-9c22ef4d3bdc){: .align-left}<br>
+> ![caution_20](https://github.com/TOAST-DOCS/TW/assets/108712260/1b917fa1-f3b8-45ec-b336-9c22ef4d3bdc)<br>
 > 블록 스토리지 크기만큼 스냅숏 이용 요금이 청구됩니다.
 
 <br>
@@ -78,5 +78,5 @@ NHN Cloud의 Block Storage는 인스턴스에 할당하여 사용할 수 있는 
 | ----- | ----- | ----- | --- |
 | 다른 리전 간 트래픽 | 1GB 이하<br>1GB 초과 | 무료 제공<br>1GB당 | 0원<br>100원 |
 
-> ![caution_20](https://github.com/TOAST-DOCS/TW/assets/108712260/1b917fa1-f3b8-45ec-b336-9c22ef4d3bdc){: .align-left}<br>
+> ![caution_20](https://github.com/TOAST-DOCS/TW/assets/108712260/1b917fa1-f3b8-45ec-b336-9c22ef4d3bdc)<br>
 > 블록 스토리지를 다른 리전에 복사하는 경우 리전 간 전송된 데이터에 대해 요금이 청구됩니다.
