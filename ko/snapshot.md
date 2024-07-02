@@ -19,7 +19,7 @@
 
 스냅숏 목록을 반환합니다.
 
-## 요청
+### 요청
 
 ```
 GET /v2/{tenantId}/snapshots
@@ -37,7 +37,7 @@ X-Auth-Token: {tokenId}
 
 이 API는 요청 본문을 요구하지 않습니다.
 
-## 응답
+### 응답
 
 <details><summary>응답 예시</summary>
 <p>
@@ -78,7 +78,7 @@ X-Auth-Token: {tokenId}
 
 스냅숏 상세 정보 목록을 반환합니다.
 
-## 요청
+### 요청
 
 ```
 GET /v2/{tenantId}/snapshots/detail
@@ -96,7 +96,7 @@ X-Auth-Token: {tokenId}
 
 이 API는 요청 본문을 요구하지 않습니다.
 
-## 응답
+### 응답
 
 <details><summary>응답 예시</summary>
 <p>
@@ -143,7 +143,7 @@ X-Auth-Token: {tokenId}
 지정한 스냅숏의 상세 정보를 반환합니다.
 
 
-## 요청
+### 요청
 
 ```
 GET /v2/{tenantId}/snapshots/{snapshotId}
@@ -161,7 +161,7 @@ X-Auth-Token: {tokenId}
 
 이 API는 요청 본문을 요구하지 않습니다.
 
-## 응답
+### 응답
 
 <details><summary>응답 예시</summary>
 <p>
@@ -205,7 +205,7 @@ X-Auth-Token: {tokenId}
 
 지정한 블록 스토리지의 스냅숏을 생성합니다.
 
-## 요청
+### 요청
 
 ```
 POST /v2/{tenantId}/snapshots
@@ -247,7 +247,7 @@ X-Auth-Token: {tokenId}
 | snapshot.name | Body | String | N | 스냅숏 이름                                    |
 
 
-## 응답
+### 응답
 
 <details><summary>응답 예시</summary>
 <p>
@@ -286,7 +286,7 @@ X-Auth-Token: {tokenId}
 
 지정한 스냅숏을 삭제합니다.
 
-## 요청
+### 요청
 
 ```
 DELETE /v2/{tenantId}/snapshots/{snapshotId}
@@ -304,6 +304,6 @@ X-Auth-Token: {tokenId}
 
 이 API는 요청 본문을 요구하지 않습니다.
 
-#### 응답
+### 응답
 
 이 API는 응답 본문을 반환하지 않습니다.
