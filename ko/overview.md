@@ -4,7 +4,7 @@
 
 NHN Cloud의 Block Storage는 인스턴스에 할당하여 사용할 수 있는 블록 수준 스토리지입니다. 인스턴스 생성 시 기본으로 연결해 사용하는 루트 블록 스토리지 외에 추가 스토리지가 필요할 경우 Block Storage 서비스를 이용해 저장 공간을 증설할 수 있습니다. 인스턴스를 삭제해도 블록 스토리지의 데이터는 삭제되지 않으며, 언제든 현재 연결되어 있는 인스턴스와의 연결 을 해제하고 같은 가용성 영역 안에 있는 다른 인스턴스에 연결해 사용할 수 있습니다. 또한 인스턴스를 삭제하기 전 인스턴스의 루트 블록 스토리지에 있는 데이터를 영구 보관하기 위해 블록 스토리지를 장착하여 데이터를 복사할 수 있습니다.
 
-![bs_02_대지 1](https://github.com/user-attachments/assets/b61454fd-2f54-496c-8df5-7424fe563914)
+![bs_02_대지 1](https://github.com/user-attachments/assets/e1a56367-df12-4e2d-a4a4-eadab9674033)
 
 스냅숏 기능을 이용하면 특정 시점의 블록 스토리지 상태를 저장하고 복구할 수 있습니다. 스냅숏을 복구할 때는 원래 블록 스토리지가 위치해 있던 가용성 영역뿐만 아니라 다른 가용성 영역에서도 가능하며, 다른 가용성 영역에 있는 인스턴스에 복구된 블록 스토리지를 연결해 사용할 수 있습니다.
 
@@ -16,8 +16,8 @@ NHN Cloud의 Block Storage는 인스턴스에 할당하여 사용할 수 있는 
 
 ### 이 문서의 내용
 
-> [블록 스토리지 생성](https://docs.nhncloud.com/ko/Storage/Block%20Storage/ko/console-guide/#_1)
-> [블록 스토리지 크기 변경](https://docs.nhncloud.com/ko/Storage/Block%20Storage/ko/console-guide/#_4)
+> [블록 스토리지 생성](https://docs.nhncloud.com/ko/Storage/Block%20Storage/ko/console-guide/#_1)<br>
+> [블록 스토리지 크기 변경](https://docs.nhncloud.com/ko/Storage/Block%20Storage/ko/console-guide/#_4)<br>
 > [블록 스토리지 연결 관리](https://docs.nhncloud.com/ko/Storage/Block%20Storage/ko/console-guide/#_7)
 
 ### 용어 정리
@@ -45,7 +45,7 @@ NHN Cloud의 Block Storage는 인스턴스에 할당하여 사용할 수 있는 
 
 ## 관련 서비스
 
-> [Instance](https://docs.nhncloud.com/ko/Compute/Instance/ko/overview/)
-> [Instance Template](https://docs.nhncloud.com/ko/Compute/Instance%20Template/ko/overview/)
-> [Object Storage](https://docs.nhncloud.com/ko/Storage/Object%20Storage/ko/Overview/)
+> [Instance](https://docs.nhncloud.com/ko/Compute/Instance/ko/overview/)<br>
+> [Instance Template](https://docs.nhncloud.com/ko/Compute/Instance%20Template/ko/overview/)<br>
+> [Object Storage](https://docs.nhncloud.com/ko/Storage/Object%20Storage/ko/Overview/)<br>
 > [NAS](https://docs.nhncloud.com/ko/Storage/NAS/ko/overview/)
