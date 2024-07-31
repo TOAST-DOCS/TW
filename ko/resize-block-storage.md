@@ -59,14 +59,14 @@
 
 ![windows_volume_extend_01](https://github.com/user-attachments/assets/4b1766a8-a10a-4601-bf13-72c3f032210b)
 <br>
-3. 확장된 드라이브를 마우스 오른쪽 버튼으로 클릭한 뒤 <strong>Extend Volume...</strong>을 클릭해 볼륨 확장 마법사를 실행합니다.
+2. 확장된 드라이브를 마우스 오른쪽 버튼으로 클릭한 뒤 <strong>Extend Volume...</strong>을 클릭해 볼륨 확장 마법사를 실행합니다.
 
 ![windows_volume_extend_02](https://github.com/user-attachments/assets/d1d5edb3-f031-4bb5-88bd-e2f6b848ba2c)
 <br>
-4. 볼륨 확장 마법사에서 **Next**를 클릭합니다.
-5. **Select the amount of space in MB**에 확장할 메가바이트 수를 입력합니다. 입력 가능한 최대 메가바이트 수는 Maximum available space in MB를 참고합니다.
-6. 다시 **Next**를 클릭해 볼륨 확장 마법사를 완료합니다.
+3. 볼륨 확장 마법사에서 **Next**를 클릭합니다.<br>
+4. **Select the amount of space in MB**에 확장할 메가바이트 수를 입력합니다. 입력 가능한 최대 메가바이트 수는 Maximum available space in MB를 참고합니다.<br>
+5. 다시 **Next**를 클릭해 볼륨 확장 마법사를 완료합니다.<br>
 
 ![windows_volume_extend_03](https://github.com/user-attachments/assets/42ac5a43-3ebf-4ad6-93c9-880c008cdb9a)
 <br>
-7. **내 컴퓨터**에서 확장된 드라이브를 확인합니다.
+6. **내 컴퓨터**에서 확장된 드라이브를 확인합니다.
