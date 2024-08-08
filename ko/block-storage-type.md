@@ -27,7 +27,7 @@ X-Auth-Token: {tokenId}
 
 ### 응답
 
-<details><summary>응답 예시</summary>
+<details><summary>Example in JSON</summary>
 <p>
 
 ```json
