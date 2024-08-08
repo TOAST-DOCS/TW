@@ -16,9 +16,9 @@ NHN Cloud의 Block Storage는 인스턴스에 할당하여 사용할 수 있는 
 
 ### 이 문서의 내용
 
-> [블록 스토리지 생성](https://docs.nhncloud.com/ko/Storage/Block%20Storage/ko/console-guide/#_1)<br>
-> [블록 스토리지 크기 변경](https://docs.nhncloud.com/ko/Storage/Block%20Storage/ko/console-guide/#_4)<br>
-> [블록 스토리지 연결 관리](https://docs.nhncloud.com/ko/Storage/Block%20Storage/ko/console-guide/#_7)
+* [블록 스토리지 생성](https://docs.nhncloud.com/ko/Storage/Block%20Storage/ko/console-guide/#_1)<br>
+* [블록 스토리지 크기 변경](https://docs.nhncloud.com/ko/Storage/Block%20Storage/ko/console-guide/#_4)<br>
+* [블록 스토리지 연결 관리](https://docs.nhncloud.com/ko/Storage/Block%20Storage/ko/console-guide/#_7)
 
 ### 용어 정리
 
@@ -45,7 +45,7 @@ NHN Cloud의 Block Storage는 인스턴스에 할당하여 사용할 수 있는 
 
 ## 관련 서비스
 
-> [Instance](https://docs.nhncloud.com/ko/Compute/Instance/ko/overview/)<br>
-> [Instance Template](https://docs.nhncloud.com/ko/Compute/Instance%20Template/ko/overview/)<br>
-> [Object Storage](https://docs.nhncloud.com/ko/Storage/Object%20Storage/ko/Overview/)<br>
-> [NAS](https://docs.nhncloud.com/ko/Storage/NAS/ko/overview/)
+* [Instance](https://docs.nhncloud.com/ko/Compute/Instance/ko/overview/)<br>
+* [Instance Template](https://docs.nhncloud.com/ko/Compute/Instance%20Template/ko/overview/)<br>
+* [Object Storage](https://docs.nhncloud.com/ko/Storage/Object%20Storage/ko/Overview/)<br>
+* [NAS](https://docs.nhncloud.com/ko/Storage/NAS/ko/overview/)
