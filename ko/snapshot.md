@@ -1,4 +1,7 @@
 # 스냅숏
+
+## Storage > Block Storage > API 가이드 > 스냅숏
+
 ## 스냅숏 상태
 
 스냅숏은 다양한 상태를 가지며, 상태에 따라 취할 수 있는 동작이 정해져 있습니다. 가능한 상태 목록은 다음과 같습니다.
@@ -39,7 +42,7 @@ X-Auth-Token: {tokenId}
 
 ### 응답
 
-<details><summary>응답 예시</summary>
+<details><summary>Example in JSON</summary>
 <p>
 
 ```json
@@ -98,7 +101,7 @@ X-Auth-Token: {tokenId}
 
 ### 응답
 
-<details><summary>응답 예시</summary>
+<details><summary>Example in JSON</summary>
 <p>
 
 ```json
@@ -163,7 +166,7 @@ X-Auth-Token: {tokenId}
 
 ### 응답
 
-<details><summary>응답 예시</summary>
+<details><summary>Example in JSON</summary>
 <p>
 
 ```json
@@ -222,7 +225,7 @@ X-Auth-Token: {tokenId}
 
 ### 요청 본문
 
-<details><summary>JSON</summary>
+<details><summary>Example in JSON</summary>
 <p>
 
 ```json
@@ -249,7 +252,7 @@ X-Auth-Token: {tokenId}
 
 ### 응답
 
-<details><summary>응답 예시</summary>
+<details><summary>Example in JSON</summary>
 <p>
 
 ```json
