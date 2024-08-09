@@ -62,3 +62,12 @@ Content-Type: application/json
 | resultMessage | String  | 응답 메시지 |
 | isSuccessful | boolean | 성공 여부 |
 
+## 오류 코드
+
+| 오류 코드 | 오류 메시지 | 설명 |
+| --- | --- | --- |
+| 0 | Success  | 처리 성공 |
+| -1 | Fail  | 처리 실패 |
+| -2| Assert | 처리 실패 |
+| 10000| boolean | 존재하지 않는 서비스입니다. |
+
