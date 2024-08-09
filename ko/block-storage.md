@@ -56,7 +56,7 @@ X-Auth-Token: {tokenId}
 
 ### 응답
 
-<details><summary>Example in JSON</summary>
+<details><summary>JSON</summary>
 <p>
 
 ```json
@@ -119,7 +119,7 @@ X-Auth-Token: {tokenId}
 
 ### 응답
 
-<details><summary>Example in JSON</summary>
+<details><summary>JSON</summary>
 <p>
 
 ```json
@@ -227,7 +227,7 @@ X-Auth-Token: {tokenId}
 
 ### 응답
 
-<details><summary>Example in JSON</summary>
+<details><summary>JSON</summary>
 <p>
 
 ```json
@@ -310,7 +310,7 @@ X-Auth-Token: {tokenId}
 
 스냅숏으로부터 새로운 블록 스토리지를 생성하거나 빈 블록 스토리지를 생성합니다.
 
-!!! 알아두기 블록 스토리지는 생성 직후 즉시 사용할 수 없습니다. 블록 스토리지 상태를 조회해서 `available` 상태인 것을 확인한 후 사용합니다.
+!!! tip "알아두기" 블록 스토리지는 생성 직후 즉시 사용할 수 없습니다. 블록 스토리지 상태를 조회해서 `available` 상태인 것을 확인한 후 사용합니다.
 
 ### 요청
 
@@ -329,7 +329,7 @@ X-Auth-Token: {tokenId}
 ### 요청 본문
 
 <details>
-   <summary><strong>Example in JSON</strong></summary>
+   <summary><strong>JSON</strong></summary>
 <p>
 
 ```json
@@ -366,7 +366,7 @@ X-Auth-Token: {tokenId}
 
 ### 응답
 
-<details><summary>Example in JSON</summary>
+<details><summary>JSON</summary>
 <p>
 
 ```json
@@ -463,7 +463,7 @@ X-Auth-Token: {tokenId}
 
 블록 스토리지로부터 이미지를 생성합니다. 
 
-!!! 알아두기 이미지 생성 이후 기본적인 초기화 작업을 위해 최소 100KB의 여유 공간이 필요합니다. 남은 공간이 이보다 작을 경우 초기화 작업이 실패할 수 있습니다.
+!!! tip "알아두기" 이미지 생성 이후 기본적인 초기화 작업을 위해 최소 100KB의 여유 공간이 필요합니다. 남은 공간이 이보다 작을 경우 초기화 작업이 실패할 수 있습니다.
 
 ### 요청
 
@@ -483,7 +483,7 @@ X-Auth-Token: {tokenId}
 
 ### 요청 본문
 
-<details><summary>Example in JSON</summary>
+<details><summary>JSON</summary>
 <p>
 
 ```json
@@ -514,7 +514,7 @@ X-Auth-Token: {tokenId}
 
 ### 응답
 
-<details><summary>Example in JSON</summary>
+<details><summary>JSON</summary>
 <p>
 
 ```json

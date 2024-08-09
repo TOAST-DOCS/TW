@@ -42,7 +42,7 @@ X-Auth-Token: {tokenId}
 
 ### 응답
 
-<details><summary>Example in JSON</summary>
+<details><summary>JSON</summary>
 <p>
 
 ```json
@@ -101,7 +101,7 @@ X-Auth-Token: {tokenId}
 
 ### 응답
 
-<details><summary>Example in JSON</summary>
+<details><summary>JSON</summary>
 <p>
 
 ```json
@@ -166,7 +166,7 @@ X-Auth-Token: {tokenId}
 
 ### 응답
 
-<details><summary>Example in JSON</summary>
+<details><summary>JSON</summary>
 <p>
 
 ```json
@@ -225,7 +225,7 @@ X-Auth-Token: {tokenId}
 
 ### 요청 본문
 
-<details><summary>Example in JSON</summary>
+<details><summary>JSON</summary>
 <p>
 
 ```json
@@ -252,7 +252,7 @@ X-Auth-Token: {tokenId}
 
 ### 응답
 
-<details><summary>Example in JSON</summary>
+<details><summary>JSON</summary>
 <p>
 
 ```json
