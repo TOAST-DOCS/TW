@@ -71,3 +71,21 @@ Content-Type: application/json
 | -2| Assert | 처리 실패 |
 | 10000| boolean | 존재하지 않는 서비스입니다. |
 
+WARNING: Installing an MkDocs plugin means installing a Python package and executing any code that the author has put in there. So, exercise the usual caution; there's no attempt at sandboxing.
+
+> NEW: **New in version 1.4.**
+>
+> ##### Subclassing `Config` to specify the config schema
+>
+> To get type safety benefits, if you're targeting only MkDocs 1.4+, define the config schema as a class instead:
+>
+> ```python
+> class MyPluginConfig(mkdocs.config.base.Config):
+>     foo = mkdocs.config.config_options.Type(str, default='a default value')
+>     bar = mkdocs.config.config_options.Type(int, default=0)
+>     baz = mkdocs.config.config_options.Type(bool, default=True)
+>
+> class MyPlugin(mkdocs.plugins.BasePlugin[MyPluginConfig]):
+>     ...
+> ```
+
