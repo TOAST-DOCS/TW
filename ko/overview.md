@@ -14,7 +14,7 @@ NHN Cloud의 Block Storage는 인스턴스에 할당하여 사용할 수 있는 
 
 이 문서에서는 NHN Cloud Block Storage 서비스의 주요 기능에 대해 살펴보고 Block Storage 서비스에서 사용하는 용어와 요금 체계를 안내합니다.
 
-### 이 문서의 내용
+### 목차
 
 * [블록 스토리지 생성](https://docs.nhncloud.com/ko/Storage/Block%20Storage/ko/console-guide/#_1)<br>
 * [블록 스토리지 크기 변경](https://docs.nhncloud.com/ko/Storage/Block%20Storage/ko/console-guide/#_4)<br>
@@ -43,7 +43,7 @@ NHN Cloud의 Block Storage는 인스턴스에 할당하여 사용할 수 있는 
 
 블록 스토리지는 생성한 시점부터 요금이 부과되며, 생성 시 설정한 블록 스토리지의 크기에 따라 요금이 부과됩니다. 스냅숏의 경우 원본 블록 스토리지의 크기에 따라 요금이 부과됩니다. 자세한 내용은 [Block Storage 서비스 페이지](https://www.nhncloud.com/kr/service/storage/block-storage)를 참고하세요.
 
-## 관련 서비스
+## 관련 콘텐츠 더 알아보기
 
 * [Instance](https://docs.nhncloud.com/ko/Compute/Instance/ko/overview/)<br>
 * [Instance Template](https://docs.nhncloud.com/ko/Compute/Instance%20Template/ko/overview/)<br>
