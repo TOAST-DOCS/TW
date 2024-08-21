@@ -1,6 +1,6 @@
 # Blocl Storage 연결 관리
 
-## Storage > Block Storage > 콘솔 사용 가이드 > 블록 스토리지 연결 관리
+## Storage > Block Storage > 콘솔 사용 가이드 > Block Storage 연결 관리
 
 ## 블록 스토리지 연결하기
 
