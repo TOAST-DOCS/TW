@@ -1,6 +1,6 @@
 # Block Storage API 공통 정보
 
-## Storage > Block Storage > API 가이드 > Block Storage API 공통 정보
+**Storage > Block Storage > API 가이드 > Block Storage API 공통 정보**
 
 ### API 엔드포인트
 
