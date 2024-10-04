@@ -1,6 +1,6 @@
 # Block Storage 생성
 
-## Storage > Block Storage > 콘솔 사용 가이드 > Block Storage 생성
+**Storage > Block Storage > 콘솔 사용 가이드 > Block Storage 생성**
 
 인스턴스 생성 시 기본으로 연결해 사용하는 루트 블록 스토리지(기본 로컬 디스크) 외에 추가 블록 스토리지를 생성할 수 있습니다. 블록 스토리지는 HDD 및 SSD 타입을 지원하며, 1GB~2,048GB까지 생성할 수 있습니다. 블록 스토리지는 NHN Cloud 콘솔 또는 API를 이용해 간편하게 생성할 수 있습니다. 여기에서는 콘솔을 이용해 블록 스토리지를 생성하는 방법을 설명합니다.
 
