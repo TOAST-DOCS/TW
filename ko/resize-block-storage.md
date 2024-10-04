@@ -56,6 +56,7 @@
 ## Windows 인스턴스 크기 변경하기
 
 1. Windows 시작 메뉴 > **Run**에서 **diskmgmt.msc**를 입력한 뒤 **OK**를 클릭해 디스크 관리 유틸리티를 실행합니다. 블록 스토리지에 추가된 크기만큼 **Unallocated** 상태로 표시되어 있는 것을 확인할 수 있습니다.
+
     ![windows_volume_extend_01](https://github.com/user-attachments/assets/4b1766a8-a10a-4601-bf13-72c3f032210b)
 <br>
 2. 확장된 드라이브를 마우스 오른쪽 버튼으로 클릭한 뒤 <strong>Extend Volume...</strong>을 클릭해 볼륨 확장 마법사를 실행합니다.
