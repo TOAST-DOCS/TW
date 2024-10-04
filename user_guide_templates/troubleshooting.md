@@ -12,6 +12,7 @@
 * 페이지는 문서 제목(Heading 1, #) 단위로 모듈화합니다.
 * `{ }`로 표시된 부분에 작성할 내용을 입력합니다.
 * 자세한 내용은 [NHN Cloud 가이드 문서 템플릿 활용 가이드](https://nhnent.dooray.com/share/pages/zzvZY-57RG6imxkuc_-blA)를 참고하여 작성합니다.
+* 본 템플릿이 적용된 샘플은 [Block Storage 문제 해결 가이드 샘플 페이지](https://docs.alpha-nhncloud.com/ko/Open%20Source/TW/ko/troubleshoot-guide/)를 참고할 수 있습니다.
 
 ---
 
