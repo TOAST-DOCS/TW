@@ -15,13 +15,13 @@ NHN Cloud의 Block Storage는 인스턴스에 할당하여 사용할 수 있는 
 
 이 문서에서는 NHN Cloud Block Storage 서비스의 주요 기능에 대해 살펴보고 Block Storage 서비스에서 사용하는 용어와 요금 체계를 안내합니다.
 
-### Block Storage 시작하기
+## Block Storage 시작하기
 
 * [블록 스토리지 생성](https://docs.nhncloud.com/ko/Storage/Block%20Storage/ko/console-guide/#_1)<br>
 * [블록 스토리지 크기 변경](https://docs.nhncloud.com/ko/Storage/Block%20Storage/ko/console-guide/#_4)<br>
 * [블록 스토리지 연결 관리](https://docs.nhncloud.com/ko/Storage/Block%20Storage/ko/console-guide/#_7)
 
-### 용어 정리
+## 용어 정리
 
 <!-- 해당 서비스에서 다룰 주요 용어나 기술적인 용어를 정리합니다. 용어는 표 형태로 제공하며, 가급적이면 가나다순, ABC순으로 기재합니다. -->
 
