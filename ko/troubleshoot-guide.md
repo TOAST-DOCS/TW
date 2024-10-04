@@ -34,21 +34,21 @@ UUID=6cd50e51-cfc6-40b9-9ec5-f32fa2e4ff02 /                       xfs     defaul
 
 * 문제를 일으키는 블록 스토리지의 파일 시스템이 ext4일 경우
 
-```
-# tune2fs -U random /dev/vdb1
-tune2fs 1.42.9 (28-Dec-2013)
-Setting the UUID on this filesystem could take some time.
-Proceed anyway (or wait 5 seconds to proceed) ? (y,N) y
-```
+        ```
+        # tune2fs -U random /dev/vdb1
+        tune2fs 1.42.9 (28-Dec-2013)
+        Setting the UUID on this filesystem could take some time.
+        Proceed anyway (or wait 5 seconds to proceed) ? (y,N) y
+        ```
 
 * 문제를 일으키는 블록 스토리지의 파일 시스템이 xfs일 경우
 
-```
-# xfs_admin -U generate /dev/vdb1
-Clearing log and setting UUID
-writing all SBs
-new UUID = 0037c590-0545-4736-bcdc-d052681eb5f5
-```
+        ```
+        # xfs_admin -U generate /dev/vdb1
+        Clearing log and setting UUID
+        writing all SBs
+        new UUID = 0037c590-0545-4736-bcdc-d052681eb5f5
+        ```
 
 5. 파일 시스템 UUID가 바뀐 것을 확인합니다.
 
