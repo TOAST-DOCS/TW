@@ -1,6 +1,6 @@
 # Block Storage 문제 해결 가이드
 
-## Stoeage > Block Storage > 문제 해결 가이드
+**Stoeage > Block Storage > 문제 해결 가이드**
 
 ## 의도하지 않은 블록 스토리지로 부팅됩니다.
 
