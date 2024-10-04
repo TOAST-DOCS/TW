@@ -1,6 +1,6 @@
 # Block Storage 릴리스 노트
 
-## Storage > Block Storage > 릴리스 노트
+**Storage > Block Storage > 릴리스 노트**
 
 ## 2024\. 5\. 28\.
 
