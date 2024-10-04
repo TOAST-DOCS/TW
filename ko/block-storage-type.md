@@ -1,6 +1,6 @@
 # 블록 스토리지 타입
 
-## Storage > Block Storage > API 가이드 > 블록 스토리지 타입
+**Storage > Block Storage > API 가이드 > 블록 스토리지 타입**
 
 ## 블록 스토리지 타입 목록 보기
 
