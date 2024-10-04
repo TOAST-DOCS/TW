@@ -65,7 +65,7 @@
 <br>
 3. 볼륨 확장 마법사에서 **Next**를 클릭합니다.<br>
 4. **Select the amount of space in MB**에 확장할 메가바이트 수를 입력합니다. 입력 가능한 최대 메가바이트 수는 Maximum available space in MB를 참고합니다.<br>
-5. 다시 **Next**를 클릭해 볼륨 확장 마법사를 완료합니다.<br>
+5. 다시 **Next**를 클릭해 볼륨 확장 마법사를 완료합니다.
 
    ![windows_volume_extend_03](https://github.com/user-attachments/assets/42ac5a43-3ebf-4ad6-93c9-880c008cdb9a)
 <br>
