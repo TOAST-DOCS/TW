@@ -30,7 +30,6 @@ UUID=6cd50e51-cfc6-40b9-9ec5-f32fa2e4ff02 /                       xfs     defaul
 2. 인스턴스를 시작합니다.
 3. 부팅이 완료되면 문제를 일으키는 블록 스토리지를 다시 연결합니다.
 4. 다음 명령어를 통해 문제를 일으키는 블록 스토리지의 파일 시스템 UUID를 교체합니다. 문제를 일으키는 블록 스토리지의 타입에 따라 다음 명령어를 실행합니다. 블록 스토리지의 타입은 `blkid` 명령어를 통해 확인할 수 있습니다.
-<br>
 
 * 문제를 일으키는 블록 스토리지의 파일 시스템이 ext4일 경우
 
@@ -52,11 +51,11 @@ UUID=6cd50e51-cfc6-40b9-9ec5-f32fa2e4ff02 /                       xfs     defaul
 
 5. 파일 시스템 UUID가 바뀐 것을 확인합니다.
 
-```
-# blkid
-/dev/vda1: UUID="6cd50e51-cfc6-40b9-9ec5-f32fa2e4ff02" TYPE="xfs"
-/dev/vdb1: UUID="0037c590-0545-4736-bcdc-d052681eb5f5" TYPE="xfs"
-```
+        ```
+        # blkid
+        /dev/vda1: UUID="6cd50e51-cfc6-40b9-9ec5-f32fa2e4ff02" TYPE="xfs"
+        /dev/vdb1: UUID="0037c590-0545-4736-bcdc-d052681eb5f5" TYPE="xfs"
+        ```
 
 ## 블록 스토리지를 마운트하는 데 실패하여 인스턴스가 동작하지 않습니다.
 
