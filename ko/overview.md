@@ -1,5 +1,5 @@
 # Block Storage 개요
-## Storage > Block Storage > 개요
+**Storage > Block Storage > 개요**
 블록 스토리지는 데이터를 블록 단위로 분리해 저장합니다. 데이터를 저장할 때 특정 단일 경로에 의존하지 않으므로 신속한 검색이 가능하며, 각각의 블록은 독립적으로 존재하고 파티션으로 분할할 수 있어 서로 다른 운영체제에 접근할 수도 있습니다.
 
 NHN Cloud의 Block Storage는 인스턴스에 할당하여 사용할 수 있는 블록 수준 스토리지입니다. 인스턴스 생성 시 기본으로 연결해 사용하는 루트 블록 스토리지 외에 추가 스토리지가 필요할 경우 Block Storage 서비스를 이용해 저장 공간을 증설할 수 있습니다. 인스턴스를 삭제해도 블록 스토리지의 데이터는 삭제되지 않으며, 언제든 현재 연결되어 있는 인스턴스와의 연결 을 해제하고 같은 가용성 영역 안에 있는 다른 인스턴스에 연결해 사용할 수 있습니다. 또한 인스턴스를 삭제하기 전 인스턴스의 루트 블록 스토리지에 있는 데이터를 영구 보관하기 위해 블록 스토리지를 장착하여 데이터를 복사할 수 있습니다.
@@ -14,7 +14,7 @@ NHN Cloud의 Block Storage는 인스턴스에 할당하여 사용할 수 있는 
 
 이 문서에서는 NHN Cloud Block Storage 서비스의 주요 기능에 대해 살펴보고 Block Storage 서비스에서 사용하는 용어와 요금 체계를 안내합니다.
 
-### 목차
+### Block Storage 시작하기
 
 * [블록 스토리지 생성](https://docs.nhncloud.com/ko/Storage/Block%20Storage/ko/console-guide/#_1)<br>
 * [블록 스토리지 크기 변경](https://docs.nhncloud.com/ko/Storage/Block%20Storage/ko/console-guide/#_4)<br>
