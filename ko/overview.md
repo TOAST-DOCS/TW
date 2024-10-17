@@ -38,12 +38,6 @@ NHN Cloud의 Block Storage는 인스턴스에 할당하여 사용할 수 있는 
 * 인스턴스에 연결된 블록 스토리지 연결을 해제한 뒤 다른 인스턴스에 연결할 수 있습니다.
 * 스냅숏을 생성해 블록 스토리지를 복제할 수 있습니다.
 
-## Block Storage 요금 안내
-
-<!-- 아래 요금 안내는 예시이며, 서비스 특성에 따라 자유롭게 변경 및 활용이 가능합니다. -->
-
-블록 스토리지는 생성한 시점부터 요금이 부과되며, 생성 시 설정한 블록 스토리지의 크기에 따라 요금이 부과됩니다. 스냅숏의 경우 원본 블록 스토리지의 크기에 따라 요금이 부과됩니다. 자세한 내용은 [Block Storage 서비스 페이지](https://www.nhncloud.com/kr/service/storage/block-storage)를 참고하세요.
-
 ## 관련 콘텐츠 더 알아보기
 
 * [Instance](https://docs.nhncloud.com/ko/Compute/Instance/ko/overview/)<br>
