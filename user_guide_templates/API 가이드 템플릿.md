@@ -96,12 +96,6 @@ API 가이드는 API를 사용하기위해 필요한 API 엔드포인트, HTTP �
 
 </details>
 
-<details>
-  <summary><strong>예시 코드</strong></summary>
-
-```
-</details>
-
 
 <!--요청 본문의 필드를 설명합니다.-->
 
@@ -121,11 +115,6 @@ API 가이드는 API를 사용하기위해 필요한 API 엔드포인트, HTTP �
 </details>
 
 
-<details>
-  <summary><strong>예시 코드</strong></summary>
-
-```
-</details>
 
 <!--응답 본문의 필드를 설명합니다.-->
 
@@ -165,7 +154,7 @@ API 가이드는 API를 사용하기위해 필요한 API 엔드포인트, HTTP �
 <!--요청 본문을 요구하지 않는다면 "이 API는 요청 본문을 요구하지 않습니다"로 입력합니다.-->
 
 <details>
-  <summary><strong>HTTP</strong></summary>
+  <summary><strong>예시 코드</strong></summary>
 
 ```
 
@@ -173,37 +162,6 @@ API 가이드는 API를 사용하기위해 필요한 API 엔드포인트, HTTP �
 ```
 
 </details>
-
-<details>
-  <summary><strong>Java</strong></summary>
-
-```
-
-{코드 입력}
-```
-
-</details>
-
-<details>
-  <summary><strong>Python</strong></summary>
-
-```
-
-{코드 입력}
-```
-
-</details>
-
-<details>
-  <summary><strong>JSON</strong></summary>
-
-```
-
-{코드 입력}
-```
-
-</details>
-
 <!--요청 본문의 필드를 설명합니다.-->
 
 | 이름 | 타입 | 필수 | 설명 |  |
