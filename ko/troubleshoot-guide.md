@@ -72,14 +72,3 @@ UUID=6cd50e51-cfc6-40b9-9ec5-f32fa2e4ff02 /                       xfs     defaul
     문제 해결 가이드의 안내에 따라 진행하였으나 문제가 해결되지 않을 경우 [NHN Cloud 고객 센터](https://www.nhncloud.com/kr/support)로 문의하세요.
     * 온라인 1:1 문의: [https://www.nhncloud.com/kr/support/inquiry?alias=tab5_03](https://www.nhncloud.com/kr/support/inquiry?alias=tab5_03)
     * 대표 전화: 1588-7967 (운영 시간: 월~금 10:00-19:00)
-
-
-
-## 문제가 해결되지 않을 경우
-
-문제 해결 가이드의 안내에 따라 진행하였으나 문제가 해결되지 않을 경우 [NHN Cloud 고객 센터](https://www.nhncloud.com/kr/support)로 문의하세요.
-
-* 온라인 1:1 문의: [https://www.nhncloud.com/kr/support/inquiry?alias=tab5_03](https://www.nhncloud.com/kr/support/inquiry?alias=tab5_03)
-* 대표 전화: 1588-7967 (운영 시간: 월\~금 10:00-19:00)
-
-***
