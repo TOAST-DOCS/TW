@@ -1,6 +1,6 @@
-![image](https://github.com/user-attachments/assets/dbcbafce-a1ee-4a77-a60a-b43194b670c1)
-
 # Ubuntu Linux 인스턴스 사용하기
+
+![image](https://github.com/user-attachments/assets/00c68317-a2fe-45c7-a313-7842dd73a011)
 
 ## 학습 목표
 
