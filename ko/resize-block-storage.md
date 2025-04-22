@@ -4,8 +4,6 @@
 콘솔의 프로젝트 대시보드를 통해 사용 중인 클라우드 서비스와 리소스 정보를 한눈에 확인할 수 있으며, 세부 설정 및 관리 옵션은 직관적인 메뉴를 통해 쉽게 접근할 수 있습니다.
 <br>
 ![빠른시작 _ 기본정보](https://github.com/user-attachments/assets/65b84e0c-38ff-469f-8178-389eb8defd39)
-</br>
-
 ## 학습 목표
 
 이번 학습 모듈에서 배울 내용은 다음과 같습니다.
@@ -15,7 +13,10 @@
 * **조직, 프로젝트 및 리전 설정**
     * 클라우드 리소스 관리를 위한 기본 설정 구성
 <br>
-![imge](https://github.com/user-attachments/assets/89276fa6-fd6d-4af9-ac18-50beb8bfbabc)
+
+![모듈2_구성도](https://github.com/user-attachments/assets/5d2177ab-4d23-48ea-b231-a878acc10436)
+
+> 리전, 조직, 프로젝트, 가용성 영역은 이후 학습 모듈에서 동일하게 사용되므로 구성도 이미지에서는 생략됩니다.
 
 ## 시작하기 전에
 
