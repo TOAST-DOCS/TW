@@ -15,8 +15,7 @@
 * **조직, 프로젝트 및 리전 설정**
     * 클라우드 리소스 관리를 위한 기본 설정 구성
 <br>
-![image](https://github.com/user-attachments/assets/55ef4a8b-416d-4e23-a611-76c1ed56381a)
-
+![imge](https://github.com/user-attachments/assets/89276fa6-fd6d-4af9-ac18-50beb8bfbabc)
 
 ## 시작하기 전에
 
