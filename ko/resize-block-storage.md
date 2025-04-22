@@ -15,7 +15,8 @@
 <br>
 아래의 다이어그램을 완성해 봅니다.
 
-![모듈2_구성도](https://github.com/user-attachments/assets/5d2177ab-4d23-48ea-b231-a878acc10436)
+![모듈2_구성도](https://github.com/user-attachments/assets/3116ca11-18f6-4c3e-b336-9b9445934f72)
+
 
 > 리전, 조직, 프로젝트, 가용성 영역은 이후 학습 모듈에서 동일하게 사용되므로 구성도 이미지에서는 생략됩니다.
 
