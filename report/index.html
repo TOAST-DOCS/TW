@@ -1,0 +1,1492 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NHN Cloud 문서 검수 자동화 성과 보고 · 2026 Q2</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <style>
+    /* ===== 1. Tokens ===== */
+    :root {
+      --nhn-black:  #191919;
+      --nhn-white:  #ffffff;
+      --nhn-blue:   #0F80F6;
+      --nhn-red:    #EB453D;
+      --nhn-green:  #01A058;
+      --nhn-orange: #FF9000;
+      --nhn-yellow: #FCF683;
+
+      --ink:   #191919;
+      --ink-2: #2e2e2e;
+      --ink-3: #545454;
+      --ink-4: #767676;
+      --ink-5: #a1a1a1;
+      --ink-6: #c8c8c8;
+
+      --surface:    #ffffff;
+      --surface-1:  #f7f7f7;
+      --surface-2:  #efefef;
+
+      --line:        #191919;
+      --line-soft:   #e3e3e3;
+      --line-softer: #ededed;
+
+      --accent:  #0F80F6;
+      --danger:  #EB453D;
+      --success: #01A058;
+
+      --font-sans:    "Pretendard", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+      --font-mono:    "Pretendard", -apple-system, sans-serif;
+      --font-display: "Pretendard", -apple-system, sans-serif;
+
+      --fs-display-1: 56px;
+      --fs-display-2: 40px;
+      --fs-h1:        48px;
+      --fs-h2:        40px;
+      --fs-h3:        20px;
+      --fs-h4:        15px;
+      --fs-lede:      17px;
+      --fs-body:      15px;
+      --fs-body-sm:   13px;
+      --fs-caption:   12px;
+      --fs-micro:     12px;
+
+      --lh-tight:  1.15;
+      --lh-snug:   1.25;
+      --lh-normal: 1.4;
+      --lh-loose:  1.7;
+
+      --max:        800px;
+      --pad-x:      56px;
+      --section-py: 72px;
+
+      --ease: cubic-bezier(0.32, 0.72, 0, 1);
+      --dur:  240ms;
+    }
+
+    /* ===== 2. Reset ===== */
+    *, *::before, *::after { box-sizing: border-box; }
+    * { margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-sans);
+      font-size: var(--fs-body);
+      line-height: var(--lh-loose);
+      font-weight: 500;
+      color: var(--ink-2);
+      background: var(--surface);
+      word-break: keep-all;
+      overflow-wrap: break-word;
+      font-feature-settings: "ss01", "cv11", "tnum";
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    .mono, .tnum { font-feature-settings: "tnum"; }
+    .num { text-align: right; font-feature-settings: "tnum"; }
+    strong, b { font-weight: 700; color: var(--ink); }
+
+    /* ===== 3. Cover ===== */
+    .cover {
+      padding: 96px var(--pad-x);
+      min-height: 60vh;
+      background:
+        radial-gradient(ellipse 70% 55% at 25% 0%, rgba(15, 128, 246, 0.18), transparent 65%),
+        radial-gradient(ellipse 60% 50% at 90% 100%, rgba(235, 69, 61, 0.10), transparent 60%),
+        var(--ink);
+      color: var(--surface);
+      overflow: hidden;
+      display: flex;
+      align-items: stretch;
+    }
+    .cover-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 96px;
+    }
+    .cover-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; }
+    .cover-eyebrow {
+      font-family: var(--font-mono);
+      font-size: var(--fs-micro);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.70);
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+    .cover-title {
+      font-size: var(--fs-display-1);
+      line-height: 1.25;
+      letter-spacing: -0.04em;
+      font-weight: 700;
+      color: var(--surface);
+    }
+    .cover-summary {
+      margin-top: 24px;
+      font-size: var(--fs-lede);
+      line-height: var(--lh-loose);
+      color: rgba(255,255,255,0.72);
+      font-weight: 500;
+      letter-spacing: -0.005em;
+    }
+    .cover-confidential {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border: 1px solid rgba(255,255,255,0.4);
+      font-family: var(--font-mono);
+      font-size: var(--fs-micro);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      font-weight: 600;
+    }
+    .cover-confidential::before {
+      content: "";
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--nhn-red);
+    }
+    .cover-meta { display: grid; grid-template-columns: repeat(2, auto); gap: 64px; }
+    .cover-meta-item { display: flex; flex-direction: column; gap: 6px; }
+    .cover-meta-label {
+      font-family: var(--font-mono);
+      font-size: var(--fs-micro);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      font-weight: 600;
+    }
+    .cover-meta-value {
+      font-size: var(--fs-body);
+      color: var(--surface);
+      font-weight: 500;
+    }
+    .cover-meta-value.mono { font-feature-settings: "tnum"; letter-spacing: 0; }
+
+    /* ===== 4. Side Nav ===== */
+    .side-nav {
+      position: fixed;
+      top: 96px;
+      left: max(24px, calc(50% - (var(--max) / 2) - 40px - 200px));
+      z-index: 90;
+      width: 200px;
+      max-height: calc(100vh - 128px);
+      overflow-y: auto;
+    }
+    .side-nav-list { list-style: none; border-left: 2px solid var(--line-soft); }
+    .side-nav-list li { display: block; }
+    .side-nav-list a {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 8px;
+      align-items: baseline;
+      padding: 7px 0 7px 12px;
+      margin-left: -2px;
+      border-left: 2px solid transparent;
+      color: var(--ink-4);
+      transition: color var(--dur) var(--ease), border-color var(--dur) var(--ease);
+    }
+    .side-nav-list a:hover { color: var(--ink); }
+    .side-nav-list a.active { color: var(--nhn-blue); border-left-color: var(--nhn-blue); }
+    .side-nav-list a.active .sn-num,
+    .side-nav-list a.active .sn-title { color: var(--nhn-blue); }
+    .side-nav-list .sn-num {
+      font-family: var(--font-mono);
+      font-size: var(--fs-micro);
+      font-weight: 600;
+      color: var(--ink-5);
+      letter-spacing: 0;
+    }
+    .side-nav-list .sn-title {
+      font-size: var(--fs-body-sm);
+      font-weight: 500;
+      line-height: var(--lh-snug);
+      letter-spacing: -0.005em;
+      color: var(--ink-4);
+    }
+    .side-nav-list a.sn-h1 { color: var(--ink-4); }
+    .side-nav-list a.sn-h1 .sn-num {
+      font-size: 11px;
+      letter-spacing: 0;
+      font-weight: 700;
+      color: var(--ink-4);
+      text-transform: uppercase;
+    }
+    .side-nav-list a.sn-h1 .sn-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--ink-4);
+    }
+    .side-nav-list a.sn-h1.active,
+    .side-nav-list a.sn-h1.active .sn-num,
+    .side-nav-list a.sn-h1.active .sn-title { color: var(--nhn-blue); }
+    .side-nav-list:has(a.sn-h1) a:not(.sn-h1) { padding-left: 20px; }
+    @media (max-width: 1499px) { .side-nav { display: none; } }
+
+    /* ===== 5. Main / Section ===== */
+    main { padding: 0 var(--pad-x); }
+    .section { padding: var(--section-py) 0; }
+    .section-inner { max-width: var(--max); margin: 0 auto; }
+
+    .section-inner > * { margin-top: 56px; }
+    .section-inner > *:first-child { margin-top: 0; }
+    .section-inner > .section-tag,
+    .section-inner > .section-head { margin-top: 0; }
+
+    .section-tag {
+      border-top: 3px solid var(--line);
+      margin-bottom: 28px;
+      min-height: 0;
+    }
+    .section-tag > * { display: none !important; }
+
+    .section-head { display: block; margin-bottom: 56px; }
+    .section-head > h1, .section-head > h2 { margin-bottom: 24px; }
+    .section-head h2,
+    .section-head h2.display-xl,
+    .section-head h2.display-xxl {
+      font-family: var(--font-sans) !important;
+      font-size: var(--fs-h2) !important;
+      line-height: var(--lh-snug) !important;
+      letter-spacing: 0 !important;
+      font-weight: 700 !important;
+      color: var(--ink) !important;
+    }
+    .section-head h2 .num-prefix {
+      display: inline-block;
+      margin-right: 16px;
+      color: var(--ink-4);
+      font-weight: 700;
+    }
+    .lede {
+      font-size: var(--fs-lede);
+      line-height: var(--lh-loose);
+      letter-spacing: -0.005em;
+      color: var(--ink-3);
+      font-weight: 500;
+    }
+    .lede + .lede { margin-top: 16px; }
+    .lede b { color: var(--ink); font-weight: 700; }
+
+    /* H3 / Block */
+    h3, .h3 {
+      font-size: var(--fs-h3);
+      line-height: var(--lh-snug);
+      letter-spacing: 0;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .section-inner h3 { margin-top: 56px; margin-bottom: 0; }
+    .section-inner h3:first-child { margin-top: 0; }
+    .problem-card h3, .phase h3 { margin-top: 0; }
+
+    .block > * + * { margin-top: 24px; }
+    .block > .callout { margin-top: 32px; }
+    .block-head {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+      display: flex;
+      justify-content: flex-start;
+      align-items: baseline;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .block-head h3 {
+      font-size: 20px;
+      font-weight: 700;
+      line-height: var(--lh-snug);
+      letter-spacing: 0;
+      color: var(--ink);
+    }
+    .block-head .meta {
+      font-family: var(--font-mono);
+      font-size: var(--fs-micro);
+      color: var(--ink-4);
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    /* Grids inside sections — vertical default */
+    .g2 { display: grid; grid-template-columns: 1fr; gap: 56px; }
+    .g3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .g2 > *, .g3 > * { margin-top: 0 !important; }
+
+    /* ===== 6. KPI Row ===== */
+    .kpi-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+    }
+    .kpi {
+      padding: 20px 0;
+      border-left: 1px solid var(--line-soft);
+    }
+    .kpi:first-child { border-left: none; }
+    .kpi-label {
+      font-family: var(--font-mono);
+      font-size: var(--fs-micro);
+      letter-spacing: 0;
+      text-transform: uppercase;
+      color: var(--ink-4);
+      font-weight: 600;
+      padding: 0 16px;
+    }
+    .kpi-value {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+      margin-top: 8px;
+      padding: 0 16px;
+      font-feature-settings: "tnum";
+    }
+    .kpi-value .unit {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink-4);
+      margin-left: 4px;
+    }
+    .kpi-sub {
+      font-size: var(--fs-caption);
+      color: var(--ink-3);
+      margin-top: 6px;
+      padding: 0 16px;
+      font-feature-settings: "tnum";
+    }
+    .kpi-row.cols-2 { grid-template-columns: 1fr 1fr; }
+
+    /* ===== 7. Table ===== */
+    .table-wrap {
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+      overflow-x: auto;
+    }
+    table { width: 100%; border-collapse: collapse; font-size: var(--fs-body-sm); }
+    thead th {
+      text-align: left;
+      padding: 12px 16px;
+      background: var(--surface-2);
+      color: var(--ink);
+      font-family: var(--font-mono);
+      font-size: var(--fs-micro);
+      text-transform: uppercase;
+      letter-spacing: 0;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    thead th.num, td.num {
+      text-align: right;
+      font-feature-settings: "tnum";
+    }
+    tbody td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line-softer);
+      color: var(--ink-2);
+      vertical-align: top;
+      font-size: 13.5px;
+    }
+    tbody tr:last-child td { border-bottom: none; }
+    tbody td code, .lede code, p code {
+      font-family: var(--font-mono);
+      font-size: 0.92em;
+      background: var(--surface-1);
+      padding: 1px 6px;
+      border-radius: 3px;
+      color: var(--ink);
+      font-feature-settings: "tnum";
+    }
+    tbody tr.highlight td { background: rgba(252, 246, 131, 0.30); }
+    .delta-up { color: var(--success); font-weight: 700; }
+
+    /* ===== 8. Callout ===== */
+    .callout {
+      margin-top: 32px;
+      margin-bottom: 0;
+      padding: 24px 28px;
+      background: rgba(252, 246, 131, 0.30);
+      border-left: none;
+    }
+    .callout.callout-note      { background: rgba(15, 128, 246, 0.08); }
+    .callout.callout-important { background: rgba(235, 69, 61, 0.08); }
+    .callout .lbl {
+      font-family: var(--font-mono);
+      font-size: var(--fs-micro);
+      text-transform: uppercase;
+      color: var(--ink-4);
+      margin-bottom: 10px;
+      font-weight: 600;
+      letter-spacing: 0;
+    }
+    .callout p {
+      font-size: var(--fs-body);
+      color: var(--ink);
+      line-height: var(--lh-loose);
+    }
+    .callout p + p { margin-top: 8px; }
+
+    /* ===== 9. Problem Grid (Pattern B) ===== */
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--line-soft);
+      border: 1px solid var(--line-soft);
+    }
+    .problem-card {
+      background: var(--surface);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .problem-card .pc-tag {
+      font-family: var(--font-mono);
+      font-size: var(--fs-micro);
+      color: var(--ink-4);
+      text-transform: uppercase;
+      letter-spacing: 0;
+      font-weight: 600;
+    }
+    .problem-card h3 {
+      font-size: var(--fs-h3);
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: 0;
+      margin: 0;
+    }
+    .problem-card p {
+      font-size: var(--fs-body-sm);
+      color: var(--ink-3);
+      line-height: var(--lh-loose);
+    }
+
+    /* ===== 10. Insight List (numbered list for §08) ===== */
+    .insight-list {
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+    }
+    .insight-row {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 24px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line-soft);
+    }
+    .insight-row:last-child { border-bottom: none; }
+    .insight-num {
+      font-family: var(--font-mono);
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: 0;
+      line-height: 1;
+      font-feature-settings: "tnum";
+    }
+    .insight-body h3 {
+      font-size: var(--fs-h3);
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: 0;
+      margin: 0 0 8px 0;
+    }
+    .insight-body p {
+      font-size: var(--fs-body-sm);
+      color: var(--ink-3);
+      line-height: var(--lh-loose);
+    }
+    .insight-body .effect {
+      display: inline-block;
+      margin-top: 12px;
+      font-family: var(--font-mono);
+      font-size: var(--fs-micro);
+      color: var(--ink-4);
+      text-transform: uppercase;
+      letter-spacing: 0;
+      font-weight: 600;
+    }
+    .insight-body .effect::before { content: "기대 효과 — "; }
+
+    /* ===== 11. Chart wrapper ===== */
+    .chart-wrap {
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+      padding: 28px 16px;
+    }
+    /* Chart heights — tuned per item count to keep bar thickness comfortable */
+    .chart-wrap--area    { height: 320px; }
+    .chart-wrap--error   { height: 480px; }
+    .chart-wrap--service { height: 880px; }
+    .chart-wrap canvas { width: 100% !important; height: 100% !important; }
+
+    /* ===== 12. PART Divider ===== */
+    .part-divider {
+      padding: 0 var(--pad-x);
+      margin-top: 120px;
+    }
+    .part-divider:first-of-type { margin-top: var(--section-py); }
+    .part-divider .section-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      width: 100%;
+      background:
+        linear-gradient(115deg, rgba(15, 128, 246, 0.10) 0%, transparent 35%, transparent 65%, rgba(1, 160, 88, 0.06) 100%),
+        var(--ink);
+      color: var(--surface);
+      padding: 40px;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .part-divider .part-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.70);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .part-divider h1 {
+      color: var(--surface);
+      font-size: var(--fs-h1);
+      letter-spacing: 0;
+      font-weight: 700;
+      line-height: var(--lh-snug);
+    }
+    .part-divider .part-meta {
+      display: block;
+      margin-top: 12px;
+      font-family: var(--font-mono);
+      font-size: 14px;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.70);
+      font-weight: 600;
+    }
+
+    /* Appendix section adjustments */
+    .phase { border-top: none; padding-top: 0; margin-top: 56px; }
+    .phase:first-child { margin-top: 0; }
+    details.apx-details > summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 14px 0;
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: var(--fs-micro);
+      text-transform: uppercase;
+      letter-spacing: 0;
+      color: var(--ink-3);
+      font-weight: 600;
+    }
+    details.apx-details > summary::-webkit-details-marker { display: none; }
+    details.apx-details > summary::after { content: "▾"; }
+    details.apx-details[open] > summary::after { content: "▴"; }
+    details.apx-details .table-wrap { border-top: none; }
+    details.apx-details .table-wrap-scroll {
+      max-height: 640px;
+      overflow-y: auto;
+    }
+
+    /* ===== 13. Footer ===== */
+    .footer {
+      background: var(--surface);
+      border-top: 1px solid var(--line-soft);
+      padding: 28px var(--pad-x);
+      margin-top: 160px;
+    }
+    .footer-inner { max-width: var(--max); margin: 0 auto; }
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 24px;
+      margin-bottom: 20px;
+    }
+    .footer-left { display: flex; flex-direction: column; gap: 6px; }
+    .footer-line { display: flex; gap: 6px; align-items: baseline; flex-wrap: wrap; }
+    .footer-doc-title {
+      font-size: var(--fs-body-sm);
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .footer-line-sub {
+      font-size: var(--fs-micro);
+      color: var(--ink-3);
+      display: flex;
+      gap: 4px;
+      align-items: baseline;
+      flex-wrap: wrap;
+    }
+    .footer-line-sub .dot { color: var(--ink-5); }
+    .footer-confidential {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 10px;
+      border: 1px solid var(--ink-5);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      font-weight: 600;
+    }
+    .footer-confidential::before {
+      content: "";
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--nhn-red);
+    }
+    .footer-disclaimer {
+      font-size: var(--fs-micro);
+      color: var(--ink-4);
+      max-width: 720px;
+      line-height: var(--lh-normal);
+      margin-bottom: 20px;
+    }
+    .footer-copyright {
+      font-family: var(--font-mono);
+      font-size: var(--fs-micro);
+      color: var(--ink-5);
+      letter-spacing: 0;
+      padding-top: 16px;
+      border-top: 1px solid var(--surface-1);
+    }
+
+    /* ===== 14. Scroll-to-top ===== */
+    .scroll-top {
+      position: fixed;
+      right: 32px;
+      bottom: 32px;
+      width: 44px;
+      height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--ink);
+      color: var(--surface);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(8px);
+      transition: opacity var(--dur) var(--ease),
+                  transform var(--dur) var(--ease),
+                  background var(--dur) var(--ease);
+      box-shadow: 0 6px 20px rgba(25,25,25,0.18),
+                  0 1px 2px rgba(25,25,25,0.08);
+      z-index: 100;
+    }
+    .scroll-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+    .scroll-top:hover  { background: var(--ink-2); }
+    .scroll-top:active { transform: translateY(0) scale(0.96); }
+    .scroll-top:focus-visible { outline: 2px solid var(--nhn-blue); outline-offset: 2px; }
+    @media (max-width: 880px) { .scroll-top { right: 20px; bottom: 20px; } }
+
+    /* ===== 15. Responsive (narrow) ===== */
+    @media (max-width: 720px) {
+      :root { --pad-x: 24px; --section-py: 64px; }
+      .cover { padding: 64px var(--pad-x); }
+      .cover-title { font-size: 36px; }
+      .cover-meta { grid-template-columns: 1fr 1fr; gap: 24px; }
+      .section-head h2 { font-size: 28px !important; }
+      .kpi-row { grid-template-columns: 1fr 1fr; }
+      .problem-grid { grid-template-columns: 1fr; }
+      .footer { margin-top: 96px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== Cover ===== -->
+  <section class="cover" id="cover">
+    <div class="cover-inner">
+      <div class="cover-head">
+        <div class="cover-head-main">
+          <div class="cover-eyebrow">NHN Cloud · Technical Writing · 2026 Q2 Retrospective</div>
+          <h1 class="cover-title">사용자 가이드 검수 자동화<br>성과 보고</h1>
+          <p class="cover-summary">2026년 4월~5월 배포분 102건 / 24개 서비스의 자동 검수 결과를 정량 평가 체크리스트 5점 척도로 분석합니다. 영역별 임팩트, 반복 오류 패턴, 자동화 한계 영역까지 한 문서에 담습니다.</p>
+        </div>
+        <span class="cover-confidential">대외비</span>
+      </div>
+      <div class="cover-meta">
+        <div class="cover-meta-item"><span class="cover-meta-label">Date</span> <span class="cover-meta-value mono">2026.05.27</span></div>
+        <div class="cover-meta-item"><span class="cover-meta-label">Team</span> <span class="cover-meta-value">Technical Writing</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Side Nav ===== -->
+  <aside class="side-nav" aria-label="Section navigation">
+    <ul class="side-nav-list">
+      <li><a href="#part-1" data-target="part-1" class="sn-h1"><span class="sn-num">PART I</span><span class="sn-title">검수 성과</span></a></li>
+      <li><a href="#summary"  data-target="summary"><span class="sn-num">01</span><span class="sn-title">Executive Summary</span></a></li>
+      <li><a href="#areas"    data-target="areas"><span class="sn-num">02</span><span class="sn-title">영역별 개선 효과</span></a></li>
+
+      <li><a href="#part-2" data-target="part-2" class="sn-h1"><span class="sn-num">PART II</span><span class="sn-title">심층 분석</span></a></li>
+      <li><a href="#top-docs"   data-target="top-docs"><span class="sn-num">03</span><span class="sn-title">Top 10 개선 문서</span></a></li>
+      <li><a href="#top-errors" data-target="top-errors"><span class="sn-num">04</span><span class="sn-title">Top 10 오류 유형</span></a></li>
+      <li><a href="#services"   data-target="services"><span class="sn-num">05</span><span class="sn-title">서비스별 품질 현황</span></a></li>
+
+      <li><a href="#part-3" data-target="part-3" class="sn-h1"><span class="sn-num">PART III</span><span class="sn-title">자동화 한계</span></a></li>
+      <li><a href="#human"      data-target="human"><span class="sn-num">06</span><span class="sn-title">자동화 한계 영역</span></a></li>
+
+      <li><a href="#appendix"   data-target="appendix"><span class="sn-num">APX</span><span class="sn-title">102개 문서 점수표</span></a></li>
+    </ul>
+  </aside>
+
+  <main>
+
+    <!-- ===== PART I ===== -->
+    <section class="part-divider" id="part-1">
+      <div class="section-inner">
+        <div class="part-eyebrow">PART I</div>
+        <h1>검수 성과</h1>
+        <span class="part-meta">Overview — 자동 검수가 만든 정량 변화</span>
+      </div>
+    </section>
+
+    <!-- 01. Executive Summary -->
+    <section class="section" id="summary">
+      <div class="section-inner">
+        <div class="section-tag"></div>
+        <div class="section-head">
+          <h2><span class="num-prefix">01</span>Executive Summary</h2>
+          <p class="lede">2026년 4~5월 배포된 102건 사용자 가이드를 정량 평가 체크리스트(5개 영역 × 4개 항목 × 5점 척도, 100점 만점)로 자동 검수한 결과입니다. N/A 항목은 만점에서 제외 후 100점 환산했습니다.</p>
+          <p class="lede">평가 기준: <code>NHN_Cloud_Docs_Checklist.md</code>. 데이터는 부록(APX)에 전수 포함.</p>
+        </div>
+
+        <div class="block">
+          <div class="block-head"><h3>한눈에 보기 — 핵심 지표</h3></div>
+          <div class="kpi-row">
+            <div class="kpi">
+              <div class="kpi-label">Docs Evaluated</div>
+              <div class="kpi-value tnum">102<span class="unit">건</span></div>
+            </div>
+            <div class="kpi">
+              <div class="kpi-label">Services</div>
+              <div class="kpi-value tnum">24<span class="unit">개</span></div>
+            </div>
+            <div class="kpi">
+              <div class="kpi-label">Avg. Score</div>
+              <div class="kpi-value tnum">75.0 → 85.6</div>
+              <div class="kpi-sub">100점 환산 · +10.6점</div>
+            </div>
+            <div class="kpi">
+              <div class="kpi-label">Avg. Uplift</div>
+              <div class="kpi-value tnum" style="color: var(--success);">+14.2%</div>
+              <div class="kpi-sub">전체 평균 상승률</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="block-head"><h3>특이값 — 최대 상승폭과 최대 개선 영역</h3></div>
+          <div class="kpi-row cols-2">
+            <div class="kpi">
+              <div class="kpi-label">Top Doc</div>
+              <div class="kpi-value" style="font-size: 18px; letter-spacing: -0.005em;">ROLE_5월 · release-notes</div>
+              <div class="kpi-sub">+25.0점 · <span class="delta-up">+36.4%</span></div>
+            </div>
+            <div class="kpi">
+              <div class="kpi-label">Top Area</div>
+              <div class="kpi-value" style="font-size: 18px; letter-spacing: -0.005em;">3. 일관성 및 표준 준수</div>
+              <div class="kpi-sub">+5.87점 · <span class="delta-up">+46.6%</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout">
+          <div class="lbl">Key Takeaway</div>
+          <p>자동 검수가 가장 효과적인 영역은 <b>표기·서식 일관성</b>이며, 102건 전수에서 일관성 영역은 평균 12.6점 → 18.5점(<b>+46.6%</b>)으로 압도적으로 개선되었습니다. 가독성도 +19.4%로 큰 폭 향상되었으며, 자동화로 잡히지 않는 정확성·구조·시각 영역은 +3~5% 수준에 머물러 <b>작성자(개발자) 측 가이드/교육이 필요한 휴먼 영역</b>으로 명확히 분리됩니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02. 영역별 개선 효과 -->
+    <section class="section" id="areas">
+      <div class="section-inner">
+        <div class="section-tag"></div>
+        <div class="section-head">
+          <h2><span class="num-prefix">02</span>영역별 개선 효과</h2>
+          <p class="lede">5개 영역(20점 만점)을 원본·수정본 평균으로 비교했습니다. 자동 검수 임팩트의 형태가 영역별로 뚜렷이 달라집니다 — 규칙 기반 패턴이 강한 영역(2·3)에 집중되고, 문맥 판단이 필요한 영역(1·4·5)은 정체됩니다.</p>
+        </div>
+
+        <div class="block">
+          <div class="block-head"><h3>평균 점수 비교 (원본 vs 수정본)</h3><span class="meta">20pt scale</span></div>
+          <div class="chart-wrap chart-wrap--area"><canvas id="areaChart"></canvas></div>
+        </div>
+
+        <div class="block">
+          <div class="block-head"><h3>영역별 상승폭·상승률</h3></div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>영역 (20점 만점)</th>
+                  <th class="num">원본</th>
+                  <th class="num">수정본</th>
+                  <th class="num">상승폭</th>
+                  <th class="num">상승률</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1. 정확성 및 완전성</td>
+                  <td class="num">16.22</td><td class="num">16.83</td><td class="num">+0.61</td><td class="num">+3.8%</td>
+                </tr>
+                <tr>
+                  <td>2. 가독성 및 명확성</td>
+                  <td class="num">14.27</td><td class="num">17.04</td><td class="num"><b>+2.77</b></td><td class="num delta-up">+19.4%</td>
+                </tr>
+                <tr class="highlight">
+                  <td><b>3. 일관성 및 표준 준수</b></td>
+                  <td class="num">12.61</td><td class="num">18.48</td><td class="num"><b>+5.87</b></td><td class="num delta-up">+46.6%</td>
+                </tr>
+                <tr>
+                  <td>4. 구조 및 탐색 편의성</td>
+                  <td class="num">16.40</td><td class="num">17.07</td><td class="num">+0.67</td><td class="num">+4.1%</td>
+                </tr>
+                <tr>
+                  <td>5. 시각 자료 및 예제 코드</td>
+                  <td class="num">14.87</td><td class="num">15.55</td><td class="num">+0.68</td><td class="num">+4.6%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="callout">
+          <div class="lbl">Implication</div>
+          <p><b>자동 검수의 강점</b>은 영역 3·2(표기·서식 일관성, 가독성) — 규칙 기반 패턴 매칭이 강한 영역입니다. <b>한계</b>는 영역 1·4·5(정확성·구조·시각) — 문맥 이해와 도메인 지식이 필요해 작성자(개발자)와 TW의 휴먼 판단에 의존합니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PART II ===== -->
+    <section class="part-divider" id="part-2">
+      <div class="section-inner">
+        <div class="part-eyebrow">PART II</div>
+        <h1>심층 분석</h1>
+        <span class="part-meta">Deep Dive — 개선 임팩트 · 오류 패턴 · 서비스별 현황</span>
+      </div>
+    </section>
+
+    <!-- 03. Top 10 개선 문서 -->
+    <section class="section" id="top-docs">
+      <div class="section-inner">
+        <div class="section-tag"></div>
+        <div class="section-head">
+          <h2><span class="num-prefix">03</span>Top 10 — 개선 임팩트가 가장 큰 문서</h2>
+          <p class="lede">원본 품질이 낮을수록 자동화 검수 개선의 효과가 큽니다. 상승률 기준 상위 10개 문서를 추렸습니다.</p>
+        </div>
+
+        <div class="block">
+          <div class="block-head"><h3>상승률 Top 10</h3><span class="meta">100pt 환산</span></div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th class="num">#</th>
+                  <th>서비스</th>
+                  <th>월</th>
+                  <th>문서</th>
+                  <th class="num">원본 → 수정본</th>
+                  <th class="num">상승폭</th>
+                  <th class="num">상승률</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="highlight"><td class="num"><b>1</b></td><td>ROLE</td><td>5월</td><td><code>release-notes</code></td><td class="num">68.8 → 93.8</td><td class="num"><b>+25.0</b></td><td class="num delta-up">+36.4%</td></tr>
+                <tr><td class="num">2</td><td>Email</td><td>3월</td><td><code>service-policy</code></td><td class="num">72.5 → 92.5</td><td class="num">+20.0</td><td class="num delta-up">+27.6%</td></tr>
+                <tr><td class="num">3</td><td>Compute</td><td>5월</td><td><code>component-guide-gov</code></td><td class="num">69.0 → 88.0</td><td class="num">+19.0</td><td class="num delta-up">+27.5%</td></tr>
+                <tr><td class="num">4</td><td>Email</td><td>3월</td><td><code>release-notes</code></td><td class="num">73.3 → 92.2</td><td class="num">+18.9</td><td class="num delta-up">+25.8%</td></tr>
+                <tr><td class="num">5</td><td>NAS</td><td>5월</td><td><code>console-guide</code></td><td class="num">74.4 → 93.3</td><td class="num">+18.9</td><td class="num delta-up">+25.4%</td></tr>
+                <tr><td class="num">6</td><td>Email</td><td>5월</td><td><code>release-notes</code></td><td class="num">72.5 → 91.3</td><td class="num">+18.8</td><td class="num delta-up">+25.9%</td></tr>
+                <tr><td class="num">7</td><td>Image Builder</td><td>4월</td><td><code>component-guide-gov</code></td><td class="num">63.0 → 81.0</td><td class="num">+18.0</td><td class="num delta-up">+28.6%</td></tr>
+                <tr><td class="num">8</td><td>KakaoTalk Bizmessage</td><td>4월</td><td><code>friendtalkupgrade-console-guide</code></td><td class="num">66.0 → 84.0</td><td class="num">+18.0</td><td class="num delta-up">+27.3%</td></tr>
+                <tr><td class="num">9</td><td>Compute</td><td>5월</td><td><code>component-guide</code> 외 5개 변종</td><td class="num">70.0 → 88.0</td><td class="num">+18.0</td><td class="num delta-up">+25.7%</td></tr>
+                <tr><td class="num">10</td><td>Object Storage</td><td>5월</td><td><code>release-notes</code></td><td class="num">73.3 → 91.1</td><td class="num">+17.8</td><td class="num delta-up">+24.2%</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="callout">
+          <div class="lbl">Highlight</div>
+          <p>상위 10건의 평균 상승률은 <b>+27.4%</b> — 전체 평균(+14.2%)의 약 두 배입니다. 특히 릴리스 노트와 콘솔 가이드 문서에서 효과가 집중적으로 나타났습니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04. Top 10 오류 유형 -->
+    <section class="section" id="top-errors">
+      <div class="section-inner">
+        <div class="section-tag"></div>
+        <div class="section-head">
+          <h2><span class="num-prefix">04</span>Top 10 — 개발자가 가장 자주 범하는 오류 유형</h2>
+          <p class="lede">102개 평가 파일의 "주요 개선 사항" 텍스트에서 키워드 출현 빈도를 집계했습니다. 상위 5개 패턴만 작성 시점에 사전 차단해도 평균 5~7점 상승할 것으로 추정됩니다.</p>
+        </div>
+
+        <div class="block">
+          <div class="block-head"><h3>오류 유형별 출현 빈도</h3><span class="meta">% of 102 docs</span></div>
+          <div class="chart-wrap chart-wrap--error"><canvas id="errorChart"></canvas></div>
+        </div>
+
+        <div class="block">
+          <div class="block-head"><h3>오류 유형 · 빈도 · 대표 사례</h3></div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th class="num">#</th>
+                  <th>오류 유형</th>
+                  <th class="num">빈도</th>
+                  <th>대표 사례</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="highlight"><td class="num"><b>1</b></td><td><b>용어 혼용·통일 누락</b></td><td class="num"><b>85%</b></td><td><code>자원↔리소스</code>, <code>종료/중지/정지</code>, <code>리턴↔반환</code>, <code>컬럼↔칼럼</code>, <code>appkey↔appKey</code></td></tr>
+                <tr><td class="num">2</td><td><b>번역투 표현</b></td><td class="num">71%</td><td><code>~에 대한</code>, <code>~하고자</code>, <code>~을 통해</code>, <code>혹은</code></td></tr>
+                <tr><td class="num">3</td><td><b>띄어쓰기 오류</b></td><td class="num">63%</td><td><code>인스턴스간</code>, <code>설정파일</code>, <code>필수값</code>, <code>2가지의</code>, <code>토큰화할</code></td></tr>
+                <tr><td class="num">4</td><td>단순 오타</td><td class="num">35%</td><td><code>INAVLID→INVALID</code>, <code>servfer.cnf→server.cnf</code>, <code>ConentType→ContentType</code></td></tr>
+                <tr><td class="num">5</td><td>외래어 표기 오류</td><td class="num">25%</td><td><code>컨텐츠→콘텐츠</code>, <code>매뉴얼/메뉴얼</code></td></tr>
+                <tr><td class="num">6</td><td>코드 텍스트 백틱 미적용</td><td class="num">22%</td><td>HTTP 헤더·메서드·필드명·상수가 일반 텍스트로 작성됨</td></tr>
+                <tr><td class="num">7</td><td>극존칭 어미</td><td class="num">18%</td><td><code>~하시기 바랍니다</code>, <code>~주십시오</code>, <code>~해 주세요</code></td></tr>
+                <tr><td class="num">8</td><td>참고 표현 비통일</td><td class="num">15%</td><td><code>참고하시기 바랍니다</code>·<code>참고합니다</code> → <code>참고하세요</code> 통일 누락</td></tr>
+                <tr><td class="num">9</td><td>볼드 과적용·말머리 볼드</td><td class="num">14%</td><td>타이틀·강조·설정값 설명 패턴의 불필요한 볼드</td></tr>
+                <tr><td class="num">10</td><td>점 목록 ↔ 평문 변환 필요</td><td class="num">12%</td><td>단일 항목 점 목록 / 여러 항목인데 평문</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="callout callout-note">
+          <div class="lbl">Note</div>
+          <p>이중 피동·사동 8%(<code>보여지</code>, <code>되어지</code>, <code>동작됩니다</code>), UI 경로명 변경(<code>고객 센터 &gt; 1:1 문의 → 고객지원 &gt; 문의하기</code>) 7%도 반복 출현. 작성 단계에 lint 룰화 시 효과가 큽니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05. 서비스별 품질 현황 -->
+    <section class="section" id="services">
+      <div class="section-inner">
+        <div class="section-tag"></div>
+        <div class="section-head">
+          <h2><span class="num-prefix">05</span>서비스별 품질 현황</h2>
+          <p class="lede">24개 서비스의 평균 원본·수정본 점수를 100점 환산하여 상승폭 내림차순으로 정렬했습니다. 원본 품질이 낮거나 갱신 빈도가 낮은 서비스일수록 자동 검수의 ROI가 크게 나타납니다.</p>
+        </div>
+
+        <div class="block">
+          <div class="block-head"><h3>서비스별 원본 · 수정본 점수</h3><span class="meta">100pt 환산</span></div>
+          <div class="chart-wrap chart-wrap--service"><canvas id="serviceChart"></canvas></div>
+        </div>
+
+        <div class="block">
+          <div class="block-head"><h3>서비스별 평균 점수표</h3></div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>서비스</th>
+                  <th class="num">평가 문서</th>
+                  <th class="num">평균 원본</th>
+                  <th class="num">평균 수정본</th>
+                  <th class="num">상승폭</th>
+                  <th class="num">상승률</th>
+                </tr>
+              </thead>
+              <tbody id="serviceTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="callout">
+          <div class="lbl">Insight</div>
+          <p>원본 품질이 낮거나 갱신 빈도가 낮은 서비스(Email, ROLE, Compute, Image Builder)일수록 자동 검수의 ROI가 크게 나타납니다. 반대로 이미 품질이 안정화된 Pipeline·Cloud Functions·Deploy는 상승폭이 5% 내외로 정체 — 추가 개선은 영역 1·4·5의 휴먼 영역에서 가능합니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PART III ===== -->
+    <section class="part-divider" id="part-3">
+      <div class="section-inner">
+        <div class="part-eyebrow">PART III</div>
+        <h1>자동화 한계</h1>
+        <span class="part-meta">Beyond Automation — 작성 단계에서 보완해야 할 작성자 책임 영역</span>
+      </div>
+    </section>
+
+    <!-- 06. 자동화 한계 영역 -->
+    <section class="section" id="human">
+      <div class="section-inner">
+        <div class="section-tag"></div>
+        <div class="section-head">
+          <h2><span class="num-prefix">06</span>자동화로 잡히지 않는 영역</h2>
+          <p class="lede">상승폭이 작은 영역(1·4·5)이 정체된 이유 — 즉 자동 검수의 한계입니다. 이 항목들은 작성 단계(개발자)에서 직접 보완이 필요합니다.</p>
+        </div>
+
+        <div class="block">
+          <div class="block-head"><h3>휴먼 보완 필요 항목 6종</h3></div>
+          <div class="problem-grid">
+            <div class="problem-card">
+              <div class="pc-tag">항목 3 · 영역 1</div>
+              <h3>예외 및 오류 처리</h3>
+              <p>트러블슈팅 섹션 자체가 부재 → 작성 템플릿에 "주요 오류 코드/메시지" 섹션 의무화.</p>
+            </div>
+            <div class="problem-card">
+              <div class="pc-tag">항목 14 · 영역 4</div>
+              <h3>도입부 제공</h3>
+              <p>"이 가이드로 무엇을 할 수 있는가" 1~2줄 누락 → 문서 상단 표준 도입부 패턴 정의.</p>
+            </div>
+            <div class="problem-card">
+              <div class="pc-tag">항목 2 · 영역 1</div>
+              <h3>선행 조건 명시</h3>
+              <p>IAM 권한·사전 활성화 등 누락 → "사전 준비 사항" 블록 템플릿 도입.</p>
+            </div>
+            <div class="problem-card">
+              <div class="pc-tag">항목 18 · 영역 5</div>
+              <h3>이미지 alt text 적정성</h3>
+              <p>캡션·alt 불일치, 영한 혼용(<code>context 메뉴</code>) → 이미지 추가 시 alt 작성 체크.</p>
+            </div>
+            <div class="problem-card">
+              <div class="pc-tag">항목 17 · 영역 5</div>
+              <h3>콘솔 스크린샷 최신화</h3>
+              <p>일부 이미지가 1~2년 전 콘솔 기준 → 분기별 스크린샷 일괄 갱신 사이클.</p>
+            </div>
+            <div class="problem-card">
+              <div class="pc-tag">항목 8 · 영역 2</div>
+              <h3>전문 용어 해설</h3>
+              <p>PEM·HA·CIDR 등 약어 첫 등장 시 풀이 부족 → 글로서리 자동 링크 / 약어 사전 확장.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout">
+          <div class="lbl">So What</div>
+          <p>자동 검수가 처리할 수 없는 6개 항목은 모두 <b>문서 구조·시각 자료·도메인 지식</b>에 닿아 있습니다. 작성 단계의 템플릿 보완과 분기별 휴먼 사이클로 분리해야 영역 1·4·5의 정체가 풀립니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- APX. 부록 -->
+    <section class="section" id="appendix">
+      <div class="section-inner">
+        <div class="section-tag"></div>
+        <div class="section-head">
+          <h2><span class="num-prefix">APX</span>부록 — 평가 완료 102개 문서 점수표</h2>
+          <p class="lede">100점 환산 점수표 전수. 만점이 다른 문서는 † 표시(N/A 항목 제외 후 100점 환산). 상승폭·상승률은 모두 환산 후 비교 가능한 값입니다.</p>
+        </div>
+
+        <div class="phase">
+          <details class="apx-details">
+            <summary><span>전체 102개 문서 점수표 펼치기</span></summary>
+            <div class="table-wrap">
+              <div class="table-wrap-scroll">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>서비스</th>
+                      <th>월</th>
+                      <th>문서</th>
+                      <th class="num">만점</th>
+                      <th class="num">원본</th>
+                      <th class="num">수정본</th>
+                      <th class="num">상승폭</th>
+                      <th class="num">상승률</th>
+                    </tr>
+                  </thead>
+                  <tbody id="appendixBody"></tbody>
+                </table>
+              </div>
+            </div>
+          </details>
+        </div>
+
+        <div class="callout callout-note">
+          <div class="lbl">Note</div>
+          <p>데이터 출처: <code>C:\Users\NHN\Documents\Claude\Result\&lt;서비스&gt;_&lt;월&gt;\&lt;문서&gt;_{score|eval|evaluation|checklist}.md</code> (총 102개 평가 파일). 평가 도구: <code>NHN_Cloud_Docs_Checklist.md</code> · 5점 척도 정량 평가 체크리스트.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-row">
+        <div class="footer-left">
+          <div class="footer-line">
+            <span class="footer-doc-title">NHN Cloud 문서 검수 자동화 성과 보고 · 2026 Q2</span>
+          </div>
+          <div class="footer-line footer-line-sub">
+            <span>Technical Writing</span><span class="dot">·</span>
+            <span class="mono">2026.05.27</span>
+          </div>
+        </div>
+        <div class="footer-right">
+          <span class="footer-confidential">대외비</span>
+        </div>
+      </div>
+      <p class="footer-disclaimer">
+        본 문서는 NHN의 대외비 자료입니다. 허가된 사용자 이외의 접근 및 배포를 금지하며, 이를 위반하는 경우 인사 및 민형사상 책임을 질 수 있습니다.
+      </p>
+      <div class="footer-copyright">© NHN Corp. All Rights Reserved.</div>
+    </div>
+  </footer>
+
+  <!-- ===== Scroll-to-top ===== -->
+  <button class="scroll-top" type="button" aria-label="맨 위로">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+      <path d="M7 11V3M7 3L3 7M7 3L11 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <script>
+    /* ===== Chart.js global defaults (NDS conformance) ===== */
+    Chart.defaults.font.family = "Pretendard, -apple-system, BlinkMacSystemFont, sans-serif";
+    Chart.defaults.font.size = 12;
+    Chart.defaults.color = "#545454";          /* var(--ink-3) */
+    Chart.defaults.borderColor = "#ededed";    /* var(--line-softer) */
+    Chart.defaults.plugins.legend.labels.color = "#2e2e2e";
+    Chart.defaults.plugins.legend.labels.boxWidth = 10;
+    Chart.defaults.plugins.legend.labels.boxHeight = 10;
+    Chart.defaults.plugins.legend.labels.padding = 16;
+    Chart.defaults.plugins.tooltip.backgroundColor = "#191919";
+    Chart.defaults.plugins.tooltip.titleColor = "#fff";
+    Chart.defaults.plugins.tooltip.bodyColor = "#fff";
+    Chart.defaults.plugins.tooltip.padding = 10;
+    Chart.defaults.plugins.tooltip.cornerRadius = 4;
+    Chart.defaults.plugins.tooltip.displayColors = false;
+    Chart.defaults.elements.bar.borderRadius = 0;
+
+    const COLOR_INK   = "#191919";
+    const COLOR_INK_5 = "#a1a1a1";
+    const COLOR_INK_6 = "#c8c8c8";
+    const COLOR_BLUE  = "#0F80F6";
+    const COLOR_LINE_SOFTER = "#ededed";
+
+    /* ===== Data ===== */
+    const areaLabels = ['1. 정확성', '2. 가독성', '3. 일관성', '4. 구조', '5. 시각·코드'];
+    const areaOrig = [16.22, 14.27, 12.61, 16.40, 14.87];
+    const areaRev  = [16.83, 17.04, 18.48, 17.07, 15.55];
+
+    const errorLabels = ['용어 혼용','번역투','띄어쓰기','오타','외래어','코드 백틱','극존칭','참고 표현','볼드 과적용','점목록 변환'];
+    const errorPct = [85,71,63,35,25,22,18,15,14,12];
+
+    const services = [
+      ['Email',4,73.6,91.8,18.2,24.7],
+      ['ROLE',3,71.3,89.2,17.9,25.1],
+      ['Compute',10,71.4,87.1,15.7,22.0],
+      ['EasyCache',1,74.0,89.0,15.0,20.3],
+      ['Image Builder',2,61.5,76.0,14.5,23.6],
+      ['OCR',5,74.0,87.0,13.0,17.5],
+      ['NAS',4,75.2,87.7,12.5,16.7],
+      ['CDN',6,65.3,76.8,11.5,17.6],
+      ['DataFlow',6,73.9,84.8,10.9,14.8],
+      ['RDS for MySQL',4,73.5,84.3,10.8,14.6],
+      ['Cloud Monitoring',6,80.0,90.5,10.5,13.1],
+      ['NAS for BigData',3,78.0,88.3,10.3,13.2],
+      ['KakaoTalk Bizmessage',5,73.7,84.0,10.2,13.9],
+      ['Cloud Scheduler',1,79.0,89.0,10.0,12.7],
+      ['Notification Hub',5,78.7,88.4,9.8,12.4],
+      ['Object Storage',7,78.6,88.1,9.5,12.1],
+      ['DataQuery',4,79.6,89.1,9.5,11.9],
+      ['Private CA',1,79.0,88.0,9.0,11.4],
+      ['EasyQueue',3,80.0,89.0,9.0,11.3],
+      ['Deploy',8,75.4,82.6,7.3,9.6],
+      ['Cloud Functions',2,82.8,88.4,5.7,6.8],
+      ['Certificate Manager',4,74.8,79.3,4.5,6.0],
+      ['Pipeline',5,77.2,81.4,4.3,5.5],
+      ['RDS for PostgreSQL',3,76.3,79.7,3.3,4.4]
+    ];
+
+    const appendix = `CDN|4월|api-guide-v2.0|100|64|78|+14.0|+21.9%
+CDN|4월|api-guide-v2.0-gov|100|64|78|+14.0|+21.9%
+CDN|4월|console-guide|100|66|78|+12.0|+18.2%
+CDN|4월|console-guide-gov|100|66|78|+12.0|+18.2%
+CDN|4월|release-notes|100|67|74|+7.0|+10.4%
+CDN|4월|release-notes-gov|100|65|75|+10.0|+15.4%
+Certificate Manager|4월|api-guide-v1.1|100|76|79|+3.0|+3.9%
+Certificate Manager|4월|api-guide-v1.1-gov|100|76|79|+3.0|+3.9%
+Certificate Manager|4월|release-notes|100|76|84|+8.0|+10.5%
+Certificate Manager|4월|release-notes-gov|100|71|75|+4.0|+5.6%
+Cloud Functions|4월|api-guide-v1-0|90†|77|79|+2.2|+2.6%
+Cloud Functions|4월|release-notes|55†|44|49|+9.1|+11.4%
+Cloud Monitoring|4월|console-guide|100|77|90|+13.0|+16.9%
+Cloud Monitoring|4월|console-guide-gov|100|77|90|+13.0|+16.9%
+Cloud Monitoring|4월|console-guide-ncgn|100|77|90|+13.0|+16.9%
+Cloud Monitoring|4월|release-notes|100|83|91|+8.0|+9.6%
+Cloud Monitoring|4월|release-notes-gov|100|82|91|+9.0|+11.0%
+Cloud Monitoring|4월|release-notes-ncgn|100|84|91|+7.0|+8.3%
+Cloud Scheduler|4월|release-notes|100|79|89|+10.0|+12.7%
+Compute|5월|component-guide|100|70|88|+18.0|+25.7%
+Compute|5월|component-guide-gov|100|69|88|+19.0|+27.5%
+Compute|5월|component-guide-ncgn|100|70|88|+18.0|+25.7%
+Compute|5월|component-guide-ngoic|100|70|88|+18.0|+25.7%
+Compute|5월|component-guide-ngovc|100|70|88|+18.0|+25.7%
+Compute|5월|component-guide-ngsc|100|70|88|+18.0|+25.7%
+Compute|5월|component-guide-ninc|100|70|88|+18.0|+25.7%
+Compute|5월|release-notes|100|75|85|+10.0|+13.3%
+Compute|5월|release-notes-gov|100|75|85|+10.0|+13.3%
+Compute|5월|release-notes-ncgn|100|75|85|+10.0|+13.3%
+DataFlow|4월|console-user-guide|100|69|77|+8.0|+11.6%
+DataFlow|4월|node-config-guide|100|68|84|+16.0|+23.5%
+DataFlow|4월|release-notes|100|70|85|+15.0|+21.4%
+DataFlow|5월|error-code|100|66|69|+3.0|+4.5%
+DataFlow|5월|node-config-guide|100|70|77|+7.0|+10.0%
+DataFlow|5월|release-notes|100|61|73|+12.0|+19.7%
+DataQuery|4월|console-user-guide|100|81|89|+8.0|+9.9%
+DataQuery|4월|release-notes|100|82|91|+9.0|+11.0%
+DataQuery|5월|console-user-guide|100|69|80|+11.0|+15.9%
+DataQuery|5월|release-notes|100|63|70|+7.0|+11.1%
+Deploy|4월|api-guide|100|73|81|+8.0|+11.0%
+Deploy|4월|api-guide-v1.0|100|72|80|+8.0|+11.1%
+Deploy|4월|api-guide-v1.0-gov|100|72|80|+8.0|+11.1%
+Deploy|4월|api-guide-v2.0|100|80|84|+4.0|+5.0%
+Deploy|4월|api-guide-v2.1|100|79|87|+8.0|+10.1%
+Deploy|4월|api-guide-v2.1-gov|100|79|87|+8.0|+10.1%
+Deploy|4월|release-notes|100|73|81|+8.0|+11.0%
+Deploy|4월|release-notes-gov|100|75|81|+6.0|+8.0%
+EasyCache|5월|release-notes|100|74|89|+15.0|+20.3%
+EasyQueue|4월|kafka-client-guide|100|72|88|+16.0|+22.2%
+EasyQueue|5월|console-guide|100|79|86|+7.0|+8.9%
+EasyQueue|5월|kafka-client-guide|100|89|93|+4.0|+4.5%
+Email|3월|release-notes|90†|66|83|+18.9|+25.8%
+Email|3월|service-policy|80†|58|74|+20.0|+27.6%
+Email|5월|release-notes|80†|58|73|+18.8|+25.9%
+Email|5월|service-policy|80†|61|73|+15.0|+19.7%
+Image Builder|4월|component-guide|100|60|71|+11.0|+18.3%
+Image Builder|4월|component-guide-gov|100|63|81|+18.0|+28.6%
+KakaoTalk Bizmessage|4월|friendtalkupgrade-api-guide|100|69|81|+12.0|+17.4%
+KakaoTalk Bizmessage|4월|friendtalkupgrade-console-guide|100|66|84|+18.0|+27.3%
+KakaoTalk Bizmessage|4월|release-notes|100|78|87|+9.0|+11.5%
+KakaoTalk Bizmessage|5월|common-api-guide|100|71|75|+4.0|+5.6%
+KakaoTalk Bizmessage|5월|friendtalkupgrade-api-guide|100|69|76|+7.0|+10.1%
+NAS|5월|api-guide|100|68|77|+9.0|+13.2%
+NAS|5월|console-guide|100|67|84|+17.0|+25.4%
+NAS|5월|release-notes|100|61|70|+9.0|+14.8%
+NAS|5월|terraform-guide|100|67|76|+9.0|+13.4%
+NAS for BigData|5월|console-guide|100|70|81|+11.0|+15.7%
+NAS for BigData|5월|overview|100|62|71|+9.0|+14.5%
+NAS for BigData|5월|release-notes|100|63|69|+6.0|+9.5%
+Notification Hub|5월|contact-delivery-result|100|74|79|+5.0|+6.8%
+Notification Hub|5월|kakao-statistics|100|74|78|+4.0|+5.4%
+Notification Hub|5월|message|100|67|81|+14.0|+20.9%
+Notification Hub|5월|stats|100|73|79|+6.0|+8.2%
+Notification Hub|5월|template|100|66|81|+15.0|+22.7%
+OCR|5월|document-ocr-api-guide-v2.0|100|72|86|+14.0|+19.4%
+OCR|5월|document-ocr-api-guide-v2.1|100|72|86|+14.0|+19.4%
+OCR|5월|document-ocr-console-guide|100|73|85|+12.0|+16.4%
+OCR|5월|document-ocr-release-notes|90†|72|79|+7.8|+9.7%
+OCR|5월|overview|100|73|90|+17.0|+23.3%
+Object Storage|5월|api-guide|90†|72|79|+7.8|+9.7%
+Object Storage|5월|cli-guide|90†|73|77|+4.4|+5.5%
+Object Storage|5월|console-guide|100|72|79|+7.0|+9.7%
+Object Storage|5월|container-policy-guide|90†|76|78|+2.2|+2.6%
+Object Storage|5월|release-notes|90†|66|82|+17.8|+24.2%
+Object Storage|5월|s3-api-guide|90†|66|78|+13.3|+18.2%
+Object Storage|5월|third-party-tools-guide|90†|70|82|+13.3|+17.1%
+Pipeline|4월|api-guide-gov-v1-0|90†|70|73|+3.3|+4.3%
+Pipeline|4월|api-guide-gov-v1-1|90†|69|72|+3.3|+4.3%
+Pipeline|4월|api-guide-v1-1|90†|69|72|+3.3|+4.3%
+Pipeline|4월|release-notes|75†|56|62|+8.0|+10.7%
+Pipeline|4월|release-notes-gov|60†|48|50|+3.3|+4.2%
+Private CA|4월|release-notes|100|79|88|+9.0|+11.4%
+RDS for MySQL|5월|api-guide-v4.0_template|100|75|83|+8.0|+10.7%
+RDS for MySQL|5월|db-engine_template|100|69|82|+13.0|+18.8%
+RDS for MySQL|5월|db-instance_template|100|72|84|+12.0|+16.7%
+RDS for MySQL|5월|release-notes|100|78|88|+10.0|+12.8%
+RDS for PostgreSQL|4월|db-instance|100|77|80|+3.0|+3.9%
+RDS for PostgreSQL|4월|event|100|74|78|+4.0|+5.4%
+RDS for PostgreSQL|4월|release-notes|100|78|81|+3.0|+3.8%
+ROLE|5월|api-v3-guide|100|73|85|+12.0|+16.4%
+ROLE|5월|release-notes|80†|55|75|+25.0|+36.4%
+ROLE|5월|sdk-v2-guide|100|65|80|+15.0|+23.1%`;
+
+    /* ===== Charts ===== */
+    new Chart(document.getElementById('areaChart'), {
+      type: 'bar',
+      data: {
+        labels: areaLabels,
+        datasets: [
+          { label: '원본',   data: areaOrig, backgroundColor: COLOR_INK_6 },
+          { label: '수정본', data: areaRev,  backgroundColor: COLOR_BLUE }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        indexAxis: 'y',
+        categoryPercentage: 0.72,
+        barPercentage: 0.95,
+        scales: {
+          x: { beginAtZero: true, max: 20, grid: { color: COLOR_LINE_SOFTER }, border: { display: false } },
+          y: { grid: { display: false }, border: { color: COLOR_INK } }
+        },
+        plugins: { legend: { position: 'bottom' } }
+      }
+    });
+
+    new Chart(document.getElementById('errorChart'), {
+      type: 'bar',
+      data: {
+        labels: errorLabels,
+        datasets: [{
+          data: errorPct,
+          backgroundColor: errorLabels.map((_, i) => i < 5 ? COLOR_BLUE : COLOR_INK_6)
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        indexAxis: 'y',
+        categoryPercentage: 0.78,
+        barPercentage: 0.59,
+        scales: {
+          x: { beginAtZero: true, max: 100, ticks: { callback: v => v + '%' }, grid: { color: COLOR_LINE_SOFTER }, border: { display: false } },
+          y: { grid: { display: false }, border: { color: COLOR_INK } }
+        },
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: c => c.parsed.x + '%' } }
+        }
+      }
+    });
+
+    new Chart(document.getElementById('serviceChart'), {
+      type: 'bar',
+      data: {
+        labels: services.map(s => s[0]),
+        datasets: [
+          { label: '원본 점수', data: services.map(s => s[2]), backgroundColor: COLOR_INK_6, stack: 's' },
+          { label: '상승폭',   data: services.map(s => s[4]), backgroundColor: COLOR_BLUE,  stack: 's' }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        indexAxis: 'y',
+        categoryPercentage: 0.82,
+        barPercentage: 0.73,
+        scales: {
+          x: { beginAtZero: true, suggestedMax: 100, stacked: true, grid: { color: COLOR_LINE_SOFTER }, border: { display: false } },
+          y: { stacked: true, grid: { display: false }, border: { color: COLOR_INK }, ticks: { font: { size: 11 } } }
+        },
+        plugins: {
+          legend: { position: 'bottom' },
+          tooltip: { mode: 'index' }
+        }
+      }
+    });
+
+    /* ===== Render: Service Table ===== */
+    const stbody = document.getElementById('serviceTableBody');
+    services.forEach((s) => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${s[0]}</td>
+        <td class="num">${s[1]}</td>
+        <td class="num">${s[2].toFixed(1)}</td>
+        <td class="num">${s[3].toFixed(1)}</td>
+        <td class="num delta-up">+${s[4].toFixed(1)}</td>
+        <td class="num delta-up">+${s[5].toFixed(1)}%</td>`;
+      stbody.appendChild(tr);
+    });
+
+    /* ===== Render: Appendix Table ===== */
+    const abody = document.getElementById('appendixBody');
+    appendix.split('\n').forEach(line => {
+      const [svc, mo, doc, max, orig, rev, diff, rate] = line.split('|');
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${svc}</td>
+        <td>${mo}</td>
+        <td><code>${doc}</code></td>
+        <td class="num">${max}</td>
+        <td class="num">${orig}</td>
+        <td class="num">${rev}</td>
+        <td class="num delta-up">${diff}</td>
+        <td class="num delta-up">${rate}</td>`;
+      abody.appendChild(tr);
+    });
+
+    /* ===== Side-nav active-section tracking ===== */
+    document.addEventListener('DOMContentLoaded', function() {
+      const nav     = document.querySelector('.side-nav');
+      const links   = document.querySelectorAll('.side-nav-list a');
+      const map     = {};
+      links.forEach(a => { map[a.dataset.target] = a; });
+      const sections = Object.keys(map).map(id => document.getElementById(id)).filter(Boolean);
+      const firstSection = sections[0];
+      const isPartFirst  = firstSection && firstSection.classList.contains('part-divider');
+      const anchorEl     = isPartFirst ? firstSection : (firstSection && (firstSection.querySelector('h1, h2') || firstSection));
+      const PIN_TOP = 32;
+
+      function getAnchorY() { return anchorEl ? anchorEl.getBoundingClientRect().top + window.scrollY : 0; }
+      function update() {
+        const y = window.scrollY + window.innerHeight * 0.3;
+        let active = sections[0];
+        for (const s of sections) { if (s.offsetTop <= y) active = s; }
+        links.forEach(a => a.classList.remove('active'));
+        if (active && map[active.id]) map[active.id].classList.add('active');
+        if (nav && anchorEl) {
+          const anchorY = getAnchorY();
+          nav.style.top = Math.max(PIN_TOP, anchorY - window.scrollY) + 'px';
+        }
+      }
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
+      update();
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(update);
+      window.addEventListener('load', update);
+    });
+
+    /* ===== Scroll-to-top ===== */
+    document.addEventListener('DOMContentLoaded', function() {
+      const btn = document.querySelector('.scroll-top');
+      if (!btn) return;
+      const SHOW_AFTER = Math.max(600, window.innerHeight * 0.6);
+      function toggle() { btn.classList.toggle('visible', window.scrollY > SHOW_AFTER); }
+      btn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+      window.addEventListener('scroll', toggle, { passive: true });
+      window.addEventListener('resize', toggle);
+      toggle();
+    });
+
+    /* ===== Footer empty-meta cleanup ===== */
+    document.querySelectorAll('.footer-line-sub').forEach(line => {
+      Array.from(line.children).forEach(el => {
+        if (!el.classList.contains('dot') && el.textContent.trim() === '-') el.remove();
+      });
+      let kids = Array.from(line.children);
+      for (let i = kids.length - 1; i >= 0; i--) {
+        const el = kids[i];
+        if (!el.classList.contains('dot')) continue;
+        const p = el.previousElementSibling, n = el.nextElementSibling;
+        if (!p || !n || p.classList.contains('dot') || n.classList.contains('dot')) el.remove();
+      }
+    });
+  </script>
+</body>
+</html>
