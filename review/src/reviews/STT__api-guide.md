@@ -4,7 +4,7 @@ path: ko/api-guide.md
 status: M
 grade_change: G
 grade_full: O
-review_state: auto
+review_state: done
 ---
 
 # STT / ko/api-guide.md — 자동 검수 결과
