@@ -1,0 +1,54 @@
+name: Build review dashboard
+
+# 사후 검수 원본(review/src/reviews/*.md 등) 편집 PR이 올라오면
+# 대시보드(review/<월>/index.html)를 자동 재빌드해 같은 PR 브랜치에 커밋한다.
+# → 담당 라이터는 .md만 PR하면 되고, 머지는 사람이(master 직접 push 금지 규칙 유지).
+
+on:
+  pull_request:
+    branches: [master]
+    paths:
+      - 'review/src/reviews/**'
+      - 'review/src/owners.md'
+      - 'review/src/inventory_*.tsv'
+      - 'review/src/autoscan_*.tsv'
+      - 'review/src/dashboard_template.html'
+      - 'review/src/build_dashboard.py'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: review-dashboard-${{ github.head_ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    # 동일 repo 브랜치 PR에서만 실행(포크 PR은 토큰이 읽기 전용이라 push 불가)
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Build dashboard
+        run: python review/src/build_dashboard.py
+
+      - name: Commit regenerated dashboard (if changed)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- review/; then
+            echo "변경 없음 — 커밋 생략"
+          else
+            git add review/
+            git commit -m "chore(review): 대시보드 자동 재빌드 [skip ci]"
+            git push origin HEAD:${{ github.head_ref }}
+          fi
