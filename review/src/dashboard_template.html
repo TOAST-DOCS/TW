@@ -147,11 +147,16 @@
   .review{margin:7px 0 3px}
   .review-head{font-size:11.5px;font-weight:700;color:var(--ink);margin:0 0 6px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
   .rcount{font-family:var(--code);font-size:10.5px;font-weight:700;color:#8a5a0b;background:var(--amber-soft);border-radius:10px;padding:1px 8px}
-  .checklist{list-style:none;margin:0;padding:0}
-  .checklist li{font-size:12.5px;color:var(--ink);padding:3px 0;display:flex;gap:7px;align-items:flex-start;line-height:1.55}
-  .checklist li.done{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--hair-strong)}
-  .checklist .ck{font-family:var(--code);color:var(--accent);flex:none}
-  .checklist li.done .ck{color:var(--g-green)}
+  .chg{width:100%;border-collapse:collapse;table-layout:fixed;margin:2px 0 4px;font-size:12px}
+  .chg col.c-tag{width:11%} .chg col.c-loc{width:15%} .chg col.c-asis{width:33%} .chg col.c-arr{width:5%} .chg col.c-tobe{width:36%}
+  .chg th,.chg td{border:1px solid var(--hair);padding:5px 8px;text-align:left;vertical-align:top;line-height:1.5;word-break:break-word;overflow-wrap:anywhere}
+  .chg thead th{font-family:var(--code);font-size:10px;font-weight:700;letter-spacing:.04em;color:var(--muted);background:var(--wait-soft)}
+  .chg td.loc{font-family:var(--code);font-size:11px;color:var(--muted)}
+  .chg td.arr,.chg th.arr{text-align:center;color:var(--muted);font-family:var(--code)}
+  .chg td.asis{color:var(--muted)} .chg td.tobe{color:var(--ink)}
+  .chg tr.src-ref td.asis,.chg tr.src-ref td.tobe{color:var(--muted);font-style:italic}
+  .chg td code{font-family:var(--code);font-size:11px;background:#eef1f4;padding:0 4px;border-radius:4px}
+  .chg .tag{flex:none}
   .rstate{font-family:var(--code);font-size:9.5px;font-weight:700;border-radius:3px;padding:1px 5px;margin-left:5px;white-space:nowrap}
   .rs-auto{color:#8a5a0b;background:var(--amber-soft)} .rs-rev{color:#2438a8;background:#EAEFFB} .rs-done{color:#1f7a3f;background:var(--green-soft)}
 </style>
@@ -349,7 +354,7 @@
     return `<div class="owner-bar"><span class="ob-k">작성</span> <b>${author}</b> · <span class="ob-k">검수</span> <b>${reviewer}</b></div>`;
   }
   function tagSpan(src){const c=src==='chg'?'chg':(src==='exist'?'exist':'');const t=src==='chg'?'변경분':(src==='exist'?'기존':'참고');return `<span class="tag ${c}">${t}</span>`;}
-  function rstateBadge(st){const m={auto:['검토 대기','rs-auto'],reviewing:['검토중','rs-rev'],done:['반영완료','rs-done']}[st||'auto'];return `<span class="rstate ${m[1]}">${m[0]}</span>`;}
+  function rstateBadge(st){const m={auto:['검토 대기','rs-auto'],reviewing:['검토중','rs-rev'],done:['검토 완료','rs-done']}[st||'auto'];return `<span class="rstate ${m[1]}">${m[0]}</span>`;}
   function docTable(s,docs){
     if(!docs.length) return '<div class="oldnote">표시할 문서가 없습니다.</div>';
     let rows=docs.map(d=>{
@@ -362,14 +367,13 @@
       const rv=g.review;
       let detail='';
       if(rv && rv.items && rv.items.length){
-        const vis=rv.items.filter(i=>!i.done);
-        const todo=vis.filter(i=>i.src!=='ref').length;
-        if(vis.length){
-          detail=`<div class="review"><div class="review-head">변경해야 할 항목 <span class="rcount">${todo}건</span></div>`+
-            `<ul class="checklist">`+vis.map(i=>
-              `<li><span class="ck">☐</span>${tagSpan(i.src)}${i.text}</li>`).join('')+
-            `</ul></div>`;
-        }
+        const cnt=rv.items.filter(i=>i.src!=='ref').length;
+        detail=`<div class="review"><div class="review-head">변경해야 할 항목 <span class="rcount">${cnt}건</span></div>`+
+          `<table class="chg"><colgroup><col class="c-tag"><col class="c-loc"><col class="c-asis"><col class="c-arr"><col class="c-tobe"></colgroup>`+
+          `<thead><tr><th>구분</th><th>위치</th><th>AS-IS</th><th class="arr"></th><th>TO-BE</th></tr></thead><tbody>`+
+          rv.items.map(i=>
+            `<tr class="src-${i.src||'x'}"><td>${tagSpan(i.src)}</td><td class="loc">${i.loc||''}</td><td class="asis">${i.asis||''}</td><td class="arr">${i.tobe?'→':''}</td><td class="tobe">${i.tobe||''}</td></tr>`).join('')+
+          `</tbody></table></div>`;
       } else if(g.findings && g.findings.length){
         detail=`<ul class="findings">`+g.findings.map(f=>
           `<li class="${f.sev==='R'?'r':(f.sev==='note'?'note':'')}">${tagSpan(f.src)}${f.text}</li>`).join('')+`</ul>`;

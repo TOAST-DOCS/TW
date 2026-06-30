@@ -9,14 +9,12 @@ review_state: auto
 
 # TOAST-Cloud / ko/public-api/supported-authentication-methods.md — 자동 검수 결과
 
-> Claude 자동 검수 초안입니다. 담당 라이터가 항목을 검토·반영(`[x]` 체크)하고,
-> 완료되면 상단 `review_state`를 `done`(검토 중이면 `reviewing`)으로 바꿔 주세요.
+> Claude 자동 검수 초안입니다. 담당 라이터(TW)가 각 항목의 타당성을 검토합니다.
+> 실제 원본 문서 수정은 이후 개발자가 수행합니다.
 
 ## 변경해야 할 항목
-- [x] [변경분] 61행 `Load Balancer(DSR)` 행 추가 — 기존 `Load Balancer` 행과 IaaS 토큰 `O` 표기·정렬 일관, 조치 불필요
-- [x] [변경분] 124행 `EasyQueue` 행 추가 — Data & Analytics 카테고리·User Access Key 토큰 `O` 표기 일관, 조치 불필요
-- [ ] [참고] 표 내 영문 서비스명(Instance, Load Balancer 등)은 서비스 직접 지칭 → 정착 영문 유지(글로서리 한글화 미적용)
-- [ ] [참고] 143행 `에서 확인할 수 있습니다`는 링크 마무리 표현 → 원문 유지
+- [참고] | 표 전체 | 표 내 영문 서비스명(Instance, Load Balancer 등) | 서비스 직접 지칭 → 정착 영문 유지(글로서리 한글화 미적용)
+- [참고] | 143행 | `에서 확인할 수 있습니다` | 링크 마무리 표현 → 원문 유지
 
 ## 참고
 - 등급: ⓐ 변경분 = 통과 / ⓑ 문서 전체 = 통과

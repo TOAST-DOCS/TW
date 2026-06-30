@@ -93,23 +93,23 @@ def parse_reviews():
         svc, path = fm.get('service'), fm.get('path')
         if not svc or not path:
             continue
-        # '## 변경해야 할 항목' 섹션의 체크리스트 추출
+        # '## 변경해야 할 항목' 섹션 파싱: - [구분] | 위치 | AS-IS | TO-BE
         items = []
         sec = re.search(r'##\s*변경해야 할 항목\s*\n(.*?)(?:\n##\s|\Z)', body, re.S)
         if sec:
             for ln in sec.group(1).splitlines():
-                cm = re.match(r'\s*-\s*\[( |x|X)\]\s*(.*)', ln)
+                cm = re.match(r'\s*-\s*\[(기존|변경분|참고)\]\s*(.*)', ln)
                 if not cm:
                     continue
-                done = cm.group(1).lower() == 'x'
-                text = cm.group(2).strip()
-                src = ''
-                tagm = re.match(r'\[(기존|변경분|참고)\]\s*(.*)', text)
-                if tagm:
-                    tag = tagm.group(1)
-                    src = {'기존': 'exist', '변경분': 'chg', '참고': 'ref'}[tag]
-                    text = tagm.group(2).strip()
-                items.append({'src': src, 'done': done, 'text': md_inline(text)})
+                src = {'기존': 'exist', '변경분': 'chg', '참고': 'ref'}[cm.group(1)]
+                parts = [x.strip() for x in cm.group(2).split('|')]
+                while parts and parts[0] == '':   # 구분 뒤 선행 파이프 제거
+                    parts.pop(0)
+                loc  = parts[0] if len(parts) > 0 else ''
+                asis = parts[1] if len(parts) > 1 else ''
+                tobe = ' | '.join(parts[2:]).strip() if len(parts) > 2 else ''
+                items.append({'src': src, 'loc': md_inline(loc),
+                              'asis': md_inline(asis), 'tobe': md_inline(tobe)})
         reviews[(svc, path)] = {
             'a': fm.get('grade_change', 'G'),
             'b': fm.get('grade_full', 'G'),
@@ -147,7 +147,7 @@ def build():
     n_rev = len(reviews)
     n_done = sum(1 for r in reviews.values() if r['state'] == 'done')
     print('build OK ->', os.path.relpath(out_path, p('..', '..')))
-    print('  서비스:', len(inv), '| owners:', len(owners), '| 상세검수 MD:', n_rev, '(반영완료', n_done, ')')
+    print('  서비스:', len(inv), '| owners:', len(owners), '| 상세검수 MD:', n_rev, '(검토 완료', n_done, ')')
     print('  남은 placeholder:', [x for x in ('__INV__', '__GRADES__', '__OWNERS__') if x in out] or '없음')
 
 if __name__ == '__main__':
