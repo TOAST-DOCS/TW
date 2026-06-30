@@ -9,13 +9,12 @@ review_state: auto
 
 # notification-hub / ko/api-guide-v1x0/image-layout.md — 자동 검수 결과
 
-> Claude 자동 검수 초안입니다. 담당 라이터가 항목을 검토·반영(`[x]` 체크)하고,
-> 완료되면 상단 `review_state`를 `done`(검토 중이면 `reviewing`)으로 바꿔 주세요.
+> Claude 자동 검수 초안입니다. 담당 라이터(TW)가 각 항목의 타당성을 검토합니다.
+> 실제 원본 문서 수정은 이후 개발자가 수행합니다.
 
 ## 변경해야 할 항목
-- [x] [변경분] 1행 `<!-- pre-align:aligned -->` 주석 + 130/235/320/428행 부근 `<a id="...">` 앵커 추가 → 구조 변경뿐, 조치 불필요
-- [참고] 117행 응답 예시 `cardImage.filePreviewUrl`이 `background.png` → `cardImage.png` 추정, 작성자 확인
-- [참고] 120행 `body` 예시에서 `* 상품명`만 공백 있고 `*유효기간`/`*사용처`는 없음 → 샘플 일관성, 작성자 확인
+- [참고] | 117행 | 응답 예시 `cardImage.filePreviewUrl`이 `background.png` | `cardImage.png` 추정, 작성자 확인
+- [참고] | 120행 | `body` 예시에서 `* 상품명`만 공백 있고 `*유효기간`/`*사용처`는 없음 | 샘플 일관성, 작성자 확인
 
 ## 참고
 - 등급: ⓐ 변경분 = 통과 / ⓑ 문서 전체 = 통과

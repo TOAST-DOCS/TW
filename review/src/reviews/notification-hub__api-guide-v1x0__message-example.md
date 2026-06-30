@@ -9,18 +9,18 @@ review_state: auto
 
 # notification-hub / ko/api-guide-v1x0/message-example.md — 자동 검수 결과
 
-> Claude 자동 검수 초안입니다. 담당 라이터가 항목을 검토·반영(`[x]` 체크)하고,
-> 완료되면 상단 `review_state`를 `done`(검토 중이면 `reviewing`)으로 바꿔 주세요.
+> Claude 자동 검수 초안입니다. 담당 라이터(TW)가 각 항목의 타당성을 검토합니다.
+> 실제 원본 문서 수정은 이후 개발자가 수행합니다.
 
 ## 변경해야 할 항목
-- [ ] [변경분] 149행 신규 `<a id="sms"></a>`가 13행 `<span id="sms"></span>`와 ID 중복 → 신규 앵커 ID를 `rcs-sms` 등 고유값으로
-- [ ] [변경분] 143행 신규 `<a id="rcs"></a>`가 141행 `<span id="rcs"></span>`와 동일 ID 중복 → 신규 앵커 제거 또는 ID 구분
-- [ ] [기존] 300·383행 `* mTitleMedia 아이콘 파일 ID 목록` 불릿 `*` → `-`(하위 불릿 포함)
-- [ ] [기존] 948~953행 Email 설명 불릿 `*` → `-`
-- [ ] [기존] 1048~1051행 Push 설명 불릿 `*` → `-`
-- [ ] [기존] 952행 문장 끝 trailing space 제거
-- [ ] [참고] 463행 FORMAT_PARAGRAPH 예시 JSON 배열 마지막 항목 뒤 trailing comma(+435행 빈 객체 `{}`) → 유효 JSON 아님, 작성자 확인 필요
-- [ ] [참고] JSON 예시 내 `http://www.test.com`은 코드 블록 플레이스홀더라 링크 룰 비적용(수정 대상 아님)
+- [변경분] | 149행 | 신규 `<a id="sms"></a>`가 13행 `<span id="sms"></span>`와 ID 중복 | 신규 앵커 ID를 `rcs-sms` 등 고유값으로
+- [변경분] | 143행 | 신규 `<a id="rcs"></a>`가 141행 `<span id="rcs"></span>`와 동일 ID 중복 | 신규 앵커 제거 또는 ID 구분
+- [기존] | 300·383행 | `* mTitleMedia 아이콘 파일 ID 목록` 불릿 `*`(하위 불릿 포함) | `-`
+- [기존] | 948~953행 | Email 설명 불릿 `*` | `-`
+- [기존] | 1048~1051행 | Push 설명 불릿 `*` | `-`
+- [기존] | 952행 | 문장 끝 trailing space | 제거
+- [참고] | 463행 | FORMAT_PARAGRAPH 예시 JSON 배열 마지막 항목 뒤 trailing comma(+435행 빈 객체 `{}`) | 유효 JSON 아님, 작성자 확인 필요
+- [참고] | | JSON 예시 내 `http://www.test.com` | 코드 블록 플레이스홀더라 링크 룰 비적용(수정 대상 아님)
 
 ## 참고
 - 등급: ⓐ 변경분 = 수정 필요(O) / ⓑ 문서 전체 = 수정 필요(O)
