@@ -148,11 +148,10 @@
   .review-head{font-size:11.5px;font-weight:700;color:var(--ink);margin:0 0 6px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
   .rcount{font-family:var(--code);font-size:10.5px;font-weight:700;color:#8a5a0b;background:var(--amber-soft);border-radius:10px;padding:1px 8px}
   .chg{width:100%;border-collapse:collapse;table-layout:fixed;margin:2px 0 4px;font-size:12px}
-  .chg col.c-tag{width:11%} .chg col.c-loc{width:15%} .chg col.c-asis{width:33%} .chg col.c-arr{width:5%} .chg col.c-tobe{width:36%}
+  .chg col.c-tag{width:12%} .chg col.c-loc{width:16%} .chg col.c-asis{width:36%} .chg col.c-tobe{width:36%}
   .chg th,.chg td{border:1px solid var(--hair);padding:5px 8px;text-align:left;vertical-align:top;line-height:1.5;word-break:break-word;overflow-wrap:anywhere}
   .chg thead th{font-family:var(--code);font-size:10px;font-weight:700;letter-spacing:.04em;color:var(--muted);background:var(--wait-soft)}
   .chg td.loc{font-family:var(--code);font-size:11px;color:var(--muted)}
-  .chg td.arr,.chg th.arr{text-align:center;color:var(--muted);font-family:var(--code)}
   .chg td.asis{color:var(--muted)} .chg td.tobe{color:var(--ink)}
   .chg tr.src-ref td.asis,.chg tr.src-ref td.tobe{color:var(--muted);font-style:italic}
   .chg td code{font-family:var(--code);font-size:11px;background:#eef1f4;padding:0 4px;border-radius:4px}
@@ -369,10 +368,10 @@
       if(rv && rv.items && rv.items.length){
         const cnt=rv.items.filter(i=>i.src!=='ref').length;
         detail=`<div class="review"><div class="review-head">변경해야 할 항목 <span class="rcount">${cnt}건</span></div>`+
-          `<table class="chg"><colgroup><col class="c-tag"><col class="c-loc"><col class="c-asis"><col class="c-arr"><col class="c-tobe"></colgroup>`+
-          `<thead><tr><th>구분</th><th>위치</th><th>AS-IS</th><th class="arr"></th><th>TO-BE</th></tr></thead><tbody>`+
+          `<table class="chg"><colgroup><col class="c-tag"><col class="c-loc"><col class="c-asis"><col class="c-tobe"></colgroup>`+
+          `<thead><tr><th>구분</th><th>위치</th><th>현재</th><th>수정안</th></tr></thead><tbody>`+
           rv.items.map(i=>
-            `<tr class="src-${i.src||'x'}"><td>${tagSpan(i.src)}</td><td class="loc">${i.loc||''}</td><td class="asis">${i.asis||''}</td><td class="arr">${i.tobe?'→':''}</td><td class="tobe">${i.tobe||''}</td></tr>`).join('')+
+            `<tr class="src-${i.src||'x'}"><td>${tagSpan(i.src)}</td><td class="loc">${i.loc||''}</td><td class="asis">${i.asis||''}</td><td class="tobe">${i.tobe||''}</td></tr>`).join('')+
           `</tbody></table></div>`;
       } else if(g.findings && g.findings.length){
         detail=`<ul class="findings">`+g.findings.map(f=>
