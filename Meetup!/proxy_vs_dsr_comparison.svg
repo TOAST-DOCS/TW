@@ -1,0 +1,77 @@
+<svg viewBox="0 0 1400 640" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif">
+
+  <rect x="0" y="0" width="1400" height="640" fill="#FCFCFC"/>
+
+  <!-- 타이틀 -->
+  <text x="700" y="50" text-anchor="middle" font-size="24" font-weight="700" fill="#191919">로드밸런서 처리 방식 비교: 프록시 vs DSR</text>
+
+  <!-- ===================== 좌측 카드: 프록시 방식 ===================== -->
+  <path d="M76,110 L644,110 Q660,110 660,126 L660,166 L60,166 L60,126 Q60,110 76,110 Z" fill="#054283"/>
+  <text x="360" y="145" text-anchor="middle" font-size="20" font-weight="600" fill="#FFFFFF">프록시 방식</text>
+  <path d="M60,166 L660,166 L660,524 Q660,540 644,540 L76,540 Q60,540 60,524 Z" fill="#FFFFFF" stroke="#C7E3FF" stroke-width="1.5"/>
+
+  <rect x="90" y="230" width="150" height="80" rx="10" fill="#FFFFFF" stroke="#DCDCDC" stroke-width="1.5"/>
+  <text x="165" y="276" text-anchor="middle" font-size="16" font-weight="600" fill="#191919">클라이언트</text>
+
+  <rect x="330" y="230" width="140" height="80" rx="10" fill="#FFFFFF" stroke="#EF4444" stroke-width="2"/>
+  <text x="400" y="262" text-anchor="middle" font-size="17" font-weight="700" fill="#EF4444">LB</text>
+  <text x="400" y="286" text-anchor="middle" font-size="13" fill="#EF4444">모든 경유</text>
+
+  <rect x="540" y="230" width="110" height="80" rx="10" fill="#E7F2FE" stroke="#054283" stroke-width="1.5"/>
+  <text x="595" y="276" text-anchor="middle" font-size="16" font-weight="600" fill="#191919">서버</text>
+
+  <!-- 요청 (회색) : LB 박스 위쪽 여백에 라벨 배치 -->
+  <text x="400" y="215" text-anchor="middle" font-size="14" fill="#646464">요청</text>
+  <line x1="240" y1="258" x2="326" y2="258" stroke="#646464" stroke-width="2.5"/>
+  <polygon points="0,0 -13,-5 -13,5" fill="#646464" transform="translate(326,258) rotate(0)"/>
+  <line x1="470" y1="258" x2="537" y2="258" stroke="#646464" stroke-width="2.5"/>
+  <polygon points="0,0 -13,-5 -13,5" fill="#646464" transform="translate(537,258) rotate(0)"/>
+
+  <!-- 응답 (빨강, LB 경유 - 병목) : LB 박스 아래쪽 여백에 라벨 배치 -->
+  <text x="400" y="330" text-anchor="middle" font-size="14" fill="#EF4444">응답</text>
+  <line x1="540" y1="290" x2="473" y2="290" stroke="#EF4444" stroke-width="2.5"/>
+  <polygon points="0,0 -13,-5 -13,5" fill="#EF4444" transform="translate(473,290) rotate(180)"/>
+  <line x1="330" y1="290" x2="243" y2="290" stroke="#EF4444" stroke-width="2.5"/>
+  <polygon points="0,0 -13,-5 -13,5" fill="#EF4444" transform="translate(243,290) rotate(180)"/>
+
+  <!-- 경고 노트 -->
+  <rect x="90" y="400" width="540" height="110" rx="10" fill="#F7F7F7" stroke="#EF4444" stroke-width="1.5" stroke-dasharray="6,5"/>
+  <text x="360" y="441" text-anchor="middle" font-size="15" font-weight="600" fill="#444444">요청·응답 모두 LB 경유</text>
+  <text x="360" y="469" text-anchor="middle" font-size="14" font-weight="600" fill="#EF4444">응답 트래픽이 클수록 LB 병목</text>
+
+  <!-- ===================== 우측 카드: DSR 방식 ===================== -->
+  <path d="M756,110 L1324,110 Q1340,110 1340,126 L1340,166 L740,166 L740,126 Q740,110 756,110 Z" fill="#054283"/>
+  <text x="1040" y="145" text-anchor="middle" font-size="20" font-weight="600" fill="#FFFFFF">DSR 방식</text>
+  <path d="M740,166 L1340,166 L1340,524 Q1340,540 1324,540 L756,540 Q740,540 740,524 Z" fill="#FFFFFF" stroke="#C7E3FF" stroke-width="1.5"/>
+
+  <rect x="770" y="230" width="150" height="80" rx="10" fill="#FFFFFF" stroke="#DCDCDC" stroke-width="1.5"/>
+  <text x="845" y="276" text-anchor="middle" font-size="16" font-weight="600" fill="#191919">클라이언트</text>
+
+  <rect x="1010" y="230" width="140" height="80" rx="10" fill="#FFFFFF" stroke="#054283" stroke-width="1.5"/>
+  <text x="1080" y="262" text-anchor="middle" font-size="17" font-weight="700" fill="#054283">LB</text>
+  <text x="1080" y="286" text-anchor="middle" font-size="13" fill="#0157B1">요청만 경유</text>
+
+  <rect x="1220" y="230" width="110" height="80" rx="10" fill="#E7F2FE" stroke="#054283" stroke-width="1.5"/>
+  <text x="1275" y="276" text-anchor="middle" font-size="16" font-weight="600" fill="#191919">서버</text>
+
+  <!-- 요청 (회색) : LB 박스 위쪽 여백에 라벨 배치 -->
+  <text x="1080" y="215" text-anchor="middle" font-size="14" fill="#646464">요청</text>
+  <line x1="920" y1="258" x2="1006" y2="258" stroke="#646464" stroke-width="2.5"/>
+  <polygon points="0,0 -13,-5 -13,5" fill="#646464" transform="translate(1006,258) rotate(0)"/>
+  <line x1="1150" y1="258" x2="1217" y2="258" stroke="#646464" stroke-width="2.5"/>
+  <polygon points="0,0 -13,-5 -13,5" fill="#646464" transform="translate(1217,258) rotate(0)"/>
+
+  <!-- 응답 (초록, LB 우회) : 곡선 정점과 노트박스 사이 여백에 라벨 배치 -->
+  <path d="M1220,300 Q845,400 845,310" fill="none" stroke="#16A34A" stroke-width="3"/>
+  <polygon points="0,0 -15,-6 -15,6" fill="#16A34A" transform="translate(845,310) rotate(-90)"/>
+  <text x="929" y="378" text-anchor="middle" font-size="14" font-weight="600" fill="#16A34A">응답 (LB 우회)</text>
+
+  <!-- 성공 노트 -->
+  <rect x="770" y="400" width="540" height="110" rx="10" fill="#FFFFFF" stroke="#16A34A" stroke-width="1.5"/>
+  <text x="1040" y="441" text-anchor="middle" font-size="15" font-weight="600" fill="#444444">요청만 LB 경유</text>
+  <text x="1040" y="469" text-anchor="middle" font-size="14" font-weight="600" fill="#16A34A">응답은 서버 → 클라이언트 직접</text>
+
+  <!-- ===================== 결론 ===================== -->
+  <text x="700" y="590" text-anchor="middle" font-size="18" font-weight="700" fill="#2D2D2D">같은 통신, 다른 경로 — 비대칭 구조가 LB 병목을 없앤다</text>
+
+</svg>

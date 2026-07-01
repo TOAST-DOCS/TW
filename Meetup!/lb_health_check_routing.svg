@@ -1,0 +1,88 @@
+<svg viewBox="0 0 1400 900" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif">
+
+  <rect x="0" y="0" width="1400" height="900" fill="#FCFCFC"/>
+
+  <!-- 타이틀 -->
+  <text x="700" y="40" text-anchor="middle" font-size="24" font-weight="700" fill="#191919">LB 헬스체크 기반 요청 라우팅 및 DSR 응답 흐름</text>
+
+  <!-- ===================== 클라이언트 ===================== -->
+  <rect x="50" y="390" width="170" height="100" rx="14" fill="#FFFFFF" stroke="#DCDCDC" stroke-width="1.5"/>
+  <text x="135" y="446" text-anchor="middle" font-size="19" font-weight="600" fill="#191919">클라이언트</text>
+
+  <!-- ===================== LB (헤더바 + 본문카드) ===================== -->
+  <path d="M574,350 L766,350 Q780,350 780,364 L780,394 L560,394 L560,364 Q560,350 574,350 Z" fill="#054283"/>
+  <text x="670" y="378" text-anchor="middle" font-size="17" font-weight="600" fill="#FFFFFF">LB</text>
+  <path d="M560,394 L780,394 L780,520 Q780,534 766,534 L574,534 Q560,534 560,520 Z" fill="#FFFFFF" stroke="#C7E3FF" stroke-width="1.5"/>
+  <text x="670" y="452" text-anchor="middle" font-size="15" fill="#444444">요청 라우팅</text>
+  <text x="670" y="480" text-anchor="middle" font-size="15" fill="#444444">헬스체크</text>
+
+  <!-- ===================== 서버 A (ACTIVE) ===================== -->
+  <rect x="1080" y="160" width="250" height="110" rx="14" fill="#E7F2FE" stroke="#054283" stroke-width="1.5"/>
+  <text x="1205" y="209" text-anchor="middle" font-size="19" font-weight="700" fill="#191919">서버 A</text>
+  <text x="1205" y="235" text-anchor="middle" font-size="13" font-weight="600" fill="#16A34A" letter-spacing="1">ACTIVE</text>
+
+  <!-- ===================== 서버 B (ACTIVE) ===================== -->
+  <rect x="1080" y="400" width="250" height="110" rx="14" fill="#E7F2FE" stroke="#054283" stroke-width="1.5"/>
+  <text x="1205" y="449" text-anchor="middle" font-size="19" font-weight="700" fill="#191919">서버 B</text>
+  <text x="1205" y="475" text-anchor="middle" font-size="13" font-weight="600" fill="#16A34A" letter-spacing="1">ACTIVE</text>
+
+  <!-- ===================== 서버 C (INACTIVE) ===================== -->
+  <rect x="1080" y="640" width="250" height="110" rx="14" fill="#F7F7F7" stroke="#C6C6C6" stroke-width="1.5"/>
+  <text x="1205" y="689" text-anchor="middle" font-size="19" font-weight="700" fill="#646464">서버 C</text>
+  <text x="1205" y="715" text-anchor="middle" font-size="13" font-weight="600" fill="#EF4444" letter-spacing="1">INACTIVE</text>
+  <text x="1205" y="775" text-anchor="middle" font-size="13" fill="#8B8B8B">분산 제외</text>
+
+  <!-- ===================== 요청 경로 (회색 실선) ===================== -->
+  <line x1="220" y1="440" x2="554" y2="440" stroke="#646464" stroke-width="2.5"/>
+  <polygon points="0,0 -15,-6 -15,6" fill="#646464" transform="translate(554,440) rotate(0)"/>
+  <text x="387" y="425" text-anchor="middle" font-size="14" fill="#646464">요청</text>
+
+  <line x1="780" y1="410" x2="1074" y2="222" stroke="#646464" stroke-width="2.5"/>
+  <polygon points="0,0 -15,-6 -15,6" fill="#646464" transform="translate(1074,222) rotate(-33)"/>
+
+  <line x1="780" y1="465" x2="1074" y2="455" stroke="#646464" stroke-width="2.5"/>
+  <polygon points="0,0 -15,-6 -15,6" fill="#646464" transform="translate(1074,455) rotate(-2)"/>
+
+  <!-- ===================== 헬스체크 (회색 점선, 정상) ===================== -->
+  <line x1="780" y1="394" x2="1074" y2="205" stroke="#C6C6C6" stroke-width="2" stroke-dasharray="6,5"/>
+  <polygon points="0,0 -12,-5 -12,5" fill="#C6C6C6" transform="translate(1074,205) rotate(-33)"/>
+
+  <line x1="780" y1="480" x2="1074" y2="470" stroke="#C6C6C6" stroke-width="2" stroke-dasharray="6,5"/>
+  <polygon points="0,0 -12,-5 -12,5" fill="#C6C6C6" transform="translate(1074,470) rotate(-2)"/>
+
+  <!-- ===================== 헬스체크 실패 (빨간 점선) ===================== -->
+  <line x1="780" y1="505" x2="1078" y2="695" stroke="#EF4444" stroke-width="2.5" stroke-dasharray="6,5"/>
+  <polygon points="0,0 -14,-6 -14,6" fill="#EF4444" transform="translate(1078,695) rotate(33)"/>
+  <line x1="994" y1="638" x2="1014" y2="658" stroke="#EF4444" stroke-width="3"/>
+  <line x1="1014" y1="638" x2="994" y2="658" stroke="#EF4444" stroke-width="3"/>
+  <text x="830" y="498" text-anchor="middle" font-size="14" font-weight="600" fill="#EF4444">헬스체크 실패</text>
+
+  <!-- ===================== 응답 경로 (LB 우회, 진한 파랑 곡선) ===================== -->
+  <path d="M1080,222 Q700,-100 225,415" fill="none" stroke="#0157B1" stroke-width="3"/>
+  <polygon points="0,0 -16,-6 -16,6" fill="#0157B1" transform="translate(225,415) rotate(133)"/>
+
+  <path d="M1080,505 Q700,600 225,465" fill="none" stroke="#0157B1" stroke-width="3"/>
+  <polygon points="0,0 -16,-6 -16,6" fill="#0157B1" transform="translate(225,465) rotate(-164)"/>
+
+  <text x="776" y="72" text-anchor="middle" font-size="15" font-weight="600" fill="#0157B1">응답 (LB 우회)</text>
+
+  <!-- ===================== 범례 ===================== -->
+  <line x1="0" y1="800" x2="1400" y2="800" stroke="#EBEBEB" stroke-width="1"/>
+
+  <line x1="80" y1="850" x2="130" y2="850" stroke="#646464" stroke-width="2.5"/>
+  <polygon points="0,0 -12,-5 -12,5" fill="#646464" transform="translate(130,850) rotate(0)"/>
+  <text x="145" y="855" font-size="14" fill="#444444">요청 경로</text>
+
+  <line x1="290" y1="850" x2="340" y2="850" stroke="#0157B1" stroke-width="2.5"/>
+  <polygon points="0,0 -12,-5 -12,5" fill="#0157B1" transform="translate(340,850) rotate(0)"/>
+  <text x="355" y="855" font-size="14" fill="#444444">응답 경로 (LB 우회)</text>
+
+  <line x1="600" y1="850" x2="650" y2="850" stroke="#C6C6C6" stroke-width="2" stroke-dasharray="6,5"/>
+  <polygon points="0,0 -10,-4 -10,4" fill="#C6C6C6" transform="translate(650,850) rotate(0)"/>
+  <text x="665" y="855" font-size="14" fill="#444444">헬스체크</text>
+
+  <line x1="820" y1="850" x2="870" y2="850" stroke="#EF4444" stroke-width="2" stroke-dasharray="6,5"/>
+  <polygon points="0,0 -10,-4 -10,4" fill="#EF4444" transform="translate(870,850) rotate(0)"/>
+  <text x="885" y="855" font-size="14" fill="#444444">헬스체크 실패</text>
+
+</svg>
