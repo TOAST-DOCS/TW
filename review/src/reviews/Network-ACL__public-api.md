@@ -13,15 +13,15 @@ review_state: auto
 > 실제 원본 문서 수정은 이후 개발자가 수행합니다.
 
 ## 변경해야 할 항목
-- [기존] | 339·340행 | `dst_port_range_max`=`최솟값`, `dst_port_range_min`=`최댓값`으로 뒤바뀜(`src_port_range`는 정상) | max=최댓값, min=최솟값으로 수정
-- [기존] | 435·436행 | `acl_rule.dst_port_range_max/min` 최솟값·최댓값 뒤바뀜 | max=최댓값, min=최솟값
-- [기존] | 498·499행 | `acl_rule.dst_port_range_max/min` 최솟값·최댓값 뒤바뀜 | max=최댓값, min=최솟값
-- [기존] | 539·540행 | `acl_rule.dst_port_range_max/min` 최솟값·최댓값 뒤바뀜 | max=최댓값, min=최솟값
-- [기존] | 649·650행 | `acl_rule.dst_port_range_max/min` 최솟값·최댓값 뒤바뀜 | max=최댓값, min=최솟값
-- [기존] | 614행 | ACL Rule 수정(PUT) 요청 표 `aclRuleId` 설명 `삭제할 ACL Rule ID` | `수정할 ACL Rule ID`
-- [기존] | 160행 | `넣는것을` | `넣는 것을`(의존명사 띄어쓰기)
-- [기존] | 602행 | `수정 가능 합니다` | `수정 가능합니다`
-- [기존] | 342·438·501·542·652행 | `적용순서` | `적용 순서`(띄어쓰기)
+- [기존] | 325·326행 | `dst_port_range_max`=`최솟값`, `dst_port_range_min`=`최댓값`으로 뒤바뀜(`src_port_range`는 정상) | max=최댓값, min=최솟값으로 수정
+- [기존] | 421·422행 | `acl_rule.dst_port_range_max/min` 최솟값·최댓값 뒤바뀜 | max=최댓값, min=최솟값
+- [기존] | 484·485행 | `acl_rule.dst_port_range_max/min` 최솟값·최댓값 뒤바뀜 | max=최댓값, min=최솟값
+- [기존] | 525·526행 | `acl_rule.dst_port_range_max/min` 최솟값·최댓값 뒤바뀜 | max=최댓값, min=최솟값
+- [기존] | 635·636행 | `acl_rule.dst_port_range_max/min` 최솟값·최댓값 뒤바뀜 | max=최댓값, min=최솟값
+- [기존] | 600행 | ACL Rule 수정(PUT) 요청 표 `aclRuleId` 설명 `삭제할 ACL Rule ID` | `수정할 ACL Rule ID`
+- [기존] | 146행 | `넣는것을` | `넣는 것을`(의존명사 띄어쓰기)
+- [기존] | 588행 | `수정 가능 합니다` | `수정 가능합니다`
+- [기존] | 328·424·487·528·638행 | `적용순서` | `적용 순서`(띄어쓰기)
 
 ## 참고
 - 등급: ⓐ 변경분 = 통과 / ⓑ 문서 전체 = 시급

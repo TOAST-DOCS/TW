@@ -14,7 +14,7 @@ review_state: done
 > `reviewing`(검토중)·`done`(검토 완료)으로 바꿔 주세요.
 
 ## 변경해야 할 항목
-- [기존] | 56행 | `multipart/form–data`의 대시가 EN DASH(U+2013) | 정상 하이픈 `multipart/form-data`(U+002D)로 교정
+- [기존] | 37행 | `multipart/form–data`의 대시가 EN DASH(U+2013) | 정상 하이픈 `multipart/form-data`(U+002D)로 교정
 
 ## 참고
 - 등급: ⓐ 변경분 = 통과 / ⓑ 문서 전체 = 수정 필요(1건)
