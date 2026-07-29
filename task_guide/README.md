@@ -73,16 +73,14 @@ task_guide/
 
 ## 브랜치와 커밋
 
-- 브랜치: `docs/task-guide/<주제>` — 예: `docs/task-guide/instance-creation-failed`
-- 커밋 메시지: Conventional Commits + 한국어 본문
+저장소 공통 규칙을 따릅니다. [루트 README](../README.md#브랜치와-커밋)를 참고하세요.
 
-  ```
-  docs(task_guide): 인스턴스 생성 실패 트러블슈팅 가이드 추가
-  ```
+- 브랜치 예: `docs/task-guide/instance-creation-failed`
+- 커밋 예: `docs(task-guide): 인스턴스 생성 실패 트러블슈팅 가이드 추가`
 
 ## Pull Request
 
-기술 검토를 요청하는 PR은 **무엇을 봐 달라는지 먼저 밝힙니다.** 그래야 리뷰어가 담당 범위만 보면 됩니다.1
+기술 검토를 요청하는 PR은 **무엇을 봐 달라는지 먼저 밝힙니다.** 그래야 리뷰어가 담당 범위만 보면 됩니다.
 
 ```markdown
 ## 문서 목적
