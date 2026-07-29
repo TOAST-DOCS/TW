@@ -6,8 +6,8 @@ NHN Cloud 테크니컬 라이팅(TW) 파트의 작업 저장소입니다. 사용
 
 | 디렉터리 | 용도 | 별도 규칙 |
 | --- | --- | --- |
-| `ko/` `en/` `ja/` `zh/` | 가이드 작성 템플릿(언어별) | |
-| `user_guide_templates/` | 가이드 작성 템플릿(한국어) | |
+| `ko/` `en/` `ja/` `zh/` | 사용자 가이드 사이트 배포용 디렉터리 구조 | |
+| `user-guide-templates/` | 가이드 작성 템플릿(최신) | |
 | `task-guide/` | 트러블슈팅·How-to 가이드 원본 | [task-guide/README.md](task-guide/README.md) |
 | `review/` | 월별 사후 검수 대시보드와 원본 | [review/src/README.md](review/src/README.md) |
 | `report/` | 검수 자동화 성과 보고서 | [report/README.md](report/README.md) |
@@ -47,7 +47,7 @@ instance-creation-failed-flow.svg 이미지
 
 - **`review/src/`의 스크립트와 데이터 파일** — `build_dashboard.py`, `inventory_2026-06.tsv` 등. Python 생태계 관례가 snake_case입니다.
 - **`review/src/reviews/<저장소명>__<문서키>.md`** — 더블 언더스코어(`__`)는 저장소명과 문서 키를 구분하는 표시입니다. 자세한 내용은 [review/src/README.md](review/src/README.md)를 참고하세요.
-- **도구가 정한 이름** — `.github/`, `.nojekyll`, `README.md` 등.
+- **널리 쓰이는 관례 이름** — `.github/`, `.nojekyll`, `README.md`, `CHANGELOG.md` 등. 도구나 생태계가 정한 이름은 그대로 씁니다.
 
 ### 게시된 경로는 바꾸지 않습니다
 
@@ -88,7 +88,6 @@ docs(task-guide): 인스턴스 생성 실패 트러블슈팅 가이드 추가
 
 | 대상 | 문제 | 정리 후 |
 | --- | --- | --- |
-| `user_guide_templates/` | 언더스코어, 하위 파일명이 한글·공백·대괄호 | `user-guide-templates/` + 영문 파일명 |
 | `Meetup!/` | 느낌표, 하위 디렉터리명이 한글·공백 | 협의 필요(게시 콘텐츠라 작성자가 여럿) |
 
 `review/`는 게시된 경로이므로 정리 대상에서 제외합니다.
