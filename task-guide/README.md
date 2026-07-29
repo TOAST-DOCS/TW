@@ -44,7 +44,7 @@ TW 파트 여러 명이 주제를 나눠 작업하며 같은 정책을 따릅니
 ## 디렉터리와 파일명
 
 ```
-task_guide/
+task-guide/
 └── ko/                                  # 언어별 디렉터리 (ko, en, ja, zh)
     ├── instance-creation-failed.md
     └── images/

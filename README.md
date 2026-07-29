@@ -8,7 +8,7 @@ NHN Cloud 테크니컬 라이팅(TW) 파트의 작업 저장소입니다. 사용
 | --- | --- | --- |
 | `ko/` `en/` `ja/` `zh/` | 가이드 작성 템플릿(언어별) | |
 | `user_guide_templates/` | 가이드 작성 템플릿(한국어) | |
-| `task_guide/` | 트러블슈팅·How-to 가이드 원본 | [task_guide/README.md](task_guide/README.md) |
+| `task-guide/` | 트러블슈팅·How-to 가이드 원본 | [task-guide/README.md](task-guide/README.md) |
 | `review/` | 월별 사후 검수 대시보드와 원본 | [review/src/README.md](review/src/README.md) |
 | `report/` | 검수 자동화 성과 보고서 | [report/README.md](report/README.md) |
 | `Meetup!/` | NHN Cloud Meetup! 게시 콘텐츠 | [Meetup!/README.md](Meetup!/README.md) |
@@ -88,9 +88,7 @@ docs(task-guide): 인스턴스 생성 실패 트러블슈팅 가이드 추가
 
 | 대상 | 문제 | 정리 후 |
 | --- | --- | --- |
-| `task_guide/` | 언더스코어 | `task-guide/` |
 | `user_guide_templates/` | 언더스코어, 하위 파일명이 한글·공백·대괄호 | `user-guide-templates/` + 영문 파일명 |
 | `Meetup!/` | 느낌표, 하위 디렉터리명이 한글·공백 | 협의 필요(게시 콘텐츠라 작성자가 여럿) |
-| 루트의 `세션_지속성_비교.png` | 한글 파일명, 루트에 방치 | 참조처가 없어 이동 또는 삭제 |
 
 `review/`는 게시된 경로이므로 정리 대상에서 제외합니다.
