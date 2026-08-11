@@ -1,11 +1,12 @@
 # TOAST-DOCS/TW
 
-NHN Cloud 테크니컬 라이팅(TW) 파트의 작업 저장소입니다. 사용자 가이드 템플릿, 검수 결과, 활용 가이드 원본, Meetup! 콘텐츠를 모아 둡니다.
+NHN Cloud 테크니컬 라이팅(TW) 파트의 작업 저장소입니다. 문서 검수 지침, 사용자 가이드 템플릿, 검수 결과, 활용 가이드 원본, Meetup! 콘텐츠를 모아 둡니다.
 
 ## 디렉터리 안내
 
 | 디렉터리 | 용도 | 별도 규칙 |
 | --- | --- | --- |
+| `review-guide/` | 문서 검수 지침(스타일 가이드·용어 사전). 문서를 작성하는 조직과 공유 | [review-guide/README.md](review-guide/README.md) |
 | `ko/` `en/` `ja/` `zh/` | 사용자 가이드 사이트 배포용 디렉터리 구조 | |
 | `user-guide-templates/` | 가이드 작성 템플릿(최신) | |
 | `task-guide/` | 트러블슈팅·How-to 가이드 원본 | [task-guide/README.md](task-guide/README.md) |
