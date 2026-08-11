@@ -1,0 +1,30 @@
+---
+service: Network-ACL
+path: ko/public-api.md
+status: M
+grade_change: G
+grade_full: R
+review_state: auto
+---
+
+# Network-ACL / ko/public-api.md — 자동 검수 결과
+
+> Claude 자동 검수 초안입니다. 담당 라이터(TW)가 각 항목의 타당성을 검토합니다.
+> 실제 원본 문서 수정은 이후 개발자가 수행합니다.
+
+## 변경해야 할 항목
+- [기존] | 325·326행 | `dst_port_range_max`=`최솟값`, `dst_port_range_min`=`최댓값`으로 뒤바뀜(`src_port_range`는 정상) | max=최댓값, min=최솟값으로 수정
+- [기존] | 421·422행 | `acl_rule.dst_port_range_max/min` 최솟값·최댓값 뒤바뀜 | max=최댓값, min=최솟값
+- [기존] | 484·485행 | `acl_rule.dst_port_range_max/min` 최솟값·최댓값 뒤바뀜 | max=최댓값, min=최솟값
+- [기존] | 525·526행 | `acl_rule.dst_port_range_max/min` 최솟값·최댓값 뒤바뀜 | max=최댓값, min=최솟값
+- [기존] | 635·636행 | `acl_rule.dst_port_range_max/min` 최솟값·최댓값 뒤바뀜 | max=최댓값, min=최솟값
+- [기존] | 600행 | ACL Rule 수정(PUT) 요청 표 `aclRuleId` 설명 `삭제할 ACL Rule ID` | `수정할 ACL Rule ID`
+- [기존] | 146행 | `넣는것을` | `넣는 것을`(의존명사 띄어쓰기)
+- [기존] | 588행 | `수정 가능 합니다` | `수정 가능합니다`
+- [기존] | 328·424·487·528·638행 | `적용순서` | `적용 순서`(띄어쓰기)
+
+## 참고
+- 등급: ⓐ 변경분 = 통과 / ⓑ 문서 전체 = 시급
+- 6월 diff는 도입 문단 한 곳(15→17행)만 교체했고 IaaS 토큰 설명·내부 링크·어미가 모두 표준에 부합 → 변경분 자체는 깨끗함.
+- 시급(R) 사유는 변경분이 아닌 기존 응답 표의 `dst_port_range_min/max` 설명 최솟값↔최댓값 뒤바뀜(기술 오류, 5개 표 반복) 및 614행 `삭제할`→`수정할` 오기.
+- [참고] JSON 예시 ID 표기 불일치(358·379·455행 `47fcb3d9` 하이픈 누락 vs 669행 `47fc-b3d9` 정상)는 예시 데이터라 영향 낮음. 일관성 차원에서 라이터 확인 권장.
