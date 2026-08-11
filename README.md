@@ -11,7 +11,7 @@ NHN Cloud 테크니컬 라이팅(TW) 파트의 작업 저장소입니다. 사용
 | `task-guide/` | 트러블슈팅·How-to 가이드 원본 | [task-guide/README.md](task-guide/README.md) |
 | `review/` | 월별 사후 검수 대시보드와 원본 | [review/src/README.md](review/src/README.md) |
 | `report/` | 검수 자동화 성과 보고서 | [report/README.md](report/README.md) |
-| `Meetup!/` | NHN Cloud Meetup! 게시 콘텐츠 | [Meetup!/README.md](Meetup!/README.md) |
+| `meetup/` | NHN Cloud Meetup! 게시 콘텐츠 | [meetup/README.md](meetup/README.md) |
 
 ## 이름 짓기 규칙
 
@@ -88,6 +88,6 @@ docs(task-guide): 인스턴스 생성 실패 트러블슈팅 가이드 추가
 
 | 대상 | 문제 | 정리 후 |
 | --- | --- | --- |
-| `Meetup!/` | 느낌표, 하위 디렉터리명이 한글·공백 | 협의 필요(게시 콘텐츠라 작성자가 여럿) |
+| `task-guide/ko/lb-...-troubleshooting_final.md`, `..._latest.md`, `lb_troubleshooting_flowchart.svg` | 언더스코어 | 작성자 확인 필요(`_final`·`_latest` 중 어느 것을 남길지 정해야 합니다) |
 
 `review/`는 게시된 경로이므로 정리 대상에서 제외합니다.
