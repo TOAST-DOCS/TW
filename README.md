@@ -85,10 +85,6 @@ docs(task-guide): 인스턴스 생성 실패 트러블슈팅 가이드 추가
 
 ## 정리 대상
 
-기본형에 맞지 않는 항목입니다. 순차적으로 정리합니다.
-
-| 대상 | 문제 | 정리 후 |
-| --- | --- | --- |
-| `task-guide/ko/lb-...-troubleshooting_final.md`, `..._latest.md`, `lb_troubleshooting_flowchart.svg` | 언더스코어 | 작성자 확인 필요(`_final`·`_latest` 중 어느 것을 남길지 정해야 합니다) |
+기본형에 맞지 않는 항목이 남아 있지 않습니다. 새로 발견되면 이 절에 적고 순차적으로 정리합니다.
 
 `review/`는 게시된 경로이므로 정리 대상에서 제외합니다.
