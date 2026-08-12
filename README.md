@@ -8,7 +8,7 @@ NHN Cloud 테크니컬 라이팅(TW) 파트의 작업 저장소입니다. 문서
 | --- | --- | --- |
 | `review-guide/` | 문서 검수 지침(스타일 가이드·용어 사전). 문서를 작성하는 조직과 공유 | [review-guide/README.md](review-guide/README.md) |
 | `ko/` `en/` `ja/` `zh/` | 사용자 가이드 사이트 배포용 디렉터리 구조 | |
-| `user-guide-templates/` | 가이드 작성 템플릿(최신) | |
+| `user-guide-templates/` | 가이드 작성 템플릿 | |
 | `task-guide/` | 트러블슈팅·How-to 가이드 원본 | [task-guide/README.md](task-guide/README.md) |
 | `review/` | 월별 사후 검수 대시보드와 원본(샘플) | [review/src/README.md](review/src/README.md) |
 | `report/` | 검수 자동화 성과 보고서 | [report/README.md](report/README.md) |
@@ -49,10 +49,6 @@ instance-creation-failed-flow.svg 이미지
 - `review/src/`의 스크립트와 데이터 파일 — `build_dashboard.py`, `inventory_2026-06.tsv` 등. Python 관례가 snake_case입니다.
 - `review/src/reviews/<저장소명>__<문서키>.md` — 더블 언더스코어(`__`)는 저장소명과 문서 키를 구분하는 표시입니다. 자세한 내용은 [review/src/README.md](review/src/README.md)를 참고하세요.
 - 널리 쓰이는 관례 이름 — `.github/`, `.nojekyll`, `README.md`, `CHANGELOG.md` 등. 도구나 관례가 정한 이름은 그대로 씁니다.
-
-### 게시된 경로는 바꾸지 않습니다
-
-`review/2026-06/` 같은 경로는 이미 게시되어 링크가 공유돼 있습니다. 이름을 바꾸면 기존 링크가 깨지므로 **게시 이력이 있는 경로는 그대로 둡니다.**
 
 ## 브랜치와 커밋
 
