@@ -14,7 +14,7 @@ NHN Cloud 테크니컬 라이팅(TW) 파트의 작업 저장소입니다. 문서
 | `report/` | 검수 자동화 성과 보고서 | [report/README.md](report/README.md) |
 | `meetup/` | NHN Cloud Meetup! 게시 콘텐츠 | [meetup/README.md](meetup/README.md) |
 
-## 네이밍 규칙
+## 이름 짓기 규칙
 
 ### 왜 정하나
 
