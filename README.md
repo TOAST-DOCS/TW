@@ -10,7 +10,7 @@ NHN Cloud 테크니컬 라이팅(TW) 파트의 작업 저장소입니다. 문서
 | `ko/` `en/` `ja/` `zh/` | 사용자 가이드 사이트 배포용 디렉터리 구조 | |
 | `user-guide-templates/` | 가이드 작성 템플릿(최신) | |
 | `task-guide/` | 트러블슈팅·How-to 가이드 원본 | [task-guide/README.md](task-guide/README.md) |
-| `review/` | 월별 사후 검수 대시보드와 원본 | [review/src/README.md](review/src/README.md) |
+| `review/` | 월별 사후 검수 대시보드와 원본(샘플) | [review/src/README.md](review/src/README.md) |
 | `report/` | 검수 자동화 성과 보고서 | [report/README.md](report/README.md) |
 | `meetup/` | NHN Cloud Meetup! 게시 콘텐츠 | [meetup/README.md](meetup/README.md) |
 
@@ -18,9 +18,9 @@ NHN Cloud 테크니컬 라이팅(TW) 파트의 작업 저장소입니다. 문서
 
 ### 왜 정하나
 
-- **경로가 곧 URL이 됩니다.** 이 저장소는 GitHub Pages로 게시됩니다(예: `https://toast-docs.github.io/TW/review/2026-06/`). 파일과 디렉터리 이름이 그대로 주소에 들어갑니다.
-- **조직 표준이 이미 하이픈입니다.** TOAST-DOCS 저장소 189개 중 139개가 하이픈을 쓰고 언더스코어는 1개뿐입니다. `Compute-Instance`, `Network-Load-Balancer`처럼 씁니다.
-- 여러 명이 함께 쓰므로, 매번 고민하지 않도록 기본형을 하나로 정합니다.
+- **경로가 URL이 됩니다.** 이 저장소는 GitHub Pages로 게시됩니다(예: `https://toast-docs.github.io/TW/review/2026-06/`). 파일과 디렉터리 이름이 그대로 주소에 들어갑니다.
+- **조직 표준이 하이픈입니다.** TOAST-DOCS 저장소 189개 중 139개가 하이픈을 쓰고 언더스코어는 1개뿐입니다. `Compute-Instance`, `Network-Load-Balancer`처럼 씁니다.
+- 여러 명이 함께 쓰므로, 매번 고민하지 않도록 운영 규칙을 정합니다.
 
 ### 기본형
 
@@ -46,9 +46,9 @@ instance-creation-failed-flow.svg 이미지
 
 다음은 의도적인 예외입니다. 바꾸지 않습니다.
 
-- **`review/src/`의 스크립트와 데이터 파일** — `build_dashboard.py`, `inventory_2026-06.tsv` 등. Python 생태계 관례가 snake_case입니다.
+- **`review/src/`의 스크립트와 데이터 파일** — `build_dashboard.py`, `inventory_2026-06.tsv` 등. Python 관례가 snake_case입니다.
 - **`review/src/reviews/<저장소명>__<문서키>.md`** — 더블 언더스코어(`__`)는 저장소명과 문서 키를 구분하는 표시입니다. 자세한 내용은 [review/src/README.md](review/src/README.md)를 참고하세요.
-- **널리 쓰이는 관례 이름** — `.github/`, `.nojekyll`, `README.md`, `CHANGELOG.md` 등. 도구나 생태계가 정한 이름은 그대로 씁니다.
+- **널리 쓰이는 관례 이름** — `.github/`, `.nojekyll`, `README.md`, `CHANGELOG.md` 등. 도구나 관례가 정한 이름은 그대로 씁니다.
 
 ### 게시된 경로는 바꾸지 않습니다
 
