@@ -2,8 +2,8 @@
 
 > **문서 목적**: NHN Cloud 기술 문서를 명확하고 일관되게 작성하기 위한 가이드라인  
 > **대상 독자**: 기술 문서 작성자, 개발자, 테크니컬 라이터  
-> **버전과 변경 이력**: [CHANGELOG.md](CHANGELOG.md)  
-> **사용 방법**: [README.md](README.md)
+> **버전과 변경 이력**: [CHANGELOG.md](https://github.com/TOAST-DOCS/TW/blob/master/review-guide/CHANGELOG.md)  
+> **사용 방법**: [README.md](https://github.com/TOAST-DOCS/TW/blob/master/review-guide/README.md)
 
 ---
 

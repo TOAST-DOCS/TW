@@ -11,8 +11,8 @@
 > - `약어` 열: 약어 사용 시 첫 등장에는 전체 용어와 함께 표기
 > - 서비스 용어는 문서 내에서 공식 명칭 그대로 표기 (임의 번역 금지)
 >
-> **버전과 변경 이력**: [CHANGELOG.md](CHANGELOG.md)
-> **사용 방법**: [README.md](README.md)
+> **버전과 변경 이력**: [CHANGELOG.md](https://github.com/TOAST-DOCS/TW/blob/master/review-guide/CHANGELOG.md)
+> **사용 방법**: [README.md](https://github.com/TOAST-DOCS/TW/blob/master/review-guide/README.md)
 
 ---
 
