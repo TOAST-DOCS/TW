@@ -14,8 +14,6 @@
 > **버전과 변경 이력**: [CHANGELOG.md](https://github.com/TOAST-DOCS/TW/blob/master/review-guide/CHANGELOG.md)
 > **사용 방법**: [README.md](https://github.com/TOAST-DOCS/TW/blob/master/review-guide/README.md)
 
----
-
 ## 1. NHN Cloud 서비스 용어
 
 NHN Cloud 플랫폼에서 제공하는 공식 서비스 명칭입니다. 서비스명은 각 언어 문서에서 아래 표기 기준을 준수합니다.
@@ -78,8 +76,6 @@ NHN Cloud 플랫폼에서 제공하는 공식 서비스 명칭입니다. 서비�
 | 프로듀서 |  |  |  | 토픽에 메시지를 송신하는 주체 | EasyQueue |
 | 컨슈머 |  |  |  | 특정 토픽을 구독하여 메시지를 수신하여 소비하는 주체 | EasyQueue |
 | 컨슈머 그룹 |  |  |  | 같은 토픽을 구독하는 복수 개의 소비자로 이루어진 그룹 | EasyQueue |
-
----
 
 ## 2. 일반 기술 용어
 
@@ -377,7 +373,5 @@ NHN Cloud 기술 문서에서 사용되는 일반 기술 용어의 공식 표기
 | 헬스 체크 | health check | ヘルスチェック |  | 설정한 값에 따라 Pool 내에 속한 엔드포인트에 대해 접근성을 확인하는 기능 |
 | 확장 | scale-out | 拡張 |  | Auto Scale 서비스에서 구동 인스턴스 수를 늘리는 것 |
 | 회원 | member | 会員 |  | NHN Cloud 서비스에 가입한 회원. 일반적으로 'NHN Cloud 계정'과 동의어 |
-
----
 
 *본 파일은 NHN Cloud 공식 용어집(NHN_Cloud_Glossary.xlsx)을 기반으로 생성되었습니다.*
