@@ -47,7 +47,7 @@
 
   <!-- 시작 -->
   <rect x="100" y="30" width="300" height="52" rx="8" fill="#125DE6"/>
-  <text x="250" y="62" font-size="15" font-weight="bold" fill="#FFFFFF" text-anchor="middle">증상: 인스턴스 ERROR 상태</text>
+  <text x="250" y="62" font-size="15" font-weight="bold" fill="#FFFFFF" text-anchor="middle">증상: 인스턴스 생성 실패</text>
 
   <!-- 판단 -->
   <g fill="#FFFFFF" stroke="#125DE6" stroke-width="1.6">
@@ -73,7 +73,7 @@
   </g>
   <g font-size="14.5" fill="#1A1A1A" text-anchor="middle">
     <text x="690" y="159"><tspan font-weight="bold" fill="#003087">원인 1</tspan>  리소스 정리 또는 쿼터 조정 신청</text>
-    <text x="690" y="283"><tspan font-weight="bold" fill="#003087">원인 2</tspan>  이미지 속성·포맷 확인</text>
+    <text x="690" y="283"><tspan font-weight="bold" fill="#003087">원인 2</tspan>  이미지 크기·속성 확인</text>
     <text x="690" y="407"><tspan font-weight="bold" fill="#003087">원인 4</tspan>  서비스·타입 확인 후 사전 협의 문의</text>
     <text x="690" y="531"><tspan font-weight="bold" fill="#003087">원인 3</tspan>  가용성 영역·타입 변경 또는 문의</text>
     <text x="250" y="638"><tspan font-weight="bold" fill="#003087">원인 5</tspan>  삭제 후 재생성,</text>
