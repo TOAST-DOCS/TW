@@ -1,0 +1,894 @@
+{
+  "repos": {
+    "kms": {
+      "lastSha": "2a23e0f85794bd3a2627631d77a8d348cf87303c",
+      "lastChecked": "2026-09-04T08:28:02.279Z",
+      "firstSeen": "2026-09-04T08:28:02.279Z"
+    },
+    "System-Monitoring": {
+      "lastSha": "7c7ef8e4eff2deea982be30bd5b0394de539a1dc",
+      "lastChecked": "2026-09-04T08:28:02.658Z",
+      "firstSeen": "2026-09-04T08:28:02.658Z"
+    },
+    "Infrastructure-Common": {
+      "lastSha": "b095c00320ed0c3cb7d32dff19a9c97b41292552",
+      "lastChecked": "2026-09-04T08:28:03.032Z",
+      "firstSeen": "2026-09-04T08:28:03.032Z"
+    },
+    "Compute-Instance": {
+      "lastSha": "4d2b70fab7173101d741b79309d854a05c35f128",
+      "lastChecked": "2026-09-04T08:28:03.473Z",
+      "firstSeen": "2026-09-04T08:28:03.473Z"
+    },
+    "Compute-Image": {
+      "lastSha": "1f9837f9cb4ac308780dfe5dd36b876c75696c5d",
+      "lastChecked": "2026-09-04T08:28:03.882Z",
+      "firstSeen": "2026-09-04T08:28:03.882Z"
+    },
+    "Compute-Auto-Scale": {
+      "lastSha": "0653bca0040247ba837635708705e63301c7898d",
+      "lastChecked": "2026-09-04T08:28:04.249Z",
+      "firstSeen": "2026-09-04T08:28:04.249Z"
+    },
+    "Compute-Monitoring": {
+      "lastSha": "d424d702db1523c3a204a9213315d8b0e2e6560f",
+      "lastChecked": "2026-09-04T08:28:04.657Z",
+      "firstSeen": "2026-09-04T08:28:04.657Z"
+    },
+    "Network-VPC": {
+      "lastSha": "98e5e4bc022744add7e64e592e80ffc1ae2d83ba",
+      "lastChecked": "2026-09-04T08:28:05.112Z",
+      "firstSeen": "2026-09-04T08:28:05.112Z"
+    },
+    "Network-Load-Balancer": {
+      "lastSha": "67f3cddf3d20fb384245d3f725c24974d8da3fd3",
+      "lastChecked": "2026-09-04T08:28:05.450Z",
+      "firstSeen": "2026-09-04T08:28:05.450Z"
+    },
+    "Network-Floating-IP": {
+      "lastSha": "bd8bb33e17fd75a417d06ab47bcb99e553415081",
+      "lastChecked": "2026-09-04T08:28:05.820Z",
+      "firstSeen": "2026-09-04T08:28:05.820Z"
+    },
+    "Storage-Block-Storage": {
+      "lastSha": "f2a6697442a52fb004670b8aca502e42c2ddf08a",
+      "lastChecked": "2026-09-04T08:28:06.386Z",
+      "firstSeen": "2026-09-04T08:28:06.386Z"
+    },
+    "Storage-NAS": {
+      "lastSha": "c3ab67d81ba04c341b718cc8c78f16bf35793c81",
+      "lastChecked": "2026-09-04T08:28:06.725Z",
+      "firstSeen": "2026-09-04T08:28:06.725Z"
+    },
+    "Storage-Object-Storage": {
+      "lastSha": "952cc241f9b46803222d86281ed547d1854e80b3",
+      "lastChecked": "2026-09-04T08:28:07.140Z",
+      "firstSeen": "2026-09-04T08:28:07.140Z"
+    },
+    "Storage-Backup": {
+      "lastSha": "ab93cdb417e9ed8a117da63714937e2a38cff7af",
+      "lastChecked": "2026-09-04T08:28:07.568Z",
+      "firstSeen": "2026-09-04T08:28:07.568Z"
+    },
+    "Gamebase": {
+      "lastSha": "ed5526200b55a6cfec327ad4bb25668c7917bfa2",
+      "lastChecked": "2026-09-04T08:28:07.945Z",
+      "firstSeen": "2026-09-04T08:28:07.945Z"
+    },
+    "Real-Time-Multiplayer": {
+      "lastSha": "b5e9cfa73ff5938dc4e4c8f2382b293f5e3a4644",
+      "lastChecked": "2026-09-04T08:28:08.354Z",
+      "firstSeen": "2026-09-04T08:28:08.354Z"
+    },
+    "Leaderboard": {
+      "lastSha": "b1345370a455d6bb4064d0d2db250a97ba10b407",
+      "lastChecked": "2026-09-04T08:28:08.795Z",
+      "firstSeen": "2026-09-04T08:28:08.795Z"
+    },
+    "Launching": {
+      "lastSha": "fbe542ef8d5af7372876147ff1bc983ce6cf8aa0",
+      "lastChecked": "2026-09-04T08:28:09.128Z",
+      "firstSeen": "2026-09-04T08:28:09.128Z"
+    },
+    "Smart-Downloader": {
+      "lastSha": "b79e7394aa832b465a3652ea1f6d8f1217dbd96b",
+      "lastChecked": "2026-09-04T08:28:09.542Z",
+      "firstSeen": "2026-09-04T08:28:09.542Z"
+    },
+    "Push": {
+      "lastSha": "afa6fc41144cb9991e26e0382cccb60daf2f62c4",
+      "lastChecked": "2026-09-04T08:28:09.978Z",
+      "firstSeen": "2026-09-04T08:28:09.978Z"
+    },
+    "SMS": {
+      "lastSha": "abe4c7050ea6e43d307e1a59585c54f5fe74c4e2",
+      "lastChecked": "2026-09-04T08:28:10.264Z",
+      "firstSeen": "2026-09-04T08:28:10.264Z"
+    },
+    "E-mail": {
+      "lastSha": "ef7c5dbf5005cf6605696cf455e86a0166e53245",
+      "lastChecked": "2026-09-04T08:28:10.652Z",
+      "firstSeen": "2026-09-04T08:28:10.652Z"
+    },
+    "RDS": {
+      "lastSha": "71ae5a5f22aa2be7c4774efad4fe47e73c7d5996",
+      "lastChecked": "2026-09-04T08:28:11.002Z",
+      "firstSeen": "2026-09-04T08:28:11.002Z"
+    },
+    "CDN": {
+      "lastSha": "19d6b3e6af9e5de115c473e9b3509ac025608440",
+      "lastChecked": "2026-09-04T08:28:11.448Z",
+      "firstSeen": "2026-09-04T08:28:11.448Z"
+    },
+    "Image": {
+      "lastSha": "b386cbb5051cee21345d71a3279e75fc7bccff98",
+      "lastChecked": "2026-09-04T08:28:11.852Z",
+      "firstSeen": "2026-09-04T08:28:11.852Z"
+    },
+    "AppGuard": {
+      "lastSha": "4959c15be5116ac72c912eb2c4a36744ad80aa17",
+      "lastChecked": "2026-09-04T08:28:12.193Z",
+      "firstSeen": "2026-09-04T08:28:12.193Z"
+    },
+    "Security-Check": {
+      "lastSha": "9ebc33b29905cb129256971bdef3c8a0e23c9dd5",
+      "lastChecked": "2026-09-04T08:28:12.632Z",
+      "firstSeen": "2026-09-04T08:28:12.632Z"
+    },
+    "Security-Monitoring": {
+      "lastSha": "a8f5088080d6a0c036416c9092acde019bf9935e",
+      "lastChecked": "2026-09-04T08:28:12.969Z",
+      "firstSeen": "2026-09-04T08:28:12.969Z"
+    },
+    "Mal-URL-Detector": {
+      "lastSha": "da8d5ae52837b5cd138b96128cbefacf39804e55",
+      "lastChecked": "2026-09-04T08:28:13.371Z",
+      "firstSeen": "2026-09-04T08:28:13.371Z"
+    },
+    "CAPTCHA": {
+      "lastSha": "c0c9586da2c37a3330e974591f96b9d4db0acd92",
+      "lastChecked": "2026-09-04T08:28:13.736Z",
+      "firstSeen": "2026-09-04T08:28:13.736Z"
+    },
+    "OTP": {
+      "lastSha": "f9797a963a68ea04001611dd10de33f895e14e1c",
+      "lastChecked": "2026-09-04T08:28:14.104Z",
+      "firstSeen": "2026-09-04T08:28:14.104Z"
+    },
+    "DBSafer": {
+      "lastSha": "781705b28dc9b84fa620bcc1a75700f03d608355",
+      "lastChecked": "2026-09-04T08:28:14.632Z",
+      "firstSeen": "2026-09-04T08:28:14.632Z"
+    },
+    "IAP": {
+      "lastSha": "24d8646750a89b69e8d285f263f8d0330db1547a",
+      "lastChecked": "2026-09-04T08:28:15.026Z",
+      "firstSeen": "2026-09-04T08:28:15.026Z"
+    },
+    "Mobile-Test": {
+      "lastSha": "740b1781e193793e6cc0e6dfa9b6f9f5f52fa288",
+      "lastChecked": "2026-09-04T08:28:15.328Z",
+      "firstSeen": "2026-09-04T08:28:15.328Z"
+    },
+    "Mobile-Device-Info": {
+      "lastSha": "93414e3b559f7f70179f79197289e88943961543",
+      "lastChecked": "2026-09-04T08:28:15.664Z",
+      "firstSeen": "2026-09-04T08:28:15.664Z"
+    },
+    "Deploy": {
+      "lastSha": "fa723ec4cddc7bca15680ae05bc26c6344c6b6e3",
+      "lastChecked": "2026-09-04T08:28:16.033Z",
+      "firstSeen": "2026-09-04T08:28:16.033Z"
+    },
+    "App-Analytics": {
+      "lastSha": "68405f065ade65c5060d93f5e8b0f4cc4c426124",
+      "lastChecked": "2026-09-04T08:28:16.419Z",
+      "firstSeen": "2026-09-04T08:28:16.419Z"
+    },
+    "Maps": {
+      "lastSha": "acb13e6ab6e39fc3eec8a06963b1bb44312facc1",
+      "lastChecked": "2026-09-04T08:28:16.804Z",
+      "firstSeen": "2026-09-04T08:28:16.804Z"
+    },
+    "Spell-Checker": {
+      "lastSha": "d5bb8e4fb5bc579943a274661f940234458d4bb8",
+      "lastChecked": "2026-09-04T08:28:17.167Z",
+      "firstSeen": "2026-09-04T08:28:17.167Z"
+    },
+    "ROLE": {
+      "lastSha": "39466d797849e2cd39f2986a882d5d2d75f93472",
+      "lastChecked": "2026-09-04T08:28:17.519Z",
+      "firstSeen": "2026-09-04T08:28:17.519Z"
+    },
+    "API-Gateway": {
+      "lastSha": "1c138a9299933bb099589775d7206e6e10610243",
+      "lastChecked": "2026-09-04T08:28:17.932Z",
+      "firstSeen": "2026-09-04T08:28:17.932Z"
+    },
+    "RTCS": {
+      "lastSha": "0f52950baccaf19c43b26c69d1b85c95408a72d8",
+      "lastChecked": "2026-09-04T08:28:18.322Z",
+      "firstSeen": "2026-09-04T08:28:18.322Z"
+    },
+    "CS-BBS": {
+      "lastSha": "05f820f4add7825987389a900c782dad0513cba3",
+      "lastChecked": "2026-09-04T08:28:18.728Z",
+      "firstSeen": "2026-09-04T08:28:18.728Z"
+    },
+    "Corporations-Search": {
+      "lastSha": "40f79f1861d9be553808bbebfd20c2fb31d0ed22",
+      "lastChecked": "2026-09-04T08:28:19.061Z",
+      "firstSeen": "2026-09-04T08:28:19.061Z"
+    },
+    "Address-Search": {
+      "lastSha": "f5448f482ee0a32024f4ad460c87e8efd648e9b3",
+      "lastChecked": "2026-09-04T08:28:19.401Z",
+      "firstSeen": "2026-09-04T08:28:19.401Z"
+    },
+    "Managed": {
+      "lastSha": "f4756f13f941afb970479cdc912da6db9c745411",
+      "lastChecked": "2026-09-04T08:28:19.798Z",
+      "firstSeen": "2026-09-04T08:28:19.798Z"
+    },
+    "ERP-Communication-Board": {
+      "lastSha": "b7fde4d2ea919de32da0da44014acc344de69e5b",
+      "lastChecked": "2026-09-04T08:28:20.172Z",
+      "firstSeen": "2026-09-04T08:28:20.172Z"
+    },
+    "ERP-Workflow": {
+      "lastSha": "29ba8c5cf0d7c4a2e060bf60863f7c8612f3c470",
+      "lastChecked": "2026-09-04T08:28:20.507Z",
+      "firstSeen": "2026-09-04T08:28:20.507Z"
+    },
+    "ERP-Human-Resource": {
+      "lastSha": "13d158f4887f185c150e3dea2c7179aac857878c",
+      "lastChecked": "2026-09-04T08:28:20.877Z",
+      "firstSeen": "2026-09-04T08:28:20.877Z"
+    },
+    "ERP-Finance": {
+      "lastSha": "8e60e34645484ac02371ea9d36ba2d2c36431b71",
+      "lastChecked": "2026-09-04T08:28:21.286Z",
+      "firstSeen": "2026-09-04T08:28:21.286Z"
+    },
+    "Dooray-Project": {
+      "lastSha": "03e4e6eb43d42338d0fc6601b764be40d4011e4a",
+      "lastChecked": "2026-09-04T08:28:21.672Z",
+      "firstSeen": "2026-09-04T08:28:21.672Z"
+    },
+    "Dooray-Messenger": {
+      "lastSha": "1f43221459566e8c9e235161e9317e936aa17ade",
+      "lastChecked": "2026-09-04T08:28:22.028Z",
+      "firstSeen": "2026-09-04T08:28:22.028Z"
+    },
+    "Dooray-Mail": {
+      "lastSha": "519eb270027b682dca8f3fd684fd5362c712b1b2",
+      "lastChecked": "2026-09-04T08:28:22.353Z",
+      "firstSeen": "2026-09-04T08:28:22.353Z"
+    },
+    "Dooray-Calendar": {
+      "lastSha": "23bb47148eccfcdc3fba64f87d88d6434abd2106",
+      "lastChecked": "2026-09-04T08:28:22.733Z",
+      "firstSeen": "2026-09-04T08:28:22.733Z"
+    },
+    "Dooray-Drive": {
+      "lastSha": "3547058c0d4d4990bdd4f366eb2ace085420f5cb",
+      "lastChecked": "2026-09-04T08:28:23.057Z",
+      "firstSeen": "2026-09-04T08:28:23.057Z"
+    },
+    "Dooray-Contacts": {
+      "lastSha": "9ce04ec22f34e022c205e1489aad71f3ec29921c",
+      "lastChecked": "2026-09-04T08:28:23.387Z",
+      "firstSeen": "2026-09-04T08:28:23.387Z"
+    },
+    "Contact-Center": {
+      "lastSha": "67df8804921844af18a97234aec763f4f04f4f7e",
+      "lastChecked": "2026-09-04T08:28:23.796Z",
+      "firstSeen": "2026-09-04T08:28:23.797Z"
+    },
+    "TOAST-bill": {
+      "lastSha": "609904ef1f0faf005a4c887d458dd3d0615cc0c6",
+      "lastChecked": "2026-09-04T08:28:24.163Z",
+      "firstSeen": "2026-09-04T08:28:24.163Z"
+    },
+    "Log-Crash-Search": {
+      "lastSha": "b190bfd663d651af35b7ca6b8ae9f55d4579d259",
+      "lastChecked": "2026-09-04T08:28:24.485Z",
+      "firstSeen": "2026-09-04T08:28:24.485Z"
+    },
+    "Compute": {
+      "lastSha": "6550cd37b1d9a1bca73c11fa650154bdb7fd4139",
+      "lastChecked": "2026-09-04T08:28:24.875Z",
+      "firstSeen": "2026-09-04T08:28:24.875Z"
+    },
+    "Network": {
+      "lastSha": "5633a20cf1c5fdb36594f8276032ff3a06e5211f",
+      "lastChecked": "2026-09-04T08:28:25.176Z",
+      "firstSeen": "2026-09-04T08:28:25.176Z"
+    },
+    "autocomplete": {
+      "lastSha": "567d1c94a26afc32edd02991320081e57b519c88",
+      "lastChecked": "2026-09-04T08:28:25.557Z",
+      "firstSeen": "2026-09-04T08:28:25.557Z"
+    },
+    "Cloud-Search": {
+      "lastSha": "48c891d46841478bf6afe407b77fa6879882339d",
+      "lastChecked": "2026-09-04T08:28:25.913Z",
+      "firstSeen": "2026-09-04T08:28:25.913Z"
+    },
+    "ToastUI-Chart": {
+      "lastSha": "472b4fd4f8636de80b25d3806ce0b532797576a2",
+      "lastChecked": "2026-09-04T08:28:26.276Z",
+      "firstSeen": "2026-09-04T08:28:26.276Z"
+    },
+    "ToastUI-Editor": {
+      "lastSha": "7de216fb0f147ac6fe8e2233d24be449cbe5fabc",
+      "lastChecked": "2026-09-04T08:28:26.652Z",
+      "firstSeen": "2026-09-04T08:28:26.652Z"
+    },
+    "ToastUI-Grid": {
+      "lastSha": "92c3738678fc450d2c2329e2d2d91f5bd00ade1b",
+      "lastChecked": "2026-09-04T08:28:27.031Z",
+      "firstSeen": "2026-09-04T08:28:27.031Z"
+    },
+    "HASTE": {
+      "lastSha": "ff2fc57b2995bf07f62d5f3f2ea0d28f13b831f9",
+      "lastChecked": "2026-09-04T08:28:27.334Z",
+      "firstSeen": "2026-09-04T08:28:27.334Z"
+    },
+    "Dooray": {
+      "lastSha": "98517d37b7ce28feef37db6bfccddb8c6476f8da",
+      "lastChecked": "2026-09-04T08:28:27.679Z",
+      "firstSeen": "2026-09-04T08:28:27.679Z"
+    },
+    "Vaccine": {
+      "lastSha": "35092e4716de4e1085e728b95141b1de411d11b1",
+      "lastChecked": "2026-09-04T08:28:28.015Z",
+      "firstSeen": "2026-09-04T08:28:28.015Z"
+    },
+    "WEB-Firewall": {
+      "lastSha": "07bc87191112f9e62a07837d149fa6699286dfa8",
+      "lastChecked": "2026-09-04T08:28:28.491Z",
+      "firstSeen": "2026-09-04T08:28:28.491Z"
+    },
+    "Alimtalk": {
+      "lastSha": "b3b98398cab487ea9b14ffdea70e7a555ddf8193",
+      "lastChecked": "2026-09-04T08:28:28.875Z",
+      "firstSeen": "2026-09-04T08:28:28.875Z"
+    },
+    "Compute-Monitoring-v2": {
+      "lastSha": "83088ff1e90c3800bb3d1778b2a7ec3fcae3ef5a",
+      "lastChecked": "2026-09-04T08:28:29.186Z",
+      "firstSeen": "2026-09-04T08:28:29.186Z"
+    },
+    "Database-MySQL": {
+      "lastSha": "b7322188192f097d7ad4d37ced4fc25b88740659",
+      "lastChecked": "2026-09-04T08:28:29.568Z",
+      "firstSeen": "2026-09-04T08:28:29.568Z"
+    },
+    "Database-MS-SQL": {
+      "lastSha": "ee8ef61e2b804ce2f161a8b9dd926584c857115a",
+      "lastChecked": "2026-09-04T08:28:29.871Z",
+      "firstSeen": "2026-09-04T08:28:29.871Z"
+    },
+    "CloudTrail": {
+      "lastSha": "ebd49f992bd0e7a0b5b7ecea15e6d4359e445c0e",
+      "lastChecked": "2026-09-04T08:28:30.358Z",
+      "firstSeen": "2026-09-04T08:28:30.358Z"
+    },
+    "EasyCache": {
+      "lastSha": "809ff15d463545a25b3c6a63cef2c501d7cf48fb",
+      "lastChecked": "2026-09-04T08:28:30.684Z",
+      "firstSeen": "2026-09-04T08:28:30.684Z"
+    },
+    "Dooray-Wiki": {
+      "lastSha": "5e2f252bb39b146a650368cdc0b3f9016d2c9222",
+      "lastChecked": "2026-09-04T08:28:31.014Z",
+      "firstSeen": "2026-09-04T08:28:31.014Z"
+    },
+    "Network-DNSPLUS": {
+      "lastSha": "7e3b1f49d657cf655d1aea8401adcbece0301f67",
+      "lastChecked": "2026-09-04T08:28:31.393Z",
+      "firstSeen": "2026-09-04T08:28:31.393Z"
+    },
+    "Service-Monitoring": {
+      "lastSha": "0fcd266b15b1a7db1725271352daa60e52760bbc",
+      "lastChecked": "2026-09-04T08:28:31.681Z",
+      "firstSeen": "2026-09-04T08:28:31.681Z"
+    },
+    "Compute-GPU": {
+      "lastSha": "d96a259c551789ab5a231fb9cd4dc3d9ff5c87fd",
+      "lastChecked": "2026-09-04T08:28:32.063Z",
+      "firstSeen": "2026-09-04T08:28:32.063Z"
+    },
+    "TOAST-Cloud": {
+      "lastSha": "2c1cbec0062c6e811063eb409857623ca8fe5e15",
+      "lastChecked": "2026-09-04T08:28:32.413Z",
+      "firstSeen": "2026-09-04T08:28:32.413Z"
+    },
+    "Certificate-Manager": {
+      "lastSha": "7ac2a8485e157aba7f5ddbd4135da05097d2a2b0",
+      "lastChecked": "2026-09-04T08:28:32.726Z",
+      "firstSeen": "2026-09-04T08:28:32.726Z"
+    },
+    "Network-IPSec-VPN": {
+      "lastSha": "927318f3eafdc23f769587962537a3f8074caee8",
+      "lastChecked": "2026-09-04T08:28:33.068Z",
+      "firstSeen": "2026-09-04T08:28:33.068Z"
+    },
+    "Security_VPN": {
+      "lastSha": "987e81af98dfa7cb87fdc9a90e106a6e52f6d017",
+      "lastChecked": "2026-09-04T08:28:33.424Z",
+      "firstSeen": "2026-09-04T08:28:33.424Z"
+    },
+    "Security-DataCrypto": {
+      "lastSha": "8bc4fa570569d7753399f2803bd4dc153609b9b5",
+      "lastChecked": "2026-09-04T08:28:33.749Z",
+      "firstSeen": "2026-09-04T08:28:33.749Z"
+    },
+    "RDS-FOR-SQLSERVER": {
+      "lastSha": "6c9472f9ddbeef3004ae75f04bbd85da0237c2ee",
+      "lastChecked": "2026-09-04T08:28:34.028Z",
+      "firstSeen": "2026-09-04T08:28:34.028Z"
+    },
+    "Container-Container-Registry": {
+      "lastSha": "367364a1e2a0674570b22564639bbf59490ef0fb",
+      "lastChecked": "2026-09-04T08:28:34.358Z",
+      "firstSeen": "2026-09-04T08:28:34.358Z"
+    },
+    "Container-Kubernetes": {
+      "lastSha": "cbfd0d5fc1835624cdfd8591d62fb67220b18bb4",
+      "lastChecked": "2026-09-04T08:28:34.682Z",
+      "firstSeen": "2026-09-04T08:28:34.682Z"
+    },
+    "Network-ACL": {
+      "lastSha": "0950217ba299fb72ff9a7921aec6419b72b797a2",
+      "lastChecked": "2026-09-04T08:28:35.056Z",
+      "firstSeen": "2026-09-04T08:28:35.056Z"
+    },
+    "Server-Security-Check": {
+      "lastSha": "9e0a37610fcf77484a692ca662e448602767a4c3",
+      "lastChecked": "2026-09-04T08:28:35.410Z",
+      "firstSeen": "2026-09-04T08:28:35.410Z"
+    },
+    "Notification": {
+      "lastSha": "b5c796cb5a44edb1bfb8964f218aaafe2646e8d9",
+      "lastChecked": "2026-09-04T08:28:35.776Z",
+      "firstSeen": "2026-09-04T08:28:35.776Z"
+    },
+    "GameAnvil": {
+      "lastSha": "1ce7db5571cb6a77ec8e48e453742e6fe768d7c5",
+      "lastChecked": "2026-09-04T08:28:36.070Z",
+      "firstSeen": "2026-09-04T08:28:36.070Z"
+    },
+    "NHN-Compliance": {
+      "lastSha": "b3c15a166b255df5b17bb5d961bae15e3ba6dc79",
+      "lastChecked": "2026-09-04T08:28:36.923Z",
+      "firstSeen": "2026-09-04T08:28:36.923Z"
+    },
+    "Database-PostgreSQL": {
+      "lastSha": "2f57f359055df2851964127298d0ff1e59c3e9be",
+      "lastChecked": "2026-09-04T08:28:37.263Z",
+      "firstSeen": "2026-09-04T08:28:37.263Z"
+    },
+    "Storage-Data-Transporter": {
+      "lastSha": "dd838c249a39df1118f43add48025f0d8af5c639",
+      "lastChecked": "2026-09-04T08:28:37.571Z",
+      "firstSeen": "2026-09-04T08:28:37.571Z"
+    },
+    "Face-Recognition": {
+      "lastSha": "38cee9b0a4dfac33ed8fdee83902c135131a0d17",
+      "lastChecked": "2026-09-04T08:28:37.863Z",
+      "firstSeen": "2026-09-04T08:28:37.863Z"
+    },
+    "ShortURL": {
+      "lastSha": "52657cf1ee595e6329f395db237cbad00a381340",
+      "lastChecked": "2026-09-04T08:28:38.669Z",
+      "firstSeen": "2026-09-04T08:28:38.669Z"
+    },
+    "NAT-Instance": {
+      "lastSha": "025644ea34ad087e42bd97bcb430f54334fd3543",
+      "lastChecked": "2026-09-04T08:28:39.000Z",
+      "firstSeen": "2026-09-04T08:28:39.000Z"
+    },
+    "DDoS-Guard": {
+      "lastSha": "a629adacc4dd966f2ff4d65f4379aad2e6537221",
+      "lastChecked": "2026-09-04T08:28:39.313Z",
+      "firstSeen": "2026-09-04T08:28:39.314Z"
+    },
+    "pipeline": {
+      "lastSha": "b3a3e88949ed3dfdaf9f28c6fda5c35e6972e421",
+      "lastChecked": "2026-09-04T08:28:39.662Z",
+      "firstSeen": "2026-09-04T08:28:39.662Z"
+    },
+    "Network-Interface": {
+      "lastSha": "c4d7e955f14a69ef42509f0e9157e86654c6cf25",
+      "lastChecked": "2026-09-04T08:28:39.979Z",
+      "firstSeen": "2026-09-04T08:28:39.979Z"
+    },
+    "Floating-IP": {
+      "lastSha": "76316d3ff639003eeb8850b323f1980695eb3584",
+      "lastChecked": "2026-09-04T08:28:40.334Z",
+      "firstSeen": "2026-09-04T08:28:40.334Z"
+    },
+    "Security-Groups": {
+      "lastSha": "0825a81702fee5d7f7be4a33b18005240c988baf",
+      "lastChecked": "2026-09-04T08:28:40.663Z",
+      "firstSeen": "2026-09-04T08:28:40.663Z"
+    },
+    "-Deprecated-CheatingDetection": {
+      "lastSha": "d0d22e90d0d5dcd60e7a731d6fae611d2f9fe122",
+      "lastChecked": "2026-09-04T08:28:41.000Z",
+      "firstSeen": "2026-09-04T08:28:41.000Z"
+    },
+    "cheating-detection": {
+      "lastSha": "cbfa7239a330c4c01ea914965c27aa41a1288c50",
+      "lastChecked": "2026-09-04T08:28:41.352Z",
+      "firstSeen": "2026-09-04T08:28:41.352Z"
+    },
+    "SIEM": {
+      "lastSha": "1e1d471bd41190936c76beb3cf904a77a50f77e6",
+      "lastChecked": "2026-09-04T08:28:41.741Z",
+      "firstSeen": "2026-09-04T08:28:41.741Z"
+    },
+    "Compute-Instance-Template": {
+      "lastSha": "ebc8052d9a4f9901033e3b9c9ee697cc5c591cad",
+      "lastChecked": "2026-09-04T08:28:42.093Z",
+      "firstSeen": "2026-09-04T08:28:42.093Z"
+    },
+    "AI-Fashion": {
+      "lastSha": "f018fda9e5d9c3951d33d8684c896b9c5eb45fbb",
+      "lastChecked": "2026-09-04T08:28:42.377Z",
+      "firstSeen": "2026-09-04T08:28:42.377Z"
+    },
+    "-Deprecated-Document-OCR": {
+      "lastSha": "ecd7a089b38b181b9a6dec70bd08cd44e1ac8775",
+      "lastChecked": "2026-09-04T08:28:42.733Z",
+      "firstSeen": "2026-09-04T08:28:42.733Z"
+    },
+    "-Deprecated-CarPlate-OCR": {
+      "lastSha": "377edf002a211bb9ec9982165a8518db8b5d4ed8",
+      "lastChecked": "2026-09-04T08:28:43.090Z",
+      "firstSeen": "2026-09-04T08:28:43.090Z"
+    },
+    "Compute-Image-Builder": {
+      "lastSha": "6d3782caf0b1b2f15cdb18d8809cf77f378d76b6",
+      "lastChecked": "2026-09-04T08:28:43.545Z",
+      "firstSeen": "2026-09-04T08:28:43.545Z"
+    },
+    "ML-Deep-Learning-Instance": {
+      "lastSha": "0de7bf50a1029c09940990bd3c9509bfe92589ea",
+      "lastChecked": "2026-09-04T08:28:43.869Z",
+      "firstSeen": "2026-09-04T08:28:43.869Z"
+    },
+    "Document-Recognizer": {
+      "lastSha": "0b68dac9e8e167a930d034993c14ea7298888363",
+      "lastChecked": "2026-09-04T08:28:44.236Z",
+      "firstSeen": "2026-09-04T08:28:44.236Z"
+    },
+    "Vehicle-Plate-Recognizer": {
+      "lastSha": "2a672749f5f3ba7747754ffbad4708cefcd1c265",
+      "lastChecked": "2026-09-04T08:28:44.634Z",
+      "firstSeen": "2026-09-04T08:28:44.634Z"
+    },
+    "Container-Container-Registry-v2": {
+      "lastSha": "9db1dec32b09533444657271ccbf0470af606944",
+      "lastChecked": "2026-09-04T08:28:44.973Z",
+      "firstSeen": "2026-09-04T08:28:44.973Z"
+    },
+    "RDS-FOR-MARIADB": {
+      "lastSha": "1713e3acd4ae4148096becfef87d6f203829bf75",
+      "lastChecked": "2026-09-04T08:28:45.332Z",
+      "firstSeen": "2026-09-04T08:28:45.332Z"
+    },
+    "cubrid-instance-guide": {
+      "lastSha": "547bd6658f0b51c96c5b1b77636b9fe41a956de1",
+      "lastChecked": "2026-09-04T08:28:45.714Z",
+      "firstSeen": "2026-09-04T08:28:45.714Z"
+    },
+    "GameParts": {
+      "lastSha": "6ea465cc63b3c440edc21ebb271feb4f092d8720",
+      "lastChecked": "2026-09-04T08:28:46.023Z",
+      "firstSeen": "2026-09-04T08:28:46.023Z"
+    },
+    "Database-MariaDB": {
+      "lastSha": "3dec59d256a43b86f44ae58f084858cf2b63a90d",
+      "lastChecked": "2026-09-04T08:28:46.364Z",
+      "firstSeen": "2026-09-04T08:28:46.364Z"
+    },
+    "GameStarter": {
+      "lastSha": "9f1574b8db7e84abbd374ef1802d1f1f6b27fa60",
+      "lastChecked": "2026-09-04T08:28:46.669Z",
+      "firstSeen": "2026-09-04T08:28:46.669Z"
+    },
+    "TTS": {
+      "lastSha": "3944089ef00415aa94350b5f98252d651bcc7f57",
+      "lastChecked": "2026-09-04T08:28:46.980Z",
+      "firstSeen": "2026-09-04T08:28:46.980Z"
+    },
+    "tibero-instance-guide": {
+      "lastSha": "4bfd6007a25ed8d3e3f1fa9e9e607ecde6477844",
+      "lastChecked": "2026-09-04T08:28:47.316Z",
+      "firstSeen": "2026-09-04T08:28:47.316Z"
+    },
+    "STT": {
+      "lastSha": "d2873c4c585a75cf3f60ead761e5fa8fe1dc097f",
+      "lastChecked": "2026-09-04T08:28:47.721Z",
+      "firstSeen": "2026-09-04T08:28:47.721Z"
+    },
+    "JEUS-Instance": {
+      "lastSha": "f7fc0ae4fd6193b06bc6e2616416efc8333588c0",
+      "lastChecked": "2026-09-04T08:28:48.118Z",
+      "firstSeen": "2026-09-04T08:28:48.118Z"
+    },
+    "WebtoB-Instance": {
+      "lastSha": "50b960881560893a9758d0791de65e424692979b",
+      "lastChecked": "2026-09-04T08:28:48.461Z",
+      "firstSeen": "2026-09-04T08:28:48.461Z"
+    },
+    "Compute-VirtualDesktop": {
+      "lastSha": "0a5c98ff9dcccbb76d32a2b16dc6378ce3d204dd",
+      "lastChecked": "2026-09-04T08:28:48.813Z",
+      "firstSeen": "2026-09-04T08:28:48.813Z"
+    },
+    "Internet-Gateway": {
+      "lastSha": "7385ce16b075cec2330b0da93ba51b4033de82ee",
+      "lastChecked": "2026-09-04T08:28:49.158Z",
+      "firstSeen": "2026-09-04T08:28:49.158Z"
+    },
+    "VPN-Gateway": {
+      "lastSha": "841e3aea147d921158e0a3622fbf50f817cd97ac",
+      "lastChecked": "2026-09-04T08:28:49.465Z",
+      "firstSeen": "2026-09-04T08:28:49.465Z"
+    },
+    "Service-Gateway": {
+      "lastSha": "4a84b387b5113a183a534fe83c8fabd78d71ad07",
+      "lastChecked": "2026-09-04T08:28:49.791Z",
+      "firstSeen": "2026-09-04T08:28:49.791Z"
+    },
+    "Colocation-Gateway": {
+      "lastSha": "18b1b0f73b717553f9756b315bc02551c85cb33b",
+      "lastChecked": "2026-09-04T08:28:50.158Z",
+      "firstSeen": "2026-09-04T08:28:50.158Z"
+    },
+    "Peering-Gateway": {
+      "lastSha": "57d07ccd1715dad74197c2f539090f4b8064a15d",
+      "lastChecked": "2026-09-04T08:28:50.499Z",
+      "firstSeen": "2026-09-04T08:28:50.499Z"
+    },
+    "NAT-Gateway": {
+      "lastSha": "4639a3009dc88e3f89d18e21e915a92e765b1174",
+      "lastChecked": "2026-09-04T08:28:50.830Z",
+      "firstSeen": "2026-09-04T08:28:50.830Z"
+    },
+    "Storage-Online-NAS": {
+      "lastSha": "7a80a39f1430d6f2ea48974b1d86e50bca7db5dc",
+      "lastChecked": "2026-09-04T08:28:51.496Z",
+      "firstSeen": "2026-09-04T08:28:51.496Z"
+    },
+    "DirectConnect": {
+      "lastSha": "65349031eb516ba7d0f7cb857eda34cee5865650",
+      "lastChecked": "2026-09-04T08:28:51.972Z",
+      "firstSeen": "2026-09-04T08:28:51.972Z"
+    },
+    "EasyMaker": {
+      "lastSha": "cb2d0de64e442a3f699110dae57f4390218aeb68",
+      "lastChecked": "2026-09-04T08:28:52.293Z",
+      "firstSeen": "2026-09-04T08:28:52.293Z"
+    },
+    "GameTalk": {
+      "lastSha": "94786d8f48adfbd752ab700557ba085983960705",
+      "lastChecked": "2026-09-04T08:28:52.633Z",
+      "firstSeen": "2026-09-04T08:28:52.633Z"
+    },
+    "ResourceWatcher": {
+      "lastSha": "98306cc34fecc543f1a2bcd0865af44b36feb5ff",
+      "lastChecked": "2026-09-04T08:28:52.977Z",
+      "firstSeen": "2026-09-04T08:28:52.977Z"
+    },
+    "Webshell-Threat-Detector": {
+      "lastSha": "907b4785ddb5209c878b5fe0b2692802d8d31bc1",
+      "lastChecked": "2026-09-04T08:28:53.331Z",
+      "firstSeen": "2026-09-04T08:28:53.331Z"
+    },
+    "Data-Query": {
+      "lastSha": "d5cdfb1581e167196117c717b62ecaf506e65ca7",
+      "lastChecked": "2026-09-04T08:28:53.644Z",
+      "firstSeen": "2026-09-04T08:28:53.644Z"
+    },
+    "Data-Flow": {
+      "lastSha": "aff348fcbd923811068152fe2e6ebd5817a380fb",
+      "lastChecked": "2026-09-04T08:28:53.968Z",
+      "firstSeen": "2026-09-04T08:28:53.968Z"
+    },
+    "Container-Container-Service": {
+      "lastSha": "cb8052be904a1c9391fc965ce427c5cf01c61af9",
+      "lastChecked": "2026-09-04T08:28:54.256Z",
+      "firstSeen": "2026-09-04T08:28:54.256Z"
+    },
+    "File-Crafter": {
+      "lastSha": "dae2e20a96ad92b774107907187eded38c43544e",
+      "lastChecked": "2026-09-04T08:28:54.549Z",
+      "firstSeen": "2026-09-04T08:28:54.549Z"
+    },
+    "Word-Suggestion": {
+      "lastSha": "c9186b4e82212c1c8fd8040144ccb5561b156023",
+      "lastChecked": "2026-09-04T08:28:54.870Z",
+      "firstSeen": "2026-09-04T08:28:54.870Z"
+    },
+    "Traffic-Mirroring": {
+      "lastSha": "cdab5a19525e579ffa85387e8555e173f83da805",
+      "lastChecked": "2026-09-04T08:28:55.270Z",
+      "firstSeen": "2026-09-04T08:28:55.270Z"
+    },
+    "OCR": {
+      "lastSha": "565d6988f4b25c2b8ecb09709170ea9abbfad9b3",
+      "lastChecked": "2026-09-04T08:28:55.593Z",
+      "firstSeen": "2026-09-04T08:28:55.593Z"
+    },
+    "Security-Advisor": {
+      "lastSha": "86382b89507b95a54fd647bba734a45cec711319",
+      "lastChecked": "2026-09-04T08:28:55.935Z",
+      "firstSeen": "2026-09-04T08:28:55.935Z"
+    },
+    "DummyService": {
+      "lastSha": "cbc393387bdd90a3ea5e7e2e64786fe2beac4129",
+      "lastChecked": "2026-09-04T08:28:56.283Z",
+      "firstSeen": "2026-09-04T08:28:56.283Z"
+    },
+    "RCS-Bizmessage": {
+      "lastSha": "e357b194c200cbe18c8551a5dddd59fff9f051ce",
+      "lastChecked": "2026-09-04T08:28:56.668Z",
+      "firstSeen": "2026-09-04T08:28:56.668Z"
+    },
+    "Transit-Hub": {
+      "lastSha": "56c96b4f78f14e41c7cb07f6eb681dc477d454f5",
+      "lastChecked": "2026-09-04T08:28:56.991Z",
+      "firstSeen": "2026-09-04T08:28:56.991Z"
+    },
+    "Private-DNS": {
+      "lastSha": "8d4fcf85f1c1d6adfedc5513299facf931d3d570",
+      "lastChecked": "2026-09-04T08:28:57.311Z",
+      "firstSeen": "2026-09-04T08:28:57.311Z"
+    },
+    "Compute-Baremetal": {
+      "lastSha": "dea8a56e4cd6af98f020d6dd16549676bff947d9",
+      "lastChecked": "2026-09-04T08:28:57.657Z",
+      "firstSeen": "2026-09-04T08:28:57.657Z"
+    },
+    "Network-Firewall": {
+      "lastSha": "428adcd5954a818adbae0e74f46ca8ae16f48aba",
+      "lastChecked": "2026-09-04T08:28:57.965Z",
+      "firstSeen": "2026-09-04T08:28:57.965Z"
+    },
+    "Pose-Estimation": {
+      "lastSha": "5dc5e05cb176b0abd52c3b7b9b82e3f20494b52b",
+      "lastChecked": "2026-09-04T08:28:58.329Z",
+      "firstSeen": "2026-09-04T08:28:58.329Z"
+    },
+    "RDS-FOR-POSTGRESQL": {
+      "lastSha": "527d959752f67d3ba66603cf64d55202d352239b",
+      "lastChecked": "2026-09-04T08:29:01.570Z",
+      "firstSeen": "2026-09-04T08:29:01.570Z"
+    },
+    "Monitoring-Cloud-Monitoring": {
+      "lastSha": "454b357292c5fc8c9c74391e2b1421cb03d47855",
+      "lastChecked": "2026-09-04T08:29:01.959Z",
+      "firstSeen": "2026-09-04T08:29:01.959Z"
+    },
+    "TW": {
+      "lastSha": "2733e70dbbe51dbe0520be6d9403cec828cf6c5d",
+      "lastChecked": "2026-09-04T08:29:02.296Z",
+      "firstSeen": "2026-09-04T08:29:02.296Z"
+    },
+    "NHNBastion": {
+      "lastSha": "9438f17f4ee93b319368ce7358af66f8111676bc",
+      "lastChecked": "2026-09-04T08:29:02.704Z",
+      "firstSeen": "2026-09-04T08:29:02.704Z"
+    },
+    "Network-Flow-Log": {
+      "lastSha": "c78996120df072a252a13d380cb47d3447332d99",
+      "lastChecked": "2026-09-04T08:29:03.092Z",
+      "firstSeen": "2026-09-04T08:29:03.092Z"
+    },
+    "Face-Liveness": {
+      "lastSha": "a63a74fb60a80521cd11b265f49ab0c2890e9261",
+      "lastChecked": "2026-09-04T08:29:03.447Z",
+      "firstSeen": "2026-09-04T08:29:03.447Z"
+    },
+    "notification-hub": {
+      "lastSha": "214189dce3aeea04b1e69f0ccf03dcccc39e4b66",
+      "lastChecked": "2026-09-04T08:29:03.723Z",
+      "firstSeen": "2026-09-04T08:29:03.723Z"
+    },
+    "Cloud-Scheduler": {
+      "lastSha": "744077e15242ac5f04b9848fe4989f758afb19f5",
+      "lastChecked": "2026-09-04T08:29:04.069Z",
+      "firstSeen": "2026-09-04T08:29:04.069Z"
+    },
+    "Vertias-Backup": {
+      "lastSha": "31b282b9decdb2c8ac2510fa3a3c97f2238e7a72",
+      "lastChecked": "2026-09-04T08:29:04.446Z",
+      "firstSeen": "2026-09-04T08:29:04.446Z"
+    },
+    "Storage-Storage-Gateway": {
+      "lastSha": "c08a74ef10e6618a79df2a83a1e7cf6101c3462b",
+      "lastChecked": "2026-09-04T08:29:04.791Z",
+      "firstSeen": "2026-09-04T08:29:04.791Z"
+    },
+    "Cloud-Access": {
+      "lastSha": "1862ff0dcd640c74882d2a4ece38b9714716799b",
+      "lastChecked": "2026-09-04T08:29:05.119Z",
+      "firstSeen": "2026-09-04T08:29:05.119Z"
+    },
+    "Quickstarts": {
+      "lastSha": "1bd0735a3fa8c1ffaa30eb85df7cc5009d23b716",
+      "lastChecked": "2026-09-04T08:29:05.504Z",
+      "firstSeen": "2026-09-04T08:29:05.504Z"
+    },
+    "Cloud-Functions": {
+      "lastSha": "f0805a6ddef807dd59b5a9ac0dca80afccee5d58",
+      "lastChecked": "2026-09-04T08:29:05.851Z",
+      "firstSeen": "2026-09-04T08:29:05.851Z"
+    },
+    "Storage-NAS-For-Big-Data": {
+      "lastSha": "c1d3cf2fd278fdcf7cae85860d1946a2956252c6",
+      "lastChecked": "2026-09-04T08:29:06.150Z",
+      "firstSeen": "2026-09-04T08:29:06.150Z"
+    },
+    "Public-API": {
+      "lastSha": "e345a053578c7f71ab93b21e7c3bbb7aeb2edba1",
+      "lastChecked": "2026-09-04T08:29:06.477Z",
+      "firstSeen": "2026-09-04T08:29:06.477Z"
+    },
+    "EasyQueue": {
+      "lastSha": "db10aefa9e2a61182dd43ce40291a92842bf0013",
+      "lastChecked": "2026-09-04T08:29:06.839Z",
+      "firstSeen": "2026-09-04T08:29:06.839Z"
+    },
+    "PrivateCA": {
+      "lastSha": "aed71baadae8bf01550e134a7c867d108b420d82",
+      "lastChecked": "2026-09-04T08:29:07.213Z",
+      "firstSeen": "2026-09-04T08:29:07.213Z"
+    },
+    "Data-Lake-Storage": {
+      "lastSha": "2d5a976a19367f028a81ca2c69b1bfbcc779a7b2",
+      "lastChecked": "2026-09-04T08:29:07.524Z",
+      "firstSeen": "2026-09-04T08:29:07.524Z"
+    },
+    "Load-Balancer-DSR": {
+      "lastSha": "b58b84332551539fc2dbd8e579609c831d49779f",
+      "lastChecked": "2026-09-04T08:29:07.840Z",
+      "firstSeen": "2026-09-04T08:29:07.840Z"
+    },
+    "translate-test": {
+      "lastSha": "d61b352621c068dbcfb05a7089dfe9dc2e3546a9",
+      "lastChecked": "2026-09-04T08:29:08.235Z",
+      "firstSeen": "2026-09-04T08:29:08.235Z"
+    },
+    "NHNCloud-SDK": {
+      "lastSha": "5577ee33963d92dfc9405f73628bb756d247578c",
+      "lastChecked": "2026-09-04T08:29:08.591Z",
+      "firstSeen": "2026-09-04T08:29:08.591Z"
+    },
+    "Agent-Test": {
+      "lastSha": "b0bb76708cbf459c3d924d2be2ffa9aa30afbd13",
+      "lastChecked": "2026-09-04T08:29:08.927Z",
+      "firstSeen": "2026-09-04T08:29:08.927Z"
+    },
+    "Support-Status": {
+      "lastSha": "99b80b89ee87505b085b629248a419fe09f1abd2",
+      "lastChecked": "2026-09-04T08:29:09.314Z",
+      "firstSeen": "2026-09-04T08:29:09.314Z"
+    },
+    "nhn-cloud-foundry": {
+      "lastSha": "e3294fd16d6b4b9173fa5f6ecbc36a23b633e704",
+      "lastChecked": "2026-09-04T08:29:09.668Z",
+      "firstSeen": "2026-09-04T08:29:09.668Z"
+    },
+    "rds-integration-test": {
+      "lastSha": "b7cf878dc765e827eb55792906984a805804e7ec",
+      "lastChecked": "2026-09-04T08:29:10.085Z",
+      "firstSeen": "2026-09-04T08:29:10.085Z"
+    }
+  }
+}

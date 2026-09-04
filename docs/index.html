@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>사용자 가이드 업데이트 트래커</title>
+<style>
+:root {
+  --bg: #f8f9fa; --card: #ffffff; --border: #dee2e6; --text: #212529;
+  --text-muted: #6c757d; --primary: #0d6efd; --success: #198754;
+  --added: #d4edda; --removed: #f8d7da; --modified: #fff3cd;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+.container { max-width: 960px; margin: 0 auto; padding: 24px 16px; }
+header { margin-bottom: 32px; }
+header h1 { font-size: 24px; font-weight: 700; margin-bottom: 4px; }
+header p { color: var(--text-muted); font-size: 14px; }
+.heartbeat { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 16px 20px; margin-bottom: 24px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.heartbeat-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--success); }
+.heartbeat-info { flex: 1; }
+.heartbeat-info .label { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+.heartbeat-info .value { font-size: 16px; font-weight: 600; }
+.heartbeat-stats { display: flex; gap: 24px; }
+.heartbeat-stat .label { font-size: 12px; color: var(--text-muted); }
+.heartbeat-stat .value { font-size: 20px; font-weight: 700; }
+.tabs { display: flex; gap: 4px; margin-bottom: 24px; border-bottom: 2px solid var(--border); }
+.tab { padding: 8px 16px; border: none; background: none; font-size: 14px; cursor: pointer; color: var(--text-muted); border-bottom: 2px solid transparent; margin-bottom: -2px; }
+.tab.active { color: var(--primary); border-bottom-color: var(--primary); font-weight: 600; }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+.section-title { font-size: 18px; font-weight: 600; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 12px; font-weight: 600; }
+.badge-count { background: var(--primary); color: white; }
+.change-card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; margin-bottom: 12px; overflow: hidden; }
+.change-header { padding: 16px 20px; display: flex; align-items: center; gap: 12px; cursor: pointer; user-select: none; }
+.change-header:hover { background: var(--bg); }
+.change-header .repo-name { font-weight: 600; font-size: 16px; flex: 1; }
+.change-header .md-count { font-size: 13px; color: var(--text-muted); }
+.change-header .arrow { color: var(--text-muted); transition: transform 0.2s; }
+.change-header .arrow.open { transform: rotate(90deg); }
+.change-body { display: none; border-top: 1px solid var(--border); padding: 16px 20px; }
+.change-body.open { display: block; }
+.file-list { list-style: none; }
+.file-list li { padding: 6px 0; font-size: 14px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid #f0f0f0; }
+.file-list li:last-child { border-bottom: none; }
+.file-status { display: inline-block; padding: 1px 6px; border-radius: 4px; font-size: 11px; font-weight: 600; text-transform: uppercase; min-width: 56px; text-align: center; }
+.file-status.added { background: var(--added); color: #155724; }
+.file-status.removed { background: var(--removed); color: #721c24; }
+.file-status.modified { background: var(--modified); color: #856404; }
+.file-status.renamed { background: #cce5ff; color: #004085; }
+.file-diff { color: var(--text-muted); font-size: 12px; margin-left: auto; white-space: nowrap; }
+.file-diff .add { color: var(--success); }
+.file-diff .del { color: #dc3545; }
+.compare-link { display: inline-block; margin-top: 12px; padding: 6px 14px; background: var(--primary); color: white; text-decoration: none; border-radius: 6px; font-size: 13px; }
+.compare-link:hover { background: #0b5ed7; }
+.empty-state { text-align: center; padding: 48px 20px; color: var(--text-muted); }
+.empty-state .icon { font-size: 48px; margin-bottom: 12px; }
+.history-group { margin-bottom: 32px; }
+.history-date { font-size: 14px; color: var(--text-muted); margin-bottom: 12px; padding-bottom: 4px; border-bottom: 1px solid var(--border); }
+.repo-list { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 16px 20px; }
+.repo-row { padding: 6px 0; border-bottom: 1px solid #f0f0f0; font-size: 14px; }
+.repo-row:last-child { border-bottom: none; }
+.repo-row a { color: var(--primary); text-decoration: none; }
+footer { margin-top: 32px; text-align: center; font-size: 12px; color: var(--text-muted); }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>사용자 가이드 업데이트 트래커</h1>
+    <p>TOAST-DOCS / master branch / ko/ directory</p>
+  </header>
+
+  <div class="heartbeat">
+    <div class="heartbeat-dot"></div>
+    <div class="heartbeat-info">
+      <div class="label">Last Poll</div>
+      <div class="value">2026. 09. 04. AM 08:29</div>
+    </div>
+    <div class="heartbeat-stats">
+      <div class="heartbeat-stat">
+        <div class="label">Tracked Repos</div>
+        <div class="value">178</div>
+      </div>
+      <div class="heartbeat-stat">
+        <div class="label">Changes</div>
+        <div class="value">0</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" data-tab="current">Current</button>
+    <button class="tab" data-tab="history">History</button>
+    <button class="tab" data-tab="repos">Tracked Repos</button>
+  </div>
+
+  <div id="current" class="tab-panel active">
+      <div class="empty-state">
+        <div class="icon">&#10003;</div>
+        <p>최근 폴링에서 감지된 변경사항이 없습니다.</p>
+      </div></div>
+  <div id="history" class="tab-panel">
+      <div class="empty-state">
+        <div class="icon">&#128214;</div>
+        <p>폴링 이력이 아직 없습니다.</p>
+      </div></div>
+  <div id="repos" class="tab-panel">
+    <div class="section-title">
+      추적 중인 리포 <span class="badge badge-count">178</span>
+    </div>
+    <div class="repo-list">
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/-Deprecated-CarPlate-OCR/tree/master/ko"
+             target="_blank" rel="noopener">-Deprecated-CarPlate-OCR</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/-Deprecated-CheatingDetection/tree/master/ko"
+             target="_blank" rel="noopener">-Deprecated-CheatingDetection</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/-Deprecated-Document-OCR/tree/master/ko"
+             target="_blank" rel="noopener">-Deprecated-Document-OCR</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/AI-Fashion/tree/master/ko"
+             target="_blank" rel="noopener">AI-Fashion</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/API-Gateway/tree/master/ko"
+             target="_blank" rel="noopener">API-Gateway</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Address-Search/tree/master/ko"
+             target="_blank" rel="noopener">Address-Search</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Agent-Test/tree/master/ko"
+             target="_blank" rel="noopener">Agent-Test</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Alimtalk/tree/master/ko"
+             target="_blank" rel="noopener">Alimtalk</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/App-Analytics/tree/master/ko"
+             target="_blank" rel="noopener">App-Analytics</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/AppGuard/tree/master/ko"
+             target="_blank" rel="noopener">AppGuard</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/CAPTCHA/tree/master/ko"
+             target="_blank" rel="noopener">CAPTCHA</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/CDN/tree/master/ko"
+             target="_blank" rel="noopener">CDN</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/CS-BBS/tree/master/ko"
+             target="_blank" rel="noopener">CS-BBS</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Certificate-Manager/tree/master/ko"
+             target="_blank" rel="noopener">Certificate-Manager</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Cloud-Access/tree/master/ko"
+             target="_blank" rel="noopener">Cloud-Access</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Cloud-Functions/tree/master/ko"
+             target="_blank" rel="noopener">Cloud-Functions</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Cloud-Scheduler/tree/master/ko"
+             target="_blank" rel="noopener">Cloud-Scheduler</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Cloud-Search/tree/master/ko"
+             target="_blank" rel="noopener">Cloud-Search</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/CloudTrail/tree/master/ko"
+             target="_blank" rel="noopener">CloudTrail</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Colocation-Gateway/tree/master/ko"
+             target="_blank" rel="noopener">Colocation-Gateway</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Compute/tree/master/ko"
+             target="_blank" rel="noopener">Compute</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Compute-Auto-Scale/tree/master/ko"
+             target="_blank" rel="noopener">Compute-Auto-Scale</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Compute-Baremetal/tree/master/ko"
+             target="_blank" rel="noopener">Compute-Baremetal</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Compute-GPU/tree/master/ko"
+             target="_blank" rel="noopener">Compute-GPU</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Compute-Image/tree/master/ko"
+             target="_blank" rel="noopener">Compute-Image</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Compute-Image-Builder/tree/master/ko"
+             target="_blank" rel="noopener">Compute-Image-Builder</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Compute-Instance/tree/master/ko"
+             target="_blank" rel="noopener">Compute-Instance</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Compute-Instance-Template/tree/master/ko"
+             target="_blank" rel="noopener">Compute-Instance-Template</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Compute-Monitoring/tree/master/ko"
+             target="_blank" rel="noopener">Compute-Monitoring</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Compute-Monitoring-v2/tree/master/ko"
+             target="_blank" rel="noopener">Compute-Monitoring-v2</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Compute-VirtualDesktop/tree/master/ko"
+             target="_blank" rel="noopener">Compute-VirtualDesktop</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Contact-Center/tree/master/ko"
+             target="_blank" rel="noopener">Contact-Center</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Container-Container-Registry/tree/master/ko"
+             target="_blank" rel="noopener">Container-Container-Registry</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Container-Container-Registry-v2/tree/master/ko"
+             target="_blank" rel="noopener">Container-Container-Registry-v2</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Container-Container-Service/tree/master/ko"
+             target="_blank" rel="noopener">Container-Container-Service</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Container-Kubernetes/tree/master/ko"
+             target="_blank" rel="noopener">Container-Kubernetes</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Corporations-Search/tree/master/ko"
+             target="_blank" rel="noopener">Corporations-Search</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/DBSafer/tree/master/ko"
+             target="_blank" rel="noopener">DBSafer</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/DDoS-Guard/tree/master/ko"
+             target="_blank" rel="noopener">DDoS-Guard</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Data-Flow/tree/master/ko"
+             target="_blank" rel="noopener">Data-Flow</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Data-Lake-Storage/tree/master/ko"
+             target="_blank" rel="noopener">Data-Lake-Storage</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Data-Query/tree/master/ko"
+             target="_blank" rel="noopener">Data-Query</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Database-MS-SQL/tree/master/ko"
+             target="_blank" rel="noopener">Database-MS-SQL</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Database-MariaDB/tree/master/ko"
+             target="_blank" rel="noopener">Database-MariaDB</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Database-MySQL/tree/master/ko"
+             target="_blank" rel="noopener">Database-MySQL</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Database-PostgreSQL/tree/master/ko"
+             target="_blank" rel="noopener">Database-PostgreSQL</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Deploy/tree/master/ko"
+             target="_blank" rel="noopener">Deploy</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/DirectConnect/tree/master/ko"
+             target="_blank" rel="noopener">DirectConnect</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Document-Recognizer/tree/master/ko"
+             target="_blank" rel="noopener">Document-Recognizer</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Dooray/tree/master/ko"
+             target="_blank" rel="noopener">Dooray</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Dooray-Calendar/tree/master/ko"
+             target="_blank" rel="noopener">Dooray-Calendar</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Dooray-Contacts/tree/master/ko"
+             target="_blank" rel="noopener">Dooray-Contacts</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Dooray-Drive/tree/master/ko"
+             target="_blank" rel="noopener">Dooray-Drive</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Dooray-Mail/tree/master/ko"
+             target="_blank" rel="noopener">Dooray-Mail</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Dooray-Messenger/tree/master/ko"
+             target="_blank" rel="noopener">Dooray-Messenger</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Dooray-Project/tree/master/ko"
+             target="_blank" rel="noopener">Dooray-Project</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Dooray-Wiki/tree/master/ko"
+             target="_blank" rel="noopener">Dooray-Wiki</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/DummyService/tree/master/ko"
+             target="_blank" rel="noopener">DummyService</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/E-mail/tree/master/ko"
+             target="_blank" rel="noopener">E-mail</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/ERP-Communication-Board/tree/master/ko"
+             target="_blank" rel="noopener">ERP-Communication-Board</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/ERP-Finance/tree/master/ko"
+             target="_blank" rel="noopener">ERP-Finance</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/ERP-Human-Resource/tree/master/ko"
+             target="_blank" rel="noopener">ERP-Human-Resource</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/ERP-Workflow/tree/master/ko"
+             target="_blank" rel="noopener">ERP-Workflow</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/EasyCache/tree/master/ko"
+             target="_blank" rel="noopener">EasyCache</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/EasyMaker/tree/master/ko"
+             target="_blank" rel="noopener">EasyMaker</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/EasyQueue/tree/master/ko"
+             target="_blank" rel="noopener">EasyQueue</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Face-Liveness/tree/master/ko"
+             target="_blank" rel="noopener">Face-Liveness</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Face-Recognition/tree/master/ko"
+             target="_blank" rel="noopener">Face-Recognition</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/File-Crafter/tree/master/ko"
+             target="_blank" rel="noopener">File-Crafter</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Floating-IP/tree/master/ko"
+             target="_blank" rel="noopener">Floating-IP</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/GameAnvil/tree/master/ko"
+             target="_blank" rel="noopener">GameAnvil</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/GameParts/tree/master/ko"
+             target="_blank" rel="noopener">GameParts</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/GameStarter/tree/master/ko"
+             target="_blank" rel="noopener">GameStarter</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/GameTalk/tree/master/ko"
+             target="_blank" rel="noopener">GameTalk</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Gamebase/tree/master/ko"
+             target="_blank" rel="noopener">Gamebase</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/HASTE/tree/master/ko"
+             target="_blank" rel="noopener">HASTE</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/IAP/tree/master/ko"
+             target="_blank" rel="noopener">IAP</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Image/tree/master/ko"
+             target="_blank" rel="noopener">Image</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Infrastructure-Common/tree/master/ko"
+             target="_blank" rel="noopener">Infrastructure-Common</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Internet-Gateway/tree/master/ko"
+             target="_blank" rel="noopener">Internet-Gateway</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/JEUS-Instance/tree/master/ko"
+             target="_blank" rel="noopener">JEUS-Instance</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Launching/tree/master/ko"
+             target="_blank" rel="noopener">Launching</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Leaderboard/tree/master/ko"
+             target="_blank" rel="noopener">Leaderboard</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Load-Balancer-DSR/tree/master/ko"
+             target="_blank" rel="noopener">Load-Balancer-DSR</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Log-Crash-Search/tree/master/ko"
+             target="_blank" rel="noopener">Log-Crash-Search</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/ML-Deep-Learning-Instance/tree/master/ko"
+             target="_blank" rel="noopener">ML-Deep-Learning-Instance</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Mal-URL-Detector/tree/master/ko"
+             target="_blank" rel="noopener">Mal-URL-Detector</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Managed/tree/master/ko"
+             target="_blank" rel="noopener">Managed</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Maps/tree/master/ko"
+             target="_blank" rel="noopener">Maps</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Mobile-Device-Info/tree/master/ko"
+             target="_blank" rel="noopener">Mobile-Device-Info</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Mobile-Test/tree/master/ko"
+             target="_blank" rel="noopener">Mobile-Test</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Monitoring-Cloud-Monitoring/tree/master/ko"
+             target="_blank" rel="noopener">Monitoring-Cloud-Monitoring</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/NAT-Gateway/tree/master/ko"
+             target="_blank" rel="noopener">NAT-Gateway</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/NAT-Instance/tree/master/ko"
+             target="_blank" rel="noopener">NAT-Instance</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/NHN-Compliance/tree/master/ko"
+             target="_blank" rel="noopener">NHN-Compliance</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/NHNBastion/tree/master/ko"
+             target="_blank" rel="noopener">NHNBastion</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/NHNCloud-SDK/tree/master/ko"
+             target="_blank" rel="noopener">NHNCloud-SDK</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Network/tree/master/ko"
+             target="_blank" rel="noopener">Network</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Network-ACL/tree/master/ko"
+             target="_blank" rel="noopener">Network-ACL</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Network-DNSPLUS/tree/master/ko"
+             target="_blank" rel="noopener">Network-DNSPLUS</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Network-Firewall/tree/master/ko"
+             target="_blank" rel="noopener">Network-Firewall</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Network-Floating-IP/tree/master/ko"
+             target="_blank" rel="noopener">Network-Floating-IP</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Network-Flow-Log/tree/master/ko"
+             target="_blank" rel="noopener">Network-Flow-Log</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Network-IPSec-VPN/tree/master/ko"
+             target="_blank" rel="noopener">Network-IPSec-VPN</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Network-Interface/tree/master/ko"
+             target="_blank" rel="noopener">Network-Interface</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Network-Load-Balancer/tree/master/ko"
+             target="_blank" rel="noopener">Network-Load-Balancer</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Network-VPC/tree/master/ko"
+             target="_blank" rel="noopener">Network-VPC</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Notification/tree/master/ko"
+             target="_blank" rel="noopener">Notification</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/OCR/tree/master/ko"
+             target="_blank" rel="noopener">OCR</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/OTP/tree/master/ko"
+             target="_blank" rel="noopener">OTP</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Peering-Gateway/tree/master/ko"
+             target="_blank" rel="noopener">Peering-Gateway</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Pose-Estimation/tree/master/ko"
+             target="_blank" rel="noopener">Pose-Estimation</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Private-DNS/tree/master/ko"
+             target="_blank" rel="noopener">Private-DNS</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/PrivateCA/tree/master/ko"
+             target="_blank" rel="noopener">PrivateCA</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Public-API/tree/master/ko"
+             target="_blank" rel="noopener">Public-API</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Push/tree/master/ko"
+             target="_blank" rel="noopener">Push</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Quickstarts/tree/master/ko"
+             target="_blank" rel="noopener">Quickstarts</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/RCS-Bizmessage/tree/master/ko"
+             target="_blank" rel="noopener">RCS-Bizmessage</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/RDS/tree/master/ko"
+             target="_blank" rel="noopener">RDS</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/RDS-FOR-MARIADB/tree/master/ko"
+             target="_blank" rel="noopener">RDS-FOR-MARIADB</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/RDS-FOR-POSTGRESQL/tree/master/ko"
+             target="_blank" rel="noopener">RDS-FOR-POSTGRESQL</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/RDS-FOR-SQLSERVER/tree/master/ko"
+             target="_blank" rel="noopener">RDS-FOR-SQLSERVER</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/ROLE/tree/master/ko"
+             target="_blank" rel="noopener">ROLE</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/RTCS/tree/master/ko"
+             target="_blank" rel="noopener">RTCS</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Real-Time-Multiplayer/tree/master/ko"
+             target="_blank" rel="noopener">Real-Time-Multiplayer</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/ResourceWatcher/tree/master/ko"
+             target="_blank" rel="noopener">ResourceWatcher</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/SIEM/tree/master/ko"
+             target="_blank" rel="noopener">SIEM</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/SMS/tree/master/ko"
+             target="_blank" rel="noopener">SMS</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/STT/tree/master/ko"
+             target="_blank" rel="noopener">STT</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Security-Advisor/tree/master/ko"
+             target="_blank" rel="noopener">Security-Advisor</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Security-Check/tree/master/ko"
+             target="_blank" rel="noopener">Security-Check</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Security-DataCrypto/tree/master/ko"
+             target="_blank" rel="noopener">Security-DataCrypto</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Security-Groups/tree/master/ko"
+             target="_blank" rel="noopener">Security-Groups</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Security-Monitoring/tree/master/ko"
+             target="_blank" rel="noopener">Security-Monitoring</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Security_VPN/tree/master/ko"
+             target="_blank" rel="noopener">Security_VPN</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Server-Security-Check/tree/master/ko"
+             target="_blank" rel="noopener">Server-Security-Check</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Service-Gateway/tree/master/ko"
+             target="_blank" rel="noopener">Service-Gateway</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Service-Monitoring/tree/master/ko"
+             target="_blank" rel="noopener">Service-Monitoring</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/ShortURL/tree/master/ko"
+             target="_blank" rel="noopener">ShortURL</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Smart-Downloader/tree/master/ko"
+             target="_blank" rel="noopener">Smart-Downloader</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Spell-Checker/tree/master/ko"
+             target="_blank" rel="noopener">Spell-Checker</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Storage-Backup/tree/master/ko"
+             target="_blank" rel="noopener">Storage-Backup</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Storage-Block-Storage/tree/master/ko"
+             target="_blank" rel="noopener">Storage-Block-Storage</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Storage-Data-Transporter/tree/master/ko"
+             target="_blank" rel="noopener">Storage-Data-Transporter</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Storage-NAS/tree/master/ko"
+             target="_blank" rel="noopener">Storage-NAS</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Storage-NAS-For-Big-Data/tree/master/ko"
+             target="_blank" rel="noopener">Storage-NAS-For-Big-Data</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Storage-Object-Storage/tree/master/ko"
+             target="_blank" rel="noopener">Storage-Object-Storage</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Storage-Online-NAS/tree/master/ko"
+             target="_blank" rel="noopener">Storage-Online-NAS</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Storage-Storage-Gateway/tree/master/ko"
+             target="_blank" rel="noopener">Storage-Storage-Gateway</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Support-Status/tree/master/ko"
+             target="_blank" rel="noopener">Support-Status</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/System-Monitoring/tree/master/ko"
+             target="_blank" rel="noopener">System-Monitoring</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/TOAST-Cloud/tree/master/ko"
+             target="_blank" rel="noopener">TOAST-Cloud</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/TOAST-bill/tree/master/ko"
+             target="_blank" rel="noopener">TOAST-bill</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/TTS/tree/master/ko"
+             target="_blank" rel="noopener">TTS</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/TW/tree/master/ko"
+             target="_blank" rel="noopener">TW</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/ToastUI-Chart/tree/master/ko"
+             target="_blank" rel="noopener">ToastUI-Chart</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/ToastUI-Editor/tree/master/ko"
+             target="_blank" rel="noopener">ToastUI-Editor</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/ToastUI-Grid/tree/master/ko"
+             target="_blank" rel="noopener">ToastUI-Grid</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Traffic-Mirroring/tree/master/ko"
+             target="_blank" rel="noopener">Traffic-Mirroring</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Transit-Hub/tree/master/ko"
+             target="_blank" rel="noopener">Transit-Hub</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/VPN-Gateway/tree/master/ko"
+             target="_blank" rel="noopener">VPN-Gateway</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Vaccine/tree/master/ko"
+             target="_blank" rel="noopener">Vaccine</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Vehicle-Plate-Recognizer/tree/master/ko"
+             target="_blank" rel="noopener">Vehicle-Plate-Recognizer</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Vertias-Backup/tree/master/ko"
+             target="_blank" rel="noopener">Vertias-Backup</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/WEB-Firewall/tree/master/ko"
+             target="_blank" rel="noopener">WEB-Firewall</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Webshell-Threat-Detector/tree/master/ko"
+             target="_blank" rel="noopener">Webshell-Threat-Detector</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/WebtoB-Instance/tree/master/ko"
+             target="_blank" rel="noopener">WebtoB-Instance</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/Word-Suggestion/tree/master/ko"
+             target="_blank" rel="noopener">Word-Suggestion</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/autocomplete/tree/master/ko"
+             target="_blank" rel="noopener">autocomplete</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/cheating-detection/tree/master/ko"
+             target="_blank" rel="noopener">cheating-detection</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/cubrid-instance-guide/tree/master/ko"
+             target="_blank" rel="noopener">cubrid-instance-guide</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/kms/tree/master/ko"
+             target="_blank" rel="noopener">kms</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/nhn-cloud-foundry/tree/master/ko"
+             target="_blank" rel="noopener">nhn-cloud-foundry</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/notification-hub/tree/master/ko"
+             target="_blank" rel="noopener">notification-hub</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/pipeline/tree/master/ko"
+             target="_blank" rel="noopener">pipeline</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/rds-integration-test/tree/master/ko"
+             target="_blank" rel="noopener">rds-integration-test</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/tibero-instance-guide/tree/master/ko"
+             target="_blank" rel="noopener">tibero-instance-guide</a>
+        </div>
+      
+        <div class="repo-row">
+          <a href="https://github.com/TOAST-DOCS/translate-test/tree/master/ko"
+             target="_blank" rel="noopener">translate-test</a>
+        </div>
+      
+    </div></div>
+
+  <footer>격주(2/4주차 화요일) 배포 다음날 자동 갱신 · 마지막 생성: 2026. 09. 04. AM 08:29</footer>
+</div>
+
+<script>
+document.querySelectorAll('.tab').forEach((tab) => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach((t) => t.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach((p) => p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById(tab.dataset.tab).classList.add('active');
+  });
+});
+document.querySelectorAll('.change-header').forEach((header) => {
+  header.addEventListener('click', () => {
+    header.querySelector('.arrow').classList.toggle('open');
+    header.nextElementSibling.classList.toggle('open');
+  });
+});
+</script>
+</body>
+</html>
