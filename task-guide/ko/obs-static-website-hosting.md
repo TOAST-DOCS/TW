@@ -6,13 +6,13 @@ Object Storage는 데이터를 오브젝트 단위로 저장하는 스토리지 
 
 이 가이드를 따라하면 빌드한 정적 파일을 Object Storage 컨테이너에 올려, 외부에서 접속할 수 있는 웹사이트로 공개할 수 있습니다.
 
+![Object Storage 정적 웹사이트 호스팅 구성: 빌드 파일 업로드 → PUBLIC 컨테이너 → 사용자 브라우저, 필요하면 CDN 경유](images/obs-static-website-hosting-flow.svg)
+
 ## 시작하기 전에
 
 - NHN Cloud 콘솔에서 Object Storage 서비스가 활성화되어 있어야 합니다.
 - 배포할 정적 파일을 준비합니다. 시작 페이지로 사용할 `index.html`이 반드시 필요합니다.
 - 오류 페이지를 함께 준비합니다. **오류 페이지 파일 이름에는 규칙이 있습니다.** [정적 파일 업로드하기](#정적-파일-업로드하기)의 예시 파일을 그대로 사용할 수 있습니다.
-
-![Object Storage 정적 웹사이트 호스팅 구성: 빌드 파일 업로드 → PUBLIC 컨테이너 → 사용자 브라우저, 필요하면 CDN 경유](images/obs-static-website-hosting-flow.svg)
 
 ## 컨테이너 만들기
 
@@ -100,9 +100,10 @@ Object Storage는 데이터를 오브젝트 단위로 저장하는 스토리지 
 | 오류 문서 입력값 | 발생한 오류 | Object Storage가 찾는 오브젝트 |
 | --- | --- | --- |
 | `error.html` | 404 | `404error.html` |
+| `error.html` | 401 | `401error.html` |
 | `40x.html` | 404 | `40440x.html` |
 
-응답 코드가 이름 앞에 붙으므로, 오류 문서 접미사는 `error.html`처럼 숫자를 포함하지 않는 이름으로 정하는 편이 혼동이 없습니다. 대응하려는 응답 코드마다 파일을 하나씩 올립니다.
+응답 코드가 이름 앞에 붙으므로, 오류 문서 접미사는 `error.html`처럼 숫자를 포함하지 않는 이름으로 정하는 편이 혼동이 없습니다. 대응하려는 응답 코드에 맞게 오류 문서를 업로드해 사용할 수 있습니다. 오류 문서를 정의하지 않거나, 응답 코드에 맞는 오류 문서 오브젝트가 없다면 웹 브라우저의 기본 오류 문서가 표시됩니다.
 
 ## 동작 확인하기
 
@@ -135,6 +136,7 @@ Object Storage는 데이터를 오브젝트 단위로 저장하는 스토리지 
 ## 응용하기
 
 - **CDN으로 전송 성능 개선**: 방문자가 많거나 해외에서 접속하는 사이트라면 이 컨테이너를 원본으로 삼아 CDN을 연동합니다. 브라우저가 가까운 캐시 서버에서 파일을 받아 응답이 빨라지고, Object Storage로 향하는 요청 수도 줄어듭니다. CDN 콘솔에서 **생성**을 클릭한 다음 **원본 타입**을 **오브젝트 스토리지**로 선택하고, **컨테이너**의 리전과 이름을 입력해 **검색**하면 원본 서버 정보가 자동으로 입력됩니다. 접근 정책이 PUBLIC인 컨테이너만 원본 서버로 사용할 수 있습니다. 자세한 내용은 [CDN 콘솔 사용 가이드](https://docs.nhncloud.com/ko/Contents%20Delivery/CDN/ko/console-guide/#cdn)를 참고하세요.
+- **사용자 도메인으로 서비스**: `www.example.com`처럼 소유한 도메인으로 사이트를 공개할 수도 있습니다. 컨테이너의 웹사이트 URL은 엔드포인트 뒤에 컨테이너 이름이 붙는 경로 형태라 도메인만 따로 연결할 수 없으므로, 위의 CDN 연동을 먼저 마친 다음 CDN의 **도메인 별칭**에 도메인을 등록해 소유권을 검증하고 CDN 서비스에 연동합니다. 그다음 사용 중인 DNS 서비스 제공 업체에서 이 도메인을 CDN 서비스 도메인으로 향하는 CNAME 레코드로 등록합니다. NHN Cloud DNS Plus를 사용한다면 DNS Zone에 레코드 세트를 추가하면 됩니다. HTTPS로 서비스하려면 인증서 발급이 함께 필요합니다. 자세한 내용은 [CDN 콘솔 사용 가이드](https://docs.nhncloud.com/ko/Contents%20Delivery/CDN/ko/console-guide/#alias_domain)와 [DNS Plus 콘솔 사용 가이드](https://docs.nhncloud.com/ko/Network/DNS%20Plus/ko/console-guide/)를 참고하세요.
 - **다른 도메인의 스크립트에서 호출**: 이 컨테이너의 파일을 다른 도메인에서 실행되는 스크립트가 직접 불러와야 한다면 **기본 정보** 탭의 **교차 출처 리소스 공유(CORS)** 설정에서 허용할 웹사이트 주소를 한 줄에 하나씩 입력합니다. 모두 허용하려면 `*`를 입력합니다. 자세한 내용은 [Object Storage 콘솔 사용 가이드](https://docs.nhncloud.com/ko/Storage/Object%20Storage/ko/console-guide/#cors)를 참고하세요.
 - **공개를 중단할 때**: **기본 정보** 탭의 **접근 정책 설정 변경**에서 PRIVATE로 되돌리면 웹사이트가 더 이상 공개되지 않습니다. 필요하면 다시 PUBLIC으로 변경할 수 있습니다. 접근 정책별 권한 차이는 [접근 정책 설정 가이드](https://docs.nhncloud.com/ko/Storage/Object%20Storage/ko/acl-guide/#role-based-access-console)를 참고하세요.
 - **배포 자동화**: 빌드마다 콘솔에서 업로드하는 대신 Object Storage API나 S3 호환 API로 업로드하면 CI 파이프라인에 배포 단계를 넣을 수 있습니다. S3 호환 API를 사용하려면 컨테이너 목록 위쪽의 **S3 API 자격 증명**에서 자격 증명을 먼저 발급받습니다. 자세한 내용은 [API 가이드](https://docs.nhncloud.com/ko/Storage/Object%20Storage/ko/api-guide/)와 [Amazon S3 호환 API 가이드](https://docs.nhncloud.com/ko/Storage/Object%20Storage/ko/s3-api-guide/)를 참고하세요.
@@ -159,3 +161,6 @@ Object Storage는 데이터를 오브젝트 단위로 저장하는 스토리지 
 | 오브젝트 | 오브젝트 스토리지의 기본적인 관리 단위 |
 | 리전 | 독립적이고 지리적으로 격리된 서버의 물리적 위치 |
 | CDN | 대용량 콘텐츠를 많은 사용자에게 빠르고 안정적으로 전송할 수 있는 NHN Cloud의 콘텐츠 전송 네트워크 서비스 |
+| DNS Plus | 별도의 솔루션이나 서버를 설치하지 않고, 웹 콘솔에서 DNS를 제공할 수 있는 NHN Cloud의 DNS 서비스 |
+| DNS Zone | DNS가 서비스하는 호스트의 도메인 영역 |
+| 레코드 세트 | DNS Zone으로 서비스하는 호스트 정보로, 해당 영역에서 이름과 유형이 같은 DNS 레코드의 모음 |
