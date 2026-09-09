@@ -120,13 +120,16 @@ Object Storage는 데이터를 오브젝트 단위로 저장하는 스토리지 
     `{Object Store 엔드포인트}`는 컨테이너 목록 위쪽의 **API 엔드포인트 설정**을 클릭하면 **Object Store** 항목에서 확인할 수 있습니다. 한국(판교) 리전은 다음과 같은 형식입니다.
 
     ```text
-    https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_{스토리지 계정}
+    https://kr1-api-object-storage.nhncloudservice.com/v1/{스토리지 계정}
     ```
+
+    > [!NOTE]
+    > `{스토리지 계정}`은 `AUTH_`로 시작하는 문자열이며 Object Store 엔드포인트에 이미 포함되어 있습니다.
 
     따라서 최종 URL은 다음과 같습니다.
 
     ```text
-    https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_{스토리지 계정}/my-landing-page/
+    https://kr1-api-object-storage.nhncloudservice.com/v1/{스토리지 계정}/my-landing-page/
     ```
 
 2. 브라우저에서 이 URL로 접속해 `index.html`의 내용이 표시되는지 확인하세요. 파일 목록이 아니라 시작 페이지가 보이면 인덱스 문서가 적용된 것입니다.
