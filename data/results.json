@@ -1,8 +1,8 @@
 {
-  "lastPoll": "2026-09-04T08:29:10.086Z",
+  "lastPoll": "2026-09-09T03:16:25.375Z",
   "heartbeat": {
-    "timestamp": "2026-09-04T08:29:10.086Z",
-    "trackedRepos": 178,
+    "timestamp": "2026-09-09T03:16:25.375Z",
+    "trackedRepos": 179,
     "repoNames": [
       "kms",
       "System-Monitoring",
@@ -181,9 +181,1707 @@
       "Agent-Test",
       "Support-Status",
       "nhn-cloud-foundry",
-      "rds-integration-test"
+      "rds-integration-test",
+      "EventBus"
     ]
   },
-  "changes": [],
-  "history": []
+  "changes": [
+    {
+      "repo": "Compute-Image",
+      "previousSha": "1f9837f9cb4ac308780dfe5dd36b876c75696c5d",
+      "currentSha": "d0b2589650d27f57680aadde27d583914c82628e",
+      "compareUrl": "https://github.com/TOAST-DOCS/Compute-Image/compare/1f9837f9cb4ac308780dfe5dd36b876c75696c5d...d0b2589650d27f57680aadde27d583914c82628e",
+      "mdChanges": 5,
+      "files": [
+        {
+          "filename": "ko/console-guide-ncgn.md",
+          "status": "added",
+          "additions": 185,
+          "deletions": 0
+        },
+        {
+          "filename": "ko/console-guide-ngoic.md",
+          "status": "added",
+          "additions": 185,
+          "deletions": 0
+        },
+        {
+          "filename": "ko/console-guide-ngovc.md",
+          "status": "added",
+          "additions": 185,
+          "deletions": 0
+        },
+        {
+          "filename": "ko/console-guide-ngsc.md",
+          "status": "added",
+          "additions": 185,
+          "deletions": 0
+        },
+        {
+          "filename": "ko/console-guide-ninc.md",
+          "status": "added",
+          "additions": 185,
+          "deletions": 0
+        }
+      ],
+      "detectedAt": "2026-09-09T03:15:13.520Z",
+      "checkedBy": []
+    },
+    {
+      "repo": "Compute-Auto-Scale",
+      "previousSha": "0653bca0040247ba837635708705e63301c7898d",
+      "currentSha": "dd04eded5958347a34831145a4a34c97bc38b71c",
+      "compareUrl": "https://github.com/TOAST-DOCS/Compute-Auto-Scale/compare/0653bca0040247ba837635708705e63301c7898d...dd04eded5958347a34831145a4a34c97bc38b71c",
+      "mdChanges": 4,
+      "files": [
+        {
+          "filename": "ko/console-guide-ngoic.md",
+          "status": "added",
+          "additions": 240,
+          "deletions": 0
+        },
+        {
+          "filename": "ko/console-guide-ngovc.md",
+          "status": "added",
+          "additions": 240,
+          "deletions": 0
+        },
+        {
+          "filename": "ko/console-guide-ngsc.md",
+          "status": "added",
+          "additions": 240,
+          "deletions": 0
+        },
+        {
+          "filename": "ko/console-guide-ninc.md",
+          "status": "added",
+          "additions": 240,
+          "deletions": 0
+        }
+      ],
+      "detectedAt": "2026-09-09T03:15:14.232Z",
+      "checkedBy": []
+    },
+    {
+      "repo": "Storage-Block-Storage",
+      "previousSha": "f2a6697442a52fb004670b8aca502e42c2ddf08a",
+      "currentSha": "7ca810aacbc18a60853cfb47b9a3c29aa87665f2",
+      "compareUrl": "https://github.com/TOAST-DOCS/Storage-Block-Storage/compare/f2a6697442a52fb004670b8aca502e42c2ddf08a...7ca810aacbc18a60853cfb47b9a3c29aa87665f2",
+      "mdChanges": 8,
+      "files": [
+        {
+          "filename": "ko/console-guide-ncgn.md",
+          "status": "added",
+          "additions": 189,
+          "deletions": 0
+        },
+        {
+          "filename": "ko/console-guide-ngoic.md",
+          "status": "added",
+          "additions": 189,
+          "deletions": 0
+        },
+        {
+          "filename": "ko/console-guide-ngovc.md",
+          "status": "added",
+          "additions": 189,
+          "deletions": 0
+        },
+        {
+          "filename": "ko/console-guide-ninc.md",
+          "status": "added",
+          "additions": 189,
+          "deletions": 0
+        },
+        {
+          "filename": "ko/overview-ncgn.md",
+          "status": "added",
+          "additions": 342,
+          "deletions": 0
+        },
+        {
+          "filename": "ko/overview-ngoic.md",
+          "status": "added",
+          "additions": 342,
+          "deletions": 0
+        },
+        {
+          "filename": "ko/overview-ngovc.md",
+          "status": "added",
+          "additions": 342,
+          "deletions": 0
+        },
+        {
+          "filename": "ko/overview-ninc.md",
+          "status": "added",
+          "additions": 342,
+          "deletions": 0
+        }
+      ],
+      "detectedAt": "2026-09-09T03:15:16.647Z",
+      "checkedBy": []
+    },
+    {
+      "repo": "Storage-Object-Storage",
+      "previousSha": "952cc241f9b46803222d86281ed547d1854e80b3",
+      "currentSha": "622991a6171c50c9545328ab11088b5aa245e59b",
+      "compareUrl": "https://github.com/TOAST-DOCS/Storage-Object-Storage/compare/952cc241f9b46803222d86281ed547d1854e80b3...622991a6171c50c9545328ab11088b5aa245e59b",
+      "mdChanges": 39,
+      "files": [
+        {
+          "filename": "ko/acl-guide-ngcc.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 567
+        },
+        {
+          "filename": "ko/acl-guide-ngoic.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 567
+        },
+        {
+          "filename": "ko/acl-guide-ngovc.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 567
+        },
+        {
+          "filename": "ko/acl-guide-ngsc.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 567
+        },
+        {
+          "filename": "ko/acl-guide-ninc.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 567
+        },
+        {
+          "filename": "ko/acl-guide.md",
+          "status": "modified",
+          "additions": 37,
+          "deletions": 3
+        },
+        {
+          "filename": "ko/api-guide-ngcc.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 3031
+        },
+        {
+          "filename": "ko/api-guide-ngoic.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 2968
+        },
+        {
+          "filename": "ko/api-guide-ngovc.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 2968
+        },
+        {
+          "filename": "ko/api-guide-ngsc.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 3031
+        },
+        {
+          "filename": "ko/api-guide-ninc.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 3031
+        },
+        {
+          "filename": "ko/api-guide.md",
+          "status": "modified",
+          "additions": 4,
+          "deletions": 2
+        },
+        {
+          "filename": "ko/cli-guide-ngcc.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 1
+        },
+        {
+          "filename": "ko/cli-guide-ngoic.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 652
+        },
+        {
+          "filename": "ko/cli-guide-ngovc.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 652
+        },
+        {
+          "filename": "ko/cli-guide-ngsc.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 1
+        },
+        {
+          "filename": "ko/cli-guide-ninc.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 1
+        },
+        {
+          "filename": "ko/cli-guide.md",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 0
+        },
+        {
+          "filename": "ko/console-guide-ngcc.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 401
+        },
+        {
+          "filename": "ko/console-guide-ngoic.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 453
+        },
+        {
+          "filename": "ko/console-guide-ngovc.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 453
+        },
+        {
+          "filename": "ko/console-guide-ngsc.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 401
+        },
+        {
+          "filename": "ko/console-guide-ninc.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 401
+        },
+        {
+          "filename": "ko/console-guide.md",
+          "status": "modified",
+          "additions": 17,
+          "deletions": 3
+        },
+        {
+          "filename": "ko/container-policy-guide-ngoic.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 242
+        },
+        {
+          "filename": "ko/container-policy-guide-ngovc.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 242
+        },
+        {
+          "filename": "ko/container-policy-guide.md",
+          "status": "modified",
+          "additions": 69,
+          "deletions": 5
+        },
+        {
+          "filename": "ko/presigned-url-guide.md",
+          "status": "modified",
+          "additions": 4,
+          "deletions": 26
+        },
+        {
+          "filename": "ko/s3-api-guide-ngcc.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 1195
+        },
+        {
+          "filename": "ko/s3-api-guide-ngoic.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 1332
+        },
+        {
+          "filename": "ko/s3-api-guide-ngovc.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 1332
+        },
+        {
+          "filename": "ko/s3-api-guide-ngsc.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 1195
+        },
+        {
+          "filename": "ko/s3-api-guide-ninc.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 1195
+        },
+        {
+          "filename": "ko/s3-api-guide.md",
+          "status": "modified",
+          "additions": 35,
+          "deletions": 196
+        },
+        {
+          "filename": "ko/third-party-tools-guide-ngcc.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 128
+        },
+        {
+          "filename": "ko/third-party-tools-guide-ngoic.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 128
+        },
+        {
+          "filename": "ko/third-party-tools-guide-ngovc.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 128
+        },
+        {
+          "filename": "ko/third-party-tools-guide-ngsc.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 128
+        },
+        {
+          "filename": "ko/third-party-tools-guide-ninc.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 128
+        }
+      ],
+      "detectedAt": "2026-09-09T03:15:18.660Z",
+      "checkedBy": []
+    },
+    {
+      "repo": "TOAST-Cloud",
+      "previousSha": "2c1cbec0062c6e811063eb409857623ca8fe5e15",
+      "currentSha": "31626abe6f12b2424472a2d6db4c96c762def310",
+      "compareUrl": "https://github.com/TOAST-DOCS/TOAST-Cloud/compare/2c1cbec0062c6e811063eb409857623ca8fe5e15...31626abe6f12b2424472a2d6db4c96c762def310",
+      "mdChanges": 1,
+      "files": [
+        {
+          "filename": "ko/terraform-guide-gov.md",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 1
+        }
+      ],
+      "detectedAt": "2026-09-09T03:15:43.889Z",
+      "checkedBy": []
+    },
+    {
+      "repo": "Compute-Image-Builder",
+      "previousSha": "6d3782caf0b1b2f15cdb18d8809cf77f378d76b6",
+      "currentSha": "6386f1f58ee7568eb36336cfde22ac8885af791d",
+      "compareUrl": "https://github.com/TOAST-DOCS/Compute-Image-Builder/compare/6d3782caf0b1b2f15cdb18d8809cf77f378d76b6...6386f1f58ee7568eb36336cfde22ac8885af791d",
+      "mdChanges": 5,
+      "files": [
+        {
+          "filename": "ko/component-guide-ncgn.md",
+          "status": "added",
+          "additions": 954,
+          "deletions": 0
+        },
+        {
+          "filename": "ko/component-guide-ngoic.md",
+          "status": "added",
+          "additions": 954,
+          "deletions": 0
+        },
+        {
+          "filename": "ko/component-guide-ngovc.md",
+          "status": "added",
+          "additions": 954,
+          "deletions": 0
+        },
+        {
+          "filename": "ko/component-guide-ngsc.md",
+          "status": "added",
+          "additions": 954,
+          "deletions": 0
+        },
+        {
+          "filename": "ko/component-guide-ninc.md",
+          "status": "added",
+          "additions": 954,
+          "deletions": 0
+        }
+      ],
+      "detectedAt": "2026-09-09T03:15:56.470Z",
+      "checkedBy": []
+    },
+    {
+      "repo": "Service-Gateway",
+      "previousSha": "4a84b387b5113a183a534fe83c8fabd78d71ad07",
+      "currentSha": "22ca1b6b8b9d0d5062ed3a1f4aacf7640e7b7170",
+      "compareUrl": "https://github.com/TOAST-DOCS/Service-Gateway/compare/4a84b387b5113a183a534fe83c8fabd78d71ad07...22ca1b6b8b9d0d5062ed3a1f4aacf7640e7b7170",
+      "mdChanges": 3,
+      "files": [
+        {
+          "filename": "ko/service-endpoint-gov.md",
+          "status": "modified",
+          "additions": 7,
+          "deletions": 7
+        },
+        {
+          "filename": "ko/service-endpoint-ncgn.md",
+          "status": "modified",
+          "additions": 2,
+          "deletions": 2
+        },
+        {
+          "filename": "ko/service-endpoint.md",
+          "status": "modified",
+          "additions": 2,
+          "deletions": 2
+        }
+      ],
+      "detectedAt": "2026-09-09T03:16:03.563Z",
+      "checkedBy": []
+    },
+    {
+      "repo": "Peering-Gateway",
+      "previousSha": "57d07ccd1715dad74197c2f539090f4b8064a15d",
+      "currentSha": "872ef2e0f0d3fdcefdbb0b96ac55af0284a99185",
+      "compareUrl": "https://github.com/TOAST-DOCS/Peering-Gateway/compare/57d07ccd1715dad74197c2f539090f4b8064a15d...872ef2e0f0d3fdcefdbb0b96ac55af0284a99185",
+      "mdChanges": 8,
+      "files": [
+        {
+          "filename": "ko/console-guide-ncgn.md",
+          "status": "added",
+          "additions": 211,
+          "deletions": 0
+        },
+        {
+          "filename": "ko/console-guide-ngoic.md",
+          "status": "added",
+          "additions": 211,
+          "deletions": 0
+        },
+        {
+          "filename": "ko/console-guide-ngovc.md",
+          "status": "added",
+          "additions": 211,
+          "deletions": 0
+        },
+        {
+          "filename": "ko/console-guide-ninc.md",
+          "status": "added",
+          "additions": 211,
+          "deletions": 0
+        },
+        {
+          "filename": "ko/overview-ncgn.md",
+          "status": "added",
+          "additions": 16,
+          "deletions": 0
+        },
+        {
+          "filename": "ko/overview-ngoic.md",
+          "status": "added",
+          "additions": 16,
+          "deletions": 0
+        },
+        {
+          "filename": "ko/overview-ngovc.md",
+          "status": "added",
+          "additions": 16,
+          "deletions": 0
+        },
+        {
+          "filename": "ko/overview-ninc.md",
+          "status": "added",
+          "additions": 16,
+          "deletions": 0
+        }
+      ],
+      "detectedAt": "2026-09-09T03:16:04.717Z",
+      "checkedBy": []
+    },
+    {
+      "repo": "Storage-Online-NAS",
+      "previousSha": "7a80a39f1430d6f2ea48974b1d86e50bca7db5dc",
+      "currentSha": "c4196c862e1b8ed15a0aeb382384dac7239a1d18",
+      "compareUrl": "https://github.com/TOAST-DOCS/Storage-Online-NAS/compare/7a80a39f1430d6f2ea48974b1d86e50bca7db5dc...c4196c862e1b8ed15a0aeb382384dac7239a1d18",
+      "mdChanges": 16,
+      "files": [
+        {
+          "filename": "ko/api-guide-ngoic.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 1020
+        },
+        {
+          "filename": "ko/api-guide-ngovc.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 1020
+        },
+        {
+          "filename": "ko/api-guide-ngsc.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 1012
+        },
+        {
+          "filename": "ko/api-guide-ninc.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 1012
+        },
+        {
+          "filename": "ko/api-guide.md",
+          "status": "modified",
+          "additions": 11,
+          "deletions": 4
+        },
+        {
+          "filename": "ko/console-guide-ngoic.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 193
+        },
+        {
+          "filename": "ko/console-guide-ngovc.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 193
+        },
+        {
+          "filename": "ko/console-guide-ngsc.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 184
+        },
+        {
+          "filename": "ko/console-guide-ninc.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 184
+        },
+        {
+          "filename": "ko/console-guide.md",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 3
+        },
+        {
+          "filename": "ko/overview-ngoic.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 47
+        },
+        {
+          "filename": "ko/overview-ngovc.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 47
+        },
+        {
+          "filename": "ko/overview-ngsc.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 48
+        },
+        {
+          "filename": "ko/overview-ninc.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 48
+        },
+        {
+          "filename": "ko/overview.md",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 1
+        },
+        {
+          "filename": "ko/terraform-guide.md",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 3
+        }
+      ],
+      "detectedAt": "2026-09-09T03:16:06.208Z",
+      "checkedBy": []
+    },
+    {
+      "repo": "Private-DNS",
+      "previousSha": "8d4fcf85f1c1d6adfedc5513299facf931d3d570",
+      "currentSha": "49b13f3ded9b5e7b9f7eefb4b10af9c31c9233d6",
+      "compareUrl": "https://github.com/TOAST-DOCS/Private-DNS/compare/8d4fcf85f1c1d6adfedc5513299facf931d3d570...49b13f3ded9b5e7b9f7eefb4b10af9c31c9233d6",
+      "mdChanges": 12,
+      "files": [
+        {
+          "filename": "ko/console-guide-ngoic.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 114
+        },
+        {
+          "filename": "ko/console-guide-ngovc.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 114
+        },
+        {
+          "filename": "ko/console-guide-ngsc.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 114
+        },
+        {
+          "filename": "ko/console-guide-ninc.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 114
+        },
+        {
+          "filename": "ko/console-guide.md",
+          "status": "modified",
+          "additions": 11,
+          "deletions": 2
+        },
+        {
+          "filename": "ko/public-api-gov.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 604
+        },
+        {
+          "filename": "ko/public-api-ncgn.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 604
+        },
+        {
+          "filename": "ko/public-api-ngoic.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 604
+        },
+        {
+          "filename": "ko/public-api-ngovc.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 604
+        },
+        {
+          "filename": "ko/public-api-ngsc.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 604
+        },
+        {
+          "filename": "ko/public-api-ninc.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 604
+        },
+        {
+          "filename": "ko/public-api.md",
+          "status": "modified",
+          "additions": 38,
+          "deletions": 2
+        }
+      ],
+      "detectedAt": "2026-09-09T03:16:12.515Z",
+      "checkedBy": []
+    },
+    {
+      "repo": "RDS-FOR-POSTGRESQL",
+      "previousSha": "527d959752f67d3ba66603cf64d55202d352239b",
+      "currentSha": "98ccfd0d6f1cdd649935a7ee5ce213b9e37362ad",
+      "compareUrl": "https://github.com/TOAST-DOCS/RDS-FOR-POSTGRESQL/compare/527d959752f67d3ba66603cf64d55202d352239b...98ccfd0d6f1cdd649935a7ee5ce213b9e37362ad",
+      "mdChanges": 1,
+      "files": [
+        {
+          "filename": "ko/release-notes.md",
+          "status": "modified",
+          "additions": 9,
+          "deletions": 0
+        }
+      ],
+      "detectedAt": "2026-09-09T03:16:15.088Z",
+      "checkedBy": []
+    },
+    {
+      "repo": "Quickstarts",
+      "previousSha": "1bd0735a3fa8c1ffaa30eb85df7cc5009d23b716",
+      "currentSha": "24904653cce1a31b9ea21d3dd902df860609c27d",
+      "compareUrl": "https://github.com/TOAST-DOCS/Quickstarts/compare/1bd0735a3fa8c1ffaa30eb85df7cc5009d23b716...24904653cce1a31b9ea21d3dd902df860609c27d",
+      "mdChanges": 13,
+      "files": [
+        {
+          "filename": "ko/backup-restore.md",
+          "status": "modified",
+          "additions": 24,
+          "deletions": 12
+        },
+        {
+          "filename": "ko/cleanup-resources.md",
+          "status": "modified",
+          "additions": 33,
+          "deletions": 16
+        },
+        {
+          "filename": "ko/configure-monitoring.md",
+          "status": "modified",
+          "additions": 24,
+          "deletions": 12
+        },
+        {
+          "filename": "ko/configure-security.md",
+          "status": "modified",
+          "additions": 24,
+          "deletions": 13
+        },
+        {
+          "filename": "ko/cost-management.md",
+          "status": "modified",
+          "additions": 27,
+          "deletions": 13
+        },
+        {
+          "filename": "ko/create-account.md",
+          "status": "modified",
+          "additions": 17,
+          "deletions": 8
+        },
+        {
+          "filename": "ko/create-database.md",
+          "status": "modified",
+          "additions": 22,
+          "deletions": 12
+        },
+        {
+          "filename": "ko/create-organization.md",
+          "status": "modified",
+          "additions": 23,
+          "deletions": 11
+        },
+        {
+          "filename": "ko/create-storage.md",
+          "status": "modified",
+          "additions": 31,
+          "deletions": 17
+        },
+        {
+          "filename": "ko/iam-accounts.md",
+          "status": "modified",
+          "additions": 27,
+          "deletions": 13
+        },
+        {
+          "filename": "ko/network-setup.md",
+          "status": "modified",
+          "additions": 33,
+          "deletions": 17
+        },
+        {
+          "filename": "ko/optimze-performance.md",
+          "status": "modified",
+          "additions": 26,
+          "deletions": 14
+        },
+        {
+          "filename": "ko/overview.md",
+          "status": "modified",
+          "additions": 7,
+          "deletions": 3
+        }
+      ],
+      "detectedAt": "2026-09-09T03:16:20.186Z",
+      "checkedBy": []
+    },
+    {
+      "repo": "Storage-NAS-For-Big-Data",
+      "previousSha": "c1d3cf2fd278fdcf7cae85860d1946a2956252c6",
+      "currentSha": "25485ad6cce153e81c18542690f9ec283291c96f",
+      "compareUrl": "https://github.com/TOAST-DOCS/Storage-NAS-For-Big-Data/compare/c1d3cf2fd278fdcf7cae85860d1946a2956252c6...25485ad6cce153e81c18542690f9ec283291c96f",
+      "mdChanges": 2,
+      "files": [
+        {
+          "filename": "ko/console-guide-ngsc.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 106
+        },
+        {
+          "filename": "ko/overview-ngsc.md",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 43
+        }
+      ],
+      "detectedAt": "2026-09-09T03:16:21.181Z",
+      "checkedBy": []
+    }
+  ],
+  "history": [
+    {
+      "pollDate": "2026-09-09T03:16:25.375Z",
+      "changes": [
+        {
+          "repo": "Compute-Image",
+          "previousSha": "1f9837f9cb4ac308780dfe5dd36b876c75696c5d",
+          "currentSha": "d0b2589650d27f57680aadde27d583914c82628e",
+          "compareUrl": "https://github.com/TOAST-DOCS/Compute-Image/compare/1f9837f9cb4ac308780dfe5dd36b876c75696c5d...d0b2589650d27f57680aadde27d583914c82628e",
+          "mdChanges": 5,
+          "files": [
+            {
+              "filename": "ko/console-guide-ncgn.md",
+              "status": "added",
+              "additions": 185,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/console-guide-ngoic.md",
+              "status": "added",
+              "additions": 185,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/console-guide-ngovc.md",
+              "status": "added",
+              "additions": 185,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/console-guide-ngsc.md",
+              "status": "added",
+              "additions": 185,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/console-guide-ninc.md",
+              "status": "added",
+              "additions": 185,
+              "deletions": 0
+            }
+          ],
+          "detectedAt": "2026-09-09T03:15:13.520Z",
+          "checkedBy": []
+        },
+        {
+          "repo": "Compute-Auto-Scale",
+          "previousSha": "0653bca0040247ba837635708705e63301c7898d",
+          "currentSha": "dd04eded5958347a34831145a4a34c97bc38b71c",
+          "compareUrl": "https://github.com/TOAST-DOCS/Compute-Auto-Scale/compare/0653bca0040247ba837635708705e63301c7898d...dd04eded5958347a34831145a4a34c97bc38b71c",
+          "mdChanges": 4,
+          "files": [
+            {
+              "filename": "ko/console-guide-ngoic.md",
+              "status": "added",
+              "additions": 240,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/console-guide-ngovc.md",
+              "status": "added",
+              "additions": 240,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/console-guide-ngsc.md",
+              "status": "added",
+              "additions": 240,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/console-guide-ninc.md",
+              "status": "added",
+              "additions": 240,
+              "deletions": 0
+            }
+          ],
+          "detectedAt": "2026-09-09T03:15:14.232Z",
+          "checkedBy": []
+        },
+        {
+          "repo": "Storage-Block-Storage",
+          "previousSha": "f2a6697442a52fb004670b8aca502e42c2ddf08a",
+          "currentSha": "7ca810aacbc18a60853cfb47b9a3c29aa87665f2",
+          "compareUrl": "https://github.com/TOAST-DOCS/Storage-Block-Storage/compare/f2a6697442a52fb004670b8aca502e42c2ddf08a...7ca810aacbc18a60853cfb47b9a3c29aa87665f2",
+          "mdChanges": 8,
+          "files": [
+            {
+              "filename": "ko/console-guide-ncgn.md",
+              "status": "added",
+              "additions": 189,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/console-guide-ngoic.md",
+              "status": "added",
+              "additions": 189,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/console-guide-ngovc.md",
+              "status": "added",
+              "additions": 189,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/console-guide-ninc.md",
+              "status": "added",
+              "additions": 189,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/overview-ncgn.md",
+              "status": "added",
+              "additions": 342,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/overview-ngoic.md",
+              "status": "added",
+              "additions": 342,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/overview-ngovc.md",
+              "status": "added",
+              "additions": 342,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/overview-ninc.md",
+              "status": "added",
+              "additions": 342,
+              "deletions": 0
+            }
+          ],
+          "detectedAt": "2026-09-09T03:15:16.647Z",
+          "checkedBy": []
+        },
+        {
+          "repo": "Storage-Object-Storage",
+          "previousSha": "952cc241f9b46803222d86281ed547d1854e80b3",
+          "currentSha": "622991a6171c50c9545328ab11088b5aa245e59b",
+          "compareUrl": "https://github.com/TOAST-DOCS/Storage-Object-Storage/compare/952cc241f9b46803222d86281ed547d1854e80b3...622991a6171c50c9545328ab11088b5aa245e59b",
+          "mdChanges": 39,
+          "files": [
+            {
+              "filename": "ko/acl-guide-ngcc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 567
+            },
+            {
+              "filename": "ko/acl-guide-ngoic.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 567
+            },
+            {
+              "filename": "ko/acl-guide-ngovc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 567
+            },
+            {
+              "filename": "ko/acl-guide-ngsc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 567
+            },
+            {
+              "filename": "ko/acl-guide-ninc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 567
+            },
+            {
+              "filename": "ko/acl-guide.md",
+              "status": "modified",
+              "additions": 37,
+              "deletions": 3
+            },
+            {
+              "filename": "ko/api-guide-ngcc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 3031
+            },
+            {
+              "filename": "ko/api-guide-ngoic.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 2968
+            },
+            {
+              "filename": "ko/api-guide-ngovc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 2968
+            },
+            {
+              "filename": "ko/api-guide-ngsc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 3031
+            },
+            {
+              "filename": "ko/api-guide-ninc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 3031
+            },
+            {
+              "filename": "ko/api-guide.md",
+              "status": "modified",
+              "additions": 4,
+              "deletions": 2
+            },
+            {
+              "filename": "ko/cli-guide-ngcc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/cli-guide-ngoic.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 652
+            },
+            {
+              "filename": "ko/cli-guide-ngovc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 652
+            },
+            {
+              "filename": "ko/cli-guide-ngsc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/cli-guide-ninc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/cli-guide.md",
+              "status": "modified",
+              "additions": 3,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/console-guide-ngcc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 401
+            },
+            {
+              "filename": "ko/console-guide-ngoic.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 453
+            },
+            {
+              "filename": "ko/console-guide-ngovc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 453
+            },
+            {
+              "filename": "ko/console-guide-ngsc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 401
+            },
+            {
+              "filename": "ko/console-guide-ninc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 401
+            },
+            {
+              "filename": "ko/console-guide.md",
+              "status": "modified",
+              "additions": 17,
+              "deletions": 3
+            },
+            {
+              "filename": "ko/container-policy-guide-ngoic.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 242
+            },
+            {
+              "filename": "ko/container-policy-guide-ngovc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 242
+            },
+            {
+              "filename": "ko/container-policy-guide.md",
+              "status": "modified",
+              "additions": 69,
+              "deletions": 5
+            },
+            {
+              "filename": "ko/presigned-url-guide.md",
+              "status": "modified",
+              "additions": 4,
+              "deletions": 26
+            },
+            {
+              "filename": "ko/s3-api-guide-ngcc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 1195
+            },
+            {
+              "filename": "ko/s3-api-guide-ngoic.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 1332
+            },
+            {
+              "filename": "ko/s3-api-guide-ngovc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 1332
+            },
+            {
+              "filename": "ko/s3-api-guide-ngsc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 1195
+            },
+            {
+              "filename": "ko/s3-api-guide-ninc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 1195
+            },
+            {
+              "filename": "ko/s3-api-guide.md",
+              "status": "modified",
+              "additions": 35,
+              "deletions": 196
+            },
+            {
+              "filename": "ko/third-party-tools-guide-ngcc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 128
+            },
+            {
+              "filename": "ko/third-party-tools-guide-ngoic.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 128
+            },
+            {
+              "filename": "ko/third-party-tools-guide-ngovc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 128
+            },
+            {
+              "filename": "ko/third-party-tools-guide-ngsc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 128
+            },
+            {
+              "filename": "ko/third-party-tools-guide-ninc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 128
+            }
+          ],
+          "detectedAt": "2026-09-09T03:15:18.660Z",
+          "checkedBy": []
+        },
+        {
+          "repo": "TOAST-Cloud",
+          "previousSha": "2c1cbec0062c6e811063eb409857623ca8fe5e15",
+          "currentSha": "31626abe6f12b2424472a2d6db4c96c762def310",
+          "compareUrl": "https://github.com/TOAST-DOCS/TOAST-Cloud/compare/2c1cbec0062c6e811063eb409857623ca8fe5e15...31626abe6f12b2424472a2d6db4c96c762def310",
+          "mdChanges": 1,
+          "files": [
+            {
+              "filename": "ko/terraform-guide-gov.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            }
+          ],
+          "detectedAt": "2026-09-09T03:15:43.889Z",
+          "checkedBy": []
+        },
+        {
+          "repo": "Compute-Image-Builder",
+          "previousSha": "6d3782caf0b1b2f15cdb18d8809cf77f378d76b6",
+          "currentSha": "6386f1f58ee7568eb36336cfde22ac8885af791d",
+          "compareUrl": "https://github.com/TOAST-DOCS/Compute-Image-Builder/compare/6d3782caf0b1b2f15cdb18d8809cf77f378d76b6...6386f1f58ee7568eb36336cfde22ac8885af791d",
+          "mdChanges": 5,
+          "files": [
+            {
+              "filename": "ko/component-guide-ncgn.md",
+              "status": "added",
+              "additions": 954,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/component-guide-ngoic.md",
+              "status": "added",
+              "additions": 954,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/component-guide-ngovc.md",
+              "status": "added",
+              "additions": 954,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/component-guide-ngsc.md",
+              "status": "added",
+              "additions": 954,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/component-guide-ninc.md",
+              "status": "added",
+              "additions": 954,
+              "deletions": 0
+            }
+          ],
+          "detectedAt": "2026-09-09T03:15:56.470Z",
+          "checkedBy": []
+        },
+        {
+          "repo": "Service-Gateway",
+          "previousSha": "4a84b387b5113a183a534fe83c8fabd78d71ad07",
+          "currentSha": "22ca1b6b8b9d0d5062ed3a1f4aacf7640e7b7170",
+          "compareUrl": "https://github.com/TOAST-DOCS/Service-Gateway/compare/4a84b387b5113a183a534fe83c8fabd78d71ad07...22ca1b6b8b9d0d5062ed3a1f4aacf7640e7b7170",
+          "mdChanges": 3,
+          "files": [
+            {
+              "filename": "ko/service-endpoint-gov.md",
+              "status": "modified",
+              "additions": 7,
+              "deletions": 7
+            },
+            {
+              "filename": "ko/service-endpoint-ncgn.md",
+              "status": "modified",
+              "additions": 2,
+              "deletions": 2
+            },
+            {
+              "filename": "ko/service-endpoint.md",
+              "status": "modified",
+              "additions": 2,
+              "deletions": 2
+            }
+          ],
+          "detectedAt": "2026-09-09T03:16:03.563Z",
+          "checkedBy": []
+        },
+        {
+          "repo": "Peering-Gateway",
+          "previousSha": "57d07ccd1715dad74197c2f539090f4b8064a15d",
+          "currentSha": "872ef2e0f0d3fdcefdbb0b96ac55af0284a99185",
+          "compareUrl": "https://github.com/TOAST-DOCS/Peering-Gateway/compare/57d07ccd1715dad74197c2f539090f4b8064a15d...872ef2e0f0d3fdcefdbb0b96ac55af0284a99185",
+          "mdChanges": 8,
+          "files": [
+            {
+              "filename": "ko/console-guide-ncgn.md",
+              "status": "added",
+              "additions": 211,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/console-guide-ngoic.md",
+              "status": "added",
+              "additions": 211,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/console-guide-ngovc.md",
+              "status": "added",
+              "additions": 211,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/console-guide-ninc.md",
+              "status": "added",
+              "additions": 211,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/overview-ncgn.md",
+              "status": "added",
+              "additions": 16,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/overview-ngoic.md",
+              "status": "added",
+              "additions": 16,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/overview-ngovc.md",
+              "status": "added",
+              "additions": 16,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/overview-ninc.md",
+              "status": "added",
+              "additions": 16,
+              "deletions": 0
+            }
+          ],
+          "detectedAt": "2026-09-09T03:16:04.717Z",
+          "checkedBy": []
+        },
+        {
+          "repo": "Storage-Online-NAS",
+          "previousSha": "7a80a39f1430d6f2ea48974b1d86e50bca7db5dc",
+          "currentSha": "c4196c862e1b8ed15a0aeb382384dac7239a1d18",
+          "compareUrl": "https://github.com/TOAST-DOCS/Storage-Online-NAS/compare/7a80a39f1430d6f2ea48974b1d86e50bca7db5dc...c4196c862e1b8ed15a0aeb382384dac7239a1d18",
+          "mdChanges": 16,
+          "files": [
+            {
+              "filename": "ko/api-guide-ngoic.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 1020
+            },
+            {
+              "filename": "ko/api-guide-ngovc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 1020
+            },
+            {
+              "filename": "ko/api-guide-ngsc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 1012
+            },
+            {
+              "filename": "ko/api-guide-ninc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 1012
+            },
+            {
+              "filename": "ko/api-guide.md",
+              "status": "modified",
+              "additions": 11,
+              "deletions": 4
+            },
+            {
+              "filename": "ko/console-guide-ngoic.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 193
+            },
+            {
+              "filename": "ko/console-guide-ngovc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 193
+            },
+            {
+              "filename": "ko/console-guide-ngsc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 184
+            },
+            {
+              "filename": "ko/console-guide-ninc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 184
+            },
+            {
+              "filename": "ko/console-guide.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 3
+            },
+            {
+              "filename": "ko/overview-ngoic.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 47
+            },
+            {
+              "filename": "ko/overview-ngovc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 47
+            },
+            {
+              "filename": "ko/overview-ngsc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 48
+            },
+            {
+              "filename": "ko/overview-ninc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 48
+            },
+            {
+              "filename": "ko/overview.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/terraform-guide.md",
+              "status": "modified",
+              "additions": 3,
+              "deletions": 3
+            }
+          ],
+          "detectedAt": "2026-09-09T03:16:06.208Z",
+          "checkedBy": []
+        },
+        {
+          "repo": "Private-DNS",
+          "previousSha": "8d4fcf85f1c1d6adfedc5513299facf931d3d570",
+          "currentSha": "49b13f3ded9b5e7b9f7eefb4b10af9c31c9233d6",
+          "compareUrl": "https://github.com/TOAST-DOCS/Private-DNS/compare/8d4fcf85f1c1d6adfedc5513299facf931d3d570...49b13f3ded9b5e7b9f7eefb4b10af9c31c9233d6",
+          "mdChanges": 12,
+          "files": [
+            {
+              "filename": "ko/console-guide-ngoic.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 114
+            },
+            {
+              "filename": "ko/console-guide-ngovc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 114
+            },
+            {
+              "filename": "ko/console-guide-ngsc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 114
+            },
+            {
+              "filename": "ko/console-guide-ninc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 114
+            },
+            {
+              "filename": "ko/console-guide.md",
+              "status": "modified",
+              "additions": 11,
+              "deletions": 2
+            },
+            {
+              "filename": "ko/public-api-gov.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 604
+            },
+            {
+              "filename": "ko/public-api-ncgn.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 604
+            },
+            {
+              "filename": "ko/public-api-ngoic.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 604
+            },
+            {
+              "filename": "ko/public-api-ngovc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 604
+            },
+            {
+              "filename": "ko/public-api-ngsc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 604
+            },
+            {
+              "filename": "ko/public-api-ninc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 604
+            },
+            {
+              "filename": "ko/public-api.md",
+              "status": "modified",
+              "additions": 38,
+              "deletions": 2
+            }
+          ],
+          "detectedAt": "2026-09-09T03:16:12.515Z",
+          "checkedBy": []
+        },
+        {
+          "repo": "RDS-FOR-POSTGRESQL",
+          "previousSha": "527d959752f67d3ba66603cf64d55202d352239b",
+          "currentSha": "98ccfd0d6f1cdd649935a7ee5ce213b9e37362ad",
+          "compareUrl": "https://github.com/TOAST-DOCS/RDS-FOR-POSTGRESQL/compare/527d959752f67d3ba66603cf64d55202d352239b...98ccfd0d6f1cdd649935a7ee5ce213b9e37362ad",
+          "mdChanges": 1,
+          "files": [
+            {
+              "filename": "ko/release-notes.md",
+              "status": "modified",
+              "additions": 9,
+              "deletions": 0
+            }
+          ],
+          "detectedAt": "2026-09-09T03:16:15.088Z",
+          "checkedBy": []
+        },
+        {
+          "repo": "Quickstarts",
+          "previousSha": "1bd0735a3fa8c1ffaa30eb85df7cc5009d23b716",
+          "currentSha": "24904653cce1a31b9ea21d3dd902df860609c27d",
+          "compareUrl": "https://github.com/TOAST-DOCS/Quickstarts/compare/1bd0735a3fa8c1ffaa30eb85df7cc5009d23b716...24904653cce1a31b9ea21d3dd902df860609c27d",
+          "mdChanges": 13,
+          "files": [
+            {
+              "filename": "ko/backup-restore.md",
+              "status": "modified",
+              "additions": 24,
+              "deletions": 12
+            },
+            {
+              "filename": "ko/cleanup-resources.md",
+              "status": "modified",
+              "additions": 33,
+              "deletions": 16
+            },
+            {
+              "filename": "ko/configure-monitoring.md",
+              "status": "modified",
+              "additions": 24,
+              "deletions": 12
+            },
+            {
+              "filename": "ko/configure-security.md",
+              "status": "modified",
+              "additions": 24,
+              "deletions": 13
+            },
+            {
+              "filename": "ko/cost-management.md",
+              "status": "modified",
+              "additions": 27,
+              "deletions": 13
+            },
+            {
+              "filename": "ko/create-account.md",
+              "status": "modified",
+              "additions": 17,
+              "deletions": 8
+            },
+            {
+              "filename": "ko/create-database.md",
+              "status": "modified",
+              "additions": 22,
+              "deletions": 12
+            },
+            {
+              "filename": "ko/create-organization.md",
+              "status": "modified",
+              "additions": 23,
+              "deletions": 11
+            },
+            {
+              "filename": "ko/create-storage.md",
+              "status": "modified",
+              "additions": 31,
+              "deletions": 17
+            },
+            {
+              "filename": "ko/iam-accounts.md",
+              "status": "modified",
+              "additions": 27,
+              "deletions": 13
+            },
+            {
+              "filename": "ko/network-setup.md",
+              "status": "modified",
+              "additions": 33,
+              "deletions": 17
+            },
+            {
+              "filename": "ko/optimze-performance.md",
+              "status": "modified",
+              "additions": 26,
+              "deletions": 14
+            },
+            {
+              "filename": "ko/overview.md",
+              "status": "modified",
+              "additions": 7,
+              "deletions": 3
+            }
+          ],
+          "detectedAt": "2026-09-09T03:16:20.186Z",
+          "checkedBy": []
+        },
+        {
+          "repo": "Storage-NAS-For-Big-Data",
+          "previousSha": "c1d3cf2fd278fdcf7cae85860d1946a2956252c6",
+          "currentSha": "25485ad6cce153e81c18542690f9ec283291c96f",
+          "compareUrl": "https://github.com/TOAST-DOCS/Storage-NAS-For-Big-Data/compare/c1d3cf2fd278fdcf7cae85860d1946a2956252c6...25485ad6cce153e81c18542690f9ec283291c96f",
+          "mdChanges": 2,
+          "files": [
+            {
+              "filename": "ko/console-guide-ngsc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 106
+            },
+            {
+              "filename": "ko/overview-ngsc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 43
+            }
+          ],
+          "detectedAt": "2026-09-09T03:16:21.181Z",
+          "checkedBy": []
+        }
+      ]
+    }
+  ]
 }
