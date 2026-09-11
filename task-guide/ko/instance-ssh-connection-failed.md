@@ -5,11 +5,13 @@
 SSH 클라이언트로 인스턴스에 접속하면 연결이 되지 않고 다음과 같은 오류 메시지가 표시됩니다.
 
 ```
-ssh: connect to host 192.168.0.11 port 22: Connection timed out
-ssh: connect to host 192.168.0.11 port 22: Connection refused
+ssh: connect to host {인스턴스IP} port 22: Connection timed out
+ssh: connect to host {인스턴스IP} port 22: Connection refused
 Permission denied (publickey).
 Permission denied (publickey,gssapi-keyex,gssapi-with-mic).
 ```
+
+이 문서의 `{인스턴스IP}`는 접속하려는 인스턴스의 플로팅 IP 또는 사설 IP입니다. 명령을 실행할 때는 실제 IP로 바꿔 입력하세요.
 
 인스턴스를 새로 만든 뒤 처음 접속할 때, 그리고 정상적으로 접속하던 인스턴스에서 OS 보안 취약점 조치, 백신이나 서버 접근 제어 솔루션 설치, 인스턴스 타입 변경, OS 패키지 업데이트 같은 작업을 한 뒤에 발생할 수 있습니다.
 
@@ -31,16 +33,19 @@ Permission denied (publickey,gssapi-keyex,gssapi-with-mic).
     Linux와 macOS는 `nc`를 사용합니다.
 
     ```sh
-    nc -zv 192.168.0.11 22
+    nc -zv {인스턴스IP} 22
     ```
 
     Windows는 PowerShell의 `Test-NetConnection`을 사용합니다.
 
     ```powershell
-    Test-NetConnection 192.168.0.11 -Port 22
+    Test-NetConnection {인스턴스IP} -Port 22
     ```
 
-    telnet이 설치되어 있다면 `telnet 192.168.0.11 22`으로도 확인할 수 있습니다.
+    > [!NOTE]
+    > `Test-NetConnection`은 포트를 지정해도 ping을 함께 수행하므로, 보안 그룹에 ICMP 허용 규칙이 없으면 `PingSucceeded : False`와 `WARNING: Ping to {인스턴스IP} failed -- Status: TimedOut` 경고가 함께 표시됩니다. 정상적인 구성에서도 나타나는 출력이므로 `TcpTestSucceeded` 값만 보고 판단하세요. 결과만 간단히 확인하려면 `Test-NetConnection {인스턴스IP} -Port 22 -InformationLevel Quiet`을 사용합니다.
+
+    telnet이 설치되어 있다면 `telnet {인스턴스IP} 22`로도 확인할 수 있습니다.
 
     포트가 열려 있는데도 접속되지 않으면 네트워크 연결은 정상이며 인스턴스 내부에서 막힌 것입니다.
 
@@ -59,7 +64,9 @@ Permission denied (publickey,gssapi-keyex,gssapi-with-mic).
 
 ### 원인 1: 접속 경로가 인스턴스까지 닿지 않음
 
-`Connection timed out`은 패킷이 인스턴스에 도달하지 못했다는 뜻입니다. 인스턴스의 사설 IP는 VPC 내부에서만 통신하므로 외부에서 바로 접속할 수 없습니다.
+`Connection timed out`은 패킷이 인스턴스까지 도달하지 못하는 경우가 대표적이지만, 패킷이 도달해도 인스턴스 안에서 DROP되면 같은 메시지가 표시됩니다. 아래 가이드대로 경로를 모두 열어도 같은 메시지가 계속되면 원인 3을 확인하세요.
+
+인스턴스의 사설 IP는 VPC 내부에서만 통신하므로 외부에서 바로 접속할 수 없습니다.
 
 외부에서 접속하려면 **플로팅 IP를 인스턴스에 연결하고, 그 인스턴스가 속한 서브넷의 라우팅 테이블에 인터넷 게이트웨이가 연결되어** 있어야 합니다. VPN을 사용하거나, 이미 외부 접속이 가능한 배스천 호스트를 거쳐 접속하는 방법도 있습니다.
 
@@ -124,10 +131,10 @@ SSH는 다른 사용자가 읽을 수 있는 개인 키를 무시하므로, 키 
 3. 접속 계정 이름이 이미지에 맞는지 확인합니다. `-v` 옵션을 붙이면 실제로 어떤 계정과 키 파일이 사용됐는지 확인할 수 있습니다.
 
     ```sh
-    ssh -i {키페어이름}.pem rocky@192.168.0.11 -v
+    ssh -i {키페어이름}.pem rocky@{인스턴스IP} -v
     ```
 
-    출력의 `debug1: Authenticating to 192.168.0.11:22 as 'rocky'`에서 접속에 사용된 계정 이름을, `debug1: Trying private key: {키페어이름}.pem`에서 실제로 제시한 키 파일을 확인합니다.
+    출력의 `debug1: Authenticating to {인스턴스IP}:22 as 'rocky'`에서 접속에 사용된 계정 이름을, `debug1: Trying private key: {키페어이름}.pem`에서 실제로 제시한 키 파일을 확인합니다.
 
 4. 키 파일과 계정 이름, 권한이 모두 맞는데 계속 `Permission denied`가 발생하면 OS 안에서 `authorized_keys`나 sshd 인증 설정이 바뀐 것입니다. 원인 3으로 넘어가세요.
 
@@ -240,8 +247,8 @@ SSH 접속이 불가하고 시리얼 콘솔도 사용할 수 없는 상황에서
 진단 속도를 높이려면 다음 자료도 함께 전달하세요.
 
 - 접속이 되지 않은 시각(KST 기준)
-- `ssh -i {키페어이름}.pem {계정}@{IP} -v` 실행 결과 전문
-- 접속 경로를 확인한 결과: `ping`, `telnet {IP} 22`, `nmap` 출력 화면
+- `ssh -i {키페어이름}.pem {계정}@{인스턴스IP} -v` 실행 결과 전문
+- 접속 경로를 확인한 결과: `nc -zv {인스턴스IP} 22` 또는 `Test-NetConnection {인스턴스IP} -Port 22` 출력 화면
 - 같은 대역의 다른 인스턴스에서 사설 IP로 접속을 시도한 결과
 - 인스턴스에 적용된 보안 그룹의 **보안 규칙** 화면
 - 시리얼 콘솔 화면(검은 화면이면 그 상태 그대로)
