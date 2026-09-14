@@ -1,7 +1,7 @@
 {
-  "lastPoll": "2026-09-09T01:46:08.631Z",
+  "lastPoll": "2026-09-09T03:16:25.375Z",
   "heartbeat": {
-    "timestamp": "2026-09-09T01:46:08.631Z",
+    "timestamp": "2026-09-09T03:16:25.375Z",
     "trackedRepos": 179,
     "repoNames": [
       "kms",
@@ -224,7 +224,7 @@
           "deletions": 0
         }
       ],
-      "detectedAt": "2026-09-09T01:44:43.639Z",
+      "detectedAt": "2026-09-09T03:15:13.520Z",
       "checkedBy": []
     },
     {
@@ -259,7 +259,7 @@
           "deletions": 0
         }
       ],
-      "detectedAt": "2026-09-09T01:44:44.556Z",
+      "detectedAt": "2026-09-09T03:15:14.232Z",
       "checkedBy": []
     },
     {
@@ -318,7 +318,7 @@
           "deletions": 0
         }
       ],
-      "detectedAt": "2026-09-09T01:44:48.246Z",
+      "detectedAt": "2026-09-09T03:15:16.647Z",
       "checkedBy": []
     },
     {
@@ -563,7 +563,24 @@
           "deletions": 128
         }
       ],
-      "detectedAt": "2026-09-09T01:44:50.149Z",
+      "detectedAt": "2026-09-09T03:15:18.660Z",
+      "checkedBy": []
+    },
+    {
+      "repo": "TOAST-Cloud",
+      "previousSha": "2c1cbec0062c6e811063eb409857623ca8fe5e15",
+      "currentSha": "31626abe6f12b2424472a2d6db4c96c762def310",
+      "compareUrl": "https://github.com/TOAST-DOCS/TOAST-Cloud/compare/2c1cbec0062c6e811063eb409857623ca8fe5e15...31626abe6f12b2424472a2d6db4c96c762def310",
+      "mdChanges": 1,
+      "files": [
+        {
+          "filename": "ko/terraform-guide-gov.md",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 1
+        }
+      ],
+      "detectedAt": "2026-09-09T03:15:43.889Z",
       "checkedBy": []
     },
     {
@@ -604,7 +621,7 @@
           "deletions": 0
         }
       ],
-      "detectedAt": "2026-09-09T01:45:34.031Z",
+      "detectedAt": "2026-09-09T03:15:56.470Z",
       "checkedBy": []
     },
     {
@@ -633,7 +650,7 @@
           "deletions": 2
         }
       ],
-      "detectedAt": "2026-09-09T01:45:42.149Z",
+      "detectedAt": "2026-09-09T03:16:03.563Z",
       "checkedBy": []
     },
     {
@@ -692,7 +709,7 @@
           "deletions": 0
         }
       ],
-      "detectedAt": "2026-09-09T01:45:43.343Z",
+      "detectedAt": "2026-09-09T03:16:04.717Z",
       "checkedBy": []
     },
     {
@@ -799,7 +816,7 @@
           "deletions": 3
         }
       ],
-      "detectedAt": "2026-09-09T01:45:45.128Z",
+      "detectedAt": "2026-09-09T03:16:06.208Z",
       "checkedBy": []
     },
     {
@@ -882,7 +899,7 @@
           "deletions": 2
         }
       ],
-      "detectedAt": "2026-09-09T01:45:52.958Z",
+      "detectedAt": "2026-09-09T03:16:12.515Z",
       "checkedBy": []
     },
     {
@@ -899,7 +916,7 @@
           "deletions": 0
         }
       ],
-      "detectedAt": "2026-09-09T01:45:56.385Z",
+      "detectedAt": "2026-09-09T03:16:15.088Z",
       "checkedBy": []
     },
     {
@@ -988,7 +1005,7 @@
           "deletions": 3
         }
       ],
-      "detectedAt": "2026-09-09T01:46:02.341Z",
+      "detectedAt": "2026-09-09T03:16:20.186Z",
       "checkedBy": []
     },
     {
@@ -1011,13 +1028,13 @@
           "deletions": 43
         }
       ],
-      "detectedAt": "2026-09-09T01:46:03.593Z",
+      "detectedAt": "2026-09-09T03:16:21.181Z",
       "checkedBy": []
     }
   ],
   "history": [
     {
-      "pollDate": "2026-09-09T01:46:08.631Z",
+      "pollDate": "2026-09-09T03:16:25.375Z",
       "changes": [
         {
           "repo": "Compute-Image",
@@ -1057,7 +1074,7 @@
               "deletions": 0
             }
           ],
-          "detectedAt": "2026-09-09T01:44:43.639Z",
+          "detectedAt": "2026-09-09T03:15:13.520Z",
           "checkedBy": []
         },
         {
@@ -1092,7 +1109,7 @@
               "deletions": 0
             }
           ],
-          "detectedAt": "2026-09-09T01:44:44.556Z",
+          "detectedAt": "2026-09-09T03:15:14.232Z",
           "checkedBy": []
         },
         {
@@ -1151,7 +1168,7 @@
               "deletions": 0
             }
           ],
-          "detectedAt": "2026-09-09T01:44:48.246Z",
+          "detectedAt": "2026-09-09T03:15:16.647Z",
           "checkedBy": []
         },
         {
@@ -1396,7 +1413,24 @@
               "deletions": 128
             }
           ],
-          "detectedAt": "2026-09-09T01:44:50.149Z",
+          "detectedAt": "2026-09-09T03:15:18.660Z",
+          "checkedBy": []
+        },
+        {
+          "repo": "TOAST-Cloud",
+          "previousSha": "2c1cbec0062c6e811063eb409857623ca8fe5e15",
+          "currentSha": "31626abe6f12b2424472a2d6db4c96c762def310",
+          "compareUrl": "https://github.com/TOAST-DOCS/TOAST-Cloud/compare/2c1cbec0062c6e811063eb409857623ca8fe5e15...31626abe6f12b2424472a2d6db4c96c762def310",
+          "mdChanges": 1,
+          "files": [
+            {
+              "filename": "ko/terraform-guide-gov.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            }
+          ],
+          "detectedAt": "2026-09-09T03:15:43.889Z",
           "checkedBy": []
         },
         {
@@ -1437,7 +1471,7 @@
               "deletions": 0
             }
           ],
-          "detectedAt": "2026-09-09T01:45:34.031Z",
+          "detectedAt": "2026-09-09T03:15:56.470Z",
           "checkedBy": []
         },
         {
@@ -1466,7 +1500,7 @@
               "deletions": 2
             }
           ],
-          "detectedAt": "2026-09-09T01:45:42.149Z",
+          "detectedAt": "2026-09-09T03:16:03.563Z",
           "checkedBy": []
         },
         {
@@ -1525,7 +1559,7 @@
               "deletions": 0
             }
           ],
-          "detectedAt": "2026-09-09T01:45:43.343Z",
+          "detectedAt": "2026-09-09T03:16:04.717Z",
           "checkedBy": []
         },
         {
@@ -1632,7 +1666,7 @@
               "deletions": 3
             }
           ],
-          "detectedAt": "2026-09-09T01:45:45.128Z",
+          "detectedAt": "2026-09-09T03:16:06.208Z",
           "checkedBy": []
         },
         {
@@ -1715,7 +1749,7 @@
               "deletions": 2
             }
           ],
-          "detectedAt": "2026-09-09T01:45:52.958Z",
+          "detectedAt": "2026-09-09T03:16:12.515Z",
           "checkedBy": []
         },
         {
@@ -1732,7 +1766,7 @@
               "deletions": 0
             }
           ],
-          "detectedAt": "2026-09-09T01:45:56.385Z",
+          "detectedAt": "2026-09-09T03:16:15.088Z",
           "checkedBy": []
         },
         {
@@ -1821,7 +1855,7 @@
               "deletions": 3
             }
           ],
-          "detectedAt": "2026-09-09T01:46:02.341Z",
+          "detectedAt": "2026-09-09T03:16:20.186Z",
           "checkedBy": []
         },
         {
@@ -1844,7 +1878,7 @@
               "deletions": 43
             }
           ],
-          "detectedAt": "2026-09-09T01:46:03.593Z",
+          "detectedAt": "2026-09-09T03:16:21.181Z",
           "checkedBy": []
         }
       ]
