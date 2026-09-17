@@ -111,28 +111,3 @@ graph TD
 | 필터 | 알림 적용 범위를 특정 인스턴스나 리전으로 좁히는 조건입니다. 설정하지 않으면 해당 서비스의 모든 인스턴스에 알림이 적용됩니다. |
 | 지속 시간 | 조건 충족 상태가 유지되어야 알림이 발생하는 최소 시간(분 단위)입니다. 일시적인 부하 급증에 의한 불필요한 알림을 방지합니다. |
 | 알림 수신 그룹 | 알림을 받을 멤버를 묶어 관리하는 그룹입니다. 프로젝트 관리 > 알림 수신 그룹 관리에서 생성할 수 있습니다. |
-
----
-
-## 작성자 검증 체크리스트
-
-게시 전 다음 항목을 실제 NHN Cloud 콘솔/API와 대조해 확인하세요. **이 섹션은 게시 시 삭제합니다.**
-
-- [x] 콘솔 메뉴 경로: `Monitoring > Cloud Monitoring` ← Playwriter 확인 완료
-- [x] 탭 구성: `대시보드`, `알림 관리`, `지표 관리` ← Playwriter 확인 완료
-- [x] 알림 관리 하위 탭: `알림 설정`, `알림 발생 이력` ← Playwriter 확인 완료
-- [x] 알림 생성 버튼명: `알림 생성` ← Playwriter 확인 완료
-- [x] 기본 정보 필드: 이름(필수, 40자), 설명(100자), 서비스(필수) ← Playwriter 확인 완료
-- [x] 서비스 목록: Instance, GPU Instance, Cloud Functions, NCS, VPC, Subnet, Floating IP, Load Balancer, Transit Hub, Internet Gateway, Colocation Gateway, Direct Connect, SMS ← Playwriter 확인 완료
-- [x] Instance 리소스 유형: CPU, CPU (New), Memory, Memory (New), Disk, Disk (New), Disk I/O (New), Network, Network (New), System, System (New), Process, Swap, Swap (New) ← Playwriter 확인 완료
-- [x] CPU 지표 항목: CPU 사용률, 코어별 CPU 사용률, CPU 평균 부하(1m/5m/15m), CPU 상세(user/nice/system/iowait) ← Playwriter 확인 완료
-- [x] 필터 레이블: 인스턴스, 리전 ← Playwriter 확인 완료
-- [x] 비교 방법: `>`, `<`, `>=`, `<=`, `=`, `!=` ← Playwriter 확인 완료
-- [x] 조건 필드: 비교 방법, 임계치(소수점 가능), 지속 시간(분) ← Playwriter 확인 완료
-- [x] 알림 수신 대상: 알림 수신 그룹만 지원, 기본 알림 수신 그룹 존재 ← Playwriter 확인 완료
-- [x] 웹훅 안내 문구: "커스텀 웹훅을 설정하세요. 기본 웹훅은 지원하지 않는 알림 방법입니다." ← Playwriter 확인 완료
-- [x] 알림 발생 이력 검색 필터: 알림명, 알림 상태, 지표 항목(서비스/리소스/지표), 발생 시간 ← Playwriter 확인 완료
-- [x] 알림 발생 이력 테이블 컬럼: 알림명, 발생 일시, 종료 일시, 서비스, 리소스, 지표 항목, 결괏값, 지속 시간, 알림 발송 이력 보기 ← Playwriter 확인 완료
-- [x] 알림 설정 테이블 컬럼: 알림명, 알림 설명, 서비스, 알림 사용 여부, 생성 일시, 알림 상세 보기, 수정 ← Playwriter 확인 완료
-- [x] 저장/취소 버튼 ← Playwriter 확인 완료
-- [ ] 다이어그램: 알림 설정 및 발송 구성도 — Mermaid 청사진을 사내 디자인 규격 이미지로 교체 필요
