@@ -1,0 +1,12 @@
+{
+  "name": "md-merge-dashboard",
+  "version": "1.0.0",
+  "description": "TOAST-DOCS GitHub org release branch merge tracking dashboard",
+  "main": "src/poll.js",
+  "scripts": {
+    "poll": "node src/poll.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.6.1"
+  }
+}
