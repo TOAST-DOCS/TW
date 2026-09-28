@@ -175,9 +175,9 @@ NTP(Network Time Protocol)가 설정되지 않은 인스턴스에서 장시간 �
 
 4. 몇 분 뒤 Cloud Monitoring 콘솔에서 지표가 표시되는지 확인합니다.
 
-### 원인 3: 구버전 에이전트가 설치되어 있음
+### 원인 3: 기존 에이전트가 설치되어 있음
 
-Cloud Monitoring 에이전트는 기존 `toast-sysmon`(Linux) / `toastmon`(Windows)에서 `nhncloud-telegraf`로 변경되었습니다. 신규 에이전트와 기존 에이전트는 동시에 설치되어도 문제없이 동작하지만, 기존 에이전트만 설치된 상태에서 서비스 환경이 변경되면 수집이 중단될 수 있습니다. 구버전만 실행 중이라면 신규 에이전트 설치가 필요합니다.
+Cloud Monitoring 에이전트는 기존 `toast-sysmon`(Linux) / `toastmon`(Windows)에서 `nhncloud-telegraf`로 변경되었습니다. 신규 에이전트와 기존 에이전트는 동시에 설치되어도 문제없이 동작하지만, 기존 에이전트만 설치된 상태에서 서비스 환경이 변경되면 수집이 중단될 수 있습니다. 기존 에이전트만 실행 중이라면 신규 에이전트 설치가 필요합니다.
 
 **해결 방법**
 
@@ -195,9 +195,12 @@ Cloud Monitoring 에이전트는 기존 `toast-sysmon`(Linux) / `toastmon`(Windo
    Get-Service -Name "nhncloud-telegraf" -ErrorAction SilentlyContinue
    ```
 
-2. 구버전(`toast-sysmon` 또는 `toastmon`)만 실행 중이면 [원인 1의 해결 방법](#원인-1-에이전트-프로세스가-실행되지-않음)에 있는 신규 에이전트 설치 명령어를 실행합니다. 신규 에이전트와 기존 에이전트는 동시에 설치되어도 문제없이 동작합니다.
+2. 기존 에이전트(`toast-sysmon` 또는 `toastmon`)만 실행 중이면 [원인 1의 해결 방법](#원인-1-에이전트-프로세스가-실행되지-않음)에 있는 신규 에이전트 설치 명령어를 실행합니다.
 3. 설치 후 `nhncloud-telegraf` 서비스가 정상 실행 상태(Linux: `active (running)`, Windows: `Running`)인지 확인하고, 몇 분 뒤 콘솔에서 지표가 표시되는지 확인합니다.
 4. 신규 에이전트가 정상 동작하면 기존 에이전트를 삭제합니다.
+
+> [!CAUTION]
+> 기존 에이전트를 삭제하면 오토 스케일 그룹에 속한 인스턴스의 경우 오토 스케일링 기능이 정상 동작하지 않을 수 있습니다.
 
    **Linux**:
    ```sh
@@ -248,6 +251,7 @@ Windows 인스턴스에서 에이전트 설치 시 실행 파일이 `C:\ProgramD
 위 방법으로 해결되지 않으면 [NHN Cloud 고객지원](https://www.nhncloud.com/kr/support/inquiry)에 문의하세요. 에이전트 프로세스가 정상인데도 지표가 수집되지 않는 경우, 수집 서버 측 설정이나 내부 이슈일 수 있으며 NHN Cloud의 확인이 필요합니다. 문의 시 다음 정보를 함께 전달하면 빠른 진단에 도움이 됩니다.
 
 - 지표가 수집되지 않는 인스턴스의 ID
+- 지표가 수집되지 않는 인스턴스가 속한 프로젝트 ID
 - 인스턴스의 OS 종류와 버전
 - 에이전트 서비스 상태 확인 결과(`systemctl status nhncloud-telegraf` 출력 전문)
 - 에이전트 로그 파일(`/var/log/nhncloud-telegraf/telegraf.log`)
