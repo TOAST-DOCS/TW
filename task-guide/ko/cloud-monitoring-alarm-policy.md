@@ -2,30 +2,14 @@
 
 ## 시작하기 전에
 
-Cloud Monitoring은 인스턴스를 비롯한 NHN Cloud 리소스의 시스템 및 서비스 지표를 자동으로 수집하고 알림을 제공하는 서비스입니다. 대시보드와 차트를 생성해 실시간으로 지표를 조회할 수 있으며, 임계치를 설정해 이를 초과한 지표에 대한 알림을 이메일, SMS 등으로 전파할 수 있습니다. Prometheus 호환 지표 형태 조회와 HTTP API를 제공하므로 외부 시스템과 연동할 수 있으며, 장애가 발생하기 전에 이상 징후를 사전 탐지하는 데 활용할 수 있습니다.
+Cloud Monitoring은 인스턴스를 비롯한 NHN Cloud 리소스의 시스템 및 서비스 지표를 자동으로 수집하고 알림을 제공하는 서비스입니다. 대시보드와 차트를 생성해 실시간으로 지표를 조회할 수 있으며, 임계치를 설정해 이를 초과한 지표에 대한 알림을 이메일, SMS 등으로 전파할 수 있습니다.
 
 여기에서는 인스턴스의 CPU 사용률에 임계치 기반 알림을 설정하고, 임계치를 초과하면 등록된 알림 수신 그룹에 이메일이나 SMS로 알림을 받을 수 있도록 구성하는 방법을 살펴봅니다.
 
-```mermaid
-graph TD
-    A["Instance 등\nNHN Cloud 리소스"] -->|지표 자동 전송| B
-
-    subgraph alert ["알림 설정 및 발송"]
-        B["Cloud Monitoring 게이트웨이\n(지표 분류 및 저장)"] -->|지표 저장| C
-        D["Cloud Monitoring 콘솔\n(임계치 및 알림 수신 대상 관리)"] -->|알림 정보 저장| C[("지표 및\n알림 정보 저장")]
-        D -->|임계치 등록| E
-        C -->|"② 지표 조회"| E["Cloud Monitoring 알림\n(임계치 조회 및 알림 발생)"]
-    end
-
-    U["사용자"] -->|"① 임계치 및\n알림 수신 대상 설정"| D
-    E -->|"③ 알림 전달\n(이메일, SMS)"| U
-```
-
-## 시나리오 환경 구성
+## 사전 준비하기
 
 - Cloud Monitoring은 프로젝트 생성 시 기본으로 제공되는 서비스이므로 별도 활성화가 필요하지 않습니다.
 - 알림을 수신할 **알림 수신 그룹**이 프로젝트에 등록되어 있어야 합니다. 알림 수신 그룹은 **프로젝트 관리 > 알림 수신 그룹 관리**에서 생성할 수 있습니다. 자세한 내용은 [콘솔 정책 가이드](https://docs.nhncloud.com/ko/nhncloud/ko/console-guide/#notification-receiver-group-management)를 참고하세요.
-- Instance 서비스의 지표는 기본으로 수집됩니다. Instance 외 다른 서비스의 지표를 사용하려면 **Monitoring > Cloud Monitoring > 지표 관리**에서 해당 서비스의 지표 수집을 먼저 활성화해야 합니다.
 
 ## 알림 생성하기
 
@@ -39,14 +23,11 @@ graph TD
 * **설명**: 알림의 목적이나 조건을 간단히 입력합니다. 최대 100자까지 입력할 수 있습니다.
 * **서비스**: 모니터링할 서비스를 선택합니다. 이 시나리오에서는 **Instance**를 선택합니다.
 
-> [!NOTE]
-> 서비스 목록에는 Instance, GPU Instance, Cloud Functions, NHN Container Service(NCS), VPC, Subnet, Floating IP, Load Balancer, Transit Hub, Internet Gateway, Colocation Gateway, Direct Connect, SMS가 표시됩니다. 지표 수집이 활성화된 서비스만 선택할 수 있습니다.
-
 ### 2단계: 알림 조건 설정하기
 
 **알림 설정** 영역에서 어떤 지표가 어떤 조건을 충족하면 알림을 발생시킬지 정합니다.
 
-1. **리소스 유형** 목록에서 **CPU**를 선택하세요. Instance 서비스의 리소스 유형에는 CPU, Memory, Disk, Network, System, Process, Swap 등이 있습니다.
+1. **리소스 유형** 목록에서 **CPU**를 선택하세요. Instance 서비스의 리소스 유형에는 CPU, Memory, Disk, Network, System, Process, Swap 등이 있습니다. 신규 Agent가 설치된 인스턴스의 경우 CPU (New), Memory (New) 등 "(New)" 리소스 유형도 표시됩니다.
 
 2. **지표** 목록에서 **CPU 사용률**을 선택하세요. CPU 리소스 유형의 지표에는 CPU 사용률, 코어별 CPU 사용률, CPU 평균 부하(1m/5m/15m), CPU 상세(user/nice/system/iowait) 등이 있습니다. 지표를 선택하면 하단에 필터와 조건을 설정하는 영역이 나타납니다.
 
@@ -79,7 +60,7 @@ graph TD
 
 > [!NOTE]
 > * 알림 수신 그룹은 **프로젝트 관리 > 알림 수신 그룹 관리**에서 관리할 수 있습니다. 자세한 내용은 [콘솔 정책 가이드](https://docs.nhncloud.com/ko/nhncloud/ko/console-guide/#notification-receiver-group-management)를 참고하세요.
-> * 웹훅으로 알림을 받으려면 알림 수신 그룹에 **커스텀 웹훅**을 설정하세요. 기본 웹훅은 Cloud Monitoring에서 지원하지 않습니다. 커스텀 웹훅을 사용하면 Slack, Dooray! 등 외부 서비스로 알림을 전달할 수 있습니다.
+> * 웹훅으로 알림을 받으려면 알림 수신 그룹에 **커스텀 웹훅**을 설정하세요. 기본 웹훅은 Cloud Monitoring에서 지원하지 않습니다.
 
 모든 설정을 완료했다면 화면 하단의 **저장**을 클릭하세요. **알림 설정** 목록에 생성한 알림이 추가됩니다.
 
@@ -94,14 +75,19 @@ graph TD
 > [!NOTE]
 > 테스트를 위해 임계치를 낮게(예: CPU 사용률 1% 이상, 지속 시간 1분) 설정하면 알림이 빠르게 발생하므로 동작을 확인한 뒤 원래 값으로 수정하세요.
 
+> [!TIP]
+> 대시보드에서 특정 인스턴스의 지표가 표시되지 않는 경우 다음 항목을 확인하세요.
+> * 모니터링 Agent가 인스턴스에 설치되어 정상 실행 중인지 확인합니다. Linux에서는 `systemctl status nhncloud-telegraf`(신규 Agent) 또는 `systemctl status toast-sysmon`(기존 Agent), Windows에서는 `Get-Service -Name "nhncloud-telegraf"` 또는 `Get-Service -Name "toastmon"`으로 확인할 수 있습니다.
+> * 인스턴스의 보안 그룹(**Network > Security Groups**)에서 Agent가 지표를 전송하는 데 필요한 링크로컬 주소(169.254.169.231) 통신이 차단되지 않았는지 확인합니다.
+> * (New) 리소스 유형의 지표가 보이지 않으면 신규 Agent 설치 여부를 확인하세요. 기존 Agent와 신규 Agent는 지원하는 지표가 다릅니다. 자세한 내용은 [Instance 신규 지표 연동 가이드](https://docs.nhncloud.com/ko/Monitoring/Cloud%20Monitoring/ko/new-instance-metric/)를 참고하세요.
+
 ## 응용하기
 
 - **메모리·디스크 알림 추가**: 같은 방법으로 리소스 유형을 **Memory**나 **Disk**로 변경하면 메모리 사용률, 디스크 사용률에 대한 알림도 설정할 수 있습니다.
 - **여러 조건 조합**: 하나의 알림에 CPU 사용률과 메모리 사용률 지표를 함께 추가하면 두 지표를 동시에 감시할 수 있습니다. 지표 항목의 복수 선택과 필터 설정에 대한 자세한 내용은 [Cloud Monitoring 콘솔 사용 가이드](https://docs.nhncloud.com/ko/Monitoring/Cloud%20Monitoring/ko/console-guide/#_12)를 참고하세요.
 - **위젯에서 빠르게 알림 만들기**: 대시보드 위젯의 더 보기 메뉴에서 **알림 생성**을 클릭하면 해당 위젯의 서비스, 지표, 필터 정보가 미리 입력된 상태로 알림을 생성할 수 있습니다. 자세한 내용은 [Cloud Monitoring 콘솔 사용 가이드](https://docs.nhncloud.com/ko/Monitoring/Cloud%20Monitoring/ko/console-guide/#_10)를 참고하세요.
-- **API로 알림 관리**: HTTP API를 사용하면 알림 설정을 프로그래밍 방식으로 관리할 수 있습니다. Prometheus 호환 지표 형태도 지원하므로 Grafana 등 외부 모니터링 도구와 연동할 수 있습니다.
 
-## 용어 정리
+## 용어 알아보기
 
 | 용어 | 설명 |
 |---|---|
@@ -111,3 +97,4 @@ graph TD
 | 필터 | 알림 적용 범위를 특정 인스턴스나 리전으로 좁히는 조건입니다. 설정하지 않으면 해당 서비스의 모든 인스턴스에 알림이 적용됩니다. |
 | 지속 시간 | 조건 충족 상태가 유지되어야 알림이 발생하는 최소 시간(분 단위)입니다. 일시적인 부하 급증에 의한 불필요한 알림을 방지합니다. |
 | 알림 수신 그룹 | 알림을 받을 멤버를 묶어 관리하는 그룹입니다. 프로젝트 관리 > 알림 수신 그룹 관리에서 생성할 수 있습니다. |
+
