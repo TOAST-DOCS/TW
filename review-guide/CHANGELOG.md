@@ -6,6 +6,12 @@
 * 변경 내용은 변경된 위치를 포함하여 기재합니다.
 * 지침이 바뀌면 새 태그를 붙입니다. 검수 결과가 달라지는 변경은 major, 그 외는 minor입니다. 태그 목록은 [Tags](https://github.com/TOAST-DOCS/TW/tags)에서 확인할 수 있습니다.
 
+## review-guide/v1.3
+
+| 변경일 | 변경 내용 | 변경 사유 |
+| --- | --- | --- |
+| 2026. 09. 28. | * 용어 사전 「2. 일반 기술 용어」에 Appkey, SecretKey, 프로젝트 통합 Appkey 등재. 영어·일본어 표기는 Public API 사용자 가이드(Appkey, 프로젝트 통합 Appkey)를 따름 | 콘솔 라벨과 사용자 가이드에서 고유 명칭으로 쓰는 키 이름의 표기 기준이 용어 사전에 없어 AppKey, App Key, Secret Key 등으로 흔들렸습니다. |
+
 ## review-guide/v1.2
 
 | 변경일 | 변경 내용 | 변경 사유 |
