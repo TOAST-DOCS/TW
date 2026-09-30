@@ -771,13 +771,13 @@
       "firstSeen": "2026-09-04T08:29:01.570Z"
     },
     "Monitoring-Cloud-Monitoring": {
-      "lastSha": "454b357292c5fc8c9c74391e2b1421cb03d47855",
-      "lastChecked": "2026-09-04T08:29:01.959Z",
+      "lastSha": "928cf7b0419a1888245c6d9578434f789c3c3674",
+      "lastChecked": "2026-09-30T02:36:59.921Z",
       "firstSeen": "2026-09-04T08:29:01.959Z"
     },
     "TW": {
-      "lastSha": "815239165401e76e10829d288734beeb606a29d5",
-      "lastChecked": "2026-09-23T02:00:26.948Z",
+      "lastSha": "b9efb67f108994999ea908d49ad28409d3d29b3a",
+      "lastChecked": "2026-09-30T02:37:01.542Z",
       "firstSeen": "2026-09-04T08:29:02.296Z"
     },
     "NHNBastion": {
