@@ -14,11 +14,11 @@ Gamebase로 로그인 기능까지는 구현했지만 아직 Push 알림은 연�
     | `google-services.json` | Firebase 프로젝트에 Android 앱을 추가(패키지명 입력)한 뒤 다운로드 | 앱의 Firebase 설정 | 클라이언트 프로젝트(Unity, Android Studio 등) |
     | 서비스 계정 인증 정보(Service Account Credential)가 담긴 JSON 파일 | Firebase 콘솔 > 프로젝트 설정 > 서비스 계정에서 새 비공개 키 생성 | 서버가 FCM을 호출할 권한 | Gamebase 콘솔의 **푸시 > 인증서** |
 
-    Firebase 프로젝트 생성, 앱 추가, `google-services.json` 배치는 [Android 프로젝트에 Firebase 추가](https://firebase.google.com/docs/android?hl=ko)를 참고하세요. Unity나 Unreal로 빌드한다면 처리 방법이 다르므로 [Android SDK 사용 가이드 > 시작하기](https://docs.nhncloud.com/ko/Game/Gamebase/ko/aos-started/)의 Firebase Notification 항목을 참고하세요.
+    Firebase 프로젝트 생성, 앱 추가, `google-services.json` 배치는 [Android 프로젝트에 Firebase 추가](https://firebase.google.com/docs/android?hl=ko)를 참고하세요. Unity나 Unreal로 빌드한다면 처리 방법이 다르므로 [Android SDK 사용 가이드 > 시작하기](https://docs.nhncloud.com/ko/Game/Gamebase/ko/aos-started/)의 Firebase Notification 항목을 참고하세요. Firebase 설정에 문제가 있으면 `registerPush`가 5101 오류(상세 코드 101)를 반환할 수 있습니다.
 
     FCM은 2024년 6월 20일부로 기존 서버 키(Server Key) 방식 지원을 중단했으므로, 서버 키가 아닌 서비스 계정 JSON 파일을 준비해야 합니다.
 - iOS 앱이라면 **APNs(Apple Push Notification service, Apple 기기로 알림을 보내는 Apple의 플랫폼 알림 서비스) 인증 정보**를 준비합니다. Gamebase는 JWT(JSON Web Token, 서명된 토큰으로 신원을 증명하는 인증 방식) 등록만 지원하므로, Apple Developer 계정에서 발급받은 Team ID, Key ID, Topic(일반적으로 앱의 Bundle ID), 개인 키(`.p8`) 파일을 준비해야 합니다.
-- Android SDK를 사용한다면 `build.gradle`의 dependencies에 Push 어댑터 모듈을 추가합니다.
+- Android SDK를 사용한다면 `build.gradle`의 dependencies에 Push 어댑터 모듈을 추가합니다. 추가하지 않으면 `registerPush`가 5101 오류(상세 코드 103)를 반환할 수 있습니다.
 
     ```gradle
     implementation "com.toast.android.gamebase:gamebase-adapter-push-fcm:$GAMEBASE_SDK_VERSION"
@@ -70,7 +70,7 @@ Gamebase는 내부적으로 NHN Cloud Push 서비스를 이용해 Android·iOS �
     > [주의]
     > 동의값은 UserID 단위가 아니라 Push 토큰 단위로 Push 서버에 저장됩니다. 푸시 토큰이 만료되는 경우도 있으므로, 로그인 이후에는 앱을 실행하거나 계정을 전환할 때마다 `registerPush` API를 호출해 최신 값을 서버에 반영하세요.
 
-    로그인 전에 토큰을 등록하면 어떤 사용자의 디바이스인지 식별할 수 없으므로, 반드시 로그인 성공 콜백 이후에 호출합니다. iOS는 `TCGBPush registerPushWithPushConfiguration:completion:`으로 동일하게 구현합니다. 플랫폼별 전체 파라미터는 [Android Push 가이드](https://docs.nhncloud.com/ko/Game/Gamebase/ko/aos-push/), [iOS Push 가이드](https://docs.nhncloud.com/ko/Game/Gamebase/ko/ios-push/)를 참고하세요.
+    로그인 전에 토큰을 등록하면 어떤 사용자의 디바이스인지 식별할 수 없으므로, 반드시 로그인 성공 콜백 이후에 호출합니다. Android에서는 로그인 전에 호출하면 5101 오류(상세 코드 102)가 발생하며, 상세 코드는 `exception.getDetailCode()`로 확인할 수 있습니다. iOS는 `TCGBPush registerPushWithPushConfiguration:completion:`으로 동일하게 구현합니다. 플랫폼별 전체 파라미터와 오류 코드는 [Android Push 가이드](https://docs.nhncloud.com/ko/Game/Gamebase/ko/aos-push/), [iOS Push 가이드](https://docs.nhncloud.com/ko/Game/Gamebase/ko/ios-push/)를 참고하세요.
 
 5. Gamebase 콘솔의 Push 메시지 발송 화면에서 테스트 메시지를 즉시 발송해 연동을 확인하세요.
 
