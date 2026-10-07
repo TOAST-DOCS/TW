@@ -1,15 +1,22 @@
 # Gamebase 연동 후 Push 메시지 발송까지 완료하기
 
-## 시작하기 전에
-
 이 가이드를 따라하면 Gamebase 로그인 사용자를 대상으로 Push 메시지를 발송할 수 있도록 연동하고, 테스트 발송으로 정상 동작 여부까지 확인할 수 있습니다.
 
 Gamebase로 로그인 기능까지는 구현했지만 아직 Push 알림은 연동하지 않아, 이벤트 공지나 복귀 유도 메시지처럼 로그인한 사용자에게 직접 알림을 보내지 못하고 있는 게임 서버 개발자를 위한 가이드입니다.
 
-## 시나리오 환경 구성
+## 시작하기 전에
 
 - Gamebase 서비스가 활성화되어 있고, 클라이언트에 로그인 기능이 구현되어 있어야 합니다.
-- Android 앱이라면 Firebase 콘솔에서 발급한 **FCM(Firebase Cloud Messaging, Android·iOS·웹용 크로스 플랫폼 메시지 발송 서비스) 서비스 계정 인증 정보(Service Account Credential)**가 담긴 JSON 파일을 준비합니다. FCM은 2024년 6월 20일부로 기존 서버 키(Server Key) 방식 지원을 중단했으므로, 서버 키가 아닌 서비스 계정 JSON 파일을 준비해야 합니다.
+- Android 앱이라면 **FCM(Firebase Cloud Messaging, Android·iOS·웹용 크로스 플랫폼 메시지 발송 서비스)** 연동을 위해 Firebase 콘솔에서 다음 두 파일을 준비합니다. 두 파일은 용도가 달라서 헷갈리면 인증서 등록 오류가 날 수 있습니다.
+
+    | 파일 | 받는 방법 | 용도 | 사용 위치 |
+    |---|---|---|---|
+    | `google-services.json` | Firebase 프로젝트에 Android 앱을 추가(패키지명 입력)한 뒤 다운로드 | 앱의 Firebase 설정 | 클라이언트 프로젝트(Unity, Android Studio 등) |
+    | 서비스 계정 인증 정보(Service Account Credential)가 담긴 JSON 파일 | Firebase 콘솔 > 프로젝트 설정 > 서비스 계정에서 새 비공개 키 생성 | 서버가 FCM을 호출할 권한 | Gamebase 콘솔의 **푸시 > 인증서** |
+
+    Firebase 프로젝트 생성, 앱 추가, `google-services.json` 배치는 [Android 프로젝트에 Firebase 추가](https://firebase.google.com/docs/android?hl=ko)를 참고하세요. Unity나 Unreal로 빌드한다면 처리 방법이 다르므로 [Android SDK 사용 가이드 > 시작하기](https://docs.nhncloud.com/ko/Game/Gamebase/ko/aos-started/)의 Firebase Notification 항목을 참고하세요.
+
+    FCM은 2024년 6월 20일부로 기존 서버 키(Server Key) 방식 지원을 중단했으므로, 서버 키가 아닌 서비스 계정 JSON 파일을 준비해야 합니다.
 - iOS 앱이라면 **APNs(Apple Push Notification service, Apple 기기로 알림을 보내는 Apple의 플랫폼 알림 서비스) 인증 정보**를 준비합니다. Gamebase는 JWT(JSON Web Token, 서명된 토큰으로 신원을 증명하는 인증 방식) 등록만 지원하므로, Apple Developer 계정에서 발급받은 Team ID, Key ID, Topic(일반적으로 앱의 Bundle ID), 개인 키(`.p8`) 파일을 준비해야 합니다.
 - Android SDK를 사용한다면 `build.gradle`의 dependencies에 Push 어댑터 모듈을 추가합니다.
 
@@ -19,21 +26,25 @@ Gamebase로 로그인 기능까지는 구현했지만 아직 Push 알림은 연�
 
 ## Push 연동하고 테스트 발송까지 확인하기
 
-Gamebase는 내부적으로 NHN Cloud Push 서비스를 이용해 Android·iOS 앱으로 메시지를 발송합니다. Gamebase에 로그인한 사용자에게 메시지를 보내려면, 클라이언트가 발급받은 Push 토큰을 Gamebase SDK로 등록해 두어야 합니다. 이후 Gamebase 콘솔에서 메시지를 발송하면 등록된 토큰을 기준으로 FCM 또는 APNs를 통해 각 디바이스에 전달됩니다.
+Gamebase는 내부적으로 NHN Cloud Push 서비스를 이용해 Android·iOS 앱으로 메시지를 발송합니다. 다만 Gamebase 콘솔에서만 설정하면 되며, Notification > Push 서비스를 별도로 활성화하거나 설정할 필요는 없습니다. Gamebase에 로그인한 사용자에게 메시지를 보내려면, 클라이언트가 발급받은 Push 토큰을 Gamebase SDK로 등록해 두어야 합니다. 이후 Gamebase 콘솔에서 메시지를 발송하면 등록된 토큰을 기준으로 FCM 또는 APNs를 통해 각 디바이스에 전달됩니다.
 
 ![Gamebase 연동 후 Push 메시지 발송 흐름: 게임 클라이언트가 로그인 후 Push 토큰을 Gamebase에 등록하면 Gamebase가 이 토큰을 NHN Cloud Push로 전달하고, 운영자가 Gamebase 콘솔에서 메시지를 발송하면 NHN Cloud Push가 FCM 또는 APNs를 통해 Android·iOS 디바이스로 전달합니다.](./images/gamebase-push-flow-diagram.svg)
 
 1. Gamebase 콘솔에서 대상 앱의 **푸시 > 인증서** 화면으로 이동하세요.
 
-    NHN Cloud에는 범용 발송 도구인 별도의 **Push** 서비스도 있지만, Gamebase를 사용 중이라면 인증 정보 등록부터 발송까지 모두 Gamebase 콘솔 안에서 처리합니다. Notification 카테고리의 Push 콘솔을 따로 열 필요는 없습니다.
+    인증 정보 등록부터 메시지 발송까지 모두 이 Gamebase 콘솔 안에서 처리합니다.
 
-2. Android 앱이라면 준비한 FCM 서비스 계정 JSON 파일 내용을 **FCM Service Account Credential** 항목에 붙여넣고 등록하세요.
+2. Android 앱이라면 **FCM Service Account Credential** 항목의 **등록**을 클릭하고, 준비한 FCM 서비스 계정 JSON 파일 내용을 **JSON** 입력란에 붙여넣은 뒤 **저장**을 클릭하세요.
 
     Push는 이 인증 정보로 FCM API를 대신 호출해 Android 디바이스에 메시지를 전달합니다. 인증 정보가 없으면 Android 발송 채널 자체가 동작하지 않습니다.
 
-3. iOS 앱이라면 Gamebase 콘솔의 **APNS JWT** 항목에 준비한 Team ID, Key ID, Topic, Private Key(개인 키)를 등록하세요.
+    서비스 계정 JSON 파일에는 비공개 키가 들어 있으니, 메신저나 이메일, 외부 서비스로 공유하거나 소스 저장소에 커밋하지 말고 콘솔에 직접 등록하세요.
+
+3. iOS 앱이라면 **APNS JWT** 항목의 **등록**을 클릭하고, 준비한 Team ID, Key ID, Topic, Private Key를 입력한 뒤 **저장**을 클릭하세요.
 
     Gamebase는 APNs 인증 방식으로 JWT만 지원합니다. `.p12` 인증서 등록은 제공되지 않으므로, Apple Developer 계정에서 반드시 `.p8` 키 기반의 JWT 인증 정보를 발급받아 준비해야 합니다.
+
+    `.p8` 개인 키 파일도 메신저나 이메일, 외부 서비스로 공유하거나 소스 저장소에 커밋하지 말고 콘솔에 직접 등록하세요.
 
 4. 클라이언트 로그인이 끝난 뒤, SDK에서 Push 토큰을 등록하는 코드를 추가하세요.
 
@@ -56,7 +67,8 @@ Gamebase는 내부적으로 NHN Cloud Push 서비스를 이용해 Android·iOS �
 
     `enableAdAgreement`, `enableAdAgreementNight`는 각각 광고성 정보 수신 동의, 야간 광고성 정보 수신 동의 여부를 나타냅니다. 사용자가 앱 내 약관 동의 화면에서 선택한 값을 그대로 전달하면, 이후 발송 시 Gamebase가 이 값을 기준으로 미동의 대상자를 발송 대상에서 제외합니다.
 
-    이 동의값은 UserID 단위가 아니라 **Push 토큰 단위**로 Push 서버에 저장됩니다. 계정을 전환하거나 앱을 다시 실행할 때마다 `registerPush`를 호출해야 최신 동의값이 서버에 반영되며, 호출하지 않으면 이전 동의값이 그대로 남아있는 상태가 됩니다.
+    > [주의]
+    > 동의값은 UserID 단위가 아니라 Push 토큰 단위로 Push 서버에 저장됩니다. 푸시 토큰이 만료되는 경우도 있으므로, 로그인 이후에는 앱을 실행하거나 계정을 전환할 때마다 `registerPush` API를 호출해 최신 값을 서버에 반영하세요.
 
     로그인 전에 토큰을 등록하면 어떤 사용자의 디바이스인지 식별할 수 없으므로, 반드시 로그인 성공 콜백 이후에 호출합니다. iOS는 `TCGBPush registerPushWithPushConfiguration:completion:`으로 동일하게 구현합니다. 플랫폼별 전체 파라미터는 [Android Push 가이드](https://docs.nhncloud.com/ko/Game/Gamebase/ko/aos-push/), [iOS Push 가이드](https://docs.nhncloud.com/ko/Game/Gamebase/ko/ios-push/)를 참고하세요.
 
@@ -64,9 +76,12 @@ Gamebase는 내부적으로 NHN Cloud Push 서비스를 이용해 Android·iOS �
 
     소수 디바이스로 먼저 테스트하면 인증 정보나 토큰 등록 오류를 전체 사용자 발송 전에 미리 발견할 수 있습니다.
 
+    > [주의]
+    > 발송하기 전에 테스트 디바이스에서 앱을 백그라운드로 내려 두세요. 앱이 포그라운드(화면에 떠 있어 사용 중인 상태)일 때는 알림이 표시되지 않습니다. 포그라운드 알림 노출 옵션(Android `enableForeground`, Unity·iOS `foregroundEnabled`)의 기본값이 `false`(iOS는 `NO`)이기 때문입니다.
+
 6. 로그인해 둔 테스트 디바이스에서 메시지가 정상적으로 수신되는지 확인하세요.
 
-    Android 8.0(API 26) 이상 디바이스에서도 별도 채널 설정 없이 정상적으로 알림을 받을 수 있습니다. Gamebase가 서버 측에서 채널 값을 자동으로 지정해주기 때문입니다. 수신되지 않는다면 2~4단계에서 등록한 인증 정보나 토큰 등록 코드를 다시 확인합니다.
+    Android 8.0(API 26) 이상 디바이스에서도 별도 채널 설정 없이 정상적으로 알림을 받을 수 있습니다. Gamebase가 서버 측에서 채널 값을 자동으로 지정해주기 때문입니다. 수신되지 않는다면 앱이 포그라운드 상태는 아닌지, 2~4단계에서 등록한 인증 정보나 토큰 등록 코드가 올바른지 다시 확인합니다.
 
 ## 응용하기
 
