@@ -75,7 +75,7 @@ Cloud Monitoring은 인스턴스를 비롯한 NHN Cloud 리소스의 시스템 �
 > [!NOTE]
 > 테스트를 위해 임계치를 낮게(예: CPU 사용률 1% 이상, 지속 시간 1분) 설정하면 알림이 빠르게 발생하므로 동작을 확인한 뒤 원래 값으로 수정하세요.
 
-> [!TIP]
+> [!NOTE]
 > 대시보드에서 특정 인스턴스의 지표가 표시되지 않는 경우 다음 항목을 확인하세요.
 > * 모니터링 Agent가 인스턴스에 설치되어 정상 실행 중인지 확인합니다. Linux에서는 `systemctl status nhncloud-telegraf`(신규 Agent) 또는 `systemctl status toast-sysmon`(기존 Agent), Windows에서는 `Get-Service -Name "nhncloud-telegraf"` 또는 `Get-Service -Name "toastmon"`으로 확인할 수 있습니다.
 > * 인스턴스의 보안 그룹(**Network > Security Groups**)에서 Agent가 지표를 전송하는 데 필요한 링크로컬 주소(169.254.169.231) 통신이 차단되지 않았는지 확인합니다.
