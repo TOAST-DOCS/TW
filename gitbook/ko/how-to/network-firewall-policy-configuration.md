@@ -1,7 +1,7 @@
 ---
 icon: shield-quartered
 layout:
-  width: wide
+  width: default
   title:
     visible: false
   description:
