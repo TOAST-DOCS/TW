@@ -157,15 +157,45 @@ def check(path, original=None):
             t = strip_code_blocks(t)
             # 이미지는 figure 로 바뀌며 캡션이 생길 수 있으므로 양쪽에서 통째로 제외
             t = re.sub(r"<figure>.*?</figure>", "", t, flags=re.S)
+            # 카드 변환은 설계상 본문이 줄어든다. 끝의 "자세한 내용은 ... 참고하세요."
+            # 문장이 카드 타깃(숨은 열)으로 대체되므로, 이 구간은 양쪽에서 제외하고
+            # 대신 아래 7번에서 카드마다 타깃이 있는지 따로 검사한다.
+            t = re.sub(r'<table data-view="cards">.*?</table>', "", t, flags=re.S)
+            t = re.sub(r"^## 응용하기\n(?:[ \t]*[-*] .*\n?|[ \t]+.*\n?|\n)*", "",
+                       t, flags=re.M)
             t = re.sub(r"!\[[^\]]*\]\([^)]*\)", "", t)
             t = re.sub(r"\{%[^%]*%\}", "", t)           # GitBook 태그 제거
             t = re.sub(r"\[!\w+\]", "", t)               # GitHub alert 라벨 제거 (hint 로 바뀌며 사라짐)
+            # 카드 아이콘은 변환하며 새로 생기는 장식이므로 제외
+            t = re.sub(r"<i(?:\s[^>]*)?>.*?</i>", "", t, flags=re.S)
+            # 링크는 레이블만 남긴다. 카드로 바꾸면 URL 이 숨은 열(href)로 옮겨가
+            # 본문에서 사라지는데, 이는 레이아웃 변경이지 본문 손실이 아니다.
+            t = re.sub(r"\[([^\]]*)\]\([^)]*\)", r"\1", t)
+            # raw URL 은 태그를 지우기 전에 뺀다. 먼저 지우면 숨은 카드 타깃 칸의
+            # URL 이 바로 뒤 글자와 붙어 본문 단어까지 함께 날아간다.
+            t = re.sub(r"https?://[^\s<\"']+", "", t)
             t = HTML_TAG.sub("", t)                      # details 등 HTML 태그 제거
+            for ent, ch in (("&lt;", "<"), ("&gt;", ">"), ("&amp;", "&")):
+                t = t.replace(ent, ch)                   # HTML 로 감싸며 escape 된 문자 되돌리기
+            # 불릿이 카드로, 마크다운 표가 HTML 표로 바뀌면서 사라지는 기호들
+            t = re.sub(r"[*`|:\-]", "", t)
             t = re.sub(r"[💡⚠️❗✅🔔>\s]", "", t)         # 라벨 이모지·인용 기호·공백 제거
             return t
 
         if normalize(raw) != normalize(open(original, encoding="utf-8").read()):
             problems.append("본문 텍스트가 원본과 다름 — 래핑 외 수정이 들어갔는지 확인")
+
+
+    # 7. 카드 타깃 검사
+    for table in re.findall(r'<table data-view="cards">.*?</table>', raw, re.S):
+        rows = re.findall(r"<tr>(.*?)</tr>", table, re.S)
+        cards = [r for r in rows if len(re.findall(r"<td>(.*?)</td>", r, re.S)) >= 4]
+        if len(cards) > 3:
+            problems.append("카드가 %d개 - 최대 3개로 추려야 함" % len(cards))
+        for n, row in enumerate(cards, 1):
+            cells = re.findall(r"<td>(.*?)</td>", row, re.S)
+            if 'href="' not in cells[-1]:
+                problems.append("%d번째 카드에 타깃 주소가 없음" % n)
 
     if problems:
         for p in problems:
