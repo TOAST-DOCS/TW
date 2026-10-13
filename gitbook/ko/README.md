@@ -8,7 +8,7 @@ layout:
   cover:
     visible: true
     size: background
-    mask: none
+    mask: radial
   title:
     visible: false
   description:
