@@ -1,5 +1,6 @@
 ---
 description: NHN Cloud를 사용하다 막히는 지점을 스스로 해결하도록 돕는 트러블슈팅·How-to 가이드 모음입니다.
+icon: book-open-cover
 cover: .gitbook/assets/temp-landing-image.jpg
 coverY: 0
 coverHeight: 700
@@ -10,7 +11,7 @@ layout:
     size: background
     mask: radial
   title:
-    visible: false
+    visible: true
   description:
     visible: false
   tableOfContents:
@@ -31,13 +32,11 @@ layout:
 
 # NHN Cloud Task Guides
 
-## NHN Cloud Task Guides
+증상에서 출발해 원인을 좁히고, 자주 하는 작업은 단계별로 따라 할 수 있습니다.
 
-증상에서 출발해 원인을 좁히고, 자주 하는 작업은 단계별로 따라 할 수 있도록 정리했습니다.
+<button type="button" class="button primary medium" data-action="ask" data-icon="gitbook-assistant">무엇을 하려고 하나요?</button>
 
-<button type="button" class="button primary" data-action="ask" data-icon="gitbook-assistant">무엇을 하려고 하나요?</button>
-
-<p align="center"><a href="troubleshooting/instance-creation-failed.md" class="button primary" data-icon="hammer">트러블슈팅 시작하기</a><a href="how-to/cloud-monitoring-alarm-policy.md" class="button secondary" data-icon="telescope">How-to 둘러보기</a></p>
+<p align="center"><a href="troubleshooting/instance-creation-failed.md" class="button primary" data-icon="hammer">트러블슈팅 시작하기</a><a href="how-to/cloud-monitoring-alarm-policy.md" class="button secondary" data-icon="telescope">How to 둘러보기</a></p>
 
 <h3 align="center">How To 가이드</h3>
 
