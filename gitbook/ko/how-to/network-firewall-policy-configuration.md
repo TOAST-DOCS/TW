@@ -35,7 +35,7 @@ Network Firewall은 NHN Cloud에서 사용하는 인프라 자산을 안전하�
 
 **정책**은 Network Firewall에서 트래픽을 제어하는 단위입니다. 출발지/목적지 인터페이스, 출발지, 목적지, 목적지 포트, 동작(허용 또는 차단)으로 구성된 ACL로, 조건에 맞는 트래픽을 허용하거나 차단하는 규칙입니다. 여기에서는 Network Firewall 정책에서 사용할 객체를 등록하고, 허용 정책을 추가한 뒤, 트래픽 로그를 Log & Crash Search로 전송하는 시나리오를 살펴봅니다.
 
-![Network Firewall 정책 구성 및 로그 전송 흐름](../.gitbook/assets/network-firewall-policy-configuration-flow.svg)
+<img src="../.gitbook/assets/network-firewall-policy-configuration-flow.svg" alt="Network Firewall 정책 구성 및 로그 전송 흐름" width="375">
 
 {% hint style="info" %}
 **Security Groups, Network ACL과의 역할 분담** Network Firewall, Security Groups, Network ACL은 모두 트래픽을 제어하지만, 적용 범위와 방식이 다릅니다. 각 서비스는 독립적으로 동작하므로 모두에서 허용해야 트래픽이 통과합니다. Network ACL은 Security Groups보다 먼저 적용됩니다.
