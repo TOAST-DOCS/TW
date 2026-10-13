@@ -3,7 +3,7 @@ icon: shield-quartered
 layout:
   width: default
   title:
-    visible: false
+    visible: true
   description:
     visible: false
   tableOfContents:
@@ -26,10 +26,6 @@ tags:
 ---
 
 # Network Firewall 정책 구성 및 로그 전송 설정하기
-
-## Network Firewall 정책 구성 및 로그 전송 설정하기
-
-## 시작하기 전에
 
 Network Firewall은 NHN Cloud에서 사용하는 인프라 자산을 안전하게 보호하기 위해 제공하는 관리형 네트워크 보안 서비스입니다. 별도의 방화벽 제품 없이도 내·외부 통신 경로에 위치한 방화벽을 간편하게 운영할 수 있으며, VPC 간 트래픽과 인바운드·아웃바운드 트래픽을 통합적으로 제어하고 실시간 로그를 기록할 수 있습니다.
 
