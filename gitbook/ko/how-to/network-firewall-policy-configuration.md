@@ -35,7 +35,7 @@ Network Firewall은 NHN Cloud에서 사용하는 인프라 자산을 안전하�
 
 **정책**은 Network Firewall에서 트래픽을 제어하는 단위입니다. 출발지/목적지 인터페이스, 출발지, 목적지, 목적지 포트, 동작(허용 또는 차단)으로 구성된 ACL로, 조건에 맞는 트래픽을 허용하거나 차단하는 규칙입니다. 여기에서는 Network Firewall 정책에서 사용할 객체를 등록하고, 허용 정책을 추가한 뒤, 트래픽 로그를 Log & Crash Search로 전송하는 시나리오를 살펴봅니다.
 
-<img src="../.gitbook/assets/network-firewall-policy-configuration-flow.svg" alt="Network Firewall 정책 구성 및 로그 전송 흐름" width="375">
+<div data-with-frame="true"><img src="../.gitbook/assets/network-firewall-policy-configuration-flow.svg" alt="Network Firewall 정책 구성 및 로그 전송 흐름" width="375"></div>
 
 {% hint style="info" %}
 **Security Groups, Network ACL과의 역할 분담** Network Firewall, Security Groups, Network ACL은 모두 트래픽을 제어하지만, 적용 범위와 방식이 다릅니다. 각 서비스는 독립적으로 동작하므로 모두에서 허용해야 트래픽이 통과합니다. Network ACL은 Security Groups보다 먼저 적용됩니다.
@@ -220,4 +220,4 @@ Network Firewall 자체를 삭제하면 등록된 모든 정책과 객체가 영
 
 ### 용어 알아보기
 
-<table><thead><tr><th width="160">용어</th><th>설명</th></tr></thead><tbody><tr><td>Network Firewall</td><td>NHN Cloud에서 사용하는 인프라 자산을 안전하게 보호하기 위해 사용하는 네트워크 방화벽 서비스</td></tr><tr><td>VPC</td><td>가상 사설 클라우드. 논리적으로 분리된 가상의 네트워크</td></tr><tr><td>보안 그룹</td><td>인스턴스의 송수신 트래픽을 제어하는 기능</td></tr><tr><td>서브넷</td><td>Subnetwork를 의미하여, IP 네트워크를 더 작은 단위로 세분화한 IP 주소 영역</td></tr><tr><td>ACL</td><td>접근 제어 목록. 네트워크의 유입/유출 트래픽을 제어하는 기능</td></tr><tr><td>CIDR</td><td>클래스 없는 도메인 간 라우팅 기법이자, IP 주소를 효율적으로 사용하기 위한 IP 주소 할당 방법. '사이더' 또는 'CIDR[씨아이디알]'로 읽음</td></tr><tr><td>방화벽</td><td>미리 정의된 보안 규칙에 기반하여 들어오고 나가는 네트워크 트래픽을 모니터링하고 제어하는 네트워크 보안 시스템</td></tr><tr><td>트래픽</td><td>일정 시간 동안 네트워크를 통해 송수신되는 데이터의 양</td></tr></tbody></table>
+<table data-header-hidden="false" data-header-sticky data-search="false"><thead><tr><th width="160">용어</th><th width="586">설명</th></tr></thead><tbody><tr><td>Network Firewall</td><td>NHN Cloud에서 사용하는 인프라 자산을 안전하게 보호하기 위해 사용하는 네트워크 방화벽 서비스</td></tr><tr><td>VPC</td><td>가상 사설 클라우드. 논리적으로 분리된 가상의 네트워크</td></tr><tr><td>보안 그룹</td><td>인스턴스의 송수신 트래픽을 제어하는 기능</td></tr><tr><td>서브넷</td><td>Subnetwork를 의미하여, IP 네트워크를 더 작은 단위로 세분화한 IP 주소 영역</td></tr><tr><td>ACL</td><td>접근 제어 목록. 네트워크의 유입/유출 트래픽을 제어하는 기능</td></tr><tr><td>CIDR</td><td>클래스 없는 도메인 간 라우팅 기법이자, IP 주소를 효율적으로 사용하기 위한 IP 주소 할당 방법. '사이더' 또는 'CIDR[씨아이디알]'로 읽음</td></tr><tr><td>방화벽</td><td>미리 정의된 보안 규칙에 기반하여 들어오고 나가는 네트워크 트래픽을 모니터링하고 제어하는 네트워크 보안 시스템</td></tr><tr><td>트래픽</td><td>일정 시간 동안 네트워크를 통해 송수신되는 데이터의 양</td></tr></tbody></table>
