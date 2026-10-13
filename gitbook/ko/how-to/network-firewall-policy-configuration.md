@@ -5,7 +5,7 @@ layout:
   title:
     visible: false
   description:
-    visible: true
+    visible: false
   tableOfContents:
     visible: true
   outline:
@@ -22,6 +22,7 @@ layout:
     visible: true
 tags:
   - security
+  - network
 ---
 
 # Network Firewall 정책 구성 및 로그 전송 설정하기

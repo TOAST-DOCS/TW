@@ -1,3 +1,6 @@
 - tag: security
   label: Security
   color: green
+- tag: network
+  label: Network
+  color: purple
