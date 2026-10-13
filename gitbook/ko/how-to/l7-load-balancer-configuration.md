@@ -19,7 +19,7 @@ icon: scale-unbalanced
 
 여기에서는 L7 로드 밸런서가 지원하는 다양한 조건 중 **URL 경로 기반 라우팅**을 사용해 트래픽을 서로 다른 서버 그룹으로 분산하는 로드 밸런서를 구성하는 방법을 살펴봅니다.
 
-![L7 로드 밸런서 URL 경로 기반 라우팅 흐름](<../.gitbook/assets/l7-load-balancer-configuration-flow (1).svg>)
+![L7 로드 밸런서 URL 경로 기반 라우팅 흐름](../.gitbook/assets/l7-load-balancer-configuration-flow.svg)
 
 ## 사전 준비하기
 

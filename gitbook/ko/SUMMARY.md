@@ -12,6 +12,6 @@
 
 ## 트러블슈팅
 
-* [인스턴스 생성이 실패합니다](troubleshooting/instance-creation-failed.md)
-* [인스턴스에 SSH로 접속되지 않습니다](troubleshooting/instance-ssh-connection-failed.md)
-* [Load Balancer 헬스 체크가 실패하고 멤버가 INACTIVE로 표시됩니다](troubleshooting/lb-healthcheck-inactive-member-troubleshooting.md)
+* [인스턴스 생성이 실패합니다](undefined/instance-creation-failed.md)
+* [인스턴스에 SSH로 접속되지 않습니다](undefined/instance-ssh-connection-failed.md)
+* [Load Balancer 헬스 체크가 실패하고 멤버가 INACTIVE로 표시됩니다](undefined/lb-healthcheck-inactive-member-troubleshooting.md)

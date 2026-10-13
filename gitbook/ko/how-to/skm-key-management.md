@@ -12,7 +12,7 @@ Secure Key Manager는 NHN Cloud에서 제공하는 키 관리 서비스입니다
 
 여기에서는 Secure Key Manager에서 키 저장소를 만들고, 대칭 키를 등록한 뒤, API로 데이터를 암·복호화하는 방법을 살펴봅니다. Secure Key Manager의 다양한 기능에 대한 자세한 설명은 [Secure Key Manager 사용자 가이드](https://docs.nhncloud.com/ko/Security/Secure%20Key%20Manager/ko/overview/)를 참고하세요.
 
-![대칭 키 암·복호화 흐름](<../.gitbook/assets/skm-key-management-encrypt-decrypt-flow (1).svg>)
+![대칭 키 암·복호화 흐름](../.gitbook/assets/skm-key-management-encrypt-decrypt-flow.svg)
 
 ## 사전 준비하기
 

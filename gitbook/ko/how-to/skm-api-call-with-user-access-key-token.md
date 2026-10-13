@@ -12,7 +12,7 @@ NHN Cloud는 서비스와 리소스를 외부 시스템이나 사용자 애플�
 
 여기에서는 NHN Cloud의 키 관리 서비스 Secure Key Manager에 기밀 데이터를 등록한 뒤 Secure Key Manager API v1.3을 사용해 이를 조회하기 위해 User Access Key 토큰을 발급받고 API 인증을 수행하는 시나리오를 진행합니다. 토큰 발급과 API 인증 방법은 User Access Key 토큰을 지원하는 다른 서비스에도 동일하게 적용할 수 있습니다.
 
-![User Access Key 토큰 발급 및 API 호출 흐름](<../.gitbook/assets/skm-api-call-with-user-access-key-token-flow (1).svg>)
+![User Access Key 토큰 발급 및 API 호출 흐름](../.gitbook/assets/skm-api-call-with-user-access-key-token-flow.svg)
 
 ## 사전 준비하기
 
