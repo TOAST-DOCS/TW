@@ -2,7 +2,7 @@
 icon: shield-quartered
 ---
 
-## Network Firewall 정책 구성 및 로그 전송 설정하기
+# Network Firewall 정책 구성 및 로그 전송 설정하기
 
 ## 시작하기 전에
 
