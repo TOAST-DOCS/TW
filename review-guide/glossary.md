@@ -88,6 +88,7 @@ NHN Cloud 기술 문서에서 사용되는 일반 기술 용어의 공식 표기
 | ADM | Amazon Device Messaging | ADM | ADM | 타사 앱 개발자가 Amazon 장치에 설치된 앱으로 알림 데이터를 보낼 수 있도록 Amazon에서 만든 플랫폼 알림 서비스 |
 | API 서버 | API server | APIサーバー |  | Kubernetes 클러스터의 중심 컴포넌트이며, 사용자와 클러스터의 다른 부분 및 모든 외부 컴포턴트 간의 상호 작용을 가능하게 하는 역할 |
 | APNs | Apple Push Notification service | APNs | APNs | 타사 앱 개발자가 Apple 장치에 설치된 앱으로 알림 데이터를 보낼 수 있도록 Apple에서 만든 플랫폼 알림 서비스 |
+| Appkey | Appkey | Appkey |  | NHN Cloud의 각 서비스별로 발급되는 고유 인증 키. API 요청 시 서비스 식별과 유효성 검증에 사용하며, 콘솔의 서비스 화면 오른쪽 상단 URL & Appkey에서 확인. 세 언어 모두 Appkey로 표기하며 AppKey, App Key, 앱 키로 쓰지 않음 |
 | CC인증 | Common Criteria Certification | CC認証 |  | 정보보호 제품의 보안 기능과 신뢰성을 국제 공통 평가 기준인 Common Criteria(CC, ISO/IEC 15408)에 따라 검증·평가하는 인증 제도 |
 | cgroups | cgroups | cgroups |  | 컨트롤 그룹(control groups)의 약자로 리소스를 그룹화하고 제한하는 기능을 제공하는 Linux 커널 기술 |
 | CIDR | Classless Inter-Domain Routing | CIDR | CIDR | 클래스 없는 도메인 간 라우팅 기법이자, IP 주소를 효율적으로 사용하기 위한 IP 주소 할당 방법. '사이더' 또는 'CIDR[씨아이디알]'로 읽음 |
@@ -125,6 +126,7 @@ NHN Cloud 기술 문서에서 사용되는 일반 기술 용어의 공식 표기
 | Pool | pool | Pool |  | 엔드포인트를 그룹핑하는 요소이며, 라우팅 규칙이 적용되는 최소 단위 |
 | RDS | Relational Database Service | RDS | RDS | 클라우드 환경에서 관계형 데이터베이스(relational database)를 제공하는 서비스 |
 | SaaS | Software as a Service | SaaS | SaaS | 소프트웨어의 기능을 인터넷 브라우저 등의 클라이언트를 통해 최종 사용자에게 제공하는 클라우드 컴퓨팅 형태 |
+| SecretKey | SecretKey | SecretKey |  | 일부 NHN Cloud 서비스가 API 접근 제어를 위해 Appkey와 함께 발급하는 비밀 키. URL & Appkey 창에서 확인. Secret Key, 시크릿 키로 쓰지 않음 |
 | Security Advisor | Security Advisor | Security Advisor |  | 클라우드 환경의 보안 상태를 점검하고, 보안 설정 권장 가이드를 제공하는 서비스 |
 | SSL VPN | SSL VPN | SSL VPN |  | SSL/TLS 암호화 기술을 이용해 사용자 단말과 내부 시스템 간 접근을 안전하게 제공하는 기술 |
 | vCPU | vCPU | vCPU |  | 가상 중앙 처리 장치. 물리적 CPU의 코어를 논리적으로 분할하여 가상 머신에 할당함 |
@@ -363,6 +365,7 @@ NHN Cloud 기술 문서에서 사용되는 일반 기술 용어의 공식 표기
 | 프로비저닝 | provisioning | プロビジョニング |  | 사용자 또는 비즈니스의 요구에 맞추어 서비스를 제공할 수 있도록 미리 자원을 할당하고 배치하는 것 |
 | 프로젝트 | project | プロジェクト |  | 조직 내에서 일정 단위로 서비스 이용을 관리하기 위해 생성하는 그룹 |
 | 프로젝트 멤버 | project member | プロジェクトメンバー |  | 프로젝트에 소속된 구성원 |
+| 프로젝트 통합 Appkey | Project Integrated Appkey | プロジェクト統合Appkey |  | 하나의 프로젝트 안의 여러 서비스 API에 공통으로 사용할 수 있는 인증 키. 프로젝트 관리 탭의 API 보안 설정 영역에서 생성하며 프로젝트당 최대 3개. 서비스별 Appkey 대신 사용할 수 있으나 모든 Public API가 지원하지는 않음 |
 | 프로젝트 피어링 | project peering | プロジェクトピアリング |  | 동일 리전, 다른 프로젝트의 서로 다른 두 개의 VPC를 연결하는 기능 |
 | 플로팅 IP | floating IP | フローティングIP |  | 외부 네트워크와 통신할 수 있도록 별도 요청을 통해 지정된 네트워크로부터 할당 받는 IP 주소 |
 | 피어 | peer | ピア |  | 특정 네트워크에 속해 있고 모두 동일한 기능을 가진 기기로 이는 하드웨어 장비, 소프트웨어 프로그램, 노드, 또는 사용자가 될 수 있음 |
