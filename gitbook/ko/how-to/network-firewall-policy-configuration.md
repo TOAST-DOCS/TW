@@ -36,6 +36,9 @@ Network Firewall은 기본 정책이 **모든 트래픽 차단**(default-deny)�
 
 다음 예시는 웹 서브넷(192.168.20.0/24)에서 DB 서브넷(192.168.10.0/24)으로의 MySQL(TCP/3306) 접근을 허용하는 정책을 추가합니다.
 
+{% stepper %}
+
+{% step %}
 ### IP 객체 등록
 
 정책에서 사용할 출발지, 목적지를 IP 객체로 먼저 등록합니다. 객체를 만들어 두면 여러 정책에서 재사용할 수 있고, IP 대역이 변경되더라도 객체만 수정하면 됩니다.
@@ -55,7 +58,9 @@ Network Firewall은 기본 정책이 **모든 트래픽 차단**(default-deny)�
     - **이름**: `db-subnet`
     - **타입**: 서브넷
     - **IP 주소**: `192.168.10.0/24`
+{% endstep %}
 
+{% step %}
 ### 포트 객체 등록
 
 1. NHN Cloud 콘솔에서 **Security > Network Firewall**을 클릭하세요.
@@ -67,7 +72,9 @@ Network Firewall은 기본 정책이 **모든 트래픽 차단**(default-deny)�
     - **이름**: `mysql-port` — 식별 가능한 이름을 입력합니다.
     - **프로토콜**: TCP — TCP, UDP, ICMP 중 선택합니다.
     - **포트 번호**: `3306` — MySQL의 기본 포트입니다.
+{% endstep %}
 
+{% step %}
 ### 정책 추가
 
 1. NHN Cloud 콘솔에서 **Security > Network Firewall**을 클릭하세요.
@@ -104,9 +111,15 @@ Network Firewall은 기본 정책이 **모든 트래픽 차단**(default-deny)�
 {% hint style="info" %}
 `default-deny`는 항상 맨 아래에 위치하며, 그 아래로는 정책을 이동할 수 없습니다. 정책 간 순서를 조정하려면 **이동**을 클릭해 우선순위를 변경할 수 있습니다.
 {% endhint %}
+{% endstep %}
+
+{% endstepper %}
 
 ## 로그 확인 및 Log & Crash Search 연동하기
 
+{% stepper %}
+
+{% step %}
 ### 콘솔에서 로그 확인하기
 
 정책에 로깅을 활성화했다면, **로그** 탭에서 트래픽 로그를 조회할 수 있습니다.
@@ -130,7 +143,9 @@ Network Firewall은 기본 정책이 **모든 트래픽 차단**(default-deny)�
 {% hint style="info" %}
 **엑셀 내려받기**를 클릭해 조회 결과를 다운로드할 수 있습니다.
 {% endhint %}
+{% endstep %}
 
+{% step %}
 ### 기본 차단 정책 로그 활성화
 
 기본 정책인 `default-deny`는 별도로 로깅을 활성화해야 로그가 기록됩니다.
@@ -144,7 +159,9 @@ Network Firewall은 기본 정책이 **모든 트래픽 차단**(default-deny)�
 4. **로그 설정**을 **사용**으로 변경한 뒤 **저장**을 클릭하세요.
 
 이 설정을 활성화하면 어떤 정책에도 해당하지 않아 기본 차단된 트래픽도 로그에 기록됩니다. 차단된 트래픽의 출발지와 목적지를 파악할 수 있어 정책 누락을 발견하는 데 유용합니다.
+{% endstep %}
 
+{% step %}
 ### Log & Crash Search로 로그 전송하기
 
 Network Firewall 콘솔의 **로그** 탭은 단기 조회에 적합합니다. 장기 보관이나 검색·알림이 필요하다면 Log & Crash Search로 로그를 전송하세요.
@@ -164,6 +181,9 @@ Network Firewall 콘솔의 **로그** 탭은 단기 조회에 적합합니다. �
 {% hint style="info" %}
 **로그 원격 전송 설정** 화면에서 **Syslog** 또는 **Object Storage**를 선택해 Syslog 서버나 Object Storage로도 로그를 전송할 수 있습니다. Syslog를 선택하면 원격지의 IP 주소, 프로토콜(UDP/TCP), 포트 번호를 지정합니다.
 {% endhint %}
+{% endstep %}
+
+{% endstepper %}
 
 ## 동작 확인하기
 
