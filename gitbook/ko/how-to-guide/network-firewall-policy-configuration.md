@@ -1,5 +1,4 @@
 ---
-icon: shield-quartered
 layout:
   width: default
   title:

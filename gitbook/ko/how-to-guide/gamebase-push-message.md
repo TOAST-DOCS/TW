@@ -1,5 +1,4 @@
 ---
-icon: gamepad-modern
 tags:
   - gamebase
 ---
@@ -14,7 +13,7 @@ Gamebase는 게임 개발에 필요한 로그인, 결제, 푸시 등 공통 기�
 
 여기에서는 Gamebase로 로그인 기능까지 구현한 게임에 푸시를 연동해 이벤트 공지나 복귀 유도 메시지처럼 로그인한 사용자에게 직접 알림을 보낼 수 있도록 구성하고, 테스트 발송으로 정상 동작 여부까지 확인하는 방법을 살펴봅니다.
 
-<div data-with-frame="true"><img src="../.gitbook/assets/gamebase-push-flow-diagram.svg" alt="Gamebase 푸시 메시지 발송 흐름: 운영자가 Gamebase 콘솔에서 인증 정보를 등록하고, 게임 클라이언트가 로그인 후 푸시 토큰을 Gamebase에 등록합니다. 운영자가 Gamebase 콘솔에서 메시지를 발송하면 Gamebase가 토큰과 메시지를 NHN Cloud Push로 전달하고, NHN Cloud Push가 FCM 또는 APNs를 거쳐 Android·iOS 디바이스로 발송합니다." width="100%"></div>
+<img src="../.gitbook/assets/gamebase-push-flow-diagram.svg" alt="" width="100%">
 
 ## 사전 준비하기
 

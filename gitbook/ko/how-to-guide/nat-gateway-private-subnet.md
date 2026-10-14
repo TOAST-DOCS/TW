@@ -1,5 +1,4 @@
 ---
-icon: circle-nodes
 tags:
   - network
 ---
@@ -12,7 +11,7 @@ NAT Gateway는 인스턴스의 사설 IP를 플로팅 IP(Floating IP)로 변환�
 
 여기에서는 인터넷 게이트웨이 없이 외부 인터넷에 접근해야 하는 프라이빗 서브넷의 인스턴스가 외부 패키지 저장소나 API에는 접근할 수 있으면서, 외부에서의 직접 인바운드 접속은 차단되도록 NAT Gateway를 생성하고 라우팅 테이블에 연결하는 방법을 살펴봅니다.
 
-<div data-with-frame="true"><img src="../.gitbook/assets/nat-gateway-diagram.svg" alt="NAT Gateway 트래픽 흐름: 퍼블릭 서브넷에 NAT Gateway를 생성하고, 프라이빗 서브넷의 라우팅 테이블에 0.0.0.0/0 → NAT Gateway 경로를 추가합니다. 프라이빗 서브넷의 인스턴스가 보낸 트래픽은 NAT Gateway에서 발신지 IP가 플로팅 IP로 변환되어 인터넷으로 나가고, 외부에서 NAT Gateway의 플로팅 IP로 시작하는 인바운드 연결은 차단됩니다." width="100%"></div>
+<img src="../.gitbook/assets/nat-gateway-diagram.svg" alt="" width="100%">
 
 ## 사전 준비하기
 

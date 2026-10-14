@@ -1,5 +1,4 @@
 ---
-icon: clone
 tags:
   - compute
 ---
@@ -14,7 +13,7 @@ tags:
 
 여기에서는 사용 중인 인스턴스로 이미지를 생성한 다음, 그 이미지로 같은 구성의 새 인스턴스를 생성하는 방법을 살펴봅니다.
 
-<div data-with-frame="true"><img src="../.gitbook/assets/server-image-create-flow.svg" alt="중지한 원본 인스턴스로 개인 이미지를 생성하고 그 이미지로 새 인스턴스를 생성하는 구성" width="100%"></div>
+<img src="../.gitbook/assets/server-image-create-flow.svg" alt="" width="100%">
 
 ## 사전 준비하기
 

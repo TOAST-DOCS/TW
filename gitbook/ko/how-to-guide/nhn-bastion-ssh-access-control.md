@@ -1,5 +1,4 @@
 ---
-icon: terminal
 tags:
   - security
 ---
@@ -14,7 +13,7 @@ NHN Bastion의 접근 통제 정책을 설정하면 사용자별로 접속 가�
 
 여기에서는 NHN Bastion 서비스를 활성화하고 웹 터미널을 생성한 뒤, 접근 통제 대상 인스턴스를 등록하고, 사용자별 접근 통제 정책과 명령어 통제 정책을 설정하고, 웹 터미널로 인스턴스에 접속하고 접속 이력을 확인하는 흐름을 살펴봅니다.
 
-<div data-with-frame="true"><img src="../.gitbook/assets/nhn-bastion-ssh-access-control-architecture.svg" alt="NHN Bastion SSH 접근 통제 구성 아키텍처" width="100%"></div>
+<img src="../.gitbook/assets/nhn-bastion-ssh-access-control-architecture.svg" alt="" width="100%">
 
 ## 사전 준비하기
 

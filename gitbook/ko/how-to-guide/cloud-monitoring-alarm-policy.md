@@ -1,5 +1,4 @@
 ---
-icon: monitor-waveform
 layout:
   width: default
   title:

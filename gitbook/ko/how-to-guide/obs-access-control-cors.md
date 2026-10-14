@@ -1,5 +1,4 @@
 ---
-icon: hard-drive
 tags:
   - storage
   - container
@@ -17,7 +16,7 @@ Object Storage는 데이터를 오브젝트 단위로 저장하는 스토리지 
 
 여기에서는 특정 웹사이트에서 실행되는 스크립트가 컨테이너의 오브젝트에 접근할 수 있도록 CORS를 설정하고, 설정이 실제로 적용되었는지 확인하는 방법을 살펴봅니다.
 
-<div data-with-frame="true"><img src="../.gitbook/assets/obs-access-control-cors-flow.svg" alt="브라우저의 페이지와 Object Storage가 서로 다른 호스트이며, 요청은 접근 정책이 PUBLIC이고 CORS 허용 출처를 등록한 컨테이너에 닿고 돌아온 응답은 브라우저의 CORS 확인을 통과해야 스크립트가 읽을 수 있는 구성" width="100%"></div>
+<img src="../.gitbook/assets/obs-access-control-cors-flow.svg" alt="" width="100%">
 
 ## 사전 준비하기
 
