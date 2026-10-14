@@ -47,13 +47,13 @@ Gamebase는 게임 개발에 필요한 로그인, 결제, 푸시 등 공통 기�
 
 2. 서비스하는 앱의 플랫폼에 맞는 인증 정보를 등록하세요. Android 앱과 iOS 앱을 모두 서비스한다면 각각 등록합니다.
 
-    - **Android 앱**: **FCM Service Account Credential** 항목의 **등록**을 클릭하고, 준비한 FCM 서비스 계정 JSON 파일 내용을 **JSON** 입력란에 붙여 넣은 뒤 **저장**을 클릭하세요. NHN Cloud Push는 이 인증 정보로 FCM API를 대신 호출해 Android 디바이스에 메시지를 전달합니다. 인증 정보가 없으면 Android 발송 채널 자체가 동작하지 않습니다.
+* **Android 앱**: **FCM Service Account Credential** 항목의 **등록**을 클릭하고, 준비한 FCM 서비스 계정 JSON 파일 내용을 **JSON** 입력란에 붙여 넣은 뒤 **저장**을 클릭하세요. NHN Cloud Push는 이 인증 정보로 FCM API를 대신 호출해 Android 디바이스에 메시지를 전달합니다. 인증 정보가 없으면 Android 발송 채널 자체가 동작하지 않습니다.
 
 {% hint style="warning" %}
 서비스 계정 JSON 파일에는 개인 키가 들어 있으니, 메신저나 이메일, 외부 서비스로 공유하거나 소스 저장소에 커밋하지 말고 콘솔에 직접 등록하세요.
 {% endhint %}
 
-    - **iOS 앱**: **APNS JWT** 항목의 **등록**을 클릭하고, 준비한 **Team ID**, **Key ID**, **Topic**, **Private Key**(개인 키)를 입력한 뒤 **저장**을 클릭하세요. Gamebase는 APNs 인증 방식으로 JWT만 지원합니다. `.p12` 인증서 등록은 제공되지 않으므로, Apple Developer 계정에서 반드시 `.p8` 키 기반의 JWT 인증 정보를 발급받아 준비해야 합니다.
+* **iOS 앱**: **APNS JWT** 항목의 **등록**을 클릭하고, 준비한 **Team ID**, **Key ID**, **Topic**, **Private Key**(개인 키)를 입력한 뒤 **저장**을 클릭하세요. Gamebase는 APNs 인증 방식으로 JWT만 지원합니다. `.p12` 인증서 등록은 제공되지 않으므로, Apple Developer 계정에서 반드시 `.p8` 키 기반의 JWT 인증 정보를 발급받아 준비해야 합니다.
 
 {% hint style="warning" %}
 `.p8` 개인 키 파일도 메신저나 이메일, 외부 서비스로 공유하거나 소스 저장소에 커밋하지 말고 콘솔에 직접 등록하세요.
@@ -78,7 +78,7 @@ Gamebase는 게임 개발에 필요한 로그인, 결제, 푸시 등 공통 기�
     });
     ```
 
-    `enableAdAgreement`, `enableAdAgreementNight`는 각각 광고성 정보 수신 동의, 야간 광고성 정보 수신 동의 여부를 나타냅니다. 사용자가 앱 내 약관 동의 화면에서 선택한 값을 그대로 전달하면, 이후 발송 시 Gamebase가 이 값을 기준으로 미동의 대상자를 발송 대상에서 제외합니다.
+`enableAdAgreement`, `enableAdAgreementNight`는 각각 광고성 정보 수신 동의, 야간 광고성 정보 수신 동의 여부를 나타냅니다. 사용자가 앱 내 약관 동의 화면에서 선택한 값을 그대로 전달하면, 이후 발송 시 Gamebase가 이 값을 기준으로 미동의 대상자를 발송 대상에서 제외합니다.
 
 {% hint style="warning" %}
 동의값은 사용자 ID 단위가 아니라 푸시 토큰 단위로 NHN Cloud Push에 저장됩니다. 푸시 토큰이 만료되는 경우도 있으므로, 로그인 이후에는 앱을 실행하거나 계정을 전환할 때마다 `registerPush` API를 호출해 최신 값을 서버에 반영하세요.

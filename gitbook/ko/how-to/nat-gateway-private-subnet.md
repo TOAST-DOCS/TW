@@ -25,7 +25,7 @@ NAT Gateway는 인스턴스의 사설 IP를 플로팅 IP(Floating IP)로 변환�
 
 {% stepper %}
 {% step %}
-### 1단계: 퍼블릭 서브넷에 NAT Gateway 생성하기
+### 퍼블릭 서브넷에 NAT Gateway 생성하기
 
 프라이빗 서브넷의 트래픽이 최종적으로 이 NAT Gateway를 거쳐 나가므로, NAT Gateway는 인터넷 게이트웨이가 연결된 라우팅 테이블에 속한 서브넷(퍼블릭 서브넷)에 생성해야 합니다.
 
@@ -43,7 +43,7 @@ NAT Gateway는 인스턴스의 사설 IP를 플로팅 IP(Floating IP)로 변환�
 {% endstep %}
 
 {% step %}
-### 2단계: 프라이빗 서브넷의 라우팅 테이블에 경로 추가하기
+### 프라이빗 서브넷의 라우팅 테이블에 경로 추가하기
 
 NAT Gateway를 만들었다고 해서 프라이빗 서브넷의 트래픽이 자동으로 NAT Gateway로 전달되지는 않습니다. 프라이빗 서브넷이 연결된 라우팅 테이블에 NAT Gateway를 가리키는 경로를 추가해야 실제로 트래픽이 전달됩니다.
 
