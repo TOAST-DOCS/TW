@@ -1,5 +1,7 @@
 ---
 icon: key
+tags:
+  - security
 ---
 
 # Secure Key Manager로 암호화 키 관리하기
@@ -16,28 +18,24 @@ Secure Key Manager는 NHN Cloud에서 제공하는 키 관리 서비스입니다
 
 ## 사전 준비하기
 
-- NHN Cloud 콘솔에서 Secure Key Manager 서비스가 활성화되어 있어야 합니다. 활성화 방법은 [프로젝트 서비스 활성화 가이드](https://docs.nhncloud.com/ko/nhncloud/ko/console-guide/#guide-to-enabling-project-services)를 참고하세요.
-- 이 가이드는 Secure Key Manager API v1.3을 기준으로 설명합니다. Secure Key Manager API v1.3은 API 호출 및 인증을 위한 인증 방법으로 Appkey, 프로젝트 통합 Appkey, User Access Key 토큰을 지원합니다. 각 인증 방법의 확인 및 사용에 대한 자세한 내용은 [Appkey](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/appkey/), [프로젝트 통합 Appkey](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/project-integrated-appkey/), [User Access Key 토큰](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/user-access-key-token/)을 참고하세요.
-- API를 호출할 클라이언트의 IPv4 주소를 미리 파악합니다. Secure Key Manager는 등록된 IP에서만 API 호출을 허용하므로, 호출 환경의 공인 IP를 알고 있어야 합니다.
-- API 호출을 위해 `curl`이 설치된 터미널 환경이 필요합니다.
+* NHN Cloud 콘솔에서 Secure Key Manager 서비스가 활성화되어 있어야 합니다. 활성화 방법은 [프로젝트 서비스 활성화 가이드](https://docs.nhncloud.com/ko/nhncloud/ko/console-guide/#guide-to-enabling-project-services)를 참고하세요.
+* 이 가이드는 Secure Key Manager API v1.3을 기준으로 설명합니다. Secure Key Manager API v1.3은 API 호출 및 인증을 위한 인증 방법으로 Appkey, 프로젝트 통합 Appkey, User Access Key 토큰을 지원합니다. 각 인증 방법의 확인 및 사용에 대한 자세한 내용은 [Appkey](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/appkey/), [프로젝트 통합 Appkey](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/project-integrated-appkey/), [User Access Key 토큰](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/user-access-key-token/)을 참고하세요.
+* API를 호출할 클라이언트의 IPv4 주소를 미리 파악합니다. Secure Key Manager는 등록된 IP에서만 API 호출을 허용하므로, 호출 환경의 공인 IP를 알고 있어야 합니다.
+* API 호출을 위해 `curl`이 설치된 터미널 환경이 필요합니다.
 
 {% stepper %}
-
 {% step %}
 ### 키 저장소 생성하기
 
 키 저장소는 암호화 키와 접근 제어 정보를 묶어서 관리하는 단위입니다. 키를 등록하기 전에 먼저 키 저장소를 만들어야 합니다.
 
 1. NHN Cloud 콘솔에서 **Security > Secure Key Manager**를 클릭하세요.
-
 2. **키 저장소** 탭에서 **+** 버튼을 클릭하세요.
-
 3. **키 저장소 추가** 창에서 다음 항목을 입력합니다.
-    - **이름**: 키 저장소를 식별할 이름을 입력합니다. 예: `prod-encryption-store`
-    - **설명**: 키 저장소의 용도를 적습니다. 운영 환경에서 여러 키 저장소를 구분하기 위해 사용합니다.
-    - **인증 방법**: 키 저장소에 접근할 클라이언트의 인증 방법을 선택합니다. 인증을 통과한 클라이언트만 키를 사용할 수 있습니다. **IPv4 주소**, **MAC 주소**, **클라이언트 인증서** 중 하나 이상을 선택합니다. 공인 IP가 고정된 서버 환경이라면 **IPv4 주소**, 물리 장비를 특정해야 하는 온프레미스 환경이라면 **MAC 주소**, 서버 IP가 유동적인 컨테이너·오토스케일링 환경이라면 **클라이언트 인증서**가 적합합니다. 이 가이드에서는 **IPv4 주소**를 기준으로 설명합니다.
-    - **인증 방식 결합**: 활성화된 여러 인증 방법을 어떻게 결합할지 선택합니다. **모두 통과(AND)** 또는 **하나만 통과(OR)** 중 선택할 수 있습니다.
-
+   * **이름**: 키 저장소를 식별할 이름을 입력합니다. 예: `prod-encryption-store`
+   * **설명**: 키 저장소의 용도를 적습니다. 운영 환경에서 여러 키 저장소를 구분하기 위해 사용합니다.
+   * **인증 방법**: 키 저장소에 접근할 클라이언트의 인증 방법을 선택합니다. 인증을 통과한 클라이언트만 키를 사용할 수 있습니다. **IPv4 주소**, **MAC 주소**, **클라이언트 인증서** 중 하나 이상을 선택합니다. 공인 IP가 고정된 서버 환경이라면 **IPv4 주소**, 물리 장비를 특정해야 하는 온프레미스 환경이라면 **MAC 주소**, 서버 IP가 유동적인 컨테이너·오토스케일링 환경이라면 **클라이언트 인증서**가 적합합니다. 이 가이드에서는 **IPv4 주소**를 기준으로 설명합니다.
+   * **인증 방식 결합**: 활성화된 여러 인증 방법을 어떻게 결합할지 선택합니다. **모두 통과(AND)** 또는 **하나만 통과(OR)** 중 선택할 수 있습니다.
 4. **추가**를 클릭하세요.
 {% endstep %}
 
@@ -47,22 +45,16 @@ Secure Key Manager는 NHN Cloud에서 제공하는 키 관리 서비스입니다
 키 저장소를 만들었으면, API를 호출할 클라이언트의 IP 주소를 등록해야 합니다. 등록되지 않은 IP에서는 Secure Key Manager API를 호출할 수 없으므로 이 단계를 생략하면 이후 API 호출이 거부됩니다.
 
 1. NHN Cloud 콘솔에서 **Security > Secure Key Manager**를 클릭하세요.
-
 2. 키 저장소 목록에서 키 저장소를 클릭하세요.
-
 3. **IPv4 주소 관리** 탭을 클릭하세요.
-
 4. **+ IPv4 주소 추가**를 클릭하세요.
-
 5. **IPv4 주소 추가** 창에서 API를 호출할 서버 또는 로컬 환경의 공인 IPv4 주소를 입력합니다. 필요하면 설명도 함께 적습니다.
-
 6. **추가**를 클릭하세요.
 
 {% hint style="info" %}
 여러 IP를 한꺼번에 등록하려면 **IPv4 주소 대량 등록** 버튼을 사용하세요.
 {% endhint %}
 {% endstep %}
-
 {% endstepper %}
 
 ## 대칭 키 등록하기
@@ -72,25 +64,21 @@ Secure Key Manager는 NHN Cloud에서 제공하는 키 관리 서비스입니다
 {% hint style="info" %}
 Secure Key Manager는 세 가지 유형의 키를 지원합니다.
 
-| 유형 | 알고리즘 | 용도 |
-|---|---|---|
-| **기밀 데이터** | — | 외부에 노출되어서는 안 되는 민감 텍스트를 안전하게 저장(32KB 이하) |
-| **대칭 키** | AES256 | 데이터 암호화·복호화(32KB 이하) |
-| **비대칭 키** | RSA2048 | 데이터 서명·검증(245Byte 이하) |
+| 유형         | 알고리즘    | 용도                                       |
+| ---------- | ------- | ---------------------------------------- |
+| **기밀 데이터** | —       | 외부에 노출되어서는 안 되는 민감 텍스트를 안전하게 저장(32KB 이하) |
+| **대칭 키**   | AES256  | 데이터 암호화·복호화(32KB 이하)                     |
+| **비대칭 키**  | RSA2048 | 데이터 서명·검증(245Byte 이하)                    |
 {% endhint %}
 
 1. NHN Cloud 콘솔에서 **Security > Secure Key Manager**를 클릭하세요.
-
 2. 키 저장소를 선택한 뒤 **키 관리** 탭을 클릭하세요.
-
 3. **+ 키 추가**를 클릭하세요.
-
 4. **키 추가** 창에서 다음 항목을 입력합니다.
-    - **유형**: **대칭 키**를 선택합니다.
-    - **이름**: 키를 식별할 이름을 입력합니다. 예: `user-data-encryption-key`
-    - **설명**: 키의 용도를 적습니다.
-    - **회전 주기(일)**: 키가 자동으로 회전되는 주기를 일 단위로 입력합니다. 예를 들어 `90`을 입력하면 90일마다 새 버전의 키가 생성됩니다. 키 회전은 기존 버전을 폐기하지 않고 새 버전을 추가하는 방식이므로, 이전 버전으로 암호화한 데이터도 계속 복호화할 수 있습니다.
-
+   * **유형**: **대칭 키**를 선택합니다.
+   * **이름**: 키를 식별할 이름을 입력합니다. 예: `user-data-encryption-key`
+   * **설명**: 키의 용도를 적습니다.
+   * **회전 주기(일)**: 키가 자동으로 회전되는 주기를 일 단위로 입력합니다. 예를 들어 `90`을 입력하면 90일마다 새 버전의 키가 생성됩니다. 키 회전은 기존 버전을 폐기하지 않고 새 버전을 추가하는 방식이므로, 이전 버전으로 암호화한 데이터도 계속 복호화할 수 있습니다.
 5. **추가**를 클릭하세요. 키가 생성되면 테이블에 **사용 중** 상태로 표시됩니다. **상세 정보** 버튼을 클릭하면 키 아이디, 다음 회전일, 키 버전 목록을 확인할 수 있습니다.
 
 {% hint style="info" %}
@@ -185,7 +173,6 @@ API 호출이 정상적으로 동작하는지 다음 순서로 확인합니다.
 {% endhint %}
 
 1. NHN Cloud 콘솔에서 **Security > Secure Key Manager**를 클릭하세요.
-
 2. **키 저장소** 탭에서 삭제할 키 저장소의 **⋮**(더보기) 아이콘을 클릭한 뒤 **삭제** > **확인**을 클릭하세요. 키 저장소 안에 키가 남아 있어도 삭제할 수 있으며, 포함된 키와 접근 제어 설정이 함께 삭제됩니다.
 
 {% hint style="info" %}

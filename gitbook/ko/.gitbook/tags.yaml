@@ -15,3 +15,6 @@
   color: violet
 - tag: gamebase
   label: Gamebase
+- tag: monitoring
+  label: Monitoring
+  color: purple
