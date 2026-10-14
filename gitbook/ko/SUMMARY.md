@@ -17,7 +17,7 @@
 * [NAT Gateway로 프라이빗 서브넷 인터넷 연결 구성하기](how-to/nat-gateway-private-subnet.md)
 * [Gamebase 연동 후 푸시 메시지 발송까지 완료하기](how-to/gamebase-push-message.md)
 
-## 트러블슈팅
+## Troubleshooting
 
 * [인스턴스 생성이 실패합니다](troubleshooting/instance-creation-failed.md)
 * [인스턴스에 SSH로 접속되지 않습니다](troubleshooting/instance-ssh-connection-failed.md)
