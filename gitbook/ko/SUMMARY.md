@@ -11,6 +11,7 @@
 * [User Access Key 토큰으로 Secure Key Manager API 호출하기](how-to/skm-api-call-with-user-access-key-token.md)
 * [NHN Bastion으로 SSH 접근 통제 구성하기](how-to/nhn-bastion-ssh-access-control.md)
 * [Cloud Functions로 HTTP 함수 배포하기](how-to/cloud-functions-serverless-deploy.md)
+* [Image로 인스턴스 복제하기](how-to/server-image-create.md)
 * [Object Storage에 정적 웹사이트 호스팅하기](how-to/obs-static-website-hosting.md)
 * [Object Storage 컨테이너에 CORS 설정하기](how-to/obs-access-control-cors.md)
 * [NAT Gateway로 프라이빗 서브넷 인터넷 연결 구성하기](how-to/nat-gateway-private-subnet.md)
