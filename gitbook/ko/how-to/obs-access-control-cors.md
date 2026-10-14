@@ -1,3 +1,10 @@
+---
+icon: hard-drive
+tags:
+  - storage
+  - container
+---
+
 # Object Storage 컨테이너에 CORS 설정하기
 
 ## 시작하기 전에
@@ -14,10 +21,10 @@ Object Storage는 데이터를 오브젝트 단위로 저장하는 스토리지 
 
 ## 사전 준비하기
 
-- NHN Cloud 콘솔에서 Object Storage 서비스가 활성화되어 있어야 합니다.
-- 설정할 컨테이너와 요청해 볼 오브젝트를 준비합니다. 컨테이너가 없다면 **Storage > Object Storage**에서 **+ 컨테이너 생성**을 클릭해 만들고, 컨테이너 **이름**을 클릭해 들어간 뒤 **객체 업로드**로 이미지나 텍스트 파일 하나를 올립니다. 자세한 내용은 Object Storage 콘솔 사용 가이드의 [컨테이너 생성](https://docs.nhncloud.com/ko/Storage/Object%20Storage/ko/console-guide/#create-container)과 [오브젝트 관리](https://docs.nhncloud.com/ko/Storage/Object%20Storage/ko/console-guide/#manage-object)를 참고하세요.
-- 컨테이너의 접근 정책을 확인합니다. 이 가이드는 로그인 없이 오브젝트를 읽을 수 있는 **PUBLIC** 컨테이너를 기준으로 합니다. PRIVATE 컨테이너는 스크립트가 요청할 때마다 인증 토큰을 함께 보내야 합니다. 접근 정책을 바꾸는 방법은 [접근 정책 설정 가이드](https://docs.nhncloud.com/ko/Storage/Object%20Storage/ko/acl-guide/)를 참고하세요.
-- 허용할 웹사이트의 주소를 확인합니다. 주소는 `https://app.example.com`이나 `http://localhost:8000`과 같은 형식으로 사용합니다. 스크립트를 실행할 웹사이트가 아직 없다면 「동작 확인하기」의 샘플 페이지를 로컬 웹 서버로 띄워 확인할 수 있습니다. 이 경우 허용할 웹사이트 주소로 `http://localhost:8000`을 등록합니다.
+* NHN Cloud 콘솔에서 Object Storage 서비스가 활성화되어 있어야 합니다.
+* 설정할 컨테이너와 요청해 볼 오브젝트를 준비합니다. 컨테이너가 없다면 **Storage > Object Storage**에서 **+ 컨테이너 생성**을 클릭해 만들고, 컨테이너 **이름**을 클릭해 들어간 뒤 **객체 업로드**로 이미지나 텍스트 파일 하나를 올립니다. 자세한 내용은 Object Storage 콘솔 사용 가이드의 [컨테이너 생성](https://docs.nhncloud.com/ko/Storage/Object%20Storage/ko/console-guide/#create-container)과 [오브젝트 관리](https://docs.nhncloud.com/ko/Storage/Object%20Storage/ko/console-guide/#manage-object)를 참고하세요.
+* 컨테이너의 접근 정책을 확인합니다. 이 가이드는 로그인 없이 오브젝트를 읽을 수 있는 **PUBLIC** 컨테이너를 기준으로 합니다. PRIVATE 컨테이너는 스크립트가 요청할 때마다 인증 토큰을 함께 보내야 합니다. 접근 정책을 바꾸는 방법은 [접근 정책 설정 가이드](https://docs.nhncloud.com/ko/Storage/Object%20Storage/ko/acl-guide/)를 참고하세요.
+* 허용할 웹사이트의 주소를 확인합니다. 주소는 `https://app.example.com`이나 `http://localhost:8000`과 같은 형식으로 사용합니다. 스크립트를 실행할 웹사이트가 아직 없다면 「동작 확인하기」의 샘플 페이지를 로컬 웹 서버로 띄워 확인할 수 있습니다. 이 경우 허용할 웹사이트 주소로 `http://localhost:8000`을 등록합니다.
 
 ## CORS 허용 출처 등록하기
 
@@ -34,10 +41,9 @@ Object Storage는 데이터를 오브젝트 단위로 저장하는 스토리지 
 {% endhint %}
 
 2. **교차 출처 리소스 공유(CORS)** 항목의 **변경**을 클릭하세요.
+3.  허용할 웹사이트 주소를 한 줄에 하나씩 입력하세요.
 
-3. 허용할 웹사이트 주소를 한 줄에 하나씩 입력하세요.
-
-    ```text
+    ```
     https://app.example.com
     https://admin.example.com
     http://localhost:8000
@@ -69,31 +75,33 @@ Object Storage는 데이터를 오브젝트 단위로 저장하는 스토리지 
 `{Object Store 엔드포인트}`는 컨테이너 목록 위쪽의 **API 엔드포인트 설정**을 클릭하면 **Object Store** 항목에서 확인할 수 있습니다. `{컨테이너 이름}`은 컨테이너 목록에 표시된 이름이고, `{오브젝트 이름}`은 컨테이너 **이름**을 클릭하면 열리는 오브젝트 목록에서 확인합니다.
 {% endhint %}
 
-    ```html
-    <!doctype html>
-    <html lang="ko">
-    <head>
-      <meta charset="utf-8">
-      <title>CORS 확인</title>
-    </head>
-    <body>
-      <button id="run">요청 보내기</button>
-      <pre id="out"></pre>
-      <script>
-        document.getElementById("run").addEventListener("click", async () => {
-          const url = "{Object Store 엔드포인트}/{컨테이너 이름}/{오브젝트 이름}";
-          const out = document.getElementById("out");
-          try {
-            const response = await fetch(url, { cache: "no-store" });
-            out.textContent = `status: ${response.status}`;
-          } catch (e) {
-            out.textContent = `${e.name}: ${e.message}`;
-          }
-        });
-      </script>
-    </body>
-    </html>
-    ```
+````
+```html
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>CORS 확인</title>
+</head>
+<body>
+  <button id="run">요청 보내기</button>
+  <pre id="out"></pre>
+  <script>
+    document.getElementById("run").addEventListener("click", async () => {
+      const url = "{Object Store 엔드포인트}/{컨테이너 이름}/{오브젝트 이름}";
+      const out = document.getElementById("out");
+      try {
+        const response = await fetch(url, { cache: "no-store" });
+        out.textContent = `status: ${response.status}`;
+      } catch (e) {
+        out.textContent = `${e.name}: ${e.message}`;
+      }
+    });
+  </script>
+</body>
+</html>
+```
+````
 
 이 페이지는 웹 서버로 띄운 주소에서 열어야 합니다. 파일이 있는 폴더에서 `python -m http.server 8000`을 실행하면 `http://localhost:8000`에서 열립니다. 브라우저에서 페이지를 열고 **요청 보내기**를 클릭하세요.
 
@@ -101,13 +109,13 @@ Object Storage는 데이터를 오브젝트 단위로 저장하는 스토리지 
 PRIVATE 컨테이너라면 `fetch`의 `X-Auth-Token` 헤더에 발급받은 토큰을 실어 보냅니다. 이때 토큰은 동작을 확인하는 용도입니다. 공개된 페이지의 스크립트에 토큰을 심으면 누구나 컨테이너에 접근할 수 있으므로, 실제 서비스에서는 응용하기에서 안내하는 서명된 URL을 사용하세요.
 {% endhint %}
 
-2. 상태 코드가 `200`이면 CORS를 통과한 것입니다. CORS에서 막히면 `fetch`는 상태 코드를 돌려주지 못하고 `TypeError: Failed to fetch`로 실패합니다. 자세한 실패 원인은 개발자 도구 콘솔에서 확인할 수 있습니다.
+2.  상태 코드가 `200`이면 CORS를 통과한 것입니다. CORS에서 막히면 `fetch`는 상태 코드를 돌려주지 못하고 `TypeError: Failed to fetch`로 실패합니다. 자세한 실패 원인은 개발자 도구 콘솔에서 확인할 수 있습니다.
 
-    | 증상 | 원인 | 확인할 것 |
-    | --- | --- | --- |
-    | `No 'Access-Control-Allow-Origin' header is present on the requested resource` | CORS | 스크립트가 실행되는 주소가 프로토콜과 포트까지 등록한 허용 출처와 정확히 일치하는지 확인합니다 |
-    | `401 Unauthorized` | 접근 정책 | 컨테이너가 PRIVATE이라면 유효한 토큰을 함께 보냈는지 확인합니다 |
-    | `403 Forbidden` | 접근 정책 | 역할 기반 접근 정책을 사용한다면 수행하려는 작업에 맞는 권한(`Read`/`Write`)이 선택되어 있는지 확인합니다 |
+    | 증상                                                                             | 원인    | 확인할 것                                                              |
+    | ------------------------------------------------------------------------------ | ----- | ------------------------------------------------------------------ |
+    | `No 'Access-Control-Allow-Origin' header is present on the requested resource` | CORS  | 스크립트가 실행되는 주소가 프로토콜과 포트까지 등록한 허용 출처와 정확히 일치하는지 확인합니다               |
+    | `401 Unauthorized`                                                             | 접근 정책 | 컨테이너가 PRIVATE이라면 유효한 토큰을 함께 보냈는지 확인합니다                             |
+    | `403 Forbidden`                                                                | 접근 정책 | 역할 기반 접근 정책을 사용한다면 수행하려는 작업에 맞는 권한(`Read`/`Write`)이 선택되어 있는지 확인합니다 |
 
 ## 응용하기
 
@@ -118,9 +126,7 @@ PRIVATE 컨테이너라면 `fetch`의 `X-Auth-Token` 헤더에 발급받은 토�
 확인을 마쳤다면 열어 둔 설정을 되돌리세요. 접근 정책과 허용 출처는 직접 지우기 전까지 계속 유효합니다.
 
 1. 컨테이너 목록에서 컨테이너를 선택한 다음 **기본 정보** 탭에서 **교차 출처 리소스 공유(CORS)** 항목의 **변경**을 클릭하고, 입력란을 비운 다음 **확인**을 클릭하세요. 동작을 확인하려고 `*`를 입력했다면 반드시 지워야 합니다.
-
 2. 공개할 필요가 없는 컨테이너라면 **접근 정책 설정 변경**에서 접근 정책을 PRIVATE으로 되돌리세요. PUBLIC인 컨테이너의 오브젝트는 URL을 아는 누구나 내려받을 수 있습니다.
-
 3. 실습용으로 컨테이너를 새로 만들었다면 **컨테이너 비우기**로 오브젝트를 삭제한 다음 **컨테이너 삭제**를 클릭하세요.
 
 {% hint style="warning" %}

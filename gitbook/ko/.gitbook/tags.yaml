@@ -4,3 +4,14 @@
 - tag: network
   label: Network
   color: purple
+- tag: compute
+  label: Compute
+  color: red
+- tag: storage
+  label: Storage
+  color: yellow
+- tag: container
+  label: Container
+  color: violet
+- tag: gamebase
+  label: Gamebase
