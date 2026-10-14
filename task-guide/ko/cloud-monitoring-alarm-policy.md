@@ -83,9 +83,9 @@ Cloud Monitoring은 인스턴스를 비롯한 NHN Cloud 리소스의 시스템 �
 
 ## 응용하기
 
-- **메모리·디스크 알림 추가**: 같은 방법으로 리소스 유형을 **Memory**나 **Disk**로 변경하면 메모리 사용률, 디스크 사용률에 대한 알림도 설정할 수 있습니다.
-- **여러 조건 조합**: 하나의 알림에 CPU 사용률과 메모리 사용률 지표를 함께 추가하면 두 지표를 동시에 감시할 수 있습니다. 지표 항목의 복수 선택과 필터 설정에 대한 자세한 내용은 [Cloud Monitoring 콘솔 사용 가이드](https://docs.nhncloud.com/ko/Monitoring/Cloud%20Monitoring/ko/console-guide/#_12)를 참고하세요.
-- **위젯에서 빠르게 알림 만들기**: 대시보드 위젯의 더 보기 메뉴에서 **알림 생성**을 클릭하면 해당 위젯의 서비스, 지표, 필터 정보가 미리 입력된 상태로 알림을 생성할 수 있습니다. 자세한 내용은 [Cloud Monitoring 콘솔 사용 가이드](https://docs.nhncloud.com/ko/Monitoring/Cloud%20Monitoring/ko/console-guide/#_10)를 참고하세요.
+- **메모리·디스크 알림 추가**: 같은 방법으로 리소스 유형을 **Memory**나 **Disk**로 변경하면 메모리 사용률, 디스크 사용률에 대한 알림도 설정할 수 있습니다. 자세한 내용은 [알림 설정](https://docs.nhncloud.com/ko/Monitoring/Cloud%20Monitoring/ko/console-guide/#notification-settings)을 참고하세요.
+- **여러 조건 조합**: 하나의 알림에 CPU 사용률과 메모리 사용률 지표를 함께 추가하면 두 지표를 동시에 감시할 수 있습니다. 지표 항목의 복수 선택과 필터 설정에 대한 자세한 내용은 [알림 설정](https://docs.nhncloud.com/ko/Monitoring/Cloud%20Monitoring/ko/console-guide/#notification-settings)을 참고하세요.
+- **대시보드에 위젯 추가하기**: 대시보드에서 **+ 위젯 추가**를 클릭하면 서비스와 지표를 선택해 모니터링 위젯을 구성할 수 있습니다. 대시보드당 최대 12개의 위젯을 추가할 수 있으며, 편집 모드에서 위젯을 드래그해 위치와 크기를 조정할 수 있습니다. 자세한 내용은 [대시보드 구성](https://docs.nhncloud.com/ko/Monitoring/Cloud%20Monitoring/ko/console-guide/#create-a-dashboard)를 참고하세요.
 
 ## 용어 알아보기
 
