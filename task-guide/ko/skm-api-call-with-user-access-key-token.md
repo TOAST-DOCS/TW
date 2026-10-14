@@ -8,7 +8,7 @@ NHN Cloud는 서비스와 리소스를 외부 시스템이나 사용자 애플�
 
 여기에서는 NHN Cloud의 키 관리 서비스 Secure Key Manager에 기밀 데이터를 등록한 뒤 Secure Key Manager API v1.3을 사용해 이를 조회하기 위해 User Access Key 토큰을 발급받고 API 인증을 수행하는 시나리오를 진행합니다. 토큰 발급과 API 인증 방법은 User Access Key 토큰을 지원하는 다른 서비스에도 동일하게 적용할 수 있습니다.
 
-![User Access Key 토큰 발급 및 API 호출 흐름](images/skm-api-call-with-user-access-key-token-flow.svg)
+![](images/skm-api-call-with-user-access-key-token-flow.svg)
 
 ## 사전 준비하기
 
@@ -141,6 +141,11 @@ curl -X GET "https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{
 
 > [!NOTE]
 > Secure Key Manager API의 전체 파라미터 명세는 [Secure Key Manager API v1.3 가이드](https://docs.nhncloud.com/ko/Security/Secure%20Key%20Manager/ko/api-guide-v1.3/)를 참고하세요. User Access Key 토큰 인증은 API v1.3에서만 지원합니다.
+
+## 응용하기
+
+- **다른 인증 방법 사용**: 이 가이드에서는 IPv4 주소를 사용했지만, 키 저장소의 인증 방법으로 **MAC 주소**나 **클라이언트 인증서**도 선택할 수 있습니다. MAC 주소는 물리 서버나 전용 장비처럼 네트워크 인터페이스가 고정된 환경에 적합하고, 클라이언트 인증서는 IP나 MAC 주소가 유동적인 클라우드 환경에서 인증서 발급·폐기로 접근 권한을 세밀하게 관리할 때 적합합니다. 자세한 내용은 [인증 정보 등록](https://docs.nhncloud.com/ko/Security/Secure%20Key%20Manager/ko/getting-started/#register-authentication-information)을 참고하세요.
+- **인증 방법 조합**: 키 저장소에 인증 방법을 여러 개 선택하고 결합 방식을 **모두 통과(AND)**로 설정하면 보안을 더 강화할 수 있습니다. 예를 들어 IPv4 주소와 클라이언트 인증서를 함께 요구하면 등록된 IP에서 유효한 인증서를 가진 클라이언트만 접근할 수 있습니다. 자세한 내용은 [키 저장소 생성](https://docs.nhncloud.com/ko/Security/Secure%20Key%20Manager/ko/getting-started/#create-a-key-store)을 참고하세요.
 
 ## 리소스 정리하기
 
