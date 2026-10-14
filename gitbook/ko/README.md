@@ -36,7 +36,7 @@ layout:
 
 <p align="center"><a href="troubleshooting-guide/instance-creation-failed.md" class="button primary" data-icon="hammer">문제 해결 가이드</a><a href="how-to-guide/cloud-monitoring-alarm-policy.md" class="button secondary" data-icon="telescope">활용 가이드</a></p>
 
-<h3 align="center">활용가이드</h3>
+<h3 align="center">활용 가이드</h3>
 
 <p align="center">자주 하는 작업을 처음부터 끝까지 따라 합니다.</p>
 
