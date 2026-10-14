@@ -8,11 +8,11 @@ Secure Key Manager는 NHN Cloud에서 제공하는 키 관리 서비스입니다
 
 여기에서는 Secure Key Manager에서 키 저장소를 만들고, 대칭 키를 등록한 뒤, API로 데이터를 암·복호화하는 방법을 살펴봅니다. Secure Key Manager의 다양한 기능에 대한 자세한 설명은 [Secure Key Manager 사용자 가이드](https://docs.nhncloud.com/ko/Security/Secure%20Key%20Manager/ko/overview/)를 참고하세요.
 
-![대칭 키 암·복호화 흐름](images/skm-key-management-encrypt-decrypt-flow.svg)
+![](images/skm-key-management-encrypt-decrypt-flow.svg)
 
 ## 사전 준비하기
 
-- NHN Cloud 콘솔에서 Secure Key Manager 서비스가 활성화되어 있어야 합니다. 활성화 방법은 [프로젝트 서비스 활성화 가이드](https://docs.nhncloud.com/ko/nhncloud/ko/console-guide/#_21)를 참고하세요.
+- NHN Cloud 콘솔에서 Secure Key Manager 서비스가 활성화되어 있어야 합니다. 활성화 방법은 [프로젝트 서비스 활성화 가이드](https://docs.nhncloud.com/ko/nhncloud/ko/console-guide/#guide-to-enabling-project-services)를 참고하세요.
 - 이 가이드는 Secure Key Manager API v1.3을 기준으로 설명합니다. Secure Key Manager API v1.3은 API 호출 및 인증을 위한 인증 방법으로 Appkey, 프로젝트 통합 Appkey, User Access Key 토큰을 지원합니다. 각 인증 방법의 확인 및 사용에 대한 자세한 내용은 [Appkey](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/appkey/), [프로젝트 통합 Appkey](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/project-integrated-appkey/), [User Access Key 토큰](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/user-access-key-token/)을 참고하세요.
 - API를 호출할 클라이언트의 IPv4 주소를 미리 파악합니다. Secure Key Manager는 등록된 IP에서만 API 호출을 허용하므로, 호출 환경의 공인 IP를 알고 있어야 합니다.
 - API 호출을 위해 `curl`이 설치된 터미널 환경이 필요합니다.
@@ -88,7 +88,7 @@ Secure Key Manager는 NHN Cloud에서 제공하는 키 관리 서비스입니다
 
 ### 암호화 요청
 
-다음 cURL 예시에서 `{appkey}`는 Secure Key Manager Appkey, `{keyid}`는 키 상세 정보에서 확인한 키 아이디, `{access_token}`은 User Access Key 토큰, `{plaintext}`는 암호화할 원본 텍스트로 교체하세요.
+다음 curl 예시에서 `{appkey}`는 Secure Key Manager Appkey, `{keyid}`는 키 상세 정보에서 확인한 키 아이디, `{access_token}`은 User Access Key 토큰, `{plaintext}`는 암호화할 원본 텍스트로 교체하세요.
 
 ```sh
 curl -X POST "https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/symmetric-keys/{keyid}/encrypt" \
