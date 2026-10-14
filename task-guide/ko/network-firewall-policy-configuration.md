@@ -6,7 +6,7 @@ Network Firewall은 NHN Cloud에서 사용하는 인프라 자산을 안전하�
 
 **정책**은 Network Firewall에서 트래픽을 제어하는 단위입니다. 출발지/목적지 인터페이스, 출발지, 목적지, 목적지 포트, 동작(허용 또는 차단)으로 구성된 ACL로, 조건에 맞는 트래픽을 허용하거나 차단하는 규칙입니다. 여기에서는 Network Firewall 정책에서 사용할 객체를 등록하고, 허용 정책을 추가한 뒤, 트래픽 로그를 Log & Crash Search로 전송하는 시나리오를 살펴봅니다.
 
-![Network Firewall 정책 구성 및 로그 전송 흐름](images/network-firewall-policy-configuration-flow.svg)
+![](images/network-firewall-policy-configuration-flow.svg)
 
 > [!NOTE]
 > **Security Groups, Network ACL과의 역할 분담**
@@ -16,7 +16,7 @@ Network Firewall은 NHN Cloud에서 사용하는 인프라 자산을 안전하�
 > |---|---|---|---|
 > | 적용 단위 | 인스턴스 | 네트워크(서브넷), 인스턴스 | VPC(서브넷) |
 > | 동작 | 허용만 설정 | 허용, 차단 모두 설정 | 허용, 차단 모두 설정 |
-> | 기본 정책 | 모든 아웃바운드 허용, 모든 인바운드 차단 | 모든 트래픽 허용(화이트리스트/블랙리스트 선택 가능) | 모든 트래픽 차단(default-deny) |
+> | 기본 정책 | 모든 아웃바운드 허용, 모든 인바운드 차단 | 화이트리스트/블랙리스트 선택 지원 | 모든 트래픽 차단(default-deny) |
 > | 로그 | [Flow Log](https://www.nhncloud.com/kr/service/network/flow-log)로 수집 가능 | 미지원 | 정책별 로깅 가능 |
 > | 우선순위 | 없음(규칙 합집합 적용) | order 번호로 순서 지정 | 우선순위 번호로 순서 지정 |
 
@@ -72,7 +72,7 @@ Network Firewall은 기본 정책이 **모든 트래픽 차단**(default-deny)�
 
 2. **정책** > **ACL** 탭으로 이동하세요.
 
-3. **추가**를 클릭한 뒤 **정책 추가** 모달 창에서 다음 정보를 입력합니다.
+3. **추가**를 클릭한 뒤 **정책 추가** 창에서 다음 정보를 입력합니다.
 
     - **이름**: `allow-web-to-db-mysql` — 정책 의도를 알 수 있는 이름을 권장합니다.
     - **설명**: 웹 서브넷에서 DB 서브넷으로의 MySQL 접근 허용 — 선택 사항입니다.
@@ -151,7 +151,7 @@ Network Firewall 콘솔의 **로그** 탭은 단기 조회에 적합합니다. �
 
 4. 설정 화면 상단의 **Log & Crash Search**를 클릭하세요.
 
-5. **원격 전송**을 **사용**으로 변경하세요. **Appkey** 입력 필드에 Log & Crash Search의 Appkey를 입력한 뒤 **검증**을 클릭하세요.
+5. **원격 전송**을 **사용**으로 변경하세요. **AppKey** 입력 필드에 Log & Crash Search의 AppKey를 입력한 뒤 **검증**을 클릭하세요.
 
 6. 검증이 완료되면 **저장**을 클릭하세요.
 
@@ -179,7 +179,6 @@ Network Firewall 콘솔의 **로그** 탭은 단기 조회에 적합합니다. �
 
 - **정책 일괄 등록**: 등록할 정책이 많다면 **정책 일괄 등록** 기능을 사용합니다. **템플릿 내려받기**로 양식을 받아 작성한 뒤 업로드하면 여러 정책을 한 번에 추가할 수 있습니다. 자세한 내용은 [정책 일괄 등록](https://docs.nhncloud.com/ko/Security/Network-Firewall/ko/console-user-guide/policy/#batch-register-policies)을 참고하세요.
 - **인스턴스 객체 활용**: **객체** 탭의 **인스턴스 객체 추가**를 클릭하면, 프로젝트 내 인스턴스의 IP를 자동으로 가져와 객체로 등록할 수 있습니다. IP를 직접 입력하지 않아도 되므로 편리합니다. 자세한 내용은 [인스턴스 객체 추가](https://docs.nhncloud.com/ko/Security/Network-Firewall/ko/console-user-guide/object/#add-instance-object)를 참고하세요.
-- **스케줄 기반 정책**: 특정 시간대에만 정책을 적용하려면 정책 추가 시 **스케줄** 항목을 지정합니다. 예를 들어, 업무 시간에만 개발 서브넷에서 운영 DB로의 접근을 허용하는 정책을 만들 수 있습니다. 자세한 내용은 [ACL 설정하기](https://docs.nhncloud.com/ko/Security/Network-Firewall/ko/console-user-guide/policy/#configure-acl)를 참고하세요.
 - **인터페이스 분리**: 이 가이드에서는 출발지·목적지 인터페이스를 모두 `TRAFFIC`으로 지정했지만, **인터페이스** 탭에서 Web/WAS/DB 등 용도별 인터페이스를 추가 등록하면 인터페이스 단위로 더 세분화된 정책을 구성할 수 있습니다. 자세한 내용은 [인터페이스](https://docs.nhncloud.com/ko/Security/Network-Firewall/ko/console-user-guide/interface/)를 참고하세요.
 
 ## 리소스 정리하기
@@ -206,7 +205,7 @@ Network Firewall 콘솔의 **로그** 탭은 단기 조회에 적합합니다. �
 | Network Firewall | NHN Cloud에서 사용하는 인프라 자산을 안전하게 보호하기 위해 사용하는 네트워크 방화벽 서비스 |
 | VPC | 가상 사설 클라우드. 논리적으로 분리된 가상의 네트워크 |
 | 보안 그룹 | 인스턴스의 송수신 트래픽을 제어하는 기능 |
-| 서브넷 | Subnetwork를 의미하여, IP 네트워크를 더 작은 단위로 세분화한 IP 주소 영역 |
+| 서브넷 | Subnetwork를 의미하며, IP 네트워크를 더 작은 단위로 세분화한 IP 주소 영역 |
 | ACL | 접근 제어 목록. 네트워크의 유입/유출 트래픽을 제어하는 기능 |
 | CIDR | 클래스 없는 도메인 간 라우팅 기법이자, IP 주소를 효율적으로 사용하기 위한 IP 주소 할당 방법. '사이더' 또는 'CIDR[씨아이디알]'로 읽음 |
 | 방화벽 | 미리 정의된 보안 규칙에 기반하여 들어오고 나가는 네트워크 트래픽을 모니터링하고 제어하는 네트워크 보안 시스템 |
