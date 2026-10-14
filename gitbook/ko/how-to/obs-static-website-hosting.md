@@ -118,14 +118,14 @@ Object Storage는 데이터를 오브젝트 단위로 저장하는 스토리지 
 
     URL을 직접 만들 수도 있습니다.
 
-    ```text
+    ```
     {Object Store 엔드포인트}/{컨테이너 이름}/
     ```
 
     `{Object Store 엔드포인트}`는 컨테이너 목록 위쪽의 **API 엔드포인트 설정**을 클릭하면 **Object Store** 항목에서 확인할 수 있습니다. 한국(판교) 리전은 다음과 같은 형식입니다.
 
 
-    ```text
+    ```
     https://kr1-api-object-storage.nhncloudservice.com/v1/{스토리지 계정}
     ```
 
