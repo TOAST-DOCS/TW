@@ -34,8 +34,6 @@ layout:
 
 증상에서 출발해 원인을 좁히고, 자주 하는 작업은 단계별로 따라 할 수 있습니다.
 
-<button type="button" class="button primary medium" data-action="ask" data-icon="gitbook-assistant">무엇을 하려고 하나요?</button>
-
 <p align="center"><a href="troubleshooting/instance-creation-failed.md" class="button primary" data-icon="hammer">트러블슈팅 가이드</a><a href="how-to/cloud-monitoring-alarm-policy.md" class="button secondary" data-icon="telescope">How to 가이드</a></p>
 
 <h3 align="center">How To 가이드</h3>
