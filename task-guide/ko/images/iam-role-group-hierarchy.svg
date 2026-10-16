@@ -1,0 +1,86 @@
+<svg viewBox="0 0 900 440" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard, 'Malgun Gothic', sans-serif">
+
+  <!-- 배경 -->
+  <rect x="0" y="0" width="900" height="440" fill="#FCFCFC"/>
+
+  <!-- ===================== 연결선 (진한 파랑, 계층 간 신뢰 관계) ===================== -->
+  <!-- 프로젝트 → 트렁크 -->
+  <line x1="450" y1="94" x2="450" y2="130" stroke="#0157B1" stroke-width="2.5"/>
+  <!-- 트렁크 수평선 -->
+  <line x1="150" y1="130" x2="750" y2="130" stroke="#0157B1" stroke-width="2.5"/>
+
+  <!-- 트렁크 → 역할 그룹 (운영자) -->
+  <line x1="150" y1="130" x2="150" y2="164" stroke="#0157B1" stroke-width="2.5"/>
+  <polygon points="150,170 144,160 156,160" fill="#0157B1"/>
+
+  <!-- 트렁크 → 역할 그룹 (개발자) -->
+  <line x1="450" y1="130" x2="450" y2="164" stroke="#0157B1" stroke-width="2.5"/>
+  <polygon points="450,170 444,160 456,160" fill="#0157B1"/>
+
+  <!-- 트렁크 → 역할 그룹 (조회 전용) -->
+  <line x1="750" y1="130" x2="750" y2="164" stroke="#0157B1" stroke-width="2.5"/>
+  <polygon points="750,170 744,160 756,160" fill="#0157B1"/>
+
+  <!-- 역할 그룹 → 사용자 (운영자 → 사용자 A) -->
+  <line x1="150" y1="266" x2="150" y2="350" stroke="#0157B1" stroke-width="2.5"/>
+  <polygon points="150,356 144,346 156,346" fill="#0157B1"/>
+
+  <!-- 역할 그룹 → 사용자 (개발자 → 사용자 B) -->
+  <line x1="450" y1="266" x2="450" y2="350" stroke="#0157B1" stroke-width="2.5"/>
+  <polygon points="450,356 444,346 456,346" fill="#0157B1"/>
+
+  <!-- 역할 그룹 → 사용자 (조회 전용 → 사용자 C) -->
+  <line x1="750" y1="266" x2="750" y2="350" stroke="#0157B1" stroke-width="2.5"/>
+  <polygon points="750,356 744,346 756,346" fill="#0157B1"/>
+
+  <!-- ===================== 1단계: 프로젝트 ===================== -->
+  <g transform="translate(350,30)">
+    <rect x="0" y="0" width="200" height="64" rx="16" fill="#054283"/>
+    <text x="100" y="40" text-anchor="middle" font-size="22" font-weight="600" fill="#FFFFFF">프로젝트</text>
+  </g>
+
+  <!-- ===================== 2단계: 역할 그룹 3종 ===================== -->
+  <!-- 운영자 -->
+  <g transform="translate(45,170)">
+    <rect x="0" y="0" width="210" height="96" rx="16" fill="#0F80F6"/>
+    <text x="105" y="28" text-anchor="middle" font-size="13" fill="#FFFFFF" opacity="0.85">역할 그룹</text>
+    <text x="105" y="55" text-anchor="middle" font-size="21" font-weight="700" fill="#FFFFFF">운영자</text>
+    <text x="105" y="79" text-anchor="middle" font-size="13" fill="#FFFFFF" opacity="0.9">모든 리소스 CRUD</text>
+  </g>
+
+  <!-- 개발자 -->
+  <g transform="translate(345,170)">
+    <rect x="0" y="0" width="210" height="96" rx="16" fill="#0F80F6"/>
+    <text x="105" y="28" text-anchor="middle" font-size="13" fill="#FFFFFF" opacity="0.85">역할 그룹</text>
+    <text x="105" y="55" text-anchor="middle" font-size="21" font-weight="700" fill="#FFFFFF">개발자</text>
+    <text x="105" y="79" text-anchor="middle" font-size="13" fill="#FFFFFF" opacity="0.9">삭제 제외 CRUD</text>
+  </g>
+
+  <!-- 조회 전용 -->
+  <g transform="translate(645,170)">
+    <rect x="0" y="0" width="210" height="96" rx="16" fill="#0F80F6"/>
+    <text x="105" y="28" text-anchor="middle" font-size="13" fill="#FFFFFF" opacity="0.85">역할 그룹</text>
+    <text x="105" y="55" text-anchor="middle" font-size="21" font-weight="700" fill="#FFFFFF">조회 전용</text>
+    <text x="105" y="79" text-anchor="middle" font-size="13" fill="#FFFFFF" opacity="0.9">조회만 허용</text>
+  </g>
+
+  <!-- ===================== 3단계: 사용자 3인 ===================== -->
+  <!-- 사용자 A -->
+  <g transform="translate(65,356)">
+    <rect x="0" y="0" width="170" height="60" rx="14" fill="#E7F2FE"/>
+    <text x="85" y="37" text-anchor="middle" font-size="17" font-weight="500" fill="#2D2D2D">사용자 A</text>
+  </g>
+
+  <!-- 사용자 B -->
+  <g transform="translate(365,356)">
+    <rect x="0" y="0" width="170" height="60" rx="14" fill="#E7F2FE"/>
+    <text x="85" y="37" text-anchor="middle" font-size="17" font-weight="500" fill="#2D2D2D">사용자 B</text>
+  </g>
+
+  <!-- 사용자 C -->
+  <g transform="translate(665,356)">
+    <rect x="0" y="0" width="170" height="60" rx="14" fill="#E7F2FE"/>
+    <text x="85" y="37" text-anchor="middle" font-size="17" font-weight="500" fill="#2D2D2D">사용자 C</text>
+  </g>
+
+</svg>
