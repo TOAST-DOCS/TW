@@ -1,0 +1,18 @@
+$schema: https://api.gitbook.com/gitbook-docs.yaml
+site:
+  title: NHN Cloud Task Guides
+  structure:
+    - type: section
+      key: section-1
+      title: NHN Cloud Task Guides
+      path: nhn-cloud-task-guides
+      default: true
+      children:
+        - type: space
+          key: space-task-guide-ko
+          title: Task Guide
+          path: task-guide
+          default: true
+          content:
+            directory: ./nhn-cloud-task-guides/task-guide
+            language: ko
