@@ -1,4 +1,4 @@
-# Load Balancer 헬스 체크가 실패해 멤버가 INACTIVE로 표시될 때
+# Load Balancer 멤버가 INACTIVE로 표시됩니다
 
 ## 증상
 
