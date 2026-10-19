@@ -1,0 +1,91 @@
+<svg width="960" height="360" viewBox="0 0 960 360" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>Gamebase 푸시 메시지 발송 흐름</title>
+<desc>운영자가 Gamebase 콘솔에서 인증 정보를 등록하고, 게임 클라이언트가 로그인 후 푸시 토큰을 Gamebase에 등록합니다. 운영자가 Gamebase 콘솔에서 메시지를 발송하면 Gamebase가 토큰과 메시지를 NHN Cloud Push로 전달하고, NHN Cloud Push가 FCM을 거쳐 Android 디바이스에, APNs를 거쳐 iOS 디바이스에 메시지를 발송합니다.</desc>
+
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+    <path d="M0 0L10 5L0 10z" fill="#8B8B8B"/>
+  </marker>
+</defs>
+
+<style>
+  text { font-family: 'Pretendard', sans-serif; }
+</style>
+
+<!-- 캔버스 배경 -->
+<rect x="0" y="0" width="960" height="360" fill="#F7F7F7"/>
+
+<!-- NHN Cloud 그룹 컨테이너 -->
+<rect x="230" y="30" width="350" height="300" rx="8" fill="#E7F2FF"/>
+<text x="405" y="58" text-anchor="middle" dominant-baseline="central" font-size="15" font-weight="700" fill="#125DE6">NHN Cloud</text>
+
+<!-- 운영자 (사용자 아이콘) -->
+<circle cx="100" cy="112" r="34" fill="#FFFFFF"/>
+<g transform="translate(82.6, 94.6) scale(0.6)">
+  <circle cx="29" cy="17" r="10" fill="#C8CCD4"/>
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M50 50C50 37.2174 40.598 29 29 29C17.402 29 8 37.2174 8 50H50Z" fill="#C8CCD4"/>
+</g>
+<text x="100" y="164" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#2D2D2D">운영자</text>
+<text x="100" y="181" text-anchor="middle" dominant-baseline="central" font-size="11" fill="#8B8B8B">(Gamebase 콘솔)</text>
+
+<!-- 게임 클라이언트 (외부/고객 시스템) -->
+<rect x="40" y="199" width="120" height="48" rx="6" fill="#646464"/>
+<text x="100" y="223" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#FFFFFF">게임 클라이언트</text>
+
+<!-- Gamebase (서비스 아이콘) -->
+<circle cx="330" cy="223" r="34" fill="#FFFFFF"/>
+<g transform="translate(312, 205) scale(0.9)">
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M22 7H18V15H22V7ZM29.2625 33C34.0895 33 38 28.968 38 24C38 19.143 34.259 15.1845 29.582 15.0105L10.7375 15C5.912 15 2 19.032 2 24C2 28.968 5.912 33 10.7375 33C12.9725 33 15.011 32.1315 16.556 30.7095C18.464 28.9545 21.4145 28.809 23.381 30.6525C24.9335 32.1075 26.996 33 29.2625 33ZM12 21H10V23H8V25H10V27H12V25H14V23H12V21ZM29 21C30.6569 21 32 22.3431 32 24C32 25.6569 30.6569 27 29 27C27.3431 27 26 25.6569 26 24C26 22.3431 27.3431 21 29 21ZM30 23H28V25H30V23Z" fill="#125DE6"/>
+</g>
+<text x="330" y="275" text-anchor="middle" dominant-baseline="central" font-size="13" font-weight="600" fill="#2D2D2D">Gamebase</text>
+
+<!-- NHN Cloud Push (서비스 아이콘) -->
+<circle cx="500" cy="223" r="34" fill="#FFFFFF"/>
+<g transform="translate(482, 205) scale(0.9)">
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M18 7.16592V3H22V7.16592C27.6754 8.11807 32 13.054 32 19V27H34V31H32H8H6V27H8V19C8 13.054 12.3246 8.11807 18 7.16592ZM16 33C16 35.2091 17.7909 37 20 37C22.2091 37 24 35.2091 24 33H16Z" fill="#125DE6"/>
+</g>
+<text x="500" y="275" text-anchor="middle" dominant-baseline="central" font-size="13" font-weight="600" fill="#2D2D2D">NHN Cloud Push</text>
+
+<!-- FCM, APNs (외부 서비스) -->
+<rect x="640" y="126" width="110" height="48" rx="6" fill="#646464"/>
+<text x="695" y="150" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#FFFFFF">FCM</text>
+<rect x="640" y="272" width="110" height="48" rx="6" fill="#646464"/>
+<text x="695" y="296" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#FFFFFF">APNs</text>
+
+<!-- 디바이스 (하위 항목) -->
+<rect x="790" y="126" width="130" height="48" rx="6" fill="#FFFFFF"/>
+<text x="855" y="150" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#2D2D2D">Android 디바이스</text>
+<rect x="790" y="272" width="130" height="48" rx="6" fill="#FFFFFF"/>
+<text x="855" y="296" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#2D2D2D">iOS 디바이스</text>
+
+<!-- 화살표: 운영자 -> Gamebase (1 인증 정보 등록, 3 메시지 발송) -->
+<path d="M134 112L330 112L330 189" fill="none" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow)"/>
+<circle cx="156" cy="66" r="9" fill="#2D2D2D"/>
+<text x="156" y="66" text-anchor="middle" dominant-baseline="central" font-size="11" font-weight="700" fill="#FFFFFF">1</text>
+<text x="171" y="66" dominant-baseline="central" font-size="12" fill="#444444">인증 정보 등록</text>
+<circle cx="156" cy="88" r="9" fill="#2D2D2D"/>
+<text x="156" y="88" text-anchor="middle" dominant-baseline="central" font-size="11" font-weight="700" fill="#FFFFFF">3</text>
+<text x="171" y="88" dominant-baseline="central" font-size="12" fill="#444444">메시지 발송</text>
+
+<!-- 화살표: 게임 클라이언트 -> Gamebase (2 푸시 토큰 등록) -->
+<path d="M160 223L296 223" fill="none" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow)"/>
+<circle cx="180" cy="203" r="9" fill="#2D2D2D"/>
+<text x="180" y="203" text-anchor="middle" dominant-baseline="central" font-size="11" font-weight="700" fill="#FFFFFF">2</text>
+<text x="195" y="203" dominant-baseline="central" font-size="12" fill="#444444">푸시 토큰 등록</text>
+
+<!-- 화살표: Gamebase -> NHN Cloud Push -->
+<path d="M364 223L466 223" fill="none" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow)"/>
+<text x="415" y="203" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#444444">토큰·메시지 전달</text>
+
+<!-- 화살표: NHN Cloud Push -> FCM / APNs (4 발송) -->
+<path d="M534 223L604 223L604 150L640 150" fill="none" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow)"/>
+<path d="M604 223L604 296L640 296" fill="none" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow)"/>
+<circle cx="552" cy="203" r="9" fill="#2D2D2D"/>
+<text x="552" y="203" text-anchor="middle" dominant-baseline="central" font-size="11" font-weight="700" fill="#FFFFFF">4</text>
+<text x="567" y="203" dominant-baseline="central" font-size="12" fill="#444444">발송</text>
+
+<!-- 화살표: FCM -> Android, APNs -> iOS -->
+<path d="M750 150L790 150" fill="none" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow)"/>
+<path d="M750 296L790 296" fill="none" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+</svg>
