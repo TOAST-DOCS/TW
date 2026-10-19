@@ -1,110 +1,181 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" font-family="'Pretendard', sans-serif">
-  <rect width="960" height="480" rx="12" fill="#F7F7F7"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_레이어_1" data-name="레이어_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 600 440">
+  <!-- Generator: Adobe Illustrator 30.8.2, SVG Export Plug-In . SVG Version: 2.1.4 Build 7)  -->
   <defs>
-    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-      <polygon points="0 0, 10 3.5, 0 7" fill="#8B8B8B"/>
-    </marker>
+    <style>
+      .st0, .st1 {
+        fill: #c8ccd4;
+      }
+
+      .st2, .st3, .st4, .st5 {
+        fill: #125de6;
+      }
+
+      .st6, .st7, .st8 {
+        fill: #8b8b8b;
+      }
+
+      .st9 {
+        font-size: 13px;
+      }
+
+      .st9, .st10, .st3, .st11, .st4, .st12, .st13, .st14, .st7, .st8 {
+        isolation: isolate;
+      }
+
+      .st9, .st10, .st15, .st13 {
+        fill: #2d2d2d;
+      }
+
+      .st9, .st4, .st13 {
+        font-family: Pretendard-SemiBold-KSCpc-EUC-H, Pretendard;
+        font-weight: 600;
+      }
+
+      .st10, .st11, .st4, .st14 {
+        font-size: 11px;
+      }
+
+      .st10, .st14, .st8 {
+        font-family: Pretendard-Regular-KSCpc-EUC-H, Pretendard;
+      }
+
+      .st3 {
+        font-size: 14px;
+      }
+
+      .st3, .st11 {
+        font-family: Pretendard-Bold-KSCpc-EUC-H, Pretendard;
+        font-weight: 700;
+      }
+
+      .st16, .st11 {
+        fill: #fff;
+      }
+
+      .st1, .st5 {
+        fill-rule: evenodd;
+      }
+
+      .st17 {
+        stroke: #125de6;
+      }
+
+      .st17, .st18 {
+        fill: none;
+        stroke-width: 1.5px;
+      }
+
+      .st12 {
+        fill: #e7f2ff;
+        opacity: .4;
+      }
+
+      .st18 {
+        stroke: #8b8b8b;
+      }
+
+      .st13, .st7, .st8 {
+        font-size: 12px;
+      }
+
+      .st14 {
+        fill: #444;
+      }
+
+      .st7 {
+        font-family: AdobeMyungjoStd-Medium-KSCpc-EUC-H, 'Adobe Myungjo Std';
+        font-weight: 500;
+      }
+
+      .st19 {
+        fill: #f7f7f7;
+      }
+    </style>
   </defs>
-
-  <g transform="translate(-20, 30)">
-    <!-- ===== NHN Cloud 영역 ===== -->
-    <rect x="300" y="16" width="620" height="430" rx="8" fill="#E7F2FF" opacity="0.4"/>
-    <text x="610" y="40" text-anchor="middle" fill="#125DE6" font-size="13" font-weight="700">NHN Cloud</text>
-
-    <!-- ===== 사용자 (cx=110, cy=120) ===== -->
-    <circle cx="110" cy="120" r="32" fill="#FFFFFF"/>
-    <g transform="translate(92.6, 102.6) scale(0.6)">
-      <circle cx="29" cy="17" r="10" fill="#C8CCD4"/>
-      <path fill-rule="evenodd" clip-rule="evenodd" d="M50 50C50 37.2174 40.598 29 29 29C17.402 29 8 37.2174 8 50H50Z" fill="#C8CCD4"/>
+  <rect class="st19" width="600" height="440" rx="12" ry="12"/>
+  <rect class="st12" x="115" y="21.79" width="470" height="395.43" rx="7.9" ry="7.9"/>
+  <text class="st3" transform="translate(313.97 50.19)"><tspan x="0" y="0">NHN Cloud</tspan></text>
+  <g>
+    <g>
+      <path class="st15" d="M236.27,70.8h0c4.97,0,9,4.03,9,9h0c0,4.97-4.03,9-9,9h0c-4.97,0-9-4.03-9-9h0c0-4.97,4.03-9,9-9Z"/>
+      <text class="st11" transform="translate(233.69 83.8)"><tspan x="0" y="0">1</tspan></text>
     </g>
-    <text x="110" y="170" text-anchor="middle" fill="#2D2D2D" font-size="13" font-weight="600">사용자</text>
-    <text x="110" y="186" text-anchor="middle" fill="#8B8B8B" font-size="11">(브라우저)</text>
-
-    <!-- ===== IP 접근 제어 (center x=270, cy=120) ===== -->
-    <rect x="220" y="106" width="100" height="28" rx="6" fill="none" stroke="#125DE6" stroke-width="1.5"/>
-    <text x="270" y="125" text-anchor="middle" fill="#125DE6" font-size="11" font-weight="600">IP 접근 제어</text>
-
-    <line x1="142" y1="120" x2="218" y2="120" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow)"/>
-    <line x1="322" y1="120" x2="438" y2="120" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow)"/>
-
-    <!-- ===== NHN Bastion (cx=480, cy=120) ===== -->
-    <circle cx="480" cy="120" r="36" fill="#FFFFFF"/>
-    <g transform="translate(460, 100)">
-      <path fill-rule="evenodd" clip-rule="evenodd" d="M8 6C6.89543 6 6 6.89543 6 8V16C6 17.1046 6.89543 18 8 18H18L17.6667 16H34V8C34 6.89543 33.1046 6 32 6H8ZM18.6667 22L19.3334 26H20.9999V28.5359C20.3316 28.9218 19.7877 29.4937 19.436 30.184C19.1594 30.7269 19.0713 31.2664 19.0339 31.7235C18.9999 32.1399 18.9999 32.6314 19 33.1362V33.1362L19 33.2V34H8C6.89543 34 6 33.1046 6 32V24C6 22.8954 6.89543 22 8 22H18.6667ZM22 10V14H30V10H22Z" fill="#125DE6"/>
-      <path fill-rule="evenodd" clip-rule="evenodd" d="M20 18L21 24H23V30.0192C22.6078 30.0431 22.3295 30.097 22.092 30.218C21.7157 30.4097 21.4097 30.7157 21.218 31.092C21 31.5198 21 32.0799 21 33.2V34H23H33H35V33.2C35 32.0799 35 31.5198 34.782 31.092C34.5903 30.7157 34.2843 30.4097 33.908 30.218C33.6705 30.097 33.3922 30.0431 33 30.0192V24H35L36 18H32L31.6667 20H30V18H26V20H24.3333L24 18H20Z" fill="#125DE6"/>
-    </g>
-    <text x="480" y="174" text-anchor="middle" fill="#2D2D2D" font-size="13" font-weight="600">NHN Bastion</text>
-    <text x="480" y="190" text-anchor="middle" fill="#8B8B8B" font-size="11">(웹 터미널)</text>
-
-    <!-- ===== 정책 (center x=640) ===== -->
-    <rect x="580" y="84" width="120" height="28" rx="6" fill="none" stroke="#125DE6" stroke-width="1.5"/>
-    <text x="640" y="103" text-anchor="middle" fill="#125DE6" font-size="11" font-weight="600">접근 통제 정책</text>
-
-    <rect x="580" y="128" width="120" height="28" rx="6" fill="none" stroke="#125DE6" stroke-width="1.5"/>
-    <text x="640" y="147" text-anchor="middle" fill="#125DE6" font-size="11" font-weight="600">명령어 통제 정책</text>
-
-    <line x1="516" y1="105" x2="578" y2="98" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow)"/>
-    <line x1="516" y1="135" x2="578" y2="142" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow)"/>
-    <line x1="702" y1="98" x2="778" y2="98" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow)"/>
-    <line x1="702" y1="142" x2="778" y2="142" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow)"/>
-
-    <!-- ===== 대상 인스턴스 (center x=840) ===== -->
-    <rect x="780" y="60" width="120" height="140" rx="8" fill="#FFFFFF"/>
-
-    <!-- Instance A: 아이콘 center=(840, 88), 텍스트 y=110 -->
-    <g transform="translate(826, 74) scale(0.7)">
-      <path d="M32 22C33.1046 22 34 22.8954 34 24V32C34 33.1046 33.1046 34 32 34H8C6.89543 34 6 33.1046 6 32V24C6 22.8954 6.89543 22 8 22H32ZM22 30H30V26H22V30ZM32 6C33.1046 6 34 6.89543 34 8V16C34 17.1046 33.1046 18 32 18H8C6.89543 18 6 17.1046 6 16V8C6 6.89543 6.89543 6 8 6H32ZM22 14H30V10H22V14Z" fill="#125DE6"/>
-    </g>
-    <text x="840" y="110" text-anchor="middle" fill="#2D2D2D" font-size="10">Instance A</text>
-
-    <!-- Instance B: 아이콘 center=(840, 132), 텍스트 y=154 -->
-    <g transform="translate(826, 118) scale(0.7)">
-      <path d="M32 22C33.1046 22 34 22.8954 34 24V32C34 33.1046 33.1046 34 32 34H8C6.89543 34 6 33.1046 6 32V24C6 22.8954 6.89543 22 8 22H32ZM22 30H30V26H22V30ZM32 6C33.1046 6 34 6.89543 34 8V16C34 17.1046 33.1046 18 32 18H8C6.89543 18 6 17.1046 6 16V8C6 6.89543 6.89543 6 8 6H32ZM22 14H30V10H22V14Z" fill="#125DE6"/>
-    </g>
-    <text x="840" y="154" text-anchor="middle" fill="#2D2D2D" font-size="10">Instance B</text>
-
-    <text x="840" y="176" text-anchor="middle" fill="#8B8B8B" font-size="12">⋮</text>
-    <text x="840" y="218" text-anchor="middle" fill="#2D2D2D" font-size="12" font-weight="600">대상 인스턴스</text>
-
-    <!-- ===== 이력 관리 (하단, center x=480) ===== -->
-    <rect x="370" y="260" width="220" height="110" rx="8" fill="#FFFFFF"/>
-    <text x="480" y="286" text-anchor="middle" fill="#2D2D2D" font-size="12" font-weight="600">이력 관리</text>
-
-    <rect x="390" y="298" width="80" height="24" rx="4" fill="#F7F7F7"/>
-    <text x="430" y="314" text-anchor="middle" fill="#444444" font-size="10">접속 이력</text>
-
-    <rect x="490" y="298" width="80" height="24" rx="4" fill="#F7F7F7"/>
-    <text x="530" y="314" text-anchor="middle" fill="#444444" font-size="10">명령어 이력</text>
-
-    <rect x="390" y="330" width="80" height="24" rx="4" fill="#F7F7F7"/>
-    <text x="430" y="346" text-anchor="middle" fill="#444444" font-size="10">실시간 세션</text>
-
-    <rect x="490" y="330" width="80" height="24" rx="4" fill="#F7F7F7"/>
-    <text x="530" y="346" text-anchor="middle" fill="#444444" font-size="10">세션 차단</text>
-
-    <!-- 웹 터미널 → 이력 관리 (화살표 x=480, 텍스트 바로 옆) -->
-    <line x1="480" y1="194" x2="480" y2="258" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow)"/>
-    <text x="492" y="232" fill="#444444" font-size="10">자동 기록</text>
-
-    <!-- ===== 단계 번호 ===== -->
-    <rect x="461" y="56" width="18" height="18" rx="9" fill="#2D2D2D"/>
-    <text x="470" y="69" text-anchor="middle" fill="#FFFFFF" font-size="11" font-weight="700">1</text>
-    <text x="486" y="69" fill="#444444" font-size="10">서비스 활성화 + 웹 터미널 생성</text>
-
-    <rect x="790" y="30" width="18" height="18" rx="9" fill="#2D2D2D"/>
-    <text x="799" y="43" text-anchor="middle" fill="#FFFFFF" font-size="11" font-weight="700">2</text>
-    <text x="814" y="43" fill="#444444" font-size="10">인스턴스 등록</text>
-
-    <rect x="618" y="60" width="18" height="18" rx="9" fill="#2D2D2D"/>
-    <text x="627" y="73" text-anchor="middle" fill="#FFFFFF" font-size="11" font-weight="700">3</text>
-    <text x="642" y="73" fill="#444444" font-size="10">정책 설정</text>
-
-    <rect x="152" y="90" width="18" height="18" rx="9" fill="#2D2D2D"/>
-    <text x="161" y="103" text-anchor="middle" fill="#FFFFFF" font-size="11" font-weight="700">4</text>
-    <text x="176" y="103" fill="#444444" font-size="10">SSH 접속</text>
-
-    <rect x="451" y="384" width="18" height="18" rx="9" fill="#2D2D2D"/>
-    <text x="460" y="397" text-anchor="middle" fill="#FFFFFF" font-size="11" font-weight="700">5</text>
-    <text x="475" y="397" fill="#444444" font-size="10">접속 이력 확인</text>
+    <text class="st14" transform="translate(251.32 76.82)"><tspan x="0" y="0">서비스 활성화</tspan><tspan x="0" y="13.2">/웹 터미널 생성</tspan></text>
   </g>
+  <circle class="st16" cx="52" cy="137.19" r="28"/>
+  <g>
+    <circle class="st0" cx="51.95" cy="130.54" r="5.5"/>
+    <path class="st1" d="M63.5,148.69c0-7.03-5.17-11.55-11.55-11.55s-11.55,4.52-11.55,11.55h23.1Z"/>
+  </g>
+  <text class="st9" transform="translate(35.15 185.62)"><tspan x="0" y="0">사용자</tspan></text>
+  <text class="st8" transform="translate(27.17 200.62)"><tspan x="0" y="0">(브라우저)</tspan></text>
+  <g>
+    <path class="st15" d="M100.15,70.8h0c4.97,0,9,4.03,9,9h0c0,4.97-4.03,9-9,9h0c-4.97,0-9-4.03-9-9h0c0-4.97,4.03-9,9-9Z"/>
+    <text class="st11" transform="translate(96.54 83.8)"><tspan x="0" y="0">4</tspan></text>
+  </g>
+  <text class="st14" transform="translate(115.85 83.42)"><tspan x="0" y="0">SSH 접속</tspan></text>
+  <rect class="st17" x="121.62" y="123.19" width="88" height="28" rx="6" ry="6"/>
+  <text class="st4" transform="translate(139.18 140.19)"><tspan x="0" y="0">IP 접근 제어</tspan></text>
+  <line class="st18" x1="80" y1="137.19" x2="113.75" y2="137.19"/>
+  <polygon class="st6" points="112.67 133.69 120.67 137.19 112.67 140.69 112.67 133.69"/>
+  <line class="st18" x1="210.44" y1="137.19" x2="232" y2="137.19"/>
+  <polygon class="st6" points="232 133.69 240 137.19 232 140.69 232 133.69"/>
+  <g>
+    <circle class="st16" cx="272.41" cy="137.43" r="32"/>
+    <g>
+      <path class="st5" d="M259.41,123.43c-1.1,0-2,.9-2,2v8c0,1.1.9,2,2,2h10l-.33-2h16.33v-8c0-1.1-.9-2-2-2h-24ZM270.08,139.43l.67,4h1.67v2.54c-.67.39-1.21.96-1.56,1.65-.28.54-.36,1.08-.4,1.54-.03.42-.03.91-.03,1.41h0v.86h-11c-1.1,0-2-.9-2-2v-8c0-1.1.9-2,2-2h10.67ZM273.41,127.43v4h8v-4h-8Z"/>
+      <path class="st5" d="M271.41,135.43l1,6h2v6.02c-.39.02-.67.08-.91.2-.38.19-.68.5-.87.87-.22.43-.22.99-.22,2.11v.8h14v-.8c0-1.12,0-1.68-.22-2.11-.19-.38-.5-.68-.87-.87-.24-.12-.52-.17-.91-.2v-6.02h2l1-6h-4l-.33,2h-1.67v-2h-4v2h-1.67l-.33-2h-4Z"/>
+    </g>
+  </g>
+  <text class="st9" transform="translate(234.37 189.7)"><tspan x="0" y="0">NHN Bastion</tspan></text>
+  <g>
+    <g>
+      <path class="st15" d="M372.24,70.8h0c4.97,0,9,4.03,9,9h0c0,4.97-4.03,9-9,9h0c-4.97,0-9-4.03-9-9h0c0-4.97,4.03-9,9-9Z"/>
+      <text class="st11" transform="translate(368.73 83.8)"><tspan x="0" y="0">3</tspan></text>
+    </g>
+    <text class="st14" transform="translate(386.24 83.42)"><tspan x="0" y="0">정책 설정</tspan></text>
+  </g>
+  <text class="st4" transform="translate(368.87 116.19)"><tspan x="0" y="0">접근 통제 정책</tspan></text>
+  <text class="st4" transform="translate(364.12 156.19)"><tspan x="0" y="0">명령어 통제 정책</tspan></text>
+  <line class="st18" x1="304" y1="124.19" x2="337" y2="114.19"/>
+  <polygon class="st6" points="338 118.19 345 112.19 336 111.19 338 118.19"/>
+  <line class="st18" x1="304" y1="150.19" x2="337" y2="152.19"/>
+  <polygon class="st6" points="337 148.69 345 152.19 337 155.69 337 148.69"/>
+  <line class="st18" x1="455" y1="112.19" x2="482" y2="112.19"/>
+  <polygon class="st6" points="482 108.69 490 112.19 482 115.69 482 108.69"/>
+  <line class="st18" x1="455" y1="152.19" x2="482" y2="152.19"/>
+  <polygon class="st6" points="482 148.69 490 152.19 482 155.69 482 148.69"/>
+  <path class="st15" d="M489.51,60.19h0c4.97,0,9,4.03,9,9h0c0,4.97-4.03,9-9,9h0c-4.97,0-9-4.03-9-9h0c0-4.97,4.03-9,9-9Z"/>
+  <text class="st11" transform="translate(486.15 73.19)"><tspan x="0" y="0">2</tspan></text>
+  <text class="st14" transform="translate(503.18 72.33)"><tspan x="0" y="0">인스턴스 등록</tspan></text>
+  <rect class="st16" x="490" y="84.19" width="70" height="120" rx="8" ry="8"/>
+  <path class="st2" d="M531.2,106.72c.66,0,1.2.54,1.2,1.2v4.8c0,.66-.54,1.2-1.2,1.2h-14.4c-.66,0-1.2-.54-1.2-1.2v-4.8c0-.66.54-1.2,1.2-1.2h14.4ZM525.2,111.52h4.8v-2.4h-4.8v2.4ZM531.2,97.12c.66,0,1.2.54,1.2,1.2v4.8c0,.66-.54,1.2-1.2,1.2h-14.4c-.66,0-1.2-.54-1.2-1.2v-4.8c0-.66.54-1.2,1.2-1.2h14.4ZM525.2,101.92h4.8v-2.4h-4.8v2.4Z"/>
+  <text class="st10" transform="translate(498.11 127.81)"><tspan x="0" y="0">Instance A</tspan></text>
+  <path class="st2" d="M531.2,150.53c.66,0,1.2.54,1.2,1.2v4.8c0,.66-.54,1.2-1.2,1.2h-14.4c-.66,0-1.2-.54-1.2-1.2v-4.8c0-.66.54-1.2,1.2-1.2h14.4ZM525.2,155.33h4.8v-2.4h-4.8v2.4ZM531.2,140.93c.66,0,1.2.54,1.2,1.2v4.8c0,.66-.54,1.2-1.2,1.2h-14.4c-.66,0-1.2-.54-1.2-1.2v-4.8c0-.66.54-1.2,1.2-1.2h14.4ZM525.2,145.73h4.8v-2.4h-4.8v2.4Z"/>
+  <text class="st10" transform="translate(498.26 171.86)"><tspan x="0" y="0">Instance B</tspan></text>
+  <text class="st7" transform="translate(519 190.41)"><tspan x="0" y="0">⋮</tspan></text>
+  <text class="st13" transform="translate(492.46 224.95)"><tspan x="0" y="0">대상 인스턴스</tspan></text>
+  <rect class="st16" x="172.41" y="265.27" width="200" height="104" rx="8" ry="8"/>
+  <text class="st13" transform="translate(250.24 287.27)"><tspan x="0" y="0">이력 관리</tspan></text>
+  <rect class="st19" x="187" y="296.76" width="80" height="24" rx="4" ry="4"/>
+  <text class="st14" transform="translate(206.61 312.76)"><tspan x="0" y="0">접속 이력</tspan></text>
+  <rect class="st19" x="277" y="296.76" width="80" height="24" rx="4" ry="4"/>
+  <text class="st14" transform="translate(291.85 312.76)"><tspan x="0" y="0">명령어 이력</tspan></text>
+  <rect class="st19" x="187" y="328.76" width="80" height="24" rx="4" ry="4"/>
+  <text class="st14" transform="translate(201.85 344.76)"><tspan x="0" y="0">실시간 세션</tspan></text>
+  <rect class="st19" x="277" y="328.76" width="80" height="24" rx="4" ry="4"/>
+  <text class="st14" transform="translate(296.61 344.76)"><tspan x="0" y="0">세션 차단</tspan></text>
+  <line class="st18" x1="272.41" y1="202.27" x2="272.41" y2="255.27"/>
+  <polygon class="st6" points="268.91 255.27 272.41 263.27 275.91 255.27 268.91 255.27"/>
+  <text class="st14" transform="translate(284 232.76)"><tspan x="0" y="0">자동 기록</tspan></text>
+  <g>
+    <g>
+      <path class="st15" d="M238.63,379.7h0c4.97,0,9,4.03,9,9h0c0,4.97-4.03,9-9,9h0c-4.97,0-9-4.03-9-9h0c0-4.97,4.03-9,9-9Z"/>
+      <text class="st11" transform="translate(235.18 392.7)"><tspan x="0" y="0">5</tspan></text>
+    </g>
+    <text class="st14" transform="translate(252.63 392.7)"><tspan x="0" y="0">접속 이력 확인</tspan></text>
+  </g>
+  <rect class="st17" x="345" y="99.19" width="110" height="26" rx="6" ry="6"/>
+  <rect class="st17" x="345" y="139.19" width="110" height="26" rx="6" ry="6"/>
 </svg>

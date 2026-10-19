@@ -1,6 +1,6 @@
 # Secure Key Manager로 암호화 키 관리하기
 
-## 시작하기 전에
+# 시작하기 전에
 
 암호화는 원본 데이터(평문)를 암호화 키로 변환하여, 키가 없으면 읽을 수 없는 형태(암호문)로 만드는 과정입니다. 암호화의 안전성은 키의 보호 수준에 따라 결정됩니다. 키가 노출되면 누구나 데이터를 복호화할 수 있기 때문입니다. 코드나 설정 파일에 평문으로 남아서는 안 되는 민감 데이터는 별도의 안전한 저장소에서 체계적으로 관리해야 합니다.
 
@@ -10,14 +10,14 @@ Secure Key Manager는 NHN Cloud에서 제공하는 키 관리 서비스입니다
 
 ![](images/skm-key-management-encrypt-decrypt-flow.svg)
 
-## 사전 준비하기
+# 사전 준비하기
 
 - NHN Cloud 콘솔에서 Secure Key Manager 서비스가 활성화되어 있어야 합니다. 활성화 방법은 [프로젝트 서비스 활성화 가이드](https://docs.nhncloud.com/ko/nhncloud/ko/console-guide/#guide-to-enabling-project-services)를 참고하세요.
 - 이 가이드는 Secure Key Manager API v1.3을 기준으로 설명합니다. Secure Key Manager API v1.3은 API 호출 및 인증을 위한 인증 방법으로 Appkey, 프로젝트 통합 Appkey, User Access Key 토큰을 지원합니다. 각 인증 방법의 확인 및 사용에 대한 자세한 내용은 [Appkey](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/appkey/), [프로젝트 통합 Appkey](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/project-integrated-appkey/), [User Access Key 토큰](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/user-access-key-token/)을 참고하세요.
 - API를 호출할 클라이언트의 IPv4 주소를 미리 파악합니다. Secure Key Manager는 등록된 IP에서만 API 호출을 허용하므로, 호출 환경의 공인 IP를 알고 있어야 합니다.
 - API 호출을 위해 `curl`이 설치된 터미널 환경이 필요합니다.
 
-### 키 저장소 생성하기
+## 키 저장소 생성하기
 
 키 저장소는 암호화 키와 접근 제어 정보를 묶어서 관리하는 단위입니다. 키를 등록하기 전에 먼저 키 저장소를 만들어야 합니다.
 
@@ -33,7 +33,7 @@ Secure Key Manager는 NHN Cloud에서 제공하는 키 관리 서비스입니다
 
 4. **추가**를 클릭하세요.
 
-### 접근 제어 설정하기
+## 접근 제어 설정하기
 
 키 저장소를 만들었으면, API를 호출할 클라이언트의 IP 주소를 등록해야 합니다. 등록되지 않은 IP에서는 Secure Key Manager API를 호출할 수 없으므로 이 단계를 생략하면 이후 API 호출이 거부됩니다.
 
@@ -52,7 +52,7 @@ Secure Key Manager는 NHN Cloud에서 제공하는 키 관리 서비스입니다
 > [!NOTE]
 > 여러 IP를 한꺼번에 등록하려면 **IPv4 주소 대량 등록** 버튼을 사용하세요.
 
-## 대칭 키 등록하기
+# 대칭 키 등록하기
 
 접근 제어까지 설정했으면 암호화에 사용할 키를 등록합니다. 이 가이드에서는 데이터 암·복호화에 적합한 대칭 키를 등록합니다. 대칭 키 암호 기법(symmetric key cryptography)은 암호화와 복호화에 동일한 키를 사용하는 방식으로, 대량 데이터 암호화에 효율적입니다.
 
@@ -82,11 +82,11 @@ Secure Key Manager는 NHN Cloud에서 제공하는 키 관리 서비스입니다
 > [!NOTE]
 > 키 상세 정보 화면에서 **즉시 회전** 버튼을 클릭하면 회전 주기와 관계없이 새 버전의 키를 바로 생성할 수 있습니다.
 
-## API로 암·복호화하기
+# API로 암·복호화하기
 
 등록한 대칭 키의 아이디, Appkey, User Access Key 토큰을 사용해 Secure Key Manager API로 데이터를 암호화하고 복호화합니다.
 
-### 암호화 요청
+## 암호화 요청
 
 다음 curl 예시에서 `{appkey}`는 Secure Key Manager Appkey, `{keyid}`는 키 상세 정보에서 확인한 키 아이디, `{access_token}`은 User Access Key 토큰, `{plaintext}`는 암호화할 원본 텍스트로 교체하세요.
 
@@ -115,7 +115,7 @@ curl -X POST "https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/
 }
 ```
 
-### 복호화 요청
+## 복호화 요청
 
 암호화 응답에서 받은 `ciphertext` 값을 그대로 요청 본문에 넣으면 원본 텍스트를 복원할 수 있습니다.
 
@@ -147,7 +147,7 @@ curl -X POST "https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/
 > [!NOTE]
 > Secure Key Manager API의 전체 엔드포인트와 파라미터 명세는 [Secure Key Manager API v1.3 가이드](https://docs.nhncloud.com/ko/Security/Secure%20Key%20Manager/ko/api-guide-v1.3/)를 참고하세요. 다른 버전의 API 가이드와 인증 방법은 **사전 준비하기**를 참고하세요.
 
-## 동작 확인하기
+# 동작 확인하기
 
 API 호출이 정상적으로 동작하는지 다음 순서로 확인합니다.
 
@@ -156,13 +156,13 @@ API 호출이 정상적으로 동작하는지 다음 순서로 확인합니다.
 3. 복호화 응답의 `plaintext`가 원래 입력한 텍스트와 동일한지 확인합니다.
 4. 등록하지 않은 IP에서 같은 요청을 보내면 인증 오류가 반환되는지 확인합니다. 접근 제어가 정상 동작하는 것을 검증하기 위해서입니다.
 
-## 응용하기
+# 응용하기
 
-- **비대칭 키로 서명·검증**: 데이터 무결성을 보장해야 하는 경우, 비대칭 키(RSA2048)를 등록하고 서명·검증 API를 사용합니다(245Byte 이하). 대칭 키 등록과 같은 절차이며, 키 추가 시 유형을 **비대칭 키**로 선택합니다. 자세한 내용은 [Secure Key Manager API v1.3 가이드](https://docs.nhncloud.com/ko/Security/Secure%20Key%20Manager/ko/api-guide-v1.3/)를 참고하세요.
-- **기밀 데이터 저장**: 애플리케이션이 사용하는 민감 정보를 Secure Key Manager에 저장하고 API로 조회하면, 코드나 설정 파일에 평문으로 넣지 않아도 됩니다. 키 추가 시 유형을 **기밀 데이터**로 선택하고 저장할 텍스트를 입력합니다. 자세한 내용은 [Secure Key Manager 사용자 가이드](https://docs.nhncloud.com/ko/Security/Secure%20Key%20Manager/ko/overview/)를 참고하세요.
-- **인증 방법 강화**: IPv4 주소 외에 **클라이언트 인증서**를 추가하고 인증 방식 결합을 **모두 통과(AND)**로 설정하면, IP 위조만으로는 접근할 수 없는 이중 인증 환경을 구성할 수 있습니다. 자세한 내용은 [Secure Key Manager 콘솔 사용 가이드](https://docs.nhncloud.com/ko/Security/Secure%20Key%20Manager/ko/console-guide/)를 참고하세요.
+- **비대칭 키로 서명·검증**: 키 추가 시 비대칭 키(RSA2048)를 선택하면 데이터 서명·검증 API를 사용할 수 있습니다. [API v1.3 가이드](https://docs.nhncloud.com/ko/Security/Secure%20Key%20Manager/ko/api-guide-v1.3/)
+- **기밀 데이터 저장**: 민감 정보를 Secure Key Manager에 저장하고 API로 조회하면 코드에 평문을 넣지 않아도 됩니다. [사용자 가이드](https://docs.nhncloud.com/ko/Security/Secure%20Key%20Manager/ko/overview/)
+- **인증 방법 강화**: 클라이언트 인증서를 추가하고 AND로 결합하면 이중 인증 환경을 구성할 수 있습니다. [콘솔 사용 가이드](https://docs.nhncloud.com/ko/Security/Secure%20Key%20Manager/ko/console-guide/)
 
-## 리소스 정리하기
+# 리소스 정리하기
 
 실습 목적으로 따라한 경우, 더 이상 사용하지 않는 리소스를 삭제합니다.
 
@@ -176,7 +176,7 @@ API 호출이 정상적으로 동작하는지 다음 순서로 확인합니다.
 > [!NOTE]
 > 키 저장소를 유지한 채 개별 키만 삭제하려면 **키 관리** 탭에서 키의 **상세 정보**를 열고 **삭제 요청**을 클릭하세요. 삭제 요청 후 7일의 유예 기간이 지나면 키가 영구 삭제됩니다. 유예 기간 중에는 **삭제 취소**로 복구할 수 있고, **즉시 삭제**로 유예 기간 없이 바로 삭제할 수도 있습니다.
 
-## 용어 알아보기
+# 용어 알아보기
 
 | 용어 | 설명 |
 |---|---|
