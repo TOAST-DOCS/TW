@@ -14,5 +14,5 @@ site:
           path: task-guide
           default: true
           content:
-            directory: ./nhn-cloud-task-guides/task-guide
+            directory: ./ko
             language: ko
