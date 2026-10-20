@@ -1,5 +1,4 @@
 ---
-if: visitor.claims.isPartner
 layout:
   width: default
   title:
