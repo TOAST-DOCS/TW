@@ -4,6 +4,7 @@ tags:
 ---
 
 # 인스턴스 생성이 실패합니다
+<i class="fa-solid fa-database"></i>
 
 ## 증상
 
