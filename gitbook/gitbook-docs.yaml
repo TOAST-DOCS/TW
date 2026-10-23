@@ -2,6 +2,11 @@ $schema: https://api.gitbook.com/gitbook-docs.yaml
 site:
   title: NHN Cloud Task Guides
   structure:
+    - type: section-group
+      key: section-group-1
+      title: group
+      draft: true
+      children: []
     - type: section
       key: section-1
       title: NHN Cloud Task Guides
@@ -21,6 +26,7 @@ site:
       key: section-2
       title: Landing Page
       path: landing-page
+      description: ""
       children:
         - type: space
           key: space-1
@@ -38,8 +44,3 @@ site:
           draft: true
           content:
             directory: ./landing-page/product-docs
-    - type: section-group
-      key: section-group-1
-      title: group
-      draft: true
-      children: []
