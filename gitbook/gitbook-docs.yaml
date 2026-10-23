@@ -15,6 +15,13 @@ site:
       default: true
       children:
         - type: space
+          key: space-3
+          title: Product Docs
+          path: product-docs
+          draft: true
+          content:
+            directory: ./nhn-cloud-task-guides/product-docs
+        - type: space
           key: space-task-guide-ko
           title: Task Guide
           path: task-guide
@@ -22,13 +29,6 @@ site:
           content:
             directory: ./ko
             language: ko
-        - type: space
-          key: space-3
-          title: Product Docs
-          path: product-docs
-          draft: true
-          content:
-            directory: ./nhn-cloud-task-guides/product-docs
     - type: section
       key: section-2
       title: Landing Page
