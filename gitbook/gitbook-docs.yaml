@@ -3,24 +3,11 @@ site:
   title: NHN Cloud Task Guides
   structure:
     - type: section
-      key: section-4
-      title: Home
-      path: home
-      description: ""
-      default: true
-      children:
-        - type: space
-          key: space-3
-          title: Home
-          path: help-center
-          default: true
-          content:
-            directory: ./home/help-center
-    - type: section
       key: section-1
       title: NHN Cloud Task Guides
       path: nhn-cloud-task-guides
       description: ""
+      default: true
       children:
         - type: space
           key: space-task-guide-ko
@@ -30,6 +17,19 @@ site:
           content:
             directory: ./ko
             language: ko
+    - type: section
+      key: section-4
+      title: Home
+      path: home
+      description: ""
+      children:
+        - type: space
+          key: space-3
+          title: Home
+          path: help-center
+          default: true
+          content:
+            directory: ./home/help-center
     - type: section
       key: section-2
       title: How-to
