@@ -33,12 +33,13 @@ site:
             directory: ./nhn-cloud-task-guides/api-reference
     - type: section
       key: section-2
-      title: Untitled
+      title: How to
       path: untitled
+      description: ""
       children:
         - type: space
           key: space-2
-          title: Untitled
+          title: How to
           path: untitled
           default: true
           draft: true
