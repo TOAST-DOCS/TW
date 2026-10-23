@@ -18,13 +18,6 @@ site:
             directory: ./ko
             language: ko
         - type: space
-          key: space-3
-          title: How-to
-          path: how-to
-          draft: true
-          content:
-            directory: ./nhn-cloud-task-guides/product-docs
-        - type: space
           key: space-1
           title: Troubleshooting
           path: troubleshooting
