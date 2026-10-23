@@ -26,6 +26,7 @@ site:
           title: Landing Page
           path: landing-page
           default: true
+          hidden: true
           draft: true
           content:
             directory: ./landing-page
