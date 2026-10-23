@@ -31,3 +31,10 @@ site:
           draft: true
           content:
             directory: ./landing-page
+        - type: space
+          key: space-2
+          title: Product Docs
+          path: product-docs
+          draft: true
+          content:
+            directory: ./landing-page/product-docs
