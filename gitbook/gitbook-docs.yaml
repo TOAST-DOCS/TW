@@ -28,7 +28,6 @@ site:
           title: Home
           path: help-center
           default: true
-          draft: true
           content:
             directory: ./home/help-center
     - type: section
