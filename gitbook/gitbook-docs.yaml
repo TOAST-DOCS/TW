@@ -29,25 +29,10 @@ site:
           content:
             directory: ./ko
             language: ko
-    - type: section
-      key: section-2
-      title: Landing Page
-      path: landing-page
-      description: ""
-      children:
         - type: space
           key: space-1
-          title: Landing Page
-          path: landing-page
-          default: true
-          hidden: true
+          title: API Reference
+          path: api-reference
           draft: true
           content:
-            directory: ./landing-page
-        - type: space
-          key: space-2
-          title: Product Docs
-          path: product-docs
-          draft: true
-          content:
-            directory: ./landing-page/product-docs
+            directory: ./nhn-cloud-task-guides/api-reference
