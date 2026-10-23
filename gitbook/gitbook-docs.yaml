@@ -31,8 +31,8 @@ site:
             directory: ./nhn-cloud-task-guides/product-docs
         - type: space
           key: space-1
-          title: API Reference
-          path: api-reference
+          title: Troubleshooting
+          path: troubleshooting
           draft: true
           content:
             directory: ./nhn-cloud-task-guides/api-reference
