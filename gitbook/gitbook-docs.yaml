@@ -18,20 +18,6 @@ site:
             directory: ./ko
             language: ko
     - type: section
-      key: section-2
-      title: How to
-      path: untitled
-      description: ""
-      children:
-        - type: space
-          key: space-2
-          title: How to
-          path: untitled
-          default: true
-          draft: true
-          content:
-            directory: ./untitled
-    - type: section
       key: section-3
       title: Troubleshooting
       path: troubleshooting
