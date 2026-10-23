@@ -24,8 +24,8 @@ site:
             language: ko
         - type: space
           key: space-3
-          title: Product Docs
-          path: product-docs
+          title: How-to
+          path: how-to
           draft: true
           content:
             directory: ./nhn-cloud-task-guides/product-docs
