@@ -1,103 +1,101 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 660" font-family="'Pretendard', sans-serif">
-  <rect width="960" height="660" rx="12" fill="#F7F7F7"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 820" width="600" height="820" font-family="'Pretendard', sans-serif">
   <defs>
-    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-      <polygon points="0 0, 10 3.5, 0 7" fill="#8B8B8B"/>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#8B8B8B"/>
     </marker>
   </defs>
 
-  <g transform="translate(-35, 4)">
+  <rect width="600" height="820" fill="#F7F7F7"/>
 
-    <!-- ===== Start: 증상 ===== -->
-    <rect x="120" y="20" width="260" height="36" rx="6" fill="#003087"/>
-    <text x="250" y="43" text-anchor="middle" fill="#FFFFFF" font-size="13" font-weight="600">같은 VPC 내 인스턴스 간 통신 안 됨</text>
+  <!-- ===== 증상 ===== -->
+  <rect x="70" y="24" width="240" height="36" rx="6" fill="#646464"/>
+  <text x="190" y="42" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#FFFFFF">같은 VPC 내 인스턴스 간 통신 안 됨</text>
 
-    <!-- Start → Q1 -->
-    <line x1="250" y1="56" x2="250" y2="88" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <!-- 증상 → Q1 -->
+  <line x1="190" y1="60" x2="190" y2="90" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow)"/>
 
-    <!-- ===== Q1: 보안 그룹 규칙 확인 ===== -->
-    <rect x="100" y="90" width="300" height="56" rx="6" fill="#FFFFFF" stroke="#125DE6" stroke-width="1.5"/>
-    <text x="250" y="114" text-anchor="middle" fill="#125DE6" font-size="12" font-weight="600">보안 그룹 규칙에</text>
-    <text x="250" y="132" text-anchor="middle" fill="#125DE6" font-size="12" font-weight="600">방향·프로토콜·포트·IP가 맞는가?</text>
+  <!-- ===== Q1: 보안 그룹 ===== -->
+  <polygon points="190,92 320,132 190,172 60,132" fill="#FFFFFF" stroke="#125DE6" stroke-width="1.5"/>
+  <text x="190" y="125" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#2D2D2D">보안 그룹 규칙에</text>
+  <text x="190" y="141" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#2D2D2D">방향/프로토콜/포트 맞는가?</text>
 
-    <!-- Q1 → F1 (아니오) -->
-    <line x1="400" y1="118" x2="538" y2="118" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow)"/>
-    <text x="454" y="110" fill="#444444" font-size="11">아니오</text>
+  <!-- Q1 예 → 아래 Q2 -->
+  <line x1="190" y1="172" x2="190" y2="210" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="200" y="195" font-size="12" font-weight="bold" fill="#444444">예</text>
 
-    <!-- F1: 규칙 수정 -->
-    <rect x="540" y="100" width="200" height="36" rx="6" fill="#125DE6"/>
-    <text x="640" y="123" text-anchor="middle" fill="#FFFFFF" font-size="12" font-weight="600">규칙 수정 (원인 1)</text>
+  <!-- Q1 아니오 → 오른쪽 해결 -->
+  <line x1="320" y1="132" x2="390" y2="132" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="348" y="124" text-anchor="middle" font-size="12" font-weight="bold" fill="#444444">아니오</text>
+  <rect x="392" y="114" width="180" height="36" rx="6" fill="#125DE6"/>
+  <text x="482" y="132" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#FFFFFF">규칙 수정 (원인 1)</text>
 
-    <!-- Q1 → Q2 (예) -->
-    <line x1="250" y1="146" x2="250" y2="194" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow)"/>
-    <text x="262" y="174" fill="#444444" font-size="11">예</text>
+  <!-- ===== Q2: 서브넷 ===== -->
+  <polygon points="190,212 310,247 190,282 70,247" fill="#FFFFFF" stroke="#125DE6" stroke-width="1.5"/>
+  <text x="190" y="247" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#2D2D2D">서브넷이 다른가?</text>
 
-    <!-- ===== Q2: 서브넷 확인 ===== -->
-    <rect x="140" y="196" width="220" height="38" rx="6" fill="#FFFFFF" stroke="#125DE6" stroke-width="1.5"/>
-    <text x="250" y="220" text-anchor="middle" fill="#125DE6" font-size="12" font-weight="600">서브넷이 다른가?</text>
+  <!-- Q2 예 → 아래 Q2a (메인 라인에 이어 붙임) -->
+  <line x1="190" y1="282" x2="190" y2="320" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="200" y="305" font-size="12" font-weight="bold" fill="#444444">예</text>
 
-    <!-- Q2 → Q2a (예, 오른쪽으로 분기 후 아래로) -->
-    <path d="M360,215 H530 V288" fill="none" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow)"/>
-    <text x="370" y="208" fill="#444444" font-size="11">예</text>
+  <!-- Q2 아니오 → 스킵 화살표: Q2a를 건너뛰고 Q3 왼쪽 꼭짓점으로 -->
+  <path d="M70,247 H30 V482 H50" fill="none" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="36" y="239" font-size="12" font-weight="bold" fill="#444444">아니오</text>
 
-    <!-- Q2 → Q3 (아니오, 수직 하강) -->
-    <line x1="250" y1="234" x2="250" y2="394" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow)"/>
-    <text x="212" y="262" fill="#444444" font-size="11">아니오</text>
+  <!-- ===== Q2a: 라우팅 (메인 라인) ===== -->
+  <polygon points="190,322 330,362 190,402 50,362" fill="#FFFFFF" stroke="#125DE6" stroke-width="1.5"/>
+  <text x="190" y="355" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#2D2D2D">사용자가 추가한</text>
+  <text x="190" y="371" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#2D2D2D">라우트가 있는가?</text>
 
-    <!-- ===== Q2a: 라우팅 확인 ===== -->
-    <rect x="400" y="290" width="260" height="52" rx="6" fill="#FFFFFF" stroke="#125DE6" stroke-width="1.5"/>
-    <text x="530" y="312" text-anchor="middle" fill="#125DE6" font-size="12" font-weight="600">라우팅 테이블에</text>
-    <text x="530" y="330" text-anchor="middle" fill="#125DE6" font-size="12" font-weight="600">대상 서브넷 경로가 있는가?</text>
+  <!-- Q2a 아니오 → 아래 Q3 -->
+  <line x1="190" y1="402" x2="190" y2="440" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="200" y="425" font-size="12" font-weight="bold" fill="#444444">아니오</text>
 
-    <!-- Q2a → F2 (아니오) -->
-    <line x1="660" y1="316" x2="718" y2="316" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow)"/>
-    <text x="670" y="308" fill="#444444" font-size="11">아니오</text>
+  <!-- Q2a 예 → 오른쪽 해결 -->
+  <line x1="330" y1="362" x2="390" y2="362" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="353" y="354" text-anchor="middle" font-size="12" font-weight="bold" fill="#444444">예</text>
+  <rect x="392" y="344" width="180" height="36" rx="6" fill="#125DE6"/>
+  <text x="482" y="362" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#FFFFFF">라우트 확인·수정 (원인 2)</text>
 
-    <!-- F2: 라우팅 경로 추가 -->
-    <rect x="720" y="298" width="210" height="36" rx="6" fill="#125DE6"/>
-    <text x="825" y="321" text-anchor="middle" fill="#FFFFFF" font-size="12" font-weight="600">라우팅 경로 추가 (원인 2)</text>
+  <!-- ===== Q3: OS 방화벽 ===== -->
+  <polygon points="190,442 330,482 190,522 50,482" fill="#FFFFFF" stroke="#125DE6" stroke-width="1.5"/>
+  <text x="190" y="475" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#2D2D2D">OS 방화벽에서</text>
+  <text x="190" y="491" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#2D2D2D">해당 포트를 차단하는가?</text>
 
-    <!-- Q2a → Q3 (예, 아래로 내려가 메인 라인에 합류) -->
-    <path d="M530,342 V372 H250" fill="none" stroke="#8B8B8B" stroke-width="1.5"/>
-    <text x="540" y="362" fill="#444444" font-size="11">예</text>
+  <!-- Q3 아니오 → 아래 Q4 -->
+  <line x1="190" y1="522" x2="190" y2="560" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="200" y="545" font-size="12" font-weight="bold" fill="#444444">아니오</text>
 
-    <!-- ===== Q3: OS 방화벽 확인 ===== -->
-    <rect x="120" y="396" width="260" height="52" rx="6" fill="#FFFFFF" stroke="#125DE6" stroke-width="1.5"/>
-    <text x="250" y="418" text-anchor="middle" fill="#125DE6" font-size="12" font-weight="600">OS 방화벽에서</text>
-    <text x="250" y="436" text-anchor="middle" fill="#125DE6" font-size="12" font-weight="600">해당 포트를 차단하는가?</text>
+  <!-- Q3 예 → 오른쪽 해결 -->
+  <line x1="330" y1="482" x2="390" y2="482" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="356" y="474" text-anchor="middle" font-size="12" font-weight="bold" fill="#444444">예</text>
+  <rect x="392" y="464" width="190" height="36" rx="6" fill="#125DE6"/>
+  <text x="487" y="482" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#FFFFFF">방화벽 규칙 추가 (원인 3)</text>
 
-    <!-- Q3 → F3 (예) -->
-    <line x1="380" y1="422" x2="528" y2="422" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow)"/>
-    <text x="438" y="414" fill="#444444" font-size="11">예</text>
+  <!-- ===== Q4: 다른 인스턴스 ===== -->
+  <polygon points="190,562 340,607 190,652 40,607" fill="#FFFFFF" stroke="#125DE6" stroke-width="1.5"/>
+  <text x="190" y="600" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#2D2D2D">같은 서브넷의 다른</text>
+  <text x="190" y="616" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#2D2D2D">인스턴스는 통신되는가?</text>
 
-    <!-- F3: OS 방화벽 규칙 추가 -->
-    <rect x="530" y="404" width="250" height="36" rx="6" fill="#125DE6"/>
-    <text x="655" y="427" text-anchor="middle" fill="#FFFFFF" font-size="12" font-weight="600">OS 방화벽 규칙 추가 (원인 3)</text>
+  <!-- Q4 아니오 → 아래 고객지원 -->
+  <line x1="190" y1="652" x2="190" y2="690" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="200" y="675" font-size="12" font-weight="bold" fill="#444444">아니오</text>
 
-    <!-- Q3 → Q4 (아니오) -->
-    <line x1="250" y1="448" x2="250" y2="494" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow)"/>
-    <text x="262" y="476" fill="#444444" font-size="11">아니오</text>
+  <!-- Q4 예 → 오른쪽 해결 -->
+  <line x1="340" y1="607" x2="390" y2="607" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="358" y="599" font-size="12" font-weight="bold" fill="#444444">예</text>
+  <rect x="392" y="589" width="190" height="36" rx="6" fill="#125DE6"/>
+  <text x="487" y="607" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#FFFFFF">인스턴스 점검 (원인 4)</text>
 
-    <!-- ===== Q4: 다른 인스턴스 확인 ===== -->
-    <rect x="105" y="496" width="290" height="52" rx="6" fill="#FFFFFF" stroke="#125DE6" stroke-width="1.5"/>
-    <text x="250" y="518" text-anchor="middle" fill="#125DE6" font-size="12" font-weight="600">같은 서브넷의 다른 인스턴스는</text>
-    <text x="250" y="536" text-anchor="middle" fill="#125DE6" font-size="12" font-weight="600">통신되는가?</text>
+  <!-- ===== 고객지원 문의 ===== -->
+  <rect x="120" y="692" width="140" height="36" rx="6" fill="#646464"/>
+  <text x="190" y="710" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#FFFFFF">고객지원 문의</text>
 
-    <!-- Q4 → F4 (예) -->
-    <line x1="395" y1="522" x2="528" y2="522" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow)"/>
-    <text x="446" y="514" fill="#444444" font-size="11">예</text>
-
-    <!-- F4: 특정 인스턴스 문제 -->
-    <rect x="530" y="504" width="270" height="36" rx="6" fill="#125DE6"/>
-    <text x="665" y="527" text-anchor="middle" fill="#FFFFFF" font-size="12" font-weight="600">특정 인스턴스 문제 의심 (원인 4)</text>
-
-    <!-- Q4 → F5 (아니오) -->
-    <line x1="250" y1="548" x2="250" y2="594" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow)"/>
-    <text x="262" y="576" fill="#444444" font-size="11">아니오</text>
-
-    <!-- ===== F5: 고객지원 문의 ===== -->
-    <rect x="170" y="596" width="160" height="36" rx="6" fill="#646464"/>
-    <text x="250" y="619" text-anchor="middle" fill="#FFFFFF" font-size="12" font-weight="600">고객지원 문의</text>
-
-  </g>
+  <!-- ===== 범례 ===== -->
+  <line x1="20" y1="760" x2="580" y2="760" stroke="#DCDCDC" stroke-width="1"/>
+  <rect x="60" y="780" width="14" height="14" rx="3" fill="#646464"/>
+  <text x="80" y="787" dominant-baseline="central" font-size="11" fill="#2D2D2D">증상/안내</text>
+  <polygon points="165,780 172,787 165,794 158,787" fill="#FFFFFF" stroke="#125DE6" stroke-width="1"/>
+  <text x="180" y="787" dominant-baseline="central" font-size="11" fill="#2D2D2D">판단</text>
+  <rect x="225" y="780" width="14" height="14" rx="3" fill="#125DE6"/>
+  <text x="245" y="787" dominant-baseline="central" font-size="11" fill="#2D2D2D">해결</text>
 </svg>
