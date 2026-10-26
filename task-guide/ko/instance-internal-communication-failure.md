@@ -47,7 +47,7 @@ PING {대상 인스턴스 IP} ({대상 인스턴스 IP}) 56(84) bytes of data.
 
 인스턴스 간 내부 통신이 안 되는 원인은 다양합니다. 아래 흐름도에서 원인을 좁힌 뒤, 해당하는 원인의 해결 방법을 적용하세요.
 
-![인스턴스 간 내부 통신 실패 진단 흐름도](https://github.com/TOAST-DOCS/TW/blob/master/task-guide/ko/images/instance-internal-communication-failure-diagnosis-flow.svg)
+![](images/instance-internal-communication-failure-diagnosis-flow.svg)
 
 ### 원인 1: 보안 그룹 규칙 설정 오류
 
