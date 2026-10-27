@@ -18,6 +18,20 @@ site:
             directory: ./ko
             language: ko
     - type: section
+      key: section-4
+      title: Home
+      path: landing-page
+      description: ""
+      children:
+        - type: space
+          key: space-3
+          title: Home
+          path: landing-page
+          default: true
+          draft: true
+          content:
+            directory: ./landing-page
+    - type: section
       key: section-2
       title: How-to
       path: how-to
@@ -43,16 +57,3 @@ site:
           default: true
           content:
             directory: ./troubleshooting/api-reference
-    - type: section
-      key: section-4
-      title: Landing Page
-      path: landing-page
-      children:
-        - type: space
-          key: space-3
-          title: Landing Page
-          path: landing-page
-          default: true
-          draft: true
-          content:
-            directory: ./landing-page
