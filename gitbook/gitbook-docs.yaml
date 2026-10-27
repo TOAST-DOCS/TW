@@ -30,3 +30,16 @@ site:
           default: true
           content:
             directory: ./how-to/product-docs
+    - type: section
+      key: section-3
+      title: Troubleshooting
+      path: troubleshooting
+      children:
+        - type: space
+          key: space-1
+          title: Product Docs
+          path: product-docs
+          default: true
+          draft: true
+          content:
+            directory: ./troubleshooting/product-docs
