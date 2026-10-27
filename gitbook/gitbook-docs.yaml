@@ -30,16 +30,3 @@ site:
           default: true
           content:
             directory: ./how-to/product-docs
-    - type: section
-      key: section-3
-      title: Troubleshooting
-      path: troubleshooting
-      description: ""
-      children:
-        - type: space
-          key: space-1
-          title: Troubleshooting
-          path: api-reference
-          default: true
-          content:
-            directory: ./troubleshooting/api-reference
