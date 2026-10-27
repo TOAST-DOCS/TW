@@ -1,7 +1,26 @@
 ---
 description: 랜딩 페이지 문구(사이트 개요) 입력
 icon: book-open-cover
-layout: landing
+layout:
+  width: wide
+  title:
+    visible: true
+  description:
+    visible: true
+  tableOfContents:
+    visible: false
+  outline:
+    visible: false
+  pagination:
+    visible: true
+  metadata:
+    visible: false
+  tags:
+    visible: true
+  actions:
+    visible: false
+  anchors:
+    visible: false
 ---
 
 # 사이트명
