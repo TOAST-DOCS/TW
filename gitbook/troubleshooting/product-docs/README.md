@@ -19,7 +19,13 @@ icon: hand-wave
 
 ## 증상으로 찾기
 
-<table data-card-size="large" data-view="cards"><thead><tr><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><h4><i class="fa-book" style="color:$primary;">:book:</i> 인스턴스 생성이 실패합니다</h4></td><td><a href="/broken/pages/FaSGGOl6CSP0t71WWh7l">Broken link</a></td></tr><tr><td><h4><i class="fa-graduation-cap" style="color:$primary;">:graduation-cap:</i> 인스턴스에 SSH로 접속되지 않습니</h4></td><td><a href="network/load-balancer-inactive.md">load-balancer-inactive.md</a></td></tr><tr><td><i class="fa-arrow-down-from-arc" style="color:$primary;">:arrow-down-from-arc:</i> <strong>Load Balancer 멤버가 INACTIVE로 표시됩니</strong>다</td><td></td></tr><tr><td></td><td></td></tr></tbody></table>
+지금 겪고 증상과 같은 제목을 찾아 문제를 해결하세요.
+
+<table data-card-size="large" data-view="cards"><thead><tr><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><h4><i class="fa-book" style="color:$primary;">:book:</i> 인스턴스 생성이 실패합니다</h4></td><td><a href="/broken/pages/FaSGGOl6CSP0t71WWh7l">Broken link</a></td></tr><tr><td><h4><i class="fa-graduation-cap" style="color:$primary;">:graduation-cap:</i> 인스턴스에 SSH로 접속되지 않습니</h4></td><td><a href="network/load-balancer-inactive.md">load-balancer-inactive.md</a></td></tr><tr><td><i class="fa-arrow-down-from-arc" style="color:$primary;">:arrow-down-from-arc:</i> <strong>Load Balancer 멤버가 INACTIVE로 표시됩니</strong>다</td><td></td></tr><tr><td><i class="fa-browser" style="color:$primary;">:browser:</i> <strong>RDS 고가용성이 중단되거나 예기치 않은 장애 조치가 발생합니다</strong></td><td></td></tr></tbody></table>
+
+## 찾는 증상이 없다면
+
+찾는 증상이 없다면 구축 활용 문서를 확인해 보세요. 서비스의 스펙이나 자세한 API 정보는 NHN Cloud 사용자 가이드에서 확인하실 수 있습니다.
 
 ## Popular tasks
 
