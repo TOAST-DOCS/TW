@@ -1,9 +1,8 @@
 ---
 description: Go from sign-up to your first deploy in under five minutes.
-icon: bolt
 ---
 
-# Quickstart
+# GPU Instance
 
 This quickstart gets you to your first deploy as fast as possible. We'll skip most of the configuration — you can refine things later once you have something running.
 
@@ -76,14 +75,14 @@ First builds typically take 1–3 minutes. Subsequent builds are faster because 
 
 You've shipped something — now make it yours.
 
-{% content-ref url="../guides/custom-domains.md" %}
-[custom-domains.md](../guides/custom-domains.md)
+{% content-ref url="/broken/pages/56a52747d54863f8df67ff3ce908938888c69b66" %}
+[Broken link](/broken/pages/56a52747d54863f8df67ff3ce908938888c69b66)
 {% endcontent-ref %}
 
-{% content-ref url="../core-concepts/permissions.md" %}
-[permissions.md](../core-concepts/permissions.md)
+{% content-ref url="/broken/pages/fb922e107b31a3e9e9fcf81410029e993b0a9afc" %}
+[Broken link](/broken/pages/fb922e107b31a3e9e9fcf81410029e993b0a9afc)
 {% endcontent-ref %}
 
-{% content-ref url="../guides/automations.md" %}
-[automations.md](../guides/automations.md)
+{% content-ref url="/broken/pages/d9d593aeabc52a165190bf8c93720491a4eb9682" %}
+[Broken link](/broken/pages/d9d593aeabc52a165190bf8c93720491a4eb9682)
 {% endcontent-ref %}

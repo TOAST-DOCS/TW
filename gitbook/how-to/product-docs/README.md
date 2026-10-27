@@ -1,17 +1,16 @@
 ---
-description: >-
-  Everything you need to build, deploy, and manage your projects on the
-  platform.
-icon: hand-wave
+description: NHN Cloud 서비스를 활용한 단계별 실습 가이드입니다.
 ---
 
-# Welcome
+# 활용 가이드
 
-Welcome to the platform. These docs cover everything from your first project to advanced workflows — pick a starting point below or ask the Assistant to jump straight to what you need.
+
+
+왼쪽 사이드바에서 카테고리와 서비스를 선택해 원하는 가이드를 찾아보세요.
+
+원하는 키워드를 입력해 관련된 콘텐츠를 찾아볼 수도 있습니다.
 
 <button type="button" class="button primary" data-action="ask" data-icon="gitbook-assistant">Ask a question…</button>
-
-<button type="button" class="button secondary" data-action="ask" data-query="How do I deploy my first project" data-icon="rocket-launch">Deploy your first project</button><button type="button" class="button secondary" data-action="ask" data-query="How do I set up a custom domain" data-icon="globe">Set up a custom domain</button><button type="button" class="button secondary" data-action="ask" data-query="How do I invite my team" data-icon="user-group">Invite your team</button>
 
 ***
 
@@ -21,10 +20,10 @@ Welcome to the platform. These docs cover everything from your first project to 
 <a href="https://app.gitbook.com/s/euz6U9T9Ui1Un0dUKuuZ/" class="button secondary">See what's new</a>
 {% endhint %}
 
-## Where to start
+### 추천 콘텐츠
 
-<table data-card-size="large" data-view="cards"><thead><tr><th></th><th></th><th></th><th data-type="content-ref"></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td></td><td><h4>Getting started</h4></td><td>Set up your account and ship your first project in minutes.</td><td></td><td><a href="getting-started/getting-started.md">getting-started.md</a></td></tr><tr><td><h4><i class="fa-book" style="color:$primary;">:book:</i></h4></td><td><h4>Core concepts</h4></td><td>Understand workspaces, projects, and how permissions work.</td><td></td><td><a href="core-concepts/core-concepts.md">core-concepts.md</a></td></tr><tr><td><h4><i class="fa-graduation-cap" style="color:$primary;">:graduation-cap:</i></h4></td><td><h4>Guides</h4></td><td>Walkthroughs for common tasks like custom domains and automations.</td><td></td><td><a href="guides/guides.md">guides.md</a></td></tr><tr><td><h4><i class="fa-book-open" style="color:$primary;">:book-open:</i></h4></td><td><h4>Reference</h4></td><td>Detailed configuration options, limits, and terminology.</td><td></td><td><a href="reference/reference.md">reference.md</a></td></tr></tbody></table>
+<table data-card-size="large" data-view="cards"><thead><tr><th></th><th></th><th></th><th data-type="content-ref"></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td></td><td><h4>Getting started</h4></td><td>Set up your account and ship your first project in minutes.</td><td></td><td><a href="compute/instance.md">instance.md</a></td></tr><tr><td><h4><i class="fa-book" style="color:$primary;">:book:</i></h4></td><td><h4>Core concepts</h4></td><td>Understand workspaces, projects, and how permissions work.</td><td></td><td><a href="/broken/pages/FaSGGOl6CSP0t71WWh7l">Broken link</a></td></tr><tr><td><h4><i class="fa-graduation-cap" style="color:$primary;">:graduation-cap:</i></h4></td><td><h4>Guides</h4></td><td>Walkthroughs for common tasks like custom domains and automations.</td><td></td><td><a href="/broken/pages/73b7faa18afc90c9ae3c6c1ae24f9ed214289c08">Broken link</a></td></tr><tr><td><h4><i class="fa-book-open" style="color:$primary;">:book-open:</i></h4></td><td><h4>Reference</h4></td><td>Detailed configuration options, limits, and terminology.</td><td></td><td><a href="/broken/pages/87935bb1e2caf4857fc5fe2347c566031b72ecaa">Broken link</a></td></tr></tbody></table>
 
-## Popular tasks
+### 자주 찾는 콘텐츠
 
-<table data-view="cards"><thead><tr><th></th><th data-type="content-ref"></th><th data-type="content-ref"></th><th data-type="content-ref"></th></tr></thead><tbody><tr><td><h4>For builders</h4></td><td><a href="getting-started/quickstart.md">quickstart.md</a></td><td><a href="getting-started/your-first-project.md">your-first-project.md</a></td><td><a href="guides/custom-domains.md">custom-domains.md</a></td></tr><tr><td><h4>For admins</h4></td><td><a href="core-concepts/permissions.md">permissions.md</a></td><td><a href="reference/configuration.md">configuration.md</a></td><td><a href="core-concepts/workspaces-and-projects.md">workspaces-and-projects.md</a></td></tr><tr><td><h4>For developers</h4></td><td><a href="guides/automations.md">automations.md</a></td><td><a href="reference/glossary.md">glossary.md</a></td><td><a href="reference/configuration.md">configuration.md</a></td></tr></tbody></table>
+<table data-view="cards"><thead><tr><th></th><th data-type="content-ref"></th><th data-type="content-ref"></th><th data-type="content-ref"></th></tr></thead><tbody><tr><td><h4>For builders</h4></td><td><a href="compute/gpu-instance.md">gpu-instance.md</a></td><td><a href="compute/image/">image</a></td><td><a href="/broken/pages/56a52747d54863f8df67ff3ce908938888c69b66">Broken link</a></td></tr><tr><td><h4>For admins</h4></td><td><a href="/broken/pages/fb922e107b31a3e9e9fcf81410029e993b0a9afc">Broken link</a></td><td><a href="/broken/pages/65332f63d0b6cedd6ac718136ba8d89ec6cc1a4d">Broken link</a></td><td><a href="/broken/pages/8d7897a648fcd91cdfe61c6055c3fc9a2774e089">Broken link</a></td></tr><tr><td><h4>For developers</h4></td><td><a href="/broken/pages/d9d593aeabc52a165190bf8c93720491a4eb9682">Broken link</a></td><td><a href="/broken/pages/6625e4a7113b37994c505597f0f9e2c62008a5c5">Broken link</a></td><td><a href="/broken/pages/65332f63d0b6cedd6ac718136ba8d89ec6cc1a4d">Broken link</a></td></tr></tbody></table>

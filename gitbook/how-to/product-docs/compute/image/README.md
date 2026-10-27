@@ -2,12 +2,11 @@
 description: >-
   A guided walkthrough that takes you from an empty workspace to a configured,
   deployed project.
-icon: compass
 ---
 
-# Your first project
+# Image
 
-This walkthrough goes deeper than the [Quickstart](quickstart.md). By the end, you'll have a real project with environment variables, a custom build, and a preview deployment workflow.
+This walkthrough goes deeper than the [Quickstart](../gpu-instance.md). By the end, you'll have a real project with environment variables, a custom build, and a preview deployment workflow.
 
 {% hint style="info" %}
 We'll use a generic web project for this tutorial. The same pattern works for static sites, APIs, and worker services.
@@ -125,7 +124,7 @@ Push to your main branch (or click **Deploy** manually). The platform will:
 5. Promote to your live URL
 
 {% hint style="success" %}
-You'll get a notification when the build completes — by email, Slack, or whatever you configured under [automations.md](../guides/automations.md "mention").
+You'll get a notification when the build completes — by email, Slack, or whatever you configured under [Broken link](/broken/pages/d9d593aeabc52a165190bf8c93720491a4eb9682 "mention").
 {% endhint %}
 
 ## Sample project
@@ -138,14 +137,14 @@ If you'd like to skip ahead and see a fully configured project, download our sam
 
 Now that you have a working project, you can check out:
 
-{% content-ref url="../guides/custom-domains.md" %}
-[custom-domains.md](../guides/custom-domains.md)
+{% content-ref url="/broken/pages/56a52747d54863f8df67ff3ce908938888c69b66" %}
+[Broken link](/broken/pages/56a52747d54863f8df67ff3ce908938888c69b66)
 {% endcontent-ref %}
 
-{% content-ref url="../guides/automations.md" %}
-[automations.md](../guides/automations.md)
+{% content-ref url="/broken/pages/d9d593aeabc52a165190bf8c93720491a4eb9682" %}
+[Broken link](/broken/pages/d9d593aeabc52a165190bf8c93720491a4eb9682)
 {% endcontent-ref %}
 
-{% content-ref url="../core-concepts/permissions.md" %}
-[permissions.md](../core-concepts/permissions.md)
+{% content-ref url="/broken/pages/fb922e107b31a3e9e9fcf81410029e993b0a9afc" %}
+[Broken link](/broken/pages/fb922e107b31a3e9e9fcf81410029e993b0a9afc)
 {% endcontent-ref %}
