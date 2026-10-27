@@ -18,19 +18,6 @@ site:
             directory: ./ko
             language: ko
     - type: section
-      key: section-4
-      title: Home
-      path: landing-page
-      description: ""
-      children:
-        - type: space
-          key: space-3
-          title: Home
-          path: landing-page
-          default: true
-          content:
-            directory: ./landing-page
-    - type: section
       key: section-2
       title: How-to
       path: how-to
