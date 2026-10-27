@@ -1,6 +1,6 @@
 # Table of contents
 
-* [NHN Cloud Task Guides](README.md)
+* [사이트명](README.md)
 
 ## How-To Guide
 

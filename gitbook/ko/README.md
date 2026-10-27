@@ -1,51 +1,21 @@
 ---
-description: NHN Cloud를 사용하다 막히는 지점을 스스로 해결하도록 돕는 트러블슈팅·How-to 가이드 모음입니다.
+description: 랜딩 페이지 문구(사이트 개요) 입력
 icon: book-open-cover
-cover: .gitbook/assets/temp-landing-image.jpg
-coverY: 0
-coverHeight: 700
-layout:
-  width: wide
-  cover:
-    visible: true
-    size: background
-    mask: radial
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: false
-  pagination:
-    visible: true
-  metadata:
-    visible: false
-  tags:
-    visible: false
-  actions:
-    visible: false
-  anchors:
-    visible: false
+layout: landing
 ---
 
-# NHN Cloud Task Guides
+# 사이트명
 
-증상에서 출발해 원인을 좁히고, 자주 하는 작업은 단계별로 따라 할 수 있습니다.
+### 서비스별 가이드 찾기
 
-<p align="center"><a href="troubleshooting-guide/instance-creation-failed.md" class="button primary" data-icon="hammer">문제 해결 가이드</a><a href="how-to-guide/cloud-monitoring-alarm-policy.md" class="button secondary" data-icon="telescope">활용 가이드</a></p>
+#### How-to 가이드명
 
-<h3 align="center">활용 가이드</h3>
+활용 가이드에 대한 설명 입력
 
-<p align="center">자주 하는 작업을 처음부터 끝까지 따라 합니다.</p>
+<table data-view="cards"><thead><tr><th></th><th data-type="content-ref"></th><th data-type="content-ref"></th><th data-hidden data-card-cover data-type="image">Cover image</th></tr></thead><tbody><tr><td><h4><strong>Compute</strong></h4></td><td><a href="how-to-guide/server-image-create.md">server-image-create.md</a></td><td><a href="how-to-guide/cloud-functions-serverless-deploy.md">cloud-functions-serverless-deploy.md</a></td><td><a href=".gitbook/assets/Compute.png">Compute.png</a></td></tr><tr><td><h4>Container</h4></td><td></td><td></td><td><a href=".gitbook/assets/Container.png">Container.png</a></td></tr><tr><td><h4>Network</h4></td><td><a href="how-to-guide/nat-gateway-private-subnet.md">nat-gateway-private-subnet.md</a></td><td></td><td><a href=".gitbook/assets/Network.png">Network.png</a></td></tr><tr><td>rJt5XbNu9QeM</td><td></td><td></td><td></td></tr><tr><td>kVn7PqWz2BdH</td><td></td><td></td><td></td></tr><tr><td>kVn7PqWz2BdH</td><td></td><td></td><td></td></tr><tr><td>wGb6HsYd3LcF</td><td></td><td></td><td></td></tr><tr><td>mYc3FgLx8TsJ</td><td></td><td></td><td></td></tr><tr><td>mYc3FgLx8TsJ</td><td></td><td></td><td></td></tr><tr><td>bQw9RkEv5NaD</td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr></tbody></table>
 
-<table data-card-wrap="false" data-view="cards"><thead><tr><th><select><option value="pZx4KvTm8NrQ" label="MONITORING" color="blue"></option><option value="wGb6HsYd3LcF" label="NETWORK" color="blue"></option><option value="rJt5XbNu9QeM" label="SECURITY" color="blue"></option><option value="kVn7PqWz2BdH" label="COMPUTE" color="blue"></option><option value="mYc3FgLx8TsJ" label="STORAGE" color="blue"></option><option value="bQw9RkEv5NaD" label="GAME" color="blue"></option></select></th><th></th><th></th><th></th><th></th><th><select></select></th><th data-type="number"></th></tr></thead><tbody><tr><td><span data-option="pZx4KvTm8NrQ">MONITORING</span></td><td><h4>Cloud Monitoring</h4></td><td>임계치 기반 알림 설정하기</td><td><a data-mention href="how-to-guide/cloud-monitoring-alarm-policy.md">cloud-monitoring-alarm-policy.md</a></td><td><a data-mention href="how-to-guide/l7-load-balancer-configuration.md">l7-load-balancer-configuration.md</a></td><td></td><td>null</td></tr><tr><td><span data-option="wGb6HsYd3LcF">NETWORK</span></td><td><h4>Load Balancer</h4></td><td>URL 경로 기반으로 트래픽 분산하기</td><td><a data-mention href="how-to-guide/l7-load-balancer-configuration.md">l7-load-balancer-configuration.md</a></td><td><a data-mention href="how-to-guide/network-firewall-policy-configuration.md">network-firewall-policy-configuration.md</a></td><td></td><td>null</td></tr><tr><td><span data-option="rJt5XbNu9QeM">SECURITY</span></td><td><h4>Network Firewall</h4></td><td>정책 구성 및 로그 전송 설정하기</td><td><a data-mention href="how-to-guide/network-firewall-policy-configuration.md">network-firewall-policy-configuration.md</a></td><td><a data-mention href="how-to-guide/cloud-monitoring-alarm-policy.md">cloud-monitoring-alarm-policy.md</a></td><td></td><td>null</td></tr><tr><td><span data-option="rJt5XbNu9QeM">SECURITY</span></td><td><h4>Secure Key Manager</h4></td><td>암호화 키 관리하기</td><td><a data-mention href="how-to-guide/skm-key-management.md">skm-key-management.md</a></td><td><a data-mention href="how-to-guide/skm-api-call-with-user-access-key-token.md">skm-api-call-with-user-access-key-token.md</a></td><td></td><td>null</td></tr><tr><td><span data-option="kVn7PqWz2BdH">COMPUTE</span></td><td><h4>Cloud Functions</h4></td><td>HTTP 함수 배포하기</td><td><a data-mention href="how-to-guide/cloud-functions-serverless-deploy.md">cloud-functions-serverless-deploy.md</a></td><td><a data-mention href="how-to-guide/cloud-monitoring-alarm-policy.md">cloud-monitoring-alarm-policy.md</a></td><td></td><td>null</td></tr><tr><td><span data-option="kVn7PqWz2BdH">COMPUTE</span></td><td><h4>Image</h4></td><td>인스턴스 복제하기</td><td><a data-mention href="how-to-guide/server-image-create.md">server-image-create.md</a></td><td><a data-mention href="how-to-guide/cloud-monitoring-alarm-policy.md">cloud-monitoring-alarm-policy.md</a></td><td></td><td>null</td></tr><tr><td><span data-option="wGb6HsYd3LcF">NETWORK</span></td><td><h4>NAT Gateway</h4></td><td>프라이빗 서브넷 인터넷 연결 구성하기</td><td><a data-mention href="how-to-guide/nat-gateway-private-subnet.md">nat-gateway-private-subnet.md</a></td><td><a data-mention href="how-to-guide/network-firewall-policy-configuration.md">network-firewall-policy-configuration.md</a></td><td></td><td>null</td></tr><tr><td><span data-option="mYc3FgLx8TsJ">STORAGE</span></td><td><h4>Object Storage</h4></td><td>정적 웹사이트 호스팅하기</td><td><a data-mention href="how-to-guide/obs-static-website-hosting.md">obs-static-website-hosting.md</a></td><td><a data-mention href="how-to-guide/obs-access-control-cors.md">obs-access-control-cors.md</a></td><td></td><td>null</td></tr><tr><td><span data-option="mYc3FgLx8TsJ">STORAGE</span></td><td><h4>Object Storage</h4></td><td>컨테이너에 CORS 설정하기</td><td><a data-mention href="how-to-guide/obs-access-control-cors.md">obs-access-control-cors.md</a></td><td><a data-mention href="how-to-guide/obs-static-website-hosting.md">obs-static-website-hosting.md</a></td><td></td><td>null</td></tr><tr><td><span data-option="bQw9RkEv5NaD">GAME</span></td><td><h4>Gamebase</h4></td><td>연동 후 푸시 메시지 발송하기</td><td><a data-mention href="how-to-guide/gamebase-push-message.md">gamebase-push-message.md</a></td><td><a data-mention href="how-to-guide/cloud-monitoring-alarm-policy.md">cloud-monitoring-alarm-policy.md</a></td><td></td><td>null</td></tr></tbody></table>
+#### 문제 해결 가이드
 
-***
+문제 해결 가이드에 대한 설명 입력
 
-<h3 align="center">문제 해결 가이드</h3>
-
-<p align="center">증상과 같은 제목을 찾아 들어가세요.</p>
-
-<table data-view="cards"><thead><tr><th></th><th></th><th></th><th></th><th></th></tr></thead><tbody><tr><td><h4><i class="fa-server">:server:</i></h4></td><td><h4>인스턴스 생성 실패</h4></td><td>인스턴스가 ERROR 상태가 되거나 생성 요청이 거부될 때</td><td><a data-mention href="troubleshooting-guide/instance-creation-failed.md">instance-creation-failed.md</a></td><td><a data-mention href="troubleshooting-guide/instance-ssh-connection-failed.md">instance-ssh-connection-failed.md</a></td></tr><tr><td><h4><i class="fa-terminal">:terminal:</i></h4></td><td><h4>SSH 접속 실패</h4></td><td>SSH 클라이언트로 인스턴스에 연결되지 않을 때</td><td><a data-mention href="troubleshooting-guide/instance-ssh-connection-failed.md">instance-ssh-connection-failed.md</a></td><td><a data-mention href="how-to-guide/network-firewall-policy-configuration.md">network-firewall-policy-configuration.md</a></td></tr><tr><td><h4><i class="fa-scale-balanced">:scale-balanced:</i></h4></td><td><h4>LB 멤버 INACTIVE</h4></td><td>헬스 체크가 실패해 멤버로 트래픽이 가지 않을 때</td><td><a data-mention href="troubleshooting-guide/lb-healthcheck-inactive-member-troubleshooting.md">lb-healthcheck-inactive-member-troubleshooting.md</a></td><td><a data-mention href="how-to-guide/network-firewall-policy-configuration.md">network-firewall-policy-configuration.md</a></td></tr></tbody></table>
+<table data-view="cards"><thead><tr><th></th><th data-type="content-ref"></th><th data-type="content-ref"></th><th data-hidden data-card-cover data-type="image">Cover image</th></tr></thead><tbody><tr><td><h4>Compute</h4></td><td><a href="troubleshooting-guide/instance-creation-failed.md">instance-creation-failed.md</a></td><td><a href="troubleshooting-guide/instance-ssh-connection-failed.md">instance-ssh-connection-failed.md</a></td><td><a href=".gitbook/assets/Compute.png">Compute.png</a></td></tr><tr><td><h4>Container</h4></td><td></td><td></td><td><a href=".gitbook/assets/Container.png">Container.png</a></td></tr><tr><td><h4>Network</h4></td><td><a href="troubleshooting-guide/lb-healthcheck-inactive-member-troubleshooting.md">lb-healthcheck-inactive-member-troubleshooting.md</a></td><td></td><td><a href=".gitbook/assets/Network.png">Network.png</a></td></tr><tr><td></td><td></td><td></td><td></td></tr></tbody></table>
