@@ -1,13 +1,17 @@
 ---
 description: >-
-  Everything you need to build, deploy, and manage your projects on the
-  platform.
+  NHN Cloud를 사용하다 막혔을 때 증상에서 출발해 원인을 좁혀 나가는 가이드입니다. 콘솔 화면과 로그에서 무엇을 확인해야 하는지,
+  원인별로 어떤 조치를 취해야 하는지를 단계별로 안내합니다.
 icon: hand-wave
 ---
 
-# Troubleshooting
+# 문제 해결
 
-Welcome to the platform. These docs cover everything from your first project to advanced workflows — pick a starting point below or ask the Assistant to jump straight to what you need.
+{% hint style="info" %}
+**이렇게 찾으세요**
+
+지금 겪고 있는 증상과 같은 제목을 찾아 들어가세요.&#x20;
+{% endhint %}
 
 <button type="button" class="button primary" data-action="ask" data-icon="gitbook-assistant">Ask a question…</button>
 
@@ -21,9 +25,9 @@ Welcome to the platform. These docs cover everything from your first project to 
 <a href="https://app.gitbook.com/s/euz6U9T9Ui1Un0dUKuuZ/" class="button secondary">See what's new</a>
 {% endhint %}
 
-## Where to start
+## 증상으로 찾기
 
-<table data-card-size="large" data-view="cards"><thead><tr><th></th><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><h4><i class="fa-rocket-launch" style="color:$primary;">:rocket-launch:</i></h4></td><td><h4>Getting started</h4></td><td>Set up your account and ship your first project in minutes.</td><td><a href="compute/undefined.md">undefined.md</a></td></tr><tr><td><h4><i class="fa-book" style="color:$primary;">:book:</i></h4></td><td><h4>Core concepts</h4></td><td>Understand workspaces, projects, and how permissions work.</td><td><a href="/broken/pages/FaSGGOl6CSP0t71WWh7l">Broken link</a></td></tr><tr><td><h4><i class="fa-graduation-cap" style="color:$primary;">:graduation-cap:</i></h4></td><td><h4>Guides</h4></td><td>Walkthroughs for common tasks like custom domains and automations.</td><td><a href="network/load-balancer-inactive.md">load-balancer-inactive.md</a></td></tr><tr><td><h4><i class="fa-book-open" style="color:$primary;">:book-open:</i></h4></td><td><h4>Reference</h4></td><td>Detailed configuration options, limits, and terminology.</td><td><a href="database/rds.md">rds.md</a></td></tr></tbody></table>
+<table data-card-size="large" data-view="cards"><thead><tr><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><h4><i class="fa-rocket-launch" style="color:$primary;">:rocket-launch:</i> </h4></td><td><a href="compute/undefined.md">undefined.md</a></td></tr><tr><td><h4><i class="fa-book" style="color:$primary;">:book:</i></h4></td><td><a href="/broken/pages/FaSGGOl6CSP0t71WWh7l">Broken link</a></td></tr><tr><td><h4><i class="fa-graduation-cap" style="color:$primary;">:graduation-cap:</i></h4></td><td><a href="network/load-balancer-inactive.md">load-balancer-inactive.md</a></td></tr><tr><td><h4><i class="fa-book-open" style="color:$primary;">:book-open:</i></h4><h4>RDS 고가용성이 중단되거나 예기치 않은 장애 조치가 발생합니다</h4></td><td><a href="database/rds.md">rds.md</a></td></tr></tbody></table>
 
 ## Popular tasks
 

@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Troubleshooting](README.md)
+* [문제 해결](README.md)
 
 ## Compute
 
