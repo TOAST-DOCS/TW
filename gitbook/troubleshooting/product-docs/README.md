@@ -15,19 +15,11 @@ icon: hand-wave
 
 <button type="button" class="button primary" data-action="ask" data-icon="gitbook-assistant">Ask a question…</button>
 
-<button type="button" class="button secondary" data-action="ask" data-query="How do I deploy my first project" data-icon="rocket-launch">Deploy your first project</button><button type="button" class="button secondary" data-action="ask" data-query="How do I set up a custom domain" data-icon="globe">Set up a custom domain</button><button type="button" class="button secondary" data-action="ask" data-query="How do I invite my team" data-icon="user-group">Invite your team</button>
-
 ***
-
-{% hint style="success" icon="sparkles" %}
-**New: scheduled deploys and team-level audit logs.** Schedule deploys for any future date and review every action taken in your workspace.
-
-<a href="https://app.gitbook.com/s/euz6U9T9Ui1Un0dUKuuZ/" class="button secondary">See what's new</a>
-{% endhint %}
 
 ## 증상으로 찾기
 
-<table data-card-size="large" data-view="cards"><thead><tr><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><h4><i class="fa-rocket-launch" style="color:$primary;">:rocket-launch:</i> </h4></td><td><a href="compute/undefined.md">undefined.md</a></td></tr><tr><td><h4><i class="fa-book" style="color:$primary;">:book:</i></h4></td><td><a href="/broken/pages/FaSGGOl6CSP0t71WWh7l">Broken link</a></td></tr><tr><td><h4><i class="fa-graduation-cap" style="color:$primary;">:graduation-cap:</i></h4></td><td><a href="network/load-balancer-inactive.md">load-balancer-inactive.md</a></td></tr><tr><td><h4><i class="fa-book-open" style="color:$primary;">:book-open:</i></h4><h4>RDS 고가용성이 중단되거나 예기치 않은 장애 조치가 발생합니다</h4></td><td><a href="database/rds.md">rds.md</a></td></tr></tbody></table>
+<table data-card-size="large" data-view="cards"><thead><tr><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><h4><i class="fa-book" style="color:$primary;">:book:</i> 인스턴스 생성이 실패합니다</h4></td><td><a href="/broken/pages/FaSGGOl6CSP0t71WWh7l">Broken link</a></td></tr><tr><td><h4><i class="fa-graduation-cap" style="color:$primary;">:graduation-cap:</i> 인스턴스에 SSH로 접속되지 않습니</h4></td><td><a href="network/load-balancer-inactive.md">load-balancer-inactive.md</a></td></tr><tr><td><i class="fa-arrow-down-from-arc" style="color:$primary;">:arrow-down-from-arc:</i> <strong>Load Balancer 멤버가 INACTIVE로 표시됩니</strong>다</td><td></td></tr><tr><td></td><td></td></tr></tbody></table>
 
 ## Popular tasks
 
