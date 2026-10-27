@@ -28,7 +28,6 @@ site:
           title: Home
           path: landing-page
           default: true
-          draft: true
           content:
             directory: ./landing-page
     - type: section
