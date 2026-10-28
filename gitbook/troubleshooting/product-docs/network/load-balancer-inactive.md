@@ -1,5 +1,5 @@
 ---
-icon: graduation-cap
+icon: chess-pawn-piece
 ---
 
 # Load Balancer 멤버가 INACTIVE로 표시됩니다

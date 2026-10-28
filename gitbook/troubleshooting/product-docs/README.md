@@ -19,14 +19,12 @@ icon: hand-wave
 
 ## 증상으로 찾기
 
-지금 겪고 증상과 같은 제목을 찾아 문제를 해결하세요.
+지금 겪고 증상과 같은 제목을 찾아 문제를 해결하세요.&#x20;
 
-<table data-card-size="large" data-view="cards"><thead><tr><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><h4><i class="fa-book" style="color:$primary;">:book:</i> 인스턴스 생성이 실패합니다</h4></td><td><a href="/broken/pages/FaSGGOl6CSP0t71WWh7l">Broken link</a></td></tr><tr><td><h4><i class="fa-graduation-cap" style="color:$primary;">:graduation-cap:</i> 인스턴스에 SSH로 접속되지 않습니</h4></td><td><a href="network/load-balancer-inactive.md">load-balancer-inactive.md</a></td></tr><tr><td><i class="fa-arrow-down-from-arc" style="color:$primary;">:arrow-down-from-arc:</i> <strong>Load Balancer 멤버가 INACTIVE로 표시됩니</strong>다</td><td></td></tr><tr><td><i class="fa-browser" style="color:$primary;">:browser:</i> <strong>RDS 고가용성이 중단되거나 예기치 않은 장애 조치가 발생합니다</strong></td><td></td></tr></tbody></table>
+## Popular tasks
+
+<table data-view="cards"><thead><tr><th></th><th data-type="content-ref"></th><th data-type="content-ref"></th><th data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>Compute</strong></td><td><a href="compute/ssh-..md">ssh-..md</a></td><td><a href="compute/undefined.md">undefined.md</a></td><td><a href="/broken/pages/c3101d8e098a6f696c75f6bda47d0ea5fdade1e5">Broken link</a></td></tr><tr><td><strong>NETWORK</strong></td><td><a href="network/load-balancer-inactive.md">load-balancer-inactive.md</a></td><td><a href="network/undefined.md">undefined.md</a></td><td><a href="/broken/pages/65332f63d0b6cedd6ac718136ba8d89ec6cc1a4d">Broken link</a></td></tr><tr><td>DATABASE</td><td><a href="database/rds.md">rds.md</a></td><td><a href="/broken/pages/65332f63d0b6cedd6ac718136ba8d89ec6cc1a4d">Broken link</a></td><td><a href="/broken/pages/6625e4a7113b37994c505597f0f9e2c62008a5c5">Broken link</a></td></tr></tbody></table>
 
 ## 찾는 증상이 없다면
 
 찾는 증상이 없다면 구축 활용 문서를 확인해 보세요. 서비스의 스펙이나 자세한 API 정보는 NHN Cloud 사용자 가이드에서 확인하실 수 있습니다.
-
-## Popular tasks
-
-<table data-view="cards"><thead><tr><th></th><th data-type="content-ref"></th><th data-type="content-ref"></th><th data-type="content-ref"></th></tr></thead><tbody><tr><td><h4>For builders</h4></td><td><a href="compute/ssh-..md">ssh-..md</a></td><td><a href="/broken/pages/c3101d8e098a6f696c75f6bda47d0ea5fdade1e5">Broken link</a></td><td><a href="network/undefined.md">undefined.md</a></td></tr><tr><td><h4>For admins</h4></td><td><a href="/broken/pages/fb922e107b31a3e9e9fcf81410029e993b0a9afc">Broken link</a></td><td><a href="/broken/pages/65332f63d0b6cedd6ac718136ba8d89ec6cc1a4d">Broken link</a></td><td><a href="/broken/pages/8d7897a648fcd91cdfe61c6055c3fc9a2774e089">Broken link</a></td></tr><tr><td><h4>For developers</h4></td><td><a href="/broken/pages/d9d593aeabc52a165190bf8c93720491a4eb9682">Broken link</a></td><td><a href="/broken/pages/6625e4a7113b37994c505597f0f9e2c62008a5c5">Broken link</a></td><td><a href="/broken/pages/65332f63d0b6cedd6ac718136ba8d89ec6cc1a4d">Broken link</a></td></tr></tbody></table>
