@@ -21,7 +21,7 @@ icon: hand-wave
 
 지금 겪고 증상과 같은 제목을 찾아 문제를 해결하세요.&#x20;
 
-## Popular tasks
+
 
 <table data-view="cards"><thead><tr><th></th><th data-type="content-ref"></th><th data-type="content-ref"></th><th data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>Compute</strong></td><td><a href="compute/ssh-..md">ssh-..md</a></td><td><a href="compute/undefined.md">undefined.md</a></td><td><a href="/broken/pages/c3101d8e098a6f696c75f6bda47d0ea5fdade1e5">Broken link</a></td></tr><tr><td><strong>NETWORK</strong></td><td><a href="network/load-balancer-inactive.md">load-balancer-inactive.md</a></td><td><a href="network/undefined.md">undefined.md</a></td><td><a href="/broken/pages/65332f63d0b6cedd6ac718136ba8d89ec6cc1a4d">Broken link</a></td></tr><tr><td>DATABASE</td><td><a href="database/rds.md">rds.md</a></td><td><a href="/broken/pages/65332f63d0b6cedd6ac718136ba8d89ec6cc1a4d">Broken link</a></td><td><a href="/broken/pages/6625e4a7113b37994c505597f0f9e2c62008a5c5">Broken link</a></td></tr></tbody></table>
 
