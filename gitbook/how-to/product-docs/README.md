@@ -1,29 +1,23 @@
 ---
-description: NHN Cloud 서비스를 활용한 단계별 실습 가이드입니다.
+description: >-
+  NHN Cloud의 주요 서비스를 활용해 상황별 과제를 해결하는 절차를 단계별로 안내하는 가이드입니다. NHN Cloud 서비스와 기능을
+  활용하며 자주 접할 수 있는 시나리오를 다룹니다.
 ---
 
 # 활용 가이드
 
+<figure><img src=".gitbook/assets/cover-placeholder.png" alt=""><figcaption></figcaption></figure>
 
-
-왼쪽 사이드바에서 카테고리와 서비스를 선택해 원하는 가이드를 찾아보세요.
-
-원하는 키워드를 입력해 관련된 콘텐츠를 찾아볼 수도 있습니다.
+왼쪽 목록에서 서비스 카테고리를 선택하거나 검색 기능을 통해 필요한 콘텐츠를 찾을 수 있습니다.
 
 <button type="button" class="button primary" data-action="ask" data-icon="gitbook-assistant">Ask a question…</button>
 
 ***
 
-{% hint style="success" icon="sparkles" %}
-**New: scheduled deploys and team-level audit logs.** Schedule deploys for any future date and review every action taken in your workspace.
-
-<a href="https://app.gitbook.com/s/euz6U9T9Ui1Un0dUKuuZ/" class="button secondary">See what's new</a>
-{% endhint %}
-
 ### 추천 콘텐츠
 
-<table data-card-size="large" data-view="cards"><thead><tr><th></th><th></th><th></th><th data-type="content-ref"></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td></td><td><h4>Getting started</h4></td><td>Set up your account and ship your first project in minutes.</td><td></td><td><a href="compute/instance.md">instance.md</a></td></tr><tr><td><h4><i class="fa-book" style="color:$primary;">:book:</i></h4></td><td><h4>Core concepts</h4></td><td>Understand workspaces, projects, and how permissions work.</td><td></td><td><a href="/broken/pages/FaSGGOl6CSP0t71WWh7l">Broken link</a></td></tr><tr><td><h4><i class="fa-graduation-cap" style="color:$primary;">:graduation-cap:</i></h4></td><td><h4>Guides</h4></td><td>Walkthroughs for common tasks like custom domains and automations.</td><td></td><td><a href="/broken/pages/73b7faa18afc90c9ae3c6c1ae24f9ed214289c08">Broken link</a></td></tr><tr><td><h4><i class="fa-book-open" style="color:$primary;">:book-open:</i></h4></td><td><h4>Reference</h4></td><td>Detailed configuration options, limits, and terminology.</td><td></td><td><a href="/broken/pages/87935bb1e2caf4857fc5fe2347c566031b72ecaa">Broken link</a></td></tr></tbody></table>
+<table data-view="cards"><thead><tr><th><select><option value="dDZcNRgJyfnP" label="Storage" color="blue"></option><option value="QwGNuekVmF8S" label="Network" color="blue"></option><option value="WLOuRq4B4fqe" label="Security" color="blue"></option></select></th><th></th><th></th></tr></thead><tbody><tr><td><span data-option="dDZcNRgJyfnP">Storage</span></td><td><h4><a href="https://app.gitbook.com/s/xKXaQ4skUM9rK1QN3O2E/how-to-guide/obs-static-website-hosting">Object Storage에   정적  웹사이트  호스팅하기</a>   </h4></td><td>정적 파일을 Object Storage 컨테이너에 올려 외부에서 접속할 수 있는 웹사이트로 공개하는 방법을 살펴봅니다.</td></tr><tr><td><span data-option="QwGNuekVmF8S">Network</span></td><td><h4><a href="https://app.gitbook.com/s/xKXaQ4skUM9rK1QN3O2E/how-to-guide/nat-gateway-private-subnet">NAT Gateway로  프라이빗 서브넷 인터넷연결    구성하기</a>  </h4></td><td>NAT Gateway를 활용해 프라이빗 서브넷의 인스턴스가 외부 인터넷에 접근하면서도 외부로부터의 직접 인바운드 접속은 차단하도록 구성하는 방법을 살펴봅니다.</td></tr><tr><td><span data-option="WLOuRq4B4fqe">Security</span></td><td><h4><a href="https://app.gitbook.com/s/xKXaQ4skUM9rK1QN3O2E/how-to-guide/network-firewall-policy-configuration">Network Firewall 정책 구성 및 로그 전송 설정하기</a></h4></td><td>Network Firewall 정책에서 사용할 객체를 등록하고, 허용 정책을 추가한 뒤, 트래픽 로그를 Log &#x26; Crash Search로 전송하는 시나리오를 살펴봅니다.</td></tr></tbody></table>
 
 ### 자주 찾는 콘텐츠
 
-<table data-view="cards"><thead><tr><th></th><th data-type="content-ref"></th><th data-type="content-ref"></th><th data-type="content-ref"></th></tr></thead><tbody><tr><td><h4>For builders</h4></td><td><a href="compute/gpu-instance.md">gpu-instance.md</a></td><td><a href="compute/image/">image</a></td><td><a href="/broken/pages/56a52747d54863f8df67ff3ce908938888c69b66">Broken link</a></td></tr><tr><td><h4>For admins</h4></td><td><a href="/broken/pages/fb922e107b31a3e9e9fcf81410029e993b0a9afc">Broken link</a></td><td><a href="/broken/pages/65332f63d0b6cedd6ac718136ba8d89ec6cc1a4d">Broken link</a></td><td><a href="/broken/pages/8d7897a648fcd91cdfe61c6055c3fc9a2774e089">Broken link</a></td></tr><tr><td><h4>For developers</h4></td><td><a href="/broken/pages/d9d593aeabc52a165190bf8c93720491a4eb9682">Broken link</a></td><td><a href="/broken/pages/6625e4a7113b37994c505597f0f9e2c62008a5c5">Broken link</a></td><td><a href="/broken/pages/65332f63d0b6cedd6ac718136ba8d89ec6cc1a4d">Broken link</a></td></tr></tbody></table>
+<table data-view="cards"><thead><tr><th><select><option value="O31bDqC6wwRm" label="Game" color="blue"></option></select></th><th></th><th></th></tr></thead><tbody><tr><td><span data-option="O31bDqC6wwRm">Game</span></td><td><h4><a href="https://app.gitbook.com/s/xKXaQ4skUM9rK1QN3O2E/how-to-guide/gamebase-push-message">Gamebase 연동      후 푸시 메시지 발송까지 완료하기</a> </h4></td><td>Gamebase 로그인 기능을 구현한 게임에 Push를 연동해 로그인한 사용자에게 직접 알림을 보낼 수 있도록 구성하는 방법을 살펴봅니다.</td></tr><tr><td></td><td>[object Object]</td><td>[object Object]</td></tr><tr><td></td><td>[object Object]</td><td>[object Object]</td></tr></tbody></table>
