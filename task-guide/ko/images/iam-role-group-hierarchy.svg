@@ -1,86 +1,83 @@
-<svg viewBox="0 0 900 440" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard, 'Malgun Gothic', sans-serif">
+<svg viewBox="0 0 900 470" xmlns="http://www.w3.org/2000/svg" font-family="'Pretendard', 'Malgun Gothic', sans-serif">
 
   <!-- 배경 -->
-  <rect x="0" y="0" width="900" height="440" fill="#FCFCFC"/>
+  <rect x="0" y="0" width="900" height="470" fill="#F7F7F7"/>
 
-  <!-- ===================== 연결선 (진한 파랑, 계층 간 신뢰 관계) ===================== -->
+  <!-- ===================== 연결선 (주 흐름, 회색 실선) ===================== -->
   <!-- 프로젝트 → 트렁크 -->
-  <line x1="450" y1="94" x2="450" y2="130" stroke="#0157B1" stroke-width="2.5"/>
+  <line x1="450" y1="94" x2="450" y2="130" stroke="#8B8B8B" stroke-width="2.5"/>
   <!-- 트렁크 수평선 -->
-  <line x1="150" y1="130" x2="750" y2="130" stroke="#0157B1" stroke-width="2.5"/>
+  <line x1="150" y1="130" x2="750" y2="130" stroke="#8B8B8B" stroke-width="2.5"/>
 
   <!-- 트렁크 → 역할 그룹 (운영자) -->
-  <line x1="150" y1="130" x2="150" y2="164" stroke="#0157B1" stroke-width="2.5"/>
-  <polygon points="150,170 144,160 156,160" fill="#0157B1"/>
+  <line x1="150" y1="130" x2="150" y2="164" stroke="#8B8B8B" stroke-width="2.5"/>
+  <polygon points="150,170 144,160 156,160" fill="#8B8B8B"/>
 
   <!-- 트렁크 → 역할 그룹 (개발자) -->
-  <line x1="450" y1="130" x2="450" y2="164" stroke="#0157B1" stroke-width="2.5"/>
-  <polygon points="450,170 444,160 456,160" fill="#0157B1"/>
+  <line x1="450" y1="130" x2="450" y2="164" stroke="#8B8B8B" stroke-width="2.5"/>
+  <polygon points="450,170 444,160 456,160" fill="#8B8B8B"/>
 
   <!-- 트렁크 → 역할 그룹 (조회 전용) -->
-  <line x1="750" y1="130" x2="750" y2="164" stroke="#0157B1" stroke-width="2.5"/>
-  <polygon points="750,170 744,160 756,160" fill="#0157B1"/>
+  <line x1="750" y1="130" x2="750" y2="164" stroke="#8B8B8B" stroke-width="2.5"/>
+  <polygon points="750,170 744,160 756,160" fill="#8B8B8B"/>
 
-  <!-- 역할 그룹 → 사용자 (운영자 → 사용자 A) -->
-  <line x1="150" y1="266" x2="150" y2="350" stroke="#0157B1" stroke-width="2.5"/>
-  <polygon points="150,356 144,346 156,346" fill="#0157B1"/>
+  <!-- 역할 그룹 → 멤버 (운영자 → 멤버 A) -->
+  <line x1="150" y1="266" x2="150" y2="350" stroke="#8B8B8B" stroke-width="2.5"/>
+  <polygon points="150,356 144,346 156,346" fill="#8B8B8B"/>
 
-  <!-- 역할 그룹 → 사용자 (개발자 → 사용자 B) -->
-  <line x1="450" y1="266" x2="450" y2="350" stroke="#0157B1" stroke-width="2.5"/>
-  <polygon points="450,356 444,346 456,346" fill="#0157B1"/>
+  <!-- 역할 그룹 → 멤버 (개발자 → 멤버 B) -->
+  <line x1="450" y1="266" x2="450" y2="350" stroke="#8B8B8B" stroke-width="2.5"/>
+  <polygon points="450,356 444,346 456,346" fill="#8B8B8B"/>
 
-  <!-- 역할 그룹 → 사용자 (조회 전용 → 사용자 C) -->
-  <line x1="750" y1="266" x2="750" y2="350" stroke="#0157B1" stroke-width="2.5"/>
-  <polygon points="750,356 744,346 756,346" fill="#0157B1"/>
+  <!-- 역할 그룹 → 멤버 (조회 전용 → 멤버 C) -->
+  <line x1="750" y1="266" x2="750" y2="350" stroke="#8B8B8B" stroke-width="2.5"/>
+  <polygon points="750,356 744,346 756,346" fill="#8B8B8B"/>
 
   <!-- ===================== 1단계: 프로젝트 ===================== -->
   <g transform="translate(350,30)">
-    <rect x="0" y="0" width="200" height="64" rx="16" fill="#054283"/>
+    <rect x="0" y="0" width="200" height="64" rx="6" fill="#003087"/>
     <text x="100" y="40" text-anchor="middle" font-size="22" font-weight="600" fill="#FFFFFF">프로젝트</text>
   </g>
 
   <!-- ===================== 2단계: 역할 그룹 3종 ===================== -->
   <!-- 운영자 -->
   <g transform="translate(45,170)">
-    <rect x="0" y="0" width="210" height="96" rx="16" fill="#0F80F6"/>
+    <rect x="0" y="0" width="210" height="96" rx="6" fill="#125DE6"/>
     <text x="105" y="28" text-anchor="middle" font-size="13" fill="#FFFFFF" opacity="0.85">역할 그룹</text>
     <text x="105" y="55" text-anchor="middle" font-size="21" font-weight="700" fill="#FFFFFF">운영자</text>
-    <text x="105" y="79" text-anchor="middle" font-size="13" fill="#FFFFFF" opacity="0.9">모든 리소스 CRUD</text>
+    <text x="105" y="79" text-anchor="middle" font-size="13" fill="#FFFFFF" opacity="0.9">조회·생성·수정·삭제</text>
   </g>
 
   <!-- 개발자 -->
   <g transform="translate(345,170)">
-    <rect x="0" y="0" width="210" height="96" rx="16" fill="#0F80F6"/>
+    <rect x="0" y="0" width="210" height="96" rx="6" fill="#125DE6"/>
     <text x="105" y="28" text-anchor="middle" font-size="13" fill="#FFFFFF" opacity="0.85">역할 그룹</text>
     <text x="105" y="55" text-anchor="middle" font-size="21" font-weight="700" fill="#FFFFFF">개발자</text>
-    <text x="105" y="79" text-anchor="middle" font-size="13" fill="#FFFFFF" opacity="0.9">삭제 제외 CRUD</text>
+    <text x="105" y="79" text-anchor="middle" font-size="13" fill="#FFFFFF" opacity="0.9">조회·생성·수정(삭제 제외)</text>
   </g>
 
   <!-- 조회 전용 -->
   <g transform="translate(645,170)">
-    <rect x="0" y="0" width="210" height="96" rx="16" fill="#0F80F6"/>
+    <rect x="0" y="0" width="210" height="96" rx="6" fill="#125DE6"/>
     <text x="105" y="28" text-anchor="middle" font-size="13" fill="#FFFFFF" opacity="0.85">역할 그룹</text>
     <text x="105" y="55" text-anchor="middle" font-size="21" font-weight="700" fill="#FFFFFF">조회 전용</text>
     <text x="105" y="79" text-anchor="middle" font-size="13" fill="#FFFFFF" opacity="0.9">조회만 허용</text>
   </g>
 
-  <!-- ===================== 3단계: 사용자 3인 ===================== -->
-  <!-- 사용자 A -->
-  <g transform="translate(65,356)">
-    <rect x="0" y="0" width="170" height="60" rx="14" fill="#E7F2FE"/>
-    <text x="85" y="37" text-anchor="middle" font-size="17" font-weight="500" fill="#2D2D2D">사용자 A</text>
-  </g>
+  <!-- ===================== 3단계: 멤버 3인 ===================== -->
+  <!-- 멤버 A -->
+  <circle cx="150" cy="386" r="30" fill="#FFFFFF"/>
+  <g transform="translate(132.6,368.6) scale(0.6)"><circle cx="29" cy="17" r="10" fill="#C8CCD4"/><path fill-rule="evenodd" clip-rule="evenodd" d="M50 50C50 37.2174 40.598 29 29 29C17.402 29 8 37.2174 8 50H50Z" fill="#C8CCD4"/></g>
+  <text x="150" y="438" text-anchor="middle" font-size="17" font-weight="500" fill="#2D2D2D">멤버 A</text>
 
-  <!-- 사용자 B -->
-  <g transform="translate(365,356)">
-    <rect x="0" y="0" width="170" height="60" rx="14" fill="#E7F2FE"/>
-    <text x="85" y="37" text-anchor="middle" font-size="17" font-weight="500" fill="#2D2D2D">사용자 B</text>
-  </g>
+  <!-- 멤버 B -->
+  <circle cx="450" cy="386" r="30" fill="#FFFFFF"/>
+  <g transform="translate(432.6,368.6) scale(0.6)"><circle cx="29" cy="17" r="10" fill="#C8CCD4"/><path fill-rule="evenodd" clip-rule="evenodd" d="M50 50C50 37.2174 40.598 29 29 29C17.402 29 8 37.2174 8 50H50Z" fill="#C8CCD4"/></g>
+  <text x="450" y="438" text-anchor="middle" font-size="17" font-weight="500" fill="#2D2D2D">멤버 B</text>
 
-  <!-- 사용자 C -->
-  <g transform="translate(665,356)">
-    <rect x="0" y="0" width="170" height="60" rx="14" fill="#E7F2FE"/>
-    <text x="85" y="37" text-anchor="middle" font-size="17" font-weight="500" fill="#2D2D2D">사용자 C</text>
-  </g>
+  <!-- 멤버 C -->
+  <circle cx="750" cy="386" r="30" fill="#FFFFFF"/>
+  <g transform="translate(732.6,368.6) scale(0.6)"><circle cx="29" cy="17" r="10" fill="#C8CCD4"/><path fill-rule="evenodd" clip-rule="evenodd" d="M50 50C50 37.2174 40.598 29 29 29C17.402 29 8 37.2174 8 50H50Z" fill="#C8CCD4"/></g>
+  <text x="750" y="438" text-anchor="middle" font-size="17" font-weight="500" fill="#2D2D2D">멤버 C</text>
 
 </svg>
