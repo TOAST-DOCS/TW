@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_레이어_1" data-name="레이어_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 960 420">
+  <!-- Generator: Adobe Illustrator 30.8.2, SVG Export Plug-In . SVG Version: 2.1.4 Build 7)  -->
+  <defs>
+    <style>
+      .st0, .st1 {
+        fill: #c8ccd4;
+      }
+
+      .st2, .st3, .st4 {
+        fill: #125de6;
+      }
+
+      .st5, .st6 {
+        fill: #8b8b8b;
+      }
+
+      .st7, .st6, .st8, .st9, .st3, .st10, .st4, .st11 {
+        isolation: isolate;
+      }
+
+      .st7, .st10 {
+        fill: #2d2d2d;
+        font-family: Pretendard-SemiBold-KSCpc-EUC-H, Pretendard;
+        font-weight: 600;
+      }
+
+      .st7, .st4 {
+        font-size: 13px;
+      }
+
+      .st12, .st8 {
+        fill: #fff;
+      }
+
+      .st6, .st8, .st11 {
+        font-size: 10px;
+      }
+
+      .st6, .st11 {
+        font-family: Pretendard-Regular-KSCpc-EUC-H, Pretendard;
+      }
+
+      .st8, .st3, .st4 {
+        font-family: Pretendard-Bold-KSCpc-EUC-H, Pretendard;
+        font-weight: 700;
+      }
+
+      .st1 {
+        fill-rule: evenodd;
+      }
+
+      .st13 {
+        stroke-dasharray: 7.28 4.86;
+        stroke-width: 1.82px;
+      }
+
+      .st13, .st14, .st15 {
+        fill: none;
+      }
+
+      .st13, .st15 {
+        stroke: #d94141;
+      }
+
+      .st9 {
+        fill: #e7f2ff;
+        opacity: .4;
+      }
+
+      .st16 {
+        fill: #d94141;
+      }
+
+      .st3 {
+        font-size: 11px;
+      }
+
+      .st14 {
+        stroke: #8b8b8b;
+      }
+
+      .st14, .st15 {
+        stroke-width: 1.5px;
+      }
+
+      .st10 {
+        font-size: 12px;
+      }
+
+      .st15 {
+        stroke-dasharray: 6 4;
+      }
+
+      .st17 {
+        fill: #f7f7f7;
+      }
+
+      .st11 {
+        fill: #444;
+      }
+    </style>
+  </defs>
+  <rect class="st17" width="960" height="420" rx="12" ry="12"/>
+  <g>
+    <rect class="st9" x="243" y="27.62" width="670" height="370" rx="8" ry="8"/>
+    <text class="st4" transform="translate(523.79 51.62)"><tspan x="0" y="0">VPC (10.0.0.0/16)</tspan></text>
+    <circle class="st12" cx="83" cy="151.62" r="32"/>
+    <g>
+      <circle class="st0" cx="83" cy="144.42" r="6"/>
+      <path class="st1" d="M95.6,164.22c0-7.67-5.64-12.6-12.6-12.6s-12.6,4.93-12.6,12.6h25.2Z"/>
+    </g>
+    <text class="st7" transform="translate(53.37 201.62)"><tspan x="0" y="0">외부 사용자</tspan></text>
+    <circle class="st12" cx="83" cy="262.1" r="32"/>
+    <g>
+      <circle class="st0" cx="83" cy="254.9" r="6"/>
+      <path class="st1" d="M95.6,274.7c0-7.67-5.64-12.6-12.6-12.6s-12.6,4.93-12.6,12.6h25.2Z"/>
+    </g>
+    <text class="st7" transform="translate(66.15 312.1)"><tspan x="0" y="0">관리자</tspan></text>
+    <rect class="st12" x="273" y="71.62" width="160" height="266.43" rx="7.42" ry="7.42"/>
+    <rect class="st17" x="323" y="61.62" width="60" height="20" rx="4" ry="4"/>
+    <text class="st3" transform="translate(333.26 75.62)"><tspan x="0" y="0">sg-web</tspan></text>
+    <circle class="st17" cx="353" cy="171.62" r="28"/>
+    <path class="st2" d="M361.4,173.02c.77,0,1.4.63,1.4,1.4v5.6c0,.77-.63,1.4-1.4,1.4h-16.8c-.77,0-1.4-.63-1.4-1.4v-5.6c0-.77.63-1.4,1.4-1.4h16.8ZM354.4,178.62h5.6v-2.8h-5.6v2.8ZM361.4,161.82c.77,0,1.4.63,1.4,1.4v5.6c0,.77-.63,1.4-1.4,1.4h-16.8c-.77,0-1.4-.63-1.4-1.4v-5.6c0-.77.63-1.4,1.4-1.4h16.8ZM354.4,167.42h5.6v-2.8h-5.6v2.8Z"/>
+    <text class="st10" transform="translate(336.02 217.62)"><tspan x="0" y="0">웹 서버</tspan></text>
+    <text class="st6" transform="translate(314.17 251.62)"><tspan x="0" y="0">수신: TCP 80/443</tspan></text>
+    <text class="st6" transform="translate(325.1 267.62)"><tspan x="0" y="0">수신: SSH 22</tspan></text>
+    <rect class="st12" x="493" y="71.62" width="160" height="266.43" rx="7.42" ry="7.42"/>
+    <rect class="st17" x="544" y="61.62" width="58" height="20" rx="4" ry="4"/>
+    <text class="st3" transform="translate(554.46 75.62)"><tspan x="0" y="0">sg-app</tspan></text>
+    <circle class="st17" cx="573" cy="171.62" r="28"/>
+    <path class="st2" d="M581.4,173.02c.77,0,1.4.63,1.4,1.4v5.6c0,.77-.63,1.4-1.4,1.4h-16.8c-.77,0-1.4-.63-1.4-1.4v-5.6c0-.77.63-1.4,1.4-1.4h16.8ZM574.4,178.62h5.6v-2.8h-5.6v2.8ZM581.4,161.82c.77,0,1.4.63,1.4,1.4v5.6c0,.77-.63,1.4-1.4,1.4h-16.8c-.77,0-1.4-.63-1.4-1.4v-5.6c0-.77.63-1.4,1.4-1.4h16.8ZM574.4,167.42h5.6v-2.8h-5.6v2.8Z"/>
+    <text class="st10" transform="translate(556.02 217.62)"><tspan x="0" y="0">앱 서버</tspan></text>
+    <text class="st6" transform="translate(539.15 251.62)"><tspan x="0" y="0">수신: TCP 8080</tspan></text>
+    <rect class="st12" x="713" y="71.62" width="160" height="266.43" rx="7.42" ry="7.42"/>
+    <rect class="st17" x="768" y="61.62" width="50" height="20" rx="4" ry="4"/>
+    <text class="st3" transform="translate(777.49 75.62)"><tspan x="0" y="0">sg-db</tspan></text>
+    <circle class="st17" cx="793" cy="171.62" r="28"/>
+    <path class="st2" d="M801.4,173.02c.77,0,1.4.63,1.4,1.4v5.6c0,.77-.63,1.4-1.4,1.4h-16.8c-.77,0-1.4-.63-1.4-1.4v-5.6c0-.77.63-1.4,1.4-1.4h16.8ZM794.4,178.62h5.6v-2.8h-5.6v2.8ZM801.4,161.82c.77,0,1.4.63,1.4,1.4v5.6c0,.77-.63,1.4-1.4,1.4h-16.8c-.77,0-1.4-.63-1.4-1.4v-5.6c0-.77.63-1.4,1.4-1.4h16.8ZM794.4,167.42h5.6v-2.8h-5.6v2.8Z"/>
+    <text class="st10" transform="translate(773.25 217.62)"><tspan x="0" y="0">DB 서버</tspan></text>
+    <text class="st6" transform="translate(752.12 251.62)"><tspan x="0" y="0">수신: MySQL 3306</tspan></text>
+    <line class="st14" x1="115" y1="151.62" x2="263" y2="151.62"/>
+    <polygon class="st5" points="263 147.62 273 151.62 263 155.62 263 147.62"/>
+    <text class="st11" transform="translate(165.34 143.62)"><tspan x="0" y="0">TCP 80/443</tspan></text>
+    <line class="st14" x1="115" y1="262.1" x2="263" y2="262.1"/>
+    <polygon class="st5" points="263 258.1 273 262.1 263 266.1 263 258.1"/>
+    <text class="st11" transform="translate(176.27 254.1)"><tspan x="0" y="0">SSH 22</tspan></text>
+    <g>
+      <line class="st14" x1="433.07" y1="198.15" x2="482.98" y2="197.9"/>
+      <polygon class="st5" points="482.98 193.9 492.98 197.9 482.98 201.9 482.98 193.9"/>
+    </g>
+    <text class="st11" transform="translate(440.35 189.9)"><tspan x="0" y="0">TCP 8080</tspan></text>
+    <g>
+      <line class="st14" x1="653.04" y1="197.9" x2="702.99" y2="197.9"/>
+      <polygon class="st5" points="702.99 193.9 712.99 197.9 702.99 201.9 702.99 193.9"/>
+    </g>
+    <text class="st11" transform="translate(660.14 189.9)"><tspan x="0" y="0">TCP 3306</tspan></text>
+    <path class="st13" d="M353,338.43v33.9h432"/>
+    <line class="st15" x1="789.19" y1="372.33" x2="789.19" y2="349.33"/>
+    <polygon class="st16" points="785.19 349.33 789.19 339.33 793.19 349.33 785.19 349.33"/>
+    <rect class="st16" x="557" y="363.33" width="32" height="18" rx="4" ry="4"/>
+    <text class="st8" transform="translate(564.36 376.33)"><tspan x="0" y="0">차단</tspan></text>
+  </g>
+</svg>
