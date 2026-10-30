@@ -60,9 +60,6 @@ InnoDB Page Cleaner의 디스크 flush 작업이 수 초 이상 지연되면서 
 [ERROR] [MY-011161] [Server] Semi-sync master failed on net_flush() before waiting for slave reply.
 ```
 
-> [!NOTE]
-> 패턴 B에서 디스크 flush 지연이 에러 로그에 나타나더라도 디스크 자체의 하드웨어 장애가 아닐 수 있습니다. 실제 사례에서 인프라 팀이 하이퍼바이저와 디스크를 점검한 결과 IaaS 레벨의 이슈가 확인되지 않은 경우가 있었습니다.
-
 **해결 방법**
 
 장애 조치가 완료되면 Standby가 새 Primary로 승격되어 서비스가 자동으로 복구됩니다. 접속을 위한 내부 도메인의 A record가 새 Primary로 변경되므로 애플리케이션의 접속 정보를 수정할 필요는 없습니다. A record 변경에 약 3초가 소요되며, 실제 소요 시간은 클라이언트의 DNS 캐시 정책에 따라 달라질 수 있습니다.
