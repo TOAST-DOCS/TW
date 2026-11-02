@@ -1,7 +1,3 @@
----
-icon: chess-pawn-piece
----
-
 # Load Balancer 멤버가 INACTIVE로 표시됩니다
 
 Practical walkthroughs for getting things done. Each guide is self-contained — pick the one that matches what you're trying to do.

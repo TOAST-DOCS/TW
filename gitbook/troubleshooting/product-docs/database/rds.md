@@ -1,7 +1,3 @@
----
-icon: book-open
----
-
 # RDS 고가용성이 중단되거나 예기치 않은 장애 조치가 발생합니다
 
 Detailed reference material for when you need to look something up rather than learn how to do it.

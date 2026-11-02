@@ -2,7 +2,6 @@
 description: >-
   Replace your auto-generated subdomain with your own domain, with automatic
   SSL.
-icon: globe
 ---
 
 # 인스턴스 간 내부 통신에 실패합니다
