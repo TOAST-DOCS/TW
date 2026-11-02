@@ -21,10 +21,17 @@ icon: hand-wave
 
 지금 겪고 증상과 같은 제목을 찾아 문제를 해결하세요.&#x20;
 
-
-
 <table data-view="cards"><thead><tr><th></th><th data-type="content-ref"></th><th data-type="content-ref"></th><th data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>Compute</strong></td><td><a href="compute/ssh-..md">ssh-..md</a></td><td><a href="compute/undefined.md">undefined.md</a></td><td><a href="/broken/pages/c3101d8e098a6f696c75f6bda47d0ea5fdade1e5">Broken link</a></td></tr><tr><td><strong>NETWORK</strong></td><td><a href="network/load-balancer-inactive.md">load-balancer-inactive.md</a></td><td><a href="network/undefined.md">undefined.md</a></td><td><a href="/broken/pages/65332f63d0b6cedd6ac718136ba8d89ec6cc1a4d">Broken link</a></td></tr><tr><td>DATABASE</td><td><a href="database/rds.md">rds.md</a></td><td><a href="/broken/pages/65332f63d0b6cedd6ac718136ba8d89ec6cc1a4d">Broken link</a></td><td><a href="/broken/pages/6625e4a7113b37994c505597f0f9e2c62008a5c5">Broken link</a></td></tr></tbody></table>
 
 ## 찾는 증상이 없다면
 
-찾는 증상이 없다면 구축 활용 문서를 확인해 보세요. 서비스의 스펙이나 자세한 API 정보는 NHN Cloud 사용자 가이드에서 확인하실 수 있습니다.
+찾는 증상이 없다면 **구축 활용** 문서를 확인해 보세요. 서비스의 스펙이나 자세한 API 정보는 **NHN Cloud 사용자 가이드**에서 확인하실 수 있습니다.
+
+그래도  해결되지  않는다면 **문의하기**로 알려주세요.&#x20;
+
+### 문의하기 전 확인하세요
+
+* [x] 리전과 프로젝트 — 작업 중인 리소스의 리전과 프로젝트를 확인하세요. 같은 리전이라도 프로젝트가 다르면 리소스가 보이지 않을 수 있습니다.
+* [x] 권한 _—_ 계정에 작업 권한이 있는지 확인하세요.
+* [x] 쿼터 — 프로젝트의 쿼터가 남아있는지 확인하세요.
+* [x] 공지 사항 — 점검이나 장애 안내가 있는지 확인하세요.
