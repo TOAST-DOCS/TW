@@ -6,7 +6,7 @@ NAT Gateway는 인스턴스의 사설 IP를 플로팅 IP(Floating IP)로 변환�
 
 여기에서는 인터넷 게이트웨이 없이 외부 인터넷에 접근해야 하는 프라이빗 서브넷의 인스턴스가 외부 패키지 저장소나 API에는 접근할 수 있으면서, 외부에서의 직접 인바운드 접속은 차단되도록 NAT Gateway를 생성하고 라우팅 테이블에 연결하는 방법을 살펴봅니다.
 
-![NAT Gateway 트래픽 흐름: 퍼블릭 서브넷에 NAT Gateway를 생성하고, 프라이빗 서브넷의 라우팅 테이블에 0.0.0.0/0 → NAT Gateway 경로를 추가합니다. 프라이빗 서브넷의 인스턴스가 보낸 트래픽은 NAT Gateway에서 발신지 IP가 플로팅 IP로 변환되어 인터넷으로 나가고, 외부에서 NAT Gateway의 플로팅 IP로 시작하는 인바운드 연결은 차단됩니다.](./nat-gateway-diagram.svg)
+![퍼블릭 서브넷의 NAT Gateway를 거쳐 프라이빗 서브넷 인스턴스의 트래픽이 플로팅 IP로 변환되어 인터넷으로 나가고, 외부에서 시작하는 인바운드 연결은 차단되는 흐름](images/nat-gateway-diagram.svg)
 
 ## 사전 준비하기
 
@@ -23,7 +23,10 @@ NAT Gateway는 인스턴스의 사설 IP를 플로팅 IP(Floating IP)로 변환�
 
 ## NAT Gateway 생성 및 라우팅 설정하기
 
-### 1단계: 퍼블릭 서브넷에 NAT Gateway 생성하기
+{% stepper %}
+
+{% step %}
+### 퍼블릭 서브넷에 NAT Gateway 생성하기
 
 프라이빗 서브넷의 트래픽이 최종적으로 이 NAT Gateway를 거쳐 나가므로, NAT Gateway는 인터넷 게이트웨이가 연결된 라우팅 테이블에 속한 서브넷(퍼블릭 서브넷)에 생성해야 합니다.
 
@@ -38,8 +41,10 @@ NAT Gateway는 인스턴스의 사설 IP를 플로팅 IP(Floating IP)로 변환�
     - **설명**: 필요하다면 용도를 적어 둡니다.
 
 4. 입력한 내용을 검토한 뒤 **확인**을 클릭하세요.
+{% endstep %}
 
-### 2단계: 프라이빗 서브넷의 라우팅 테이블에 경로 추가하기
+{% step %}
+### 프라이빗 서브넷의 라우팅 테이블에 경로 추가하기
 
 NAT Gateway를 만들었다고 해서 프라이빗 서브넷의 트래픽이 자동으로 NAT Gateway로 전달되지는 않습니다. 프라이빗 서브넷이 연결된 라우팅 테이블에 NAT Gateway를 가리키는 경로를 추가해야 실제로 트래픽이 전달됩니다.
 
@@ -49,12 +54,15 @@ NAT Gateway를 만들었다고 해서 프라이빗 서브넷의 트래픽이 자
 4. **라우트 생성** 버튼을 클릭하고 다음 항목을 입력합니다.
 
     - **대상 CIDR**: 프라이빗 서브넷에서 나가는 모든 인터넷 트래픽을 NAT Gateway로 보내기 위해 `0.0.0.0/0`을 입력합니다.
-    - **게이트웨이**: 1단계에서 생성한 NAT Gateway를 선택합니다.
+    - **게이트웨이**: 앞에서 생성한 NAT Gateway를 선택합니다.
 
 5. **확인**을 클릭해 저장하세요.
 
 > [!NOTE]
 > 같은 VPC 안이라면 하나의 NAT Gateway를 여러 라우팅 테이블에서 함께 사용할 수 있습니다. 프라이빗 서브넷이 여러 개라면 각 서브넷의 라우팅 테이블에 같은 방식으로 경로를 추가하면 됩니다.
+{% endstep %}
+
+{% endstepper %}
 
 ## 동작 확인하기
 
@@ -73,7 +81,7 @@ NAT Gateway를 만들었다고 해서 프라이빗 서브넷의 트래픽이 자
     curl -I https://example.com
     ```
 
-4. `curl ifconfig.me`로 현재 인스턴스가 외부와 통신할 때 사용하는 발신지 IP를 확인합니다. 이 값이 1단계에서 NAT Gateway에 지정한 플로팅 IP와 같다면, 트래픽이 실제로 NAT Gateway를 거쳐 나가고 있다는 뜻입니다.
+4. `curl ifconfig.me`로 현재 인스턴스가 외부와 통신할 때 사용하는 발신지 IP를 확인합니다. 이 값이 NAT Gateway에 지정한 플로팅 IP와 같다면, 트래픽이 실제로 NAT Gateway를 거쳐 나가고 있다는 뜻입니다.
 
     ```sh
     curl ifconfig.me
@@ -87,9 +95,9 @@ NAT Gateway를 만들었다고 해서 프라이빗 서브넷의 트래픽이 자
 
 ## 응용하기
 
-- **목적지별로 경로 분리하기**: 대상 CIDR을 좁혀서 특정 대역으로 나가는 트래픽만 NAT Gateway를 거치게 하고, 나머지는 다른 게이트웨이로 보내는 식으로 라우팅 테이블 안에서 여러 NAT Gateway를 함께 사용할 수 있습니다. 라우팅 테이블 설정은 [VPC 콘솔 사용 가이드](https://docs.nhncloud.com/ko/Network/VPC/ko/console-guide/)를 참고하세요.
-- **NAT Instance로 전환이 필요한 경우**: 아웃바운드 트래픽에 방화벽 정책을 세밀하게 적용하거나 인스턴스 사양을 직접 조정해야 한다면, 네트워크 인터페이스의 **스푸핑 방지** 기능을 해제한 NAT Instance를 검토할 수 있습니다. 이 경우 관리형인 NAT Gateway와 달리 인스턴스 운영과 패치를 직접 관리해야 합니다. 스푸핑 방지 설정은 [Network Interface 콘솔 사용 가이드](https://docs.nhncloud.com/ko/Network/Network%20Interface/ko/console-guide/)를 참고하세요.
-- **여러 NAT Gateway로 확장하기**: NAT Gateway의 Quota는 3개이고, 라우팅 테이블당 라우트는 최대 10개까지 생성할 수 있습니다. 여러 프라이빗 서브넷이나 여러 VPC에 걸쳐 NAT Gateway를 설계할 때는 이 한도를 미리 고려해야 합니다. 자세한 내용은 [NAT Gateway 콘솔 사용 가이드](https://docs.nhncloud.com/ko/Network/NAT%20Gateway/ko/console-guide/)를 참고하세요.
+- **목적지별 경로 분리**: 대상 CIDR을 좁혀 특정 대역의 트래픽만 NAT Gateway로 보냅니다. [VPC 콘솔 사용 가이드](https://docs.nhncloud.com/ko/Network/VPC/ko/console-guide/)
+- **NAT Instance로 전환**: 스푸핑 방지를 해제한 NAT Instance로 아웃바운드를 세밀하게 제어합니다. [Network Interface 콘솔 사용 가이드](https://docs.nhncloud.com/ko/Network/Network%20Interface/ko/console-guide/)
+- **여러 NAT Gateway로 확장**: 쿼터(3개)와 라우팅 테이블당 라우트 한도(10개)를 고려해 설계합니다. [NAT Gateway 콘솔 사용 가이드](https://docs.nhncloud.com/ko/Network/NAT%20Gateway/ko/console-guide/)
 
 ## 리소스 정리하기
 
