@@ -1,6 +1,6 @@
 # Table of contents
 
-* [활용 가이드](README.md)
+* [활용하기](README.md)
 
 ## NHN Cloud
 
