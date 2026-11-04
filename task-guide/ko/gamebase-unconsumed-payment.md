@@ -24,6 +24,11 @@ Gamebase Purchase(IAP)는 Google Play, App Store, ONE Store 등 여러 스토어
 
 이런 경우 스토어와 Gamebase에서는 결제가 끝났지만, 게임에서는 아직 아이템을 지급하지 않은 상태로 남습니다. 미소비 건을 방치하면 사용자는 결제 금액을 내고도 아이템을 받지 못한 채로 남고, 이는 스토어 환불 사유가 될 수 있습니다. 더 나아가 이전 결제가 소비되지 않은 상태로 남아 있으면 해당 사용자의 다음 결제 시도 자체가 실패할 수 있으므로, 미소비 건은 발견 즉시 재처리해야 합니다.
 
+{% stepper %}
+
+{% step %}
+### 미소비 목록 조회하기
+
 1. 클라이언트에서 아래 네 시점에 미소비 목록을 조회하세요. [Gamebase Android SDK 결제 가이드](https://docs.nhncloud.com/ko/Game/Gamebase/ko/aos-purchase/)가 권장하는 재처리 호출 시점입니다.
 
     - 로그인 완료 후
@@ -49,9 +54,9 @@ Gamebase Purchase(IAP)는 Google Play, App Store, ONE Store 등 여러 스토어
         });
     ```
 
-    `setAllStores`의 기본값은 `false`로, 현재 접속한 스토어의 미소비 건만 조회합니다. 여러 스토어에 출시한 게임이라면 `true`로 설정해 같은 사용자 ID로 다른 스토어에서 구매한 미소비 건까지 함께 조회할 수 있습니다. 조회 결과로 받는 `PurchasableReceipt`에는 결제 식별자인 `paymentSeq`와 서버의 소비 처리 API 호출 시 인증 값으로 쓰는 `purchaseToken`이 들어 있습니다. 이 두 값을 게임 서버로 전달합니다. 참고로 클라이언트의 `purchaseToken`은 서버 API에서는 `accessToken`이라는 이름으로 전달합니다. 두 이름은 같은 값을 가리킵니다.
+    `setAllStores`의 기본값은 `false`로, 현재 접속한 스토어의 미소비 건만 조회합니다. 여러 스토어에 출시한 게임이라면 `true`로 설정해 같은 사용자 ID로 다른 스토어에서 구매한 미소비 건까지 함께 조회할 수 있습니다. 조회 결과로 받는 `PurchasableReceipt`에는 결제 식별자인 `paymentSeq`와 서버의 소비 처리 API 호출 시 인증 값으로 쓰는 `purchaseToken`이 들어 있습니다. 이 두 값을 게임 서버로 전달합니다. 클라이언트의 `purchaseToken`은 서버 API에서는 `accessToken`이라는 이름으로 전달하며, 두 이름은 같은 값을 가리킵니다.
 
-2. 게임 서버에서도 같은 사용자의 미소비 목록을 다시 조회하세요.
+2. 게임 서버에서도 같은 사용자의 미소비 목록을 조회하세요.
 
     클라이언트가 아예 실행되지 않는 경우(예: 사용자가 재설치 없이 게임을 떠난 경우)에도 미소비 건을 찾아낼 수 있도록, 서버가 주기적으로 또는 CS 문의 시점에 List Consumables API로 직접 조회합니다.
 
@@ -61,36 +66,56 @@ Gamebase Purchase(IAP)는 Google Play, App Store, ONE Store 등 여러 스토어
 
     요청 본문에 `userId`와 함께, 조회할 스토어를 지정하는 `marketIds`(예: `["GG", "AS"]`)를 배열로 담아 보내면 Google Play, App Store 등 여러 스토어의 미소비 건을 한 번에 조회할 수 있습니다. `marketIds`를 비워두면 전체 스토어를 대상으로 조회하지만, Amazon 스토어가 포함된 전체 스토어를 조회하려면 대상 스토어를 모두 명시적으로 나열해야 합니다. 응답에는 건별로 `paymentSeq`, `accessToken`, `gamebaseProductId`, `productType`, `marketId`, `purchaseTime` 등이 담겨 옵니다.
 
-3. 조회한 `paymentSeq`가 게임 DB에 이미 기록되어 있는지 확인한 뒤, 없는 건만 지급하세요.
+> [!NOTE]
+> 콘솔에서 결제 상태를 환불 완료(Refund)로 변경한 건은 미소비 조회 결과에서 자동으로 제외되며, 별도의 소비 처리가 필요하지 않습니다.
+{% endstep %}
 
-    `paymentSeq`가 DB에 있다면 이미 지급을 마친 건이므로, 지급 없이 바로 다음 단계(소비 처리)로 넘어갑니다. 이 확인을 건너뛰면 같은 건이 중복 지급될 수 있습니다.
+{% step %}
+### 지급 대상 확인하고 아이템 지급하기
 
-    DB에 없는 건이 1단계에서 클라이언트가 전달한 값이라면, 그 값을 그대로 믿지 말고 Get Payment Transaction API로 해당 `paymentSeq`와 `accessToken`(1단계의 `purchaseToken`) 조합이 실제 Gamebase 결제 내역과 일치하는지 먼저 확인하세요. 이 확인을 건너뛰면 위조된 값으로 아이템을 요청하는 부정 사용에 그대로 노출됩니다. 반면 2단계에서 서버가 List Consumables API로 직접 조회한 값은 이미 Gamebase가 직접 응답한 것이므로 이 검증이 필요하지 않습니다. 검증이 끝나면 이 API 응답에 담긴 `isConsumable` 값이 `true`인지 확인하세요. `true`이면 아직 소비되지 않은 건이라는 뜻이므로, 지급을 진행해도 안전합니다.
+1. 조회한 `paymentSeq`가 게임 DB에 이미 기록되어 있는지 확인하세요.
 
-    지급할 상품은 `gamebaseProductId`로 식별합니다. 클라이언트의 미소비 결제 내역에도 `gamebaseProductId`가 있지만 재처리 시에는 값이 없을 수 있으므로, 클라이언트가 보낸 값 대신 Get Payment Transaction API 응답의 `gamebaseProductId`를 사용하세요. 2단계에서 서버가 직접 조회한 경우에는 List Consumables 응답의 `gamebaseProductId`를 사용합니다.
+    `paymentSeq`가 DB에 있다면 이미 지급을 마친 건이므로, 지급 없이 바로 소비 처리 단계로 넘어갑니다. 이 확인을 건너뛰면 같은 건이 중복 지급될 수 있습니다.
 
-    여기까지 확인이 끝나면 아이템을 지급하고, 지급이 끝나는 즉시 `userId`, `gamebaseProductId`, `paymentSeq`, `accessToken`을 DB에 기록합니다. 지급 응답을 받고 DB에 기록하기 전에 서버가 중단되는 경우까지 고려한다면, 지급과 기록을 하나의 트랜잭션으로 묶는 것이 안전합니다.
+2. DB에 없는 건이 클라이언트가 전달한 값이라면, Get Payment Transaction API로 결제 내역을 검증하세요.
 
-4. 게임 서버에서 Consume API를 호출해 소비 처리를 완료하세요.
+    클라이언트가 보낸 값을 그대로 믿으면 위조된 값으로 아이템을 요청하는 부정 사용에 그대로 노출됩니다. 해당 `paymentSeq`와 `accessToken`(클라이언트의 `purchaseToken`) 조합이 실제 Gamebase 결제 내역과 일치하는지 확인하고, 응답의 `isConsumable` 값이 `true`인지 확인합니다. `true`이면 아직 소비되지 않은 건이므로 지급을 진행해도 안전합니다. 게임 서버가 List Consumables API로 직접 조회한 값은 Gamebase가 직접 응답한 것이므로 이 검증이 필요하지 않습니다.
 
-    아이템을 지급했다는 사실을 Gamebase에 알려야 다음 조회부터 이 건이 미소비 목록에서 빠집니다.
+3. 지급할 상품을 `gamebaseProductId`로 식별하세요.
 
-    ```http
-    POST /tcgb-inapp/v1.3/apps/{appId}/consume
-    ```
+    클라이언트의 미소비 결제 내역에도 `gamebaseProductId`가 있지만 재처리 시에는 값이 없을 수 있으므로, 클라이언트가 보낸 값 대신 Get Payment Transaction API 응답의 `gamebaseProductId`를 사용합니다. 게임 서버가 직접 조회한 경우에는 List Consumables 응답의 `gamebaseProductId`를 사용합니다.
 
-    요청 시 `paymentSeq`와 `accessToken`을 함께 보냅니다. 보안상 이 호출은 클라이언트가 아니라 반드시 게임 서버에서 수행합니다. 이 호출 자체가 타임아웃되면 지금 이 가이드에서 다루는 미소비 상황이 다시 발생하는 셈이므로, 요청 타임아웃을 10초 이상으로 설정하고 타임아웃이 나더라도 호출 이력을 남겨 두는 것이 좋습니다.
+4. 아이템을 지급하고, 지급이 끝나는 즉시 `userId`, `gamebaseProductId`, `paymentSeq`, `accessToken`을 DB에 기록하세요.
+
+    지급 응답을 받고 DB에 기록하기 전에 서버가 중단되는 경우까지 고려한다면, 지급과 기록을 하나의 트랜잭션으로 묶는 것이 안전합니다.
+
+> [!NOTE]
+> `productType`이 `CONSUMABLE`이거나, 구독(subscription) 상품이지만 주기적으로 소비 가능한 아이템을 지급하는 `CONSUMABLE_AUTO_RENEWABLE`인 건만 이 흐름의 대상입니다. 순수 구독형 상품(`AUTO_RENEWABLE`)은 소비 개념이 없으므로 이 흐름으로 처리하지 않습니다.
+{% endstep %}
+
+{% step %}
+### 소비 처리 완료하기
+
+게임 서버에서 Consume API를 호출해 소비 처리를 완료하세요. 아이템을 지급했다는 사실을 Gamebase에 알려야 다음 조회부터 이 건이 미소비 목록에서 빠집니다.
+
+```http
+POST /tcgb-inapp/v1.3/apps/{appId}/consume
+```
+
+요청 시 `paymentSeq`와 `accessToken`을 함께 보냅니다. 보안상 이 호출은 클라이언트가 아니라 반드시 게임 서버에서 수행합니다. 이 호출 자체가 타임아웃되면 미소비 상황이 다시 발생하므로, 요청 타임아웃을 10초 이상으로 설정하고 타임아웃이 나더라도 호출 이력을 남겨 두세요.
+{% endstep %}
+
+{% endstepper %}
 
 ## 동작 확인하기
 
-재처리가 끝났는지 확인하려면 1단계 또는 2단계의 미소비 목록 조회를 다시 실행하세요. 방금 처리한 건이 더 이상 나타나지 않으면 정상적으로 재처리된 것입니다. 계속 남아 있다면 3~4단계에서 지급 또는 소비 처리 중 하나가 실패했다는 뜻이므로 로그를 확인합니다.
+재처리가 끝났는지 확인하려면 **미소비 목록 조회하기**의 클라이언트 또는 서버 조회를 다시 실행하세요. 방금 처리한 건이 더 이상 나타나지 않으면 정상적으로 재처리된 것입니다. 계속 남아 있다면 지급 또는 소비 처리 중 하나가 실패했다는 뜻이므로 게임 서버 로그를 확인합니다.
 
 ## 응용하기
 
-- **클라이언트 주도 vs 서버 주도 재처리**: 1단계처럼 클라이언트가 로그인·결제 전·상점 진입·프로필 확인 시점마다 자동으로 조회·재처리하게 하면 미소비 건을 사용자가 알아채기 전에 해소할 수 있습니다. 다만 사용자가 게임을 다시 켜지 않으면 이 네 시점 자체가 발생하지 않으므로, CS 문의가 들어온 특정 사용자 건은 2단계처럼 운영 도구에서 서버 API로 직접 조회·재처리하는 경로도 함께 마련해 두길 권장합니다. Gamebase 콘솔의 **구매(IAP) > 결제 정보** 화면에서 결제 건별 소비 상태를 확인할 수 있지만, 미소비 건만 모아 보거나 일괄 재처리하는 전용 기능은 없으므로 별도의 운영 도구가 필요합니다. 서버 API 명세는 [Gamebase API 가이드](https://docs.nhncloud.com/ko/Game/Gamebase/ko/api-guide/)를, 콘솔 화면은 [Gamebase 콘솔 결제 가이드](https://docs.nhncloud.com/ko/Game/Gamebase/ko/oper-purchase/)를 참고하세요.
-- **스토어별 차이**: Gamebase는 Google Play, App Store, ONE Store 등 스토어별 결제를 같은 API로 추상화해 제공하므로, 조회·소비 처리 코드 자체는 스토어에 상관없이 동일합니다. 스토어별 지원 범위는 [Gamebase Android SDK 결제 가이드](https://docs.nhncloud.com/ko/Game/Gamebase/ko/aos-purchase/)를 참고하세요.
-- **구독 상품 처리**: `PurchasableReceipt`(클라이언트)와 List Consumables·Get Payment Transaction 응답의 `productType`이 `CONSUMABLE`이거나, 구독 상품이지만 주기적으로 소비 가능한 아이템을 지급하는 `CONSUMABLE_AUTO_RENEWABLE`인 건만 이 흐름의 대상입니다. 순수 구독형 상품(`AUTO_RENEWABLE`)은 소비 개념이 없으므로 이 가이드의 조회·소비 흐름 대상이 아니며, 구독 활성/만료 여부는 List Active Subscriptions API로 확인합니다. 자세한 내용은 [Gamebase API 가이드](https://docs.nhncloud.com/ko/Game/Gamebase/ko/api-guide/)를 참고하세요.
-- **환불 처리된 결제**: 콘솔에서 결제 상태를 환불 완료(Refund)로 변경한 건은 이후 미소비 조회 결과에서 자동으로 제외됩니다. 환불 처리한 건에 대해 별도의 소비 처리는 필요하지 않습니다. 결제 상태 변경 방법은 [Gamebase 콘솔 결제 가이드](https://docs.nhncloud.com/ko/Game/Gamebase/ko/oper-purchase/)를 참고하세요.
+- **CS용 운영 도구 구성**: 문의한 사용자의 미소비 건을 서버 API로 직접 조회하고 재처리합니다. [Gamebase API 가이드](https://docs.nhncloud.com/ko/Game/Gamebase/ko/api-guide/)
+- **콘솔에서 소비 상태 확인**: **구매(IAP) > 결제 정보**에서 결제 건별 소비 상태를 확인합니다. [Gamebase 콘솔 결제 가이드](https://docs.nhncloud.com/ko/Game/Gamebase/ko/oper-purchase/)
+- **구독 상품 상태 확인**: 순수 구독 상품은 List Active Subscriptions API로 확인합니다. [Gamebase API 가이드](https://docs.nhncloud.com/ko/Game/Gamebase/ko/api-guide/)
 
 ## 용어 알아보기
 
