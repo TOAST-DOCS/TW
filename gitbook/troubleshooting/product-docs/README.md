@@ -7,21 +7,33 @@ icon: wrench
 
 # 문제 해결
 
-{% hint style="info" %}
-**이렇게 찾으세요**
-
-지금 겪고 있는 증상과 같은 제목을 찾아 들어가세요.&#x20;
-{% endhint %}
-
-<button type="button" class="button primary" data-action="ask" data-icon="gitbook-assistant">Ask a question…</button>
+<figure><img src=".gitbook/assets/스크린샷 2026-11-04 092538.png" alt=""><figcaption></figcaption></figure>
 
 ***
 
-## 증상으로 찾기
+## 자주 찾는 증상
 
-지금 겪고 증상과 같은 제목을 찾아 문제를 해결하세요.&#x20;
+지금 겪고 증상과 같은 제목을 찾아 문제를 해결하세요.
 
-<table data-view="cards"><thead><tr><th></th><th data-type="content-ref"></th><th data-type="content-ref"></th><th data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>Compute</strong></td><td><a href="compute/ssh-..md">ssh-..md</a></td><td><a href="compute/undefined.md">undefined.md</a></td><td><a href="/broken/pages/c3101d8e098a6f696c75f6bda47d0ea5fdade1e5">Broken link</a></td></tr><tr><td><strong>NETWORK</strong></td><td><a href="network/load-balancer-inactive.md">load-balancer-inactive.md</a></td><td><a href="network/undefined.md">undefined.md</a></td><td><a href="/broken/pages/65332f63d0b6cedd6ac718136ba8d89ec6cc1a4d">Broken link</a></td></tr><tr><td>DATABASE</td><td><a href="database/rds.md">rds.md</a></td><td><a href="/broken/pages/65332f63d0b6cedd6ac718136ba8d89ec6cc1a4d">Broken link</a></td><td><a href="/broken/pages/6625e4a7113b37994c505597f0f9e2c62008a5c5">Broken link</a></td></tr></tbody></table>
+&#x20;
+
+{% columns %}
+{% column width="50%" %}
+* 인스턴스 생성이 실패합니다
+* 인스턴스에 SSH로 접속되지 않습니다.
+* Load Balancer 멤버가 INACTIVE로 표시됩니다.
+{% endcolumn %}
+
+{% column width="50%" %}
+
+{% endcolumn %}
+{% endcolumns %}
+
+
+
+
+
+<table data-view="cards"><thead><tr><th></th><th data-type="content-ref"></th><th data-type="content-ref"></th><th data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>Compute</strong></td><td><a href="compute/ssh-..md">ssh-..md</a></td><td><a href="compute/undefined.md">undefined.md</a></td><td><a href="/broken/pages/c3101d8e098a6f696c75f6bda47d0ea5fdade1e5">Broken link</a></td></tr></tbody></table>
 
 ## 찾는 증상이 없다면
 
