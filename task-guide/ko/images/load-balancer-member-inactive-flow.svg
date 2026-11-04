@@ -1,95 +1,106 @@
-<svg width="810" height="940" viewBox="0 0 810 940" xmlns="http://www.w3.org/2000/svg" role="img">
-<title>Load Balancer 멤버 INACTIVE 원인 판단 흐름</title>
-<desc>멤버 상태가 INACTIVE일 때 보안 그룹, IP 접근 제어 그룹, 서비스 실행 상태, 상태 확인 설정, 응답 시간을 차례로 확인합니다. 각 질문에서 아니오이면 원인 1부터 원인 5로, 모두 예이면 원인 6(멤버 등록 포트 불일치)으로 이어집니다.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 901" width="600" height="901" font-family="'Pretendard', sans-serif" role="img">
+  <title>Load Balancer 멤버 INACTIVE 원인 판단 흐름</title>
+  <desc>멤버 상태가 INACTIVE이면 보안 그룹, IP 접근 제어 그룹, 서비스 상태, 상태 확인 설정, 응답 시간, 멤버 등록 포트를 차례로 확인하고, 해당하는 원인의 해결 방법으로 이동합니다. 모두 정상이면 고객지원에 문의합니다.</desc>
+  <defs>
+    <marker id="arrow-default" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#8B8B8B"/>
+    </marker>
+  </defs>
 
-<defs>
-  <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
-    <path d="M0 0L10 5L0 10z" fill="#8B8B8B"/>
-  </marker>
-</defs>
+  <rect width="600" height="901" fill="#F7F7F7"/>
 
-<style>
-  text { font-family: 'Pretendard', sans-serif; }
-</style>
+  <!-- 콘텐츠 x 80~570 → translate(-25)로 좌우 여백 55 균등 -->
+  <g transform="translate(-25, 0)">
+    <rect x="80" y="36" width="220" height="40" rx="6" fill="#646464"/>
+    <text x="190" y="56" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#FFFFFF">멤버 상태가 INACTIVE</text>
+    <line x1="190" y1="76" x2="190" y2="102" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow-default)"/>
 
-<!-- 캔버스 배경 -->
-<rect x="0" y="0" width="810" height="940" fill="#F7F7F7"/>
+    <!-- 판단 1 -->
+    <polygon points="190,102 300,140 190,178 80,140" fill="#FFFFFF" stroke="#125DE6" stroke-width="1.5"/>
+    <text x="190" y="124" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#2D2D2D">멤버 보안 그룹이</text>
+    <text x="190" y="140" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#2D2D2D">Load Balancer</text>
+    <text x="190" y="156" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#2D2D2D">트래픽 허용?</text>
+    <line x1="300" y1="140" x2="360" y2="140" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow-default)"/>
+    <text x="330" y="130" text-anchor="middle" font-size="12" font-weight="bold" fill="#444444">아니오</text>
+    <rect x="360" y="118" width="210" height="44" rx="6" fill="#125DE6"/>
+    <text x="465" y="132" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#FFFFFF">원인 1</text>
+    <text x="465" y="148" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#FFFFFF">보안 그룹 수신 규칙 추가</text>
+    <line x1="190" y1="178" x2="190" y2="217" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow-default)"/>
+    <text x="202" y="201" font-size="12" font-weight="bold" fill="#444444">예</text>
 
-<!-- 시작: 멤버 상태 INACTIVE -->
-<rect x="140" y="40" width="240" height="48" rx="6" fill="#646464"/>
-<text x="260" y="64" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="600" fill="#FFFFFF">멤버 상태가 INACTIVE</text>
-<path d="M260 88L260 124" fill="none" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <!-- 판단 2 -->
+    <polygon points="190,217 300,255 190,293 80,255" fill="#FFFFFF" stroke="#125DE6" stroke-width="1.5"/>
+    <text x="190" y="247" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#2D2D2D">IP 접근 제어 그룹이</text>
+    <text x="190" y="263" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#2D2D2D">멤버 IP를 허용?</text>
+    <line x1="300" y1="255" x2="360" y2="255" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow-default)"/>
+    <text x="330" y="245" text-anchor="middle" font-size="12" font-weight="bold" fill="#444444">아니오</text>
+    <rect x="360" y="233" width="210" height="44" rx="6" fill="#125DE6"/>
+    <text x="465" y="247" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#FFFFFF">원인 2</text>
+    <text x="465" y="263" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#FFFFFF">멤버 IP 차단 해제</text>
+    <line x1="190" y1="293" x2="190" y2="332" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow-default)"/>
+    <text x="202" y="316" font-size="12" font-weight="bold" fill="#444444">예</text>
 
+    <!-- 판단 3 -->
+    <polygon points="190,332 300,370 190,408 80,370" fill="#FFFFFF" stroke="#125DE6" stroke-width="1.5"/>
+    <text x="190" y="362" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#2D2D2D">서비스가 실행 중이고</text>
+    <text x="190" y="378" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#2D2D2D">포트가 열려 있음?</text>
+    <line x1="300" y1="370" x2="360" y2="370" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow-default)"/>
+    <text x="330" y="360" text-anchor="middle" font-size="12" font-weight="bold" fill="#444444">아니오</text>
+    <rect x="360" y="348" width="210" height="44" rx="6" fill="#125DE6"/>
+    <text x="465" y="362" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#FFFFFF">원인 3</text>
+    <text x="465" y="378" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#FFFFFF">서비스 재시작</text>
+    <line x1="190" y1="408" x2="190" y2="447" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow-default)"/>
+    <text x="202" y="431" font-size="12" font-weight="bold" fill="#444444">예</text>
 
-<!-- 질문 1 -->
-<polygon points="260,124 430,180 260,236 90,180" fill="#FFFFFF" stroke="#125DE6" stroke-width="1.5"/>
-<text x="260" y="163" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#2D2D2D">멤버의 보안 그룹이</text>
-<text x="260" y="180" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#2D2D2D">Load Balancer 트래픽을</text>
-<text x="260" y="197" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#2D2D2D">허용하는가?</text>
-<path d="M430 180L520 180" fill="none" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow)"/>
-<text x="475" y="168" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#444444">아니오</text>
-<rect x="520" y="144" width="200" height="72" rx="6" fill="#125DE6"/>
-<text x="620" y="168" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="700" fill="#FFFFFF">원인 1</text>
-<text x="620" y="192" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#FFFFFF">보안 그룹이 트래픽 차단</text>
-<path d="M260 236L260 264" fill="none" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow)"/>
-<text x="272" y="250" dominant-baseline="central" font-size="12" fill="#444444">예</text>
+    <!-- 판단 4 -->
+    <polygon points="190,447 300,485 190,523 80,485" fill="#FFFFFF" stroke="#125DE6" stroke-width="1.5"/>
+    <text x="190" y="477" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#2D2D2D">상태 확인 설정이</text>
+    <text x="190" y="493" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#2D2D2D">실제 서비스와 일치?</text>
+    <line x1="300" y1="485" x2="360" y2="485" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow-default)"/>
+    <text x="330" y="475" text-anchor="middle" font-size="12" font-weight="bold" fill="#444444">아니오</text>
+    <rect x="360" y="463" width="210" height="44" rx="6" fill="#125DE6"/>
+    <text x="465" y="477" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#FFFFFF">원인 4</text>
+    <text x="465" y="493" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#FFFFFF">상태 확인 설정 수정</text>
+    <line x1="190" y1="523" x2="190" y2="562" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow-default)"/>
+    <text x="202" y="546" font-size="12" font-weight="bold" fill="#444444">예</text>
 
-<!-- 질문 2 -->
-<polygon points="260,264 430,320 260,376 90,320" fill="#FFFFFF" stroke="#125DE6" stroke-width="1.5"/>
-<text x="260" y="303" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#2D2D2D">Load Balancer의</text>
-<text x="260" y="320" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#2D2D2D">IP 접근 제어 그룹이</text>
-<text x="260" y="337" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#2D2D2D">멤버 IP를 허용하는가?</text>
-<path d="M430 320L520 320" fill="none" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow)"/>
-<text x="475" y="308" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#444444">아니오</text>
-<rect x="520" y="284" width="200" height="72" rx="6" fill="#125DE6"/>
-<text x="620" y="303" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="700" fill="#FFFFFF">원인 2</text>
-<text x="620" y="325" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#FFFFFF">IP 접근 제어 그룹이</text>
-<text x="620" y="342" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#FFFFFF">멤버 IP 차단</text>
-<path d="M260 376L260 404" fill="none" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow)"/>
-<text x="272" y="390" dominant-baseline="central" font-size="12" fill="#444444">예</text>
+    <!-- 판단 5 -->
+    <polygon points="190,562 300,600 190,638 80,600" fill="#FFFFFF" stroke="#125DE6" stroke-width="1.5"/>
+    <text x="190" y="592" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#2D2D2D">최대 응답 대기 시간</text>
+    <text x="190" y="608" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#2D2D2D">안에 응답?</text>
+    <line x1="300" y1="600" x2="360" y2="600" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow-default)"/>
+    <text x="330" y="590" text-anchor="middle" font-size="12" font-weight="bold" fill="#444444">아니오</text>
+    <rect x="360" y="578" width="210" height="44" rx="6" fill="#125DE6"/>
+    <text x="465" y="592" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#FFFFFF">원인 5</text>
+    <text x="465" y="608" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#FFFFFF">최대 응답 대기 시간 조정</text>
+    <line x1="190" y1="638" x2="190" y2="677" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow-default)"/>
+    <text x="202" y="661" font-size="12" font-weight="bold" fill="#444444">예</text>
 
-<!-- 질문 3 -->
-<polygon points="260,404 430,460 260,516 90,460" fill="#FFFFFF" stroke="#125DE6" stroke-width="1.5"/>
-<text x="260" y="443" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#2D2D2D">멤버에서 서비스가</text>
-<text x="260" y="460" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#2D2D2D">실행 중이고 포트가</text>
-<text x="260" y="477" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#2D2D2D">열려 있는가?</text>
-<path d="M430 460L520 460" fill="none" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow)"/>
-<text x="475" y="448" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#444444">아니오</text>
-<rect x="520" y="424" width="200" height="72" rx="6" fill="#125DE6"/>
-<text x="620" y="448" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="700" fill="#FFFFFF">원인 3</text>
-<text x="620" y="472" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#FFFFFF">서비스 비정상</text>
-<path d="M260 516L260 544" fill="none" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow)"/>
-<text x="272" y="530" dominant-baseline="central" font-size="12" fill="#444444">예</text>
+    <!-- 판단 6 -->
+    <polygon points="190,677 300,715 190,753 80,715" fill="#FFFFFF" stroke="#125DE6" stroke-width="1.5"/>
+    <text x="190" y="707" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#2D2D2D">멤버 등록 포트가</text>
+    <text x="190" y="723" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#2D2D2D">서비스 포트와 같음?</text>
+    <line x1="300" y1="715" x2="360" y2="715" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow-default)"/>
+    <text x="330" y="705" text-anchor="middle" font-size="12" font-weight="bold" fill="#444444">아니오</text>
+    <rect x="360" y="693" width="210" height="44" rx="6" fill="#125DE6"/>
+    <text x="465" y="707" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#FFFFFF">원인 6</text>
+    <text x="465" y="723" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#FFFFFF">멤버 삭제 후 재등록</text>
+    <line x1="190" y1="753" x2="190" y2="783" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow-default)"/>
+    <text x="202" y="772" font-size="12" font-weight="bold" fill="#444444">예</text>
 
-<!-- 질문 4 -->
-<polygon points="260,544 430,600 260,656 90,600" fill="#FFFFFF" stroke="#125DE6" stroke-width="1.5"/>
-<text x="260" y="583" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#2D2D2D">상태 확인 설정이</text>
-<text x="260" y="600" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#2D2D2D">(프로토콜, 포트, URL, 상태 코드)</text>
-<text x="260" y="617" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#2D2D2D">실제 서비스와 일치하는가?</text>
-<path d="M430 600L520 600" fill="none" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow)"/>
-<text x="475" y="588" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#444444">아니오</text>
-<rect x="520" y="564" width="200" height="72" rx="6" fill="#125DE6"/>
-<text x="620" y="588" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="700" fill="#FFFFFF">원인 4</text>
-<text x="620" y="612" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#FFFFFF">상태 확인 설정 불일치</text>
-<path d="M260 656L260 684" fill="none" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow)"/>
-<text x="272" y="670" dominant-baseline="central" font-size="12" fill="#444444">예</text>
+    <!-- 안내/이관 -->
+    <rect x="80" y="783" width="220" height="40" rx="6" fill="#646464"/>
+    <text x="190" y="803" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#FFFFFF">고객지원 문의</text>
 
-<!-- 질문 5 -->
-<polygon points="260,684 430,740 260,796 90,740" fill="#FFFFFF" stroke="#125DE6" stroke-width="1.5"/>
-<text x="260" y="723" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#2D2D2D">서비스 응답이</text>
-<text x="260" y="740" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#2D2D2D">최대 응답 대기 시간</text>
-<text x="260" y="757" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#2D2D2D">안에 오는가?</text>
-<path d="M430 740L520 740" fill="none" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow)"/>
-<text x="475" y="728" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#444444">아니오</text>
-<rect x="520" y="704" width="200" height="72" rx="6" fill="#125DE6"/>
-<text x="620" y="728" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="700" fill="#FFFFFF">원인 5</text>
-<text x="620" y="752" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#FFFFFF">응답 시간 초과</text>
-<path d="M260 796L260 836" fill="none" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow)"/>
-<text x="272" y="816" dominant-baseline="central" font-size="12" fill="#444444">예</text>
-
-<!-- 원인 6 (모두 예) -->
-<rect x="140" y="836" width="240" height="64" rx="6" fill="#125DE6"/>
-<text x="260" y="856" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="700" fill="#FFFFFF">원인 6</text>
-<text x="260" y="880" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#FFFFFF">멤버 등록 포트 불일치</text>
-
+    <!-- 범례 -->
+    <line x1="80" y1="843" x2="570" y2="843" stroke="#DCDCDC" stroke-width="1"/>
+    <rect x="80" y="857" width="14" height="14" rx="3" fill="#646464"/>
+    <text x="100" y="864" dominant-baseline="central" font-size="11" fill="#2D2D2D">증상·안내/이관</text>
+    <polygon points="200,857 215,864 200,871 185,864" fill="#FFFFFF" stroke="#125DE6" stroke-width="1"/>
+    <text x="221" y="864" dominant-baseline="central" font-size="11" fill="#2D2D2D">판단</text>
+    <rect x="270" y="857" width="14" height="14" rx="3" fill="#125DE6"/>
+    <text x="290" y="864" dominant-baseline="central" font-size="11" fill="#2D2D2D">해결</text>
+    <line x1="340" y1="864" x2="365" y2="864" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow-default)"/>
+    <text x="372" y="864" dominant-baseline="central" font-size="11" fill="#2D2D2D">예/아니오 분기</text>
+  </g>
 </svg>
