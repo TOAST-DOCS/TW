@@ -18,13 +18,13 @@ icon: wrench
 &#x20;
 
 {% columns %}
-{% column width="50%" %}
+{% column width="91.66666666666666%" %}
 * 인스턴스 생성이 실패합니다
 * 인스턴스에 SSH로 접속되지 않습니다.
 * Load Balancer 멤버가 INACTIVE로 표시됩니다.
 {% endcolumn %}
 
-{% column width="50%" %}
+{% column width="8.333333333333343%" %}
 
 {% endcolumn %}
 {% endcolumns %}
@@ -33,7 +33,7 @@ icon: wrench
 
 
 
-<table data-view="cards"><thead><tr><th></th><th data-type="content-ref"></th><th data-type="content-ref"></th><th data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>Compute</strong></td><td><a href="compute/ssh-..md">ssh-..md</a></td><td><a href="compute/undefined.md">undefined.md</a></td><td><a href="/broken/pages/c3101d8e098a6f696c75f6bda47d0ea5fdade1e5">Broken link</a></td></tr></tbody></table>
+<table data-card-size="large" data-view="cards"><thead><tr><th></th><th data-type="content-ref"></th><th data-type="content-ref"></th><th data-type="content-ref"></th><th></th></tr></thead><tbody><tr><td><strong>Compute</strong></td><td><a href="compute/ssh-..md">ssh-..md</a></td><td><a href="compute/undefined.md">undefined.md</a></td><td><a href="/broken/pages/c3101d8e098a6f696c75f6bda47d0ea5fdade1e5">Broken link</a></td><td></td></tr></tbody></table>
 
 ## 찾는 증상이 없다면
 
