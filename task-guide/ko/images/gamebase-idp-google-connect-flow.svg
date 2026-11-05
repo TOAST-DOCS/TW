@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" width="600" height="450" font-family="'Pretendard', sans-serif" role="img">
+  <title>Gamebase Google IdP 연동 흐름</title>
+  <desc>Google Cloud Console에서 OAuth 클라이언트를 발급하고(1), Gamebase 콘솔에 Client ID와 Secret Key를 인증 정보로 등록한 뒤(2), Unity SDK에서 Google 로그인 API를 호출하고(3), Gamebase 콘솔의 멤버 조회로 Google 계정 연결을 확인합니다(4).</desc>
+  <defs>
+    <marker id="arrow-default" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#8B8B8B"/>
+    </marker>
+  </defs>
+
+  <rect width="600" height="450" fill="#F7F7F7"/>
+
+  <!-- 1. Google Cloud Console -->
+  <circle cx="165" cy="70" r="9" fill="#2D2D2D"/>
+  <text x="165" y="70" text-anchor="middle" dominant-baseline="central" font-size="11" font-weight="bold" fill="#FFFFFF">1</text>
+  <rect x="185" y="40" width="260" height="60" rx="6" fill="#646464"/>
+  <text x="315" y="62" text-anchor="middle" dominant-baseline="central" font-size="13" font-weight="bold" fill="#FFFFFF">Google Cloud Console</text>
+  <text x="315" y="80" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#FFFFFF">OAuth 클라이언트 발급</text>
+
+  <line x1="315" y1="100" x2="315" y2="150" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow-default)"/>
+  <text x="327" y="125" dominant-baseline="central" font-size="12" fill="#444444">Client ID·Secret Key</text>
+
+  <!-- 2. Gamebase 콘솔: 인증 정보 등록 -->
+  <circle cx="165" cy="180" r="9" fill="#2D2D2D"/>
+  <text x="165" y="180" text-anchor="middle" dominant-baseline="central" font-size="11" font-weight="bold" fill="#FFFFFF">2</text>
+  <rect x="185" y="150" width="260" height="60" rx="6" fill="#125DE6"/>
+  <text x="315" y="172" text-anchor="middle" dominant-baseline="central" font-size="13" font-weight="bold" fill="#FFFFFF">Gamebase 콘솔</text>
+  <text x="315" y="190" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#FFFFFF">인증 정보 등록</text>
+
+  <line x1="315" y1="210" x2="315" y2="260" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow-default)"/>
+  <text x="327" y="235" dominant-baseline="central" font-size="12" fill="#444444">설정 완료</text>
+
+  <!-- 3. Unity SDK -->
+  <circle cx="165" cy="290" r="9" fill="#2D2D2D"/>
+  <text x="165" y="290" text-anchor="middle" dominant-baseline="central" font-size="11" font-weight="bold" fill="#FFFFFF">3</text>
+  <rect x="185" y="260" width="260" height="60" rx="6" fill="#646464"/>
+  <text x="315" y="282" text-anchor="middle" dominant-baseline="central" font-size="13" font-weight="bold" fill="#FFFFFF">Unity SDK</text>
+  <text x="315" y="300" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#FFFFFF">Google 로그인 API 호출</text>
+
+  <line x1="315" y1="320" x2="315" y2="370" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow-default)"/>
+  <text x="327" y="345" dominant-baseline="central" font-size="12" fill="#444444">로그인 성공</text>
+
+  <!-- 4. Gamebase 콘솔: 멤버 조회 -->
+  <circle cx="165" cy="400" r="9" fill="#2D2D2D"/>
+  <text x="165" y="400" text-anchor="middle" dominant-baseline="central" font-size="11" font-weight="bold" fill="#FFFFFF">4</text>
+  <rect x="185" y="370" width="260" height="60" rx="6" fill="#125DE6"/>
+  <text x="315" y="392" text-anchor="middle" dominant-baseline="central" font-size="13" font-weight="bold" fill="#FFFFFF">Gamebase 콘솔</text>
+  <text x="315" y="410" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#FFFFFF">멤버 조회로 연동 확인</text>
+</svg>
