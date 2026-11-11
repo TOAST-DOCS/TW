@@ -1,0 +1,111 @@
+{
+  "_comment": "GHE cloud-docs 리포지터리 ↔ task-guide/ko/ 가이드 파일 매핑",
+  "_updated": "2026-11-11",
+  "mappings": [
+    {
+      "guide": "task-guide/ko/cloud-functions-serverless-deploy.md",
+      "title": "Cloud Functions로 HTTP 함수 배포하기",
+      "service": "Cloud Functions",
+      "repos": ["Cloud-Functions"],
+      "assignee": "하수진"
+    },
+    {
+      "guide": "task-guide/ko/cloud-monitoring-alarm-policy.md",
+      "title": "Cloud Monitoring에서 임계치 기반 알림 설정하기",
+      "service": "Cloud Monitoring",
+      "repos": ["Monitoring-Cloud-Monitoring"],
+      "assignee": "박선영"
+    },
+    {
+      "guide": "task-guide/ko/gamebase-push-message.md",
+      "title": "Gamebase 연동 후 푸시 메시지 발송까지 완료하기",
+      "service": "Gamebase",
+      "repos": ["Gamebase"],
+      "assignee": "이종민"
+    },
+    {
+      "guide": "task-guide/ko/gamebase-unconsumed-payment.md",
+      "title": "Gamebase 미소비 결제 건 조회하고 재처리하기",
+      "service": "Gamebase",
+      "repos": ["Gamebase"],
+      "assignee": "미지정"
+    },
+    {
+      "guide": "task-guide/ko/instance-creation-failed.md",
+      "title": "인스턴스 생성이 실패합니다",
+      "service": "Instance",
+      "repos": ["Compute-Instance", "Compute"],
+      "assignee": "하수진"
+    },
+    {
+      "guide": "task-guide/ko/instance-ssh-connection-failed.md",
+      "title": "인스턴스에 SSH로 접속되지 않습니다",
+      "service": "Instance",
+      "repos": ["Compute-Instance", "Compute"],
+      "assignee": "하수진"
+    },
+    {
+      "guide": "task-guide/ko/l7-load-balancer-configuration.md",
+      "title": "URL 경로 기반으로 트래픽을 분산하는 L7 로드 밸런서 구성하기",
+      "service": "Load Balancer",
+      "repos": ["Network-Load-Balancer"],
+      "assignee": "박선영"
+    },
+    {
+      "guide": "task-guide/ko/load-balancer-member-inactive.md",
+      "title": "Load Balancer 멤버가 INACTIVE로 표시됩니다",
+      "service": "Load Balancer",
+      "repos": ["Network-Load-Balancer"],
+      "assignee": "이종민"
+    },
+    {
+      "guide": "task-guide/ko/nat-gateway-private-subnet.md",
+      "title": "NAT Gateway로 프라이빗 서브넷 인터넷 연결 구성하기",
+      "service": "NAT Gateway",
+      "repos": ["NAT-Gateway", "Network-VPC"],
+      "assignee": "이종민"
+    },
+    {
+      "guide": "task-guide/ko/network-firewall-policy-configuration.md",
+      "title": "Network Firewall 정책 구성하기",
+      "service": "Network Firewall",
+      "repos": ["Network-Firewall"],
+      "assignee": "박선영"
+    },
+    {
+      "guide": "task-guide/ko/obs-access-control-cors.md",
+      "title": "Object Storage 컨테이너에 CORS 설정하기",
+      "service": "Object Storage",
+      "repos": ["Storage-Object-Storage"],
+      "assignee": "하수진"
+    },
+    {
+      "guide": "task-guide/ko/obs-static-website-hosting.md",
+      "title": "Object Storage에 정적 웹사이트 호스팅하기",
+      "service": "Object Storage",
+      "repos": ["Storage-Object-Storage"],
+      "assignee": "이창훈"
+    },
+    {
+      "guide": "task-guide/ko/security-groups-rule-design.md",
+      "title": "3티어 아키텍처에 맞는 Security Groups 규칙 설계하기",
+      "service": "Security Groups",
+      "repos": ["Security-Groups", "Compute-Instance"],
+      "assignee": "박선영"
+    },
+    {
+      "guide": "task-guide/ko/skm-api-call-with-user-access-key-token.md",
+      "title": "User Access Key 토큰으로 Secure Key Manager API 호출하기",
+      "service": "Secure Key Manager",
+      "repos": ["kms"],
+      "assignee": "박선영"
+    },
+    {
+      "guide": "task-guide/ko/skm-key-management.md",
+      "title": "Secure Key Manager로 암호화 키 관리하기",
+      "service": "Secure Key Manager",
+      "repos": ["kms"],
+      "assignee": "박선영"
+    }
+  ]
+}

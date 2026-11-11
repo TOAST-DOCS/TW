@@ -1,0 +1,879 @@
+{
+  "lastPoll": "2026-11-11T05:29:02.446Z",
+  "heartbeat": {
+    "timestamp": "2026-11-11T05:29:02.446Z",
+    "trackedRepos": 122,
+    "repoNames": [
+      "Database-Migration-Service",
+      "Internal-Agent-Test",
+      "translate-test",
+      "API-Gateway",
+      "EventBus",
+      "Alimtalk",
+      "AppGuard",
+      "autocomplete",
+      "CAPTCHA",
+      "CDN",
+      "Certificate-Manager",
+      "Cloud-Access",
+      "Cloud-Functions",
+      "Cloud-Scheduler",
+      "Cloud-Search",
+      "CloudTrail",
+      "Colocation-Gateway",
+      "Compute",
+      "Compute-Auto-Scale",
+      "Compute-GPU",
+      "Compute-Image",
+      "Compute-Image-Builder",
+      "Compute-Instance",
+      "Compute-Instance-Template",
+      "Compute-VirtualDesktop",
+      "Contact-Center",
+      "Container-Container-Registry-v2",
+      "Container-Container-Service",
+      "Corporations-Search",
+      "Data-Flow",
+      "Data-Lake-Storage",
+      "Data-Query",
+      "DDoS-Guard",
+      "Deploy",
+      "DirectConnect",
+      "Document-Recognizer",
+      "Dooray",
+      "DummyService",
+      "E-mail",
+      "easycache",
+      "EasyMaker",
+      "EasyQueue",
+      "Face-Recognition",
+      "File-Crafter",
+      "Floating-IP",
+      "GameAnvil",
+      "Gamebase",
+      "GameStarter",
+      "HASTE",
+      "IAP",
+      "Image",
+      "Internet-Gateway",
+      "kms",
+      "Launching",
+      "Leaderboard",
+      "Load-Balancer-DSR",
+      "Log-Crash-Search",
+      "Managed",
+      "ML-Deep-Learning-Instance",
+      "Monitoring-Cloud-Monitoring",
+      "NAT-Gateway",
+      "Network",
+      "Network-ACL",
+      "Network-DNSPLUS",
+      "Network-Firewall",
+      "Network-Flow-Log",
+      "Network-Interface",
+      "Network-Load-Balancer",
+      "Network-VPC",
+      "nhn-cloud-foundry",
+      "NHN-Compliance",
+      "NHNBastion",
+      "NHNCloud-SDK",
+      "notification-hub",
+      "OCR",
+      "Peering-Gateway",
+      "pipeline",
+      "Private-DNS",
+      "PrivateCA",
+      "Push",
+      "Quickstarts",
+      "RCS-Bizmessage",
+      "RDS",
+      "RDS-FOR-POSTGRESQL",
+      "RDS-FOR-SQLSERVER",
+      "ResourceWatcher",
+      "ROLE",
+      "RTCS",
+      "Security-Advisor",
+      "Security-Groups",
+      "Security-Monitoring",
+      "Server-Security-Check",
+      "Service-Gateway",
+      "Service-Monitoring",
+      "ShortURL",
+      "Smart-Downloader",
+      "SMS",
+      "Storage-Backup",
+      "Storage-Block-Storage",
+      "Storage-NAS",
+      "Storage-NAS-For-Big-Data",
+      "Storage-Object-Storage",
+      "Storage-Online-NAS",
+      "Storage-Storage-Gateway",
+      "STT",
+      "System-Monitoring",
+      "TOAST-bill",
+      "TOAST-Cloud",
+      "Traffic-Mirroring",
+      "Transit-Hub",
+      "TTS",
+      "Vaccine",
+      "Vehicle-Plate-Recognizer",
+      "Vertias-Backup",
+      "VPN-Gateway",
+      "WEB-Firewall",
+      "Webshell-Threat-Detector",
+      "Support-Status",
+      "Container-Kubernetes",
+      "Agent-Test",
+      "Network-IPSec-VPN",
+      "Security_VPN"
+    ]
+  },
+  "changes": [],
+  "history": [
+    {
+      "pollDate": "2026-11-11T04:50:03.518Z",
+      "changes": [
+        {
+          "id": "ghe-API-Gateway-1794372575934",
+          "source": "ghe",
+          "repo": "API-Gateway",
+          "previousSha": "1c138a9299933bb099589775d7206e6e10610243",
+          "currentSha": "4df3f7fd0f80caa175b42492942123c0755a3e2e",
+          "compareUrl": "https://github.nhnent.com/cloud-docs/API-Gateway/compare/1c138a9299933bb099589775d7206e6e10610243...4df3f7fd0f80caa175b42492942123c0755a3e2e",
+          "mdChanges": 26,
+          "files": [
+            {
+              "filename": "ko/api-error-code.md",
+              "status": "modified",
+              "additions": 4,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/api-gateway-vip-gov.md",
+              "status": "modified",
+              "additions": 6,
+              "deletions": 3
+            },
+            {
+              "filename": "ko/api-gateway-vip.md",
+              "status": "modified",
+              "additions": 7,
+              "deletions": 2
+            },
+            {
+              "filename": "ko/api-guide-v1.0-gov.md",
+              "status": "modified",
+              "additions": 560,
+              "deletions": 346
+            },
+            {
+              "filename": "ko/api-guide-v1.0.md",
+              "status": "modified",
+              "additions": 442,
+              "deletions": 225
+            },
+            {
+              "filename": "ko/api-guide-v2.0-gov.md",
+              "status": "modified",
+              "additions": 563,
+              "deletions": 344
+            },
+            {
+              "filename": "ko/api-guide-v2.0.md",
+              "status": "modified",
+              "additions": 444,
+              "deletions": 227
+            },
+            {
+              "filename": "ko/console-guide-gov.md",
+              "status": "modified",
+              "additions": 212,
+              "deletions": 114
+            },
+            {
+              "filename": "ko/console-guide.md",
+              "status": "modified",
+              "additions": 222,
+              "deletions": 116
+            },
+            {
+              "filename": "ko/enum-code-gov.md",
+              "status": "modified",
+              "additions": 40,
+              "deletions": 20
+            },
+            {
+              "filename": "ko/enum-code.md",
+              "status": "modified",
+              "additions": 42,
+              "deletions": 20
+            },
+            {
+              "filename": "ko/error-code.md",
+              "status": "modified",
+              "additions": 55,
+              "deletions": 19
+            },
+            {
+              "filename": "ko/overview.md",
+              "status": "modified",
+              "additions": 12,
+              "deletions": 5
+            },
+            {
+              "filename": "ko/release-notes-gov.md",
+              "status": "modified",
+              "additions": 7,
+              "deletions": 74
+            },
+            {
+              "filename": "ko/release-notes-gov/2022.md",
+              "status": "added",
+              "additions": 16,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/release-notes-gov/2023.md",
+              "status": "added",
+              "additions": 27,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/release-notes-gov/2024.md",
+              "status": "added",
+              "additions": 36,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/release-notes-gov/2025.md",
+              "status": "added",
+              "additions": 6,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/release-notes-gov/2026.md",
+              "status": "added",
+              "additions": 16,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/release-notes.md",
+              "status": "modified",
+              "additions": 9,
+              "deletions": 131
+            },
+            {
+              "filename": "ko/release-notes/2021.md",
+              "status": "added",
+              "additions": 67,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/release-notes/2022.md",
+              "status": "added",
+              "additions": 35,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/release-notes/2023.md",
+              "status": "added",
+              "additions": 22,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/release-notes/2024.md",
+              "status": "added",
+              "additions": 32,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/release-notes/2025.md",
+              "status": "added",
+              "additions": 8,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/release-notes/2026.md",
+              "status": "added",
+              "additions": 18,
+              "deletions": 0
+            }
+          ],
+          "affectedGuides": [],
+          "detectedAt": "2026-11-11T04:49:35.934Z"
+        },
+        {
+          "id": "ghe-AppGuard-1794372577062",
+          "source": "ghe",
+          "repo": "AppGuard",
+          "previousSha": "c4d54e392c3d0a3f901bce61d74170c3b41efbc3",
+          "currentSha": "be204e22c67293112f0b98cb3a6ed3587d86d69b",
+          "compareUrl": "https://github.nhnent.com/cloud-docs/AppGuard/compare/c4d54e392c3d0a3f901bce61d74170c3b41efbc3...be204e22c67293112f0b98cb3a6ed3587d86d69b",
+          "mdChanges": 1,
+          "files": [
+            {
+              "filename": "ko/release-notes.md",
+              "status": "modified",
+              "additions": 18,
+              "deletions": 2
+            }
+          ],
+          "affectedGuides": [],
+          "detectedAt": "2026-11-11T04:49:37.062Z"
+        },
+        {
+          "id": "ghe-Certificate-Manager-1794372577946",
+          "source": "ghe",
+          "repo": "Certificate-Manager",
+          "previousSha": "7ac2a8485e157aba7f5ddbd4135da05097d2a2b0",
+          "currentSha": "1814289a09cd71a06bd77e94fed0e063e0760c9c",
+          "compareUrl": "https://github.nhnent.com/cloud-docs/Certificate-Manager/compare/7ac2a8485e157aba7f5ddbd4135da05097d2a2b0...1814289a09cd71a06bd77e94fed0e063e0760c9c",
+          "mdChanges": 14,
+          "files": [
+            {
+              "filename": "ko/api-guide-v1.0-gov.md",
+              "status": "modified",
+              "additions": 23,
+              "deletions": 13
+            },
+            {
+              "filename": "ko/api-guide-v1.0.md",
+              "status": "modified",
+              "additions": 40,
+              "deletions": 13
+            },
+            {
+              "filename": "ko/api-guide-v1.1-gov.md",
+              "status": "modified",
+              "additions": 118,
+              "deletions": 8
+            },
+            {
+              "filename": "ko/api-guide-v1.1.md",
+              "status": "modified",
+              "additions": 144,
+              "deletions": 16
+            },
+            {
+              "filename": "ko/api-guide-v1.2-gov.md",
+              "status": "modified",
+              "additions": 8,
+              "deletions": 3
+            },
+            {
+              "filename": "ko/api-guide-v1.2.md",
+              "status": "modified",
+              "additions": 29,
+              "deletions": 9
+            },
+            {
+              "filename": "ko/api-guide-v1.3-gov.md",
+              "status": "modified",
+              "additions": 121,
+              "deletions": 12
+            },
+            {
+              "filename": "ko/api-guide-v1.3.md",
+              "status": "modified",
+              "additions": 152,
+              "deletions": 19
+            },
+            {
+              "filename": "ko/console-guide-gov.md",
+              "status": "modified",
+              "additions": 6,
+              "deletions": 31
+            },
+            {
+              "filename": "ko/console-guide.md",
+              "status": "modified",
+              "additions": 47,
+              "deletions": 50
+            },
+            {
+              "filename": "ko/overview.md",
+              "status": "modified",
+              "additions": 15,
+              "deletions": 4
+            },
+            {
+              "filename": "ko/release-notes-gov.md",
+              "status": "modified",
+              "additions": 6,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/release-notes.md",
+              "status": "modified",
+              "additions": 66,
+              "deletions": 21
+            },
+            {
+              "filename": "ko/troubleshooting-guide.md",
+              "status": "modified",
+              "additions": 13,
+              "deletions": 4
+            }
+          ],
+          "affectedGuides": [],
+          "detectedAt": "2026-11-11T04:49:37.946Z"
+        },
+        {
+          "id": "ghe-Cloud-Functions-1794372578491",
+          "source": "ghe",
+          "repo": "Cloud-Functions",
+          "previousSha": "f0805a6ddef807dd59b5a9ac0dca80afccee5d58",
+          "currentSha": "e1b1c3aa57adea4f225e8fb8818a8932cdb7db5b",
+          "compareUrl": "https://github.nhnent.com/cloud-docs/Cloud-Functions/compare/f0805a6ddef807dd59b5a9ac0dca80afccee5d58...e1b1c3aa57adea4f225e8fb8818a8932cdb7db5b",
+          "mdChanges": 13,
+          "files": [
+            {
+              "filename": "ko/api-guide-v1-0.md",
+              "status": "modified",
+              "additions": 38,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/code-template-dotnet-guide.md",
+              "status": "modified",
+              "additions": 7,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/code-template-go-guide.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/code-template-java-guide.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/code-template-node-guide.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/code-template-python-guide.md",
+              "status": "modified",
+              "additions": 3,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/code-template-ruby-guide.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/console-guide.md",
+              "status": "modified",
+              "additions": 21,
+              "deletions": 25
+            },
+            {
+              "filename": "ko/overview.md",
+              "status": "modified",
+              "additions": 2,
+              "deletions": 2
+            },
+            {
+              "filename": "ko/release-notes.md",
+              "status": "modified",
+              "additions": 3,
+              "deletions": 51
+            },
+            {
+              "filename": "ko/release-notes/2025.md",
+              "status": "added",
+              "additions": 25,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/release-notes/2026.md",
+              "status": "added",
+              "additions": 43,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/trigger-guide.md",
+              "status": "modified",
+              "additions": 7,
+              "deletions": 7
+            }
+          ],
+          "affectedGuides": [
+            {
+              "guide": "task-guide/ko/cloud-functions-serverless-deploy.md",
+              "title": "Cloud Functions로 HTTP 함수 배포하기",
+              "assignee": "하수진"
+            }
+          ],
+          "detectedAt": "2026-11-11T04:49:38.491Z"
+        },
+        {
+          "id": "ghe-Compute-Instance-1794372580327",
+          "source": "ghe",
+          "repo": "Compute-Instance",
+          "previousSha": "37c980f11f578def1f94472da1116a5af43cc6a5",
+          "currentSha": "9ed12a7ffe03f616d2f744ea94438ee9d8403927",
+          "compareUrl": "https://github.nhnent.com/cloud-docs/Compute-Instance/compare/37c980f11f578def1f94472da1116a5af43cc6a5...9ed12a7ffe03f616d2f744ea94438ee9d8403927",
+          "mdChanges": 2,
+          "files": [
+            {
+              "filename": "ko/public-api-v2-1-gov.md",
+              "status": "modified",
+              "additions": 2,
+              "deletions": 3
+            },
+            {
+              "filename": "ko/public-api-v2-1.md",
+              "status": "modified",
+              "additions": 2,
+              "deletions": 3
+            }
+          ],
+          "affectedGuides": [
+            {
+              "guide": "task-guide/ko/instance-creation-failed.md",
+              "title": "인스턴스 생성이 실패합니다",
+              "assignee": "하수진"
+            },
+            {
+              "guide": "task-guide/ko/instance-ssh-connection-failed.md",
+              "title": "인스턴스에 SSH로 접속되지 않습니다",
+              "assignee": "하수진"
+            },
+            {
+              "guide": "task-guide/ko/security-groups-rule-design.md",
+              "title": "3티어 아키텍처에 맞는 Security Groups 규칙 설계하기",
+              "assignee": "박선영"
+            }
+          ],
+          "detectedAt": "2026-11-11T04:49:40.327Z"
+        },
+        {
+          "id": "ghe-GameStarter-1794372586776",
+          "source": "ghe",
+          "repo": "GameStarter",
+          "previousSha": "9f1574b8db7e84abbd374ef1802d1f1f6b27fa60",
+          "currentSha": "3119f84b66f9031999dd0dbaeaab9fa4ed541221",
+          "compareUrl": "https://github.nhnent.com/cloud-docs/GameStarter/compare/9f1574b8db7e84abbd374ef1802d1f1f6b27fa60...3119f84b66f9031999dd0dbaeaab9fa4ed541221",
+          "mdChanges": 9,
+          "files": [
+            {
+              "filename": "ko/console-01-getting-started.md",
+              "status": "modified",
+              "additions": 30,
+              "deletions": 14
+            },
+            {
+              "filename": "ko/console-02-game.md",
+              "status": "modified",
+              "additions": 33,
+              "deletions": 7
+            },
+            {
+              "filename": "ko/console-03-launcher.md",
+              "status": "modified",
+              "additions": 35,
+              "deletions": 7
+            },
+            {
+              "filename": "ko/console-04-installer.md",
+              "status": "modified",
+              "additions": 27,
+              "deletions": 7
+            },
+            {
+              "filename": "ko/console-05-statistics.md",
+              "status": "modified",
+              "additions": 18,
+              "deletions": 4
+            },
+            {
+              "filename": "ko/overview.md",
+              "status": "modified",
+              "additions": 8,
+              "deletions": 3
+            },
+            {
+              "filename": "ko/release-notes-console.md",
+              "status": "modified",
+              "additions": 127,
+              "deletions": 40
+            },
+            {
+              "filename": "ko/release-notes-macos.md",
+              "status": "modified",
+              "additions": 80,
+              "deletions": 18
+            },
+            {
+              "filename": "ko/release-notes-windows.md",
+              "status": "modified",
+              "additions": 128,
+              "deletions": 31
+            }
+          ],
+          "affectedGuides": [],
+          "detectedAt": "2026-11-11T04:49:46.776Z"
+        },
+        {
+          "id": "ghe-Image-1794372587990",
+          "source": "ghe",
+          "repo": "Image",
+          "previousSha": "b386cbb5051cee21345d71a3279e75fc7bccff98",
+          "currentSha": "3d14c218ed728c3c47b1825bf584b60521b5d347",
+          "compareUrl": "https://github.nhnent.com/cloud-docs/Image/compare/b386cbb5051cee21345d71a3279e75fc7bccff98...3d14c218ed728c3c47b1825bf584b60521b5d347",
+          "mdChanges": 6,
+          "files": [
+            {
+              "filename": "ko/Overview.md",
+              "status": "modified",
+              "additions": 12,
+              "deletions": 5
+            },
+            {
+              "filename": "ko/api-guide-v2.0.md",
+              "status": "modified",
+              "additions": 92,
+              "deletions": 31
+            },
+            {
+              "filename": "ko/api-guide.md",
+              "status": "modified",
+              "additions": 92,
+              "deletions": 31
+            },
+            {
+              "filename": "ko/console-guide.md",
+              "status": "modified",
+              "additions": 32,
+              "deletions": 15
+            },
+            {
+              "filename": "ko/error-code.md",
+              "status": "modified",
+              "additions": 4,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/release-notes.md",
+              "status": "modified",
+              "additions": 54,
+              "deletions": 24
+            }
+          ],
+          "affectedGuides": [],
+          "detectedAt": "2026-11-11T04:49:47.990Z"
+        },
+        {
+          "id": "ghe-notification-hub-1794372593113",
+          "source": "ghe",
+          "repo": "notification-hub",
+          "previousSha": "7df4524c8b5aa27a7dbca2e43d8453921105b2d0",
+          "currentSha": "1c9db5c3b57a23a81522ddbdd11f38ecae8622ec",
+          "compareUrl": "https://github.nhnent.com/cloud-docs/notification-hub/compare/7df4524c8b5aa27a7dbca2e43d8453921105b2d0...1c9db5c3b57a23a81522ddbdd11f38ecae8622ec",
+          "mdChanges": 17,
+          "files": [
+            {
+              "filename": "ko/api-guide-v1x0/attachment.md",
+              "status": "modified",
+              "additions": 2,
+              "deletions": 2
+            },
+            {
+              "filename": "ko/api-guide-v1x0/contact-delivery-result.md",
+              "status": "modified",
+              "additions": 17,
+              "deletions": 17
+            },
+            {
+              "filename": "ko/api-guide-v1x0/flow.md",
+              "status": "modified",
+              "additions": 9,
+              "deletions": 10
+            },
+            {
+              "filename": "ko/api-guide-v1x0/grouptag.md",
+              "status": "modified",
+              "additions": 5,
+              "deletions": 5
+            },
+            {
+              "filename": "ko/api-guide-v1x0/kakao-statistics.md",
+              "status": "modified",
+              "additions": 28,
+              "deletions": 28
+            },
+            {
+              "filename": "ko/api-guide-v1x0/message.md",
+              "status": "modified",
+              "additions": 489,
+              "deletions": 663
+            },
+            {
+              "filename": "ko/api-guide-v1x0/sender-unsubscribe.md",
+              "status": "modified",
+              "additions": 7,
+              "deletions": 7
+            },
+            {
+              "filename": "ko/api-guide-v1x0/stats.md",
+              "status": "modified",
+              "additions": 11,
+              "deletions": 11
+            },
+            {
+              "filename": "ko/api-guide-v1x0/template-category.md",
+              "status": "modified",
+              "additions": 180,
+              "deletions": 180
+            },
+            {
+              "filename": "ko/api-guide-v1x0/template.md",
+              "status": "modified",
+              "additions": 94,
+              "deletions": 94
+            },
+            {
+              "filename": "ko/console-guide/send-a-message.md",
+              "status": "modified",
+              "additions": 7,
+              "deletions": 3
+            },
+            {
+              "filename": "ko/console-guide/sender-info.md",
+              "status": "modified",
+              "additions": 20,
+              "deletions": 8
+            },
+            {
+              "filename": "ko/error-code.md",
+              "status": "modified",
+              "additions": 5,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/release-note.md",
+              "status": "modified",
+              "additions": 8,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/service-policy-and-precondition/alimtalk-and-friendtalk.md",
+              "status": "modified",
+              "additions": 11,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/service-policy-and-precondition/email.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/service-policy-and-precondition/push.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 0
+            }
+          ],
+          "affectedGuides": [],
+          "detectedAt": "2026-11-11T04:49:53.113Z"
+        },
+        {
+          "id": "ghe-pipeline-1794372593853",
+          "source": "ghe",
+          "repo": "pipeline",
+          "previousSha": "aa79a3716093f39439162b36ffd5ac1b9260567a",
+          "currentSha": "0e7e398d3fd6495403093fd53896c9d7efbb2a92",
+          "compareUrl": "https://github.nhnent.com/cloud-docs/pipeline/compare/aa79a3716093f39439162b36ffd5ac1b9260567a...0e7e398d3fd6495403093fd53896c9d7efbb2a92",
+          "mdChanges": 7,
+          "files": [
+            {
+              "filename": "ko/deploy-target-monitoring.md",
+              "status": "modified",
+              "additions": 5,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/environment-config-gov.md",
+              "status": "modified",
+              "additions": 6,
+              "deletions": 2
+            },
+            {
+              "filename": "ko/environment-config.md",
+              "status": "modified",
+              "additions": 6,
+              "deletions": 2
+            },
+            {
+              "filename": "ko/release-notes-gov.md",
+              "status": "modified",
+              "additions": 8,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/release-notes.md",
+              "status": "modified",
+              "additions": 10,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/stage-guide-gov.md",
+              "status": "modified",
+              "additions": 127,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/stage-guide.md",
+              "status": "modified",
+              "additions": 135,
+              "deletions": 1
+            }
+          ],
+          "affectedGuides": [],
+          "detectedAt": "2026-11-11T04:49:53.853Z"
+        },
+        {
+          "id": "ghe-TOAST-Cloud-1794372599765",
+          "source": "ghe",
+          "repo": "TOAST-Cloud",
+          "previousSha": "829e116bed8752cf470efe17eb51f94e1256b5b0",
+          "currentSha": "091531d6102ee1324ab354cf3359294cb076186a",
+          "compareUrl": "https://github.nhnent.com/cloud-docs/TOAST-Cloud/compare/829e116bed8752cf470efe17eb51f94e1256b5b0...091531d6102ee1324ab354cf3359294cb076186a",
+          "mdChanges": 3,
+          "files": [
+            {
+              "filename": "ko/console-guide.md",
+              "status": "modified",
+              "additions": 5,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/public-api/service-api-gov.md",
+              "status": "modified",
+              "additions": 8,
+              "deletions": 8
+            },
+            {
+              "filename": "ko/public-api/service-api.md",
+              "status": "modified",
+              "additions": 2,
+              "deletions": 2
+            }
+          ],
+          "affectedGuides": [],
+          "detectedAt": "2026-11-11T04:49:59.765Z"
+        }
+      ]
+    }
+  ]
+}
