@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NHN Cloud 실전 가이드 대시보드</title>
+<title>NHN Cloud 실전 가이드</title>
 <style>
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css');
 :root {
@@ -24,7 +24,7 @@ body { font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSy
 /* Header */
 header { margin-bottom: 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
 header h1 { font-size: 22px; font-weight: 700; color: var(--dark); }
-.header-meta { font-size: 14px; color: var(--text-muted); font-weight: 400; }
+.header-links { display: flex; gap: 8px; }
 
 /* Summary cards */
 .summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 24px; }
@@ -94,10 +94,33 @@ header h1 { font-size: 22px; font-weight: 700; color: var(--dark); }
 .workload-bar-fill { height: 100%; border-radius: 30px; }
 .workload-stats { font-size: 13px; color: var(--text-muted); display: flex; gap: 12px; }
 
+/* Year groups (완료 열) */
+.year-group { margin-bottom: 6px; }
+.year-toggle { display: flex; align-items: center; gap: 6px; width: 100%; padding: 8px 10px; border: 1px solid var(--border); border-radius: 6px; background: var(--card); cursor: pointer; font-size: 13px; font-weight: 600; color: var(--dark); transition: border-color 0.15s; }
+.year-toggle:hover { border-color: var(--primary); }
+.year-count { font-weight: 400; color: var(--text-muted); font-size: 12px; }
+.year-arrow { margin-left: auto; font-size: 10px; color: var(--text-muted); transition: transform 0.2s; }
+.year-toggle.open .year-arrow { transform: rotate(90deg); }
+.year-cards { padding-top: 6px; }
+
 /* Kanban collapse */
 .kanban-card.collapsed { display: none; }
 .kanban-toggle { margin-top: 4px; padding: 6px 0; text-align: center; font-size: 13px; color: var(--primary); cursor: pointer; border: none; background: none; width: 100%; transition: color 0.15s; }
 .kanban-toggle:hover { color: var(--primary-hover); }
+
+/* Guide check items */
+.guide-check { display: flex; align-items: flex-start; gap: 8px; padding: 6px 0; }
+.guide-check input[type="checkbox"] { margin-top: 3px; accent-color: var(--primary); width: 16px; height: 16px; cursor: pointer; }
+.guide-check label { cursor: pointer; flex: 1; }
+.guide-check label.checked { text-decoration: line-through; color: var(--text-muted); }
+.guide-check .check-info { font-size: 12px; color: var(--text-muted); }
+.maint-card.all-checked { opacity: 0.5; border-style: dashed; }
+.maint-card .card-status { font-size: 12px; color: var(--success); margin-top: 8px; display: none; }
+
+/* GitHub PAT setup */
+.gh-setup { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 16px 20px; margin-bottom: 16px; font-size: 14px; }
+.gh-setup input { padding: 6px 12px; border: 1px solid var(--border); border-radius: 6px; font-size: 14px; width: 320px; margin-right: 8px; }
+.gh-setup .status { font-size: 13px; margin-top: 8px; }
 
 /* Empty state */
 .empty-state { text-align: center; padding: 48px 20px; color: var(--text-muted); }
@@ -109,10 +132,14 @@ footer { margin-top: 32px; text-align: center; font-size: 14px; color: var(--tex
 <body>
 <div class="container">
   <header>
-    <h1>NHN Cloud 실전 가이드 대시보드</h1>
-    <div class="header-meta">마지막 갱신: 2026. 11. 11. PM 02:28</div>
+    <h1>NHN Cloud 실전 가이드</h1>
+    <div class="header-links">
+      <a href="https://nhncloud.gitbook.io/partner" target="_blank" class="btn">실전 가이드</a>
+      <a href="https://nhncorp.dooray.com/project/tasks/4254576973479504167" target="_blank" class="btn">월별 주요 배포 사항</a>
+    </div>
   </header>
 
+  <div class="section-header"><div class="section-title">주요 지표</div></div>
   <div class="summary">
     <div class="summary-card">
       <div class="label">전체 가이드</div>
@@ -413,7 +440,6 @@ footer { margin-top: 32px; text-align: center; font-size: 14px; color: var(--tex
       </div>
       <div class="empty-col" style="font-size:12px;color:var(--text-muted);text-align:center;padding:20px 0;">없음</div>
       
-      
     </div>
   </div>
 
@@ -422,6 +448,15 @@ footer { margin-top: 32px; text-align: center; font-size: 14px; color: var(--tex
   <!-- 섹션 2: 현행화 -->
   <div class="section-header">
     <div class="section-title">실전 가이드 현행화 작업 <span class="badge">2</span></div>
+  </div>
+
+  <div class="gh-setup" id="gh-setup">
+    <strong>GitHub 연결</strong> — 확인 완료 처리를 위해 GitHub 토큰이 필요합니다. (최초 1회)
+    <div style="margin-top:8px;">
+      <input type="password" id="gh-pat" placeholder="GitHub Personal Access Token">
+      <button class="btn" id="gh-save">저장</button>
+    </div>
+    <div class="status" id="gh-status"></div>
   </div>
 
   
@@ -433,31 +468,167 @@ footer { margin-top: 32px; text-align: center; font-size: 14px; color: var(--tex
     <div class="maint-card" data-update-id="ghe-Cloud-Functions-1794372578491" data-assignees="하수진">
       <div><span class="source ghe">cloud-docs</span><span class="repo">Cloud-Functions</span></div>
       <div class="changes">ko/api-guide-v1-0.md, ko/code-template-dotnet-guide.md, ko/code-template-go-guide.md, ko/code-template-java-guide.md, ko/code-template-node-guide.md, ko/code-template-python-guide.md, ko/code-template-ruby-guide.md, ko/console-guide.md, ko/overview.md, ko/release-notes.md, ko/release-notes/2025.md, ko/release-notes/2026.md, ko/trigger-guide.md</div>
-      <div class="affected"><strong>영향받는 가이드:</strong>
-        <ul><li>Cloud Functions로 HTTP 함수 배포하기 (하수진)</li></ul>
+      <div class="affected"><strong>확인이 필요한 가이드:</strong>
+        
+        <div class="guide-check">
+          <input type="checkbox" id="chk-ghe-Cloud-Functions-1794372578491::task-guide/ko/cloud-functions-serverless-deploy.md" data-update-id="ghe-Cloud-Functions-1794372578491" data-guide="task-guide/ko/cloud-functions-serverless-deploy.md" onchange="onGuideCheck(this)">
+          <label for="chk-ghe-Cloud-Functions-1794372578491::task-guide/ko/cloud-functions-serverless-deploy.md">
+            Cloud Functions로 HTTP 함수 배포하기 <span style="color:var(--text-muted)">(하수진)</span>
+            <div class="check-info">동일 서비스의 문서가 변경되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
+          </label>
+        </div>
       </div>
-      <div class="actions">
-        <a href="https://github.nhnent.com/cloud-docs/Cloud-Functions/compare/f0805a6ddef807dd59b5a9ac0dca80afccee5d58...e1b1c3aa57adea4f225e8fb8818a8932cdb7db5b" target="_blank" class="btn">diff 보기</a>
-      </div>
+      <div style="margin-top:8px;"><a href="https://github.nhnent.com/cloud-docs/Cloud-Functions/compare/f0805a6ddef807dd59b5a9ac0dca80afccee5d58...e1b1c3aa57adea4f225e8fb8818a8932cdb7db5b" target="_blank" class="btn">diff 보기</a></div>
+      <div class="card-status"></div>
     </div>
     <div class="maint-card" data-update-id="ghe-Compute-Instance-1794372580327" data-assignees="하수진,하수진,박선영">
       <div><span class="source ghe">cloud-docs</span><span class="repo">Compute-Instance</span></div>
       <div class="changes">ko/public-api-v2-1-gov.md, ko/public-api-v2-1.md</div>
-      <div class="affected"><strong>영향받는 가이드:</strong>
-        <ul><li>인스턴스 생성이 실패합니다 (하수진)</li><li>인스턴스에 SSH로 접속되지 않습니다 (하수진)</li><li>3티어 아키텍처에 맞는 Security Groups 규칙 설계하기 (박선영)</li></ul>
+      <div class="affected"><strong>확인이 필요한 가이드:</strong>
+        
+        <div class="guide-check">
+          <input type="checkbox" id="chk-ghe-Compute-Instance-1794372580327::task-guide/ko/instance-creation-failed.md" data-update-id="ghe-Compute-Instance-1794372580327" data-guide="task-guide/ko/instance-creation-failed.md" onchange="onGuideCheck(this)">
+          <label for="chk-ghe-Compute-Instance-1794372580327::task-guide/ko/instance-creation-failed.md">
+            인스턴스 생성이 실패합니다 <span style="color:var(--text-muted)">(하수진)</span>
+            <div class="check-info">동일 서비스의 문서가 변경되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
+          </label>
+        </div>
+        <div class="guide-check">
+          <input type="checkbox" id="chk-ghe-Compute-Instance-1794372580327::task-guide/ko/instance-ssh-connection-failed.md" data-update-id="ghe-Compute-Instance-1794372580327" data-guide="task-guide/ko/instance-ssh-connection-failed.md" onchange="onGuideCheck(this)">
+          <label for="chk-ghe-Compute-Instance-1794372580327::task-guide/ko/instance-ssh-connection-failed.md">
+            인스턴스에 SSH로 접속되지 않습니다 <span style="color:var(--text-muted)">(하수진)</span>
+            <div class="check-info">동일 서비스의 문서가 변경되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
+          </label>
+        </div>
+        <div class="guide-check">
+          <input type="checkbox" id="chk-ghe-Compute-Instance-1794372580327::task-guide/ko/security-groups-rule-design.md" data-update-id="ghe-Compute-Instance-1794372580327" data-guide="task-guide/ko/security-groups-rule-design.md" onchange="onGuideCheck(this)">
+          <label for="chk-ghe-Compute-Instance-1794372580327::task-guide/ko/security-groups-rule-design.md">
+            3티어 아키텍처에 맞는 Security Groups 규칙 설계하기 <span style="color:var(--text-muted)">(박선영)</span>
+            <div class="check-info">동일 서비스의 문서가 변경되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
+          </label>
+        </div>
       </div>
-      <div class="actions">
-        <a href="https://github.nhnent.com/cloud-docs/Compute-Instance/compare/37c980f11f578def1f94472da1116a5af43cc6a5...9ed12a7ffe03f616d2f744ea94438ee9d8403927" target="_blank" class="btn">diff 보기</a>
-      </div>
+      <div style="margin-top:8px;"><a href="https://github.nhnent.com/cloud-docs/Compute-Instance/compare/37c980f11f578def1f94472da1116a5af43cc6a5...9ed12a7ffe03f616d2f744ea94438ee9d8403927" target="_blank" class="btn">diff 보기</a></div>
+      <div class="card-status"></div>
     </div>
   </div>
 
   
 
-  <footer>매일 09:00 KST 자동 갱신 · 마지막 생성: 2026. 11. 11. PM 02:50</footer>
+  <footer>매일 09:00 KST 자동 갱신 · 마지막 갱신: 2026. 11. 11. PM 04:48 · 마지막 생성: 2026. 11. 11. PM 04:56</footer>
 </div>
 
 <script>
+// === GitHub PAT 설정 ===
+const GH_REPO = 'TOAST-DOCS/TW';
+const RESOLVED_PATH = 'data/resolved.json';
+
+(function initGhSetup() {
+  const pat = localStorage.getItem('gh-pat');
+  const setupEl = document.getElementById('gh-setup');
+  if (pat) {
+    setupEl.innerHTML = '<span style="color:var(--success);">GitHub 연결됨</span> <button class="btn" onclick="localStorage.removeItem(\'gh-pat\');location.reload();" style="font-size:12px;">연결 해제</button>';
+  }
+  const saveBtn = document.getElementById('gh-save');
+  if (saveBtn) {
+    saveBtn.addEventListener('click', () => {
+      const val = document.getElementById('gh-pat').value.trim();
+      if (!val) return;
+      localStorage.setItem('gh-pat', val);
+      location.reload();
+    });
+  }
+})();
+
+// === 가이드별 확인 완료 체크 ===
+async function onGuideCheck(checkbox) {
+  const pat = localStorage.getItem('gh-pat');
+  if (!pat) {
+    checkbox.checked = false;
+    alert('GitHub 토큰을 먼저 설정해 주세요.');
+    return;
+  }
+  if (!checkbox.checked) return; // 체크 해제는 무시
+
+  const updateId = checkbox.dataset.updateId;
+  const guide = checkbox.dataset.guide;
+  const label = checkbox.nextElementSibling;
+  const card = checkbox.closest('.maint-card');
+  const statusEl = card.querySelector('.card-status');
+
+  checkbox.disabled = true;
+  label.classList.add('checked');
+
+  try {
+    // 1. 현재 resolved.json 읽기
+    const headers = { Authorization: 'token ' + pat, Accept: 'application/vnd.github+json' };
+    const getRes = await fetch('https://api.github.com/repos/' + GH_REPO + '/contents/' + RESOLVED_PATH, { headers });
+
+    let resolved = { resolved: [] };
+    let sha = null;
+
+    if (getRes.ok) {
+      const data = await getRes.json();
+      sha = data.sha;
+      resolved = JSON.parse(atob(data.content));
+    }
+
+    // 2. 중복 체크
+    if (resolved.resolved.some(r => r.updateId === updateId && r.guide === guide)) {
+      // 이미 처리됨 — UI만 유지
+      return;
+    }
+
+    // 3. 새 항목 추가
+    resolved.resolved.push({
+      updateId: updateId,
+      guide: guide,
+      resolvedBy: '대시보드',
+      resolvedAt: new Date().toISOString()
+    });
+
+    // 4. 커밋
+    const putRes = await fetch('https://api.github.com/repos/' + GH_REPO + '/contents/' + RESOLVED_PATH, {
+      method: 'PUT',
+      headers: { ...headers, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        message: 'chore: 현행화 확인 완료 - ' + guide.split('/').pop(),
+        content: btoa(unescape(encodeURIComponent(JSON.stringify(resolved, null, 2)))),
+        sha: sha
+      })
+    });
+
+    if (!putRes.ok) {
+      const err = await putRes.json();
+      throw new Error(err.message || putRes.statusText);
+    }
+
+    // 5. 카드 내 모든 체크박스 확인 → 전부 체크되면 카드 제거
+    const allChecks = card.querySelectorAll('input[type="checkbox"]');
+    const allDone = [...allChecks].every(c => c.checked);
+    if (allDone) {
+      statusEl.textContent = '모든 가이드 확인 완료';
+      statusEl.style.display = 'block';
+      setTimeout(() => { card.classList.add('all-checked'); }, 500);
+    }
+
+  } catch (err) {
+    checkbox.checked = false;
+    checkbox.disabled = false;
+    label.classList.remove('checked');
+    alert('오류: ' + err.message);
+  }
+}
+
+// === 완료 열 연도별 접기/펼치기 ===
+document.querySelectorAll('.year-toggle').forEach(btn => {
+  btn.addEventListener('click', () => {
+    btn.classList.toggle('open');
+    const cards = btn.nextElementSibling;
+    cards.style.display = cards.style.display === 'none' ? 'block' : 'none';
+  });
+});
+
 // === 칸반 5행 접기/펼치기 ===
 const MAX_VISIBLE = 5;
 document.querySelectorAll('.kanban-col').forEach(col => {

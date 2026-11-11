@@ -2,6 +2,7 @@ const { discoverRepos, getBranch, hasTargetDir, getChangedFiles } = require('./g
 const { fetchGuideTasks, fetchDeployNotes, sendWebhook } = require('./dooray');
 const { loadState, saveState, loadJSON, saveJSON } = require('./state');
 const { generateSite } = require('./generate-site');
+const { loadGuides, analyzeChange } = require('./analyze');
 const config = require('./config');
 const path = require('path');
 const fs = require('fs');
@@ -27,7 +28,7 @@ function findAffectedGuides(repoName, mappings) {
 /**
  * GHE 변경 감지 (트랙 A)
  */
-async function pollGHE(guideMapping) {
+async function pollGHE(guideMapping, guides) {
   console.log(`[GHE] Polling ${config.GHE_ORG} on ${config.GHE_API}`);
   const state = loadState();
   const changes = [];
@@ -64,7 +65,17 @@ async function pollGHE(guideMapping) {
     try {
       const diff = await getChangedFiles(repoName, repoState.lastSha, currentSha);
       if (diff.mdChanges > 0) {
-        const affected = findAffectedGuides(repoName, guideMapping.mappings);
+        // 키워드 매칭 분석
+        const analysisResults = analyzeChange(
+          { repo: repoName, files: diff.files, mdChanges: diff.mdChanges },
+          guides,
+          guideMapping.mappings
+        );
+        // 분석 결과가 있으면 그걸 사용, 없으면 리포 매핑 폴백
+        const affected = analysisResults.length > 0
+          ? analysisResults
+          : findAffectedGuides(repoName, guideMapping.mappings);
+
         changes.push({
           id: `ghe-${repoName}-${Date.now()}`,
           source: 'ghe',
@@ -73,8 +84,9 @@ async function pollGHE(guideMapping) {
           currentSha,
           compareUrl: diff.compareUrl,
           mdChanges: diff.mdChanges,
-          files: diff.files,
+          files: diff.files.map((f) => ({ filename: f.filename, status: f.status, additions: f.additions, deletions: f.deletions })),
           affectedGuides: affected,
+          analysisMethod: analysisResults.length > 0 ? 'keyword' : 'repo-mapping',
           detectedAt: new Date().toISOString(),
         });
       }
@@ -146,24 +158,35 @@ async function pollDeployNotes(guideMapping) {
  * 현행화 알림 발송
  */
 async function notifyUpdates(gheChanges, deployNotes, resolved) {
-  const resolvedIds = new Set((resolved.resolved || []).map((r) => r.updateId));
+  const resolvedKeys = new Set(
+    (resolved.resolved || []).map((r) => r.updateId + '::' + (r.guide || ''))
+  );
 
   // GHE 변경 알림
   for (const change of gheChanges) {
-    if (resolvedIds.has(change.id)) continue;
     if (change.affectedGuides.length === 0) continue;
+    // 미처리 가이드만 필터
+    const pendingGuides = change.affectedGuides.filter(
+      (g) => !resolvedKeys.has(change.id + '::' + g.guide)
+    );
+    if (pendingGuides.length === 0) continue;
 
-    const guideList = change.affectedGuides.map((g) => `• ${g.title}`).join('\n');
+    const guideLines = pendingGuides.map((g) => {
+      if (g.matches && g.matches.length > 0) {
+        const kwList = g.matches.map((m) => m.keyword).join(', ');
+        return `• ${g.title} (담당: ${g.assignee})\n  → 변경 diff에서 [${kwList}] 키워드가 확인되었으며, 해당 가이드에서도 동일 키워드를 포함하고 있어 변경 필요 여부를 확인해 주세요.`;
+      }
+      return `• ${g.title} (담당: ${g.assignee})\n  → 동일 서비스의 문서가 변경되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.`;
+    });
     const message = [
-      '📢 [실전 가이드 현행화 알림]',
+      '📋 [실전 가이드 현행화 확인 요청]',
       '',
-      `서비스: ${change.repo}`,
-      `변경: ko/ 디렉토리 내 ${change.mdChanges}개 파일 변경`,
+      `${change.repo} 리포지터리에서 ko/ 디렉터리 내 ${change.mdChanges}개 파일이 변경되었습니다.`,
       '',
-      '영향받는 가이드:',
-      guideList,
+      '확인이 필요한 가이드:',
+      ...guideLines,
       '',
-      `👉 대시보드에서 확인: ${config.DASHBOARD_URL}`,
+      `👉 대시보드에서 상세 확인: ${config.DASHBOARD_URL}`,
     ].join('\n');
 
     await sendWebhook(message);
@@ -196,19 +219,77 @@ async function notifyUpdates(gheChanges, deployNotes, resolved) {
 }
 
 /**
+ * 7일 경과 미처리 건 리마인드 (1회만)
+ */
+async function sendReminders(gheUpdates, resolved) {
+  const resolvedKeys = new Set(
+    (resolved.resolved || []).map((r) => r.updateId + '::' + (r.guide || ''))
+  );
+  const reminded = new Set(
+    (gheUpdates._reminded || [])
+  );
+
+  const now = Date.now();
+  const SEVEN_DAYS = 7 * 24 * 60 * 60 * 1000;
+  const newReminded = [];
+
+  const allChanges = (gheUpdates.history || []).flatMap((h) => h.changes || []);
+
+  for (const change of allChanges) {
+    if (!change.affectedGuides || change.affectedGuides.length === 0) continue;
+    if (reminded.has(change.id)) continue; // 이미 리마인드 발송함
+
+    const detected = new Date(change.detectedAt).getTime();
+    if (now - detected < SEVEN_DAYS) continue; // 7일 미경과
+
+    // 미처리 가이드만 필터
+    const pending = change.affectedGuides.filter(
+      (g) => !resolvedKeys.has(change.id + '::' + g.guide)
+    );
+    if (pending.length === 0) continue; // 전부 처리됨
+
+    const guideLines = pending.map((g) =>
+      `• ${g.title} (담당: ${g.assignee})`
+    );
+    const message = [
+      '🔔 [현행화 리마인드]',
+      '',
+      `${change.repo} 리포지터리 변경 감지 후 7일이 경과했으나 아직 확인되지 않은 가이드가 있습니다.`,
+      '',
+      ...guideLines,
+      '',
+      `👉 대시보드에서 확인: ${config.DASHBOARD_URL}`,
+    ].join('\n');
+
+    await sendWebhook(message);
+    newReminded.push(change.id);
+    console.log(`  [REMIND] ${change.repo}: ${pending.length}건 미처리`);
+  }
+
+  // 리마인드 이력 저장 (중복 발송 방지)
+  if (newReminded.length > 0) {
+    gheUpdates._reminded = [...(gheUpdates._reminded || []), ...newReminded];
+  }
+
+  return newReminded.length;
+}
+
+/**
  * 메인 실행
  */
 async function runPoll() {
   console.log(`[${new Date().toISOString()}] Poll started`);
 
   const guideMapping = loadGuideMapping();
+  const guides = loadGuides();
   const resolved = loadJSON(config.RESOLVED_FILE, { resolved: [] });
+  console.log(`[Analyze] Loaded ${guides.length} guide files for keyword matching`);
 
   // 1. 두레이 태스크 조회
   const doorayResult = await pollDoorayTasks();
 
-  // 2. GHE 변경 감지
-  const gheResult = await pollGHE(guideMapping);
+  // 2. GHE 변경 감지 + 키워드 분석
+  const gheResult = await pollGHE(guideMapping, guides);
 
   // 3. GHE 결과 저장
   const existing = loadJSON(config.RESULTS_FILE, { lastPoll: null, heartbeat: null, changes: [], history: [] });
@@ -228,12 +309,24 @@ async function runPoll() {
   saveJSON(config.RESULTS_FILE, existing);
 
   // 4. 월별 배포 사항 조회
-  const deployResult = await pollDeployNotes(guideMapping);
+  let deployResult = { fetchedAt: null, months: [] };
+  try {
+    deployResult = await pollDeployNotes(guideMapping);
+  } catch (err) {
+    console.error(`  [WARN] Deploy notes fetch failed: ${err.message}`);
+  }
 
   // 5. 현행화 알림 발송
   await notifyUpdates(gheResult.changes, deployResult, resolved);
 
-  // 6. 사이트 생성
+  // 6. 7일 경과 미처리 건 리마인드
+  const remindCount = await sendReminders(existing, resolved);
+  if (remindCount > 0) {
+    saveJSON(config.RESULTS_FILE, existing); // 리마인드 이력 저장
+    console.log(`  Sent ${remindCount} reminder(s)`);
+  }
+
+  // 7. 사이트 생성
   const sitePath = generateSite();
   console.log(`  Site generated: ${sitePath}`);
 

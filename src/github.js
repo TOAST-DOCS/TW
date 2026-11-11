@@ -80,6 +80,7 @@ async function getChangedFiles(repoName, baseSha, headSha) {
       status: f.status,
       additions: f.additions,
       deletions: f.deletions,
+      patch: f.patch || '',
     })),
     compareUrl: `${config.GHE_API.replace('/api/v3', '')}/${config.GHE_ORG}/${repoName}/compare/${baseSha}...${headSha}`,
     aheadBy: data.ahead_by || 0,
