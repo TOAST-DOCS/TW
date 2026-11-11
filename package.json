@@ -1,10 +1,11 @@
 {
-  "name": "md-merge-dashboard",
-  "version": "1.0.0",
-  "description": "TOAST-DOCS GitHub org release branch merge tracking dashboard",
+  "name": "practical-guides-dashboard",
+  "version": "2.0.0",
+  "description": "NHN Cloud 실전 가이드 통합 대시보드",
   "main": "src/poll.js",
   "scripts": {
-    "poll": "node src/poll.js"
+    "poll": "node src/poll.js",
+    "build": "node -e \"require('./src/generate-site').generateSite(); console.log('OK')\""
   },
   "dependencies": {
     "dotenv": "^16.6.1"

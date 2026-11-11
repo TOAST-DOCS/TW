@@ -3,10 +3,10 @@ const config = require('./config');
 function headers() {
   const h = {
     Accept: 'application/vnd.github+json',
-    'User-Agent': 'md-merge-dashboard',
+    'User-Agent': 'practical-guides-dashboard',
   };
-  if (config.GITHUB_TOKEN) {
-    h.Authorization = `Bearer ${config.GITHUB_TOKEN}`;
+  if (config.GHE_TOKEN) {
+    h.Authorization = `Bearer ${config.GHE_TOKEN}`;
   }
   return h;
 }
@@ -14,20 +14,20 @@ function headers() {
 async function fetchJSON(url) {
   const res = await fetch(url, { headers: headers() });
   if (!res.ok) {
-    throw new Error(`GitHub API error: ${res.status} ${res.statusText} - ${url}`);
+    throw new Error(`GHE API error: ${res.status} ${res.statusText} - ${url}`);
   }
   return res.json();
 }
 
 /**
- * Discover all repos in the org.
+ * Discover all repos in the GHE org.
  * Paginate through all pages.
  */
 async function discoverRepos() {
   const repos = [];
   let page = 1;
   while (true) {
-    const url = `${config.GITHUB_API}/orgs/${config.ORG}/repos?per_page=100&page=${page}`;
+    const url = `${config.GHE_API}/orgs/${config.GHE_ORG}/repos?per_page=100&page=${page}`;
     const batch = await fetchJSON(url);
     if (batch.length === 0) break;
     repos.push(...batch);
@@ -41,7 +41,7 @@ async function discoverRepos() {
  * Returns the branch info or null.
  */
 async function getBranch(repoName) {
-  const url = `${config.GITHUB_API}/repos/${config.ORG}/${repoName}/branches/${config.TARGET_BRANCH}`;
+  const url = `${config.GHE_API}/repos/${config.GHE_ORG}/${repoName}/branches/${config.GHE_TARGET_BRANCH}`;
   try {
     return await fetchJSON(url);
   } catch {
@@ -54,7 +54,7 @@ async function getBranch(repoName) {
  * Returns true/false.
  */
 async function hasTargetDir(repoName) {
-  const url = `${config.GITHUB_API}/repos/${config.ORG}/${repoName}/contents/${config.TARGET_DIR}?ref=${config.TARGET_BRANCH}`;
+  const url = `${config.GHE_API}/repos/${config.GHE_ORG}/${repoName}/contents/${config.GHE_TARGET_DIR}?ref=${config.GHE_TARGET_BRANCH}`;
   try {
     await fetchJSON(url);
     return true;
@@ -67,30 +67,24 @@ async function hasTargetDir(repoName) {
  * Get list of changed files between two SHAs, filtered to ko/*.md
  */
 async function getChangedFiles(repoName, baseSha, headSha) {
-  const url = `${config.GITHUB_API}/repos/${config.ORG}/${repoName}/compare/${baseSha}...${headSha}`;
+  const url = `${config.GHE_API}/repos/${config.GHE_ORG}/${repoName}/compare/${baseSha}...${headSha}`;
   const data = await fetchJSON(url);
   const mdFiles = (data.files || []).filter(
-    (f) => f.filename.startsWith(`${config.TARGET_DIR}/`) && f.filename.endsWith('.md')
+    (f) => f.filename.startsWith(`${config.GHE_TARGET_DIR}/`) && f.filename.endsWith('.md')
   );
   return {
     totalChanges: data.files ? data.files.length : 0,
     mdChanges: mdFiles.length,
     files: mdFiles.map((f) => ({
       filename: f.filename,
-      status: f.status, // added, removed, modified, renamed
+      status: f.status,
       additions: f.additions,
       deletions: f.deletions,
+      patch: f.patch || '',
     })),
-    compareUrl: `https://github.com/${config.ORG}/${repoName}/compare/${baseSha}...${headSha}`,
+    compareUrl: `${config.GHE_API.replace('/api/v3', '')}/${config.GHE_ORG}/${repoName}/compare/${baseSha}...${headSha}`,
     aheadBy: data.ahead_by || 0,
   };
-}
-
-/**
- * Build compare URL for a repo
- */
-function buildCompareUrl(repoName, baseSha, headSha) {
-  return `https://github.com/${config.ORG}/${repoName}/compare/${baseSha}...${headSha}`;
 }
 
 module.exports = {
@@ -98,5 +92,4 @@ module.exports = {
   getBranch,
   hasTargetDir,
   getChangedFiles,
-  buildCompareUrl,
 };

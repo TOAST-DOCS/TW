@@ -1,0 +1,404 @@
+{
+  "fetchedAt": "2026-11-11T08:04:54.717Z",
+  "tasks": [
+    {
+      "id": "4422767174258964149",
+      "title": "[How-to] Cloud Monitoring에서 임계치 기반 알림 설정하기",
+      "type": "How-to",
+      "stage": "파트피어리뷰",
+      "status": "registered",
+      "assignees": [
+        "박선영"
+      ],
+      "createdAt": "2026-09-16",
+      "updatedAt": "2026-10-08"
+    },
+    {
+      "id": "4422947267683526923",
+      "title": "[How-to] Image로 인스턴스 복제하기",
+      "type": "How-to",
+      "stage": "파트피어리뷰",
+      "status": "registered",
+      "assignees": [
+        "한수현"
+      ],
+      "createdAt": "2026-09-16",
+      "updatedAt": "2026-10-28"
+    },
+    {
+      "id": "4423474441021210741",
+      "title": "[Troubleshooting] Cloud Monitoring에 인스턴스 지표가 표시되지 않습니다",
+      "type": "Troubleshooting",
+      "stage": "기술검토",
+      "status": "registered",
+      "assignees": [
+        "박선영"
+      ],
+      "createdAt": "2026-09-17",
+      "updatedAt": "2026-09-28"
+    },
+    {
+      "id": "4423516258002344299",
+      "title": "[How-to] 트래픽 변동에 맞춰 인스턴스를 자동으로 늘리고 줄이기",
+      "type": "How-to",
+      "stage": "기술검토",
+      "status": "registered",
+      "assignees": [
+        "박정현"
+      ],
+      "createdAt": "2026-09-17",
+      "updatedAt": "2026-10-21"
+    },
+    {
+      "id": "4423559613467800784",
+      "title": "[How-to] 멀티 가용성 영역(AZ)으로 고가용성 구성하기",
+      "type": "How-to",
+      "stage": "기술검토",
+      "status": "registered",
+      "assignees": [
+        "이종민"
+      ],
+      "createdAt": "2026-09-17",
+      "updatedAt": "2026-10-08"
+    },
+    {
+      "id": "4426184992231338130",
+      "title": "[How-to] NAT Gateway로 프라이빗 서브넷 인터넷 연결 구성하기",
+      "type": "How-to",
+      "stage": "파트피어리뷰",
+      "status": "registered",
+      "assignees": [
+        "이종민"
+      ],
+      "createdAt": "2026-09-20",
+      "updatedAt": "2026-10-12"
+    },
+    {
+      "id": "4426362206120666258",
+      "title": "[How-to] NHN Bastion으로 SSH 접근 통제 구성하기",
+      "type": "How-to",
+      "stage": "파트피어리뷰",
+      "status": "registered",
+      "assignees": [
+        "박선영"
+      ],
+      "createdAt": "2026-09-21",
+      "updatedAt": "2026-10-15"
+    },
+    {
+      "id": "4431416489037175225",
+      "title": "[Troubleshooting] 인스턴스 간 내부 통신에 실패합니다",
+      "type": "Troubleshooting",
+      "stage": "파트피어리뷰",
+      "status": "registered",
+      "assignees": [
+        "박선영"
+      ],
+      "createdAt": "2026-09-28",
+      "updatedAt": "2026-10-27"
+    },
+    {
+      "id": "4431532912465585256",
+      "title": "[How-to] Image API로 외부 이미지 파일 등록하기",
+      "type": "How-to",
+      "stage": "기술검토",
+      "status": "working",
+      "assignees": [
+        "김용현",
+        "하수진"
+      ],
+      "createdAt": "2026-09-28",
+      "updatedAt": "2026-11-11"
+    },
+    {
+      "id": "4422073456380943408",
+      "title": "[How-to] Cloud Functions로 HTTP 함수 배포하기",
+      "type": "How-to",
+      "stage": "파트피어리뷰",
+      "status": "registered",
+      "assignees": [
+        "하수진"
+      ],
+      "createdAt": "2026-09-15",
+      "updatedAt": "2026-10-08"
+    },
+    {
+      "id": "4434363253873237114",
+      "title": "[Troubleshooting] CDN 인증서 발급·갱신에 실패합니다",
+      "type": "Troubleshooting",
+      "stage": "기술검토",
+      "status": "registered",
+      "assignees": [
+        "미지정"
+      ],
+      "createdAt": "2026-10-02",
+      "updatedAt": "2026-11-06"
+    },
+    {
+      "id": "4437875913647741889",
+      "title": "[How-to] GPU 인스턴스를 만들고 AI/ML 실행 환경 준비하기",
+      "type": "How-to",
+      "stage": "파트피어리뷰",
+      "status": "registered",
+      "assignees": [
+        "박정현"
+      ],
+      "createdAt": "2026-10-07",
+      "updatedAt": "2026-10-12"
+    },
+    {
+      "id": "4442195139022065174",
+      "title": "[How-to] 3티어 아키텍처에 맞는 Security Groups 규칙 설계하기",
+      "type": "How-to",
+      "stage": "파트피어리뷰",
+      "status": "working",
+      "assignees": [
+        "박선영"
+      ],
+      "createdAt": "2026-10-13",
+      "updatedAt": "2026-11-10"
+    },
+    {
+      "id": "4443654429948904219",
+      "title": "[Troubleshooting] RDS for MySQL 고가용성이 중단되거나 예기치 않은 장애 조치(Failover)가 발생합니다 ",
+      "type": "Troubleshooting",
+      "stage": "기술검토",
+      "status": "registered",
+      "assignees": [
+        "박선영"
+      ],
+      "createdAt": "2026-10-15",
+      "updatedAt": "2026-10-30"
+    },
+    {
+      "id": "4443792088302983662",
+      "title": "[Troubleshooting] Auto Scale 스케일링이 동작하지 않습니다",
+      "type": "Troubleshooting",
+      "stage": "초안작성",
+      "status": "registered",
+      "assignees": [
+        "박정현"
+      ],
+      "createdAt": "2026-10-15",
+      "updatedAt": "2026-10-16"
+    },
+    {
+      "id": "4444321049668824118",
+      "title": "[How-to] RDS DB 엔진 버전 업그레이드하기",
+      "type": "How-to",
+      "stage": "초안작성",
+      "status": "registered",
+      "assignees": [
+        "이종민"
+      ],
+      "createdAt": "2026-10-15",
+      "updatedAt": "2026-10-15"
+    },
+    {
+      "id": "4452451514736676994",
+      "title": "[How-to] Log & Crash Search로 여러 인스턴스의 로그를 중앙에서 수집하고 알람 받기",
+      "type": "How-to",
+      "stage": "초안작성",
+      "status": "registered",
+      "assignees": [
+        "이종민"
+      ],
+      "createdAt": "2026-10-27",
+      "updatedAt": "2026-11-11"
+    },
+    {
+      "id": "4454649258801324468",
+      "title": "[Troubleshooting] RDS 백업이 실패하거나 복제가 지연될 때 ",
+      "type": "Troubleshooting",
+      "stage": "초안작성",
+      "status": "working",
+      "assignees": [
+        "박선영"
+      ],
+      "createdAt": "2026-10-30",
+      "updatedAt": "2026-11-11"
+    },
+    {
+      "id": "4458114916878876266",
+      "title": "[Troubleshooting] RDS for MySQL 접속이 지연되거나 타임아웃이 발생합니다",
+      "type": "Troubleshooting",
+      "stage": "초안작성",
+      "status": "registered",
+      "assignees": [
+        "미지정"
+      ],
+      "createdAt": "2026-11-04",
+      "updatedAt": "2026-11-11"
+    },
+    {
+      "id": "4383661461065147637",
+      "title": "[How-to] Secure Key Manager로 암호화 키 관리하기",
+      "type": "How-to",
+      "stage": "파트피어리뷰",
+      "status": "registered",
+      "assignees": [
+        "박선영"
+      ],
+      "createdAt": "2026-07-24",
+      "updatedAt": "2026-10-08"
+    },
+    {
+      "id": "4366129792995104048",
+      "title": "[Troubleshooting] Container - NHN Kubernetes Service(NKS) 클러스터 버전 업그레이드에 실패합니다",
+      "type": "Troubleshooting",
+      "stage": "기술검토",
+      "status": "registered",
+      "assignees": [
+        "박선영"
+      ],
+      "createdAt": "2026-06-30",
+      "updatedAt": "2026-08-24"
+    },
+    {
+      "id": "4366827643532418748",
+      "title": "[Troubleshooting] Load Balancer 멤버가 INACTIVE로 표시됩니다",
+      "type": "Troubleshooting",
+      "stage": "파트피어리뷰",
+      "status": "registered",
+      "assignees": [
+        "이종민"
+      ],
+      "createdAt": "2026-07-01",
+      "updatedAt": "2026-10-19"
+    },
+    {
+      "id": "4371294192139113829",
+      "title": "[How-to] Gamebase에 Google IDP 연동해 소셜 로그인 구현하기",
+      "type": "How-to",
+      "stage": "기술검토",
+      "status": "working",
+      "assignees": [
+        "이종민"
+      ],
+      "createdAt": "2026-07-07",
+      "updatedAt": "2026-11-05"
+    },
+    {
+      "id": "4382900768531351321",
+      "title": "[Troubleshooting] 인스턴스 생성이 실패합니다",
+      "type": "Troubleshooting",
+      "stage": "파트피어리뷰",
+      "status": "registered",
+      "assignees": [
+        "하수진"
+      ],
+      "createdAt": "2026-07-23",
+      "updatedAt": "2026-10-08"
+    },
+    {
+      "id": "4383614414026580307",
+      "title": "[How-to] Network Firewall 정책 구성하기",
+      "type": "How-to",
+      "stage": "파트피어리뷰",
+      "status": "registered",
+      "assignees": [
+        "박선영"
+      ],
+      "createdAt": "2026-07-24",
+      "updatedAt": "2026-10-08"
+    },
+    {
+      "id": "4383621354762126814",
+      "title": "[How-to] URL 경로 기반으로 트래픽을 분산하는 L7 로드 밸런서 구성하기",
+      "type": "How-to",
+      "stage": "파트피어리뷰",
+      "status": "registered",
+      "assignees": [
+        "박선영"
+      ],
+      "createdAt": "2026-07-24",
+      "updatedAt": "2026-10-08"
+    },
+    {
+      "id": "4386421805705625918",
+      "title": "[How-to] IAM으로 멀티 사용자 권한 분리 구성하기",
+      "type": "How-to",
+      "stage": "파트피어리뷰",
+      "status": "registered",
+      "assignees": [
+        "이종민"
+      ],
+      "createdAt": "2026-07-28",
+      "updatedAt": "2026-11-03"
+    },
+    {
+      "id": "4392369696092063538",
+      "title": "[Troubleshooting] 인스턴스에 SSH로 접속되지 않습니다",
+      "type": "Troubleshooting",
+      "stage": "파트피어리뷰",
+      "status": "registered",
+      "assignees": [
+        "김로빈",
+        "임병모",
+        "하수진"
+      ],
+      "createdAt": "2026-08-05",
+      "updatedAt": "2026-10-08"
+    },
+    {
+      "id": "4411149608868067385",
+      "title": "[How-to] Common, Security - User Access Key 토큰으로 Secure Key Manager API 호출하기",
+      "type": "How-to",
+      "stage": "파트피어리뷰",
+      "status": "registered",
+      "assignees": [
+        "박선영"
+      ],
+      "createdAt": "2026-08-31",
+      "updatedAt": "2026-10-13"
+    },
+    {
+      "id": "4412709941930200747",
+      "title": "[How-to] Game - Gamebase 연동 후 푸시 메시지 발송까지 완료하기",
+      "type": "How-to",
+      "stage": "기술검토",
+      "status": "registered",
+      "assignees": [
+        "이종민"
+      ],
+      "createdAt": "2026-09-02",
+      "updatedAt": "2026-10-13"
+    },
+    {
+      "id": "4414055947503682085",
+      "title": "[How-to] Object Storage에 정적 웹사이트 호스팅하기",
+      "type": "How-to",
+      "stage": "파트피어리뷰",
+      "status": "registered",
+      "assignees": [
+        "이창훈"
+      ],
+      "createdAt": "2026-09-04",
+      "updatedAt": "2026-10-08"
+    },
+    {
+      "id": "4416254688521602757",
+      "title": "[How-to] Object Storage 컨테이너에 CORS 설정하기",
+      "type": "How-to",
+      "stage": "파트피어리뷰",
+      "status": "registered",
+      "assignees": [
+        "하수진"
+      ],
+      "createdAt": "2026-09-07",
+      "updatedAt": "2026-10-13"
+    },
+    {
+      "id": "4419105686535374256",
+      "title": "[How-to] Gamebase 미소비 결제 건 조회하고 재처리하기",
+      "type": "How-to",
+      "stage": "기술검토",
+      "status": "registered",
+      "assignees": [
+        "미지정"
+      ],
+      "createdAt": "2026-09-11",
+      "updatedAt": "2026-10-14"
+    }
+  ]
+}

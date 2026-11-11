@@ -1,9 +1,11 @@
-name: Poll TOAST-DOCS master branches
+name: Poll and generate dashboard
 
 on:
   schedule:
-    # Every Wednesday 00:00 UTC = 09:00 KST (the morning after the Tuesday release)
-    - cron: '0 0 * * 3'
+    # Weekdays 08:00 KST (23:00 UTC previous day)
+    - cron: '0 23 * * 0-3'
+    # Weekdays 14:00 KST (05:00 UTC)
+    - cron: '0 5 * * 1-5'
   workflow_dispatch: {}
 
 permissions:
@@ -23,9 +25,11 @@ jobs:
 
       - run: npm run poll
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GHE_TOKEN: ${{ secrets.GHE_TOKEN }}
+          DOORAY_API_TOKEN: ${{ secrets.DOORAY_API_TOKEN }}
+          DOORAY_WEBHOOK_URL: ${{ secrets.DOORAY_WEBHOOK_URL }}
 
-      - name: Commit updated state and site
+      - name: Commit updated data and site
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

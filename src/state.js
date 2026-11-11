@@ -3,7 +3,6 @@ const path = require('path');
 const config = require('./config');
 
 const stateFilePath = path.resolve(__dirname, '..', config.STATE_FILE);
-const resultsFilePath = path.resolve(__dirname, '..', config.RESULTS_FILE);
 
 function ensureDir(filePath) {
   const dir = path.dirname(filePath);
@@ -25,17 +24,23 @@ function saveState(state) {
   fs.writeFileSync(stateFilePath, JSON.stringify(state, null, 2), 'utf-8');
 }
 
-function loadResults() {
-  ensureDir(resultsFilePath);
-  if (!fs.existsSync(resultsFilePath)) {
-    return { lastPoll: null, heartbeat: null, changes: [], history: [] };
-  }
-  return JSON.parse(fs.readFileSync(resultsFilePath, 'utf-8'));
+/**
+ * Generic JSON loader with default value
+ */
+function loadJSON(relPath, defaultValue) {
+  const p = path.resolve(__dirname, '..', relPath);
+  ensureDir(p);
+  if (!fs.existsSync(p)) return defaultValue;
+  return JSON.parse(fs.readFileSync(p, 'utf-8'));
 }
 
-function saveResults(results) {
-  ensureDir(resultsFilePath);
-  fs.writeFileSync(resultsFilePath, JSON.stringify(results, null, 2), 'utf-8');
+/**
+ * Generic JSON saver
+ */
+function saveJSON(relPath, data) {
+  const p = path.resolve(__dirname, '..', relPath);
+  ensureDir(p);
+  fs.writeFileSync(p, JSON.stringify(data, null, 2), 'utf-8');
 }
 
-module.exports = { loadState, saveState, loadResults, saveResults };
+module.exports = { loadState, saveState, loadJSON, saveJSON };
