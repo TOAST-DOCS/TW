@@ -100,7 +100,7 @@ async function fetchGuideTasks() {
  * NHN Cloud 주요 배포 사항 — 하위 태스크(월별) 조회
  */
 async function fetchDeployNotes() {
-  const url = `${config.DOORAY_API}/project/v1/projects/${config.DOORAY_DEPLOY_PROJECT_ID}/posts/${config.DOORAY_DEPLOY_PARENT_TASK_ID}/child-posts?size=20&page=0`;
+  const url = `${config.DOORAY_API}/project/v1/projects/${config.DOORAY_DEPLOY_PROJECT_ID}/posts?parentPostId=${config.DOORAY_DEPLOY_PARENT_TASK_ID}&size=20&page=0`;
   const data = await fetchJSON(url);
   const items = data.result || [];
 

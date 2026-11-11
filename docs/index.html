@@ -151,7 +151,7 @@ footer { margin-top: 32px; text-align: center; font-size: 14px; color: var(--tex
     </div>
     <div class="summary-card">
       <div class="label">현행화 필요</div>
-      <div class="value danger">2</div>
+      <div class="value danger">27</div>
     </div>
     <div class="summary-card">
       <div class="label">추적 리포</div>
@@ -447,7 +447,7 @@ footer { margin-top: 32px; text-align: center; font-size: 14px; color: var(--tex
 
   <!-- 섹션 2: 현행화 -->
   <div class="section-header">
-    <div class="section-title">실전 가이드 현행화 작업 <span class="badge">2</span></div>
+    <div class="section-title">실전 가이드 현행화 작업 <span class="badge">27</span></div>
   </div>
 
   <div class="gh-setup" id="gh-setup">
@@ -514,8 +514,538 @@ footer { margin-top: 32px; text-align: center; font-size: 14px; color: var(--tex
   </div>
 
   
+  <div class="maint-section">
+    <h3><span class="source deploy">배포</span> 월별 배포 사항</h3>
+    
+    <div class="maint-card" data-update-id="deploy-2026-11-Instance" data-assignees="하수진,하수진">
+      <div><span class="source deploy">2026-11</span><span class="repo">Instance</span></div>
+      <div class="changes">* 즐겨찾기를 프로젝트 단위 공용 관리에서 사용자별 관리로 변경 (기존 즐겨찾기는 프로젝트 내 사용자 즐겨찾기로 이전)</div>
+      <div class="affected"><strong>확인이 필요한 가이드:</strong>
+        
+        <div class="guide-check">
+          <input type="checkbox" id="chk-deploy-2026-11-Instance::task-guide/ko/instance-creation-failed.md" data-update-id="deploy-2026-11-Instance" data-guide="task-guide/ko/instance-creation-failed.md" onchange="onGuideCheck(this)">
+          <label for="chk-deploy-2026-11-Instance::task-guide/ko/instance-creation-failed.md">
+            인스턴스 생성이 실패합니다 <span style="color:var(--text-muted)">(하수진)</span>
+            <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
+          </label>
+        </div>
+        <div class="guide-check">
+          <input type="checkbox" id="chk-deploy-2026-11-Instance::task-guide/ko/instance-ssh-connection-failed.md" data-update-id="deploy-2026-11-Instance" data-guide="task-guide/ko/instance-ssh-connection-failed.md" onchange="onGuideCheck(this)">
+          <label for="chk-deploy-2026-11-Instance::task-guide/ko/instance-ssh-connection-failed.md">
+            인스턴스에 SSH로 접속되지 않습니다 <span style="color:var(--text-muted)">(하수진)</span>
+            <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
+          </label>
+        </div>
+      </div>
+      <div style="margin-top:8px;"></div>
+      <div class="card-status"></div>
+    </div>
+    <div class="maint-card" data-update-id="deploy-2026-11-Object Storage" data-assignees="하수진,이창훈">
+      <div><span class="source deploy">2026-11</span><span class="repo">Object Storage</span></div>
+      <div class="changes">* (콘솔·API) 스토리지 계정당 컨테이너 최대 2,000개 제한 정책 추가 * (API) 스토리지 계정당 초당 5,000건 초과 읽기 요청 제한 정책 추가 * (콘솔) 복제 설정 화면에서 대상 컨테이너 바로 생성 기능 추가 * (콘솔) 복제 탭에서 복제 대기 이벤트 수 조회 기능 추가</div>
+      <div class="affected"><strong>확인이 필요한 가이드:</strong>
+        
+        <div class="guide-check">
+          <input type="checkbox" id="chk-deploy-2026-11-Object Storage::task-guide/ko/obs-access-control-cors.md" data-update-id="deploy-2026-11-Object Storage" data-guide="task-guide/ko/obs-access-control-cors.md" onchange="onGuideCheck(this)">
+          <label for="chk-deploy-2026-11-Object Storage::task-guide/ko/obs-access-control-cors.md">
+            Object Storage 컨테이너에 CORS 설정하기 <span style="color:var(--text-muted)">(하수진)</span>
+            <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
+          </label>
+        </div>
+        <div class="guide-check">
+          <input type="checkbox" id="chk-deploy-2026-11-Object Storage::task-guide/ko/obs-static-website-hosting.md" data-update-id="deploy-2026-11-Object Storage" data-guide="task-guide/ko/obs-static-website-hosting.md" onchange="onGuideCheck(this)">
+          <label for="chk-deploy-2026-11-Object Storage::task-guide/ko/obs-static-website-hosting.md">
+            Object Storage에 정적 웹사이트 호스팅하기 <span style="color:var(--text-muted)">(이창훈)</span>
+            <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
+          </label>
+        </div>
+      </div>
+      <div style="margin-top:8px;"></div>
+      <div class="card-status"></div>
+    </div>
+    <div class="maint-card" data-update-id="deploy-2026-10-Cloud Monitoring" data-assignees="박선영">
+      <div><span class="source deploy">2026-10</span><span class="repo">Cloud Monitoring</span></div>
+      <div class="changes">* API Gateway 지표 추가</div>
+      <div class="affected"><strong>확인이 필요한 가이드:</strong>
+        
+        <div class="guide-check">
+          <input type="checkbox" id="chk-deploy-2026-10-Cloud Monitoring::task-guide/ko/cloud-monitoring-alarm-policy.md" data-update-id="deploy-2026-10-Cloud Monitoring" data-guide="task-guide/ko/cloud-monitoring-alarm-policy.md" onchange="onGuideCheck(this)">
+          <label for="chk-deploy-2026-10-Cloud Monitoring::task-guide/ko/cloud-monitoring-alarm-policy.md">
+            Cloud Monitoring에서 임계치 기반 알림 설정하기 <span style="color:var(--text-muted)">(박선영)</span>
+            <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
+          </label>
+        </div>
+      </div>
+      <div style="margin-top:8px;"></div>
+      <div class="card-status"></div>
+    </div>
+    <div class="maint-card" data-update-id="deploy-2026-10-Gamebase" data-assignees="이종민,미지정">
+      <div><span class="source deploy">2026-10</span><span class="repo">Gamebase</span></div>
+      <div class="changes">* (Unity 2.83.0) Windows, macOS 웹뷰 predefined custom scheme 6종 지원 * (Unity 2.83.0) Windows, macOS 점검 팝업의 '자세히 보기'에서 점검 상세 페이지를 웹뷰로 표시 * (Unity 2.83.0) `PurchasableReceipt`에 `extras` 필드 추가, 버그 수정 7건 * </div>
+      <div class="affected"><strong>확인이 필요한 가이드:</strong>
+        
+        <div class="guide-check">
+          <input type="checkbox" id="chk-deploy-2026-10-Gamebase::task-guide/ko/gamebase-push-message.md" data-update-id="deploy-2026-10-Gamebase" data-guide="task-guide/ko/gamebase-push-message.md" onchange="onGuideCheck(this)">
+          <label for="chk-deploy-2026-10-Gamebase::task-guide/ko/gamebase-push-message.md">
+            Gamebase 연동 후 푸시 메시지 발송까지 완료하기 <span style="color:var(--text-muted)">(이종민)</span>
+            <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
+          </label>
+        </div>
+        <div class="guide-check">
+          <input type="checkbox" id="chk-deploy-2026-10-Gamebase::task-guide/ko/gamebase-unconsumed-payment.md" data-update-id="deploy-2026-10-Gamebase" data-guide="task-guide/ko/gamebase-unconsumed-payment.md" onchange="onGuideCheck(this)">
+          <label for="chk-deploy-2026-10-Gamebase::task-guide/ko/gamebase-unconsumed-payment.md">
+            Gamebase 미소비 결제 건 조회하고 재처리하기 <span style="color:var(--text-muted)">(미지정)</span>
+            <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
+          </label>
+        </div>
+      </div>
+      <div style="margin-top:8px;"></div>
+      <div class="card-status"></div>
+    </div>
+    <div class="maint-card" data-update-id="deploy-2026-10-Network Firewall" data-assignees="박선영">
+      <div><span class="source deploy">2026-10</span><span class="repo">Network Firewall</span></div>
+      <div class="changes">* 객체 일괄 등록 기능 추가(템플릿 다운로드 후 여러 객체를 한 번에 등록) * 인터페이스 최대 수량 10개 쿼터 적용</div>
+      <div class="affected"><strong>확인이 필요한 가이드:</strong>
+        
+        <div class="guide-check">
+          <input type="checkbox" id="chk-deploy-2026-10-Network Firewall::task-guide/ko/network-firewall-policy-configuration.md" data-update-id="deploy-2026-10-Network Firewall" data-guide="task-guide/ko/network-firewall-policy-configuration.md" onchange="onGuideCheck(this)">
+          <label for="chk-deploy-2026-10-Network Firewall::task-guide/ko/network-firewall-policy-configuration.md">
+            Network Firewall 정책 구성하기 <span style="color:var(--text-muted)">(박선영)</span>
+            <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
+          </label>
+        </div>
+      </div>
+      <div style="margin-top:8px;"></div>
+      <div class="card-status"></div>
+    </div>
+    <div class="maint-card" data-update-id="deploy-2026-08-Object Storage" data-assignees="하수진,이창훈">
+      <div><span class="source deploy">2026-08</span><span class="repo">Object Storage</span></div>
+      <div class="changes">* 작업 이력, 작업 중단 기능 추가 * 컨테이너 정책 문서를 사용한 컨테이너 설정 기능 추가 * Amazon S3 API 호환성 개선</div>
+      <div class="affected"><strong>확인이 필요한 가이드:</strong>
+        
+        <div class="guide-check">
+          <input type="checkbox" id="chk-deploy-2026-08-Object Storage::task-guide/ko/obs-access-control-cors.md" data-update-id="deploy-2026-08-Object Storage" data-guide="task-guide/ko/obs-access-control-cors.md" onchange="onGuideCheck(this)">
+          <label for="chk-deploy-2026-08-Object Storage::task-guide/ko/obs-access-control-cors.md">
+            Object Storage 컨테이너에 CORS 설정하기 <span style="color:var(--text-muted)">(하수진)</span>
+            <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
+          </label>
+        </div>
+        <div class="guide-check">
+          <input type="checkbox" id="chk-deploy-2026-08-Object Storage::task-guide/ko/obs-static-website-hosting.md" data-update-id="deploy-2026-08-Object Storage" data-guide="task-guide/ko/obs-static-website-hosting.md" onchange="onGuideCheck(this)">
+          <label for="chk-deploy-2026-08-Object Storage::task-guide/ko/obs-static-website-hosting.md">
+            Object Storage에 정적 웹사이트 호스팅하기 <span style="color:var(--text-muted)">(이창훈)</span>
+            <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
+          </label>
+        </div>
+      </div>
+      <div style="margin-top:8px;"></div>
+      <div class="card-status"></div>
+    </div>
+    <div class="maint-card" data-update-id="deploy-2026-08-Load Balancer" data-assignees="박선영,이종민">
+      <div><span class="source deploy">2026-08</span><span class="repo">Load Balancer</span></div>
+      <div class="changes">* HTTP/2 기능 제공 * 로드 밸런서 엔진 버전(`v1`/`v2`) 선택 기능이 추가</div>
+      <div class="affected"><strong>확인이 필요한 가이드:</strong>
+        
+        <div class="guide-check">
+          <input type="checkbox" id="chk-deploy-2026-08-Load Balancer::task-guide/ko/l7-load-balancer-configuration.md" data-update-id="deploy-2026-08-Load Balancer" data-guide="task-guide/ko/l7-load-balancer-configuration.md" onchange="onGuideCheck(this)">
+          <label for="chk-deploy-2026-08-Load Balancer::task-guide/ko/l7-load-balancer-configuration.md">
+            URL 경로 기반으로 트래픽을 분산하는 L7 로드 밸런서 구성하기 <span style="color:var(--text-muted)">(박선영)</span>
+            <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
+          </label>
+        </div>
+        <div class="guide-check">
+          <input type="checkbox" id="chk-deploy-2026-08-Load Balancer::task-guide/ko/load-balancer-member-inactive.md" data-update-id="deploy-2026-08-Load Balancer" data-guide="task-guide/ko/load-balancer-member-inactive.md" onchange="onGuideCheck(this)">
+          <label for="chk-deploy-2026-08-Load Balancer::task-guide/ko/load-balancer-member-inactive.md">
+            Load Balancer 멤버가 INACTIVE로 표시됩니다 <span style="color:var(--text-muted)">(이종민)</span>
+            <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
+          </label>
+        </div>
+      </div>
+      <div style="margin-top:8px;"></div>
+      <div class="card-status"></div>
+    </div>
+    <div class="maint-card" data-update-id="deploy-2026-08-Gamebase" data-assignees="이종민,미지정">
+      <div><span class="source deploy">2026-08</span><span class="repo">Gamebase</span></div>
+      <div class="changes">* (iOS) updateTerms 크래시 발생 문제 수정 * (iOS) GamebaseEventHandler 특정 이벤트 중복 전달 문제 수정 * (Unity) 유효하지 않은 데이터에 대한 검증 로직 개선 * (Server API) Google Chageback 관련 API 추가</div>
+      <div class="affected"><strong>확인이 필요한 가이드:</strong>
+        
+        <div class="guide-check">
+          <input type="checkbox" id="chk-deploy-2026-08-Gamebase::task-guide/ko/gamebase-push-message.md" data-update-id="deploy-2026-08-Gamebase" data-guide="task-guide/ko/gamebase-push-message.md" onchange="onGuideCheck(this)">
+          <label for="chk-deploy-2026-08-Gamebase::task-guide/ko/gamebase-push-message.md">
+            Gamebase 연동 후 푸시 메시지 발송까지 완료하기 <span style="color:var(--text-muted)">(이종민)</span>
+            <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
+          </label>
+        </div>
+        <div class="guide-check">
+          <input type="checkbox" id="chk-deploy-2026-08-Gamebase::task-guide/ko/gamebase-unconsumed-payment.md" data-update-id="deploy-2026-08-Gamebase" data-guide="task-guide/ko/gamebase-unconsumed-payment.md" onchange="onGuideCheck(this)">
+          <label for="chk-deploy-2026-08-Gamebase::task-guide/ko/gamebase-unconsumed-payment.md">
+            Gamebase 미소비 결제 건 조회하고 재처리하기 <span style="color:var(--text-muted)">(미지정)</span>
+            <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
+          </label>
+        </div>
+      </div>
+      <div style="margin-top:8px;"></div>
+      <div class="card-status"></div>
+    </div>
+    <div class="maint-card" data-update-id="deploy-2026-08-Gamebase" data-assignees="이종민,미지정">
+      <div><span class="source deploy">2026-08</span><span class="repo">Gamebase</span></div>
+      <div class="changes">* (Android, iOS) 유효하지 않은 데이터에 대한 검증 로직 개선 * (Windows, macOS) 웹뷰에서 gamebase://openbrowser 스킴이 처리되지 않는 문제 수정 * (Setting Tool v3.0.1) WebGL 플랫폼 전용 어댑터 설치 지원 * (서버 API) Google Pay 차지백 관련 API 추가</div>
+      <div class="affected"><strong>확인이 필요한 가이드:</strong>
+        
+        <div class="guide-check">
+          <input type="checkbox" id="chk-deploy-2026-08-Gamebase::task-guide/ko/gamebase-push-message.md" data-update-id="deploy-2026-08-Gamebase" data-guide="task-guide/ko/gamebase-push-message.md" onchange="onGuideCheck(this)">
+          <label for="chk-deploy-2026-08-Gamebase::task-guide/ko/gamebase-push-message.md">
+            Gamebase 연동 후 푸시 메시지 발송까지 완료하기 <span style="color:var(--text-muted)">(이종민)</span>
+            <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
+          </label>
+        </div>
+        <div class="guide-check">
+          <input type="checkbox" id="chk-deploy-2026-08-Gamebase::task-guide/ko/gamebase-unconsumed-payment.md" data-update-id="deploy-2026-08-Gamebase" data-guide="task-guide/ko/gamebase-unconsumed-payment.md" onchange="onGuideCheck(this)">
+          <label for="chk-deploy-2026-08-Gamebase::task-guide/ko/gamebase-unconsumed-payment.md">
+            Gamebase 미소비 결제 건 조회하고 재처리하기 <span style="color:var(--text-muted)">(미지정)</span>
+            <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
+          </label>
+        </div>
+      </div>
+      <div style="margin-top:8px;"></div>
+      <div class="card-status"></div>
+    </div>
+    <div class="maint-card" data-update-id="deploy-2026-07-Cloud Functions" data-assignees="하수진">
+      <div><span class="source deploy">2026-07</span><span class="repo">Cloud Functions</span></div>
+      <div class="changes">* 환경 변수 기능 추가 * 런타임 EOL(지원 중단) 표시 기능 추가</div>
+      <div class="affected"><strong>확인이 필요한 가이드:</strong>
+        
+        <div class="guide-check">
+          <input type="checkbox" id="chk-deploy-2026-07-Cloud Functions::task-guide/ko/cloud-functions-serverless-deploy.md" data-update-id="deploy-2026-07-Cloud Functions" data-guide="task-guide/ko/cloud-functions-serverless-deploy.md" onchange="onGuideCheck(this)">
+          <label for="chk-deploy-2026-07-Cloud Functions::task-guide/ko/cloud-functions-serverless-deploy.md">
+            Cloud Functions로 HTTP 함수 배포하기 <span style="color:var(--text-muted)">(하수진)</span>
+            <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
+          </label>
+        </div>
+      </div>
+      <div style="margin-top:8px;"></div>
+      <div class="card-status"></div>
+    </div>
+    <div class="maint-card" data-update-id="deploy-2026-07-Cloud Monitoring" data-assignees="박선영">
+      <div><span class="source deploy">2026-07</span><span class="repo">Cloud Monitoring</span></div>
+      <div class="changes">* 위젯 범례 영역 확장 기능 추가 * 알림 이메일 발생 일시 시간대 변경(UTC → KST)</div>
+      <div class="affected"><strong>확인이 필요한 가이드:</strong>
+        
+        <div class="guide-check">
+          <input type="checkbox" id="chk-deploy-2026-07-Cloud Monitoring::task-guide/ko/cloud-monitoring-alarm-policy.md" data-update-id="deploy-2026-07-Cloud Monitoring" data-guide="task-guide/ko/cloud-monitoring-alarm-policy.md" onchange="onGuideCheck(this)">
+          <label for="chk-deploy-2026-07-Cloud Monitoring::task-guide/ko/cloud-monitoring-alarm-policy.md">
+            Cloud Monitoring에서 임계치 기반 알림 설정하기 <span style="color:var(--text-muted)">(박선영)</span>
+            <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
+          </label>
+        </div>
+      </div>
+      <div style="margin-top:8px;"></div>
+      <div class="card-status"></div>
+    </div>
+    <div class="maint-card" data-update-id="deploy-2026-07-Gamebase" data-assignees="이종민,미지정">
+      <div><span class="source deploy">2026-07</span><span class="repo">Gamebase</span></div>
+      <div class="changes">* (Unity) Gamebase SDK에 Assembly Definition(.asmdef) 적용 * (Unity) 불안정한 네트워크 환경에서 WebSocket 재연결 시 간헐적으로 발생하는 오류 수정 * (Android) AGP 8.0 미만 환경에서 2.81.0 적용 시 게임 빌드가 실패하던 현상 수정 * (iOS) Gamebase 초기화 시 Faceb</div>
+      <div class="affected"><strong>확인이 필요한 가이드:</strong>
+        
+        <div class="guide-check">
+          <input type="checkbox" id="chk-deploy-2026-07-Gamebase::task-guide/ko/gamebase-push-message.md" data-update-id="deploy-2026-07-Gamebase" data-guide="task-guide/ko/gamebase-push-message.md" onchange="onGuideCheck(this)">
+          <label for="chk-deploy-2026-07-Gamebase::task-guide/ko/gamebase-push-message.md">
+            Gamebase 연동 후 푸시 메시지 발송까지 완료하기 <span style="color:var(--text-muted)">(이종민)</span>
+            <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
+          </label>
+        </div>
+        <div class="guide-check">
+          <input type="checkbox" id="chk-deploy-2026-07-Gamebase::task-guide/ko/gamebase-unconsumed-payment.md" data-update-id="deploy-2026-07-Gamebase" data-guide="task-guide/ko/gamebase-unconsumed-payment.md" onchange="onGuideCheck(this)">
+          <label for="chk-deploy-2026-07-Gamebase::task-guide/ko/gamebase-unconsumed-payment.md">
+            Gamebase 미소비 결제 건 조회하고 재처리하기 <span style="color:var(--text-muted)">(미지정)</span>
+            <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
+          </label>
+        </div>
+      </div>
+      <div style="margin-top:8px;"></div>
+      <div class="card-status"></div>
+    </div>
+    <div class="maint-card" data-update-id="deploy-2026-07-Network Firewall" data-assignees="박선영">
+      <div><span class="source deploy">2026-07</span><span class="repo">Network Firewall</span></div>
+      <div class="changes">* 인터페이스 관리 기능 추가 * 출발지 NAT 기능 추가(1:1, N:1) * 라우트 추가 화면 개선(인터페이스 선택 방식 변경) * ACL 정책 추가 화면 개선(출발지/목적지 인터페이스 선택 추가) * 인터페이스 MTU 크기 설정 옵션 삭제</div>
+      <div class="affected"><strong>확인이 필요한 가이드:</strong>
+        
+        <div class="guide-check">
+          <input type="checkbox" id="chk-deploy-2026-07-Network Firewall::task-guide/ko/network-firewall-policy-configuration.md" data-update-id="deploy-2026-07-Network Firewall" data-guide="task-guide/ko/network-firewall-policy-configuration.md" onchange="onGuideCheck(this)">
+          <label for="chk-deploy-2026-07-Network Firewall::task-guide/ko/network-firewall-policy-configuration.md">
+            Network Firewall 정책 구성하기 <span style="color:var(--text-muted)">(박선영)</span>
+            <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
+          </label>
+        </div>
+      </div>
+      <div style="margin-top:8px;"></div>
+      <div class="card-status"></div>
+    </div>
+    <div class="maint-card" data-update-id="deploy-2026-06-Cloud Monitoring" data-assignees="박선영">
+      <div><span class="source deploy">2026-06</span><span class="repo">Cloud Monitoring</span></div>
+      <div class="changes">* GPU Instance 상세 지표 추가</div>
+      <div class="affected"><strong>확인이 필요한 가이드:</strong>
+        
+        <div class="guide-check">
+          <input type="checkbox" id="chk-deploy-2026-06-Cloud Monitoring::task-guide/ko/cloud-monitoring-alarm-policy.md" data-update-id="deploy-2026-06-Cloud Monitoring" data-guide="task-guide/ko/cloud-monitoring-alarm-policy.md" onchange="onGuideCheck(this)">
+          <label for="chk-deploy-2026-06-Cloud Monitoring::task-guide/ko/cloud-monitoring-alarm-policy.md">
+            Cloud Monitoring에서 임계치 기반 알림 설정하기 <span style="color:var(--text-muted)">(박선영)</span>
+            <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
+          </label>
+        </div>
+      </div>
+      <div style="margin-top:8px;"></div>
+      <div class="card-status"></div>
+    </div>
+    <div class="maint-card" data-update-id="deploy-2026-06-Gamebase" data-assignees="이종민,미지정">
+      <div><span class="source deploy">2026-06</span><span class="repo">Gamebase</span></div>
+      <div class="changes">* (Android) 결제 모듈 의존성 변경 * NHN Cloud IAP SDK (1.12.0) → NHN IAP SDK (2.1.0)</div>
+      <div class="affected"><strong>확인이 필요한 가이드:</strong>
+        
+        <div class="guide-check">
+          <input type="checkbox" id="chk-deploy-2026-06-Gamebase::task-guide/ko/gamebase-push-message.md" data-update-id="deploy-2026-06-Gamebase" data-guide="task-guide/ko/gamebase-push-message.md" onchange="onGuideCheck(this)">
+          <label for="chk-deploy-2026-06-Gamebase::task-guide/ko/gamebase-push-message.md">
+            Gamebase 연동 후 푸시 메시지 발송까지 완료하기 <span style="color:var(--text-muted)">(이종민)</span>
+            <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
+          </label>
+        </div>
+        <div class="guide-check">
+          <input type="checkbox" id="chk-deploy-2026-06-Gamebase::task-guide/ko/gamebase-unconsumed-payment.md" data-update-id="deploy-2026-06-Gamebase" data-guide="task-guide/ko/gamebase-unconsumed-payment.md" onchange="onGuideCheck(this)">
+          <label for="chk-deploy-2026-06-Gamebase::task-guide/ko/gamebase-unconsumed-payment.md">
+            Gamebase 미소비 결제 건 조회하고 재처리하기 <span style="color:var(--text-muted)">(미지정)</span>
+            <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
+          </label>
+        </div>
+      </div>
+      <div style="margin-top:8px;"></div>
+      <div class="card-status"></div>
+    </div>
+    <div class="maint-card" data-update-id="deploy-2026-06-Secure Key Manager" data-assignees="박선영,박선영">
+      <div><span class="source deploy">2026-06</span><span class="repo">Secure Key Manager</span></div>
+      <div class="changes">* 키 저장소 생성/수정/삭제 API 추가(v1.3)</div>
+      <div class="affected"><strong>확인이 필요한 가이드:</strong>
+        
+        <div class="guide-check">
+          <input type="checkbox" id="chk-deploy-2026-06-Secure Key Manager::task-guide/ko/skm-api-call-with-user-access-key-token.md" data-update-id="deploy-2026-06-Secure Key Manager" data-guide="task-guide/ko/skm-api-call-with-user-access-key-token.md" onchange="onGuideCheck(this)">
+          <label for="chk-deploy-2026-06-Secure Key Manager::task-guide/ko/skm-api-call-with-user-access-key-token.md">
+            User Access Key 토큰으로 Secure Key Manager API 호출하기 <span style="color:var(--text-muted)">(박선영)</span>
+            <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
+          </label>
+        </div>
+        <div class="guide-check">
+          <input type="checkbox" id="chk-deploy-2026-06-Secure Key Manager::task-guide/ko/skm-key-management.md" data-update-id="deploy-2026-06-Secure Key Manager" data-guide="task-guide/ko/skm-key-management.md" onchange="onGuideCheck(this)">
+          <label for="chk-deploy-2026-06-Secure Key Manager::task-guide/ko/skm-key-management.md">
+            Secure Key Manager로 암호화 키 관리하기 <span style="color:var(--text-muted)">(박선영)</span>
+            <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
+          </label>
+        </div>
+      </div>
+      <div style="margin-top:8px;"></div>
+      <div class="card-status"></div>
+    </div>
+    <div class="maint-card" data-update-id="deploy-2026-05-Load Balancer" data-assignees="박선영,이종민">
+      <div><span class="source deploy">2026-05</span><span class="repo">Load Balancer</span></div>
+      <div class="changes">* 재암호화 기능 추가 * HTTP Keepalive 비활성화 기능 추가 * SSL/TLS 암호화 정책 설정 기능 추가</div>
+      <div class="affected"><strong>확인이 필요한 가이드:</strong>
+        
+        <div class="guide-check">
+          <input type="checkbox" id="chk-deploy-2026-05-Load Balancer::task-guide/ko/l7-load-balancer-configuration.md" data-update-id="deploy-2026-05-Load Balancer" data-guide="task-guide/ko/l7-load-balancer-configuration.md" onchange="onGuideCheck(this)">
+          <label for="chk-deploy-2026-05-Load Balancer::task-guide/ko/l7-load-balancer-configuration.md">
+            URL 경로 기반으로 트래픽을 분산하는 L7 로드 밸런서 구성하기 <span style="color:var(--text-muted)">(박선영)</span>
+            <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
+          </label>
+        </div>
+        <div class="guide-check">
+          <input type="checkbox" id="chk-deploy-2026-05-Load Balancer::task-guide/ko/load-balancer-member-inactive.md" data-update-id="deploy-2026-05-Load Balancer" data-guide="task-guide/ko/load-balancer-member-inactive.md" onchange="onGuideCheck(this)">
+          <label for="chk-deploy-2026-05-Load Balancer::task-guide/ko/load-balancer-member-inactive.md">
+            Load Balancer 멤버가 INACTIVE로 표시됩니다 <span style="color:var(--text-muted)">(이종민)</span>
+            <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
+          </label>
+        </div>
+      </div>
+      <div style="margin-top:8px;"></div>
+      <div class="card-status"></div>
+    </div>
+    <div class="maint-card" data-update-id="deploy-2026-05-Object Storage" data-assignees="하수진,이창훈">
+      <div><span class="source deploy">2026-05</span><span class="repo">Object Storage</span></div>
+      <div class="changes">* (콘솔) 수명 주기 규칙 설정 및 일괄 적용 기능 추가 * (API) 컨테이너 정책 문서를 통한 컨테이너 설정 기능 추가 * (API) Amazon S3 API 호환성 개선</div>
+      <div class="affected"><strong>확인이 필요한 가이드:</strong>
+        
+        <div class="guide-check">
+          <input type="checkbox" id="chk-deploy-2026-05-Object Storage::task-guide/ko/obs-access-control-cors.md" data-update-id="deploy-2026-05-Object Storage" data-guide="task-guide/ko/obs-access-control-cors.md" onchange="onGuideCheck(this)">
+          <label for="chk-deploy-2026-05-Object Storage::task-guide/ko/obs-access-control-cors.md">
+            Object Storage 컨테이너에 CORS 설정하기 <span style="color:var(--text-muted)">(하수진)</span>
+            <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
+          </label>
+        </div>
+        <div class="guide-check">
+          <input type="checkbox" id="chk-deploy-2026-05-Object Storage::task-guide/ko/obs-static-website-hosting.md" data-update-id="deploy-2026-05-Object Storage" data-guide="task-guide/ko/obs-static-website-hosting.md" onchange="onGuideCheck(this)">
+          <label for="chk-deploy-2026-05-Object Storage::task-guide/ko/obs-static-website-hosting.md">
+            Object Storage에 정적 웹사이트 호스팅하기 <span style="color:var(--text-muted)">(이창훈)</span>
+            <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
+          </label>
+        </div>
+      </div>
+      <div style="margin-top:8px;"></div>
+      <div class="card-status"></div>
+    </div>
+    <div class="maint-card" data-update-id="deploy-2026-05-Tibero Instance" data-assignees="하수진,하수진">
+      <div><span class="source deploy">2026-05</span><span class="repo">Tibero Instance</span></div>
+      <div class="changes">* Cloud TAC 지원</div>
+      <div class="affected"><strong>확인이 필요한 가이드:</strong>
+        
+        <div class="guide-check">
+          <input type="checkbox" id="chk-deploy-2026-05-Tibero Instance::task-guide/ko/instance-creation-failed.md" data-update-id="deploy-2026-05-Tibero Instance" data-guide="task-guide/ko/instance-creation-failed.md" onchange="onGuideCheck(this)">
+          <label for="chk-deploy-2026-05-Tibero Instance::task-guide/ko/instance-creation-failed.md">
+            인스턴스 생성이 실패합니다 <span style="color:var(--text-muted)">(하수진)</span>
+            <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
+          </label>
+        </div>
+        <div class="guide-check">
+          <input type="checkbox" id="chk-deploy-2026-05-Tibero Instance::task-guide/ko/instance-ssh-connection-failed.md" data-update-id="deploy-2026-05-Tibero Instance" data-guide="task-guide/ko/instance-ssh-connection-failed.md" onchange="onGuideCheck(this)">
+          <label for="chk-deploy-2026-05-Tibero Instance::task-guide/ko/instance-ssh-connection-failed.md">
+            인스턴스에 SSH로 접속되지 않습니다 <span style="color:var(--text-muted)">(하수진)</span>
+            <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
+          </label>
+        </div>
+      </div>
+      <div style="margin-top:8px;"></div>
+      <div class="card-status"></div>
+    </div>
+    <div class="maint-card" data-update-id="deploy-2026-05-Gamebase" data-assignees="이종민,미지정">
+      <div><span class="source deploy">2026-05</span><span class="repo">Gamebase</span></div>
+      <div class="changes">* Gamebase 웹뷰에서 일부 영상이 재생되지 않는 버그 수정 * 내부 로직 개선 및 버그 수정</div>
+      <div class="affected"><strong>확인이 필요한 가이드:</strong>
+        
+        <div class="guide-check">
+          <input type="checkbox" id="chk-deploy-2026-05-Gamebase::task-guide/ko/gamebase-push-message.md" data-update-id="deploy-2026-05-Gamebase" data-guide="task-guide/ko/gamebase-push-message.md" onchange="onGuideCheck(this)">
+          <label for="chk-deploy-2026-05-Gamebase::task-guide/ko/gamebase-push-message.md">
+            Gamebase 연동 후 푸시 메시지 발송까지 완료하기 <span style="color:var(--text-muted)">(이종민)</span>
+            <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
+          </label>
+        </div>
+        <div class="guide-check">
+          <input type="checkbox" id="chk-deploy-2026-05-Gamebase::task-guide/ko/gamebase-unconsumed-payment.md" data-update-id="deploy-2026-05-Gamebase" data-guide="task-guide/ko/gamebase-unconsumed-payment.md" onchange="onGuideCheck(this)">
+          <label for="chk-deploy-2026-05-Gamebase::task-guide/ko/gamebase-unconsumed-payment.md">
+            Gamebase 미소비 결제 건 조회하고 재처리하기 <span style="color:var(--text-muted)">(미지정)</span>
+            <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
+          </label>
+        </div>
+      </div>
+      <div style="margin-top:8px;"></div>
+      <div class="card-status"></div>
+    </div>
+    <div class="maint-card" data-update-id="deploy-2026-05-Secure Key Manager" data-assignees="박선영,박선영">
+      <div><span class="source deploy">2026-05</span><span class="repo">Secure Key Manager</span></div>
+      <div class="changes">* 비대칭 키 표준 스킴 서명/검증 API 추가 * 키 저장소 인증 방식 결합 옵션 추가</div>
+      <div class="affected"><strong>확인이 필요한 가이드:</strong>
+        
+        <div class="guide-check">
+          <input type="checkbox" id="chk-deploy-2026-05-Secure Key Manager::task-guide/ko/skm-api-call-with-user-access-key-token.md" data-update-id="deploy-2026-05-Secure Key Manager" data-guide="task-guide/ko/skm-api-call-with-user-access-key-token.md" onchange="onGuideCheck(this)">
+          <label for="chk-deploy-2026-05-Secure Key Manager::task-guide/ko/skm-api-call-with-user-access-key-token.md">
+            User Access Key 토큰으로 Secure Key Manager API 호출하기 <span style="color:var(--text-muted)">(박선영)</span>
+            <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
+          </label>
+        </div>
+        <div class="guide-check">
+          <input type="checkbox" id="chk-deploy-2026-05-Secure Key Manager::task-guide/ko/skm-key-management.md" data-update-id="deploy-2026-05-Secure Key Manager" data-guide="task-guide/ko/skm-key-management.md" onchange="onGuideCheck(this)">
+          <label for="chk-deploy-2026-05-Secure Key Manager::task-guide/ko/skm-key-management.md">
+            Secure Key Manager로 암호화 키 관리하기 <span style="color:var(--text-muted)">(박선영)</span>
+            <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
+          </label>
+        </div>
+      </div>
+      <div style="margin-top:8px;"></div>
+      <div class="card-status"></div>
+    </div>
+    <div class="maint-card" data-update-id="deploy-2026-04-Cloud Monitoring" data-assignees="박선영">
+      <div><span class="source deploy">2026-04</span><span class="repo">Cloud Monitoring</span></div>
+      <div class="changes">[기능 개선] * 대시보드 템플릿 기능 추가 * 집계 기능 제공 * 대시보드 동적 필터 기능 제공</div>
+      <div class="affected"><strong>확인이 필요한 가이드:</strong>
+        
+        <div class="guide-check">
+          <input type="checkbox" id="chk-deploy-2026-04-Cloud Monitoring::task-guide/ko/cloud-monitoring-alarm-policy.md" data-update-id="deploy-2026-04-Cloud Monitoring" data-guide="task-guide/ko/cloud-monitoring-alarm-policy.md" onchange="onGuideCheck(this)">
+          <label for="chk-deploy-2026-04-Cloud Monitoring::task-guide/ko/cloud-monitoring-alarm-policy.md">
+            Cloud Monitoring에서 임계치 기반 알림 설정하기 <span style="color:var(--text-muted)">(박선영)</span>
+            <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
+          </label>
+        </div>
+      </div>
+      <div style="margin-top:8px;"></div>
+      <div class="card-status"></div>
+    </div>
+    <div class="maint-card" data-update-id="deploy-2026-04-Secure Key Manager" data-assignees="박선영,박선영">
+      <div><span class="source deploy">2026-04</span><span class="repo">Secure Key Manager</span></div>
+      <div class="changes">[기능 개선] * Role 삭제 (APPROVAL MEMBER) 적용 * 권한 세분화</div>
+      <div class="affected"><strong>확인이 필요한 가이드:</strong>
+        
+        <div class="guide-check">
+          <input type="checkbox" id="chk-deploy-2026-04-Secure Key Manager::task-guide/ko/skm-api-call-with-user-access-key-token.md" data-update-id="deploy-2026-04-Secure Key Manager" data-guide="task-guide/ko/skm-api-call-with-user-access-key-token.md" onchange="onGuideCheck(this)">
+          <label for="chk-deploy-2026-04-Secure Key Manager::task-guide/ko/skm-api-call-with-user-access-key-token.md">
+            User Access Key 토큰으로 Secure Key Manager API 호출하기 <span style="color:var(--text-muted)">(박선영)</span>
+            <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
+          </label>
+        </div>
+        <div class="guide-check">
+          <input type="checkbox" id="chk-deploy-2026-04-Secure Key Manager::task-guide/ko/skm-key-management.md" data-update-id="deploy-2026-04-Secure Key Manager" data-guide="task-guide/ko/skm-key-management.md" onchange="onGuideCheck(this)">
+          <label for="chk-deploy-2026-04-Secure Key Manager::task-guide/ko/skm-key-management.md">
+            Secure Key Manager로 암호화 키 관리하기 <span style="color:var(--text-muted)">(박선영)</span>
+            <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
+          </label>
+        </div>
+      </div>
+      <div style="margin-top:8px;"></div>
+      <div class="card-status"></div>
+    </div>
+    <div class="maint-card" data-update-id="deploy-2026-03-Gamebase" data-assignees="이종민,미지정">
+      <div><span class="source deploy">2026-03</span><span class="repo">Gamebase</span></div>
+      <div class="changes">[기능 개선] * (Unity) 버그 수정 및 기능 개선</div>
+      <div class="affected"><strong>확인이 필요한 가이드:</strong>
+        
+        <div class="guide-check">
+          <input type="checkbox" id="chk-deploy-2026-03-Gamebase::task-guide/ko/gamebase-push-message.md" data-update-id="deploy-2026-03-Gamebase" data-guide="task-guide/ko/gamebase-push-message.md" onchange="onGuideCheck(this)">
+          <label for="chk-deploy-2026-03-Gamebase::task-guide/ko/gamebase-push-message.md">
+            Gamebase 연동 후 푸시 메시지 발송까지 완료하기 <span style="color:var(--text-muted)">(이종민)</span>
+            <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
+          </label>
+        </div>
+        <div class="guide-check">
+          <input type="checkbox" id="chk-deploy-2026-03-Gamebase::task-guide/ko/gamebase-unconsumed-payment.md" data-update-id="deploy-2026-03-Gamebase" data-guide="task-guide/ko/gamebase-unconsumed-payment.md" onchange="onGuideCheck(this)">
+          <label for="chk-deploy-2026-03-Gamebase::task-guide/ko/gamebase-unconsumed-payment.md">
+            Gamebase 미소비 결제 건 조회하고 재처리하기 <span style="color:var(--text-muted)">(미지정)</span>
+            <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
+          </label>
+        </div>
+      </div>
+      <div style="margin-top:8px;"></div>
+      <div class="card-status"></div>
+    </div>
+    <div class="maint-card" data-update-id="deploy-2026-03-Secure Key Manager" data-assignees="박선영,박선영">
+      <div><span class="source deploy">2026-03</span><span class="repo">Secure Key Manager</span></div>
+      <div class="changes">[기능 개선] * API 신규 버전 출시: User Access Key 토큰 인증 적용 * 기빌 데이터 수정 API 추가</div>
+      <div class="affected"><strong>확인이 필요한 가이드:</strong>
+        
+        <div class="guide-check">
+          <input type="checkbox" id="chk-deploy-2026-03-Secure Key Manager::task-guide/ko/skm-api-call-with-user-access-key-token.md" data-update-id="deploy-2026-03-Secure Key Manager" data-guide="task-guide/ko/skm-api-call-with-user-access-key-token.md" onchange="onGuideCheck(this)">
+          <label for="chk-deploy-2026-03-Secure Key Manager::task-guide/ko/skm-api-call-with-user-access-key-token.md">
+            User Access Key 토큰으로 Secure Key Manager API 호출하기 <span style="color:var(--text-muted)">(박선영)</span>
+            <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
+          </label>
+        </div>
+        <div class="guide-check">
+          <input type="checkbox" id="chk-deploy-2026-03-Secure Key Manager::task-guide/ko/skm-key-management.md" data-update-id="deploy-2026-03-Secure Key Manager" data-guide="task-guide/ko/skm-key-management.md" onchange="onGuideCheck(this)">
+          <label for="chk-deploy-2026-03-Secure Key Manager::task-guide/ko/skm-key-management.md">
+            Secure Key Manager로 암호화 키 관리하기 <span style="color:var(--text-muted)">(박선영)</span>
+            <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
+          </label>
+        </div>
+      </div>
+      <div style="margin-top:8px;"></div>
+      <div class="card-status"></div>
+    </div>
+  </div>
 
-  <footer>매일 09:00 KST 자동 갱신 · 마지막 갱신: 2026. 11. 11. PM 04:48 · 마지막 생성: 2026. 11. 11. PM 04:56</footer>
+  <footer>매일 09:00 KST 자동 갱신 · 마지막 갱신: 2026. 11. 11. PM 05:04 · 마지막 생성: 2026. 11. 11. PM 05:05</footer>
 </div>
 
 <script>
