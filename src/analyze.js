@@ -53,8 +53,8 @@ function extractKeywords(patch) {
     '아래', '위', '다음', '이전', '해당', '관련', '필요', '가능',
     '생성', '선택', '입력', '클릭', '버튼', '화면', '페이지', '목록',
     '서비스', '프로젝트', '리소스', '콘솔', '메뉴',
-    '정보', '이름', '상태', '결과', '요청',
-    '기능', '방법', '절차', '과정', '내용', '항목', '유형',
+    '정보', '이름', '상태', '결과', '요청', '사용자', '제공',
+    '기능', '방법', '절차', '과정', '내용', '항목', '유형', '지원', '제한',
     // 영문 불용어
     'the', 'and', 'for', 'are', 'but', 'not', 'you', 'all', 'can',
     'was', 'one', 'our', 'has', 'with', 'this', 'that', 'from',
@@ -175,9 +175,23 @@ function formatAnalysisMessage(change, analysisResults) {
   return lines.join('\n');
 }
 
+/**
+ * 일반 텍스트에서 주요 키워드를 추출 (배포 사항 등 patch가 아닌 텍스트용)
+ */
+function extractKeywordsFromText(text) {
+  if (!text) return [];
+  // '+' 접두사를 붙여 extractKeywords 로직을 재활용
+  const pseudoPatch = text
+    .split('\n')
+    .map((line) => '+' + line)
+    .join('\n');
+  return extractKeywords(pseudoPatch);
+}
+
 module.exports = {
   loadGuides,
   extractKeywords,
+  extractKeywordsFromText,
   findKeywordMatches,
   analyzeChange,
   formatAnalysisMessage,

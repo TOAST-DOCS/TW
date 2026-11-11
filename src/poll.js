@@ -2,7 +2,7 @@ const { discoverRepos, getBranch, hasTargetDir, getChangedFiles } = require('./g
 const { fetchGuideTasks, fetchDeployNotes, sendWebhook } = require('./dooray');
 const { loadState, saveState, loadJSON, saveJSON } = require('./state');
 const { generateSite } = require('./generate-site');
-const { loadGuides, analyzeChange } = require('./analyze');
+const { loadGuides, analyzeChange, extractKeywordsFromText, findKeywordMatches } = require('./analyze');
 const config = require('./config');
 const path = require('path');
 const fs = require('fs');
@@ -130,18 +130,42 @@ async function pollDeployNotes(guideMapping) {
   const months = await fetchDeployNotes();
   console.log(`  Found ${months.length} monthly deploy notes`);
 
-  // 각 서비스에 영향받는 가이드 매핑
+  // 각 서비스에 영향받는 가이드 매핑 (서비스명 + 키워드 분석)
+  const guides = loadGuides();
   for (const month of months) {
     for (const svc of month.services) {
-      const affected = guideMapping.mappings.filter((m) =>
+      // 1단계: 서비스명으로 후보 가이드 선정
+      const candidates = guideMapping.mappings.filter((m) =>
         m.service.toLowerCase().includes(svc.service.toLowerCase()) ||
         svc.service.toLowerCase().includes(m.service.toLowerCase())
       );
-      svc.affectedGuides = affected.map((m) => ({
-        guide: m.guide,
-        title: m.title,
-        assignee: m.assignee,
-      }));
+
+      // 2단계: 배포 사항 텍스트에서 키워드 추출 → 가이드 본문과 매칭
+      const keywords = extractKeywordsFromText(svc.changes);
+      if (keywords.length === 0 || guides.length === 0) {
+        // 키워드가 없으면 서비스명 매칭만으로 포함
+        svc.affectedGuides = candidates.map((m) => ({
+          guide: m.guide,
+          title: m.title,
+          assignee: m.assignee,
+        }));
+      } else {
+        const filtered = [];
+        for (const m of candidates) {
+          const guide = guides.find((g) => g.filename === m.guide);
+          if (!guide) continue;
+          const matches = findKeywordMatches(keywords, guide.content);
+          if (matches.length >= 2) {
+            filtered.push({
+              guide: m.guide,
+              title: m.title,
+              assignee: m.assignee,
+              matchedKeywords: matches.slice(0, 5).map((mt) => mt.keyword),
+            });
+          }
+        }
+        svc.affectedGuides = filtered;
+      }
     }
   }
 

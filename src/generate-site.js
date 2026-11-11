@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const config = require('./config');
 const { loadJSON } = require('./state');
+const { loadGuides, extractKeywordsFromText, findKeywordMatches } = require('./analyze');
 
 function esc(str) {
   return String(str)
@@ -51,15 +52,29 @@ function renderPage() {
       return !allResolved;
     });
 
-  // 배포 사항 중 영향 있는 건 (가이드 단위 resolved 적용)
+  // 배포 사항 중 영향 있는 건 (키워드 분석 + 가이드 단위 resolved 적용)
+  const guides = loadGuides();
   const pendingDeployChanges = [];
   for (const month of deployNotes.months || []) {
     for (const svc of month.services || []) {
-      if (svc.affectedGuides && svc.affectedGuides.length > 0) {
+      if (!svc.affectedGuides || svc.affectedGuides.length === 0) continue;
+
+      // 키워드 분석으로 실제 관련 가이드만 필터
+      let filtered = svc.affectedGuides;
+      const keywords = extractKeywordsFromText(svc.changes);
+      if (keywords.length > 0 && guides.length > 0) {
+        filtered = svc.affectedGuides.filter((ag) => {
+          const guide = guides.find((g) => g.filename === ag.guide);
+          if (!guide) return false;
+          return findKeywordMatches(keywords, guide.content).length >= 2;
+        });
+      }
+
+      if (filtered.length > 0) {
         const updateId = `deploy-${month.month}-${svc.service}`;
-        const allResolved = svc.affectedGuides.every((g) => resolvedGuideKeys.has(updateId + '::' + g.guide));
+        const allResolved = filtered.every((g) => resolvedGuideKeys.has(updateId + '::' + g.guide));
         if (!allResolved) {
-          pendingDeployChanges.push({ ...svc, month: month.month, updateId });
+          pendingDeployChanges.push({ ...svc, affectedGuides: filtered, month: month.month, updateId });
         }
       }
     }
@@ -223,7 +238,7 @@ footer { margin-top: 32px; text-align: center; font-size: 14px; color: var(--tex
       <div class="value ${completionRate >= 50 ? 'success' : 'warning'}">${completionRate}%</div>
     </div>
     <div class="summary-card">
-      <div class="label">현행화 필요</div>
+      <div class="label">현행화 여부 확인 필요</div>
       <div class="value ${pendingMaintenanceCount > 0 ? 'danger' : 'success'}">${pendingMaintenanceCount}</div>
     </div>
     <div class="summary-card">
@@ -366,7 +381,7 @@ footer { margin-top: 32px; text-align: center; font-size: 14px; color: var(--tex
 
   ${pendingDeployChanges.length > 0 ? `
   <div class="maint-section">
-    <h3><span class="source deploy">배포</span> 월별 배포 사항</h3>
+    <h3>월별 배포 사항</h3>
     ${pendingDeployChanges.map((c) => {
       const assigneeList = (c.affectedGuides || []).map((g) => g.assignee).join(',');
       return `

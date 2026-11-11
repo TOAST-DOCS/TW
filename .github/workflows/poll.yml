@@ -2,8 +2,10 @@ name: Poll and generate dashboard
 
 on:
   schedule:
-    # Every day at 00:00 UTC = 09:00 KST
-    - cron: '0 0 * * *'
+    # Weekdays 08:00 KST (23:00 UTC previous day)
+    - cron: '0 23 * * 0-3'
+    # Weekdays 14:00 KST (05:00 UTC)
+    - cron: '0 5 * * 1-5'
   workflow_dispatch: {}
 
 permissions:

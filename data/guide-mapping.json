@@ -41,14 +41,14 @@
       "guide": "task-guide/ko/instance-ssh-connection-failed.md",
       "title": "인스턴스에 SSH로 접속되지 않습니다",
       "service": "Instance",
-      "repos": ["Compute-Instance", "Compute"],
+      "repos": ["Compute-Instance", "Compute", "Security-Groups", "Network-VPC"],
       "assignee": "하수진"
     },
     {
       "guide": "task-guide/ko/l7-load-balancer-configuration.md",
       "title": "URL 경로 기반으로 트래픽을 분산하는 L7 로드 밸런서 구성하기",
       "service": "Load Balancer",
-      "repos": ["Network-Load-Balancer"],
+      "repos": ["Network-Load-Balancer", "Floating-IP"],
       "assignee": "박선영"
     },
     {
@@ -62,7 +62,7 @@
       "guide": "task-guide/ko/nat-gateway-private-subnet.md",
       "title": "NAT Gateway로 프라이빗 서브넷 인터넷 연결 구성하기",
       "service": "NAT Gateway",
-      "repos": ["NAT-Gateway", "Network-VPC"],
+      "repos": ["NAT-Gateway", "Network-VPC", "Internet-Gateway"],
       "assignee": "이종민"
     },
     {
@@ -106,6 +106,20 @@
       "service": "Secure Key Manager",
       "repos": ["kms"],
       "assignee": "박선영"
+    },
+    {
+      "guide": "task-guide/ko/nhn-bastion-ssh-access-control.md",
+      "title": "NHN Bastion으로 SSH 접근 통제 구성하기",
+      "service": "NHN Bastion",
+      "repos": ["NHNBastion", "Compute-Instance"],
+      "assignee": "박선영"
+    },
+    {
+      "guide": "task-guide/ko/server-image-create.md",
+      "title": "Image로 인스턴스 복제하기",
+      "service": "Image",
+      "repos": ["Compute-Image", "Compute-Instance"],
+      "assignee": "미정"
     }
   ]
 }
