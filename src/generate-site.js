@@ -80,11 +80,27 @@ function renderPage() {
     }
   }
 
+  // === 마일스톤 목록 ===
+  const milestoneSet = new Map();
+  for (const task of tasks.tasks) {
+    if (task.milestone) {
+      milestoneSet.set(task.milestone.name, (milestoneSet.get(task.milestone.name) || 0) + 1);
+    }
+  }
+  const milestoneNames = [...milestoneSet.keys()].sort();
+
   // === 통계 ===
   const totalTasks = tasks.tasks.length;
-  const completedTasks = (kanban['완료'] || []).length;
-  const completionRate = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
   const pendingMaintenanceCount = pendingGheChanges.length + pendingDeployChanges.length;
+
+  // 현재 마일스톤 완료율 (조회 시점 기준)
+  const now = new Date();
+  const currentHalf = now.getMonth() < 6 ? '상반기' : '하반기';
+  const currentMilestoneName = `${now.getFullYear()}년 ${currentHalf}`;
+  const currentMsTasks = tasks.tasks.filter((t) => t.milestone && t.milestone.name === currentMilestoneName);
+  const currentMsDone = currentMsTasks.filter((t) => t.stage === '완료').length;
+  const currentMsTotal = currentMsTasks.length;
+  const currentMsRate = currentMsTotal > 0 ? Math.round((currentMsDone / currentMsTotal) * 100) : 0;
 
   return `<!DOCTYPE html>
 <html lang="ko">
@@ -114,9 +130,15 @@ header { margin-bottom: 24px; display: flex; align-items: center; justify-conten
 header h1 { font-size: 22px; font-weight: 700; color: var(--dark); }
 .header-links { display: flex; gap: 8px; }
 
+/* Summary row */
+.summary-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
+@media (max-width: 700px) { .summary-row { grid-template-columns: 1fr; } }
+.summary-group { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 16px 20px; }
+.summary-group-label { font-size: 12px; font-weight: 600; color: var(--text-muted); letter-spacing: 0.3px; margin-bottom: 12px; text-transform: uppercase; }
+
 /* Summary cards */
-.summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 24px; }
-.summary-card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 16px 20px; }
+.summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; }
+.summary-card { background: var(--bg); border-radius: 6px; padding: 14px 16px; }
 .summary-card .label { font-size: 13px; color: var(--text-muted); font-weight: 400; letter-spacing: 0.3px; margin-bottom: 6px; }
 .summary-card .value { font-size: 28px; font-weight: 700; color: var(--dark); }
 .summary-card .value.success { color: var(--success); }
@@ -129,11 +151,20 @@ header h1 { font-size: 22px; font-weight: 700; color: var(--dark); }
 .section-title .badge { display: inline-block; padding: 2px 8px; border-radius: 30px; font-size: 11px; font-weight: 600; background: var(--primary); color: white; }
 .section-divider { margin: 32px 0; border: none; border-top: 1px solid var(--border); }
 
-/* Assignee filter */
-.filter-bar { display: flex; gap: 6px; flex-wrap: wrap; }
-.filter-btn { padding: 6px 16px; border-radius: 30px; font-size: 13px; font-weight: 500; border: 1px solid var(--border); background: var(--card); color: var(--text-muted); cursor: pointer; transition: all 0.15s; }
-.filter-btn:hover { border-color: var(--primary); color: var(--primary); }
-.filter-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+/* Filter dropdowns */
+.filter-bar { display: flex; gap: 8px; flex-wrap: wrap; }
+.filter-dropdown { position: relative; }
+.filter-toggle { padding: 6px 16px; border-radius: 30px; font-size: 13px; font-weight: 500; border: 1px solid var(--border); background: var(--card); color: var(--text-muted); cursor: pointer; transition: all 0.15s; display: flex; align-items: center; gap: 6px; }
+.filter-toggle:hover { border-color: var(--primary); color: var(--primary); }
+.filter-toggle.active { background: var(--primary); color: white; border-color: var(--primary); }
+.filter-toggle .arrow { font-size: 10px; transition: transform 0.2s; }
+.filter-toggle.open .arrow { transform: rotate(180deg); }
+.filter-menu { display: none; position: absolute; top: calc(100% + 4px); left: 0; min-width: 180px; background: var(--card); border: 1px solid var(--border); border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); z-index: 100; padding: 4px 0; }
+.filter-menu.open { display: block; }
+.filter-menu-item { padding: 8px 16px; font-size: 13px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; color: var(--text); transition: background 0.1s; }
+.filter-menu-item:hover { background: var(--bg); }
+.filter-menu-item.selected { color: var(--primary); font-weight: 600; }
+.filter-menu-item .item-count { font-size: 12px; color: var(--text-muted); font-weight: 400; }
 
 /* Hidden by filter */
 .kanban-card.hidden { display: none; }
@@ -154,6 +185,7 @@ header h1 { font-size: 22px; font-weight: 700; color: var(--dark); }
 .kanban-card .type-badge { display: inline-block; padding: 2px 8px; border-radius: 30px; font-size: 11px; font-weight: 500; }
 .type-howto { background: var(--primary-light); color: var(--primary); }
 .type-troubleshooting { background: var(--warning-light); color: var(--warning); }
+.milestone-badge { display: inline-block; padding: 2px 8px; border-radius: 30px; font-size: 11px; font-weight: 500; background: var(--success-light); color: var(--success); }
 
 /* Maintenance list */
 .maint-section { margin-bottom: 24px; }
@@ -228,31 +260,63 @@ footer { margin-top: 32px; text-align: center; font-size: 14px; color: var(--tex
   </header>
 
   <div class="section-header"><div class="section-title">주요 지표</div></div>
-  <div class="summary">
-    <div class="summary-card">
-      <div class="label">전체 가이드</div>
-      <div class="value">${totalTasks}</div>
+  <div class="summary-row">
+    <div class="summary-group">
+      <div class="summary-group-label">제작 현황</div>
+      <div class="summary">
+        <div class="summary-card">
+          <div class="label">전체 가이드</div>
+          <div class="value">${totalTasks}</div>
+        </div>
+        ${currentMsTotal > 0 ? `
+        <div class="summary-card">
+          <div class="label">${esc(currentMilestoneName)} 완료율</div>
+          <div class="value ${currentMsRate >= 50 ? 'success' : 'warning'}">${currentMsRate}%</div>
+          <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">${currentMsDone}/${currentMsTotal}건 완료</div>
+        </div>` : ''}
+      </div>
     </div>
-    <div class="summary-card">
-      <div class="label">완료율</div>
-      <div class="value ${completionRate >= 50 ? 'success' : 'warning'}">${completionRate}%</div>
-    </div>
-    <div class="summary-card">
-      <div class="label">현행화 여부 확인 필요</div>
-      <div class="value ${pendingMaintenanceCount > 0 ? 'danger' : 'success'}">${pendingMaintenanceCount}</div>
-    </div>
-    <div class="summary-card">
-      <div class="label">추적 리포</div>
-      <div class="value">${gheUpdates.heartbeat ? gheUpdates.heartbeat.trackedRepos : '--'}</div>
+    <div class="summary-group">
+      <div class="summary-group-label">현행화 검토</div>
+      <div class="summary">
+        <div class="summary-card">
+          <div class="label">현행화 여부 확인 필요</div>
+          <div class="value ${pendingMaintenanceCount > 0 ? 'danger' : 'success'}">${pendingMaintenanceCount}</div>
+        </div>
+        <div class="summary-card">
+          <div class="label">추적 리포</div>
+          <div class="value">${gheUpdates.heartbeat ? gheUpdates.heartbeat.trackedRepos : '--'}</div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- 담당 문서 필터 -->
+  <!-- 필터 -->
   <div class="section-header">
     <div class="section-title">실전 가이드 제작 작업 현황 <span class="badge">${totalTasks}</span></div>
     <div class="filter-bar">
-      <button class="filter-btn active" data-assignee="all">전체</button>
-      ${['하수진', '박선영', '박정현', '이종민'].map((name) => `<button class="filter-btn" data-assignee="${esc(name)}">${esc(name)}</button>`).join('')}
+      <div class="filter-dropdown" data-filter-group="assignee">
+        <button class="filter-toggle" id="assignee-toggle">작업자별 보기 <span class="arrow">&#9662;</span></button>
+        <div class="filter-menu" id="assignee-menu">
+          <div class="filter-menu-item selected" data-value="all">전체 <span class="item-count">${totalTasks}</span></div>
+          ${(() => {
+            const counts = {};
+            for (const t of tasks.tasks) { for (const a of t.assignees) { counts[a] = (counts[a] || 0) + 1; } }
+            const members = ['박선영', '박정현', '이종민', '하수진'];
+            return members.sort().map((name) =>
+              `<div class="filter-menu-item" data-value="${esc(name)}">${esc(name)} <span class="item-count">${counts[name] || 0}</span></div>`
+            ).join('');
+          })()}
+        </div>
+      </div>
+      ${milestoneNames.length > 0 ? `
+      <div class="filter-dropdown" data-filter-group="milestone">
+        <button class="filter-toggle" id="milestone-toggle">타깃 일정별 보기 <span class="arrow">&#9662;</span></button>
+        <div class="filter-menu" id="milestone-menu">
+          <div class="filter-menu-item selected" data-value="all">전체 <span class="item-count">${totalTasks}</span></div>
+          ${milestoneNames.map((name) => `<div class="filter-menu-item" data-value="${esc(name)}">${esc(name)} <span class="item-count">${milestoneSet.get(name)}</span></div>`).join('')}
+        </div>
+      </div>` : ''}
     </div>
   </div>
 
@@ -291,7 +355,7 @@ footer { margin-top: 32px; text-align: center; font-size: 14px; color: var(--tex
         </button>
         <div class="year-cards" style="display:none;">
           ${yearCards.map((t) => `
-          <div class="kanban-card" data-task-id="${esc(t.id)}" data-assignees="${esc(t.assignees.join(','))}">
+          <div class="kanban-card" data-task-id="${esc(t.id)}" data-assignees="${esc(t.assignees.join(','))}" data-milestone="${esc(t.milestone ? t.milestone.name : '')}">
             <div class="title">${esc(t.title.replace(/^\[(How-to|Troubleshooting)\]\s*/, ''))}</div>
             <div class="meta">
               <span class="type-badge ${t.type === 'How-to' ? 'type-howto' : 'type-troubleshooting'}">${esc(t.type)}</span>
@@ -314,7 +378,7 @@ footer { margin-top: 32px; text-align: center; font-size: 14px; color: var(--tex
       </div>
       ${cards.length === 0 ? '<div class="empty-col" style="font-size:12px;color:var(--text-muted);text-align:center;padding:20px 0;">없음</div>' : ''}
       ${cards.map((t) => `
-      <div class="kanban-card" data-task-id="${esc(t.id)}" data-assignees="${esc(t.assignees.join(','))}">
+      <div class="kanban-card" data-task-id="${esc(t.id)}" data-assignees="${esc(t.assignees.join(','))}" data-milestone="${esc(t.milestone ? t.milestone.name : '')}">
         <div class="title">${esc(t.title.replace(/^\[(How-to|Troubleshooting)\]\s*/, ''))}</div>
         <div class="meta">
           <span class="type-badge ${t.type === 'How-to' ? 'type-howto' : 'type-troubleshooting'}">${esc(t.type)}</span>
@@ -541,40 +605,74 @@ document.querySelectorAll('.kanban-col').forEach(col => {
   });
 });
 
-// 담당 문서 필터
-document.querySelectorAll('.filter-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const assignee = btn.dataset.assignee;
+// === 드롭다운 필터 ===
+let activeAssignee = 'all';
+let activeMilestone = 'all';
 
-    // 칸반 카드 필터
-    document.querySelectorAll('.kanban-card').forEach(card => {
-      if (assignee === 'all') {
-        card.classList.remove('hidden');
-      } else {
-        const assignees = card.dataset.assignees || '';
-        card.classList.toggle('hidden', !assignees.includes(assignee));
-      }
-    });
+function applyFilters() {
+  document.querySelectorAll('.kanban-card').forEach(card => {
+    const matchAssignee = activeAssignee === 'all' || (card.dataset.assignees || '').includes(activeAssignee);
+    const ms = card.dataset.milestone || '';
+    const matchMilestone = activeMilestone === 'all' || ms === activeMilestone;
+    card.classList.toggle('hidden', !(matchAssignee && matchMilestone));
+  });
 
-    // 현행화 카드 필터
-    document.querySelectorAll('.maint-card').forEach(card => {
-      if (assignee === 'all') {
-        card.classList.remove('hidden');
-      } else {
-        const assignees = card.dataset.assignees || '';
-        card.classList.toggle('hidden', !assignees.includes(assignee));
-      }
-    });
+  document.querySelectorAll('.maint-card').forEach(card => {
+    if (activeAssignee === 'all') {
+      card.classList.remove('hidden');
+    } else {
+      card.classList.toggle('hidden', !(card.dataset.assignees || '').includes(activeAssignee));
+    }
+  });
 
-    // 칸반 열 카운트 갱신
-    document.querySelectorAll('.kanban-col').forEach(col => {
-      const visible = col.querySelectorAll('.kanban-card:not(.hidden)').length;
-      const countEl = col.querySelector('.count');
-      if (countEl) countEl.textContent = visible;
+  document.querySelectorAll('.kanban-col').forEach(col => {
+    const visible = col.querySelectorAll('.kanban-card:not(.hidden)').length;
+    const countEl = col.querySelector('.count');
+    if (countEl) countEl.textContent = visible;
+  });
+}
+
+function setupDropdown(toggleId, menuId, onSelect) {
+  const toggle = document.getElementById(toggleId);
+  const menu = document.getElementById(menuId);
+  if (!toggle || !menu) return;
+
+  toggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    // 다른 메뉴 닫기
+    document.querySelectorAll('.filter-menu.open').forEach(m => { if (m !== menu) m.classList.remove('open'); });
+    document.querySelectorAll('.filter-toggle.open').forEach(t => { if (t !== toggle) t.classList.remove('open'); });
+    menu.classList.toggle('open');
+    toggle.classList.toggle('open');
+  });
+
+  menu.querySelectorAll('.filter-menu-item').forEach(item => {
+    item.addEventListener('click', () => {
+      menu.querySelectorAll('.filter-menu-item').forEach(i => i.classList.remove('selected'));
+      item.classList.add('selected');
+      menu.classList.remove('open');
+      toggle.classList.remove('open');
+      const val = item.dataset.value;
+      const label = val === 'all' ? toggle.dataset.defaultLabel : item.textContent.replace(/\\d+$/, '').trim();
+      toggle.innerHTML = label + ' <span class="arrow">&#9662;</span>';
+      toggle.classList.toggle('active', val !== 'all');
+      onSelect(val);
     });
   });
+}
+
+const aToggle = document.getElementById('assignee-toggle');
+if (aToggle) aToggle.dataset.defaultLabel = '작업자별 보기';
+const mToggle = document.getElementById('milestone-toggle');
+if (mToggle) mToggle.dataset.defaultLabel = '타깃 일정별 보기';
+
+setupDropdown('assignee-toggle', 'assignee-menu', (val) => { activeAssignee = val; applyFilters(); });
+setupDropdown('milestone-toggle', 'milestone-menu', (val) => { activeMilestone = val; applyFilters(); });
+
+// 바깥 클릭 시 닫기
+document.addEventListener('click', () => {
+  document.querySelectorAll('.filter-menu.open').forEach(m => m.classList.remove('open'));
+  document.querySelectorAll('.filter-toggle.open').forEach(t => t.classList.remove('open'));
 });
 </script>
 </body>

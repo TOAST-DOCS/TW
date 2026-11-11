@@ -84,6 +84,7 @@ async function fetchGuideTasks() {
         stage,
         status: item.workflowClass || 'registered',
         assignees: assignees.length > 0 ? assignees : ['미지정'],
+        milestone: item.milestone ? { id: item.milestone.id, name: item.milestone.name } : null,
         createdAt: item.createdAt ? new Date(item.createdAt).toISOString().slice(0, 10) : '',
         updatedAt: item.updatedAt ? new Date(item.updatedAt).toISOString().slice(0, 10) : '',
       });

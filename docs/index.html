@@ -26,9 +26,15 @@ header { margin-bottom: 24px; display: flex; align-items: center; justify-conten
 header h1 { font-size: 22px; font-weight: 700; color: var(--dark); }
 .header-links { display: flex; gap: 8px; }
 
+/* Summary row */
+.summary-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
+@media (max-width: 700px) { .summary-row { grid-template-columns: 1fr; } }
+.summary-group { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 16px 20px; }
+.summary-group-label { font-size: 12px; font-weight: 600; color: var(--text-muted); letter-spacing: 0.3px; margin-bottom: 12px; text-transform: uppercase; }
+
 /* Summary cards */
-.summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 24px; }
-.summary-card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 16px 20px; }
+.summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; }
+.summary-card { background: var(--bg); border-radius: 6px; padding: 14px 16px; }
 .summary-card .label { font-size: 13px; color: var(--text-muted); font-weight: 400; letter-spacing: 0.3px; margin-bottom: 6px; }
 .summary-card .value { font-size: 28px; font-weight: 700; color: var(--dark); }
 .summary-card .value.success { color: var(--success); }
@@ -41,11 +47,20 @@ header h1 { font-size: 22px; font-weight: 700; color: var(--dark); }
 .section-title .badge { display: inline-block; padding: 2px 8px; border-radius: 30px; font-size: 11px; font-weight: 600; background: var(--primary); color: white; }
 .section-divider { margin: 32px 0; border: none; border-top: 1px solid var(--border); }
 
-/* Assignee filter */
-.filter-bar { display: flex; gap: 6px; flex-wrap: wrap; }
-.filter-btn { padding: 6px 16px; border-radius: 30px; font-size: 13px; font-weight: 500; border: 1px solid var(--border); background: var(--card); color: var(--text-muted); cursor: pointer; transition: all 0.15s; }
-.filter-btn:hover { border-color: var(--primary); color: var(--primary); }
-.filter-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+/* Filter dropdowns */
+.filter-bar { display: flex; gap: 8px; flex-wrap: wrap; }
+.filter-dropdown { position: relative; }
+.filter-toggle { padding: 6px 16px; border-radius: 30px; font-size: 13px; font-weight: 500; border: 1px solid var(--border); background: var(--card); color: var(--text-muted); cursor: pointer; transition: all 0.15s; display: flex; align-items: center; gap: 6px; }
+.filter-toggle:hover { border-color: var(--primary); color: var(--primary); }
+.filter-toggle.active { background: var(--primary); color: white; border-color: var(--primary); }
+.filter-toggle .arrow { font-size: 10px; transition: transform 0.2s; }
+.filter-toggle.open .arrow { transform: rotate(180deg); }
+.filter-menu { display: none; position: absolute; top: calc(100% + 4px); left: 0; min-width: 180px; background: var(--card); border: 1px solid var(--border); border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); z-index: 100; padding: 4px 0; }
+.filter-menu.open { display: block; }
+.filter-menu-item { padding: 8px 16px; font-size: 13px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; color: var(--text); transition: background 0.1s; }
+.filter-menu-item:hover { background: var(--bg); }
+.filter-menu-item.selected { color: var(--primary); font-weight: 600; }
+.filter-menu-item .item-count { font-size: 12px; color: var(--text-muted); font-weight: 400; }
 
 /* Hidden by filter */
 .kanban-card.hidden { display: none; }
@@ -66,6 +81,7 @@ header h1 { font-size: 22px; font-weight: 700; color: var(--dark); }
 .kanban-card .type-badge { display: inline-block; padding: 2px 8px; border-radius: 30px; font-size: 11px; font-weight: 500; }
 .type-howto { background: var(--primary-light); color: var(--primary); }
 .type-troubleshooting { background: var(--warning-light); color: var(--warning); }
+.milestone-badge { display: inline-block; padding: 2px 8px; border-radius: 30px; font-size: 11px; font-weight: 500; background: var(--success-light); color: var(--success); }
 
 /* Maintenance list */
 .maint-section { margin-bottom: 24px; }
@@ -140,31 +156,56 @@ footer { margin-top: 32px; text-align: center; font-size: 14px; color: var(--tex
   </header>
 
   <div class="section-header"><div class="section-title">주요 지표</div></div>
-  <div class="summary">
-    <div class="summary-card">
-      <div class="label">전체 가이드</div>
-      <div class="value">33</div>
+  <div class="summary-row">
+    <div class="summary-group">
+      <div class="summary-group-label">제작 현황</div>
+      <div class="summary">
+        <div class="summary-card">
+          <div class="label">전체 가이드</div>
+          <div class="value">33</div>
+        </div>
+        
+        <div class="summary-card">
+          <div class="label">2026년 하반기 완료율</div>
+          <div class="value warning">0%</div>
+          <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">0/25건 완료</div>
+        </div>
+      </div>
     </div>
-    <div class="summary-card">
-      <div class="label">완료율</div>
-      <div class="value warning">0%</div>
-    </div>
-    <div class="summary-card">
-      <div class="label">현행화 여부 확인 필요</div>
-      <div class="value danger">13</div>
-    </div>
-    <div class="summary-card">
-      <div class="label">추적 리포</div>
-      <div class="value">122</div>
+    <div class="summary-group">
+      <div class="summary-group-label">현행화 검토</div>
+      <div class="summary">
+        <div class="summary-card">
+          <div class="label">현행화 여부 확인 필요</div>
+          <div class="value danger">13</div>
+        </div>
+        <div class="summary-card">
+          <div class="label">추적 리포</div>
+          <div class="value">122</div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- 담당 문서 필터 -->
+  <!-- 필터 -->
   <div class="section-header">
     <div class="section-title">실전 가이드 제작 작업 현황 <span class="badge">33</span></div>
     <div class="filter-bar">
-      <button class="filter-btn active" data-assignee="all">전체</button>
-      <button class="filter-btn" data-assignee="하수진">하수진</button><button class="filter-btn" data-assignee="박선영">박선영</button><button class="filter-btn" data-assignee="박정현">박정현</button><button class="filter-btn" data-assignee="이종민">이종민</button>
+      <div class="filter-dropdown" data-filter-group="assignee">
+        <button class="filter-toggle" id="assignee-toggle">작업자별 보기 <span class="arrow">&#9662;</span></button>
+        <div class="filter-menu" id="assignee-menu">
+          <div class="filter-menu-item selected" data-value="all">전체 <span class="item-count">33</span></div>
+          <div class="filter-menu-item" data-value="박선영">박선영 <span class="item-count">12</span></div><div class="filter-menu-item" data-value="박정현">박정현 <span class="item-count">3</span></div><div class="filter-menu-item" data-value="이종민">이종민 <span class="item-count">8</span></div><div class="filter-menu-item" data-value="하수진">하수진 <span class="item-count">5</span></div>
+        </div>
+      </div>
+      
+      <div class="filter-dropdown" data-filter-group="milestone">
+        <button class="filter-toggle" id="milestone-toggle">타깃 일정별 보기 <span class="arrow">&#9662;</span></button>
+        <div class="filter-menu" id="milestone-menu">
+          <div class="filter-menu-item selected" data-value="all">전체 <span class="item-count">33</span></div>
+          <div class="filter-menu-item" data-value="2026년 하반기">2026년 하반기 <span class="item-count">25</span></div><div class="filter-menu-item" data-value="2027년 상반기">2027년 상반기 <span class="item-count">8</span></div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -179,35 +220,35 @@ footer { margin-top: 32px; text-align: center; font-size: 14px; color: var(--tex
       </div>
       
       
-      <div class="kanban-card" data-task-id="4443792088302983662" data-assignees="박정현">
+      <div class="kanban-card" data-task-id="4443792088302983662" data-assignees="박정현" data-milestone="2027년 상반기">
         <div class="title">Auto Scale 스케일링이 동작하지 않습니다</div>
         <div class="meta">
           <span class="type-badge type-troubleshooting">Troubleshooting</span>
           <span>박정현</span>
         </div>
       </div>
-      <div class="kanban-card" data-task-id="4444321049668824118" data-assignees="이종민">
+      <div class="kanban-card" data-task-id="4444321049668824118" data-assignees="이종민" data-milestone="2027년 상반기">
         <div class="title">RDS DB 엔진 버전 업그레이드하기</div>
         <div class="meta">
           <span class="type-badge type-howto">How-to</span>
           <span>이종민</span>
         </div>
       </div>
-      <div class="kanban-card" data-task-id="4452451514736676994" data-assignees="이종민">
+      <div class="kanban-card" data-task-id="4452451514736676994" data-assignees="이종민" data-milestone="2027년 상반기">
         <div class="title">Log &amp; Crash Search로 여러 인스턴스의 로그를 중앙에서 수집하고 알람 받기</div>
         <div class="meta">
           <span class="type-badge type-howto">How-to</span>
           <span>이종민</span>
         </div>
       </div>
-      <div class="kanban-card" data-task-id="4454649258801324468" data-assignees="박선영">
+      <div class="kanban-card" data-task-id="4454649258801324468" data-assignees="박선영" data-milestone="2027년 상반기">
         <div class="title">RDS 백업이 실패하거나 복제가 지연될 때 </div>
         <div class="meta">
           <span class="type-badge type-troubleshooting">Troubleshooting</span>
           <span>박선영</span>
         </div>
       </div>
-      <div class="kanban-card" data-task-id="4458114916878876266" data-assignees="미지정">
+      <div class="kanban-card" data-task-id="4458114916878876266" data-assignees="미지정" data-milestone="2027년 상반기">
         <div class="title">RDS for MySQL 접속이 지연되거나 타임아웃이 발생합니다</div>
         <div class="meta">
           <span class="type-badge type-troubleshooting">Troubleshooting</span>
@@ -224,70 +265,70 @@ footer { margin-top: 32px; text-align: center; font-size: 14px; color: var(--tex
       </div>
       
       
-      <div class="kanban-card" data-task-id="4423474441021210741" data-assignees="박선영">
+      <div class="kanban-card" data-task-id="4423474441021210741" data-assignees="박선영" data-milestone="2026년 하반기">
         <div class="title">Cloud Monitoring에 인스턴스 지표가 표시되지 않습니다</div>
         <div class="meta">
           <span class="type-badge type-troubleshooting">Troubleshooting</span>
           <span>박선영</span>
         </div>
       </div>
-      <div class="kanban-card" data-task-id="4423516258002344299" data-assignees="박정현">
+      <div class="kanban-card" data-task-id="4423516258002344299" data-assignees="박정현" data-milestone="2027년 상반기">
         <div class="title">트래픽 변동에 맞춰 인스턴스를 자동으로 늘리고 줄이기</div>
         <div class="meta">
           <span class="type-badge type-howto">How-to</span>
           <span>박정현</span>
         </div>
       </div>
-      <div class="kanban-card" data-task-id="4423559613467800784" data-assignees="이종민">
+      <div class="kanban-card" data-task-id="4423559613467800784" data-assignees="이종민" data-milestone="2027년 상반기">
         <div class="title">멀티 가용성 영역(AZ)으로 고가용성 구성하기</div>
         <div class="meta">
           <span class="type-badge type-howto">How-to</span>
           <span>이종민</span>
         </div>
       </div>
-      <div class="kanban-card" data-task-id="4431532912465585256" data-assignees="김용현,하수진">
+      <div class="kanban-card" data-task-id="4431532912465585256" data-assignees="김용현,하수진" data-milestone="2026년 하반기">
         <div class="title">Image API로 외부 이미지 파일 등록하기</div>
         <div class="meta">
           <span class="type-badge type-howto">How-to</span>
           <span>김용현, 하수진</span>
         </div>
       </div>
-      <div class="kanban-card" data-task-id="4434363253873237114" data-assignees="미지정">
+      <div class="kanban-card" data-task-id="4434363253873237114" data-assignees="미지정" data-milestone="2026년 하반기">
         <div class="title">CDN 인증서 발급·갱신에 실패합니다</div>
         <div class="meta">
           <span class="type-badge type-troubleshooting">Troubleshooting</span>
           <span>미지정</span>
         </div>
       </div>
-      <div class="kanban-card" data-task-id="4443654429948904219" data-assignees="박선영">
+      <div class="kanban-card" data-task-id="4443654429948904219" data-assignees="박선영" data-milestone="2026년 하반기">
         <div class="title">RDS for MySQL 고가용성이 중단되거나 예기치 않은 장애 조치(Failover)가 발생합니다 </div>
         <div class="meta">
           <span class="type-badge type-troubleshooting">Troubleshooting</span>
           <span>박선영</span>
         </div>
       </div>
-      <div class="kanban-card" data-task-id="4366129792995104048" data-assignees="박선영">
+      <div class="kanban-card" data-task-id="4366129792995104048" data-assignees="박선영" data-milestone="2027년 상반기">
         <div class="title">Container - NHN Kubernetes Service(NKS) 클러스터 버전 업그레이드에 실패합니다</div>
         <div class="meta">
           <span class="type-badge type-troubleshooting">Troubleshooting</span>
           <span>박선영</span>
         </div>
       </div>
-      <div class="kanban-card" data-task-id="4371294192139113829" data-assignees="이종민">
+      <div class="kanban-card" data-task-id="4371294192139113829" data-assignees="이종민" data-milestone="2026년 하반기">
         <div class="title">Gamebase에 Google IDP 연동해 소셜 로그인 구현하기</div>
         <div class="meta">
           <span class="type-badge type-howto">How-to</span>
           <span>이종민</span>
         </div>
       </div>
-      <div class="kanban-card" data-task-id="4412709941930200747" data-assignees="이종민">
+      <div class="kanban-card" data-task-id="4412709941930200747" data-assignees="이종민" data-milestone="2026년 하반기">
         <div class="title">Game - Gamebase 연동 후 푸시 메시지 발송까지 완료하기</div>
         <div class="meta">
           <span class="type-badge type-howto">How-to</span>
           <span>이종민</span>
         </div>
       </div>
-      <div class="kanban-card" data-task-id="4419105686535374256" data-assignees="미지정">
+      <div class="kanban-card" data-task-id="4419105686535374256" data-assignees="미지정" data-milestone="2026년 하반기">
         <div class="title">Gamebase 미소비 결제 건 조회하고 재처리하기</div>
         <div class="meta">
           <span class="type-badge type-howto">How-to</span>
@@ -304,130 +345,130 @@ footer { margin-top: 32px; text-align: center; font-size: 14px; color: var(--tex
       </div>
       
       
-      <div class="kanban-card" data-task-id="4422767174258964149" data-assignees="박선영">
+      <div class="kanban-card" data-task-id="4422767174258964149" data-assignees="박선영" data-milestone="2026년 하반기">
         <div class="title">Cloud Monitoring에서 임계치 기반 알림 설정하기</div>
         <div class="meta">
           <span class="type-badge type-howto">How-to</span>
           <span>박선영</span>
         </div>
       </div>
-      <div class="kanban-card" data-task-id="4422947267683526923" data-assignees="한수현">
+      <div class="kanban-card" data-task-id="4422947267683526923" data-assignees="한수현" data-milestone="2026년 하반기">
         <div class="title">Image로 인스턴스 복제하기</div>
         <div class="meta">
           <span class="type-badge type-howto">How-to</span>
           <span>한수현</span>
         </div>
       </div>
-      <div class="kanban-card" data-task-id="4426184992231338130" data-assignees="이종민">
+      <div class="kanban-card" data-task-id="4426184992231338130" data-assignees="이종민" data-milestone="2026년 하반기">
         <div class="title">NAT Gateway로 프라이빗 서브넷 인터넷 연결 구성하기</div>
         <div class="meta">
           <span class="type-badge type-howto">How-to</span>
           <span>이종민</span>
         </div>
       </div>
-      <div class="kanban-card" data-task-id="4426362206120666258" data-assignees="박선영">
+      <div class="kanban-card" data-task-id="4426362206120666258" data-assignees="박선영" data-milestone="2026년 하반기">
         <div class="title">NHN Bastion으로 SSH 접근 통제 구성하기</div>
         <div class="meta">
           <span class="type-badge type-howto">How-to</span>
           <span>박선영</span>
         </div>
       </div>
-      <div class="kanban-card" data-task-id="4431416489037175225" data-assignees="박선영">
+      <div class="kanban-card" data-task-id="4431416489037175225" data-assignees="박선영" data-milestone="2026년 하반기">
         <div class="title">인스턴스 간 내부 통신에 실패합니다</div>
         <div class="meta">
           <span class="type-badge type-troubleshooting">Troubleshooting</span>
           <span>박선영</span>
         </div>
       </div>
-      <div class="kanban-card" data-task-id="4422073456380943408" data-assignees="하수진">
+      <div class="kanban-card" data-task-id="4422073456380943408" data-assignees="하수진" data-milestone="2026년 하반기">
         <div class="title">Cloud Functions로 HTTP 함수 배포하기</div>
         <div class="meta">
           <span class="type-badge type-howto">How-to</span>
           <span>하수진</span>
         </div>
       </div>
-      <div class="kanban-card" data-task-id="4437875913647741889" data-assignees="박정현">
+      <div class="kanban-card" data-task-id="4437875913647741889" data-assignees="박정현" data-milestone="2026년 하반기">
         <div class="title">GPU 인스턴스를 만들고 AI/ML 실행 환경 준비하기</div>
         <div class="meta">
           <span class="type-badge type-howto">How-to</span>
           <span>박정현</span>
         </div>
       </div>
-      <div class="kanban-card" data-task-id="4442195139022065174" data-assignees="박선영">
-        <div class="title">3티어 아키텍처에 맞는 Security Groups 규칙 설계하기</div>
-        <div class="meta">
-          <span class="type-badge type-howto">How-to</span>
-          <span>박선영</span>
-        </div>
-      </div>
-      <div class="kanban-card" data-task-id="4383661461065147637" data-assignees="박선영">
-        <div class="title">Secure Key Manager로 암호화 키 관리하기</div>
-        <div class="meta">
-          <span class="type-badge type-howto">How-to</span>
-          <span>박선영</span>
-        </div>
-      </div>
-      <div class="kanban-card" data-task-id="4366827643532418748" data-assignees="이종민">
-        <div class="title">Load Balancer 멤버가 INACTIVE로 표시됩니다</div>
-        <div class="meta">
-          <span class="type-badge type-troubleshooting">Troubleshooting</span>
-          <span>이종민</span>
-        </div>
-      </div>
-      <div class="kanban-card" data-task-id="4382900768531351321" data-assignees="하수진">
-        <div class="title">인스턴스 생성이 실패합니다</div>
-        <div class="meta">
-          <span class="type-badge type-troubleshooting">Troubleshooting</span>
-          <span>하수진</span>
-        </div>
-      </div>
-      <div class="kanban-card" data-task-id="4383614414026580307" data-assignees="박선영">
-        <div class="title">Network Firewall 정책 구성하기</div>
-        <div class="meta">
-          <span class="type-badge type-howto">How-to</span>
-          <span>박선영</span>
-        </div>
-      </div>
-      <div class="kanban-card" data-task-id="4383621354762126814" data-assignees="박선영">
+      <div class="kanban-card" data-task-id="4383621354762126814" data-assignees="박선영" data-milestone="2026년 하반기">
         <div class="title">URL 경로 기반으로 트래픽을 분산하는 L7 로드 밸런서 구성하기</div>
         <div class="meta">
           <span class="type-badge type-howto">How-to</span>
           <span>박선영</span>
         </div>
       </div>
-      <div class="kanban-card" data-task-id="4386421805705625918" data-assignees="이종민">
+      <div class="kanban-card" data-task-id="4366827643532418748" data-assignees="이종민" data-milestone="2026년 하반기">
+        <div class="title">Load Balancer 멤버가 INACTIVE로 표시됩니다</div>
+        <div class="meta">
+          <span class="type-badge type-troubleshooting">Troubleshooting</span>
+          <span>이종민</span>
+        </div>
+      </div>
+      <div class="kanban-card" data-task-id="4382900768531351321" data-assignees="하수진" data-milestone="2026년 하반기">
+        <div class="title">인스턴스 생성이 실패합니다</div>
+        <div class="meta">
+          <span class="type-badge type-troubleshooting">Troubleshooting</span>
+          <span>하수진</span>
+        </div>
+      </div>
+      <div class="kanban-card" data-task-id="4383614414026580307" data-assignees="박선영" data-milestone="2026년 하반기">
+        <div class="title">Network Firewall 정책 구성하기</div>
+        <div class="meta">
+          <span class="type-badge type-howto">How-to</span>
+          <span>박선영</span>
+        </div>
+      </div>
+      <div class="kanban-card" data-task-id="4383661461065147637" data-assignees="박선영" data-milestone="2026년 하반기">
+        <div class="title">Secure Key Manager로 암호화 키 관리하기</div>
+        <div class="meta">
+          <span class="type-badge type-howto">How-to</span>
+          <span>박선영</span>
+        </div>
+      </div>
+      <div class="kanban-card" data-task-id="4386421805705625918" data-assignees="이종민" data-milestone="2026년 하반기">
         <div class="title">IAM으로 멀티 사용자 권한 분리 구성하기</div>
         <div class="meta">
           <span class="type-badge type-howto">How-to</span>
           <span>이종민</span>
         </div>
       </div>
-      <div class="kanban-card" data-task-id="4392369696092063538" data-assignees="김로빈,임병모,하수진">
+      <div class="kanban-card" data-task-id="4392369696092063538" data-assignees="김로빈,임병모,하수진" data-milestone="2026년 하반기">
         <div class="title">인스턴스에 SSH로 접속되지 않습니다</div>
         <div class="meta">
           <span class="type-badge type-troubleshooting">Troubleshooting</span>
           <span>김로빈, 임병모, 하수진</span>
         </div>
       </div>
-      <div class="kanban-card" data-task-id="4411149608868067385" data-assignees="박선영">
+      <div class="kanban-card" data-task-id="4411149608868067385" data-assignees="박선영" data-milestone="2026년 하반기">
         <div class="title">Common, Security - User Access Key 토큰으로 Secure Key Manager API 호출하기</div>
         <div class="meta">
           <span class="type-badge type-howto">How-to</span>
           <span>박선영</span>
         </div>
       </div>
-      <div class="kanban-card" data-task-id="4414055947503682085" data-assignees="이창훈">
+      <div class="kanban-card" data-task-id="4414055947503682085" data-assignees="이창훈" data-milestone="2026년 하반기">
         <div class="title">Object Storage에 정적 웹사이트 호스팅하기</div>
         <div class="meta">
           <span class="type-badge type-howto">How-to</span>
           <span>이창훈</span>
         </div>
       </div>
-      <div class="kanban-card" data-task-id="4416254688521602757" data-assignees="하수진">
+      <div class="kanban-card" data-task-id="4416254688521602757" data-assignees="하수진" data-milestone="2026년 하반기">
         <div class="title">Object Storage 컨테이너에 CORS 설정하기</div>
         <div class="meta">
           <span class="type-badge type-howto">How-to</span>
           <span>하수진</span>
+        </div>
+      </div>
+      <div class="kanban-card" data-task-id="4442195139022065174" data-assignees="박선영" data-milestone="2026년 하반기">
+        <div class="title">3티어 아키텍처에 맞는 Security Groups 규칙 설계하기</div>
+        <div class="meta">
+          <span class="type-badge type-howto">How-to</span>
+          <span>박선영</span>
         </div>
       </div>
       <button class="kanban-toggle">+13건 더 보기</button>
@@ -737,7 +778,7 @@ footer { margin-top: 32px; text-align: center; font-size: 14px; color: var(--tex
     </div>
   </div>
 
-  <footer>매일 09:00 KST 자동 갱신 · 마지막 갱신: 2026. 11. 11. PM 05:04 · 마지막 생성: 2026. 11. 11. PM 05:32</footer>
+  <footer>매일 09:00 KST 자동 갱신 · 마지막 갱신: 2026. 11. 12. AM 07:58 · 마지막 생성: 2026. 11. 12. AM 08:21</footer>
 </div>
 
 <script>
@@ -871,40 +912,74 @@ document.querySelectorAll('.kanban-col').forEach(col => {
   });
 });
 
-// 담당 문서 필터
-document.querySelectorAll('.filter-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const assignee = btn.dataset.assignee;
+// === 드롭다운 필터 ===
+let activeAssignee = 'all';
+let activeMilestone = 'all';
 
-    // 칸반 카드 필터
-    document.querySelectorAll('.kanban-card').forEach(card => {
-      if (assignee === 'all') {
-        card.classList.remove('hidden');
-      } else {
-        const assignees = card.dataset.assignees || '';
-        card.classList.toggle('hidden', !assignees.includes(assignee));
-      }
-    });
+function applyFilters() {
+  document.querySelectorAll('.kanban-card').forEach(card => {
+    const matchAssignee = activeAssignee === 'all' || (card.dataset.assignees || '').includes(activeAssignee);
+    const ms = card.dataset.milestone || '';
+    const matchMilestone = activeMilestone === 'all' || ms === activeMilestone;
+    card.classList.toggle('hidden', !(matchAssignee && matchMilestone));
+  });
 
-    // 현행화 카드 필터
-    document.querySelectorAll('.maint-card').forEach(card => {
-      if (assignee === 'all') {
-        card.classList.remove('hidden');
-      } else {
-        const assignees = card.dataset.assignees || '';
-        card.classList.toggle('hidden', !assignees.includes(assignee));
-      }
-    });
+  document.querySelectorAll('.maint-card').forEach(card => {
+    if (activeAssignee === 'all') {
+      card.classList.remove('hidden');
+    } else {
+      card.classList.toggle('hidden', !(card.dataset.assignees || '').includes(activeAssignee));
+    }
+  });
 
-    // 칸반 열 카운트 갱신
-    document.querySelectorAll('.kanban-col').forEach(col => {
-      const visible = col.querySelectorAll('.kanban-card:not(.hidden)').length;
-      const countEl = col.querySelector('.count');
-      if (countEl) countEl.textContent = visible;
+  document.querySelectorAll('.kanban-col').forEach(col => {
+    const visible = col.querySelectorAll('.kanban-card:not(.hidden)').length;
+    const countEl = col.querySelector('.count');
+    if (countEl) countEl.textContent = visible;
+  });
+}
+
+function setupDropdown(toggleId, menuId, onSelect) {
+  const toggle = document.getElementById(toggleId);
+  const menu = document.getElementById(menuId);
+  if (!toggle || !menu) return;
+
+  toggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    // 다른 메뉴 닫기
+    document.querySelectorAll('.filter-menu.open').forEach(m => { if (m !== menu) m.classList.remove('open'); });
+    document.querySelectorAll('.filter-toggle.open').forEach(t => { if (t !== toggle) t.classList.remove('open'); });
+    menu.classList.toggle('open');
+    toggle.classList.toggle('open');
+  });
+
+  menu.querySelectorAll('.filter-menu-item').forEach(item => {
+    item.addEventListener('click', () => {
+      menu.querySelectorAll('.filter-menu-item').forEach(i => i.classList.remove('selected'));
+      item.classList.add('selected');
+      menu.classList.remove('open');
+      toggle.classList.remove('open');
+      const val = item.dataset.value;
+      const label = val === 'all' ? toggle.dataset.defaultLabel : item.textContent.replace(/\d+$/, '').trim();
+      toggle.innerHTML = label + ' <span class="arrow">&#9662;</span>';
+      toggle.classList.toggle('active', val !== 'all');
+      onSelect(val);
     });
   });
+}
+
+const aToggle = document.getElementById('assignee-toggle');
+if (aToggle) aToggle.dataset.defaultLabel = '작업자별 보기';
+const mToggle = document.getElementById('milestone-toggle');
+if (mToggle) mToggle.dataset.defaultLabel = '타깃 일정별 보기';
+
+setupDropdown('assignee-toggle', 'assignee-menu', (val) => { activeAssignee = val; applyFilters(); });
+setupDropdown('milestone-toggle', 'milestone-menu', (val) => { activeMilestone = val; applyFilters(); });
+
+// 바깥 클릭 시 닫기
+document.addEventListener('click', () => {
+  document.querySelectorAll('.filter-menu.open').forEach(m => m.classList.remove('open'));
+  document.querySelectorAll('.filter-toggle.open').forEach(t => t.classList.remove('open'));
 });
 </script>
 </body>
