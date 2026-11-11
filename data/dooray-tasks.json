@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-11-11T08:04:54.717Z",
+  "fetchedAt": "2026-11-11T22:58:20.378Z",
   "tasks": [
     {
       "id": "4422767174258964149",
@@ -10,8 +10,12 @@
       "assignees": [
         "박선영"
       ],
+      "milestone": {
+        "id": "4463853458449439046",
+        "name": "2026년 하반기"
+      },
       "createdAt": "2026-09-16",
-      "updatedAt": "2026-10-08"
+      "updatedAt": "2026-11-11"
     },
     {
       "id": "4422947267683526923",
@@ -22,8 +26,12 @@
       "assignees": [
         "한수현"
       ],
+      "milestone": {
+        "id": "4463853458449439046",
+        "name": "2026년 하반기"
+      },
       "createdAt": "2026-09-16",
-      "updatedAt": "2026-10-28"
+      "updatedAt": "2026-11-11"
     },
     {
       "id": "4423474441021210741",
@@ -34,8 +42,12 @@
       "assignees": [
         "박선영"
       ],
+      "milestone": {
+        "id": "4463853458449439046",
+        "name": "2026년 하반기"
+      },
       "createdAt": "2026-09-17",
-      "updatedAt": "2026-09-28"
+      "updatedAt": "2026-11-11"
     },
     {
       "id": "4423516258002344299",
@@ -46,8 +58,12 @@
       "assignees": [
         "박정현"
       ],
+      "milestone": {
+        "id": "4463853975930197161",
+        "name": "2027년 상반기"
+      },
       "createdAt": "2026-09-17",
-      "updatedAt": "2026-10-21"
+      "updatedAt": "2026-11-11"
     },
     {
       "id": "4423559613467800784",
@@ -58,8 +74,12 @@
       "assignees": [
         "이종민"
       ],
+      "milestone": {
+        "id": "4463853975930197161",
+        "name": "2027년 상반기"
+      },
       "createdAt": "2026-09-17",
-      "updatedAt": "2026-10-08"
+      "updatedAt": "2026-11-11"
     },
     {
       "id": "4426184992231338130",
@@ -70,8 +90,12 @@
       "assignees": [
         "이종민"
       ],
+      "milestone": {
+        "id": "4463853458449439046",
+        "name": "2026년 하반기"
+      },
       "createdAt": "2026-09-20",
-      "updatedAt": "2026-10-12"
+      "updatedAt": "2026-11-11"
     },
     {
       "id": "4426362206120666258",
@@ -82,8 +106,12 @@
       "assignees": [
         "박선영"
       ],
+      "milestone": {
+        "id": "4463853458449439046",
+        "name": "2026년 하반기"
+      },
       "createdAt": "2026-09-21",
-      "updatedAt": "2026-10-15"
+      "updatedAt": "2026-11-11"
     },
     {
       "id": "4431416489037175225",
@@ -94,8 +122,12 @@
       "assignees": [
         "박선영"
       ],
+      "milestone": {
+        "id": "4463853458449439046",
+        "name": "2026년 하반기"
+      },
       "createdAt": "2026-09-28",
-      "updatedAt": "2026-10-27"
+      "updatedAt": "2026-11-11"
     },
     {
       "id": "4431532912465585256",
@@ -107,6 +139,10 @@
         "김용현",
         "하수진"
       ],
+      "milestone": {
+        "id": "4463853458449439046",
+        "name": "2026년 하반기"
+      },
       "createdAt": "2026-09-28",
       "updatedAt": "2026-11-11"
     },
@@ -119,8 +155,12 @@
       "assignees": [
         "하수진"
       ],
+      "milestone": {
+        "id": "4463853458449439046",
+        "name": "2026년 하반기"
+      },
       "createdAt": "2026-09-15",
-      "updatedAt": "2026-10-08"
+      "updatedAt": "2026-11-11"
     },
     {
       "id": "4434363253873237114",
@@ -131,8 +171,12 @@
       "assignees": [
         "미지정"
       ],
+      "milestone": {
+        "id": "4463853458449439046",
+        "name": "2026년 하반기"
+      },
       "createdAt": "2026-10-02",
-      "updatedAt": "2026-11-06"
+      "updatedAt": "2026-11-11"
     },
     {
       "id": "4437875913647741889",
@@ -143,20 +187,12 @@
       "assignees": [
         "박정현"
       ],
+      "milestone": {
+        "id": "4463853458449439046",
+        "name": "2026년 하반기"
+      },
       "createdAt": "2026-10-07",
-      "updatedAt": "2026-10-12"
-    },
-    {
-      "id": "4442195139022065174",
-      "title": "[How-to] 3티어 아키텍처에 맞는 Security Groups 규칙 설계하기",
-      "type": "How-to",
-      "stage": "파트피어리뷰",
-      "status": "working",
-      "assignees": [
-        "박선영"
-      ],
-      "createdAt": "2026-10-13",
-      "updatedAt": "2026-11-10"
+      "updatedAt": "2026-11-11"
     },
     {
       "id": "4443654429948904219",
@@ -167,8 +203,12 @@
       "assignees": [
         "박선영"
       ],
+      "milestone": {
+        "id": "4463853458449439046",
+        "name": "2026년 하반기"
+      },
       "createdAt": "2026-10-15",
-      "updatedAt": "2026-10-30"
+      "updatedAt": "2026-11-11"
     },
     {
       "id": "4443792088302983662",
@@ -179,8 +219,12 @@
       "assignees": [
         "박정현"
       ],
+      "milestone": {
+        "id": "4463853975930197161",
+        "name": "2027년 상반기"
+      },
       "createdAt": "2026-10-15",
-      "updatedAt": "2026-10-16"
+      "updatedAt": "2026-11-11"
     },
     {
       "id": "4444321049668824118",
@@ -191,8 +235,12 @@
       "assignees": [
         "이종민"
       ],
+      "milestone": {
+        "id": "4463853975930197161",
+        "name": "2027년 상반기"
+      },
       "createdAt": "2026-10-15",
-      "updatedAt": "2026-10-15"
+      "updatedAt": "2026-11-11"
     },
     {
       "id": "4452451514736676994",
@@ -203,6 +251,10 @@
       "assignees": [
         "이종민"
       ],
+      "milestone": {
+        "id": "4463853975930197161",
+        "name": "2027년 상반기"
+      },
       "createdAt": "2026-10-27",
       "updatedAt": "2026-11-11"
     },
@@ -215,6 +267,10 @@
       "assignees": [
         "박선영"
       ],
+      "milestone": {
+        "id": "4463853975930197161",
+        "name": "2027년 상반기"
+      },
       "createdAt": "2026-10-30",
       "updatedAt": "2026-11-11"
     },
@@ -227,7 +283,107 @@
       "assignees": [
         "미지정"
       ],
+      "milestone": {
+        "id": "4463853975930197161",
+        "name": "2027년 상반기"
+      },
       "createdAt": "2026-11-04",
+      "updatedAt": "2026-11-11"
+    },
+    {
+      "id": "4383621354762126814",
+      "title": "[How-to] URL 경로 기반으로 트래픽을 분산하는 L7 로드 밸런서 구성하기",
+      "type": "How-to",
+      "stage": "파트피어리뷰",
+      "status": "registered",
+      "assignees": [
+        "박선영"
+      ],
+      "milestone": {
+        "id": "4463853458449439046",
+        "name": "2026년 하반기"
+      },
+      "createdAt": "2026-07-24",
+      "updatedAt": "2026-11-11"
+    },
+    {
+      "id": "4366129792995104048",
+      "title": "[Troubleshooting] Container - NHN Kubernetes Service(NKS) 클러스터 버전 업그레이드에 실패합니다",
+      "type": "Troubleshooting",
+      "stage": "기술검토",
+      "status": "registered",
+      "assignees": [
+        "박선영"
+      ],
+      "milestone": {
+        "id": "4463853975930197161",
+        "name": "2027년 상반기"
+      },
+      "createdAt": "2026-06-30",
+      "updatedAt": "2026-11-11"
+    },
+    {
+      "id": "4366827643532418748",
+      "title": "[Troubleshooting] Load Balancer 멤버가 INACTIVE로 표시됩니다",
+      "type": "Troubleshooting",
+      "stage": "파트피어리뷰",
+      "status": "registered",
+      "assignees": [
+        "이종민"
+      ],
+      "milestone": {
+        "id": "4463853458449439046",
+        "name": "2026년 하반기"
+      },
+      "createdAt": "2026-07-01",
+      "updatedAt": "2026-11-11"
+    },
+    {
+      "id": "4371294192139113829",
+      "title": "[How-to] Gamebase에 Google IDP 연동해 소셜 로그인 구현하기",
+      "type": "How-to",
+      "stage": "기술검토",
+      "status": "working",
+      "assignees": [
+        "이종민"
+      ],
+      "milestone": {
+        "id": "4463853458449439046",
+        "name": "2026년 하반기"
+      },
+      "createdAt": "2026-07-07",
+      "updatedAt": "2026-11-11"
+    },
+    {
+      "id": "4382900768531351321",
+      "title": "[Troubleshooting] 인스턴스 생성이 실패합니다",
+      "type": "Troubleshooting",
+      "stage": "파트피어리뷰",
+      "status": "registered",
+      "assignees": [
+        "하수진"
+      ],
+      "milestone": {
+        "id": "4463853458449439046",
+        "name": "2026년 하반기"
+      },
+      "createdAt": "2026-07-23",
+      "updatedAt": "2026-11-11"
+    },
+    {
+      "id": "4383614414026580307",
+      "title": "[How-to] Network Firewall 정책 구성하기",
+      "type": "How-to",
+      "stage": "파트피어리뷰",
+      "status": "registered",
+      "assignees": [
+        "박선영"
+      ],
+      "milestone": {
+        "id": "4463853458449439046",
+        "name": "2026년 하반기"
+      },
+      "createdAt": "2026-07-24",
       "updatedAt": "2026-11-11"
     },
     {
@@ -239,80 +395,12 @@
       "assignees": [
         "박선영"
       ],
+      "milestone": {
+        "id": "4463853458449439046",
+        "name": "2026년 하반기"
+      },
       "createdAt": "2026-07-24",
-      "updatedAt": "2026-10-08"
-    },
-    {
-      "id": "4366129792995104048",
-      "title": "[Troubleshooting] Container - NHN Kubernetes Service(NKS) 클러스터 버전 업그레이드에 실패합니다",
-      "type": "Troubleshooting",
-      "stage": "기술검토",
-      "status": "registered",
-      "assignees": [
-        "박선영"
-      ],
-      "createdAt": "2026-06-30",
-      "updatedAt": "2026-08-24"
-    },
-    {
-      "id": "4366827643532418748",
-      "title": "[Troubleshooting] Load Balancer 멤버가 INACTIVE로 표시됩니다",
-      "type": "Troubleshooting",
-      "stage": "파트피어리뷰",
-      "status": "registered",
-      "assignees": [
-        "이종민"
-      ],
-      "createdAt": "2026-07-01",
-      "updatedAt": "2026-10-19"
-    },
-    {
-      "id": "4371294192139113829",
-      "title": "[How-to] Gamebase에 Google IDP 연동해 소셜 로그인 구현하기",
-      "type": "How-to",
-      "stage": "기술검토",
-      "status": "working",
-      "assignees": [
-        "이종민"
-      ],
-      "createdAt": "2026-07-07",
-      "updatedAt": "2026-11-05"
-    },
-    {
-      "id": "4382900768531351321",
-      "title": "[Troubleshooting] 인스턴스 생성이 실패합니다",
-      "type": "Troubleshooting",
-      "stage": "파트피어리뷰",
-      "status": "registered",
-      "assignees": [
-        "하수진"
-      ],
-      "createdAt": "2026-07-23",
-      "updatedAt": "2026-10-08"
-    },
-    {
-      "id": "4383614414026580307",
-      "title": "[How-to] Network Firewall 정책 구성하기",
-      "type": "How-to",
-      "stage": "파트피어리뷰",
-      "status": "registered",
-      "assignees": [
-        "박선영"
-      ],
-      "createdAt": "2026-07-24",
-      "updatedAt": "2026-10-08"
-    },
-    {
-      "id": "4383621354762126814",
-      "title": "[How-to] URL 경로 기반으로 트래픽을 분산하는 L7 로드 밸런서 구성하기",
-      "type": "How-to",
-      "stage": "파트피어리뷰",
-      "status": "registered",
-      "assignees": [
-        "박선영"
-      ],
-      "createdAt": "2026-07-24",
-      "updatedAt": "2026-10-08"
+      "updatedAt": "2026-11-11"
     },
     {
       "id": "4386421805705625918",
@@ -323,8 +411,12 @@
       "assignees": [
         "이종민"
       ],
+      "milestone": {
+        "id": "4463853458449439046",
+        "name": "2026년 하반기"
+      },
       "createdAt": "2026-07-28",
-      "updatedAt": "2026-11-03"
+      "updatedAt": "2026-11-11"
     },
     {
       "id": "4392369696092063538",
@@ -337,8 +429,12 @@
         "임병모",
         "하수진"
       ],
+      "milestone": {
+        "id": "4463853458449439046",
+        "name": "2026년 하반기"
+      },
       "createdAt": "2026-08-05",
-      "updatedAt": "2026-10-08"
+      "updatedAt": "2026-11-11"
     },
     {
       "id": "4411149608868067385",
@@ -349,8 +445,12 @@
       "assignees": [
         "박선영"
       ],
+      "milestone": {
+        "id": "4463853458449439046",
+        "name": "2026년 하반기"
+      },
       "createdAt": "2026-08-31",
-      "updatedAt": "2026-10-13"
+      "updatedAt": "2026-11-11"
     },
     {
       "id": "4412709941930200747",
@@ -361,8 +461,12 @@
       "assignees": [
         "이종민"
       ],
+      "milestone": {
+        "id": "4463853458449439046",
+        "name": "2026년 하반기"
+      },
       "createdAt": "2026-09-02",
-      "updatedAt": "2026-10-13"
+      "updatedAt": "2026-11-11"
     },
     {
       "id": "4414055947503682085",
@@ -373,8 +477,12 @@
       "assignees": [
         "이창훈"
       ],
+      "milestone": {
+        "id": "4463853458449439046",
+        "name": "2026년 하반기"
+      },
       "createdAt": "2026-09-04",
-      "updatedAt": "2026-10-08"
+      "updatedAt": "2026-11-11"
     },
     {
       "id": "4416254688521602757",
@@ -385,8 +493,12 @@
       "assignees": [
         "하수진"
       ],
+      "milestone": {
+        "id": "4463853458449439046",
+        "name": "2026년 하반기"
+      },
       "createdAt": "2026-09-07",
-      "updatedAt": "2026-10-13"
+      "updatedAt": "2026-11-11"
     },
     {
       "id": "4419105686535374256",
@@ -397,8 +509,28 @@
       "assignees": [
         "미지정"
       ],
+      "milestone": {
+        "id": "4463853458449439046",
+        "name": "2026년 하반기"
+      },
       "createdAt": "2026-09-11",
-      "updatedAt": "2026-10-14"
+      "updatedAt": "2026-11-11"
+    },
+    {
+      "id": "4442195139022065174",
+      "title": "[How-to] 3티어 아키텍처에 맞는 Security Groups 규칙 설계하기",
+      "type": "How-to",
+      "stage": "파트피어리뷰",
+      "status": "working",
+      "assignees": [
+        "박선영"
+      ],
+      "milestone": {
+        "id": "4463853458449439046",
+        "name": "2026년 하반기"
+      },
+      "createdAt": "2026-10-13",
+      "updatedAt": "2026-11-11"
     }
   ]
 }
