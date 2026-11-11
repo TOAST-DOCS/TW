@@ -1,13 +1,16 @@
 ---
-description: NHN Cloud를 사용하다 막히는 지점을 스스로 해결하도록 돕는 트러블슈팅·How-to 가이드 모음입니다.
+description: >-
+  NHN Cloud 실전 가이드는 NHN Cloud를 이용해 클라우드 환경을 처음 구성하는 단계부터 서비스 운영 중 마주하는 실전 과제까지,
+  상황별로 필요한 답을 빠르게 찾을 수 있도록 제공하는 가이드입니다.
+icon: book-open-cover
 layout:
   width: wide
   title:
-    visible: false
-  description:
-    visible: false
-  tableOfContents:
     visible: true
+  description:
+    visible: true
+  tableOfContents:
+    visible: false
   outline:
     visible: false
   pagination:
@@ -15,31 +18,24 @@ layout:
   metadata:
     visible: false
   tags:
-    visible: false
+    visible: true
   actions:
+    visible: false
+  anchors:
     visible: false
 ---
 
-# NHN Cloud Task Guides
+# NHN Cloud 실전 가이드
 
-## 문제를 직접 해결하는 가이드
+### 문서 유형별 가이드 찾기
 
-증상에서 출발해 원인을 좁히고, 자주 하는 작업은 단계별로 따라 할 수 있도록 정리했습니다.
+문서 유형별로 필요한 가이드를 찾을 수 있습니다.
 
-<button type="button" class="button primary" data-action="ask" data-icon="gitbook-assistant">무엇을 하려고 하나요?</button>
+<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-cover data-type="image">Cover image</th></tr></thead><tbody><tr><td><h4>시작하기</h4></td><td>NHN Cloud를 처음 이용하는 사용자를 위한 단계별 온보딩 가이드</td><td><a href=".gitbook/assets/cover-placeholder.png">cover-placeholder.png</a></td></tr><tr><td><h4>활용하기</h4></td><td>NHN Cloud의 주요 서비스를 활용해 상활별 과제를 해결하는 절차를 단계별로 안내하는 가이드</td><td><a href=".gitbook/assets/cover-placeholder.png">cover-placeholder.png</a></td></tr><tr><td><h4>문제 해결</h4></td><td>NHN Cloud 서비스 이용 중 발생할 수 있는 오류의 원인을 진단하고 해결하는 방법을 안내하는 가이드</td><td><a href=".gitbook/assets/cover-placeholder.png">cover-placeholder.png</a></td></tr></tbody></table>
 
-<a href="troubleshooting/instance-creation-failed.md" class="button primary">트러블슈팅 시작하기</a><a href="how-to/cloud-monitoring-alarm-policy.md" class="button secondary">How-to 둘러보기</a>
+### 서비스별 가이드 찾기
 
-<h3 align="center">How-to 가이드</h3>
+사용하는 서비스별로 필요한 가이드를 찾을 수 있습니다.
 
-<p align="center">자주 하는 작업을 처음부터 끝까지 따라 합니다.</p>
+<table data-view="cards"><thead><tr><th></th><th data-hidden data-card-cover data-type="image">Cover image</th></tr></thead><tbody><tr><td><h4><strong>Compute</strong></h4></td><td><a href=".gitbook/assets/Compute.png">Compute.png</a></td></tr><tr><td><h4>Network</h4></td><td><a href=".gitbook/assets/Network.png">Network.png</a></td></tr><tr><td><h4>Storage</h4></td><td><a href=".gitbook/assets/Storage.png">Storage.png</a></td></tr><tr><td><h4>Monitoring</h4></td><td><a href=".gitbook/assets/Monitoring.png">Monitoring.png</a></td></tr><tr><td><h4>Game</h4></td><td><a href=".gitbook/assets/Game.png">Game.png</a></td></tr><tr><td><h4>Security</h4></td><td><a href=".gitbook/assets/Security.png">Security.png</a></td></tr><tr><td>mYc3FgLx8TsJ</td><td></td></tr><tr><td>bQw9RkEv5NaD</td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr></tbody></table>
 
-<table data-card-wrap="false" data-view="cards"><thead><tr><th><select><option value="pZx4KvTm8NrQ" label="MONITORING" color="blue"></option><option value="wGb6HsYd3LcF" label="NETWORK" color="blue"></option><option value="rJt5XbNu9QeM" label="SECURITY" color="blue"></option></select></th><th></th><th></th><th></th><th></th></tr></thead><tbody><tr><td><span data-option="pZx4KvTm8NrQ">MONITORING</span></td><td><h4>Cloud Monitoring</h4></td><td>임계치 기반 알림 설정하기</td><td><a data-mention href="how-to/cloud-monitoring-alarm-policy.md">cloud-monitoring-alarm-policy.md</a></td><td><a data-mention href="how-to/l7-load-balancer-configuration.md">l7-load-balancer-configuration.md</a></td></tr><tr><td><span data-option="wGb6HsYd3LcF">NETWORK</span></td><td><h4>Load Balancer</h4></td><td>URL 경로 기반으로 트래픽 분산하기</td><td><a data-mention href="how-to/l7-load-balancer-configuration.md">l7-load-balancer-configuration.md</a></td><td><a data-mention href="how-to/network-firewall-policy-configuration.md">network-firewall-policy-configuration.md</a></td></tr><tr><td><span data-option="rJt5XbNu9QeM">SECURITY</span></td><td><h4>Network Firewall</h4></td><td>정책 구성 및 로그 전송 설정하기</td><td><a data-mention href="how-to/network-firewall-policy-configuration.md">network-firewall-policy-configuration.md</a></td><td><a data-mention href="how-to/cloud-monitoring-alarm-policy.md">cloud-monitoring-alarm-policy.md</a></td></tr><tr><td><span data-option="rJt5XbNu9QeM">SECURITY</span></td><td><h4>Secure Key Manager</h4></td><td>암호화 키 관리하기</td><td><a data-mention href="how-to/skm-key-management.md">skm-key-management.md</a></td><td><a data-mention href="how-to/skm-api-call-with-user-access-key-token.md">skm-api-call-with-user-access-key-token.md</a></td></tr></tbody></table>
-
-***
-
-<h3 align="center">자주 찾는 트러블슈팅</h3>
-
-<p align="center">증상과 같은 제목을 찾아 들어가세요.</p>
-
-<table data-view="cards"><thead><tr><th></th><th></th><th></th><th></th><th></th></tr></thead><tbody><tr><td><h4><i class="fa-server">:server:</i></h4></td><td><h4>인스턴스 생성 실패</h4></td><td>인스턴스가 ERROR 상태가 되거나 생성 요청이 거부될 때</td><td><a data-mention href="troubleshooting/instance-creation-failed.md">instance-creation-failed.md</a></td><td><a data-mention href="troubleshooting/instance-ssh-connection-failed.md">instance-ssh-connection-failed.md</a></td></tr><tr><td><h4><i class="fa-terminal">:terminal:</i></h4></td><td><h4>SSH 접속 실패</h4></td><td>SSH 클라이언트로 인스턴스에 연결되지 않을 때</td><td><a data-mention href="troubleshooting/instance-ssh-connection-failed.md">instance-ssh-connection-failed.md</a></td><td><a data-mention href="how-to/network-firewall-policy-configuration.md">network-firewall-policy-configuration.md</a></td></tr><tr><td><h4><i class="fa-scale-balanced">:scale-balanced:</i></h4></td><td><h4>LB 멤버 INACTIVE</h4></td><td>헬스 체크가 실패해 멤버로 트래픽이 가지 않을 때</td><td><a data-mention href="troubleshooting/lb-healthcheck-inactive-member-troubleshooting.md">lb-healthcheck-inactive-member-troubleshooting.md</a></td><td><a data-mention href="how-to/network-firewall-policy-configuration.md">network-firewall-policy-configuration.md</a></td></tr></tbody></table>

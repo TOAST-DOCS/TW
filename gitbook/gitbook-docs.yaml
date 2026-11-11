@@ -2,11 +2,43 @@ $schema: https://api.gitbook.com/gitbook-docs.yaml
 site:
   title: NHN Cloud Task Guides
   structure:
-    - type: space
-      key: space-task-guide-ko
-      title: Task Guide
-      path: task-guide
+    - type: section
+      key: section-1
+      title: Home
+      path: nhn-cloud-task-guides
+      description: ""
       default: true
-      content:
-        directory: ./ko
-        language: ko
+      children:
+        - type: space
+          key: space-task-guide-ko
+          title: Task Guide
+          path: task-guide
+          default: true
+          content:
+            directory: ./ko
+            language: ko
+    - type: section
+      key: section-2
+      title: How-to
+      path: how-to
+      description: ""
+      children:
+        - type: space
+          key: space-2
+          title: How-to
+          path: product-docs
+          default: true
+          content:
+            directory: ./how-to/product-docs
+    - type: section
+      key: section-3
+      title: Troubleshooting
+      path: troubleshooting
+      children:
+        - type: space
+          key: space-1
+          title: Product Docs
+          path: product-docs
+          default: true
+          content:
+            directory: ./troubleshooting/product-docs

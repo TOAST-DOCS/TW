@@ -1,29 +1,29 @@
 # Cloud Monitoring에서 임계치 기반 알림 설정하기
 
-## 시작하기 전에
+# 시작하기 전에
 
 Cloud Monitoring은 인스턴스를 비롯한 NHN Cloud 리소스의 시스템 및 서비스 지표를 자동으로 수집하고 알림을 제공하는 서비스입니다. 대시보드와 차트를 생성해 실시간으로 지표를 조회할 수 있으며, 임계치를 설정해 이를 초과한 지표에 대한 알림을 이메일, SMS 등으로 전파할 수 있습니다.
 
 여기에서는 인스턴스의 CPU 사용률에 임계치 기반 알림을 설정하고, 임계치를 초과하면 등록된 알림 수신 그룹에 이메일이나 SMS로 알림을 받을 수 있도록 구성하는 방법을 살펴봅니다.
 
-## 사전 준비하기
+# 사전 준비하기
 
 - Cloud Monitoring은 프로젝트 생성 시 기본으로 제공되는 서비스이므로 별도 활성화가 필요하지 않습니다.
 - 알림을 수신할 **알림 수신 그룹**이 프로젝트에 등록되어 있어야 합니다. 알림 수신 그룹은 **프로젝트 관리 > 알림 수신 그룹 관리**에서 생성할 수 있습니다. 자세한 내용은 [콘솔 정책 가이드](https://docs.nhncloud.com/ko/nhncloud/ko/console-guide/#notification-receiver-group-management)를 참고하세요.
 
-## 알림 생성하기
+# 알림 생성하기
 
 1. NHN Cloud 콘솔에서 **Monitoring > Cloud Monitoring**을 클릭하세요.
 2. **알림 관리** > **알림 설정** 탭에서 **+ 알림 생성**을 클릭하세요.
 
-### 기본 정보 입력하기
+## 기본 정보 입력하기
 
 **기본 정보** 영역에서 알림의 기본 정보를 입력합니다.
 * **이름**: 알림을 식별할 수 있는 이름을 입력합니다. 최대 40자까지 입력할 수 있습니다. 운영 중 알림이 여러 개 쌓이므로 대상과 조건을 한눈에 알 수 있는 이름이 좋습니다(예: `web-server-cpu-high`).
 * **설명**: 알림의 목적이나 조건을 간단히 입력합니다. 최대 100자까지 입력할 수 있습니다.
 * **서비스**: 모니터링할 서비스를 선택합니다. 이 시나리오에서는 **Instance**를 선택합니다.
 
-### 알림 조건 설정하기
+## 알림 조건 설정하기
 
 **알림 설정** 영역에서 어떤 지표가 어떤 조건을 충족하면 알림을 발생시킬지 정합니다.
 
@@ -50,7 +50,7 @@ Cloud Monitoring은 인스턴스를 비롯한 NHN Cloud 리소스의 시스템 �
 > [!NOTE]
 > 비교 방법은 `>`(초과), `<`(미만), `>=`(이상), `<=`(이하), `=`(같음), `!=`(같지 않음)을 지원합니다. 조건은 하나의 지표에 여러 개 추가할 수 있으며, 지표 항목도 복수로 선택할 수 있습니다.
 
-### 알림 수신 대상 지정하기
+## 알림 수신 대상 지정하기
 
 **알림 수신 대상** 영역에서 알림을 받을 수신 그룹을 선택합니다.
 
@@ -64,7 +64,7 @@ Cloud Monitoring은 인스턴스를 비롯한 NHN Cloud 리소스의 시스템 �
 
 모든 설정을 완료했다면 화면 하단의 **저장**을 클릭하세요. **알림 설정** 목록에 생성한 알림이 추가됩니다.
 
-## 동작 확인하기
+# 동작 확인하기
 
 알림이 정상적으로 동작하는지 확인하려면 다음을 수행합니다.
 
@@ -81,13 +81,13 @@ Cloud Monitoring은 인스턴스를 비롯한 NHN Cloud 리소스의 시스템 �
 > * 인스턴스의 보안 그룹(**Network > Security Groups**)에서 Agent가 지표를 전송하는 데 필요한 링크로컬 주소(169.254.169.231) 통신이 차단되지 않았는지 확인합니다.
 > * (New) 리소스 유형의 지표가 보이지 않으면 신규 Agent 설치 여부를 확인하세요. 기존 Agent와 신규 Agent는 지원하는 지표가 다릅니다. 자세한 내용은 [Instance 신규 지표 연동 가이드](https://docs.nhncloud.com/ko/Monitoring/Cloud%20Monitoring/ko/new-instance-metric/)를 참고하세요.
 
-## 응용하기
+# 응용하기
 
-- **메모리·디스크 알림 추가**: 같은 방법으로 리소스 유형을 **Memory**나 **Disk**로 변경하면 메모리 사용률, 디스크 사용률에 대한 알림도 설정할 수 있습니다. 자세한 내용은 [알림 설정](https://docs.nhncloud.com/ko/Monitoring/Cloud%20Monitoring/ko/console-guide/#notification-settings)을 참고하세요.
-- **여러 조건 조합**: 하나의 알림에 CPU 사용률과 메모리 사용률 지표를 함께 추가하면 두 지표를 동시에 감시할 수 있습니다. 지표 항목의 복수 선택과 필터 설정에 대한 자세한 내용은 [알림 설정](https://docs.nhncloud.com/ko/Monitoring/Cloud%20Monitoring/ko/console-guide/#notification-settings)을 참고하세요.
-- **대시보드에 위젯 추가하기**: 대시보드에서 **+ 위젯 추가**를 클릭하면 서비스와 지표를 선택해 모니터링 위젯을 구성할 수 있습니다. 대시보드당 최대 12개의 위젯을 추가할 수 있으며, 편집 모드에서 위젯을 드래그해 위치와 크기를 조정할 수 있습니다. 자세한 내용은 [대시보드 구성](https://docs.nhncloud.com/ko/Monitoring/Cloud%20Monitoring/ko/console-guide/#create-a-dashboard)을 참고하세요.
+- **메모리·디스크 알림 추가**: 리소스 유형을 Memory나 Disk로 변경하면 다른 지표에도 알림을 설정할 수 있습니다. [알림 설정](https://docs.nhncloud.com/ko/Monitoring/Cloud%20Monitoring/ko/console-guide/#notification-settings)
+- **여러 조건 조합**: 하나의 알림에 여러 지표를 함께 추가하면 동시에 감시할 수 있습니다. [알림 설정](https://docs.nhncloud.com/ko/Monitoring/Cloud%20Monitoring/ko/console-guide/#notification-settings)
+- **대시보드 위젯 추가**: 대시보드에 모니터링 위젯을 추가해 지표를 실시간으로 시각화할 수 있습니다. [대시보드 구성](https://docs.nhncloud.com/ko/Monitoring/Cloud%20Monitoring/ko/console-guide/#create-a-dashboard)
 
-## 용어 알아보기
+# 용어 알아보기
 
 | 용어 | 설명 |
 |---|---|

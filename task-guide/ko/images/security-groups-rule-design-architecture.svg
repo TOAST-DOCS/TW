@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_레이어_1" data-name="레이어_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 600 784.97">
+  <!-- Generator: Adobe Illustrator 30.8.2, SVG Export Plug-In . SVG Version: 2.1.4 Build 7)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: #c8ccd4;
+      }
+
+      .st1, .st2 {
+        fill: #8b8b8b;
+      }
+
+      .st1, .st3, .st4, .st5, .st6, .st7, .st8 {
+        isolation: isolate;
+      }
+
+      .st1, .st4, .st7 {
+        font-size: 11px;
+      }
+
+      .st1, .st9 {
+        font-family: Pretendard-Regular-KSCpc-EUC-H, Pretendard;
+      }
+
+      .st10, .st5, .st7 {
+        fill: #125de6;
+      }
+
+      .st11 {
+        stroke: #d94141;
+        stroke-dasharray: 6 4;
+      }
+
+      .st11, .st12, .st13 {
+        fill: none;
+      }
+
+      .st3 {
+        font-size: 13px;
+      }
+
+      .st3, .st8 {
+        fill: #2d2d2d;
+        font-family: Pretendard-SemiBold-KSCpc-EUC-H, Pretendard;
+        font-weight: 600;
+      }
+
+      .st12 {
+        stroke: #8b8b8b;
+        stroke-miterlimit: 10;
+      }
+
+      .st14, .st4, .st9 {
+        fill: #fff;
+      }
+
+      .st4, .st5, .st7 {
+        font-family: Pretendard-Bold-KSCpc-EUC-H, Pretendard;
+        font-weight: 700;
+      }
+
+      .st5, .st8 {
+        font-size: 12px;
+      }
+
+      .st6 {
+        fill: #e7f2ff;
+        opacity: .4;
+      }
+
+      .st15 {
+        fill: #d94141;
+      }
+
+      .st9 {
+        font-size: 8px;
+      }
+
+      .st16 {
+        fill: #f7f7f7;
+      }
+    </style>
+  </defs>
+  <rect class="st16" width="600" height="784.97" rx="15.85" ry="15.85"/>
+  <rect class="st6" x="29.6" y="165.83" width="540.8" height="593" rx="10.2" ry="10.2"/>
+  <path class="st13" d=""/>
+  <path class="st13" d=""/>
+  <path class="st13" d=""/>
+  <path class="st13" d=""/>
+  <path class="st13" d=""/>
+  <path class="st13" d=""/>
+  <path class="st13" d=""/>
+  <path class="st13" d=""/>
+  <g>
+    <circle class="st14" cx="183.01" cy="51.47" r="25"/>
+    <circle class="st0" cx="183.01" cy="44.47" r="5"/>
+    <path class="st0" d="M193.01,61.47c0-6.14-4.48-10-10-10s-10,3.86-10,10h20Z"/>
+  </g>
+  <text class="st3" transform="translate(153.38 98.66)"><tspan x="0" y="0">외부 사용자</tspan></text>
+  <g>
+    <circle class="st14" cx="418.01" cy="51.47" r="25"/>
+    <circle class="st0" cx="418.01" cy="44.47" r="5"/>
+    <path class="st0" d="M428.01,61.47c0-6.14-4.48-10-10-10s-10,3.86-10,10h20Z"/>
+  </g>
+  <text class="st3" transform="translate(401.15 98.66)"><tspan x="0" y="0">관리자</tspan></text>
+  <rect class="st14" x="105.32" y="219.54" width="157.3" height="133.13" rx="6.62" ry="6.62"/>
+  <g>
+    <rect class="st16" x="155.96" y="209.77" width="56" height="20" rx="4" ry="4"/>
+    <text class="st7" transform="translate(164.23 223.31)"><tspan x="0" y="0">sg-web</tspan></text>
+  </g>
+  <g>
+    <circle class="st16" cx="183.96" cy="267.59" r="22"/>
+    <g>
+      <rect class="st10" x="174.16" y="257.79" width="19.6" height="8.4" rx="1.4" ry="1.4"/>
+      <rect class="st16" x="185.36" y="260.59" width="5.6" height="2.8"/>
+      <rect class="st10" x="174.16" y="268.99" width="19.6" height="8.4" rx="1.4" ry="1.4"/>
+      <rect class="st16" x="185.36" y="271.79" width="5.6" height="2.8"/>
+    </g>
+  </g>
+  <text class="st8" transform="translate(166.98 310.59)"><tspan x="0" y="0">웹 서버</tspan></text>
+  <text class="st1" transform="translate(159.91 331.64)"><tspan x="0" y="0">(플로팅 IP)</tspan></text>
+  <g>
+    <rect class="st14" x="115.34" y="412.3" width="257.3" height="133.13" rx="8.47" ry="8.47"/>
+    <g>
+      <rect class="st16" x="215.99" y="402.54" width="56" height="20" rx="4" ry="4"/>
+      <text class="st7" transform="translate(225.45 416.07)"><tspan x="0" y="0">sg-app</tspan></text>
+    </g>
+    <circle class="st16" cx="243.99" cy="470.06" r="22"/>
+    <g>
+      <rect class="st10" x="234.19" y="460.26" width="19.6" height="8.4" rx="1.4" ry="1.4"/>
+      <rect class="st16" x="245.39" y="463.06" width="5.6" height="2.8"/>
+      <rect class="st10" x="234.19" y="471.46" width="19.6" height="8.4" rx="1.4" ry="1.4"/>
+      <rect class="st16" x="245.39" y="474.26" width="5.6" height="2.8"/>
+    </g>
+    <text class="st8" transform="translate(227.01 513.06)"><tspan x="0" y="0">앱 서버</tspan></text>
+  </g>
+  <g>
+    <rect class="st14" x="289.3" y="598.97" width="257.3" height="133.13" rx="8.47" ry="8.47"/>
+    <g>
+      <rect class="st16" x="389.95" y="589.2" width="56" height="20" rx="4" ry="4"/>
+      <text class="st7" transform="translate(402.44 602.73)"><tspan x="0" y="0">sg-db</tspan></text>
+    </g>
+    <circle class="st16" cx="417.95" cy="656.73" r="22"/>
+    <g>
+      <rect class="st10" x="408.15" y="646.93" width="19.6" height="8.4" rx="1.4" ry="1.4"/>
+      <rect class="st16" x="419.35" y="649.73" width="5.6" height="2.8"/>
+      <rect class="st10" x="408.15" y="658.13" width="19.6" height="8.4" rx="1.4" ry="1.4"/>
+      <rect class="st16" x="419.35" y="660.93" width="5.6" height="2.8"/>
+    </g>
+    <text class="st8" transform="translate(398.2 699.73)"><tspan x="0" y="0">DB 서버</tspan></text>
+  </g>
+  <rect class="st16" x="339.36" y="219.54" width="157.3" height="133.13" rx="6.62" ry="6.62"/>
+  <g>
+    <rect class="st14" x="385.03" y="209.77" width="65.94" height="20" rx="4.34" ry="4.34"/>
+    <text class="st7" transform="translate(393.26 223.31)"><tspan x="0" y="0">sg-admin</tspan></text>
+  </g>
+  <g>
+    <circle class="st14" cx="418.01" cy="267.59" r="22"/>
+    <g>
+      <rect class="st10" x="408.21" y="257.79" width="19.6" height="8.4" rx="1.4" ry="1.4"/>
+      <rect class="st16" x="419.41" y="260.59" width="5.6" height="2.8"/>
+      <rect class="st10" x="408.21" y="268.99" width="19.6" height="8.4" rx="1.4" ry="1.4"/>
+      <rect class="st16" x="419.41" y="271.79" width="5.6" height="2.8"/>
+    </g>
+  </g>
+  <text class="st8" transform="translate(373.67 310.59)"><tspan x="0" y="0">관리 접속 인스턴스</tspan></text>
+  <text class="st1" transform="translate(393.95 331.63)"><tspan x="0" y="0">(플로팅 IP)</tspan></text>
+  <text class="st5" transform="translate(47.91 191.02)"><tspan x="0" y="0">VPC (10.0.0.0/16)</tspan></text>
+  <rect class="st15" x="53.4" y="474.57" width="32" height="18" rx="4" ry="4"/>
+  <text class="st4" transform="translate(59.89 487.57)"><tspan x="0" y="0">차단</tspan></text>
+  <g>
+    <line class="st12" x1="183.14" y1="108.67" x2="183.14" y2="204.07"/>
+    <polygon class="st2" points="179.15 202.9 183.14 209.81 187.12 202.9 179.15 202.9"/>
+  </g>
+  <g>
+    <line class="st12" x1="425.92" y1="108.67" x2="425.92" y2="204.07"/>
+    <polygon class="st2" points="421.93 202.9 425.92 209.81 429.91 202.9 421.93 202.9"/>
+  </g>
+  <rect class="st2" x="136.27" y="137.05" width="93.73" height="12.97" rx="6.49" ry="6.49"/>
+  <text class="st9" transform="translate(143.9 146.17)"><tspan x="0" y="0">HTTP/HTTPS 80, 443</tspan></text>
+  <g>
+    <line class="st12" x1="183.14" y1="352.67" x2="183.14" y2="406.55"/>
+    <polygon class="st2" points="179.15 405.38 183.14 412.29 187.12 405.38 179.15 405.38"/>
+  </g>
+  <rect class="st2" x="157.83" y="368.86" width="49.88" height="12.97" rx="6.49" ry="6.49"/>
+  <text class="st9" transform="translate(164.63 377.98)"><tspan x="0" y="0">TCP 8080</tspan></text>
+  <g>
+    <line class="st12" x1="418.3" y1="352.7" x2="418.3" y2="583.43"/>
+    <polygon class="st2" points="414.31 582.27 418.3 589.17 422.29 582.27 414.31 582.27"/>
+  </g>
+  <rect class="st2" x="397.46" y="457.75" width="41.69" height="12.97" rx="6.49" ry="6.49"/>
+  <text class="st9" transform="translate(404.92 466.87)"><tspan x="0" y="0">SSH 22</tspan></text>
+  <g>
+    <polyline class="st12" points="244.66 213.58 244.66 126.96 407.47 126.96 407.47 108.92"/>
+    <polygon class="st2" points="248.64 212.41 244.66 219.32 240.67 212.41 248.64 212.41"/>
+  </g>
+  <rect class="st2" x="405.08" y="141.37" width="41.69" height="12.97" rx="6.49" ry="6.49"/>
+  <text class="st9" transform="translate(412.54 150.48)"><tspan x="0" y="0">SSH 22</tspan></text>
+  <g>
+    <polyline class="st12" points="418.43 382.56 310.71 382.56 310.71 406.53"/>
+    <polygon class="st2" points="306.72 405.36 310.71 412.27 314.7 405.36 306.72 405.36"/>
+  </g>
+  <rect class="st2" x="345.27" y="375.94" width="41.69" height="12.97" rx="6.49" ry="6.49"/>
+  <text class="st9" transform="translate(352.73 385.06)"><tspan x="0" y="0">SSH 22</tspan></text>
+  <g>
+    <polyline class="st12" points="242.08 545.9 242.08 668.08 281.58 668.08"/>
+    <polygon class="st2" points="280.41 672.07 287.32 668.08 280.41 664.09 280.41 672.07"/>
+  </g>
+  <rect class="st2" x="217.88" y="598.8" width="49.88" height="12.97" rx="6.49" ry="6.49"/>
+  <text class="st9" transform="translate(224.67 607.92)"><tspan x="0" y="0">TCP 3306</tspan></text>
+  <g>
+    <polyline class="st11" points="102.18 278.05 69.04 278.05 69.04 700.9 280.44 700.9"/>
+    <polygon class="st15" points="279.27 704.89 286.18 700.9 279.27 696.92 279.27 704.89"/>
+  </g>
+  <rect class="st2" x="297.49" y="120.12" width="41.69" height="12.97" rx="6.49" ry="6.49"/>
+  <text class="st9" transform="translate(304.95 129.23)"><tspan x="0" y="0">SSH 22</tspan></text>
+</svg>

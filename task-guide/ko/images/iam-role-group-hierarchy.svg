@@ -1,0 +1,54 @@
+<svg viewBox="0 0 600 302" xmlns="http://www.w3.org/2000/svg" font-family="'Pretendard', sans-serif">
+  <!-- 캔버스 배경 -->
+  <rect x="0" y="0" width="600" height="302" fill="#F7F7F7"/>
+
+  <g transform="translate(0,0)">
+    <!-- 프로젝트 영역 (그룹 컨테이너) -->
+    <rect x="30" y="24" width="540" height="140" rx="8" fill="#E7F2FF"/>
+    <text x="300" y="48" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="bold" fill="#125DE6">프로젝트</text>
+
+    <!-- 역할 그룹: 운영자 -->
+    <rect x="50" y="72" width="150" height="72" rx="6" fill="#125DE6"/>
+    <text x="125" y="90" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#FFFFFF" opacity="0.85">역할 그룹</text>
+    <text x="125" y="108" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="bold" fill="#FFFFFF">운영자</text>
+    <text x="125" y="126" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#FFFFFF">조회·생성·수정·삭제</text>
+
+    <!-- 역할 그룹: 개발자 -->
+    <rect x="225" y="72" width="150" height="72" rx="6" fill="#125DE6"/>
+    <text x="300" y="90" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#FFFFFF" opacity="0.85">역할 그룹</text>
+    <text x="300" y="108" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="bold" fill="#FFFFFF">개발자</text>
+    <text x="300" y="126" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#FFFFFF">삭제 제외</text>
+
+    <!-- 역할 그룹: 조회 전용 -->
+    <rect x="400" y="72" width="150" height="72" rx="6" fill="#125DE6"/>
+    <text x="475" y="90" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#FFFFFF" opacity="0.85">역할 그룹</text>
+    <text x="475" y="108" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="bold" fill="#FFFFFF">조회 전용</text>
+    <text x="475" y="126" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#FFFFFF">조회만 허용</text>
+
+    <!-- 연결 화살표 (역할 그룹 → 멤버) -->
+    <line x1="125" y1="144" x2="125" y2="195" stroke="#8B8B8B" stroke-width="1.5"/>
+    <polygon points="125,204 120,195 130,195" fill="#8B8B8B"/>
+    <line x1="300" y1="144" x2="300" y2="195" stroke="#8B8B8B" stroke-width="1.5"/>
+    <polygon points="300,204 295,195 305,195" fill="#8B8B8B"/>
+    <line x1="475" y1="144" x2="475" y2="195" stroke="#8B8B8B" stroke-width="1.5"/>
+    <polygon points="475,204 470,195 480,195" fill="#8B8B8B"/>
+    <text x="133" y="182" dominant-baseline="central" font-size="12" fill="#444444">연결</text>
+    <text x="308" y="182" dominant-baseline="central" font-size="12" fill="#444444">연결</text>
+    <text x="483" y="182" dominant-baseline="central" font-size="12" fill="#444444">연결</text>
+
+    <!-- 멤버 A -->
+    <circle cx="125" cy="230" r="26" fill="#FFFFFF"/>
+    <g transform="translate(107.6,212.6) scale(0.6)"><circle cx="29" cy="17" r="10" fill="#C8CCD4"/><path fill-rule="evenodd" clip-rule="evenodd" d="M50 50C50 37.2174 40.598 29 29 29C17.402 29 8 37.2174 8 50H50Z" fill="#C8CCD4"/></g>
+    <text x="125" y="270" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#2D2D2D">멤버 A</text>
+
+    <!-- 멤버 B -->
+    <circle cx="300" cy="230" r="26" fill="#FFFFFF"/>
+    <g transform="translate(282.6,212.6) scale(0.6)"><circle cx="29" cy="17" r="10" fill="#C8CCD4"/><path fill-rule="evenodd" clip-rule="evenodd" d="M50 50C50 37.2174 40.598 29 29 29C17.402 29 8 37.2174 8 50H50Z" fill="#C8CCD4"/></g>
+    <text x="300" y="270" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#2D2D2D">멤버 B</text>
+
+    <!-- 멤버 C -->
+    <circle cx="475" cy="230" r="26" fill="#FFFFFF"/>
+    <g transform="translate(457.6,212.6) scale(0.6)"><circle cx="29" cy="17" r="10" fill="#C8CCD4"/><path fill-rule="evenodd" clip-rule="evenodd" d="M50 50C50 37.2174 40.598 29 29 29C17.402 29 8 37.2174 8 50H50Z" fill="#C8CCD4"/></g>
+    <text x="475" y="270" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#2D2D2D">멤버 C</text>
+  </g>
+</svg>

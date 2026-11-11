@@ -8,7 +8,7 @@ Gamebase는 게임 개발에 필요한 로그인, 결제, 푸시 등 공통 기�
 
 여기에서는 Gamebase로 로그인 기능까지 구현한 게임에 푸시를 연동해 이벤트 공지나 복귀 유도 메시지처럼 로그인한 사용자에게 직접 알림을 보낼 수 있도록 구성하고, 테스트 발송으로 정상 동작 여부까지 확인하는 방법을 살펴봅니다.
 
-![Gamebase 푸시 메시지 발송 흐름: 운영자가 Gamebase 콘솔에서 인증 정보를 등록하고, 게임 클라이언트가 로그인 후 푸시 토큰을 Gamebase에 등록합니다. 운영자가 Gamebase 콘솔에서 메시지를 발송하면 Gamebase가 토큰과 메시지를 NHN Cloud Push로 전달하고, NHN Cloud Push가 FCM 또는 APNs를 거쳐 Android·iOS 디바이스로 발송합니다.](./images/gamebase-push-flow-diagram.svg)
+![운영자가 Gamebase 콘솔에서 인증 정보를 등록하고 게임 클라이언트가 푸시 토큰을 등록한 뒤, 콘솔에서 발송한 메시지가 Gamebase와 NHN Cloud Push를 거쳐 FCM·APNs로 Android·iOS 디바이스에 전달되는 흐름](images/gamebase-push-flow-diagram.svg)
 
 ## 사전 준비하기
 
@@ -41,6 +41,11 @@ Gamebase는 게임 개발에 필요한 로그인, 결제, 푸시 등 공통 기�
 
 ## Gamebase 콘솔과 SDK에 푸시 연동하기
 
+{% stepper %}
+
+{% step %}
+### 인증 정보 등록하기
+
 1. Gamebase 콘솔에서 대상 앱의 **푸시 > 인증서** 화면으로 이동하세요.
 
     인증 정보 등록부터 메시지 발송까지 모두 이 Gamebase 콘솔 안에서 처리합니다.
@@ -56,32 +61,39 @@ Gamebase는 게임 개발에 필요한 로그인, 결제, 푸시 등 공통 기�
 
         > [!WARNING]
         > `.p8` 개인 키 파일도 메신저나 이메일, 외부 서비스로 공유하거나 소스 저장소에 커밋하지 말고 콘솔에 직접 등록하세요.
+{% endstep %}
 
-3. 클라이언트 로그인이 끝난 뒤, SDK에서 푸시 토큰을 등록하는 코드를 추가하세요.
+{% step %}
+### 푸시 토큰 등록하기
 
-    ```java
-    PushConfiguration configuration = PushConfiguration.newBuilder()
-            .enablePush(enablePush)
-            .enableAdAgreement(enableAdPush)
-            .enableAdAgreementNight(enableAdNightPush)
-            .build();
+클라이언트 로그인이 끝난 뒤, SDK에서 푸시 토큰을 등록하는 코드를 추가하세요. 로그인 전에 토큰을 등록하면 어떤 사용자의 디바이스인지 식별할 수 없으므로, 반드시 로그인 성공 콜백 이후에 호출합니다.
 
-    Gamebase.Push.registerPush(activity, configuration, new GamebaseCallback() {
-        @Override
-        public void onCallback(GamebaseException exception) {
-            if (Gamebase.isSuccess(exception)) {
-                // 토큰 등록 성공
-            }
+```java
+PushConfiguration configuration = PushConfiguration.newBuilder()
+        .enablePush(enablePush)
+        .enableAdAgreement(enableAdPush)
+        .enableAdAgreementNight(enableAdNightPush)
+        .build();
+
+Gamebase.Push.registerPush(activity, configuration, new GamebaseCallback() {
+    @Override
+    public void onCallback(GamebaseException exception) {
+        if (Gamebase.isSuccess(exception)) {
+            // 토큰 등록 성공
         }
-    });
-    ```
+    }
+});
+```
 
-    `enableAdAgreement`, `enableAdAgreementNight`는 각각 광고성 정보 수신 동의, 야간 광고성 정보 수신 동의 여부를 나타냅니다. 사용자가 앱 내 약관 동의 화면에서 선택한 값을 그대로 전달하면, 이후 발송 시 Gamebase가 이 값을 기준으로 미동의 대상자를 발송 대상에서 제외합니다.
+`enableAdAgreement`, `enableAdAgreementNight`는 각각 광고성 정보 수신 동의, 야간 광고성 정보 수신 동의 여부를 나타냅니다. 사용자가 앱 내 약관 동의 화면에서 선택한 값을 그대로 전달하면, 이후 발송 시 Gamebase가 이 값을 기준으로 미동의 대상자를 발송 대상에서 제외합니다. 정보통신망법에 따라 광고성 메시지는 야간(21시~08시)에 수신자의 별도 동의 없이 발송할 수 없으므로, `enableAdAgreementNight`(iOS는 `ADAgreementNight`)에는 사용자의 실제 동의 여부를 정확히 반영하세요.
 
-    > [!WARNING]
-    > 동의값은 사용자 ID 단위가 아니라 푸시 토큰 단위로 NHN Cloud Push에 저장됩니다. 푸시 토큰이 만료되는 경우도 있으므로, 로그인 이후에는 앱을 실행하거나 계정을 전환할 때마다 `registerPush` API를 호출해 최신 값을 서버에 반영하세요.
+> [!WARNING]
+> 동의값은 사용자 ID 단위가 아니라 푸시 토큰 단위로 NHN Cloud Push에 저장됩니다. 푸시 토큰이 만료되는 경우도 있으므로, 로그인 이후에는 앱을 실행하거나 계정을 전환할 때마다 `registerPush` API를 호출해 최신 값을 서버에 반영하세요.
 
-    로그인 전에 토큰을 등록하면 어떤 사용자의 디바이스인지 식별할 수 없으므로, 반드시 로그인 성공 콜백 이후에 호출합니다. Android에서는 로그인 전에 호출하면 5101 오류(상세 코드 102)가 발생하며, 상세 코드는 `exception.getDetailCode()`로 확인할 수 있습니다. iOS는 `TCGBPush registerPushWithPushConfiguration:completion:`으로 동일하게 구현합니다. 플랫폼별 전체 파라미터와 오류 코드는 [Android 푸시 가이드](https://docs.nhncloud.com/ko/Game/Gamebase/ko/aos-push/), [iOS 푸시 가이드](https://docs.nhncloud.com/ko/Game/Gamebase/ko/ios-push/)를 참고하세요.
+Android에서는 로그인 전에 호출하면 5101 오류(상세 코드 102)가 발생하며, 상세 코드는 `exception.getDetailCode()`로 확인할 수 있습니다. iOS는 `TCGBPush registerPushWithPushConfiguration:completion:`으로 동일하게 구현합니다. 플랫폼별 전체 파라미터와 오류 코드는 [Android 푸시 가이드](https://docs.nhncloud.com/ko/Game/Gamebase/ko/aos-push/), [iOS 푸시 가이드](https://docs.nhncloud.com/ko/Game/Gamebase/ko/ios-push/)를 참고하세요.
+{% endstep %}
+
+{% endstepper %}
 
 ## 동작 확인하기
 
@@ -103,8 +115,8 @@ Gamebase는 게임 개발에 필요한 로그인, 결제, 푸시 등 공통 기�
 
 ## 응용하기
 
-- **예약 발송**: 이벤트 시작 시각에 맞춰 미리 메시지를 준비해 두려면, 즉시 발송 대신 예약 발송 옵션을 사용합니다. Gamebase 콘솔의 **푸시 > 푸시** 화면에서 **발송 타입**으로 즉시·예약·반복 발송을 모두 선택할 수 있습니다. 자세한 내용은 [Gamebase 콘솔 사용 가이드 > 푸시](https://docs.nhncloud.com/ko/Game/Gamebase/ko/oper-push/)를 참고하세요.
-- **야간 발송 제한 준수**: 정보통신망법에 따라 광고성 메시지는 야간(21시∼08시)에 수신자의 별도 동의 없이 발송할 수 없습니다. 앞에서 다룬 `enableAdAgreementNight`(iOS는 `ADAgreementNight`) 값에 사용자의 실제 동의 여부를 정확히 반영해 두면, 별도 처리 없이 야간 발송 대상에서 미동의 사용자가 자동으로 제외됩니다. 플랫폼별 설정은 [Android 푸시 가이드](https://docs.nhncloud.com/ko/Game/Gamebase/ko/aos-push/)를 참고하세요.
+- **예약·반복 발송**: 발송 타입을 예약·반복 발송으로 바꿔 이벤트 시각에 맞춰 보냅니다. [Gamebase 콘솔 사용 가이드 > 푸시](https://docs.nhncloud.com/ko/Game/Gamebase/ko/oper-push/)
+- **광고성 푸시 동의 관리**: 광고·야간 광고 동의값을 갱신해 미동의자를 발송에서 제외합니다. [Android 푸시 가이드](https://docs.nhncloud.com/ko/Game/Gamebase/ko/aos-push/)
 
 ## 용어 알아보기
 

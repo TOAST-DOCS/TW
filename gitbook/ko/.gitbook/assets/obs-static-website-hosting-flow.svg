@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" font-family="'Pretendard', sans-serif" role="img" aria-labelledby="title desc">
+  <title id="title">Object Storage 정적 웹사이트 호스팅 구성</title>
+  <desc id="desc">개발자가 빌드한 정적 파일을 접근 정책이 PUBLIC인 Object Storage 컨테이너에 업로드하면 사용자 브라우저가 정적 웹사이트 URL로 접속합니다. 선택적으로 CDN을 원본 서버로 연동해 전송 성능을 개선할 수 있습니다.</desc>
+  <rect width="960" height="420" rx="12" fill="#F7F7F7"/>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#8B8B8B"/>
+    </marker>
+  </defs>
+
+  <!-- ===== 개발자 (외부, cx=90, cy=168) ===== -->
+  <circle cx="90" cy="168" r="32" fill="#FFFFFF"/>
+  <g transform="translate(72.6, 150.6) scale(0.6)">
+    <circle cx="29" cy="17" r="10" fill="#C8CCD4"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M50 50C50 37.2174 40.598 29 29 29C17.402 29 8 37.2174 8 50H50Z" fill="#C8CCD4"/>
+  </g>
+  <text x="90" y="222" text-anchor="middle" fill="#2D2D2D" font-size="13" font-weight="600">개발자</text>
+
+  <!-- ===== NHN Cloud 영역 ===== -->
+  <rect x="200" y="40" width="540" height="340" rx="8" fill="#E7F2FF"/>
+  <text x="216" y="62" fill="#125DE6" font-size="13" font-weight="700">NHN Cloud</text>
+
+  <!-- ===== Object Storage 컨테이너 ===== -->
+  <rect x="230" y="84" width="480" height="126" rx="8" fill="#FFFFFF"/>
+  <g transform="translate(244, 94) scale(0.5)">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M14 8C14 6.89543 14.8954 6 16 6H32C33.1046 6 34 6.89543 34 8V24C34 25.1046 33.1046 26 32 26H30V12C30 10.8954 29.1046 10 28 10H14V8Z" fill="#125DE6"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M8 14C6.89543 14 6 14.8954 6 16V32C6 33.1046 6.89543 34 8 34H24C25.1046 34 26 33.1046 26 32V16C26 14.8954 25.1046 14 24 14H8Z" fill="#125DE6"/>
+  </g>
+  <text x="270" y="109" fill="#125DE6" font-size="13" font-weight="700">Object Storage</text>
+
+  <!-- 컨테이너 노드 (cx=470, cy=168) -->
+  <rect x="300" y="136" width="340" height="64" rx="6" fill="#125DE6"/>
+  <text x="470" y="162" text-anchor="middle" fill="#FFFFFF" font-size="13" font-weight="600">컨테이너</text>
+  <text x="470" y="182" text-anchor="middle" fill="#FFFFFF" font-size="10">접근 정책 PUBLIC, 인덱스 문서와 오류 문서 설정</text>
+
+  <!-- ===== CDN (선택, cx=470, cy=300) ===== -->
+  <circle cx="470" cy="300" r="28" fill="#FFFFFF"/>
+  <g transform="translate(458, 288) scale(0.6)">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M25.9448 34.8592C24.107 35.5951 22.1008 36 20 36C11.1634 36 4 28.8366 4 20C4 11.1634 11.1634 4 20 4C27.8006 4 34.2974 9.58233 35.7135 16.9701C34.3851 15.9178 32.7381 15.225 30.9329 15.046C29.0468 10.8903 24.8609 8 20 8C13.3726 8 8 13.3726 8 20C8 26.6274 13.3726 32 20 32C21.3655 32 22.6778 31.7719 23.9007 31.3518C24.5525 32.5441 25.2557 33.7379 25.9448 34.8592Z" fill="#125DE6"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.1111 18C16.037 18.6667 16 19.3333 16 20C16 20.6667 16.037 21.3333 16.1111 22H21.1663C21.0572 22.5393 21 23.0966 21 23.6667C21 24.3179 21.1666 25.1127 21.4544 26H17C17.6667 28 18.6667 30 20 32H16C14.6667 30 13.6667 28 13 26H8V22H12.1111C12.037 21.3333 12 20.6667 12 20C12 19.3333 12.037 18.6667 12.1111 18H8V14H13C13.6667 12 14.6667 10 16 8H20C18.6667 10 17.6667 12 17 14H23C22.3333 12 21.3333 10 20 8H24C25.3333 10 26.3333 12 27 14H32V15.2148C31.3568 15.0742 30.6874 15 30 15C27.2792 15 24.8405 16.1626 23.1902 18H16.1111ZM24.1408 31.7869C24.0943 31.8579 24.0474 31.929 24 32H20C20.8907 30.6639 21.6327 29.3278 22.2259 27.9917C22.7584 29.2035 23.4242 30.4996 24.1408 31.7869Z" fill="#125DE6"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M30 36C30 36 36 27.3137 36 24C36 20.6863 33.3137 18 30 18C26.6863 18 24 20.6863 24 24C24 27.3137 30 36 30 36ZM30 26C31.1046 26 32 25.1046 32 24C32 22.8954 31.1046 22 30 22C28.8954 22 28 22.8954 28 24C28 25.1046 28.8954 26 30 26Z" fill="#125DE6"/>
+  </g>
+  <text x="470" y="346" text-anchor="middle" fill="#2D2D2D" font-size="13" font-weight="600">CDN</text>
+  <text x="470" y="361" text-anchor="middle" fill="#8B8B8B" font-size="11">(선택)</text>
+
+  <!-- ===== 사용자 브라우저 (외부, cx=870, cy=168) ===== -->
+  <circle cx="870" cy="168" r="32" fill="#FFFFFF"/>
+  <g transform="translate(852.6, 150.6) scale(0.6)">
+    <circle cx="29" cy="17" r="10" fill="#C8CCD4"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M50 50C50 37.2174 40.598 29 29 29C17.402 29 8 37.2174 8 50H50Z" fill="#C8CCD4"/>
+  </g>
+  <text x="870" y="222" text-anchor="middle" fill="#2D2D2D" font-size="13" font-weight="600">사용자</text>
+  <text x="870" y="237" text-anchor="middle" fill="#8B8B8B" font-size="11">(브라우저)</text>
+
+  <!-- ===== ① 개발자 → 컨테이너: 빌드 파일 업로드 ===== -->
+  <line x1="122" y1="168" x2="298" y2="168" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="154" y="142" width="18" height="18" rx="9" fill="#2D2D2D"/>
+  <text x="163" y="155" text-anchor="middle" fill="#FFFFFF" font-size="11" font-weight="700">1</text>
+  <text x="176" y="155" fill="#444444" font-size="11">빌드 파일 업로드</text>
+
+  <!-- ===== ② 컨테이너 → 사용자: 정적 웹사이트 URL ===== -->
+  <line x1="640" y1="168" x2="836" y2="168" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="680" y="142" width="18" height="18" rx="9" fill="#2D2D2D"/>
+  <text x="689" y="155" text-anchor="middle" fill="#FFFFFF" font-size="11" font-weight="700">2</text>
+  <text x="702" y="155" fill="#444444" font-size="11">정적 웹사이트 URL</text>
+
+  <!-- ===== 컨테이너 → CDN: 원본 서버 (보조, 점선) ===== -->
+  <line x1="470" y1="200" x2="470" y2="270" stroke="#8B8B8B" stroke-width="1.5" stroke-dasharray="6,4" marker-end="url(#arrow)"/>
+  <text x="480" y="240" fill="#444444" font-size="11">원본 서버</text>
+
+  <!-- ===== CDN → 사용자: 캐시 응답 (보조, 점선) ===== -->
+  <path d="M 498 300 L 920 300 L 920 168 L 904 168" fill="none" stroke="#8B8B8B" stroke-width="1.5" stroke-dasharray="6,4" marker-end="url(#arrow)"/>
+  <text x="684" y="292" text-anchor="middle" fill="#444444" font-size="11">캐시 응답</text>
+</svg>

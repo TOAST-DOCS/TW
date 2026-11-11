@@ -1,6 +1,6 @@
 # Network Firewall 정책 구성 및 로그 전송 설정하기
 
-## 시작하기 전에
+# 시작하기 전에
 
 Network Firewall은 NHN Cloud에서 사용하는 인프라 자산을 안전하게 보호하기 위해 제공하는 관리형 네트워크 보안 서비스입니다. 별도의 방화벽 제품 없이도 내·외부 통신 경로에 위치한 방화벽을 간편하게 운영할 수 있으며, VPC 간 트래픽과 인바운드·아웃바운드 트래픽을 통합적으로 제어하고 실시간 로그를 기록할 수 있습니다.
 
@@ -20,7 +20,7 @@ Network Firewall은 NHN Cloud에서 사용하는 인프라 자산을 안전하�
 > | 로그 | [Flow Log](https://www.nhncloud.com/kr/service/network/flow-log)로 수집 가능 | 미지원 | 정책별 로깅 가능 |
 > | 우선순위 | 없음(규칙 합집합 적용) | order 번호로 순서 지정 | 우선순위 번호로 순서 지정 |
 
-## 사전 준비하기
+# 사전 준비하기
 
 - Network Firewall 서비스가 활성화되어 있고, Network Firewall 생성이 완료되어 있어야 합니다. 생성 시 VPC, 서브넷, NAT용 서브넷, 외부 전송용 서브넷을 지정해야 하므로, 보호 대상 VPC와 용도별 서브넷(보호 대상 서브넷, NAT용 서브넷, 외부 전송용 서브넷)을 미리 구성하세요. 서비스 활성화 및 Network Firewall 생성에 대한 자세한 내용은 [콘솔 사용 가이드](https://docs.nhncloud.com/ko/Security/Network-Firewall/ko/console-guide/)를 참고하세요.
 - 트래픽 로그 외부 전송을 위한 Log & Crash Search 서비스가 활성화되어 있어야 합니다. Network Firewall의 트래픽 로그 외부 전송은 Syslog, Object Storage, Log & Crash Search를 지원하며, 이 가이드에서는 Log & Crash Search로 전송하는 경우를 예시로 설명합니다.
@@ -28,13 +28,13 @@ Network Firewall은 NHN Cloud에서 사용하는 인프라 자산을 안전하�
 > [!NOTE]
 > Network Firewall은 생성 시점부터 과금이 시작됩니다. 이중화(HA) 구성이 아닌 단일 구성을 선택하면 1대만 과금됩니다.
 
-## 허용 정책 추가하기
+# 허용 정책 추가하기
 
 Network Firewall은 기본 정책이 **모든 트래픽 차단**(default-deny)입니다. 따라서 필요한 트래픽만 명시적으로 허용하는 방식으로 정책을 구성합니다.
 
 다음 예시는 웹 서브넷(192.168.20.0/24)에서 DB 서브넷(192.168.10.0/24)으로의 MySQL(TCP/3306) 접근을 허용하는 정책을 추가합니다.
 
-### IP 객체 등록
+## IP 객체 등록
 
 정책에서 사용할 출발지, 목적지를 IP 객체로 먼저 등록합니다. 객체를 만들어 두면 여러 정책에서 재사용할 수 있고, IP 대역이 변경되더라도 객체만 수정하면 됩니다.
 
@@ -54,7 +54,7 @@ Network Firewall은 기본 정책이 **모든 트래픽 차단**(default-deny)�
     - **타입**: 서브넷
     - **IP 주소**: `192.168.10.0/24`
 
-### 포트 객체 등록
+## 포트 객체 등록
 
 1. NHN Cloud 콘솔에서 **Security > Network Firewall**을 클릭하세요.
 
@@ -66,7 +66,7 @@ Network Firewall은 기본 정책이 **모든 트래픽 차단**(default-deny)�
     - **프로토콜**: TCP — TCP, UDP, ICMP 중 선택합니다.
     - **포트 번호**: `3306` — MySQL의 기본 포트입니다.
 
-### 정책 추가
+## 정책 추가
 
 1. NHN Cloud 콘솔에서 **Security > Network Firewall**을 클릭하세요.
 
@@ -100,9 +100,9 @@ Network Firewall은 기본 정책이 **모든 트래픽 차단**(default-deny)�
 > [!NOTE]
 > `default-deny`는 항상 맨 아래에 위치하며, 그 아래로는 정책을 이동할 수 없습니다. 정책 간 순서를 조정하려면 **이동**을 클릭해 우선순위를 변경할 수 있습니다.
 
-## 로그 확인 및 Log & Crash Search 연동하기
+# 로그 확인 및 Log & Crash Search 연동하기
 
-### 콘솔에서 로그 확인하기
+## 콘솔에서 로그 확인하기
 
 정책에 로깅을 활성화했다면, **로그** 탭에서 트래픽 로그를 조회할 수 있습니다.
 
@@ -125,7 +125,7 @@ Network Firewall은 기본 정책이 **모든 트래픽 차단**(default-deny)�
 > [!NOTE]
 > **엑셀 내려받기**를 클릭해 조회 결과를 다운로드할 수 있습니다.
 
-### 기본 차단 정책 로그 활성화
+## 기본 차단 정책 로그 활성화
 
 기본 정책인 `default-deny`는 별도로 로깅을 활성화해야 로그가 기록됩니다.
 
@@ -139,7 +139,7 @@ Network Firewall은 기본 정책이 **모든 트래픽 차단**(default-deny)�
 
 이 설정을 활성화하면 어떤 정책에도 해당하지 않아 기본 차단된 트래픽도 로그에 기록됩니다. 차단된 트래픽의 출발지와 목적지를 파악할 수 있어 정책 누락을 발견하는 데 유용합니다.
 
-### Log & Crash Search로 로그 전송하기
+## Log & Crash Search로 로그 전송하기
 
 Network Firewall 콘솔의 **로그** 탭은 단기 조회에 적합합니다. 장기 보관이나 검색·알림이 필요하다면 Log & Crash Search로 로그를 전송하세요.
 
@@ -158,7 +158,7 @@ Network Firewall 콘솔의 **로그** 탭은 단기 조회에 적합합니다. �
 > [!NOTE]
 > **로그 원격 전송 설정** 화면에서 **Syslog** 또는 **Object Storage**를 선택해 Syslog 서버나 Object Storage로도 로그를 전송할 수 있습니다. Syslog를 선택하면 원격지의 IP 주소, 프로토콜(UDP/TCP), 포트 번호를 지정합니다.
 
-## 동작 확인하기
+# 동작 확인하기
 
 정책이 의도한 대로 동작하는지 다음 순서로 확인합니다.
 
@@ -175,13 +175,13 @@ Network Firewall 콘솔의 **로그** 탭은 단기 조회에 적합합니다. �
 
 2. 접속이 성공하면 정책이 정상 적용된 것입니다. **로그** > **트래픽** 탭에서 해당 트래픽이 허용 동작으로 기록되었는지 확인하세요. 반대로, 허용 정책에 해당하지 않는 트래픽(예: SSH 접속)을 시도하면 `default-deny` 정책에 의해 차단됩니다. 기본 차단 정책 로그를 활성화했다면 차단 로그도 확인할 수 있습니다.
 
-## 응용하기
+# 응용하기
 
-- **정책 일괄 등록**: 등록할 정책이 많다면 **정책 일괄 등록** 기능을 사용합니다. **템플릿 내려받기**로 양식을 받아 작성한 뒤 업로드하면 여러 정책을 한 번에 추가할 수 있습니다. 자세한 내용은 [정책 일괄 등록](https://docs.nhncloud.com/ko/Security/Network-Firewall/ko/console-user-guide/policy/#batch-register-policies)을 참고하세요.
-- **인스턴스 객체 활용**: **객체** 탭의 **인스턴스 객체 추가**를 클릭하면, 프로젝트 내 인스턴스의 IP를 자동으로 가져와 객체로 등록할 수 있습니다. IP를 직접 입력하지 않아도 되므로 편리합니다. 자세한 내용은 [인스턴스 객체 추가](https://docs.nhncloud.com/ko/Security/Network-Firewall/ko/console-user-guide/object/#add-instance-object)를 참고하세요.
-- **인터페이스 분리**: 이 가이드에서는 출발지·목적지 인터페이스를 모두 `TRAFFIC`으로 지정했지만, **인터페이스** 탭에서 Web/WAS/DB 등 용도별 인터페이스를 추가 등록하면 인터페이스 단위로 더 세분화된 정책을 구성할 수 있습니다. 자세한 내용은 [인터페이스](https://docs.nhncloud.com/ko/Security/Network-Firewall/ko/console-user-guide/interface/)를 참고하세요.
+- **정책 일괄 등록**: 템플릿을 다운로드해 작성한 뒤 업로드하면 여러 정책을 한 번에 추가할 수 있습니다. [정책 일괄 등록](https://docs.nhncloud.com/ko/Security/Network-Firewall/ko/console-user-guide/policy/#batch-register-policies)
+- **인스턴스 객체 활용**: 프로젝트 내 인스턴스의 IP를 자동으로 가져와 객체로 등록할 수 있습니다. [인스턴스 객체 추가](https://docs.nhncloud.com/ko/Security/Network-Firewall/ko/console-user-guide/object/#add-instance-object)
+- **인터페이스 분리**: 용도별 인터페이스를 추가 등록하면 더 세분화된 정책을 구성할 수 있습니다. [인터페이스](https://docs.nhncloud.com/ko/Security/Network-Firewall/ko/console-user-guide/interface/)
 
-## 리소스 정리하기
+# 리소스 정리하기
 
 실습 목적으로 따라한 경우, 더 이상 사용하지 않는 리소스를 삭제해 불필요한 과금을 방지합니다.
 
@@ -198,7 +198,7 @@ Network Firewall 콘솔의 **로그** 탭은 단기 조회에 적합합니다. �
 > [!WARNING]
 > Network Firewall 자체를 삭제하면 등록된 모든 정책과 객체가 영구적으로 삭제됩니다. 운영 중인 환경이라면 정책과 객체만 개별 삭제하세요.
 
-## 용어 알아보기
+# 용어 알아보기
 
 | 용어 | 설명 |
 |---|---|
