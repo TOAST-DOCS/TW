@@ -73,9 +73,9 @@
 
 ## 응용하기
 
-- **다른 리전이나 다른 프로젝트에서 사용**: 이미지를 선택한 다음 **다른 리전으로 복제**를 클릭하고 **리전**을 선택하면 같은 이미지가 그 리전에 복사됩니다. 재해 복구 환경을 다른 리전에 갖춰 두거나 리전을 옮겨 서비스를 재구성할 때 사용합니다. **다른 프로젝트로 공유**를 클릭하고 조직의 프로젝트 목록에서 공유할 프로젝트를 선택한 다음 **공유**를 클릭하면 그 프로젝트에서도 이 이미지로 인스턴스를 생성할 수 있습니다. 개발과 운영 프로젝트가 나뉘어 있을 때 같은 구성을 옮기는 데 활용할 수 있으며, 공유받은 이미지는 다시 공유할 수 없습니다. 자세한 내용은 [Image 콘솔 사용 가이드](https://docs.nhncloud.com/ko/Compute/Image/ko/console-guide/#copy-to-another-region)를 참고하세요.
-- **추가 블록 스토리지의 데이터 보관**: 이미지는 루트 블록 스토리지만 담으므로 인스턴스에 추가로 연결한 블록 스토리지의 데이터는 이미지로 복제되지 않습니다. 그 데이터도 남겨야 한다면 **Storage > Block Storage**에서 해당 블록 스토리지의 **스냅숏 생성**으로 읽기 전용 복사본을 만들고, 새 인스턴스에는 그 스냅숏으로 생성한 블록 스토리지를 연결합니다. 데이터 정합성을 보장하려면 인스턴스에서 연결을 해제한 뒤 스냅숏을 생성하기를 권장합니다. 자세한 내용은 [Block Storage 콘솔 사용 가이드의 스냅숏 생성](https://docs.nhncloud.com/ko/Storage/Block%20Storage/ko/console-guide/#create-snapshots)을 참고하세요.
-- **외부에서 만든 이미지 가져오기**: 다른 환경에서 만든 이미지 파일은 콘솔로 올릴 수 없고 Image API로만 등록할 수 있습니다. 자세한 내용은 [Image API 가이드](https://docs.nhncloud.com/ko/Compute/Image/ko/public-api/)를 참고하세요.
+- **다른 리전이나 다른 프로젝트에서 사용**: **다른 리전으로 복제**나 **다른 프로젝트로 공유**로 이미지를 다른 리전과 프로젝트에서 사용합니다. 자세한 내용은 [Image 콘솔 사용 가이드](https://docs.nhncloud.com/ko/Compute/Image/ko/console-guide/#copy-to-another-region)를 참고하세요.
+- **추가 블록 스토리지의 데이터 보관**: 이미지는 루트 블록 스토리지만 담으므로 추가 블록 스토리지는 스냅숏으로 따로 보관합니다. 자세한 내용은 [Block Storage 콘솔 사용 가이드의 스냅숏 생성](https://docs.nhncloud.com/ko/Storage/Block%20Storage/ko/console-guide/#create-snapshots)을 참고하세요.
+- **외부에서 만든 이미지 가져오기**: 외부에서 만든 이미지 파일은 콘솔에서는 업로드할 수 없고 Image API로만 등록할 수 있습니다. 자세한 내용은 [Image API 가이드](https://docs.nhncloud.com/ko/Compute/Image/ko/public-api/)를 참고하세요.
 
 ## 리소스 정리하기
 
