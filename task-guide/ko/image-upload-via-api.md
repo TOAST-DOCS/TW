@@ -2,7 +2,7 @@
 
 ## 시작하기 전에
 
-이미지는 운영체제와 애플리케이션을 담은 가상 디스크로, 인스턴스의 루트 블록 스토리지를 생성하는 데 사용됩니다. Image는 이 이미지를 생성하고 관리하는 서비스로, 이미지 유형에는 NHN Cloud가 제공하는 공용 이미지와 사용자가 인스턴스로 만든 개인 이미지가 있습니다.
+이미지는 운영체제와 애플리케이션을 담은 가상 디스크로, 인스턴스의 루트 블록 스토리지를 생성하는 데 사용됩니다. Image는 이 이미지를 생성하고 관리하는 서비스로, 이미지 유형에는 NHN Cloud가 제공하는 공용 이미지와 사용자가 만든 개인 이미지가 있습니다.
 
 온프레미스나 다른 클라우드에서 쓰던 가상 머신 이미지를 NHN Cloud로 가져와야 할 때가 있습니다. 이 작업은 콘솔에서 지원하지 않으며, Image API로만 할 수 있습니다. 빈 이미지를 먼저 만든 다음 그 이미지에 파일을 올리는 두 단계로 진행되며, 등록이 끝나면 콘솔의 개인 이미지와 같은 방식으로 인스턴스를 생성할 수 있습니다.
 
@@ -15,65 +15,66 @@
 
 ## 사전 준비하기
 
-- 등록할 이미지 파일이 필요합니다. 이 가이드는 qcow2 형식의 Linux 이미지 파일을 기준으로 설명하며, 파일 이름은 `my-image.qcow2`로 가정합니다. 이미지 파일은 API를 호출하는 컴퓨터에 있어야 합니다.
+- 등록할 이미지 파일이 필요합니다. 이 가이드는 qcow2 형식의 Linux 이미지 파일을 기준으로 설명하며, 파일 이름은 `my-image.qcow2`로 가정합니다. 다른 형식의 디스크 이미지는 `qemu-img convert` 명령으로 qcow2로 변환할 수 있습니다. 이미지 파일은 API를 호출하는 컴퓨터에 있어야 합니다.
 
     > [!NOTE]
-    > 실습용 이미지 파일이 없다면 Ubuntu가 제공하는 공식 클라우드 이미지(https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img, 약 700MB)를 내려받아 사용할 수 있습니다. 이 파일은 qcow2 형식이고 cloud-init이 설치되어 있어 아래 조건을 모두 충족합니다.
+    > 실습용 이미지 파일이 없다면 Ubuntu가 제공하는 공식 클라우드 이미지(https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img, 약 700MB)를 내려받아 사용할 수 있습니다. 이 파일은 qcow2 형식이고 cloud-init이 설치되어 있어 별도 수정 없이 사용할 수 있습니다.
 
 - 이미지 파일은 NHN Cloud 인스턴스 환경에서 부팅되도록 다음 조건에 맞게 준비합니다. 등록한 뒤에는 이미지 파일에 담긴 운영 체제 설정을 바꿀 수 없으므로, 조건에 맞지 않는 항목은 파일을 등록하기 전에 수정해야 합니다.
 
     | 항목 | 조건 | 설명 |
     | --- | --- | --- |
-    | 파일 형식 | qcow2 | 다른 형식의 디스크는 `qemu-img convert` 명령으로 qcow2로 변환합니다. |
     | 부팅 방식 | BIOS(Legacy) 부팅 | UEFI 전용으로 구성된 디스크는 부팅되지 않습니다. |
-    | 디스크 드라이버 | virtio 블록·네트워크 드라이버 포함 | 최근 Linux 배포판 커널에는 기본으로 들어 있습니다. |
+    | 디스크 드라이버 | virtio 블록·네트워크 드라이버 포함 | 최근 Linux 배포판에는 기본으로 들어 있지만, 다른 가상화 환경에서 쓰던 이미지에는 빠져 있을 수 있으므로 확인합니다. |
     | 초기 설정 | cloud-init 설치 | 인스턴스 생성 시 지정한 키페어와 사용자 스크립트를 적용하는 데 필요합니다. 배포판 공식 클라우드 이미지에는 기본으로 설치되어 있습니다. |
     | 네트워크 | DHCP로 IP 주소를 받도록 설정 | 원본 환경의 고정 IP나 MAC 주소에 묶인 설정은 제거합니다. |
+    | 시리얼 콘솔 | 커널 옵션에 `console=tty0 console=ttyS0,115200n8` 추가 | 콘솔의 **시리얼 콘솔 연결**과 **로그 보기** 기능이 동작하는 데 필요합니다. 부트로더(GRUB) 설정의 커널 옵션에 추가합니다. |
     | machine-id | 초기화 | 같은 이미지로 만든 인스턴스끼리 machine-id가 중복되지 않도록 비워 둡니다. 절차는 [Linux machine-id 초기화 가이드](https://docs.nhncloud.com/ko/Compute/Image/ko/console-guide/#guide-for-initialization-of-linux-machine-id)를 참고하세요. |
 - API 호출을 위해 `curl`이 설치된 터미널 환경이 필요합니다.
-- Image API는 IaaS 토큰으로 인증합니다. 토큰을 발급받으려면 테넌트 ID와 API 비밀번호가 필요하며, 두 값은 NHN Cloud 콘솔에서 **Compute > Instance**를 클릭한 다음 목록 상단의 **API 엔드포인트 설정**을 클릭하면 나타나는 창에서 확인하고 설정할 수 있습니다.
 - 등록한 이미지로 인스턴스를 생성해 확인하려면 인스턴스에 연결할 VPC와 서브넷, 키페어가 필요합니다. 기본 인프라 서비스를 처음 사용한다면 [Instance 콘솔 사용 가이드](https://docs.nhncloud.com/ko/Compute/Instance/ko/console-guide/)를 참고하세요.
 
 ## 토큰 발급하기
 
-Image API를 호출할 때마다 요청 헤더에 IaaS 토큰을 넣어야 합니다. 토큰은 Identity API로 발급받습니다. 토큰 발급 API의 자세한 내용은 [IaaS 토큰 가이드](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/iaas-token/)를 참고하세요.
+Image API를 호출할 때마다 요청 헤더에 IaaS 토큰을 넣어야 합니다. 토큰은 User Access Key로 발급받습니다. 토큰 발급 API의 자세한 내용은 [User Access Key로 IaaS 토큰 발급받기](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/user-access-key-token/#issue-iaas-token-with-user-access-key)를 참고하세요.
 
-1. 다음 명령으로 토큰을 발급받으세요. 플레이스홀더는 다음 값으로 바꿉니다.
+1. 다음 명령으로 토큰을 발급받으세요. 토큰은 응답 본문이 아니라 응답 헤더로 반환되므로 `-i` 옵션으로 헤더를 함께 출력합니다. 플레이스홀더는 다음 값으로 바꿉니다.
 
     ```sh
-    curl -X POST "https://api-identity-infrastructure.nhncloudservice.com/v2.0/tokens" \
+    curl -i -X POST "https://oauth.api.nhncloudservice.com/iaas-tokens/v3/auth/tokens" \
       -H "Content-Type: application/json" \
       -d '{
         "auth": {
-          "tenantId": "{tenant_id}",
-          "passwordCredentials": {
-            "username": "{account_id}",
-            "password": "{api_password}"
+          "identity": {
+            "methods": ["password"],
+            "password": {
+              "user": {
+                "id": "{user_access_key_id}",
+                "password": "{secret_access_key}"
+              }
+            }
+          },
+          "scope": {
+            "project": {
+              "id": "{instance_appkey}"
+            }
           }
         }
       }'
     ```
 
-    - `{tenant_id}`: **API 엔드포인트 설정** 창에서 복사한 테넌트 ID
-    - `{account_id}`: 콘솔에 로그인할 때 쓰는 NHN Cloud 계정 ID(이메일 형식)
-    - `{api_password}`: **API 엔드포인트 설정** 창에서 설정한 API 비밀번호
+    - `{user_access_key_id}`, `{secret_access_key}`: 콘솔 오른쪽 상단 계정 메뉴의 **API 보안 설정**에서 생성한 User Access Key ID와 Secret Access Key
+    - `{instance_appkey}`: **Compute > Instance** 화면의 **URL & Appkey** 창에서 확인한 Instance 서비스의 Appkey
 
     > [!NOTE]
-    > IAM 계정이라면 `username`에 IAM 계정 ID를 입력합니다.
+    > NHN Cloud 계정과 IAM 계정 모두 같은 방법으로 발급받습니다. User Access Key를 생성한 계정이 해당 프로젝트의 멤버여야 하며, 발급받은 토큰에는 그 계정이 프로젝트에서 가진 역할이 그대로 적용됩니다.
 
-2. 응답에서 `access.token.id` 값을 복사해 두세요. 이 값이 토큰 ID이며, 이후 모든 요청의 `X-Auth-Token` 헤더에 사용합니다. `access.token.expires`가 토큰 만료 시각입니다. 만료된 뒤에는 같은 명령으로 다시 발급받습니다.
+2. 응답 헤더에서 `X-Subject-Token` 값을 복사해 두세요. 이 값이 토큰 ID이며, 이후 모든 요청의 `X-Auth-Token` 헤더에 사용합니다. 토큰은 발급 시각부터 12시간 동안 유효하며, 만료되면 같은 명령으로 다시 발급받습니다.
 
-    ```json
-    {
-      "access": {
-        "token": {
-          "id": "{token_id}",
-          "expires": "2026-10-30T09:00:00Z",
-          ...
-        },
-        ...
-      }
-    }
+    ```http
+    HTTP/1.1 201 Created
+    Content-Type: application/json
+    X-Subject-Token: {token_id}
+    ...
     ```
 
 ## 이미지 등록하기
@@ -94,6 +95,7 @@ Image API를 호출할 때마다 요청 헤더에 IaaS 토큰을 넣어야 합�
         "os_type": "linux",
         "os_distro": "ubuntu",
         "os_version": "22.04",
+        "login_username": "ubuntu",
         "min_disk": 20
       }'
     ```
@@ -103,7 +105,8 @@ Image API를 호출할 때마다 요청 헤더에 IaaS 토큰을 넣어야 합�
     - `visibility`: `private`로 지정합니다. 생략하면 `shared`로 등록되어 콘솔 이미지 목록의 **타입** 열에 **공유한 이미지**로 표시됩니다.
     - `os_type`: `linux` 또는 `windows`만 지정할 수 있습니다. 배포판은 `os_distro`에 적습니다.
     - `os_distro`, `os_version`: 콘솔 이미지 목록의 **OS** 열에 배포판 첫 글자를 대문자로 바꿔 `Ubuntu 22.04`처럼 두 값을 이어서 표시합니다. 필수는 아니지만 이미지를 구분하기 쉽도록 적어 두는 것이 좋습니다.
-    - `min_disk`: 이 이미지로 인스턴스를 생성할 때 필요한 최소 루트 블록 스토리지 크기(GB)입니다. 이미지 안의 디스크 크기 이상으로 지정합니다. 지정하지 않으면 `0`으로 등록되어 인스턴스 생성 화면의 **블록 스토리지 크기(GB)** 값이 `0`으로 표시되고, 크기를 직접 입력해야 합니다.
+    - `login_username`: 인스턴스에 SSH로 접속할 때 사용하는 기본 계정 이름입니다. cloud-init에 설정된 계정과 동일하게 지정해야 콘솔의 SSH 접속 안내와 키페어 변경 기능이 정상 동작합니다.
+    - `min_disk`: 인스턴스를 생성할 때 필요한 최소 루트 블록 스토리지 크기(GB)입니다. `qemu-img info my-image.qcow2` 명령으로 확인한 `virtual size`와 동일하게 지정합니다. 지정하지 않으면 블록 스토리지를 이보다 작게 설정할 수 있어 인스턴스 생성에 실패할 수 있습니다.
 
 2. 응답에서 `id`(이미지 ID)를 복사해 두세요.
 
@@ -118,6 +121,7 @@ Image API를 호출할 때마다 요청 헤더에 IaaS 토큰을 넣어야 합�
       "os_type": "linux",
       "os_distro": "ubuntu",
       "os_version": "22.04",
+      "login_username": "ubuntu",
       "min_disk": 20,
       "min_ram": 0,
       ...
@@ -152,7 +156,7 @@ Image API를 호출할 때마다 요청 헤더에 IaaS 토큰을 넣어야 합�
 
 1. **Compute > Image**의 이미지 목록에서 등록한 이미지의 체크박스를 선택한 다음 **수정**을 클릭하세요.
 
-2. **이미지 수정** 창의 **사용 대상 서비스**에서 **Instance**를 선택하세요. 나머지 항목은 그대로 둡니다. 이 항목에 포함된 서비스의 생성 화면에서만 이미지가 노출되므로, 인스턴스 템플릿이나 Auto Scale에서도 이 이미지를 쓰려면 **Instance Template**, **Auto Scale**을 함께 선택합니다.
+2. **이미지 수정** 창의 **사용 대상 서비스**에서 **Instance**를 선택하세요. 나머지 항목은 그대로 둡니다. 다른 서비스에서도 이 이미지를 사용하려면 해당 서비스를 함께 선택합니다.
 
     > [!NOTE]
     > **OS 구분**은 이미지를 등록한 뒤에는 수정할 수 없습니다. `os_type`을 잘못 지정했다면 이미지를 삭제하고 처음부터 다시 등록하세요.
@@ -194,11 +198,11 @@ Image API를 호출할 때마다 요청 헤더에 IaaS 토큰을 넣어야 합�
 
 ## 리소스 정리하기
 
-실습으로 만든 리소스는 사용을 마치면 삭제하세요. 인스턴스는 생성한 시점부터 과금되고, 이미지도 등록한 시점부터 블록 스토리지 크기만큼 과금됩니다.
+실습으로 만든 리소스는 사용을 마치면 삭제하세요. 인스턴스는 생성한 시점부터 과금되고, 이미지는 업로드가 끝나 `active` 상태가 된 시점부터 업로드한 파일 크기만큼 과금됩니다.
 
 1. **Compute > Instance**에서 만든 인스턴스를 선택한 다음 목록 상단의 더보기(⋯) 아이콘을 클릭하고 **인스턴스 삭제**를 클릭하세요. 삭제 정책을 **인스턴스 삭제 시 삭제**로 설정했으므로 루트 블록 스토리지도 함께 삭제됩니다.
 
-2. 이미지를 삭제하세요. 콘솔에서는 **Compute > Image**에서 이미지를 선택한 다음 **삭제**를 클릭하고, API로는 다음과 같이 호출합니다. 삭제에 성공하면 오류 메시지 없이 프롬프트로 돌아옵니다.
+2. 이미지를 삭제하세요. 콘솔에서는 **Compute > Image**에서 이미지를 선택한 다음 **삭제**를 클릭하고, API로는 다음과 같이 호출합니다. 삭제에 성공하면 오류 메시지 없이 프롬프트로 돌아옵니다. 삭제 보호를 설정한 이미지는 삭제되지 않으므로, 이미지를 선택한 다음 **삭제 보호 설정 변경**에서 먼저 해제하세요.
 
     ```sh
     curl -X DELETE "https://kr1-api-image-infrastructure.nhncloudservice.com/v2/images/{image_id}" \
@@ -218,8 +222,9 @@ Image API를 호출할 때마다 요청 헤더에 IaaS 토큰을 넣어야 합�
 | 인스턴스 | 가상의 CPU, 메모리, 기본 디스크로 구성된 가상 서버 |
 | 블록 스토리지 | 데이터를 블록 단위로 나눠서 저장하는 블록 수준 데이터 스토리지로, 인스턴스 기본 디스크 외에 추가로 연결하여 사용할 수 있음 |
 | 공용 이미지 | NHN Cloud에서 미리 생성하여 기본 제공하는 이미지 |
-| 개인 이미지 | 공용 이미지를 토대로 사용자가 자신이 원하는 구성으로 생성한 이미지 |
+| 개인 이미지 | 사용자가 인스턴스로 만든 이미지 또는 Image API로 직접 등록한 이미지 |
 | IaaS | CPU, 서버, 스토리지 등의 IT 인프라 자원을 네트워크를 통해 제공하는 클라우드 컴퓨팅 형태 |
 | 토큰 | API와 상호 작용을 위해 사용자를 인증하고 권한을 부여하는 데 사용되는 식별 정보 |
-| 테넌트 | 인스턴스에 대해 공통적인 특정 접근 권한을 공유하는 사용자들의 그룹 |
+| User Access Key | NHN Cloud 계정 또는 IAM 계정이 API 인증에 사용하도록 발급하는 키로, User Access Key ID와 Secret Access Key 한 쌍으로 구성되며 토큰 발급에 사용됨 |
+| Appkey | NHN Cloud의 각 서비스별로 발급되는 고유 인증 키로, API 요청 시 서비스 식별과 유효성 검증에 사용됨 |
 | 키페어 | 공개 키 기반 구조(PKI, public key infrastructure)를 바탕으로 한 SSH 공개 키, 개인 키 쌍으로, 인스턴스 접속 수단으로 사용됨 |
