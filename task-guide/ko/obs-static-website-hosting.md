@@ -140,9 +140,9 @@ Object Storage는 데이터를 오브젝트 단위로 저장하는 스토리지 
 
 ## 응용하기
 
-- **CDN으로 전송 성능 개선**: 방문자가 많거나 해외에서 접속하는 사이트라면 이 컨테이너를 원본으로 삼아 CDN을 연동합니다. 브라우저가 가까운 캐시 서버에서 파일을 받아 응답이 빨라지고, Object Storage로 향하는 요청 수도 줄어듭니다. CDN 콘솔에서 **생성**을 클릭한 다음 **원본 타입**을 **오브젝트 스토리지**로 선택하고, **컨테이너**의 리전과 이름을 입력해 **검색**하면 원본 서버 정보가 자동으로 입력됩니다. 접근 정책이 PUBLIC인 컨테이너만 원본 서버로 사용할 수 있습니다. 자세한 내용은 [CDN 콘솔 사용 가이드](https://docs.nhncloud.com/ko/Contents%20Delivery/CDN/ko/console-guide/#cdn)를 참고하세요.
-- **사용자 도메인으로 서비스**: `www.example.com`처럼 소유한 도메인으로 사이트를 공개할 수도 있습니다. 컨테이너의 웹사이트 URL은 엔드포인트 뒤에 컨테이너 이름이 붙는 경로 형태라 도메인만 따로 연결할 수 없으므로, 위의 CDN 연동을 먼저 마친 다음 CDN의 **도메인 별칭**에 도메인을 등록해 소유권을 검증하고 CDN 서비스에 연동합니다. 그다음 사용 중인 DNS 서비스 제공 업체에서 이 도메인을 CDN 서비스 도메인으로 향하는 CNAME 레코드로 등록합니다. NHN Cloud DNS Plus를 사용한다면 DNS Zone에 레코드 세트를 추가하면 됩니다. HTTPS로 서비스하려면 인증서 발급이 함께 필요합니다. 자세한 내용은 [CDN 콘솔 사용 가이드](https://docs.nhncloud.com/ko/Contents%20Delivery/CDN/ko/console-guide/#alias_domain)를 참고하세요.
-- **배포 자동화**: 빌드마다 콘솔에서 업로드하는 대신 Object Storage API나 S3 호환 API로 업로드하면 CI 파이프라인에 배포 단계를 넣을 수 있습니다. S3 호환 API를 사용하려면 컨테이너 목록 위쪽의 **S3 API 자격 증명**에서 자격 증명을 먼저 발급받습니다. 자세한 내용은 [Amazon S3 호환 API 가이드](https://docs.nhncloud.com/ko/Storage/Object%20Storage/ko/s3-api-guide/)를 참고하세요.
+- **CDN으로 전송 성능 개선**: 이 컨테이너를 원본 서버로 삼아 CDN을 연동하면 가까운 캐시 서버가 파일을 전송합니다. 자세한 내용은 [CDN 콘솔 사용 가이드](https://docs.nhncloud.com/ko/Contents%20Delivery/CDN/ko/console-guide/#cdn)를 참고하세요.
+- **사용자 도메인으로 서비스**: CDN을 연동한 뒤 CDN의 **도메인 별칭**에 소유한 도메인을 등록하고 CNAME 레코드를 추가합니다. 자세한 내용은 [CDN 콘솔 사용 가이드](https://docs.nhncloud.com/ko/Contents%20Delivery/CDN/ko/console-guide/#alias_domain)를 참고하세요.
+- **배포 자동화**: Object Storage API나 S3 호환 API로 업로드하면 CI 파이프라인에서 배포할 수 있습니다. 자세한 내용은 [Amazon S3 호환 API 가이드](https://docs.nhncloud.com/ko/Storage/Object%20Storage/ko/s3-api-guide/)를 참고하세요.
 
 ## 리소스 정리하기
 
