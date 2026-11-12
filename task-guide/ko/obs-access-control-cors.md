@@ -104,9 +104,9 @@ Object Storage는 데이터를 오브젝트 단위로 저장하는 스토리지 
 
 ## 응용하기
 
-- **오브젝트 하나만 한시적으로 공개**: 접근 제어는 모두 컨테이너 단위로 걸리므로, 특정 오브젝트 하나만 열어 주려면 컨테이너를 열지 말고 서명된 URL을 사용합니다. 유효 기간이 지나면 자동으로 만료되어 공유용으로 적합합니다. 자세한 내용은 [서명된 URL 사용 가이드](https://docs.nhncloud.com/ko/Storage/Object%20Storage/ko/presigned-url-guide/)를 참고하세요.
-- **콘솔 대신 API로 설정**: 컨테이너를 여러 개 운영한다면 API로 같은 설정을 한 번에 적용할 수 있습니다. CORS는 `X-Container-Meta-Access-Control-Allow-Origin` 헤더로 지정하며, 콘솔과 달리 허용 출처는 공백으로 구분합니다. 컨테이너 정책의 `cors` 키를 사용하면 프리플라이트 응답 캐시 시간(`max_age`)과 브라우저에 노출할 응답 헤더(`expose_headers`)까지 지정할 수 있습니다. 자세한 내용은 [API 가이드](https://docs.nhncloud.com/ko/Storage/Object%20Storage/ko/api-guide/#set-container-cors-policy)를 참고하세요.
-- **접근 위치를 IP로 제한**: 사내 도구나 배포 서버처럼 접근하는 위치가 고정되어 있다면 컨테이너에 IP ACL을 걸어 그 밖의 요청을 거부할 수 있습니다. 접근 정책과 IP ACL을 함께 설정하면 두 조건을 모두 충족해야 하므로, 불특정 다수가 브라우저로 접속하는 서비스에는 맞지 않습니다. 자세한 내용은 [접근 정책 설정 가이드](https://docs.nhncloud.com/ko/Storage/Object%20Storage/ko/acl-guide/)를 참고하세요.
+- **오브젝트 하나만 한시적으로 공개**: 컨테이너 전체를 공개하지 않고 서명된 URL로 특정 오브젝트만 유효 기간 동안 공유할 수 있습니다. 자세한 내용은 [서명된 URL 사용 가이드](https://docs.nhncloud.com/ko/Storage/Object%20Storage/ko/presigned-url-guide/)를 참고하세요.
+- **콘솔 대신 API로 설정**: 컨테이너를 여러 개 운영한다면 API로 동일한 CORS 설정을 한 번에 적용할 수 있습니다. 자세한 내용은 [API 가이드](https://docs.nhncloud.com/ko/Storage/Object%20Storage/ko/api-guide/#set-container-cors-policy)를 참고하세요.
+- **접근 위치를 IP로 제한**: 접근하는 위치가 고정되어 있다면 컨테이너에 IP ACL을 설정해 그 밖의 접근을 제한할 수 있습니다. 자세한 내용은 [접근 정책 설정 가이드](https://docs.nhncloud.com/ko/Storage/Object%20Storage/ko/acl-guide/)를 참고하세요.
 
 ## 리소스 정리하기
 
