@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 510" width="600" height="510" font-family="'Pretendard', sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#8B8B8B"/>
+    </marker>
+  </defs>
+
+  <rect width="600" height="510" fill="#F7F7F7"/>
+
+  <!-- ===== 증상 ===== -->
+  <rect x="50" y="24" width="280" height="36" rx="6" fill="#646464"/>
+  <text x="190" y="42" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#FFFFFF">예기치 않은 장애 조치(Failover) 발생</text>
+
+  <!-- 증상 → 확인 -->
+  <line x1="190" y1="60" x2="190" y2="84" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- ===== 확인 단계 ===== -->
+  <rect x="50" y="86" width="280" height="36" rx="6" fill="#E7F2FF"/>
+  <text x="190" y="104" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#2D2D2D">이벤트 탭에서 장애 조치 이벤트 확인</text>
+
+  <!-- 확인 → 판단 1 -->
+  <line x1="190" y1="122" x2="190" y2="152" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- ===== 판단 1: 통신 오류 ===== -->
+  <polygon points="190,154 320,194 190,234 60,194" fill="#FFFFFF" stroke="#125DE6" stroke-width="1.5"/>
+  <text x="190" y="187" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#2D2D2D">에러 로그에 net_flush</text>
+  <text x="190" y="203" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#2D2D2D">통신 오류가 있는가?</text>
+
+  <!-- 판단 1 예 → 오른쪽 해결 -->
+  <line x1="320" y1="194" x2="370" y2="194" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="338" y="186" font-size="12" font-weight="bold" fill="#444444">예</text>
+  <rect x="372" y="176" width="200" height="36" rx="6" fill="#125DE6"/>
+  <text x="472" y="194" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#FFFFFF">원인 1: 통신 장애</text>
+
+  <!-- 판단 1 아니오 → 아래 -->
+  <line x1="190" y1="234" x2="190" y2="272" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="202" y="257" font-size="12" font-weight="bold" fill="#444444">아니오</text>
+
+  <!-- ===== 판단 2: Lock 경합 ===== -->
+  <polygon points="190,274 320,314 190,354 60,314" fill="#FFFFFF" stroke="#125DE6" stroke-width="1.5"/>
+  <text x="190" y="305" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#2D2D2D">Ping 타임아웃 또는</text>
+  <text x="190" y="321" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#2D2D2D">활성 세션이 급증했는가?</text>
+
+  <!-- 판단 2 예 → 오른쪽 해결 -->
+  <line x1="320" y1="314" x2="370" y2="314" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="338" y="306" font-size="12" font-weight="bold" fill="#444444">예</text>
+  <rect x="372" y="296" width="200" height="36" rx="6" fill="#125DE6"/>
+  <text x="472" y="314" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#FFFFFF">원인 2: lock 경합</text>
+
+  <!-- 판단 2 아니오 → 아래 -->
+  <line x1="190" y1="354" x2="190" y2="390" stroke="#8B8B8B" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="202" y="377" font-size="12" font-weight="bold" fill="#444444">아니오</text>
+
+  <!-- ===== 고객지원 문의 ===== -->
+  <rect x="120" y="392" width="140" height="36" rx="6" fill="#646464"/>
+  <text x="190" y="410" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#FFFFFF">고객지원 문의</text>
+
+  <!-- ===== 범례 ===== -->
+  <line x1="20" y1="452" x2="580" y2="452" stroke="#DCDCDC" stroke-width="1"/>
+  <rect x="50" y="472" width="14" height="14" rx="3" fill="#646464"/>
+  <text x="70" y="479" dominant-baseline="central" font-size="11" fill="#2D2D2D">증상/안내</text>
+  <rect x="150" y="472" width="14" height="14" rx="3" fill="#E7F2FF"/>
+  <text x="170" y="479" dominant-baseline="central" font-size="11" fill="#2D2D2D">확인 단계</text>
+  <polygon points="260,472 267,479 260,486 253,479" fill="#FFFFFF" stroke="#125DE6" stroke-width="1"/>
+  <text x="275" y="479" dominant-baseline="central" font-size="11" fill="#2D2D2D">판단</text>
+  <rect x="320" y="472" width="14" height="14" rx="3" fill="#125DE6"/>
+  <text x="340" y="479" dominant-baseline="central" font-size="11" fill="#2D2D2D">해결</text>
+</svg>
