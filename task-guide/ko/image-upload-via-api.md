@@ -15,7 +15,7 @@
 
 ## 사전 준비하기
 
-- 등록할 이미지 파일이 필요합니다. 이 가이드는 qcow2 형식의 Linux 이미지 파일을 기준으로 설명하며, 파일 이름은 `my-image.qcow2`로 가정합니다. 다른 형식의 디스크 이미지는 `qemu-img convert` 명령으로 qcow2로 변환할 수 있습니다. 이미지 파일은 API를 호출하는 컴퓨터에 있어야 합니다.
+- 등록할 이미지 파일이 필요합니다. 이 가이드는 qcow2 형식의 Linux 이미지 파일을 기준으로 설명하며, 파일 이름은 `my-image.qcow2`로 가정합니다. 이미지 파일은 API를 호출하는 컴퓨터에 있어야 합니다.
 
     > [!NOTE]
     > 실습용 이미지 파일이 없다면 Ubuntu가 제공하는 공식 클라우드 이미지(https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img, 약 700MB)를 내려받아 사용할 수 있습니다. 이 파일은 qcow2 형식이고 cloud-init이 설치되어 있어 별도 수정 없이 사용할 수 있습니다.
