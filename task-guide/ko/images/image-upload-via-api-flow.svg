@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 444" width="600" height="444" font-family="'Pretendard', sans-serif" role="img" aria-labelledby="title desc">
+  <title id="title">Image API로 외부 이미지 파일을 등록하고 콘솔에서 인스턴스를 생성해 부팅을 확인하는 흐름</title>
+  <desc id="desc">사용자가 인증 서버에서 토큰을 발급받아 Image API로 빈 이미지를 만들고 파일을 업로드한 뒤, 콘솔에서 이미지 속성을 설정하고 인스턴스를 생성해 부팅을 확인하는 시퀀스 다이어그램</desc>
+  <rect width="600" height="444" rx="12" fill="#F7F7F7"/>
+  <g transform="translate(0, 10)">
+    <!-- ===== 상단 참가자 ===== -->
+    <!-- 사용자 -->
+    <circle cx="60" cy="42" r="24" fill="#FFFFFF"/>
+    <g transform="translate(46.95, 30.3) scale(0.45)">
+      <circle cx="29" cy="17" r="10" fill="#C8CCD4"/>
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M50 50C50 37.2174 40.598 29 29 29C17.402 29 8 37.2174 8 50H50Z" fill="#C8CCD4"/>
+    </g>
+    <text x="60" y="82" text-anchor="middle" fill="#2D2D2D" font-size="13">사용자</text>
+    <!-- 인증 서버 -->
+    <rect x="185" y="24" width="100" height="36" rx="6" fill="#646464"/>
+    <text x="235" y="42" text-anchor="middle" dominant-baseline="central" fill="#FFFFFF" font-size="13">인증 서버</text>
+    <!-- Image -->
+    <circle cx="400" cy="42" r="24" fill="#FFFFFF"/>
+    <g transform="translate(385, 27) scale(0.75)">
+      <path d="M14 10H10V30H14V34H6V6H14V10ZM34 34H26V30H30V10H26V6H34V34ZM26 26H22V22H26V26ZM18 26H14V22H18V26ZM26 18H22V14H26V18ZM18 18H14V14H18V18Z" fill="#125DE6"/>
+    </g>
+    <text x="400" y="82" text-anchor="middle" fill="#2D2D2D" font-size="13">Image</text>
+    <!-- Instance -->
+    <circle cx="540" cy="42" r="24" fill="#FFFFFF"/>
+    <g transform="translate(525, 27) scale(0.75)">
+      <path d="M32 22C33.1046 22 34 22.8954 34 24V32C34 33.1046 33.1046 34 32 34H8C6.89543 34 6 33.1046 6 32V24C6 22.8954 6.89543 22 8 22H32ZM22 30H30V26H22V30ZM32 6C33.1046 6 34 6.89543 34 8V16C34 17.1046 33.1046 18 32 18H8C6.89543 18 6 17.1046 6 16V8C6 6.89543 6.89543 6 8 6H32ZM22 14H30V10H22V14Z" fill="#125DE6"/>
+    </g>
+    <text x="540" y="82" text-anchor="middle" fill="#2D2D2D" font-size="13">Instance</text>
+
+    <!-- ===== 라이프라인 ===== -->
+    <line x1="60" y1="92" x2="60" y2="409" stroke="#DCDCDC" stroke-width="1" stroke-dasharray="6,4"/>
+    <line x1="235" y1="92" x2="235" y2="409" stroke="#DCDCDC" stroke-width="1" stroke-dasharray="6,4"/>
+    <line x1="400" y1="92" x2="400" y2="409" stroke="#DCDCDC" stroke-width="1" stroke-dasharray="6,4"/>
+    <line x1="540" y1="92" x2="540" y2="409" stroke="#DCDCDC" stroke-width="1" stroke-dasharray="6,4"/>
+
+    <!-- ===== 단계별 화살표 (라벨은 사용자 라이프라인 오른쪽에 왼쪽 정렬) ===== -->
+    <!-- Step 1: user→auth -->
+    <rect x="76" y="105" width="18" height="18" rx="9" fill="#2D2D2D"/>
+    <text x="85" y="118" text-anchor="middle" fill="#FFFFFF" font-size="11" font-weight="700">1</text>
+    <text x="100" y="118" fill="#444444" font-size="12">IaaS 토큰 발급</text>
+    <line x1="60" y1="136" x2="227" y2="136" stroke="#8B8B8B" stroke-width="1.5"/>
+    <polygon points="225,132.5 235,136 225,139.5" fill="#8B8B8B"/>
+
+    <!-- Step 2: user→image -->
+    <rect x="76" y="155" width="18" height="18" rx="9" fill="#2D2D2D"/>
+    <text x="85" y="168" text-anchor="middle" fill="#FFFFFF" font-size="11" font-weight="700">2</text>
+    <text x="100" y="168" fill="#444444" font-size="12">빈 이미지 생성(이미지 ID 수령)</text>
+    <line x1="60" y1="186" x2="392" y2="186" stroke="#8B8B8B" stroke-width="1.5"/>
+    <polygon points="390,182.5 400,186 390,189.5" fill="#8B8B8B"/>
+
+    <!-- Step 3: user→image -->
+    <rect x="76" y="205" width="18" height="18" rx="9" fill="#2D2D2D"/>
+    <text x="85" y="218" text-anchor="middle" fill="#FFFFFF" font-size="11" font-weight="700">3</text>
+    <text x="100" y="218" fill="#444444" font-size="12">이미지 파일 업로드(상태 active)</text>
+    <line x1="60" y1="236" x2="392" y2="236" stroke="#8B8B8B" stroke-width="1.5"/>
+    <polygon points="390,232.5 400,236 390,239.5" fill="#8B8B8B"/>
+
+    <!-- Step 4: user→image -->
+    <rect x="76" y="255" width="18" height="18" rx="9" fill="#2D2D2D"/>
+    <text x="85" y="268" text-anchor="middle" fill="#FFFFFF" font-size="11" font-weight="700">4</text>
+    <text x="100" y="268" fill="#444444" font-size="12">콘솔에서 이미지 속성 설정(사용 대상 서비스)</text>
+    <line x1="60" y1="286" x2="392" y2="286" stroke="#8B8B8B" stroke-width="1.5"/>
+    <polygon points="390,282.5 400,286 390,289.5" fill="#8B8B8B"/>
+
+    <!-- Step 5: user→instance -->
+    <rect x="76" y="305" width="18" height="18" rx="9" fill="#2D2D2D"/>
+    <text x="85" y="318" text-anchor="middle" fill="#FFFFFF" font-size="11" font-weight="700">5</text>
+    <text x="100" y="318" fill="#444444" font-size="12">콘솔에서 등록한 이미지로 인스턴스 생성</text>
+    <line x1="60" y1="336" x2="532" y2="336" stroke="#8B8B8B" stroke-width="1.5"/>
+    <polygon points="530,332.5 540,336 530,339.5" fill="#8B8B8B"/>
+
+    <!-- Step 6: instance→user -->
+    <rect x="76" y="355" width="18" height="18" rx="9" fill="#2D2D2D"/>
+    <text x="85" y="368" text-anchor="middle" fill="#FFFFFF" font-size="11" font-weight="700">6</text>
+    <text x="100" y="368" fill="#444444" font-size="12">부팅 확인(스크린숏 보기)</text>
+    <line x1="540" y1="386" x2="68" y2="386" stroke="#8B8B8B" stroke-width="1.5"/>
+    <polygon points="70,382.5 60,386 70,389.5" fill="#8B8B8B"/>
+  </g>
+</svg>
