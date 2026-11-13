@@ -567,6 +567,8 @@ async function onGuideCheck(checkbox) {
     resolved.resolved.push({
       updateId: updateId,
       guide: guide,
+      resolution: 'no-change',
+      reason: '대시보드에서 확인 완료 (수정 불필요)',
       resolvedBy: '대시보드',
       resolvedAt: new Date().toISOString()
     });
