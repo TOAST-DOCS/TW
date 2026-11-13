@@ -459,7 +459,7 @@ footer { margin-top: 32px; text-align: center; font-size: 14px; color: var(--tex
             ${esc(g.title)} <span style="color:var(--text-muted)">(${esc(g.assignee)})</span>
             <div class="check-info">${desc}</div>
           </label>
-          <button class="btn btn-primary btn-sm" onclick="onStartUpdate(this)" data-source="ghe" data-service="${esc(c.repo)}" data-summary="${esc(c.files ? c.files.map((f) => f.filename).join(', ') : '')}" data-diff-url="${esc(c.compareUrl || '')}" data-keywords="${esc(kwStr)}" data-update-id="${esc(c.id)}" data-guide="${esc(g.guide)}" data-guide-title="${esc(g.title)}" data-guide-assignee="${esc(g.assignee)}">현행화 프롬프트 복사</button>
+          <button class="btn btn-primary btn-sm" onclick="onStartUpdate(this)" data-source="ghe" data-service="${esc(c.repo)}" data-summary="${esc(c.files ? c.files.map((f) => f.filename).join(', ') : '')}" data-patches="${esc(JSON.stringify((c.files || []).map((f) => ({ filename: f.filename, patch: f.patch || '' }))))}" data-diff-url="${esc(c.compareUrl || '')}" data-keywords="${esc(kwStr)}" data-update-id="${esc(c.id)}" data-guide="${esc(g.guide)}" data-guide-title="${esc(g.title)}" data-guide-assignee="${esc(g.assignee)}">현행화 프롬프트 복사</button>
         </div>`;
         }).join('')}
       </div>
@@ -716,9 +716,10 @@ function onStartUpdate(btn) {
   const guide = btn.dataset.guide || '';
   const guideTitle = btn.dataset.guideTitle || '';
   const guideAssignee = btn.dataset.guideAssignee || '';
+  const patchesRaw = btn.dataset.patches || '';
 
   const lines = [
-    '/update-guide 실행해줘.',
+    '"update-guide" SKILL.md 파일을 ~/.claude/skills/ 하위에서 찾아서 읽고, 그 절차대로 진행해줘.',
     '',
     '## 변경 출처',
     '- 유형: ' + source,
@@ -727,6 +728,22 @@ function onStartUpdate(btn) {
   ];
   if (diffUrl) lines.push('- diff 링크: ' + diffUrl);
   if (keywords) lines.push('- 매칭 키워드: ' + keywords);
+
+  // diff 전문 포함
+  if (patchesRaw) {
+    try {
+      const patches = JSON.parse(patchesRaw);
+      const hasPatch = patches.some(function(p) { return p.patch; });
+      if (hasPatch) {
+        lines.push('', '## diff 전문');
+        patches.forEach(function(p) {
+          if (!p.patch) return;
+          lines.push('', '### ' + p.filename, '\x60\x60\x60diff', p.patch, '\x60\x60\x60');
+        });
+      }
+    } catch (e) { /* JSON 파싱 실패 시 diff 전문 생략 */ }
+  }
+
   lines.push('', '## 대상 가이드');
   lines.push('- 제목: ' + guideTitle);
   lines.push('- 파일: ' + guide);
