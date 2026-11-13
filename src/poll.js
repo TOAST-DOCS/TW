@@ -299,6 +299,145 @@ async function sendReminders(gheUpdates, resolved) {
 }
 
 /**
+ * guide-mapping 자동 보강: 두레이 태스크 + task-guide/ko/ 파일 기반
+ * - 미매핑 파일의 H1 제목과 두레이 태스크 제목을 매칭
+ * - 서비스→repos는 기존 매핑 룩업 + GHE 리포 퍼지 매칭
+ */
+function syncGuideMapping(guideMapping, doorayTasks, discoveredRepos) {
+  const mappings = guideMapping.mappings;
+  const existingGuides = new Set(mappings.map((m) => m.guide));
+  const existingTitles = new Set(mappings.map((m) => m.title.toLowerCase()));
+
+  // 서비스→repos 룩업 테이블 (기존 매핑에서 구축)
+  const serviceRepoMap = {};
+  for (const m of mappings) {
+    const svc = m.service.toLowerCase();
+    if (!serviceRepoMap[svc]) serviceRepoMap[svc] = new Set();
+    m.repos.forEach((r) => serviceRepoMap[svc].add(r));
+  }
+
+  // task-guide/ko/ 실제 파일 스캔 → 미매핑 파일의 H1 제목 읽기
+  const guideDir = path.resolve(__dirname, '..', 'task-guide', 'ko');
+  if (!fs.existsSync(guideDir)) return 0;
+
+  const guideFiles = fs.readdirSync(guideDir).filter((f) => f.endsWith('.md'));
+  const unmappedFiles = {};
+  for (const f of guideFiles) {
+    if (existingGuides.has(`task-guide/ko/${f}`)) continue;
+    try {
+      const content = fs.readFileSync(path.join(guideDir, f), 'utf-8');
+      const h1Match = content.match(/^#\s+(.+)/m);
+      if (h1Match) unmappedFiles[f] = h1Match[1].trim();
+    } catch (e) { /* skip unreadable files */ }
+  }
+
+  if (Object.keys(unmappedFiles).length === 0) return 0;
+
+  // 두레이 태스크 ↔ 미매핑 파일 매칭 후 자동 추가
+  let added = 0;
+  for (const task of doorayTasks) {
+    const cleanTitle = task.title.replace(/^\[(How-to|Troubleshooting)\]\s*/, '').trim();
+    if (existingTitles.has(cleanTitle.toLowerCase())) continue;
+
+    // 파일 H1과 매칭 (단어 70% 이상 겹치면 동일 문서로 판정)
+    let matchedFile = null;
+    for (const [file, h1] of Object.entries(unmappedFiles)) {
+      if (titlesMatch(h1, cleanTitle)) {
+        matchedFile = file;
+        break;
+      }
+    }
+    if (!matchedFile) continue;
+
+    // 서비스명 추출 (기존 매핑 우선 → 제목에서 영문 서비스명 추출)
+    const service = extractServiceFromTitle(cleanTitle, mappings);
+
+    // repos 결정: 기존 서비스 룩업 → GHE 리포 퍼지 매칭
+    const svcKey = service.toLowerCase();
+    let repos = [];
+    if (serviceRepoMap[svcKey]) {
+      repos = [...serviceRepoMap[svcKey]];
+    } else if (discoveredRepos && discoveredRepos.length > 0) {
+      repos = fuzzyMatchRepos(service, discoveredRepos);
+    }
+
+    mappings.push({
+      guide: `task-guide/ko/${matchedFile}`,
+      title: unmappedFiles[matchedFile],
+      service,
+      repos,
+      assignee: task.assignees[0] || '미지정',
+      _autoAdded: new Date().toISOString().slice(0, 10),
+    });
+
+    existingTitles.add(cleanTitle.toLowerCase());
+    delete unmappedFiles[matchedFile];
+    added++;
+    console.log(`  [MAPPING] Auto-added: ${matchedFile} → ${service} [${repos.join(', ')}]`);
+  }
+
+  if (added > 0) {
+    guideMapping._updated = new Date().toISOString().slice(0, 10);
+    const p = path.resolve(__dirname, '..', config.GUIDE_MAPPING_FILE);
+    fs.writeFileSync(p, JSON.stringify(guideMapping, null, 2), 'utf-8');
+    console.log(`  [MAPPING] ${added} new mapping(s) added`);
+  }
+
+  return added;
+}
+
+/**
+ * 제목 유사도 비교 — 단어 70% 이상 겹치면 동일 문서로 판정
+ */
+function titlesMatch(a, b) {
+  const na = a.toLowerCase();
+  const nb = b.toLowerCase();
+  if (na === nb) return true;
+
+  const wordsA = na.split(/[\s,]+/).filter((w) => w.length > 1);
+  const wordsB = nb.split(/[\s,]+/).filter((w) => w.length > 1);
+  const setB = new Set(wordsB);
+  const overlap = wordsA.filter((w) => setB.has(w)).length;
+  return overlap / Math.max(wordsA.length, wordsB.length) >= 0.7;
+}
+
+/**
+ * 제목에서 서비스명 추출
+ * 1) 기존 매핑에 있는 서비스명이 제목에 포함되면 재사용
+ * 2) 한국어 조사 앞 영문 서비스명 추출
+ * 3) 첫 영문 단어 그룹 폴백
+ */
+function extractServiceFromTitle(title, existingMappings) {
+  const knownServices = [...new Set(existingMappings.map((m) => m.service))];
+  knownServices.sort((a, b) => b.length - a.length); // 긴 이름 우선 매칭
+
+  for (const svc of knownServices) {
+    if (title.toLowerCase().includes(svc.toLowerCase())) return svc;
+  }
+
+  const particleMatch = title.match(/^([A-Za-z][A-Za-z0-9 .-]+?)(?:으로|에서|로|에|의|를|가|은|는|와|과|이|을)/);
+  if (particleMatch) return particleMatch[1].trim();
+
+  const engMatch = title.match(/([A-Za-z][A-Za-z0-9 .-]+)/);
+  if (engMatch) return engMatch[1].trim();
+
+  return '미분류';
+}
+
+/**
+ * GHE 리포 이름과 서비스명 퍼지 매칭
+ */
+function fuzzyMatchRepos(service, discoveredRepos) {
+  const normalized = service.toLowerCase().replace(/\s+/g, '-');
+  const variations = [normalized, normalized.replace(/-/g, ''), ...normalized.split('-')];
+
+  return discoveredRepos.filter((repo) => {
+    const repoLower = repo.toLowerCase();
+    return variations.some((v) => v.length > 2 && (repoLower.includes(v) || v.includes(repoLower)));
+  });
+}
+
+/**
  * PR 상태 추적 — resolved.json에서 pr-linked 건의 머지 여부 확인
  * GitHub.com API 사용 (GHE가 아닌 TOAST-DOCS/TW 리포)
  */
@@ -356,7 +495,7 @@ async function checkPrStatuses(resolved) {
 async function runPoll() {
   console.log(`[${new Date().toISOString()}] Poll started`);
 
-  const guideMapping = loadGuideMapping();
+  let guideMapping = loadGuideMapping();
   const guides = loadGuides();
   const resolved = loadJSON(config.RESOLVED_FILE, { resolved: [] });
   console.log(`[Analyze] Loaded ${guides.length} guide files for keyword matching`);
@@ -367,7 +506,15 @@ async function runPoll() {
   // 2. GHE 변경 감지 + 키워드 분석
   const gheResult = await pollGHE(guideMapping, guides);
 
-  // 3. GHE 결과 저장
+  // 3. guide-mapping 자동 보강
+  const syncCount = syncGuideMapping(guideMapping, doorayResult.tasks, gheResult.discoveredRepos);
+  if (syncCount > 0) {
+    console.log(`  Auto-synced ${syncCount} guide mapping(s)`);
+    // 매핑이 갱신됐으니 다시 로드
+    guideMapping = loadGuideMapping();
+  }
+
+  // 4. GHE 결과 저장
   const existing = loadJSON(config.RESULTS_FILE, { lastPoll: null, heartbeat: null, changes: [], history: [] });
   existing.lastPoll = new Date().toISOString();
   existing.heartbeat = {
@@ -384,7 +531,7 @@ async function runPoll() {
   existing.changes = gheResult.changes;
   saveJSON(config.RESULTS_FILE, existing);
 
-  // 4. 월별 배포 사항 조회
+  // 5. 월별 배포 사항 조회
   let deployResult = { fetchedAt: null, months: [] };
   try {
     deployResult = await pollDeployNotes(guideMapping);
@@ -392,23 +539,23 @@ async function runPoll() {
     console.error(`  [WARN] Deploy notes fetch failed: ${err.message}`);
   }
 
-  // 5. 현행화 알림 발송
+  // 6. 현행화 알림 발송
   await notifyUpdates(gheResult.changes, deployResult, resolved);
 
-  // 6. 7일 경과 미처리 건 리마인드
+  // 7. 7일 경과 미처리 건 리마인드
   const remindCount = await sendReminders(existing, resolved);
   if (remindCount > 0) {
     saveJSON(config.RESULTS_FILE, existing); // 리마인드 이력 저장
     console.log(`  Sent ${remindCount} reminder(s)`);
   }
 
-  // 7. PR 상태 추적
+  // 8. PR 상태 추적
   const prUpdated = await checkPrStatuses(resolved);
   if (prUpdated > 0) {
     console.log(`  Updated ${prUpdated} PR status(es)`);
   }
 
-  // 8. 사이트 생성
+  // 9. 사이트 생성
   const sitePath = generateSite();
   console.log(`  Site generated: ${sitePath}`);
 
