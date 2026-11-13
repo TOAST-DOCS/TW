@@ -28,6 +28,7 @@ jobs:
           GHE_TOKEN: ${{ secrets.GHE_TOKEN }}
           DOORAY_API_TOKEN: ${{ secrets.DOORAY_API_TOKEN }}
           DOORAY_WEBHOOK_URL: ${{ secrets.DOORAY_WEBHOOK_URL }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Commit updated data and site
         run: |

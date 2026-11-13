@@ -93,6 +93,15 @@ function renderPage() {
   const totalTasks = tasks.tasks.length;
   const pendingMaintenanceCount = pendingGheChanges.length + pendingDeployChanges.length;
 
+  // 현행화 처리 상태 breakdown
+  const resolvedItems = resolved.resolved || [];
+  const noChangeCount = resolvedItems.filter((r) => r.resolution === 'no-change').length;
+  const committedCount = resolvedItems.filter((r) => r.resolution === 'committed').length;
+  const prLinkedCount = resolvedItems.filter((r) => r.resolution === 'pr-linked').length;
+  const prMergedCount = resolvedItems.filter((r) => r.resolution === 'pr-linked' && r.prStatus === 'merged').length;
+  const prOpenCount = prLinkedCount - prMergedCount;
+  const completedCount = committedCount + prMergedCount;
+
   // 현재 마일스톤 완료율 (조회 시점 기준)
   const now = new Date();
   const currentHalf = now.getMonth() < 6 ? '상반기' : '하반기';
@@ -205,6 +214,9 @@ header h1 { font-size: 22px; font-weight: 700; color: var(--dark); }
 .btn-primary { background: var(--primary); color: white; border-color: var(--primary); }
 .btn-primary:hover { background: var(--primary-hover); border-color: var(--primary-hover); color: white; }
 .btn-success { background: var(--success); color: white; border-color: var(--success); }
+.btn-sm { padding: 4px 12px; font-size: 12px; }
+.guide-check { position: relative; }
+.guide-check .btn-sm { margin-top: 4px; }
 
 /* Assignee workload */
 .workload { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
@@ -280,8 +292,20 @@ footer { margin-top: 32px; text-align: center; font-size: 14px; color: var(--tex
       <div class="summary-group-label">현행화 검토</div>
       <div class="summary">
         <div class="summary-card">
-          <div class="label">현행화 여부 확인 필요</div>
+          <div class="label">확인 필요</div>
           <div class="value ${pendingMaintenanceCount > 0 ? 'danger' : 'success'}">${pendingMaintenanceCount}</div>
+        </div>
+        <div class="summary-card">
+          <div class="label">수정 불필요</div>
+          <div class="value">${noChangeCount}</div>
+        </div>
+        <div class="summary-card">
+          <div class="label">PR 대기</div>
+          <div class="value ${prOpenCount > 0 ? 'warning' : ''}">${prOpenCount}</div>
+        </div>
+        <div class="summary-card">
+          <div class="label">반영 완료</div>
+          <div class="value ${completedCount > 0 ? 'success' : ''}">${completedCount}</div>
         </div>
         <div class="summary-card">
           <div class="label">추적 리포</div>
@@ -427,6 +451,7 @@ footer { margin-top: 32px; text-align: center; font-size: 14px; color: var(--tex
           const desc = g.matches && g.matches.length > 0
             ? `변경 diff에서 [${g.matches.map((m) => esc(m.keyword)).join(', ')}] 키워드가 확인되었으며, 해당 가이드에서도 동일 키워드를 포함하고 있어 변경 필요 여부를 확인해 주세요.`
             : `동일 서비스의 문서가 변경되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.`;
+          const kwStr = g.matches && g.matches.length > 0 ? g.matches.map((m) => esc(m.keyword)).join(', ') : '';
           return `
         <div class="guide-check">
           <input type="checkbox" id="chk-${checkId}" data-update-id="${esc(c.id)}" data-guide="${esc(g.guide)}" onchange="onGuideCheck(this)">
@@ -434,6 +459,7 @@ footer { margin-top: 32px; text-align: center; font-size: 14px; color: var(--tex
             ${esc(g.title)} <span style="color:var(--text-muted)">(${esc(g.assignee)})</span>
             <div class="check-info">${desc}</div>
           </label>
+          <button class="btn btn-primary btn-sm" onclick="onStartUpdate(this)" data-source="ghe" data-service="${esc(c.repo)}" data-summary="${esc(c.files ? c.files.map((f) => f.filename).join(', ') : '')}" data-diff-url="${esc(c.compareUrl || '')}" data-keywords="${esc(kwStr)}" data-update-id="${esc(c.id)}" data-guide="${esc(g.guide)}" data-guide-title="${esc(g.title)}" data-guide-assignee="${esc(g.assignee)}">현행화 프롬프트 복사</button>
         </div>`;
         }).join('')}
       </div>
@@ -455,6 +481,7 @@ footer { margin-top: 32px; text-align: center; font-size: 14px; color: var(--tex
       <div class="affected"><strong>확인이 필요한 가이드:</strong>
         ${(c.affectedGuides || []).map((g) => {
           const checkId = esc(c.updateId) + '::' + esc(g.guide);
+          const kwStr = (g.matchedKeywords || []).join(', ');
           return `
         <div class="guide-check">
           <input type="checkbox" id="chk-${checkId}" data-update-id="${esc(c.updateId)}" data-guide="${esc(g.guide)}" onchange="onGuideCheck(this)">
@@ -462,6 +489,7 @@ footer { margin-top: 32px; text-align: center; font-size: 14px; color: var(--tex
             ${esc(g.title)} <span style="color:var(--text-muted)">(${esc(g.assignee)})</span>
             <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
           </label>
+          <button class="btn btn-primary btn-sm" onclick="onStartUpdate(this)" data-source="deploy" data-service="${esc(c.service)}" data-summary="${esc(c.changes)}" data-diff-url="${esc(c.releaseNoteUrl || '')}" data-keywords="${esc(kwStr)}" data-update-id="${esc(c.updateId)}" data-guide="${esc(g.guide)}" data-guide-title="${esc(g.title)}" data-guide-assignee="${esc(g.assignee)}">현행화 프롬프트 복사</button>
         </div>`;
         }).join('')}
       </div>
@@ -674,6 +702,54 @@ document.addEventListener('click', () => {
   document.querySelectorAll('.filter-menu.open').forEach(m => m.classList.remove('open'));
   document.querySelectorAll('.filter-toggle.open').forEach(t => t.classList.remove('open'));
 });
+
+// === 현행화 프롬프트 복사 — 가이드별 구조화된 프롬프트 생성 + 클립보드 복사 ===
+function onStartUpdate(btn) {
+  const source = btn.dataset.source === 'ghe' ? 'GHE 변경 감지' : '월별 배포 사항';
+  const service = btn.dataset.service || '';
+  const summary = btn.dataset.summary || '';
+  const diffUrl = btn.dataset.diffUrl || '';
+  const keywords = btn.dataset.keywords || '';
+  const updateId = btn.dataset.updateId || '';
+  const guide = btn.dataset.guide || '';
+  const guideTitle = btn.dataset.guideTitle || '';
+  const guideAssignee = btn.dataset.guideAssignee || '';
+
+  const lines = [
+    '/update-guide 실행해줘.',
+    '',
+    '## 변경 출처',
+    '- 유형: ' + source,
+    '- 서비스: ' + service,
+    '- 변경 요약: ' + summary,
+  ];
+  if (diffUrl) lines.push('- diff 링크: ' + diffUrl);
+  if (keywords) lines.push('- 매칭 키워드: ' + keywords);
+  lines.push('', '## 대상 가이드');
+  lines.push('- 제목: ' + guideTitle);
+  lines.push('- 파일: ' + guide);
+  lines.push('- 담당자: ' + guideAssignee);
+  lines.push('', '## 대시보드 추적 ID');
+  lines.push('- updateId: ' + updateId);
+  lines.push('- guide: ' + guide);
+
+  const prompt = lines.join('\\n');
+
+  navigator.clipboard.writeText(prompt).then(() => {
+    const orig = btn.textContent;
+    btn.textContent = '복사됨';
+    btn.classList.remove('btn-primary');
+    btn.classList.add('btn-success');
+    setTimeout(() => { btn.textContent = orig; btn.classList.remove('btn-success'); btn.classList.add('btn-primary'); }, 2000);
+  }).catch(() => {
+    const ta = document.createElement('textarea');
+    ta.value = prompt;
+    ta.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:400px;z-index:9999;font-size:13px;';
+    document.body.appendChild(ta);
+    ta.select();
+    ta.addEventListener('blur', () => ta.remove());
+  });
+}
 </script>
 </body>
 </html>`;
