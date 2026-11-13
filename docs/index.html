@@ -101,6 +101,9 @@ header h1 { font-size: 22px; font-weight: 700; color: var(--dark); }
 .btn-primary { background: var(--primary); color: white; border-color: var(--primary); }
 .btn-primary:hover { background: var(--primary-hover); border-color: var(--primary-hover); color: white; }
 .btn-success { background: var(--success); color: white; border-color: var(--success); }
+.btn-sm { padding: 4px 12px; font-size: 12px; }
+.guide-check { position: relative; }
+.guide-check .btn-sm { margin-top: 4px; }
 
 /* Assignee workload */
 .workload { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
@@ -176,8 +179,20 @@ footer { margin-top: 32px; text-align: center; font-size: 14px; color: var(--tex
       <div class="summary-group-label">현행화 검토</div>
       <div class="summary">
         <div class="summary-card">
-          <div class="label">현행화 여부 확인 필요</div>
+          <div class="label">확인 필요</div>
           <div class="value danger">13</div>
+        </div>
+        <div class="summary-card">
+          <div class="label">수정 불필요</div>
+          <div class="value">0</div>
+        </div>
+        <div class="summary-card">
+          <div class="label">PR 대기</div>
+          <div class="value ">0</div>
+        </div>
+        <div class="summary-card">
+          <div class="label">반영 완료</div>
+          <div class="value ">0</div>
         </div>
         <div class="summary-card">
           <div class="label">추적 리포</div>
@@ -517,6 +532,7 @@ footer { margin-top: 32px; text-align: center; font-size: 14px; color: var(--tex
             Cloud Functions로 HTTP 함수 배포하기 <span style="color:var(--text-muted)">(하수진)</span>
             <div class="check-info">동일 서비스의 문서가 변경되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
           </label>
+          <button class="btn btn-primary btn-sm" onclick="onStartUpdate(this)" data-source="ghe" data-service="Cloud-Functions" data-summary="ko/api-guide-v1-0.md, ko/code-template-dotnet-guide.md, ko/code-template-go-guide.md, ko/code-template-java-guide.md, ko/code-template-node-guide.md, ko/code-template-python-guide.md, ko/code-template-ruby-guide.md, ko/console-guide.md, ko/overview.md, ko/release-notes.md, ko/release-notes/2025.md, ko/release-notes/2026.md, ko/trigger-guide.md" data-diff-url="https://github.nhnent.com/cloud-docs/Cloud-Functions/compare/f0805a6ddef807dd59b5a9ac0dca80afccee5d58...e1b1c3aa57adea4f225e8fb8818a8932cdb7db5b" data-keywords="" data-update-id="ghe-Cloud-Functions-1794372578491" data-guide="task-guide/ko/cloud-functions-serverless-deploy.md" data-guide-title="Cloud Functions로 HTTP 함수 배포하기" data-guide-assignee="하수진">현행화 프롬프트 복사</button>
         </div>
       </div>
       <div style="margin-top:8px;"><a href="https://github.nhnent.com/cloud-docs/Cloud-Functions/compare/f0805a6ddef807dd59b5a9ac0dca80afccee5d58...e1b1c3aa57adea4f225e8fb8818a8932cdb7db5b" target="_blank" class="btn">diff 보기</a></div>
@@ -533,6 +549,7 @@ footer { margin-top: 32px; text-align: center; font-size: 14px; color: var(--tex
             인스턴스 생성이 실패합니다 <span style="color:var(--text-muted)">(하수진)</span>
             <div class="check-info">동일 서비스의 문서가 변경되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
           </label>
+          <button class="btn btn-primary btn-sm" onclick="onStartUpdate(this)" data-source="ghe" data-service="Compute-Instance" data-summary="ko/public-api-v2-1-gov.md, ko/public-api-v2-1.md" data-diff-url="https://github.nhnent.com/cloud-docs/Compute-Instance/compare/37c980f11f578def1f94472da1116a5af43cc6a5...9ed12a7ffe03f616d2f744ea94438ee9d8403927" data-keywords="" data-update-id="ghe-Compute-Instance-1794372580327" data-guide="task-guide/ko/instance-creation-failed.md" data-guide-title="인스턴스 생성이 실패합니다" data-guide-assignee="하수진">현행화 프롬프트 복사</button>
         </div>
         <div class="guide-check">
           <input type="checkbox" id="chk-ghe-Compute-Instance-1794372580327::task-guide/ko/instance-ssh-connection-failed.md" data-update-id="ghe-Compute-Instance-1794372580327" data-guide="task-guide/ko/instance-ssh-connection-failed.md" onchange="onGuideCheck(this)">
@@ -540,6 +557,7 @@ footer { margin-top: 32px; text-align: center; font-size: 14px; color: var(--tex
             인스턴스에 SSH로 접속되지 않습니다 <span style="color:var(--text-muted)">(하수진)</span>
             <div class="check-info">동일 서비스의 문서가 변경되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
           </label>
+          <button class="btn btn-primary btn-sm" onclick="onStartUpdate(this)" data-source="ghe" data-service="Compute-Instance" data-summary="ko/public-api-v2-1-gov.md, ko/public-api-v2-1.md" data-diff-url="https://github.nhnent.com/cloud-docs/Compute-Instance/compare/37c980f11f578def1f94472da1116a5af43cc6a5...9ed12a7ffe03f616d2f744ea94438ee9d8403927" data-keywords="" data-update-id="ghe-Compute-Instance-1794372580327" data-guide="task-guide/ko/instance-ssh-connection-failed.md" data-guide-title="인스턴스에 SSH로 접속되지 않습니다" data-guide-assignee="하수진">현행화 프롬프트 복사</button>
         </div>
         <div class="guide-check">
           <input type="checkbox" id="chk-ghe-Compute-Instance-1794372580327::task-guide/ko/security-groups-rule-design.md" data-update-id="ghe-Compute-Instance-1794372580327" data-guide="task-guide/ko/security-groups-rule-design.md" onchange="onGuideCheck(this)">
@@ -547,6 +565,7 @@ footer { margin-top: 32px; text-align: center; font-size: 14px; color: var(--tex
             3티어 아키텍처에 맞는 Security Groups 규칙 설계하기 <span style="color:var(--text-muted)">(박선영)</span>
             <div class="check-info">동일 서비스의 문서가 변경되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
           </label>
+          <button class="btn btn-primary btn-sm" onclick="onStartUpdate(this)" data-source="ghe" data-service="Compute-Instance" data-summary="ko/public-api-v2-1-gov.md, ko/public-api-v2-1.md" data-diff-url="https://github.nhnent.com/cloud-docs/Compute-Instance/compare/37c980f11f578def1f94472da1116a5af43cc6a5...9ed12a7ffe03f616d2f744ea94438ee9d8403927" data-keywords="" data-update-id="ghe-Compute-Instance-1794372580327" data-guide="task-guide/ko/security-groups-rule-design.md" data-guide-title="3티어 아키텍처에 맞는 Security Groups 규칙 설계하기" data-guide-assignee="박선영">현행화 프롬프트 복사</button>
         </div>
       </div>
       <div style="margin-top:8px;"><a href="https://github.nhnent.com/cloud-docs/Compute-Instance/compare/37c980f11f578def1f94472da1116a5af43cc6a5...9ed12a7ffe03f616d2f744ea94438ee9d8403927" target="_blank" class="btn">diff 보기</a></div>
@@ -569,6 +588,7 @@ footer { margin-top: 32px; text-align: center; font-size: 14px; color: var(--tex
             Object Storage 컨테이너에 CORS 설정하기 <span style="color:var(--text-muted)">(하수진)</span>
             <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
           </label>
+          <button class="btn btn-primary btn-sm" onclick="onStartUpdate(this)" data-source="deploy" data-service="Object Storage" data-summary="* (콘솔·API) 스토리지 계정당 컨테이너 최대 2,000개 제한 정책 추가 * (API) 스토리지 계정당 초당 5,000건 초과 읽기 요청 제한 정책 추가 * (콘솔) 복제 설정 화면에서 대상 컨테이너 바로 생성 기능 추가 * (콘솔) 복제 탭에서 복제 대기 이벤트 수 조회 기능 추가" data-diff-url="" data-keywords="" data-update-id="deploy-2026-11-Object Storage" data-guide="task-guide/ko/obs-access-control-cors.md" data-guide-title="Object Storage 컨테이너에 CORS 설정하기" data-guide-assignee="하수진">현행화 프롬프트 복사</button>
         </div>
         <div class="guide-check">
           <input type="checkbox" id="chk-deploy-2026-11-Object Storage::task-guide/ko/obs-static-website-hosting.md" data-update-id="deploy-2026-11-Object Storage" data-guide="task-guide/ko/obs-static-website-hosting.md" onchange="onGuideCheck(this)">
@@ -576,6 +596,7 @@ footer { margin-top: 32px; text-align: center; font-size: 14px; color: var(--tex
             Object Storage에 정적 웹사이트 호스팅하기 <span style="color:var(--text-muted)">(이창훈)</span>
             <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
           </label>
+          <button class="btn btn-primary btn-sm" onclick="onStartUpdate(this)" data-source="deploy" data-service="Object Storage" data-summary="* (콘솔·API) 스토리지 계정당 컨테이너 최대 2,000개 제한 정책 추가 * (API) 스토리지 계정당 초당 5,000건 초과 읽기 요청 제한 정책 추가 * (콘솔) 복제 설정 화면에서 대상 컨테이너 바로 생성 기능 추가 * (콘솔) 복제 탭에서 복제 대기 이벤트 수 조회 기능 추가" data-diff-url="" data-keywords="" data-update-id="deploy-2026-11-Object Storage" data-guide="task-guide/ko/obs-static-website-hosting.md" data-guide-title="Object Storage에 정적 웹사이트 호스팅하기" data-guide-assignee="이창훈">현행화 프롬프트 복사</button>
         </div>
       </div>
       <div style="margin-top:8px;"></div>
@@ -592,6 +613,7 @@ footer { margin-top: 32px; text-align: center; font-size: 14px; color: var(--tex
             Network Firewall 정책 구성하기 <span style="color:var(--text-muted)">(박선영)</span>
             <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
           </label>
+          <button class="btn btn-primary btn-sm" onclick="onStartUpdate(this)" data-source="deploy" data-service="Network Firewall" data-summary="* 객체 일괄 등록 기능 추가(템플릿 다운로드 후 여러 객체를 한 번에 등록) * 인터페이스 최대 수량 10개 쿼터 적용" data-diff-url="" data-keywords="" data-update-id="deploy-2026-10-Network Firewall" data-guide="task-guide/ko/network-firewall-policy-configuration.md" data-guide-title="Network Firewall 정책 구성하기" data-guide-assignee="박선영">현행화 프롬프트 복사</button>
         </div>
       </div>
       <div style="margin-top:8px;"></div>
@@ -608,6 +630,7 @@ footer { margin-top: 32px; text-align: center; font-size: 14px; color: var(--tex
             Object Storage 컨테이너에 CORS 설정하기 <span style="color:var(--text-muted)">(하수진)</span>
             <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
           </label>
+          <button class="btn btn-primary btn-sm" onclick="onStartUpdate(this)" data-source="deploy" data-service="Object Storage" data-summary="* 작업 이력, 작업 중단 기능 추가 * 컨테이너 정책 문서를 사용한 컨테이너 설정 기능 추가 * Amazon S3 API 호환성 개선" data-diff-url="" data-keywords="" data-update-id="deploy-2026-08-Object Storage" data-guide="task-guide/ko/obs-access-control-cors.md" data-guide-title="Object Storage 컨테이너에 CORS 설정하기" data-guide-assignee="하수진">현행화 프롬프트 복사</button>
         </div>
         <div class="guide-check">
           <input type="checkbox" id="chk-deploy-2026-08-Object Storage::task-guide/ko/obs-static-website-hosting.md" data-update-id="deploy-2026-08-Object Storage" data-guide="task-guide/ko/obs-static-website-hosting.md" onchange="onGuideCheck(this)">
@@ -615,6 +638,7 @@ footer { margin-top: 32px; text-align: center; font-size: 14px; color: var(--tex
             Object Storage에 정적 웹사이트 호스팅하기 <span style="color:var(--text-muted)">(이창훈)</span>
             <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
           </label>
+          <button class="btn btn-primary btn-sm" onclick="onStartUpdate(this)" data-source="deploy" data-service="Object Storage" data-summary="* 작업 이력, 작업 중단 기능 추가 * 컨테이너 정책 문서를 사용한 컨테이너 설정 기능 추가 * Amazon S3 API 호환성 개선" data-diff-url="" data-keywords="" data-update-id="deploy-2026-08-Object Storage" data-guide="task-guide/ko/obs-static-website-hosting.md" data-guide-title="Object Storage에 정적 웹사이트 호스팅하기" data-guide-assignee="이창훈">현행화 프롬프트 복사</button>
         </div>
       </div>
       <div style="margin-top:8px;"></div>
@@ -631,6 +655,7 @@ footer { margin-top: 32px; text-align: center; font-size: 14px; color: var(--tex
             Gamebase 연동 후 푸시 메시지 발송까지 완료하기 <span style="color:var(--text-muted)">(이종민)</span>
             <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
           </label>
+          <button class="btn btn-primary btn-sm" onclick="onStartUpdate(this)" data-source="deploy" data-service="Gamebase" data-summary="* (iOS) updateTerms 크래시 발생 문제 수정 * (iOS) GamebaseEventHandler 특정 이벤트 중복 전달 문제 수정 * (Unity) 유효하지 않은 데이터에 대한 검증 로직 개선 * (Server API) Google Chageback 관련 API 추가" data-diff-url="" data-keywords="" data-update-id="deploy-2026-08-Gamebase" data-guide="task-guide/ko/gamebase-push-message.md" data-guide-title="Gamebase 연동 후 푸시 메시지 발송까지 완료하기" data-guide-assignee="이종민">현행화 프롬프트 복사</button>
         </div>
         <div class="guide-check">
           <input type="checkbox" id="chk-deploy-2026-08-Gamebase::task-guide/ko/gamebase-unconsumed-payment.md" data-update-id="deploy-2026-08-Gamebase" data-guide="task-guide/ko/gamebase-unconsumed-payment.md" onchange="onGuideCheck(this)">
@@ -638,6 +663,7 @@ footer { margin-top: 32px; text-align: center; font-size: 14px; color: var(--tex
             Gamebase 미소비 결제 건 조회하고 재처리하기 <span style="color:var(--text-muted)">(미지정)</span>
             <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
           </label>
+          <button class="btn btn-primary btn-sm" onclick="onStartUpdate(this)" data-source="deploy" data-service="Gamebase" data-summary="* (iOS) updateTerms 크래시 발생 문제 수정 * (iOS) GamebaseEventHandler 특정 이벤트 중복 전달 문제 수정 * (Unity) 유효하지 않은 데이터에 대한 검증 로직 개선 * (Server API) Google Chageback 관련 API 추가" data-diff-url="" data-keywords="" data-update-id="deploy-2026-08-Gamebase" data-guide="task-guide/ko/gamebase-unconsumed-payment.md" data-guide-title="Gamebase 미소비 결제 건 조회하고 재처리하기" data-guide-assignee="미지정">현행화 프롬프트 복사</button>
         </div>
       </div>
       <div style="margin-top:8px;"></div>
@@ -654,6 +680,7 @@ footer { margin-top: 32px; text-align: center; font-size: 14px; color: var(--tex
             Gamebase 연동 후 푸시 메시지 발송까지 완료하기 <span style="color:var(--text-muted)">(이종민)</span>
             <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
           </label>
+          <button class="btn btn-primary btn-sm" onclick="onStartUpdate(this)" data-source="deploy" data-service="Gamebase" data-summary="* (Android, iOS) 유효하지 않은 데이터에 대한 검증 로직 개선 * (Windows, macOS) 웹뷰에서 gamebase://openbrowser 스킴이 처리되지 않는 문제 수정 * (Setting Tool v3.0.1) WebGL 플랫폼 전용 어댑터 설치 지원 * (서버 API) Google Pay 차지백 관련 API 추가" data-diff-url="" data-keywords="" data-update-id="deploy-2026-08-Gamebase" data-guide="task-guide/ko/gamebase-push-message.md" data-guide-title="Gamebase 연동 후 푸시 메시지 발송까지 완료하기" data-guide-assignee="이종민">현행화 프롬프트 복사</button>
         </div>
         <div class="guide-check">
           <input type="checkbox" id="chk-deploy-2026-08-Gamebase::task-guide/ko/gamebase-unconsumed-payment.md" data-update-id="deploy-2026-08-Gamebase" data-guide="task-guide/ko/gamebase-unconsumed-payment.md" onchange="onGuideCheck(this)">
@@ -661,6 +688,7 @@ footer { margin-top: 32px; text-align: center; font-size: 14px; color: var(--tex
             Gamebase 미소비 결제 건 조회하고 재처리하기 <span style="color:var(--text-muted)">(미지정)</span>
             <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
           </label>
+          <button class="btn btn-primary btn-sm" onclick="onStartUpdate(this)" data-source="deploy" data-service="Gamebase" data-summary="* (Android, iOS) 유효하지 않은 데이터에 대한 검증 로직 개선 * (Windows, macOS) 웹뷰에서 gamebase://openbrowser 스킴이 처리되지 않는 문제 수정 * (Setting Tool v3.0.1) WebGL 플랫폼 전용 어댑터 설치 지원 * (서버 API) Google Pay 차지백 관련 API 추가" data-diff-url="" data-keywords="" data-update-id="deploy-2026-08-Gamebase" data-guide="task-guide/ko/gamebase-unconsumed-payment.md" data-guide-title="Gamebase 미소비 결제 건 조회하고 재처리하기" data-guide-assignee="미지정">현행화 프롬프트 복사</button>
         </div>
       </div>
       <div style="margin-top:8px;"></div>
@@ -677,6 +705,7 @@ footer { margin-top: 32px; text-align: center; font-size: 14px; color: var(--tex
             Gamebase 연동 후 푸시 메시지 발송까지 완료하기 <span style="color:var(--text-muted)">(이종민)</span>
             <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
           </label>
+          <button class="btn btn-primary btn-sm" onclick="onStartUpdate(this)" data-source="deploy" data-service="Gamebase" data-summary="* (Unity) Gamebase SDK에 Assembly Definition(.asmdef) 적용 * (Unity) 불안정한 네트워크 환경에서 WebSocket 재연결 시 간헐적으로 발생하는 오류 수정 * (Android) AGP 8.0 미만 환경에서 2.81.0 적용 시 게임 빌드가 실패하던 현상 수정 * (iOS) Gamebase 초기화 시 Faceb" data-diff-url="" data-keywords="" data-update-id="deploy-2026-07-Gamebase" data-guide="task-guide/ko/gamebase-push-message.md" data-guide-title="Gamebase 연동 후 푸시 메시지 발송까지 완료하기" data-guide-assignee="이종민">현행화 프롬프트 복사</button>
         </div>
         <div class="guide-check">
           <input type="checkbox" id="chk-deploy-2026-07-Gamebase::task-guide/ko/gamebase-unconsumed-payment.md" data-update-id="deploy-2026-07-Gamebase" data-guide="task-guide/ko/gamebase-unconsumed-payment.md" onchange="onGuideCheck(this)">
@@ -684,6 +713,7 @@ footer { margin-top: 32px; text-align: center; font-size: 14px; color: var(--tex
             Gamebase 미소비 결제 건 조회하고 재처리하기 <span style="color:var(--text-muted)">(미지정)</span>
             <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
           </label>
+          <button class="btn btn-primary btn-sm" onclick="onStartUpdate(this)" data-source="deploy" data-service="Gamebase" data-summary="* (Unity) Gamebase SDK에 Assembly Definition(.asmdef) 적용 * (Unity) 불안정한 네트워크 환경에서 WebSocket 재연결 시 간헐적으로 발생하는 오류 수정 * (Android) AGP 8.0 미만 환경에서 2.81.0 적용 시 게임 빌드가 실패하던 현상 수정 * (iOS) Gamebase 초기화 시 Faceb" data-diff-url="" data-keywords="" data-update-id="deploy-2026-07-Gamebase" data-guide="task-guide/ko/gamebase-unconsumed-payment.md" data-guide-title="Gamebase 미소비 결제 건 조회하고 재처리하기" data-guide-assignee="미지정">현행화 프롬프트 복사</button>
         </div>
       </div>
       <div style="margin-top:8px;"></div>
@@ -700,6 +730,7 @@ footer { margin-top: 32px; text-align: center; font-size: 14px; color: var(--tex
             Network Firewall 정책 구성하기 <span style="color:var(--text-muted)">(박선영)</span>
             <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
           </label>
+          <button class="btn btn-primary btn-sm" onclick="onStartUpdate(this)" data-source="deploy" data-service="Network Firewall" data-summary="* 인터페이스 관리 기능 추가 * 출발지 NAT 기능 추가(1:1, N:1) * 라우트 추가 화면 개선(인터페이스 선택 방식 변경) * ACL 정책 추가 화면 개선(출발지/목적지 인터페이스 선택 추가) * 인터페이스 MTU 크기 설정 옵션 삭제" data-diff-url="" data-keywords="" data-update-id="deploy-2026-07-Network Firewall" data-guide="task-guide/ko/network-firewall-policy-configuration.md" data-guide-title="Network Firewall 정책 구성하기" data-guide-assignee="박선영">현행화 프롬프트 복사</button>
         </div>
       </div>
       <div style="margin-top:8px;"></div>
@@ -716,6 +747,7 @@ footer { margin-top: 32px; text-align: center; font-size: 14px; color: var(--tex
             Gamebase 연동 후 푸시 메시지 발송까지 완료하기 <span style="color:var(--text-muted)">(이종민)</span>
             <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
           </label>
+          <button class="btn btn-primary btn-sm" onclick="onStartUpdate(this)" data-source="deploy" data-service="Gamebase" data-summary="* (Android) 결제 모듈 의존성 변경 * NHN Cloud IAP SDK (1.12.0) → NHN IAP SDK (2.1.0)" data-diff-url="" data-keywords="" data-update-id="deploy-2026-06-Gamebase" data-guide="task-guide/ko/gamebase-push-message.md" data-guide-title="Gamebase 연동 후 푸시 메시지 발송까지 완료하기" data-guide-assignee="이종민">현행화 프롬프트 복사</button>
         </div>
       </div>
       <div style="margin-top:8px;"></div>
@@ -732,6 +764,7 @@ footer { margin-top: 32px; text-align: center; font-size: 14px; color: var(--tex
             Object Storage에 정적 웹사이트 호스팅하기 <span style="color:var(--text-muted)">(이창훈)</span>
             <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
           </label>
+          <button class="btn btn-primary btn-sm" onclick="onStartUpdate(this)" data-source="deploy" data-service="Object Storage" data-summary="* (콘솔) 수명 주기 규칙 설정 및 일괄 적용 기능 추가 * (API) 컨테이너 정책 문서를 통한 컨테이너 설정 기능 추가 * (API) Amazon S3 API 호환성 개선" data-diff-url="" data-keywords="" data-update-id="deploy-2026-05-Object Storage" data-guide="task-guide/ko/obs-static-website-hosting.md" data-guide-title="Object Storage에 정적 웹사이트 호스팅하기" data-guide-assignee="이창훈">현행화 프롬프트 복사</button>
         </div>
       </div>
       <div style="margin-top:8px;"></div>
@@ -748,6 +781,7 @@ footer { margin-top: 32px; text-align: center; font-size: 14px; color: var(--tex
             Secure Key Manager로 암호화 키 관리하기 <span style="color:var(--text-muted)">(박선영)</span>
             <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
           </label>
+          <button class="btn btn-primary btn-sm" onclick="onStartUpdate(this)" data-source="deploy" data-service="Secure Key Manager" data-summary="* 비대칭 키 표준 스킴 서명/검증 API 추가 * 키 저장소 인증 방식 결합 옵션 추가" data-diff-url="" data-keywords="" data-update-id="deploy-2026-05-Secure Key Manager" data-guide="task-guide/ko/skm-key-management.md" data-guide-title="Secure Key Manager로 암호화 키 관리하기" data-guide-assignee="박선영">현행화 프롬프트 복사</button>
         </div>
       </div>
       <div style="margin-top:8px;"></div>
@@ -764,6 +798,7 @@ footer { margin-top: 32px; text-align: center; font-size: 14px; color: var(--tex
             User Access Key 토큰으로 Secure Key Manager API 호출하기 <span style="color:var(--text-muted)">(박선영)</span>
             <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
           </label>
+          <button class="btn btn-primary btn-sm" onclick="onStartUpdate(this)" data-source="deploy" data-service="Secure Key Manager" data-summary="[기능 개선] * API 신규 버전 출시: User Access Key 토큰 인증 적용 * 기빌 데이터 수정 API 추가" data-diff-url="" data-keywords="" data-update-id="deploy-2026-03-Secure Key Manager" data-guide="task-guide/ko/skm-api-call-with-user-access-key-token.md" data-guide-title="User Access Key 토큰으로 Secure Key Manager API 호출하기" data-guide-assignee="박선영">현행화 프롬프트 복사</button>
         </div>
         <div class="guide-check">
           <input type="checkbox" id="chk-deploy-2026-03-Secure Key Manager::task-guide/ko/skm-key-management.md" data-update-id="deploy-2026-03-Secure Key Manager" data-guide="task-guide/ko/skm-key-management.md" onchange="onGuideCheck(this)">
@@ -771,6 +806,7 @@ footer { margin-top: 32px; text-align: center; font-size: 14px; color: var(--tex
             Secure Key Manager로 암호화 키 관리하기 <span style="color:var(--text-muted)">(박선영)</span>
             <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
           </label>
+          <button class="btn btn-primary btn-sm" onclick="onStartUpdate(this)" data-source="deploy" data-service="Secure Key Manager" data-summary="[기능 개선] * API 신규 버전 출시: User Access Key 토큰 인증 적용 * 기빌 데이터 수정 API 추가" data-diff-url="" data-keywords="" data-update-id="deploy-2026-03-Secure Key Manager" data-guide="task-guide/ko/skm-key-management.md" data-guide-title="Secure Key Manager로 암호화 키 관리하기" data-guide-assignee="박선영">현행화 프롬프트 복사</button>
         </div>
       </div>
       <div style="margin-top:8px;"></div>
@@ -778,7 +814,7 @@ footer { margin-top: 32px; text-align: center; font-size: 14px; color: var(--tex
     </div>
   </div>
 
-  <footer>매일 09:00 KST 자동 갱신 · 마지막 갱신: 2026. 11. 12. AM 07:58 · 마지막 생성: 2026. 11. 12. AM 08:21</footer>
+  <footer>매일 09:00 KST 자동 갱신 · 마지막 갱신: 2026. 11. 12. AM 07:58 · 마지막 생성: 2026. 11. 13. AM 10:57</footer>
 </div>
 
 <script>
@@ -981,6 +1017,54 @@ document.addEventListener('click', () => {
   document.querySelectorAll('.filter-menu.open').forEach(m => m.classList.remove('open'));
   document.querySelectorAll('.filter-toggle.open').forEach(t => t.classList.remove('open'));
 });
+
+// === 현행화 프롬프트 복사 — 가이드별 구조화된 프롬프트 생성 + 클립보드 복사 ===
+function onStartUpdate(btn) {
+  const source = btn.dataset.source === 'ghe' ? 'GHE 변경 감지' : '월별 배포 사항';
+  const service = btn.dataset.service || '';
+  const summary = btn.dataset.summary || '';
+  const diffUrl = btn.dataset.diffUrl || '';
+  const keywords = btn.dataset.keywords || '';
+  const updateId = btn.dataset.updateId || '';
+  const guide = btn.dataset.guide || '';
+  const guideTitle = btn.dataset.guideTitle || '';
+  const guideAssignee = btn.dataset.guideAssignee || '';
+
+  const lines = [
+    '/update-guide 실행해줘.',
+    '',
+    '## 변경 출처',
+    '- 유형: ' + source,
+    '- 서비스: ' + service,
+    '- 변경 요약: ' + summary,
+  ];
+  if (diffUrl) lines.push('- diff 링크: ' + diffUrl);
+  if (keywords) lines.push('- 매칭 키워드: ' + keywords);
+  lines.push('', '## 대상 가이드');
+  lines.push('- 제목: ' + guideTitle);
+  lines.push('- 파일: ' + guide);
+  lines.push('- 담당자: ' + guideAssignee);
+  lines.push('', '## 대시보드 추적 ID');
+  lines.push('- updateId: ' + updateId);
+  lines.push('- guide: ' + guide);
+
+  const prompt = lines.join('\n');
+
+  navigator.clipboard.writeText(prompt).then(() => {
+    const orig = btn.textContent;
+    btn.textContent = '복사됨';
+    btn.classList.remove('btn-primary');
+    btn.classList.add('btn-success');
+    setTimeout(() => { btn.textContent = orig; btn.classList.remove('btn-success'); btn.classList.add('btn-primary'); }, 2000);
+  }).catch(() => {
+    const ta = document.createElement('textarea');
+    ta.value = prompt;
+    ta.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:400px;z-index:9999;font-size:13px;';
+    document.body.appendChild(ta);
+    ta.select();
+    ta.addEventListener('blur', () => ta.remove());
+  });
+}
 </script>
 </body>
 </html>

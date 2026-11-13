@@ -299,6 +299,58 @@ async function sendReminders(gheUpdates, resolved) {
 }
 
 /**
+ * PR 상태 추적 — resolved.json에서 pr-linked 건의 머지 여부 확인
+ * GitHub.com API 사용 (GHE가 아닌 TOAST-DOCS/TW 리포)
+ */
+async function checkPrStatuses(resolved) {
+  const prItems = (resolved.resolved || []).filter(
+    (r) => r.resolution === 'pr-linked' && r.prNumber && r.prStatus !== 'merged' && r.prStatus !== 'closed'
+  );
+  if (prItems.length === 0) return 0;
+
+  const ghToken = process.env.GH_TOKEN || process.env.GITHUB_TOKEN || '';
+  const ghHeaders = { Accept: 'application/vnd.github+json', 'User-Agent': 'practical-guides-dashboard' };
+  if (ghToken) ghHeaders.Authorization = `Bearer ${ghToken}`;
+
+  let updated = 0;
+  for (const item of prItems) {
+    try {
+      const url = `https://api.github.com/repos/TOAST-DOCS/TW/pulls/${item.prNumber}`;
+      const res = await fetch(url, { headers: ghHeaders });
+      if (!res.ok) continue;
+      const pr = await res.json();
+
+      const newStatus = pr.merged_at ? 'merged' : pr.state; // 'open', 'closed', 'merged'
+      if (newStatus !== (item.prStatus || 'open')) {
+        item.prStatus = newStatus;
+        if (pr.merged_at) item.mergedAt = pr.merged_at;
+        updated++;
+        console.log(`  [PR] #${item.prNumber} ${item.guide}: ${newStatus}`);
+
+        // 머지 완료 알림
+        if (newStatus === 'merged') {
+          await sendWebhook([
+            '✅ [현행화 반영 완료]',
+            '',
+            `PR #${item.prNumber}이 머지되었습니다.`,
+            `• ${item.guide}`,
+            '',
+            `👉 대시보드에서 확인: ${config.DASHBOARD_URL}`,
+          ].join('\n'));
+        }
+      }
+    } catch (err) {
+      console.error(`  [WARN] PR #${item.prNumber} check failed: ${err.message}`);
+    }
+  }
+
+  if (updated > 0) {
+    saveJSON(config.RESOLVED_FILE, resolved);
+  }
+  return updated;
+}
+
+/**
  * 메인 실행
  */
 async function runPoll() {
@@ -350,7 +402,13 @@ async function runPoll() {
     console.log(`  Sent ${remindCount} reminder(s)`);
   }
 
-  // 7. 사이트 생성
+  // 7. PR 상태 추적
+  const prUpdated = await checkPrStatuses(resolved);
+  if (prUpdated > 0) {
+    console.log(`  Updated ${prUpdated} PR status(es)`);
+  }
+
+  // 8. 사이트 생성
   const sitePath = generateSite();
   console.log(`  Site generated: ${sitePath}`);
 
