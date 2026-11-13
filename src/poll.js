@@ -84,7 +84,7 @@ async function pollGHE(guideMapping, guides) {
           currentSha,
           compareUrl: diff.compareUrl,
           mdChanges: diff.mdChanges,
-          files: diff.files.map((f) => ({ filename: f.filename, status: f.status, additions: f.additions, deletions: f.deletions })),
+          files: diff.files.map((f) => ({ filename: f.filename, status: f.status, additions: f.additions, deletions: f.deletions, patch: f.patch || '' })),
           affectedGuides: affected,
           analysisMethod: analysisResults.length > 0 ? 'keyword' : 'repo-mapping',
           detectedAt: new Date().toISOString(),
@@ -523,8 +523,15 @@ async function runPoll() {
     repoNames: gheResult.discoveredRepos,
   };
   if (gheResult.changes.length > 0) {
+    // history에는 patch를 제거해서 저장 (파일 비대화 방지)
+    // 최신 changes에만 patch 보존 → 프롬프트 복사 시 사용
+    // 과거 건은 필요 시 스킬이 GHE API로 직접 조회
+    const changesForHistory = gheResult.changes.map((c) => ({
+      ...c,
+      files: (c.files || []).map(({ patch, ...rest }) => rest),
+    }));
     existing.history = [
-      { pollDate: new Date().toISOString(), changes: gheResult.changes },
+      { pollDate: new Date().toISOString(), changes: changesForHistory },
       ...(existing.history || []),
     ];
   }
