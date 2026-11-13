@@ -120,6 +120,27 @@
       "service": "Image",
       "repos": ["Compute-Image", "Compute-Instance"],
       "assignee": "미정"
+    },
+    {
+      "guide": "task-guide/ko/gamebase-idp-google-connect.md",
+      "title": "Gamebase에 Google IdP를 연동해 소셜 로그인 구현하기",
+      "service": "Gamebase",
+      "repos": ["Gamebase"],
+      "assignee": "이종민"
+    },
+    {
+      "guide": "task-guide/ko/iam-multi-user-permission-separation.md",
+      "title": "IAM으로 멀티 사용자 권한 분리 구성하기",
+      "service": "IAM",
+      "repos": [],
+      "assignee": "이종민"
+    },
+    {
+      "guide": "task-guide/ko/instance-internal-communication-failure.md",
+      "title": "인스턴스 간 내부 통신에 실패합니다",
+      "service": "Instance",
+      "repos": ["Compute-Instance", "Network-VPC", "Security-Groups"],
+      "assignee": "박선영"
     }
   ]
 }
