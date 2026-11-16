@@ -14,7 +14,7 @@ gitbook/
 ├── README.md                       # 이 파일. 게시되지 않습니다
 ├── migration-automation.md         # 이관 자동화 설계안. 게시되지 않습니다
 │
-├── ko/                             # [게시] Home 섹션 — 랜딩 페이지만
+├── home/                           # [게시] Home 섹션 — 랜딩 페이지만
 │   ├── README.md                   #   사이트 랜딩 페이지
 │   ├── SUMMARY.md
 │   └── .gitbook/{assets,tags.yaml}
@@ -58,15 +58,13 @@ How to
 
 카테고리는 **`SUMMARY.md` 의 `## 헤딩`** 으로만 만듭니다. 클릭할 수 있는 페이지가 아니므로 카테고리용 `README.md` 는 두지 않습니다. 파일은 같은 이름의 카테고리 디렉터리에 둡니다.
 
-**이미지는 게시 공간마다 따로 둡니다.** 공간을 넘어서는 상대 경로(`../../ko/.gitbook/assets/`)는 쓰지 않습니다. 문서가 속한 공간의 `.gitbook/assets/` 에 두고 상대 경로로 참조합니다. 문서가 카테고리 디렉터리 1단계 아래에 있으므로 경로는 항상 `../.gitbook/assets/<파일>` 입니다.
+**이미지는 게시 공간마다 따로 둡니다.** 공간을 넘어서는 상대 경로(`../../home/.gitbook/assets/`)는 쓰지 않습니다. 문서가 속한 공간의 `.gitbook/assets/` 에 두고 상대 경로로 참조합니다. 문서가 카테고리 디렉터리 1단계 아래에 있으므로 경로는 항상 `../.gitbook/assets/<파일>` 입니다.
 
 **태그도 공간마다 따로입니다.** 문서 프런트매터의 `tags` 값은 그 공간의 `.gitbook/tags.yaml` 에 정의돼 있어야 합니다. 문서를 다른 공간으로 옮기면 태그 정의도 함께 옮겨야 합니다.
 
-언어별로 디렉터리를 나눕니다. 번역본은 **원문과 같은 파일명**으로 해당 언어 디렉터리에 둡니다. 당분간 `ko`만 채워집니다.
-
 ## GitBook Git Sync 설정
 
-GitBook의 **Project directory**를 `gitbook`으로 지정합니다. 그래서 설정 파일이 저장소 루트가 아니라 이 디렉터리에 있고, `content.directory`의 `./ko`도 `gitbook` 기준 상대 경로입니다.
+GitBook의 **Project directory**를 `gitbook`으로 지정합니다. 그래서 설정 파일이 저장소 루트가 아니라 이 디렉터리에 있고, `content.directory`의 `./home`도 `gitbook` 기준 상대 경로입니다.
 
 `path: task-guide`는 파일 경로가 아니라 GitBook이 스페이스를 식별하는 사이트 구조 값입니다. 디렉터리를 옮겨도 그대로 둡니다. 바꾸면 사이트 URL이 달라집니다.
 
@@ -87,7 +85,7 @@ site:
           path: task-guide
           default: true
           content:
-            directory: ./ko
+            directory: ./home
             language: ko
     - type: section
       key: section-2
@@ -115,24 +113,6 @@ site:
 - **GitBook 쪽에서 편집하면 저장소로 커밋이 되돌아옵니다**(`GITBOOK-SITE: ...`). 푸시가 거부되면 원격 커밋을 먼저 확인하세요.
 - **리다이렉트는 이 파일로 설정할 수 없습니다.** `gitbook-docs.yaml` 스키마에 `redirects` 속성이 없습니다(2026-11-16 확인). 문서를 옮겨 URL이 바뀌면 GitBook 사이트 설정에서 직접 걸어야 합니다.
 - **본문이 없는 페이지는 `SUMMARY.md` 에 올리지 않습니다.** 제목만 있는 페이지가 사이드바에 그대로 노출됩니다. 예정 주제는 아래에 적어 둡니다.
-
-### 언어별 스페이스 추가
-
-번역본이 생기면 해당 섹션의 `children` 아래에 스페이스를 추가합니다. `key`는 파일 전체에서 유일해야 합니다.
-
-```yaml
-      children:
-        - type: space
-          key: space-task-guide-ko
-          # ... 기존 ko 스페이스
-        - type: space
-          key: space-task-guide-en
-          title: NHN Cloud Practical Guides
-          path: task-guide-en
-          content:
-            directory: ./en
-            language: en
-```
 
 ## 문서 작성
 

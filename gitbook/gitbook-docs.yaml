@@ -15,7 +15,7 @@ site:
           path: task-guide
           default: true
           content:
-            directory: ./ko
+            directory: ./home
             language: ko
     - type: section
       key: section-2
