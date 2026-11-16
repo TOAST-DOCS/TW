@@ -11,7 +11,7 @@ site:
       children:
         - type: space
           key: space-task-guide-ko
-          title: Task Guide
+          title: NHN Cloud 실전 가이드
           path: task-guide
           default: true
           content:

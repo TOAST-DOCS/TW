@@ -2,23 +2,65 @@
 
 GitBook Git Sync로 사이트에 게시되는 디렉터리입니다. 게시용 최종본만 둡니다.
 
-초안은 [`../task-guide/`](../task-guide/)에 평면 구조로 둡니다. 초안을 `gitbook-md` 스킬로 GitBook 문법으로 변환한 뒤, 이 디렉터리의 해당 그룹(`ko/how-to/`, `ko/troubleshooting/`)으로 옮기는 흐름입니다.
+초안은 [`../task-guide/`](../task-guide/)에 평면 구조로 둡니다. 초안을 `gitbook-md` 스킬로 GitBook 문법으로 변환한 뒤, 이 디렉터리의 해당 게시 공간으로 옮기는 흐름입니다.
 
 ## 디렉터리 구조
 
+사이트는 섹션 3개로 나뉘고, 섹션마다 게시 디렉터리가 따로 있습니다. **`gitbook-docs.yaml` 의 `content.directory` 에 적힌 세 곳만** 사이트에 올라갑니다.
+
 ```
 gitbook/
-├── gitbook-docs.yaml      # GitBook 사이트 구조 설정 (GitBook이 관리)
-├── README.md              # 이 파일. 게시되지 않습니다
-└── ko/                    # 동기화 대상. 이 아래만 사이트에 올라갑니다
-    ├── README.md          # 사이트 랜딩 페이지
-    ├── SUMMARY.md         # 사이드바 목록
-    ├── how-to/            # How-to 가이드. 사이드바 그룹명과 같습니다
-    ├── troubleshooting/   # 트러블슈팅 가이드. 사이드바 그룹명과 같습니다
-    └── images/            # 문서에 쓰는 이미지. 두 그룹이 공유합니다
+├── gitbook-docs.yaml               # 사이트 구조 설정 (GitBook이 관리)
+├── README.md                       # 이 파일. 게시되지 않습니다
+├── migration-automation.md         # 이관 자동화 설계안. 게시되지 않습니다
+│
+├── ko/                             # [게시] Home 섹션 — 랜딩 페이지만
+│   ├── README.md                   #   사이트 랜딩 페이지
+│   ├── SUMMARY.md
+│   └── .gitbook/{assets,tags.yaml}
+│
+├── how-to/product-docs/            # [게시] How-to 섹션
+│   ├── README.md                   #   섹션 랜딩 페이지(활용하기)
+│   ├── SUMMARY.md
+│   ├── compute/                    #   카테고리 디렉터리
+│   ├── network/
+│   ├── storage/
+│   ├── monitoring/
+│   ├── game/
+│   ├── security/
+│   └── .gitbook/{assets,tags.yaml}
+│
+└── troubleshooting/product-docs/   # [게시] Troubleshooting 섹션
+    ├── README.md                   #   섹션 랜딩 페이지(문제 해결)
+    ├── SUMMARY.md
+    ├── compute/
+    ├── network/
+    ├── database/
+    ├── monitoring/
+    ├── content-delivery/
+    └── .gitbook/{assets,tags.yaml}
 ```
 
-문서는 사이드바 그룹과 같은 이름의 디렉터리에 둡니다. 하위 디렉터리에서 이미지를 참조할 때는 `../images/` 처럼 상위 경로를 씁니다.
+## 사이드바 구조
+
+How-to와 Troubleshooting은 **카테고리 1단계** 아래에 문서를 둡니다. 서비스별 중간 페이지를 만들지 않습니다.
+
+```
+How to
+├── 활용하기                        # README.md
+├── Compute                         # SUMMARY.md 의 ## 그룹 헤딩
+│   ├── Image로 인스턴스 복제하기
+│   └── Cloud Functions로 HTTP 함수 배포하기
+└── Network
+    ├── URL 경로 기반으로 트래픽을 분산하는 L7 로드 밸런서 구성하기
+    └── NAT Gateway로 프라이빗 서브넷 인터넷 연결 구성하기
+```
+
+카테고리는 **`SUMMARY.md` 의 `## 헤딩`** 으로만 만듭니다. 클릭할 수 있는 페이지가 아니므로 카테고리용 `README.md` 는 두지 않습니다. 파일은 같은 이름의 카테고리 디렉터리에 둡니다.
+
+**이미지는 게시 공간마다 따로 둡니다.** 공간을 넘어서는 상대 경로(`../../ko/.gitbook/assets/`)는 쓰지 않습니다. 문서가 속한 공간의 `.gitbook/assets/` 에 두고 상대 경로로 참조합니다. 문서가 카테고리 디렉터리 1단계 아래에 있으므로 경로는 항상 `../.gitbook/assets/<파일>` 입니다.
+
+**태그도 공간마다 따로입니다.** 문서 프런트매터의 `tags` 값은 그 공간의 `.gitbook/tags.yaml` 에 정의돼 있어야 합니다. 문서를 다른 공간으로 옮기면 태그 정의도 함께 옮겨야 합니다.
 
 언어별로 디렉터리를 나눕니다. 번역본은 **원문과 같은 파일명**으로 해당 언어 디렉터리에 둡니다. 당분간 `ko`만 채워집니다.
 
@@ -33,50 +75,78 @@ $schema: https://api.gitbook.com/gitbook-docs.yaml
 site:
   title: NHN Cloud Task Guides
   structure:
-    - type: space
-      key: space-task-guide-ko
-      title: Task Guide
-      path: task-guide
-      content:
-        directory: ./ko
-        language: ko
+    - type: section
+      key: section-1
+      title: Home
+      path: nhn-cloud-task-guides
+      default: true
+      children:
+        - type: space
+          key: space-task-guide-ko
+          title: NHN Cloud 실전 가이드
+          path: task-guide
+          default: true
+          content:
+            directory: ./ko
+            language: ko
+    - type: section
+      key: section-2
+      title: How-to
+      path: how-to
+      children:
+        - type: space
+          key: space-2
+          title: How-to
+          path: product-docs
+          default: true
+          content:
+            directory: ./how-to/product-docs
 ```
+
+섹션의 기본 스페이스(`default: true`)는 섹션 경로에서 바로 열립니다. How-to 섹션이 `/how-to` 로 열리는 이유입니다.
 
 ### 주의할 점
 
 - **`gitbook-docs.yaml`에 주석을 달지 않습니다.** GitBook이 동기화할 때마다 자기 상태에서 이 파일을 다시 생성하면서 주석을 전부 지웁니다. 설정에 관한 메모는 이 파일(`gitbook/README.md`)에 적습니다.
 - **`key` 값은 동기화 이후에 바꾸지 않습니다.** GitBook이 스페이스를 식별하는 값이라, 바꾸면 기존 스페이스가 아니라 새 스페이스가 만들어집니다.
 - **`default: true`는 파일 전체에서 하나만 둡니다.**
-- **랜딩 페이지와 사이드바는 이 파일이 결정하지 않습니다.** 각각 `ko/README.md`와 `ko/SUMMARY.md`가 결정합니다. 문서를 추가하면 `ko/SUMMARY.md`에 항목을 넣어야 사이드바에 나타납니다.
+- **랜딩 페이지와 사이드바는 이 파일이 결정하지 않습니다.** 각 게시 공간의 `README.md`와 `SUMMARY.md`가 결정합니다. 문서를 추가하면 그 공간의 `SUMMARY.md`에 항목을 넣어야 사이드바에 나타납니다.
+- **`path` 값도 동기화 이후에 바꾸지 않습니다.** 사이트 URL이 달라져 기존 링크가 끊깁니다.
 - **GitBook 쪽에서 편집하면 저장소로 커밋이 되돌아옵니다**(`GITBOOK-SITE: ...`). 푸시가 거부되면 원격 커밋을 먼저 확인하세요.
+- **리다이렉트는 이 파일로 설정할 수 없습니다.** `gitbook-docs.yaml` 스키마에 `redirects` 속성이 없습니다(2026-11-16 확인). 문서를 옮겨 URL이 바뀌면 GitBook 사이트 설정에서 직접 걸어야 합니다.
+- **본문이 없는 페이지는 `SUMMARY.md` 에 올리지 않습니다.** 제목만 있는 페이지가 사이드바에 그대로 노출됩니다. 예정 주제는 아래에 적어 둡니다.
 
 ### 언어별 스페이스 추가
 
-번역본이 생기면 `structure` 아래에 스페이스를 추가합니다. `key`는 파일 전체에서 유일해야 합니다.
+번역본이 생기면 해당 섹션의 `children` 아래에 스페이스를 추가합니다. `key`는 파일 전체에서 유일해야 합니다.
 
 ```yaml
-    - type: space
-      key: space-task-guide-en
-      title: Task Guide
-      path: task-guide-en
-      content:
-        directory: ./en
-        language: en
+      children:
+        - type: space
+          key: space-task-guide-ko
+          # ... 기존 ko 스페이스
+        - type: space
+          key: space-task-guide-en
+          title: NHN Cloud Practical Guides
+          path: task-guide-en
+          content:
+            directory: ./en
+            language: en
 ```
 
 ## 문서 작성
 
 - 파일명은 영소문자 kebab-case로 씁니다. 예: `instance-creation-failed.md`
-- **번호 접두사(`01-`, `03_`)를 쓰지 않습니다.** 문서가 늘거나 순서가 바뀔 때마다 전체를 리네임해야 하고, 링크가 깨집니다. 순서는 `ko/SUMMARY.md`가 정합니다.
+- **번호 접두사(`01-`, `03_`)를 쓰지 않습니다.** 문서가 늘거나 순서가 바뀔 때마다 전체를 리네임해야 하고, 링크가 깨집니다. 순서는 그 공간의 `SUMMARY.md`가 정합니다.
 - **`_final`, `_latest`, `_draft` 같은 상태 접미사를 쓰지 않습니다.** 버전은 Git이 관리합니다. 검토 중이라는 사실은 PR로 나타냅니다.
 - 문서 간 링크는 상대 경로를 씁니다.
 
 ### 이미지
 
-- `ko/images/`에 두고 상대 경로로 참조합니다.
+- 문서가 속한 게시 공간의 `.gitbook/assets/`에 두고 상대 경로로 참조합니다.
 
   ```markdown
-  ![인스턴스 생성 실패 원인 판단 흐름](../images/instance-creation-failed-flow.svg)
+  <img src="../.gitbook/assets/server-image-create-flow.svg" alt="" width="100%">
   ```
 
 - 파일명은 `<문서 파일명>-<역할>` 형식을 씁니다. 예: `instance-creation-failed-flow.svg`
@@ -85,6 +155,17 @@ site:
 - 다이어그램을 **PNG로 내보내 써야 하는 경우에도 SVG 원본을 함께 커밋합니다.** PNG만 남기면 나중에 규격이 달라졌을 때 처음부터 다시 그려야 합니다.
 - 다이어그램 색상은 [NHN Cloud 브랜드 가이드](https://www.nhncloud.com/kr/intro/brand-guide)를 따릅니다. BLUE `#125DE6`, NAVY `#003087`, GRAY `#586F81`, LIGHT GRAY `#BED0DE`.
 - 폰트는 배포 대상 PC에 없을 수 있으므로 범용 폰트(NanumSquare, Noto Sans KR)를 지정합니다.
+
+## 예정 주제
+
+아직 작성되지 않아 게시하지 않는 트러블슈팅 주제입니다. 문서를 쓰면 해당 카테고리 디렉터리에 두고 `SUMMARY.md` 에 추가합니다.
+
+| 카테고리 | 주제 |
+| --- | --- |
+| Network | 인스턴스 간 내부 통신에 실패합니다 |
+| Database | RDS 고가용성이 중단되거나 예기치 않은 장애 조치가 발생합니다 |
+| Monitoring | Cloud Monitoring에 인스턴스 지표가 표시되지 않습니다 |
+| Content Delivery | CDN 인증서 발급·갱신이 실패할 때 |
 
 ## 여러 명이 함께 쓰는 규칙
 

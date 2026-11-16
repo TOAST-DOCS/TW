@@ -1,3 +1,9 @@
+- tag: compute
+  label: Compute
+  color: red
+- tag: network
+  label: Network
+  color: purple
 - tag: beta
   label: Beta
   color: $primary

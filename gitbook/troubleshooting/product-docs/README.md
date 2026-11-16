@@ -33,7 +33,7 @@ icon: wrench
 
 
 
-<table data-card-size="large" data-view="cards"><thead><tr><th></th><th data-type="content-ref"></th><th data-type="content-ref"></th><th data-type="content-ref"></th><th></th></tr></thead><tbody><tr><td><strong>Compute</strong></td><td><a href="compute/ssh-..md">ssh-..md</a></td><td><a href="compute/undefined.md">undefined.md</a></td><td><a href="/broken/pages/c3101d8e098a6f696c75f6bda47d0ea5fdade1e5">Broken link</a></td><td></td></tr></tbody></table>
+<table data-card-size="large" data-view="cards"><thead><tr><th></th><th data-type="content-ref"></th><th data-type="content-ref"></th><th data-type="content-ref"></th><th></th></tr></thead><tbody><tr><td><strong>Compute</strong></td><td><a href="compute/instance-ssh-connection-failed.md">instance-ssh-connection-failed.md</a></td><td><a href="compute/instance-creation-failed.md">instance-creation-failed.md</a></td><td></td><td></td></tr></tbody></table>
 
 ## 찾는 증상이 없다면
 
