@@ -1,65 +1,67 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 580" font-family="'Pretendard', sans-serif" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 552" width="600" height="552" font-family="'Pretendard', sans-serif" role="img" aria-labelledby="title desc">
   <title id="title">인스턴스 생성 실패 원인 판단 흐름</title>
   <desc id="desc">쿼터 부족, 개인 이미지 사용, 가용량 부족 오류 메시지 순서로 확인해 원인 1부터 원인 4까지 좁히는 흐름입니다.</desc>
-  <rect width="920" height="580" rx="12" fill="#F7F7F7"/>
-  <defs>
-    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-      <polygon points="0 0, 10 3.5, 0 7" fill="#8B8B8B"/>
-    </marker>
-  </defs>
+  <rect width="600" height="552" fill="#F7F7F7"/>
 
-  <!-- ===== 증상 (상위 제목 바) ===== -->
-  <rect x="100" y="40" width="300" height="48" rx="6" fill="#003087"/>
-  <text x="250" y="69" text-anchor="middle" fill="#FFFFFF" font-size="14" font-weight="700">증상: 인스턴스 생성 실패</text>
+  <!-- 증상 -->
+  <rect x="80" y="30" width="220" height="40" rx="6" fill="#646464"/>
+  <text x="190" y="50" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#FFFFFF">인스턴스 생성 실패</text>
+  <path d="M 190 70 L 190 89" fill="none" stroke="#8B8B8B" stroke-width="1.5"/>
+  <polygon points="190,96 186,88 194,88" fill="#8B8B8B"/>
 
-  <!-- ===== 판단 노드 (외곽선 노드) ===== -->
-  <g fill="none" stroke="#125DE6" stroke-width="1.5">
-    <rect x="100" y="132" width="300" height="52" rx="6"/>
-    <rect x="100" y="256" width="300" height="52" rx="6"/>
-    <rect x="100" y="380" width="300" height="52" rx="6"/>
-  </g>
-  <g font-size="13" font-weight="600" fill="#125DE6" text-anchor="middle">
-    <text x="250" y="163">쿼터가 부족한가?</text>
-    <text x="250" y="287">개인 이미지를 사용했는가?</text>
-    <text x="250" y="411">오류 메시지가 가용량 부족인가?</text>
-  </g>
+  <!-- 판단: 프로젝트 쿼터가 부족한가? -->
+  <polygon points="190,96 300,134 190,172 80,134" fill="#FFFFFF" stroke="#125DE6" stroke-width="1.5"/>
+  <text x="190" y="126" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#2D2D2D">프로젝트 쿼터가</text>
+  <text x="190" y="142" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#2D2D2D">부족한가?</text>
+  <path d="M 300 134 L 353 134" fill="none" stroke="#8B8B8B" stroke-width="1.5"/>
+  <polygon points="360,134 352,138 352,130" fill="#8B8B8B"/>
+  <text x="330" y="123" text-anchor="middle" dominant-baseline="central" font-size="12" font-weight="bold" fill="#444444">예</text>
+  <rect x="360" y="112" width="216" height="44" rx="6" fill="#125DE6"/>
+  <text x="468" y="126" text-anchor="middle" dominant-baseline="central" font-size="12" font-weight="bold" fill="#FFFFFF">원인 1</text>
+  <text x="468" y="142" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#FFFFFF">프로젝트 쿼터 초과</text>
+  <path d="M 190 172 L 190 205" fill="none" stroke="#8B8B8B" stroke-width="1.5"/>
+  <polygon points="190,212 186,204 194,204" fill="#8B8B8B"/>
+  <text x="200" y="191" dominant-baseline="central" font-size="12" font-weight="bold" fill="#444444">아니오</text>
 
-  <!-- ===== 아니오: 세로 흐름 ===== -->
-  <g stroke="#8B8B8B" stroke-width="1.5" fill="none" marker-end="url(#arrow)">
-    <line x1="250" y1="88" x2="250" y2="130"/>
-    <line x1="250" y1="184" x2="250" y2="254"/>
-    <line x1="250" y1="308" x2="250" y2="378"/>
-    <line x1="250" y1="432" x2="250" y2="502"/>
-  </g>
-  <g font-size="11" fill="#444444">
-    <text x="260" y="224">아니오</text>
-    <text x="260" y="348">아니오</text>
-    <text x="260" y="472">아니오</text>
-  </g>
+  <!-- 판단: 개인 이미지를 사용했는가? -->
+  <polygon points="190,212 300,250 190,288 80,250" fill="#FFFFFF" stroke="#125DE6" stroke-width="1.5"/>
+  <text x="190" y="242" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#2D2D2D">개인 이미지를</text>
+  <text x="190" y="258" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#2D2D2D">사용했는가?</text>
+  <path d="M 300 250 L 353 250" fill="none" stroke="#8B8B8B" stroke-width="1.5"/>
+  <polygon points="360,250 352,254 352,246" fill="#8B8B8B"/>
+  <text x="330" y="239" text-anchor="middle" dominant-baseline="central" font-size="12" font-weight="bold" fill="#444444">예</text>
+  <rect x="360" y="228" width="216" height="44" rx="6" fill="#125DE6"/>
+  <text x="468" y="242" text-anchor="middle" dominant-baseline="central" font-size="12" font-weight="bold" fill="#FFFFFF">원인 2</text>
+  <text x="468" y="258" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#FFFFFF">개인 이미지 설정 문제</text>
+  <path d="M 190 288 L 190 321" fill="none" stroke="#8B8B8B" stroke-width="1.5"/>
+  <polygon points="190,328 186,320 194,320" fill="#8B8B8B"/>
+  <text x="200" y="307" dominant-baseline="central" font-size="12" font-weight="bold" fill="#444444">아니오</text>
 
-  <!-- ===== 예: 가로 분기 ===== -->
-  <g stroke="#8B8B8B" stroke-width="1.5" fill="none" marker-end="url(#arrow)">
-    <line x1="400" y1="158" x2="498" y2="158"/>
-    <line x1="400" y1="282" x2="498" y2="282"/>
-    <line x1="400" y1="406" x2="498" y2="406"/>
-  </g>
-  <g font-size="11" fill="#444444" text-anchor="middle">
-    <text x="449" y="150">예</text>
-    <text x="449" y="274">예</text>
-    <text x="449" y="398">예</text>
-  </g>
+  <!-- 판단: 오류 메시지가 가용량 부족인가? -->
+  <polygon points="190,328 300,366 190,404 80,366" fill="#FFFFFF" stroke="#125DE6" stroke-width="1.5"/>
+  <text x="190" y="358" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#2D2D2D">오류 메시지가</text>
+  <text x="190" y="374" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#2D2D2D">가용량 부족인가?</text>
+  <path d="M 300 366 L 353 366" fill="none" stroke="#8B8B8B" stroke-width="1.5"/>
+  <polygon points="360,366 352,370 352,362" fill="#8B8B8B"/>
+  <text x="330" y="355" text-anchor="middle" dominant-baseline="central" font-size="12" font-weight="bold" fill="#444444">예</text>
+  <rect x="360" y="344" width="216" height="44" rx="6" fill="#125DE6"/>
+  <text x="468" y="358" text-anchor="middle" dominant-baseline="central" font-size="12" font-weight="bold" fill="#FFFFFF">원인 3</text>
+  <text x="468" y="374" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#FFFFFF">가용성 영역에서 타입 생성 불가</text>
+  <path d="M 190 404 L 190 437" fill="none" stroke="#8B8B8B" stroke-width="1.5"/>
+  <polygon points="190,444 186,436 194,436" fill="#8B8B8B"/>
+  <text x="200" y="423" dominant-baseline="central" font-size="12" font-weight="bold" fill="#444444">아니오</text>
 
-  <!-- ===== 결과 노드 ===== -->
-  <g fill="#E7F2FF">
-    <rect x="500" y="132" width="380" height="52" rx="6"/>
-    <rect x="500" y="256" width="380" height="52" rx="6"/>
-    <rect x="500" y="380" width="380" height="52" rx="6"/>
-    <rect x="100" y="504" width="300" height="52" rx="6"/>
-  </g>
-  <g font-size="13" fill="#2D2D2D">
-    <text x="520" y="163"><tspan font-weight="700" fill="#125DE6">원인 1</tspan><tspan dx="10">리소스 정리 또는 쿼터 조정 신청</tspan></text>
-    <text x="520" y="287"><tspan font-weight="700" fill="#125DE6">원인 2</tspan><tspan dx="10">이미지 크기와 속성 확인</tspan></text>
-    <text x="520" y="411"><tspan font-weight="700" fill="#125DE6">원인 3</tspan><tspan dx="10">가용성 영역 또는 타입 변경, 문의</tspan></text>
-    <text x="250" y="535" text-anchor="middle"><tspan font-weight="700" fill="#125DE6">원인 4</tspan><tspan dx="10">삭제 후 재생성, 반복되면 문의</tspan></text>
-  </g>
+  <!-- 원인 4 -->
+  <rect x="80" y="444" width="220" height="44" rx="6" fill="#125DE6"/>
+  <text x="190" y="458" text-anchor="middle" dominant-baseline="central" font-size="12" font-weight="bold" fill="#FFFFFF">원인 4</text>
+  <text x="190" y="474" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#FFFFFF">내부 처리 실패</text>
+
+  <!-- 범례 -->
+  <line x1="24" y1="512" x2="576" y2="512" stroke="#DCDCDC" stroke-width="1"/>
+  <rect x="40" y="523" width="14" height="14" rx="3" fill="#646464"/>
+  <text x="60" y="530" dominant-baseline="central" font-size="11" fill="#2D2D2D">증상</text>
+  <polygon points="115,523 128,530 115,537 102,530" fill="#FFFFFF" stroke="#125DE6" stroke-width="1"/>
+  <text x="134" y="530" dominant-baseline="central" font-size="11" fill="#2D2D2D">판단</text>
+  <rect x="172" y="523" width="14" height="14" rx="3" fill="#125DE6"/>
+  <text x="192" y="530" dominant-baseline="central" font-size="11" fill="#2D2D2D">원인과 해결</text>
 </svg>
