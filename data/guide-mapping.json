@@ -222,6 +222,28 @@
       ],
       "assignee": "하수진",
       "_autoAdded": "2026-11-19"
+    },
+    {
+      "guide": "task-guide/ko/cdn-certificate-renewal-failed.md",
+      "title": "CDN 인증서 발급·갱신에 실패합니다",
+      "service": "CDN",
+      "repos": [
+        "CDN"
+      ],
+      "assignee": "이종민",
+      "publishedAt": "2026-11-20",
+      "_autoAdded": "2026-11-19"
+    },
+    {
+      "guide": "task-guide/ko/gpu-instance-setup.md",
+      "title": "GPU 인스턴스를 만들고 AI/ML 실행 환경 준비하기",
+      "service": "GPU",
+      "repos": [
+        "Compute-GPU"
+      ],
+      "assignee": "박정현",
+      "publishedAt": "2026-11-20",
+      "_autoAdded": "2026-11-19"
     }
   ]
 }
