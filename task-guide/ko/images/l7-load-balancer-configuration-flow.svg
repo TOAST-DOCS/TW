@@ -2,8 +2,8 @@
   <rect width="600" height="380" rx="12" fill="#F7F7F7"/>
 
   <!-- ===== NHN Cloud 영역 ===== -->
-  <rect x="118" y="20" width="462" height="340" rx="8" fill="#E7F2FF" opacity="0.4"/>
-  <text x="134" y="40" fill="#125DE6" font-size="14" font-weight="700">NHN Cloud</text>
+  <rect x="150" y="20" width="430" height="340" rx="8" fill="#E7F2FF" opacity="0.4"/>
+  <text x="166" y="40" fill="#125DE6" font-size="14" font-weight="700">NHN Cloud</text>
 
   <!-- ===== 클라이언트 (cx=50, cy=190) ===== -->
   <circle cx="50" cy="190" r="30" fill="#FFFFFF"/>
@@ -14,24 +14,20 @@
   <text x="50" y="236" text-anchor="middle" fill="#2D2D2D" font-size="13">클라이언트</text>
 
   <!-- ===== HTTP 화살표 (클라이언트 → Load Balancer) ===== -->
-  <line x1="80" y1="190" x2="128" y2="190" stroke="#8B8B8B" stroke-width="1.5"/>
-  <polygon points="128,186.5 136,190 128,193.5" fill="#8B8B8B"/>
-  <text x="108" y="174" text-anchor="middle" dominant-baseline="central" fill="#444444" font-size="13">HTTP</text>
+  <line x1="80" y1="190" x2="183" y2="190" stroke="#8B8B8B" stroke-width="1.5"/>
+  <polygon points="183,186.5 191,190 183,193.5" fill="#8B8B8B"/>
+  <text x="135" y="174" text-anchor="middle" dominant-baseline="central" fill="#444444" font-size="13">HTTP</text>
 
-  <!-- ===== Load Balancer (cx=170, cy=190) ===== -->
-  <circle cx="170" cy="190" r="34" fill="#FFFFFF"/>
-  <g transform="translate(156, 176) scale(0.7)">
+  <!-- ===== Load Balancer (cx=225, cy=190) ===== -->
+  <circle cx="225" cy="190" r="34" fill="#FFFFFF"/>
+  <g transform="translate(211, 176) scale(0.7)">
     <path d="M24 4C25.1046 4 26 4.89543 26 6V14C26 15.1046 25.1046 16 24 16H22V20H34V26.5361C35.1954 27.2278 36 28.5196 36 30C36 32.2091 34.2091 34 32 34C29.7909 34 28 32.2091 28 30C28 28.5196 28.8046 27.2278 30 26.5361V24H22V26.5361C23.1954 27.2278 24 28.5196 24 30C24 32.2091 22.2091 34 20 34C17.7909 34 16 32.2091 16 30C16 28.5196 16.8046 27.2278 18 26.5361V24H10V26.5361C11.1954 27.2278 12 28.5196 12 30C12 32.2091 10.2091 34 8 34C5.79086 34 4 32.2091 4 30C4 28.5196 4.80464 27.2278 6 26.5361V20H18V16H16C14.8954 16 14 15.1046 14 14V6C14 4.89543 14.8954 4 16 4H24Z" fill="#125DE6"/>
   </g>
-  <text x="170" y="242" text-anchor="middle" fill="#2D2D2D" font-size="13">Load Balancer</text>
+  <text x="225" y="242" text-anchor="middle" fill="#2D2D2D" font-size="13">Load Balancer</text>
 
-  <!-- ===== Load Balancer → L7 규칙 ===== -->
-  <line x1="204" y1="190" x2="222" y2="190" stroke="#8B8B8B" stroke-width="1.5"/>
-  <polygon points="222,186.5 230,190 222,193.5" fill="#8B8B8B"/>
-
-  <!-- ===== L7 규칙 외곽선 노드 (주 흐름선 위) ===== -->
-  <rect x="230" y="178" width="64" height="24" rx="6" fill="none" stroke="#125DE6" stroke-width="1.5"/>
-  <text x="262" y="190" text-anchor="middle" dominant-baseline="central" fill="#125DE6" font-size="12">L7 규칙</text>
+  <!-- ===== L7 규칙 외곽선 노드 ===== -->
+  <rect x="187" y="250" width="76" height="24" rx="6" fill="none" stroke="#125DE6" stroke-width="1.5"/>
+  <text x="225" y="262" text-anchor="middle" dominant-baseline="central" fill="#125DE6" font-size="12">L7 규칙</text>
 
   <!-- ===== api-pool ===== -->
   <rect x="424" y="70" width="140" height="40" rx="6" fill="#646464"/>
@@ -49,17 +45,17 @@
   <text x="494" y="298" text-anchor="middle" dominant-baseline="central" fill="#FFFFFF" font-size="12">(정적 서버)</text>
 
   <!-- /api/* → api-pool -->
-  <line x1="294" y1="182" x2="417.4" y2="94.6" stroke="#8B8B8B" stroke-width="1.5"/>
-  <polygon points="419.4,97.5 424,90 415.4,91.8" fill="#8B8B8B"/>
-  <text x="346" y="122" text-anchor="end" dominant-baseline="central" fill="#444444" font-size="13">/api/*</text>
+  <line x1="256.8" y1="178" x2="416.9" y2="93.7" stroke="#8B8B8B" stroke-width="1.5"/>
+  <polygon points="418.6,96.8 424,90 415.3,90.6" fill="#8B8B8B"/>
+  <text x="340" y="114" text-anchor="end" dominant-baseline="central" fill="#444444" font-size="13">/api/*</text>
 
   <!-- 그 외 경로 → default-web-pool -->
-  <line x1="294" y1="190" x2="416" y2="190" stroke="#8B8B8B" stroke-width="1.5"/>
+  <line x1="259" y1="190" x2="416" y2="190" stroke="#8B8B8B" stroke-width="1.5"/>
   <polygon points="416,186.5 424,190 416,193.5" fill="#8B8B8B"/>
-  <text x="368" y="174" text-anchor="middle" dominant-baseline="central" fill="#444444" font-size="13">그 외 경로</text>
+  <text x="341" y="174" text-anchor="middle" dominant-baseline="central" fill="#444444" font-size="13">그 외 경로</text>
 
   <!-- /static/* → static-pool -->
-  <line x1="294" y1="198" x2="417.4" y2="285.4" stroke="#8B8B8B" stroke-width="1.5"/>
-  <polygon points="415.4,288.2 424,290 419.4,282.5" fill="#8B8B8B"/>
-  <text x="346" y="258" text-anchor="end" dominant-baseline="central" fill="#444444" font-size="13">/static/*</text>
+  <line x1="256.8" y1="202" x2="416.9" y2="286.3" stroke="#8B8B8B" stroke-width="1.5"/>
+  <polygon points="415.3,289.4 424,290 418.6,283.2" fill="#8B8B8B"/>
+  <text x="340" y="266" text-anchor="end" dominant-baseline="central" fill="#444444" font-size="13">/static/*</text>
 </svg>
