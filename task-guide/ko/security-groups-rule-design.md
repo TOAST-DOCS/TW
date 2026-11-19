@@ -6,7 +6,7 @@
 
 3티어 아키텍처는 애플리케이션을 **웹 서버**(프레젠테이션 계층), **앱 서버**(비즈니스 로직 계층), **DB 서버**(데이터 계층) 세 역할로 나누는 구성입니다. 사용자 요청을 웹 서버가 받아 앱 서버로 전달하고, 앱 서버가 DB 서버에서 데이터를 조회해 응답을 반환하는 흐름입니다. 쇼핑몰, 사내 업무 시스템, API 기반 서비스 등 대부분의 웹 서비스가 이 구조를 기반으로 합니다.
 
-![](https://github.com/TOAST-DOCS/TW/blob/master/task-guide/ko/images/security-groups-rule-design-architecture.svg)
+![](images/security-groups-rule-design-architecture.svg)
 
 NHN Cloud에서 티어를 별도 인스턴스로 분리하면 다음과 같은 이점이 있습니다.
 
