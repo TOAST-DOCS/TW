@@ -134,11 +134,16 @@ async function pollDeployNotes(guideMapping) {
   const guides = loadGuides();
   for (const month of months) {
     for (const svc of month.services) {
-      // 1단계: 서비스명으로 후보 가이드 선정
-      const candidates = guideMapping.mappings.filter((m) =>
-        m.service.toLowerCase().includes(svc.service.toLowerCase()) ||
-        svc.service.toLowerCase().includes(m.service.toLowerCase())
-      );
+      // 1단계: 서비스명으로 후보 가이드 선정 (배포월 이전에 게시된 가이드만)
+      const candidates = guideMapping.mappings.filter((m) => {
+        const nameMatch =
+          m.service.toLowerCase().includes(svc.service.toLowerCase()) ||
+          svc.service.toLowerCase().includes(m.service.toLowerCase());
+        if (!nameMatch) return false;
+        // publishedAt이 배포 사항 월보다 이후면 제외 (가이드가 아직 없던 시점)
+        if (m.publishedAt && month.month < m.publishedAt.substring(0, 7)) return false;
+        return true;
+      });
 
       // 2단계: 배포 사항 텍스트에서 키워드 추출 → 가이드 본문과 매칭
       const keywords = extractKeywordsFromText(svc.changes);

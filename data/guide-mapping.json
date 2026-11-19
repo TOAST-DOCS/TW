@@ -9,7 +9,8 @@
       "repos": [
         "Cloud-Functions"
       ],
-      "assignee": "하수진"
+      "assignee": "하수진",
+      "publishedAt": "2026-09-16"
     },
     {
       "guide": "task-guide/ko/cloud-monitoring-alarm-policy.md",
@@ -18,7 +19,8 @@
       "repos": [
         "Monitoring-Cloud-Monitoring"
       ],
-      "assignee": "박선영"
+      "assignee": "박선영",
+      "publishedAt": "2026-09-17"
     },
     {
       "guide": "task-guide/ko/gamebase-push-message.md",
@@ -27,7 +29,8 @@
       "repos": [
         "Gamebase"
       ],
-      "assignee": "이종민"
+      "assignee": "이종민",
+      "publishedAt": "2026-09-28"
     },
     {
       "guide": "task-guide/ko/gamebase-unconsumed-payment.md",
@@ -36,7 +39,8 @@
       "repos": [
         "Gamebase"
       ],
-      "assignee": "미지정"
+      "assignee": "미지정",
+      "publishedAt": "2026-09-17"
     },
     {
       "guide": "task-guide/ko/instance-creation-failed.md",
@@ -46,7 +50,8 @@
         "Compute-Instance",
         "Compute"
       ],
-      "assignee": "하수진"
+      "assignee": "하수진",
+      "publishedAt": "2026-07-29"
     },
     {
       "guide": "task-guide/ko/instance-ssh-connection-failed.md",
@@ -58,7 +63,8 @@
         "Security-Groups",
         "Network-VPC"
       ],
-      "assignee": "하수진"
+      "assignee": "하수진",
+      "publishedAt": "2026-09-11"
     },
     {
       "guide": "task-guide/ko/l7-load-balancer-configuration.md",
@@ -68,7 +74,8 @@
         "Network-Load-Balancer",
         "Floating-IP"
       ],
-      "assignee": "박선영"
+      "assignee": "박선영",
+      "publishedAt": "2026-09-08"
     },
     {
       "guide": "task-guide/ko/load-balancer-member-inactive.md",
@@ -77,7 +84,8 @@
       "repos": [
         "Network-Load-Balancer"
       ],
-      "assignee": "이종민"
+      "assignee": "이종민",
+      "publishedAt": "2026-10-13"
     },
     {
       "guide": "task-guide/ko/nat-gateway-private-subnet.md",
@@ -88,7 +96,8 @@
         "Network-VPC",
         "Internet-Gateway"
       ],
-      "assignee": "이종민"
+      "assignee": "이종민",
+      "publishedAt": "2026-09-21"
     },
     {
       "guide": "task-guide/ko/network-firewall-policy-configuration.md",
@@ -97,7 +106,8 @@
       "repos": [
         "Network-Firewall"
       ],
-      "assignee": "박선영"
+      "assignee": "박선영",
+      "publishedAt": "2026-08-06"
     },
     {
       "guide": "task-guide/ko/obs-access-control-cors.md",
@@ -106,7 +116,8 @@
       "repos": [
         "Storage-Object-Storage"
       ],
-      "assignee": "하수진"
+      "assignee": "하수진",
+      "publishedAt": "2026-09-16"
     },
     {
       "guide": "task-guide/ko/obs-static-website-hosting.md",
@@ -115,7 +126,8 @@
       "repos": [
         "Storage-Object-Storage"
       ],
-      "assignee": "이창훈"
+      "assignee": "이창훈",
+      "publishedAt": "2026-09-08"
     },
     {
       "guide": "task-guide/ko/security-groups-rule-design.md",
@@ -125,7 +137,8 @@
         "Security-Groups",
         "Compute-Instance"
       ],
-      "assignee": "박선영"
+      "assignee": "박선영",
+      "publishedAt": "2026-10-13"
     },
     {
       "guide": "task-guide/ko/skm-api-call-with-user-access-key-token.md",
@@ -134,7 +147,8 @@
       "repos": [
         "kms"
       ],
-      "assignee": "박선영"
+      "assignee": "박선영",
+      "publishedAt": "2026-08-31"
     },
     {
       "guide": "task-guide/ko/skm-key-management.md",
@@ -143,7 +157,8 @@
       "repos": [
         "kms"
       ],
-      "assignee": "박선영"
+      "assignee": "박선영",
+      "publishedAt": "2026-07-30"
     },
     {
       "guide": "task-guide/ko/nhn-bastion-ssh-access-control.md",
@@ -153,7 +168,8 @@
         "NHNBastion",
         "Compute-Instance"
       ],
-      "assignee": "박선영"
+      "assignee": "박선영",
+      "publishedAt": "2026-09-21"
     },
     {
       "guide": "task-guide/ko/server-image-create.md",
@@ -163,7 +179,8 @@
         "Compute-Image",
         "Compute-Instance"
       ],
-      "assignee": "미정"
+      "assignee": "미정",
+      "publishedAt": "2026-10-14"
     },
     {
       "guide": "task-guide/ko/gamebase-idp-google-connect.md",
@@ -172,14 +189,16 @@
       "repos": [
         "Gamebase"
       ],
-      "assignee": "이종민"
+      "assignee": "이종민",
+      "publishedAt": "2026-11-05"
     },
     {
       "guide": "task-guide/ko/iam-multi-user-permission-separation.md",
       "title": "IAM으로 멀티 사용자 권한 분리 구성하기",
       "service": "IAM",
       "repos": [],
-      "assignee": "이종민"
+      "assignee": "이종민",
+      "publishedAt": "2026-08-26"
     },
     {
       "guide": "task-guide/ko/instance-internal-communication-failure.md",
@@ -190,7 +209,8 @@
         "Network-VPC",
         "Security-Groups"
       ],
-      "assignee": "박선영"
+      "assignee": "박선영",
+      "publishedAt": "2026-10-13"
     },
     {
       "guide": "task-guide/ko/image-upload-via-api.md",

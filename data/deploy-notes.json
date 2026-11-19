@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-11-19T04:13:11.786Z",
+  "fetchedAt": "2026-11-19T02:54:59.270Z",
   "months": [
     {
       "month": "2026-11",
@@ -93,20 +93,7 @@
           "service": "Gamebase",
           "changes": "* (Unity 2.83.0) Windows, macOS 웹뷰 predefined custom scheme 6종 지원 * (Unity 2.83.0) Windows, macOS 점검 팝업의 '자세히 보기'에서 점검 상세 페이지를 웹뷰로 표시 * (Unity 2.83.0) `PurchasableReceipt`에 `extras` 필드 추가, 버그 수정 7건 * ",
           "releaseNoteUrl": "",
-          "affectedGuides": [
-            {
-              "guide": "task-guide/ko/gamebase-idp-google-connect.md",
-              "title": "Gamebase에 Google IdP를 연동해 소셜 로그인 구현하기",
-              "assignee": "이종민",
-              "matchedKeywords": [
-                "Unity",
-                "Windows",
-                "macOS",
-                "상세",
-                "필드"
-              ]
-            }
-          ]
+          "affectedGuides": []
         },
         {
           "service": "NHN AppGuard",
@@ -216,19 +203,7 @@
           "service": "Object Storage",
           "changes": "* 작업 이력, 작업 중단 기능 추가 * 컨테이너 정책 문서를 사용한 컨테이너 설정 기능 추가 * Amazon S3 API 호환성 개선",
           "releaseNoteUrl": "",
-          "affectedGuides": [
-            {
-              "guide": "task-guide/ko/obs-static-website-hosting.md",
-              "title": "Object Storage에 정적 웹사이트 호스팅하기",
-              "assignee": "이창훈",
-              "matchedKeywords": [
-                "중단",
-                "컨테이너",
-                "Amazon",
-                "개선"
-              ]
-            }
-          ]
+          "affectedGuides": []
         },
         {
           "service": "NAS",
@@ -240,18 +215,7 @@
           "service": "Load Balancer",
           "changes": "* HTTP/2 기능 제공 * 로드 밸런서 엔진 버전(`v1`/`v2`) 선택 기능이 추가",
           "releaseNoteUrl": "",
-          "affectedGuides": [
-            {
-              "guide": "task-guide/ko/l7-load-balancer-configuration.md",
-              "title": "URL 경로 기반으로 트래픽을 분산하는 L7 로드 밸런서 구성하기",
-              "assignee": "박선영",
-              "matchedKeywords": [
-                "로드",
-                "밸런서",
-                "버전"
-              ]
-            }
-          ]
+          "affectedGuides": []
         },
         {
           "service": "Service Gateway",
@@ -275,44 +239,7 @@
           "service": "Gamebase",
           "changes": "* (iOS) updateTerms 크래시 발생 문제 수정 * (iOS) GamebaseEventHandler 특정 이벤트 중복 전달 문제 수정 * (Unity) 유효하지 않은 데이터에 대한 검증 로직 개선 * (Server API) Google Chageback 관련 API 추가",
           "releaseNoteUrl": "",
-          "affectedGuides": [
-            {
-              "guide": "task-guide/ko/gamebase-push-message.md",
-              "title": "Gamebase 연동 후 푸시 메시지 발송까지 완료하기",
-              "assignee": "이종민",
-              "matchedKeywords": [
-                "iOS",
-                "발생",
-                "문제",
-                "특정",
-                "이벤트"
-              ]
-            },
-            {
-              "guide": "task-guide/ko/gamebase-unconsumed-payment.md",
-              "title": "Gamebase 미소비 결제 건 조회하고 재처리하기",
-              "assignee": "미지정",
-              "matchedKeywords": [
-                "발생",
-                "중복",
-                "전달",
-                "않은",
-                "검증"
-              ]
-            },
-            {
-              "guide": "task-guide/ko/gamebase-idp-google-connect.md",
-              "title": "Gamebase에 Google IdP를 연동해 소셜 로그인 구현하기",
-              "assignee": "이종민",
-              "matchedKeywords": [
-                "iOS",
-                "발생",
-                "특정",
-                "전달",
-                "Unity"
-              ]
-            }
-          ]
+          "affectedGuides": []
         },
         {
           "service": "NHN AppGuard",
@@ -330,44 +257,7 @@
           "service": "Gamebase",
           "changes": "* (Android, iOS) 유효하지 않은 데이터에 대한 검증 로직 개선 * (Windows, macOS) 웹뷰에서 gamebase://openbrowser 스킴이 처리되지 않는 문제 수정 * (Setting Tool v3.0.1) WebGL 플랫폼 전용 어댑터 설치 지원 * (서버 API) Google Pay 차지백 관련 API 추가",
           "releaseNoteUrl": "",
-          "affectedGuides": [
-            {
-              "guide": "task-guide/ko/gamebase-push-message.md",
-              "title": "Gamebase 연동 후 푸시 메시지 발송까지 완료하기",
-              "assignee": "이종민",
-              "matchedKeywords": [
-                "Android",
-                "iOS",
-                "gamebase",
-                "않는",
-                "문제"
-              ]
-            },
-            {
-              "guide": "task-guide/ko/gamebase-unconsumed-payment.md",
-              "title": "Gamebase 미소비 결제 건 조회하고 재처리하기",
-              "assignee": "미지정",
-              "matchedKeywords": [
-                "Android",
-                "않은",
-                "검증",
-                "로직",
-                "gamebase"
-              ]
-            },
-            {
-              "guide": "task-guide/ko/gamebase-idp-google-connect.md",
-              "title": "Gamebase에 Google IdP를 연동해 소셜 로그인 구현하기",
-              "assignee": "이종민",
-              "matchedKeywords": [
-                "Android",
-                "iOS",
-                "않은",
-                "검증",
-                "Windows"
-              ]
-            }
-          ]
+          "affectedGuides": []
         },
         {
           "service": "NHN AppGuard",
@@ -422,80 +312,19 @@
           "service": "Cloud Functions",
           "changes": "* 환경 변수 기능 추가 * 런타임 EOL(지원 중단) 표시 기능 추가",
           "releaseNoteUrl": "",
-          "affectedGuides": [
-            {
-              "guide": "task-guide/ko/cloud-functions-serverless-deploy.md",
-              "title": "Cloud Functions로 HTTP 함수 배포하기",
-              "assignee": "하수진",
-              "matchedKeywords": [
-                "변수",
-                "런타임",
-                "중단"
-              ]
-            }
-          ]
+          "affectedGuides": []
         },
         {
           "service": "Cloud Monitoring",
           "changes": "* 위젯 범례 영역 확장 기능 추가 * 알림 이메일 발생 일시 시간대 변경(UTC → KST)",
           "releaseNoteUrl": "",
-          "affectedGuides": [
-            {
-              "guide": "task-guide/ko/cloud-monitoring-alarm-policy.md",
-              "title": "Cloud Monitoring에서 임계치 기반 알림 설정하기",
-              "assignee": "박선영",
-              "matchedKeywords": [
-                "위젯",
-                "알림",
-                "이메일",
-                "발생",
-                "일시"
-              ]
-            }
-          ]
+          "affectedGuides": []
         },
         {
           "service": "Gamebase",
           "changes": "* (Unity) Gamebase SDK에 Assembly Definition(.asmdef) 적용 * (Unity) 불안정한 네트워크 환경에서 WebSocket 재연결 시 간헐적으로 발생하는 오류 수정 * (Android) AGP 8.0 미만 환경에서 2.81.0 적용 시 게임 빌드가 실패하던 현상 수정 * (iOS) Gamebase 초기화 시 Faceb",
           "releaseNoteUrl": "",
-          "affectedGuides": [
-            {
-              "guide": "task-guide/ko/gamebase-push-message.md",
-              "title": "Gamebase 연동 후 푸시 메시지 발송까지 완료하기",
-              "assignee": "이종민",
-              "matchedKeywords": [
-                "Unity",
-                "Gamebase",
-                "SDK",
-                "SDK에",
-                "발생하"
-              ]
-            },
-            {
-              "guide": "task-guide/ko/gamebase-unconsumed-payment.md",
-              "title": "Gamebase 미소비 결제 건 조회하고 재처리하기",
-              "assignee": "미지정",
-              "matchedKeywords": [
-                "Gamebase",
-                "SDK",
-                "발생하",
-                "Android",
-                "게임"
-              ]
-            },
-            {
-              "guide": "task-guide/ko/gamebase-idp-google-connect.md",
-              "title": "Gamebase에 Google IdP를 연동해 소셜 로그인 구현하기",
-              "assignee": "이종민",
-              "matchedKeywords": [
-                "Unity",
-                "Gamebase",
-                "SDK",
-                "SDK에",
-                "발생하"
-              ]
-            }
-          ]
+          "affectedGuides": []
         },
         {
           "service": "NHN AppGuard",
@@ -507,20 +336,7 @@
           "service": "Network Firewall",
           "changes": "* 인터페이스 관리 기능 추가 * 출발지 NAT 기능 추가(1:1, N:1) * 라우트 추가 화면 개선(인터페이스 선택 방식 변경) * ACL 정책 추가 화면 개선(출발지/목적지 인터페이스 선택 추가) * 인터페이스 MTU 크기 설정 옵션 삭제",
           "releaseNoteUrl": "",
-          "affectedGuides": [
-            {
-              "guide": "task-guide/ko/network-firewall-policy-configuration.md",
-              "title": "Network Firewall 정책 구성하기",
-              "assignee": "박선영",
-              "matchedKeywords": [
-                "인터페이스",
-                "출발지",
-                "NAT",
-                "방식",
-                "ACL"
-              ]
-            }
-          ]
+          "affectedGuides": []
         },
         {
           "service": "DDoS Guard",
@@ -587,60 +403,13 @@
           "service": "Cloud Monitoring",
           "changes": "* GPU Instance 상세 지표 추가",
           "releaseNoteUrl": "",
-          "affectedGuides": [
-            {
-              "guide": "task-guide/ko/cloud-monitoring-alarm-policy.md",
-              "title": "Cloud Monitoring에서 임계치 기반 알림 설정하기",
-              "assignee": "박선영",
-              "matchedKeywords": [
-                "Instance",
-                "상세",
-                "지표"
-              ]
-            }
-          ]
+          "affectedGuides": []
         },
         {
           "service": "Gamebase",
           "changes": "* (Android) 결제 모듈 의존성 변경 * NHN Cloud IAP SDK (1.12.0) → NHN IAP SDK (2.1.0)",
           "releaseNoteUrl": "",
-          "affectedGuides": [
-            {
-              "guide": "task-guide/ko/gamebase-push-message.md",
-              "title": "Gamebase 연동 후 푸시 메시지 발송까지 완료하기",
-              "assignee": "이종민",
-              "matchedKeywords": [
-                "Android",
-                "결제",
-                "모듈",
-                "NHN",
-                "Cloud"
-              ]
-            },
-            {
-              "guide": "task-guide/ko/gamebase-unconsumed-payment.md",
-              "title": "Gamebase 미소비 결제 건 조회하고 재처리하기",
-              "assignee": "미지정",
-              "matchedKeywords": [
-                "Android",
-                "결제",
-                "IAP",
-                "SDK"
-              ]
-            },
-            {
-              "guide": "task-guide/ko/gamebase-idp-google-connect.md",
-              "title": "Gamebase에 Google IdP를 연동해 소셜 로그인 구현하기",
-              "assignee": "이종민",
-              "matchedKeywords": [
-                "Android",
-                "결제",
-                "모듈",
-                "NHN",
-                "Cloud"
-              ]
-            }
-          ]
+          "affectedGuides": []
         },
         {
           "service": "GameStarter",
@@ -743,18 +512,7 @@
           "service": "Object Storage",
           "changes": "* (콘솔) 수명 주기 규칙 설정 및 일괄 적용 기능 추가 * (API) 컨테이너 정책 문서를 통한 컨테이너 설정 기능 추가 * (API) Amazon S3 API 호환성 개선",
           "releaseNoteUrl": "",
-          "affectedGuides": [
-            {
-              "guide": "task-guide/ko/obs-static-website-hosting.md",
-              "title": "Object Storage에 정적 웹사이트 호스팅하기",
-              "assignee": "이창훈",
-              "matchedKeywords": [
-                "컨테이너",
-                "Amazon",
-                "개선"
-              ]
-            }
-          ]
+          "affectedGuides": []
         },
         {
           "service": "NHN Kubernetes Service",
@@ -790,38 +548,7 @@
           "service": "Gamebase",
           "changes": "* Gamebase 웹뷰에서 일부 영상이 재생되지 않는 버그 수정 * 내부 로직 개선 및 버그 수정",
           "releaseNoteUrl": "",
-          "affectedGuides": [
-            {
-              "guide": "task-guide/ko/gamebase-push-message.md",
-              "title": "Gamebase 연동 후 푸시 메시지 발송까지 완료하기",
-              "assignee": "이종민",
-              "matchedKeywords": [
-                "Gamebase",
-                "않는",
-                "내부"
-              ]
-            },
-            {
-              "guide": "task-guide/ko/gamebase-unconsumed-payment.md",
-              "title": "Gamebase 미소비 결제 건 조회하고 재처리하기",
-              "assignee": "미지정",
-              "matchedKeywords": [
-                "Gamebase",
-                "않는",
-                "로직"
-              ]
-            },
-            {
-              "guide": "task-guide/ko/gamebase-idp-google-connect.md",
-              "title": "Gamebase에 Google IdP를 연동해 소셜 로그인 구현하기",
-              "assignee": "이종민",
-              "matchedKeywords": [
-                "Gamebase",
-                "버그",
-                "내부"
-              ]
-            }
-          ]
+          "affectedGuides": []
         },
         {
           "service": "NHN AppGuard",
@@ -833,30 +560,7 @@
           "service": "Secure Key Manager",
           "changes": "* 비대칭 키 표준 스킴 서명/검증 API 추가 * 키 저장소 인증 방식 결합 옵션 추가",
           "releaseNoteUrl": "",
-          "affectedGuides": [
-            {
-              "guide": "task-guide/ko/skm-api-call-with-user-access-key-token.md",
-              "title": "User Access Key 토큰으로 Secure Key Manager API 호출하기",
-              "assignee": "박선영",
-              "matchedKeywords": [
-                "저장소",
-                "방식",
-                "결합"
-              ]
-            },
-            {
-              "guide": "task-guide/ko/skm-key-management.md",
-              "title": "Secure Key Manager로 암호화 키 관리하기",
-              "assignee": "박선영",
-              "matchedKeywords": [
-                "비대칭",
-                "서명",
-                "검증",
-                "저장소",
-                "방식"
-              ]
-            }
-          ]
+          "affectedGuides": []
         },
         {
           "service": "Notification Hub",
@@ -1032,31 +736,7 @@
           "service": "Secure Key Manager",
           "changes": "[기능 개선] * API 신규 버전 출시: User Access Key 토큰 인증 적용 * 기빌 데이터 수정 API 추가",
           "releaseNoteUrl": "",
-          "affectedGuides": [
-            {
-              "guide": "task-guide/ko/skm-api-call-with-user-access-key-token.md",
-              "title": "User Access Key 토큰으로 Secure Key Manager API 호출하기",
-              "assignee": "박선영",
-              "matchedKeywords": [
-                "User",
-                "Access",
-                "Key",
-                "토큰"
-              ]
-            },
-            {
-              "guide": "task-guide/ko/skm-key-management.md",
-              "title": "Secure Key Manager로 암호화 키 관리하기",
-              "assignee": "박선영",
-              "matchedKeywords": [
-                "버전",
-                "User",
-                "Access",
-                "Key",
-                "토큰"
-              ]
-            }
-          ]
+          "affectedGuides": []
         },
         {
           "service": "Notification Hub",
