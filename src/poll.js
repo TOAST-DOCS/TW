@@ -366,12 +366,22 @@ function syncGuideMapping(guideMapping, doorayTasks, discoveredRepos) {
       repos = fuzzyMatchRepos(service, discoveredRepos);
     }
 
+    // publishedAt: git 최초 커밋일 조회, 실패 시 _autoAdded 날짜 사용
+    let publishedAt = new Date().toISOString().slice(0, 10);
+    try {
+      const { execSync } = require('child_process');
+      const log = execSync(`git log --diff-filter=A --format="%ai" -- task-guide/ko/${matchedFile}`, { encoding: 'utf-8' }).trim();
+      const lines = log.split('\n').filter(Boolean);
+      if (lines.length > 0) publishedAt = lines[lines.length - 1].substring(0, 10);
+    } catch (e) { /* git 조회 실패 시 오늘 날짜 사용 */ }
+
     mappings.push({
       guide: `task-guide/ko/${matchedFile}`,
       title: unmappedFiles[matchedFile],
       service,
       repos,
       assignee: task.assignees[0] || '미지정',
+      publishedAt,
       _autoAdded: new Date().toISOString().slice(0, 10),
     });
 
