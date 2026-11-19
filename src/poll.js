@@ -155,7 +155,7 @@ async function pollDeployNotes(guideMapping) {
           const guide = guides.find((g) => g.filename === m.guide);
           if (!guide) continue;
           const matches = findKeywordMatches(keywords, guide.content);
-          if (matches.length >= 2) {
+          if (matches.length >= 3) {
             filtered.push({
               guide: m.guide,
               title: m.title,
