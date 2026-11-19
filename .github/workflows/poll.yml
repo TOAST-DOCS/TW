@@ -14,8 +14,6 @@ permissions:
 jobs:
   poll:
     runs-on: self-hosted
-    env:
-      PATH: /c/Program Files/nodejs:/mingw64/bin:/usr/bin:$PATH
     steps:
       - uses: actions/checkout@v4
 
