@@ -1,37 +1,37 @@
 {
-  "fetchedAt": "2026-11-11T22:58:20.378Z",
+  "fetchedAt": "2026-11-19T01:07:04.310Z",
   "tasks": [
     {
-      "id": "4422767174258964149",
-      "title": "[How-to] Cloud Monitoring에서 임계치 기반 알림 설정하기",
-      "type": "How-to",
+      "id": "4434363253873237114",
+      "title": "[Troubleshooting] CDN 인증서 발급·갱신에 실패합니다",
+      "type": "Troubleshooting",
       "stage": "파트피어리뷰",
       "status": "registered",
       "assignees": [
-        "박선영"
+        "이종민"
       ],
       "milestone": {
         "id": "4463853458449439046",
         "name": "2026년 하반기"
       },
-      "createdAt": "2026-09-16",
-      "updatedAt": "2026-11-11"
+      "createdAt": "2026-10-02",
+      "updatedAt": "2026-11-13"
     },
     {
       "id": "4422947267683526923",
       "title": "[How-to] Image로 인스턴스 복제하기",
       "type": "How-to",
-      "stage": "파트피어리뷰",
+      "stage": "완료",
       "status": "registered",
       "assignees": [
-        "한수현"
+        "하수진"
       ],
       "milestone": {
         "id": "4463853458449439046",
         "name": "2026년 하반기"
       },
       "createdAt": "2026-09-16",
-      "updatedAt": "2026-11-11"
+      "updatedAt": "2026-11-13"
     },
     {
       "id": "4423474441021210741",
@@ -133,10 +133,9 @@
       "id": "4431532912465585256",
       "title": "[How-to] Image API로 외부 이미지 파일 등록하기",
       "type": "How-to",
-      "stage": "기술검토",
+      "stage": "파트피어리뷰",
       "status": "working",
       "assignees": [
-        "김용현",
         "하수진"
       ],
       "milestone": {
@@ -144,38 +143,22 @@
         "name": "2026년 하반기"
       },
       "createdAt": "2026-09-28",
-      "updatedAt": "2026-11-11"
+      "updatedAt": "2026-11-13"
     },
     {
-      "id": "4422073456380943408",
-      "title": "[How-to] Cloud Functions로 HTTP 함수 배포하기",
+      "id": "4422767174258964149",
+      "title": "[How-to] Cloud Monitoring에서 임계치 기반 알림 설정하기",
       "type": "How-to",
       "stage": "파트피어리뷰",
       "status": "registered",
       "assignees": [
-        "하수진"
+        "박선영"
       ],
       "milestone": {
         "id": "4463853458449439046",
         "name": "2026년 하반기"
       },
-      "createdAt": "2026-09-15",
-      "updatedAt": "2026-11-11"
-    },
-    {
-      "id": "4434363253873237114",
-      "title": "[Troubleshooting] CDN 인증서 발급·갱신에 실패합니다",
-      "type": "Troubleshooting",
-      "stage": "기술검토",
-      "status": "registered",
-      "assignees": [
-        "미지정"
-      ],
-      "milestone": {
-        "id": "4463853458449439046",
-        "name": "2026년 하반기"
-      },
-      "createdAt": "2026-10-02",
+      "createdAt": "2026-09-16",
       "updatedAt": "2026-11-11"
     },
     {
@@ -281,18 +264,44 @@
       "stage": "초안작성",
       "status": "registered",
       "assignees": [
-        "미지정"
+        "이종민"
       ],
       "milestone": {
         "id": "4463853975930197161",
         "name": "2027년 상반기"
       },
       "createdAt": "2026-11-04",
-      "updatedAt": "2026-11-11"
+      "updatedAt": "2026-11-13"
     },
     {
-      "id": "4383621354762126814",
-      "title": "[How-to] URL 경로 기반으로 트래픽을 분산하는 L7 로드 밸런서 구성하기",
+      "id": "4467526343424923209",
+      "title": "[Troubleshooting] Notification SMS 발송에 실패하거나 문자가 도착하지 않습니다",
+      "type": "Troubleshooting",
+      "stage": "초안작성",
+      "status": "registered",
+      "assignees": [
+        "이종민"
+      ],
+      "milestone": null,
+      "createdAt": "2026-11-17",
+      "updatedAt": "2026-11-17"
+    },
+    {
+      "id": "4467526353933648856",
+      "title": "[Troubleshooting] Notification Email 발송에 실패하거나 메일이 도착하지 않습니다",
+      "type": "Troubleshooting",
+      "stage": "초안작성",
+      "status": "registered",
+      "assignees": [
+        "이종민"
+      ],
+      "milestone": null,
+      "createdAt": "2026-11-17",
+      "updatedAt": "2026-11-17"
+    },
+    {
+      "id": "4383661461065147637",
+      "title": "[How-to] Secure Key Manager로 암호화 키 관리하기",
       "type": "How-to",
       "stage": "파트피어리뷰",
       "status": "registered",
@@ -342,7 +351,7 @@
       "id": "4371294192139113829",
       "title": "[How-to] Gamebase에 Google IDP 연동해 소셜 로그인 구현하기",
       "type": "How-to",
-      "stage": "기술검토",
+      "stage": "파트피어리뷰",
       "status": "working",
       "assignees": [
         "이종민"
@@ -352,7 +361,7 @@
         "name": "2026년 하반기"
       },
       "createdAt": "2026-07-07",
-      "updatedAt": "2026-11-11"
+      "updatedAt": "2026-11-12"
     },
     {
       "id": "4382900768531351321",
@@ -387,8 +396,8 @@
       "updatedAt": "2026-11-11"
     },
     {
-      "id": "4383661461065147637",
-      "title": "[How-to] Secure Key Manager로 암호화 키 관리하기",
+      "id": "4383621354762126814",
+      "title": "[How-to] URL 경로 기반으로 트래픽을 분산하는 L7 로드 밸런서 구성하기",
       "type": "How-to",
       "stage": "파트피어리뷰",
       "status": "registered",
@@ -425,8 +434,6 @@
       "stage": "파트피어리뷰",
       "status": "registered",
       "assignees": [
-        "김로빈",
-        "임병모",
         "하수진"
       ],
       "milestone": {
@@ -434,7 +441,7 @@
         "name": "2026년 하반기"
       },
       "createdAt": "2026-08-05",
-      "updatedAt": "2026-11-11"
+      "updatedAt": "2026-11-13"
     },
     {
       "id": "4411149608868067385",
@@ -456,7 +463,7 @@
       "id": "4412709941930200747",
       "title": "[How-to] Game - Gamebase 연동 후 푸시 메시지 발송까지 완료하기",
       "type": "How-to",
-      "stage": "기술검토",
+      "stage": "파트피어리뷰",
       "status": "registered",
       "assignees": [
         "이종민"
@@ -466,7 +473,7 @@
         "name": "2026년 하반기"
       },
       "createdAt": "2026-09-02",
-      "updatedAt": "2026-11-11"
+      "updatedAt": "2026-11-12"
     },
     {
       "id": "4414055947503682085",
@@ -475,14 +482,14 @@
       "stage": "파트피어리뷰",
       "status": "registered",
       "assignees": [
-        "이창훈"
+        "하수진"
       ],
       "milestone": {
         "id": "4463853458449439046",
         "name": "2026년 하반기"
       },
       "createdAt": "2026-09-04",
-      "updatedAt": "2026-11-11"
+      "updatedAt": "2026-11-13"
     },
     {
       "id": "4416254688521602757",
@@ -504,16 +511,32 @@
       "id": "4419105686535374256",
       "title": "[How-to] Gamebase 미소비 결제 건 조회하고 재처리하기",
       "type": "How-to",
-      "stage": "기술검토",
+      "stage": "파트피어리뷰",
       "status": "registered",
       "assignees": [
-        "미지정"
+        "이종민"
       ],
       "milestone": {
         "id": "4463853458449439046",
         "name": "2026년 하반기"
       },
       "createdAt": "2026-09-11",
+      "updatedAt": "2026-11-13"
+    },
+    {
+      "id": "4422073456380943408",
+      "title": "[How-to] Cloud Functions로 HTTP 함수 배포하기",
+      "type": "How-to",
+      "stage": "파트피어리뷰",
+      "status": "registered",
+      "assignees": [
+        "하수진"
+      ],
+      "milestone": {
+        "id": "4463853458449439046",
+        "name": "2026년 하반기"
+      },
+      "createdAt": "2026-09-15",
       "updatedAt": "2026-11-11"
     },
     {

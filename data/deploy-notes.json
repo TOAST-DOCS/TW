@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-11-11T08:05:26.904Z",
+  "fetchedAt": "2026-11-19T01:07:38.040Z",
   "months": [
     {
       "month": "2026-11",
@@ -16,18 +16,7 @@
           "service": "Instance",
           "changes": "* 즐겨찾기를 프로젝트 단위 공용 관리에서 사용자별 관리로 변경 (기존 즐겨찾기는 프로젝트 내 사용자 즐겨찾기로 이전)",
           "releaseNoteUrl": "",
-          "affectedGuides": [
-            {
-              "guide": "task-guide/ko/instance-creation-failed.md",
-              "title": "인스턴스 생성이 실패합니다",
-              "assignee": "하수진"
-            },
-            {
-              "guide": "task-guide/ko/instance-ssh-connection-failed.md",
-              "title": "인스턴스에 SSH로 접속되지 않습니다",
-              "assignee": "하수진"
-            }
-          ]
+          "affectedGuides": []
         },
         {
           "service": "KakaoTalk Bizmessage",
@@ -49,12 +38,21 @@
             {
               "guide": "task-guide/ko/obs-access-control-cors.md",
               "title": "Object Storage 컨테이너에 CORS 설정하기",
-              "assignee": "하수진"
+              "assignee": "하수진",
+              "matchedKeywords": [
+                "스토리지",
+                "컨테이너",
+                "탭에서"
+              ]
             },
             {
               "guide": "task-guide/ko/obs-static-website-hosting.md",
               "title": "Object Storage에 정적 웹사이트 호스팅하기",
-              "assignee": "이창훈"
+              "assignee": "이창훈",
+              "matchedKeywords": [
+                "스토리지",
+                "컨테이너"
+              ]
             }
           ]
         },
@@ -87,13 +85,7 @@
           "service": "Cloud Monitoring",
           "changes": "* API Gateway 지표 추가",
           "releaseNoteUrl": "",
-          "affectedGuides": [
-            {
-              "guide": "task-guide/ko/cloud-monitoring-alarm-policy.md",
-              "title": "Cloud Monitoring에서 임계치 기반 알림 설정하기",
-              "assignee": "박선영"
-            }
-          ]
+          "affectedGuides": []
         },
         {
           "service": "Gamebase",
@@ -101,14 +93,14 @@
           "releaseNoteUrl": "",
           "affectedGuides": [
             {
-              "guide": "task-guide/ko/gamebase-push-message.md",
-              "title": "Gamebase 연동 후 푸시 메시지 발송까지 완료하기",
-              "assignee": "이종민"
-            },
-            {
-              "guide": "task-guide/ko/gamebase-unconsumed-payment.md",
-              "title": "Gamebase 미소비 결제 건 조회하고 재처리하기",
-              "assignee": "미지정"
+              "guide": "task-guide/ko/gamebase-idp-google-connect.md",
+              "title": "Gamebase에 Google IdP를 연동해 소셜 로그인 구현하기",
+              "assignee": "이종민",
+              "matchedKeywords": [
+                "Unity",
+                "Windows",
+                "macOS"
+              ]
             }
           ]
         },
@@ -126,7 +118,13 @@
             {
               "guide": "task-guide/ko/network-firewall-policy-configuration.md",
               "title": "Network Firewall 정책 구성하기",
-              "assignee": "박선영"
+              "assignee": "박선영",
+              "matchedKeywords": [
+                "템플릿",
+                "다운로드",
+                "객체를",
+                "인터페이스"
+              ]
             }
           ]
         },
@@ -217,12 +215,21 @@
             {
               "guide": "task-guide/ko/obs-access-control-cors.md",
               "title": "Object Storage 컨테이너에 CORS 설정하기",
-              "assignee": "하수진"
+              "assignee": "하수진",
+              "matchedKeywords": [
+                "컨테이너",
+                "사용한"
+              ]
             },
             {
               "guide": "task-guide/ko/obs-static-website-hosting.md",
               "title": "Object Storage에 정적 웹사이트 호스팅하기",
-              "assignee": "이창훈"
+              "assignee": "이창훈",
+              "matchedKeywords": [
+                "컨테이너",
+                "문서를",
+                "Amazon"
+              ]
             }
           ]
         },
@@ -236,18 +243,7 @@
           "service": "Load Balancer",
           "changes": "* HTTP/2 기능 제공 * 로드 밸런서 엔진 버전(`v1`/`v2`) 선택 기능이 추가",
           "releaseNoteUrl": "",
-          "affectedGuides": [
-            {
-              "guide": "task-guide/ko/l7-load-balancer-configuration.md",
-              "title": "URL 경로 기반으로 트래픽을 분산하는 L7 로드 밸런서 구성하기",
-              "assignee": "박선영"
-            },
-            {
-              "guide": "task-guide/ko/load-balancer-member-inactive.md",
-              "title": "Load Balancer 멤버가 INACTIVE로 표시됩니다",
-              "assignee": "이종민"
-            }
-          ]
+          "affectedGuides": []
         },
         {
           "service": "Service Gateway",
@@ -275,12 +271,30 @@
             {
               "guide": "task-guide/ko/gamebase-push-message.md",
               "title": "Gamebase 연동 후 푸시 메시지 발송까지 완료하기",
-              "assignee": "이종민"
+              "assignee": "이종민",
+              "matchedKeywords": [
+                "이벤트",
+                "Unity",
+                "Server"
+              ]
             },
             {
               "guide": "task-guide/ko/gamebase-unconsumed-payment.md",
               "title": "Gamebase 미소비 결제 건 조회하고 재처리하기",
-              "assignee": "미지정"
+              "assignee": "미지정",
+              "matchedKeywords": [
+                "Server",
+                "Google"
+              ]
+            },
+            {
+              "guide": "task-guide/ko/gamebase-idp-google-connect.md",
+              "title": "Gamebase에 Google IdP를 연동해 소셜 로그인 구현하기",
+              "assignee": "이종민",
+              "matchedKeywords": [
+                "Unity",
+                "Google"
+              ]
             }
           ]
         },
@@ -304,12 +318,35 @@
             {
               "guide": "task-guide/ko/gamebase-push-message.md",
               "title": "Gamebase 연동 후 푸시 메시지 발송까지 완료하기",
-              "assignee": "이종민"
+              "assignee": "이종민",
+              "matchedKeywords": [
+                "Android",
+                "gamebase",
+                "플랫폼",
+                "어댑터"
+              ]
             },
             {
               "guide": "task-guide/ko/gamebase-unconsumed-payment.md",
               "title": "Gamebase 미소비 결제 건 조회하고 재처리하기",
-              "assignee": "미지정"
+              "assignee": "미지정",
+              "matchedKeywords": [
+                "Android",
+                "gamebase",
+                "Google"
+              ]
+            },
+            {
+              "guide": "task-guide/ko/gamebase-idp-google-connect.md",
+              "title": "Gamebase에 Google IdP를 연동해 소셜 로그인 구현하기",
+              "assignee": "이종민",
+              "matchedKeywords": [
+                "Android",
+                "Windows",
+                "macOS",
+                "gamebase",
+                "WebGL"
+              ]
             }
           ]
         },
@@ -366,25 +403,13 @@
           "service": "Cloud Functions",
           "changes": "* 환경 변수 기능 추가 * 런타임 EOL(지원 중단) 표시 기능 추가",
           "releaseNoteUrl": "",
-          "affectedGuides": [
-            {
-              "guide": "task-guide/ko/cloud-functions-serverless-deploy.md",
-              "title": "Cloud Functions로 HTTP 함수 배포하기",
-              "assignee": "하수진"
-            }
-          ]
+          "affectedGuides": []
         },
         {
           "service": "Cloud Monitoring",
           "changes": "* 위젯 범례 영역 확장 기능 추가 * 알림 이메일 발생 일시 시간대 변경(UTC → KST)",
           "releaseNoteUrl": "",
-          "affectedGuides": [
-            {
-              "guide": "task-guide/ko/cloud-monitoring-alarm-policy.md",
-              "title": "Cloud Monitoring에서 임계치 기반 알림 설정하기",
-              "assignee": "박선영"
-            }
-          ]
+          "affectedGuides": []
         },
         {
           "service": "Gamebase",
@@ -394,12 +419,35 @@
             {
               "guide": "task-guide/ko/gamebase-push-message.md",
               "title": "Gamebase 연동 후 푸시 메시지 발송까지 완료하기",
-              "assignee": "이종민"
+              "assignee": "이종민",
+              "matchedKeywords": [
+                "Unity",
+                "Gamebase",
+                "SDK에",
+                "Android"
+              ]
             },
             {
               "guide": "task-guide/ko/gamebase-unconsumed-payment.md",
               "title": "Gamebase 미소비 결제 건 조회하고 재처리하기",
-              "assignee": "미지정"
+              "assignee": "미지정",
+              "matchedKeywords": [
+                "Gamebase",
+                "네트워크",
+                "Android"
+              ]
+            },
+            {
+              "guide": "task-guide/ko/gamebase-idp-google-connect.md",
+              "title": "Gamebase에 Google IdP를 연동해 소셜 로그인 구현하기",
+              "assignee": "이종민",
+              "matchedKeywords": [
+                "Unity",
+                "Gamebase",
+                "SDK에",
+                "네트워크",
+                "환경에서"
+              ]
             }
           ]
         },
@@ -417,7 +465,12 @@
             {
               "guide": "task-guide/ko/network-firewall-policy-configuration.md",
               "title": "Network Firewall 정책 구성하기",
-              "assignee": "박선영"
+              "assignee": "박선영",
+              "matchedKeywords": [
+                "인터페이스",
+                "출발지",
+                "목적지"
+              ]
             }
           ]
         },
@@ -486,13 +539,7 @@
           "service": "Cloud Monitoring",
           "changes": "* GPU Instance 상세 지표 추가",
           "releaseNoteUrl": "",
-          "affectedGuides": [
-            {
-              "guide": "task-guide/ko/cloud-monitoring-alarm-policy.md",
-              "title": "Cloud Monitoring에서 임계치 기반 알림 설정하기",
-              "assignee": "박선영"
-            }
-          ]
+          "affectedGuides": []
         },
         {
           "service": "Gamebase",
@@ -502,12 +549,20 @@
             {
               "guide": "task-guide/ko/gamebase-push-message.md",
               "title": "Gamebase 연동 후 푸시 메시지 발송까지 완료하기",
-              "assignee": "이종민"
+              "assignee": "이종민",
+              "matchedKeywords": [
+                "Android",
+                "Cloud"
+              ]
             },
             {
-              "guide": "task-guide/ko/gamebase-unconsumed-payment.md",
-              "title": "Gamebase 미소비 결제 건 조회하고 재처리하기",
-              "assignee": "미지정"
+              "guide": "task-guide/ko/gamebase-idp-google-connect.md",
+              "title": "Gamebase에 Google IdP를 연동해 소셜 로그인 구현하기",
+              "assignee": "이종민",
+              "matchedKeywords": [
+                "Android",
+                "Cloud"
+              ]
             }
           ]
         },
@@ -527,18 +582,7 @@
           "service": "Secure Key Manager",
           "changes": "* 키 저장소 생성/수정/삭제 API 추가(v1.3)",
           "releaseNoteUrl": "",
-          "affectedGuides": [
-            {
-              "guide": "task-guide/ko/skm-api-call-with-user-access-key-token.md",
-              "title": "User Access Key 토큰으로 Secure Key Manager API 호출하기",
-              "assignee": "박선영"
-            },
-            {
-              "guide": "task-guide/ko/skm-key-management.md",
-              "title": "Secure Key Manager로 암호화 키 관리하기",
-              "assignee": "박선영"
-            }
-          ]
+          "affectedGuides": []
         },
         {
           "service": "CDN",
@@ -599,18 +643,7 @@
           "service": "Load Balancer",
           "changes": "* 재암호화 기능 추가 * HTTP Keepalive 비활성화 기능 추가 * SSL/TLS 암호화 정책 설정 기능 추가",
           "releaseNoteUrl": "",
-          "affectedGuides": [
-            {
-              "guide": "task-guide/ko/l7-load-balancer-configuration.md",
-              "title": "URL 경로 기반으로 트래픽을 분산하는 L7 로드 밸런서 구성하기",
-              "assignee": "박선영"
-            },
-            {
-              "guide": "task-guide/ko/load-balancer-member-inactive.md",
-              "title": "Load Balancer 멤버가 INACTIVE로 표시됩니다",
-              "assignee": "이종민"
-            }
-          ]
+          "affectedGuides": []
         },
         {
           "service": "Flow Log",
@@ -636,14 +669,14 @@
           "releaseNoteUrl": "",
           "affectedGuides": [
             {
-              "guide": "task-guide/ko/obs-access-control-cors.md",
-              "title": "Object Storage 컨테이너에 CORS 설정하기",
-              "assignee": "하수진"
-            },
-            {
               "guide": "task-guide/ko/obs-static-website-hosting.md",
               "title": "Object Storage에 정적 웹사이트 호스팅하기",
-              "assignee": "이창훈"
+              "assignee": "이창훈",
+              "matchedKeywords": [
+                "컨테이너",
+                "문서를",
+                "Amazon"
+              ]
             }
           ]
         },
@@ -675,35 +708,13 @@
           "service": "Tibero Instance",
           "changes": "* Cloud TAC 지원",
           "releaseNoteUrl": "",
-          "affectedGuides": [
-            {
-              "guide": "task-guide/ko/instance-creation-failed.md",
-              "title": "인스턴스 생성이 실패합니다",
-              "assignee": "하수진"
-            },
-            {
-              "guide": "task-guide/ko/instance-ssh-connection-failed.md",
-              "title": "인스턴스에 SSH로 접속되지 않습니다",
-              "assignee": "하수진"
-            }
-          ]
+          "affectedGuides": []
         },
         {
           "service": "Gamebase",
           "changes": "* Gamebase 웹뷰에서 일부 영상이 재생되지 않는 버그 수정 * 내부 로직 개선 및 버그 수정",
           "releaseNoteUrl": "",
-          "affectedGuides": [
-            {
-              "guide": "task-guide/ko/gamebase-push-message.md",
-              "title": "Gamebase 연동 후 푸시 메시지 발송까지 완료하기",
-              "assignee": "이종민"
-            },
-            {
-              "guide": "task-guide/ko/gamebase-unconsumed-payment.md",
-              "title": "Gamebase 미소비 결제 건 조회하고 재처리하기",
-              "assignee": "미지정"
-            }
-          ]
+          "affectedGuides": []
         },
         {
           "service": "NHN AppGuard",
@@ -717,14 +728,13 @@
           "releaseNoteUrl": "",
           "affectedGuides": [
             {
-              "guide": "task-guide/ko/skm-api-call-with-user-access-key-token.md",
-              "title": "User Access Key 토큰으로 Secure Key Manager API 호출하기",
-              "assignee": "박선영"
-            },
-            {
               "guide": "task-guide/ko/skm-key-management.md",
               "title": "Secure Key Manager로 암호화 키 관리하기",
-              "assignee": "박선영"
+              "assignee": "박선영",
+              "matchedKeywords": [
+                "비대칭",
+                "저장소"
+              ]
             }
           ]
         },
@@ -787,30 +797,13 @@
           "service": "Cloud Monitoring",
           "changes": "[기능 개선] * 대시보드 템플릿 기능 추가 * 집계 기능 제공 * 대시보드 동적 필터 기능 제공",
           "releaseNoteUrl": "",
-          "affectedGuides": [
-            {
-              "guide": "task-guide/ko/cloud-monitoring-alarm-policy.md",
-              "title": "Cloud Monitoring에서 임계치 기반 알림 설정하기",
-              "assignee": "박선영"
-            }
-          ]
+          "affectedGuides": []
         },
         {
           "service": "Secure Key Manager",
           "changes": "[기능 개선] * Role 삭제 (APPROVAL MEMBER) 적용 * 권한 세분화",
           "releaseNoteUrl": "",
-          "affectedGuides": [
-            {
-              "guide": "task-guide/ko/skm-api-call-with-user-access-key-token.md",
-              "title": "User Access Key 토큰으로 Secure Key Manager API 호출하기",
-              "assignee": "박선영"
-            },
-            {
-              "guide": "task-guide/ko/skm-key-management.md",
-              "title": "Secure Key Manager로 암호화 키 관리하기",
-              "assignee": "박선영"
-            }
-          ]
+          "affectedGuides": []
         },
         {
           "service": "CDN",
@@ -895,18 +888,7 @@
           "service": "Gamebase",
           "changes": "[기능 개선] * (Unity) 버그 수정 및 기능 개선",
           "releaseNoteUrl": "",
-          "affectedGuides": [
-            {
-              "guide": "task-guide/ko/gamebase-push-message.md",
-              "title": "Gamebase 연동 후 푸시 메시지 발송까지 완료하기",
-              "assignee": "이종민"
-            },
-            {
-              "guide": "task-guide/ko/gamebase-unconsumed-payment.md",
-              "title": "Gamebase 미소비 결제 건 조회하고 재처리하기",
-              "assignee": "미지정"
-            }
-          ]
+          "affectedGuides": []
         },
         {
           "service": "NHN AppGuard",
@@ -934,12 +916,22 @@
             {
               "guide": "task-guide/ko/skm-api-call-with-user-access-key-token.md",
               "title": "User Access Key 토큰으로 Secure Key Manager API 호출하기",
-              "assignee": "박선영"
+              "assignee": "박선영",
+              "matchedKeywords": [
+                "User",
+                "Access",
+                "데이터"
+              ]
             },
             {
               "guide": "task-guide/ko/skm-key-management.md",
               "title": "Secure Key Manager로 암호화 키 관리하기",
-              "assignee": "박선영"
+              "assignee": "박선영",
+              "matchedKeywords": [
+                "User",
+                "Access",
+                "데이터"
+              ]
             }
           ]
         },
