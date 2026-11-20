@@ -5,6 +5,8 @@
   "main": "src/poll.js",
   "scripts": {
     "poll": "node src/poll.js",
+    "poll:dooray": "node src/poll.js dooray",
+    "poll:ghe": "node src/poll.js ghe",
     "build": "node -e \"require('./src/generate-site').generateSite(); console.log('OK')\""
   },
   "dependencies": {
