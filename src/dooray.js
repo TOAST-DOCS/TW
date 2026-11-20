@@ -181,7 +181,7 @@ function parseDeployBody(html) {
 }
 
 /**
- * 두레이 웹훅으로 현행화 알림 발송
+ * 두레이 웹훅으로 변경 관리 알림 발송
  */
 async function sendWebhook(message) {
   if (!config.DOORAY_WEBHOOK_URL) {

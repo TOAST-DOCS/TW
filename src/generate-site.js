@@ -2,7 +2,6 @@ const fs = require('fs');
 const path = require('path');
 const config = require('./config');
 const { loadJSON } = require('./state');
-const { loadGuides, extractKeywordsFromText, findKeywordMatches } = require('./analyze');
 
 function esc(str) {
   return String(str)
@@ -23,11 +22,8 @@ function formatDate(iso) {
 function renderPage() {
   const tasks = loadJSON(config.DOORAY_TASKS_FILE, { fetchedAt: null, tasks: [] });
   const gheUpdates = loadJSON(config.RESULTS_FILE, { lastPoll: null, heartbeat: null, changes: [], history: [] });
-  const deployNotes = loadJSON(config.DEPLOY_NOTES_FILE, { fetchedAt: null, months: [] });
   const resolved = loadJSON(config.RESOLVED_FILE, { resolved: [] });
-  const guideMapping = loadJSON(config.GUIDE_MAPPING_FILE, { mappings: [] });
 
-  const resolvedIds = new Set((resolved.resolved || []).map((r) => r.updateId));
   const resolvedGuideKeys = new Set((resolved.resolved || []).map((r) => r.updateId + '::' + (r.guide || '')));
 
   // === 섹션 1: 칸반보드 데이터 ===
@@ -41,7 +37,7 @@ function renderPage() {
     kanban[stage].push(task);
   }
 
-  // === 섹션 2: 현행화 목록 ===
+  // === 섹션 2: 변경 관리 목록 ===
   // GHE 변경 중 미해결 건
   const pendingGheChanges = (gheUpdates.history || [])
     .flatMap((h) => h.changes || [])
@@ -51,34 +47,6 @@ function renderPage() {
       const allResolved = c.affectedGuides.every((g) => resolvedGuideKeys.has(c.id + '::' + g.guide));
       return !allResolved;
     });
-
-  // 배포 사항 중 영향 있는 건 (키워드 분석 + 가이드 단위 resolved 적용)
-  const guides = loadGuides();
-  const pendingDeployChanges = [];
-  for (const month of deployNotes.months || []) {
-    for (const svc of month.services || []) {
-      if (!svc.affectedGuides || svc.affectedGuides.length === 0) continue;
-
-      // 키워드 분석으로 실제 관련 가이드만 필터
-      let filtered = svc.affectedGuides;
-      const keywords = extractKeywordsFromText(svc.changes);
-      if (keywords.length > 0 && guides.length > 0) {
-        filtered = svc.affectedGuides.filter((ag) => {
-          const guide = guides.find((g) => g.filename === ag.guide);
-          if (!guide) return false;
-          return findKeywordMatches(keywords, guide.content).length >= 2;
-        });
-      }
-
-      if (filtered.length > 0) {
-        const updateId = `deploy-${month.month}-${svc.service}`;
-        const allResolved = filtered.every((g) => resolvedGuideKeys.has(updateId + '::' + g.guide));
-        if (!allResolved) {
-          pendingDeployChanges.push({ ...svc, affectedGuides: filtered, month: month.month, updateId });
-        }
-      }
-    }
-  }
 
   // === 마일스톤 목록 ===
   const milestoneSet = new Map();
@@ -91,16 +59,11 @@ function renderPage() {
 
   // === 통계 ===
   const totalTasks = tasks.tasks.length;
-  const pendingMaintenanceCount = pendingGheChanges.length + pendingDeployChanges.length;
+  const pendingMaintenanceCount = pendingGheChanges.length;
 
-  // 현행화 처리 상태 breakdown
-  const resolvedItems = resolved.resolved || [];
-  const noChangeCount = resolvedItems.filter((r) => r.resolution === 'no-change').length;
-  const committedCount = resolvedItems.filter((r) => r.resolution === 'committed').length;
-  const prLinkedCount = resolvedItems.filter((r) => r.resolution === 'pr-linked').length;
-  const prMergedCount = resolvedItems.filter((r) => r.resolution === 'pr-linked' && r.prStatus === 'merged').length;
-  const prOpenCount = prLinkedCount - prMergedCount;
-  const completedCount = committedCount + prMergedCount;
+  // 전체 완료율
+  const totalDone = tasks.tasks.filter((t) => t.stage === '완료').length;
+  const totalRate = totalTasks > 0 ? Math.round((totalDone / totalTasks) * 100) : 0;
 
   // 현재 마일스톤 완료율 (조회 시점 기준)
   const now = new Date();
@@ -116,7 +79,7 @@ function renderPage() {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NHN Cloud 실전 가이드</title>
+<title>NHN Cloud 실전 가이드 작업 대시보드</title>
 <style>
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css');
 :root {
@@ -139,7 +102,33 @@ header { margin-bottom: 24px; display: flex; align-items: center; justify-conten
 header h1 { font-size: 22px; font-weight: 700; color: var(--dark); }
 .header-links { display: flex; gap: 8px; }
 
-/* Summary row */
+/* Global summary bar */
+.global-summary { display: flex; align-items: center; gap: 0; background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 14px 24px; margin-bottom: 24px; flex-wrap: wrap; }
+.global-summary .gs-group { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.global-summary .gs-divider { width: 1px; height: 28px; background: var(--border); margin: 0 24px; flex-shrink: 0; }
+.global-summary .gs-item { display: flex; align-items: baseline; gap: 6px; font-size: 14px; color: var(--text-muted); white-space: nowrap; }
+.global-summary .gs-value { font-size: 18px; font-weight: 700; color: var(--dark); }
+.global-summary .gs-value.success { color: var(--success); }
+.global-summary .gs-value.warning { color: var(--warning); }
+.global-summary .gs-value.danger { color: var(--danger); }
+.global-summary .gs-sub { font-size: 13px; color: var(--text-muted); margin-left: 2px; }
+.global-summary .gs-sub strong { font-weight: 700; }
+.global-summary .gs-sub strong.success { color: var(--success); }
+.global-summary .gs-sub strong.warning { color: var(--warning); }
+.gs-progress { display: inline-block; width: 80px; height: 8px; background: var(--border); border-radius: 30px; vertical-align: middle; margin-left: 8px; overflow: hidden; }
+.gs-progress-fill { height: 100%; border-radius: 30px; transition: width 0.3s; }
+@media (max-width: 700px) { .global-summary { flex-direction: column; align-items: flex-start; gap: 12px; } .global-summary .gs-divider { width: 100%; height: 1px; margin: 4px 0; } }
+
+/* Tabs */
+.tab-bar { display: flex; gap: 0; margin-bottom: 24px; border-bottom: 2px solid var(--border); }
+.tab-btn { padding: 14px 28px; font-size: 17px; font-weight: 700; color: var(--text-muted); background: none; border: none; border-bottom: 3px solid transparent; margin-bottom: -2px; cursor: pointer; transition: all 0.15s; }
+.tab-btn:hover { color: var(--primary); background: var(--primary-light); }
+.tab-btn.active { color: var(--primary); border-bottom-color: var(--primary); background: var(--primary-light); }
+.tab-btn .tab-badge { display: inline-block; padding: 2px 8px; border-radius: 30px; font-size: 12px; font-weight: 600; background: var(--danger); color: white; margin-left: 6px; vertical-align: middle; }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+/* Summary row (inside tabs) */
 .summary-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
 @media (max-width: 700px) { .summary-row { grid-template-columns: 1fr; } }
 .summary-group { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 16px 20px; }
@@ -204,6 +193,8 @@ header h1 { font-size: 22px; font-weight: 700; color: var(--dark); }
 .maint-card .source { font-size: 11px; font-weight: 600; text-transform: uppercase; padding: 2px 8px; border-radius: 30px; margin-right: 8px; }
 .maint-card .source.ghe { background: var(--primary-light); color: var(--primary); }
 .maint-card .source.deploy { background: var(--warning-light); color: var(--warning); }
+.deploy-context { font-size: 13px; color: var(--text-muted); margin: 8px 0; padding: 8px 12px; background: var(--bg); border-radius: 6px; }
+.deploy-ctx-item { display: block; margin-top: 4px; }
 .maint-card .repo { font-weight: 600; font-size: 15px; color: var(--dark); }
 .maint-card .changes { font-size: 14px; color: var(--text-muted); margin: 8px 0; }
 .maint-card .affected { font-size: 14px; margin: 8px 0; }
@@ -264,60 +255,34 @@ footer { margin-top: 32px; text-align: center; font-size: 14px; color: var(--tex
 <body>
 <div class="container">
   <header>
-    <h1>NHN Cloud 실전 가이드</h1>
+    <h1>NHN Cloud 실전 가이드 작업 대시보드</h1>
     <div class="header-links">
       <a href="https://nhncloud.gitbook.io/partner" target="_blank" class="btn">실전 가이드</a>
       <a href="https://nhncorp.dooray.com/project/tasks/4254576973479504167" target="_blank" class="btn">월별 주요 배포 사항</a>
     </div>
   </header>
 
-  <div class="section-header"><div class="section-title">주요 지표</div></div>
-  <div class="summary-row">
-    <div class="summary-group">
-      <div class="summary-group-label">제작 현황</div>
-      <div class="summary">
-        <div class="summary-card">
-          <div class="label">전체 가이드</div>
-          <div class="value">${totalTasks}</div>
-        </div>
-        ${currentMsTotal > 0 ? `
-        <div class="summary-card">
-          <div class="label">${esc(currentMilestoneName)} 완료율</div>
-          <div class="value ${currentMsRate >= 50 ? 'success' : 'warning'}">${currentMsRate}%</div>
-          <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">${currentMsDone}/${currentMsTotal}건 완료</div>
-        </div>` : ''}
-      </div>
-    </div>
-    <div class="summary-group">
-      <div class="summary-group-label">현행화 검토</div>
-      <div class="summary">
-        <div class="summary-card">
-          <div class="label">확인 필요</div>
-          <div class="value ${pendingMaintenanceCount > 0 ? 'danger' : 'success'}">${pendingMaintenanceCount}</div>
-        </div>
-        <div class="summary-card">
-          <div class="label">수정 불필요</div>
-          <div class="value">${noChangeCount}</div>
-        </div>
-        <div class="summary-card">
-          <div class="label">PR 대기</div>
-          <div class="value ${prOpenCount > 0 ? 'warning' : ''}">${prOpenCount}</div>
-        </div>
-        <div class="summary-card">
-          <div class="label">반영 완료</div>
-          <div class="value ${completedCount > 0 ? 'success' : ''}">${completedCount}</div>
-        </div>
-        <div class="summary-card">
-          <div class="label">추적 리포</div>
-          <div class="value">${gheUpdates.heartbeat ? gheUpdates.heartbeat.trackedRepos : '--'}</div>
-        </div>
-      </div>
-    </div>
+  <!-- 요약 바 -->
+  <div class="global-summary">
+    <div class="gs-item">전체 진행 중인 작업 <span class="gs-value">${totalTasks}</span>건<span class="gs-sub">(완료율 <strong class="${totalRate >= 50 ? 'success' : 'warning'}">${totalRate}%</strong> · ${totalDone}/${totalTasks})</span><span class="gs-progress"><span class="gs-progress-fill" style="width:${totalRate}%;background:var(--${totalRate >= 50 ? 'success' : 'warning'})"></span></span></div>
+    <div class="gs-divider"></div>
+    ${currentMsTotal > 0 ? `
+    <div class="gs-item">${esc(currentMilestoneName)} 타깃 작업 <span class="gs-value">${currentMsTotal}</span>건<span class="gs-sub">(완료율 <strong class="${currentMsRate >= 50 ? 'success' : 'warning'}">${currentMsRate}%</strong> · ${currentMsDone}/${currentMsTotal})</span><span class="gs-progress"><span class="gs-progress-fill" style="width:${currentMsRate}%;background:var(--${currentMsRate >= 50 ? 'success' : 'warning'})"></span></span></div>
+    <div class="gs-divider"></div>
+    ` : ''}
+    <div class="gs-item">변경 관리 <span class="gs-value ${pendingMaintenanceCount > 0 ? 'danger' : 'success'}">${pendingMaintenanceCount}</span>건 확인 필요</div>
   </div>
 
-  <!-- 필터 -->
+  <!-- 탭 -->
+  <div class="tab-bar">
+    <button class="tab-btn active" data-tab="production">제작 작업 현황 <span class="tab-badge" style="background:var(--primary)">${totalTasks}</span></button>
+    <button class="tab-btn" data-tab="maintenance">변경 관리${pendingMaintenanceCount > 0 ? ` <span class="tab-badge">${pendingMaintenanceCount}</span>` : ''}</button>
+  </div>
+
+  <!-- 탭 1: 제작 현황 -->
+  <div class="tab-panel active" id="tab-production">
+
   <div class="section-header">
-    <div class="section-title">실전 가이드 제작 작업 현황 <span class="badge">${totalTasks}</span></div>
     <div class="filter-bar">
       <div class="filter-dropdown" data-filter-group="assignee">
         <button class="filter-toggle" id="assignee-toggle">작업자별 보기 <span class="arrow">&#9662;</span></button>
@@ -341,6 +306,19 @@ footer { margin-top: 32px; text-align: center; font-size: 14px; color: var(--tex
           ${milestoneNames.map((name) => `<div class="filter-menu-item" data-value="${esc(name)}">${esc(name)} <span class="item-count">${milestoneSet.get(name)}</span></div>`).join('')}
         </div>
       </div>` : ''}
+      <div class="filter-dropdown" data-filter-group="type">
+        <button class="filter-toggle" id="type-toggle">유형별 보기 <span class="arrow">&#9662;</span></button>
+        <div class="filter-menu" id="type-menu">
+          <div class="filter-menu-item selected" data-value="all">전체 <span class="item-count">${totalTasks}</span></div>
+          ${(() => {
+            const typeCounts = {};
+            for (const t of tasks.tasks) { typeCounts[t.type] = (typeCounts[t.type] || 0) + 1; }
+            return ['How-to', 'Troubleshooting'].map((type) =>
+              `<div class="filter-menu-item" data-value="${esc(type)}">${esc(type)} <span class="item-count">${typeCounts[type] || 0}</span></div>`
+            ).join('');
+          })()}
+        </div>
+      </div>
     </div>
   </div>
 
@@ -379,7 +357,7 @@ footer { margin-top: 32px; text-align: center; font-size: 14px; color: var(--tex
         </button>
         <div class="year-cards" style="display:none;">
           ${yearCards.map((t) => `
-          <div class="kanban-card" data-task-id="${esc(t.id)}" data-assignees="${esc(t.assignees.join(','))}" data-milestone="${esc(t.milestone ? t.milestone.name : '')}">
+          <div class="kanban-card" data-task-id="${esc(t.id)}" data-assignees="${esc(t.assignees.join(','))}" data-milestone="${esc(t.milestone ? t.milestone.name : '')}" data-type="${esc(t.type || '')}">
             <div class="title">${esc(t.title.replace(/^\[(How-to|Troubleshooting)\]\s*/, ''))}</div>
             <div class="meta">
               <span class="type-badge ${t.type === 'How-to' ? 'type-howto' : 'type-troubleshooting'}">${esc(t.type)}</span>
@@ -402,49 +380,39 @@ footer { margin-top: 32px; text-align: center; font-size: 14px; color: var(--tex
       </div>
       ${cards.length === 0 ? '<div class="empty-col" style="font-size:12px;color:var(--text-muted);text-align:center;padding:20px 0;">없음</div>' : ''}
       ${cards.map((t) => `
-      <div class="kanban-card" data-task-id="${esc(t.id)}" data-assignees="${esc(t.assignees.join(','))}" data-milestone="${esc(t.milestone ? t.milestone.name : '')}">
+      <div class="kanban-card" data-task-id="${esc(t.id)}" data-assignees="${esc(t.assignees.join(','))}" data-milestone="${esc(t.milestone ? t.milestone.name : '')}" data-type="${esc(t.type || '')}">
         <div class="title">${esc(t.title.replace(/^\[(How-to|Troubleshooting)\]\s*/, ''))}</div>
         <div class="meta">
           <span class="type-badge ${t.type === 'How-to' ? 'type-howto' : 'type-troubleshooting'}">${esc(t.type)}</span>
           <span>${esc(t.assignees.join(', '))}</span>
         </div>
       </div>`).join('')}
-      ${cards.length > 5 ? `<button class="kanban-toggle">+${cards.length - 5}건 더 보기</button>` : ''}
+      ${cards.length > 10 ? `<button class="kanban-toggle">+${cards.length - 10}건 더 보기</button>` : ''}
     </div>`;
     }).join('')}
   </div>
 
-  <hr class="section-divider">
+  </div><!-- /tab-production -->
 
-  <!-- 섹션 2: 현행화 -->
-  <div class="section-header">
-    <div class="section-title">실전 가이드 현행화 작업 ${pendingMaintenanceCount > 0 ? `<span class="badge">${pendingMaintenanceCount}</span>` : ''}</div>
-  </div>
+  <!-- 탭 2: 변경 관리 -->
+  <div class="tab-panel" id="tab-maintenance">
 
-  <div class="gh-setup" id="gh-setup">
-    <strong>GitHub 연결</strong> — 확인 완료 처리를 위해 GitHub 토큰이 필요합니다. (최초 1회)
-    <div style="margin-top:8px;">
-      <input type="password" id="gh-pat" placeholder="GitHub Personal Access Token">
-      <button class="btn" id="gh-save">저장</button>
-    </div>
-    <div class="status" id="gh-status"></div>
-  </div>
-
-  ${pendingGheChanges.length === 0 && pendingDeployChanges.length === 0 ? `
+  ${pendingGheChanges.length === 0 ? `
   <div class="empty-state">
     <div class="icon">&#10003;</div>
-    <p>현행화가 필요한 항목이 없습니다.</p>
+    <p>변경 관리가 필요한 항목이 없습니다.</p>
   </div>` : ''}
 
   ${pendingGheChanges.length > 0 ? `
   <div class="maint-section">
-    <h3>사용자 가이드 변경 감지</h3>
     ${pendingGheChanges.map((c) => {
       const assigneeList = (c.affectedGuides || []).map((g) => g.assignee).join(',');
+      const deployCtx = c.deployContext || [];
       return `
     <div class="maint-card" data-update-id="${esc(c.id)}" data-assignees="${esc(assigneeList)}">
       <div><span class="source ghe">cloud-docs</span><span class="repo">${esc(c.repo)}</span></div>
       <div class="changes">${esc(c.files ? c.files.map((f) => f.filename).join(', ') : '')}</div>
+      ${deployCtx.length > 0 ? `<div class="deploy-context"><strong>관련 배포 사항:</strong> ${deployCtx.map((ctx) => `<span class="deploy-ctx-item">[${esc(ctx.month)}] ${esc(ctx.changes.substring(0, 120))}</span>`).join('')}</div>` : ''}
       <div class="affected"><strong>확인이 필요한 가이드:</strong>
         ${(c.affectedGuides || []).map((g) => {
           const checkId = esc(c.id) + '::' + esc(g.guide);
@@ -469,40 +437,31 @@ footer { margin-top: 32px; text-align: center; font-size: 14px; color: var(--tex
     }).join('')}
   </div>` : ''}
 
-  ${pendingDeployChanges.length > 0 ? `
-  <div class="maint-section">
-    <h3>월별 배포 사항</h3>
-    ${pendingDeployChanges.map((c) => {
-      const assigneeList = (c.affectedGuides || []).map((g) => g.assignee).join(',');
-      return `
-    <div class="maint-card" data-update-id="${esc(c.updateId)}" data-assignees="${esc(assigneeList)}">
-      <div><span class="source deploy">${esc(c.month)}</span><span class="repo">${esc(c.service)}</span></div>
-      <div class="changes">${esc(c.changes)}</div>
-      <div class="affected"><strong>확인이 필요한 가이드:</strong>
-        ${(c.affectedGuides || []).map((g) => {
-          const checkId = esc(c.updateId) + '::' + esc(g.guide);
-          const kwStr = (g.matchedKeywords || []).join(', ');
-          return `
-        <div class="guide-check">
-          <input type="checkbox" id="chk-${checkId}" data-update-id="${esc(c.updateId)}" data-guide="${esc(g.guide)}" onchange="onGuideCheck(this)">
-          <label for="chk-${checkId}">
-            ${esc(g.title)} <span style="color:var(--text-muted)">(${esc(g.assignee)})</span>
-            <div class="check-info">동일 서비스의 배포 사항이 확인되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.</div>
-          </label>
-          <button class="btn btn-primary btn-sm" onclick="onStartUpdate(this)" data-source="deploy" data-service="${esc(c.service)}" data-summary="${esc(c.changes)}" data-diff-url="${esc(c.releaseNoteUrl || '')}" data-keywords="${esc(kwStr)}" data-update-id="${esc(c.updateId)}" data-guide="${esc(g.guide)}" data-guide-title="${esc(g.title)}" data-guide-assignee="${esc(g.assignee)}">현행화 프롬프트 복사</button>
-        </div>`;
-        }).join('')}
-      </div>
-      <div style="margin-top:8px;">${c.releaseNoteUrl ? `<a href="${esc(c.releaseNoteUrl)}" target="_blank" class="btn">릴리스 노트</a>` : ''}</div>
-      <div class="card-status"></div>
-    </div>`;
-    }).join('')}
-  </div>` : ''}
+  <div class="gh-setup" id="gh-setup" style="display:none;">
+    <strong>GitHub 연결</strong> — 확인 완료 처리를 위해 GitHub 토큰이 필요합니다. (최초 1회)
+    <div style="margin-top:8px;">
+      <input type="password" id="gh-pat" placeholder="GitHub Personal Access Token">
+      <button class="btn" id="gh-save">저장</button>
+    </div>
+    <div class="status" id="gh-status"></div>
+  </div>
 
-  <footer>매일 09:00 KST 자동 갱신 · 마지막 갱신: ${formatDate(tasks.fetchedAt || gheUpdates.lastPoll)} · 마지막 생성: ${formatDate(new Date().toISOString())}</footer>
+  </div><!-- /tab-maintenance -->
+
+  <footer><span id="gh-footer-status"></span> · 평일 09:00 KST 자동 갱신 · 마지막 갱신: ${formatDate(tasks.fetchedAt || gheUpdates.lastPoll)} · 마지막 생성: ${formatDate(new Date().toISOString())}</footer>
 </div>
 
 <script>
+// === 탭 전환 ===
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+  });
+});
+
 // === GitHub PAT 설정 ===
 const GH_REPO = 'TOAST-DOCS/TW';
 const RESOLVED_PATH = 'data/resolved.json';
@@ -510,8 +469,14 @@ const RESOLVED_PATH = 'data/resolved.json';
 (function initGhSetup() {
   const pat = localStorage.getItem('gh-pat');
   const setupEl = document.getElementById('gh-setup');
+  const footerStatus = document.getElementById('gh-footer-status');
   if (pat) {
-    setupEl.innerHTML = '<span style="color:var(--success);">GitHub 연결됨</span> <button class="btn" onclick="localStorage.removeItem(\\'gh-pat\\');location.reload();" style="font-size:12px;">연결 해제</button>';
+    setupEl.style.display = 'none';
+    if (footerStatus) footerStatus.innerHTML = '<span style="color:var(--success);">GitHub 연결됨</span> \u00b7 <a href="#" id="gh-disconnect" style="color:var(--text-muted);font-size:13px;">연결 해제</a>';
+    document.getElementById('gh-disconnect').addEventListener('click', function(e) { e.preventDefault(); localStorage.removeItem('gh-pat'); location.reload(); });
+  } else {
+    setupEl.style.display = 'block';
+    if (footerStatus) footerStatus.innerHTML = '<span style="color:var(--text-muted);">GitHub 미연결</span>';
   }
   const saveBtn = document.getElementById('gh-save');
   if (saveBtn) {
@@ -615,8 +580,8 @@ document.querySelectorAll('.year-toggle').forEach(btn => {
   });
 });
 
-// === 칸반 5행 접기/펼치기 ===
-const MAX_VISIBLE = 5;
+// === 칸반 10행 접기/펼치기 ===
+const MAX_VISIBLE = 10;
 document.querySelectorAll('.kanban-col').forEach(col => {
   const cards = col.querySelectorAll('.kanban-card');
   const toggle = col.querySelector('.kanban-toggle');
@@ -638,13 +603,15 @@ document.querySelectorAll('.kanban-col').forEach(col => {
 // === 드롭다운 필터 ===
 let activeAssignee = 'all';
 let activeMilestone = 'all';
+let activeType = 'all';
 
 function applyFilters() {
   document.querySelectorAll('.kanban-card').forEach(card => {
     const matchAssignee = activeAssignee === 'all' || (card.dataset.assignees || '').includes(activeAssignee);
     const ms = card.dataset.milestone || '';
     const matchMilestone = activeMilestone === 'all' || ms === activeMilestone;
-    card.classList.toggle('hidden', !(matchAssignee && matchMilestone));
+    const matchType = activeType === 'all' || (card.dataset.type || '') === activeType;
+    card.classList.toggle('hidden', !(matchAssignee && matchMilestone && matchType));
   });
 
   document.querySelectorAll('.maint-card').forEach(card => {
@@ -698,6 +665,9 @@ if (mToggle) mToggle.dataset.defaultLabel = '타깃 일정별 보기';
 
 setupDropdown('assignee-toggle', 'assignee-menu', (val) => { activeAssignee = val; applyFilters(); });
 setupDropdown('milestone-toggle', 'milestone-menu', (val) => { activeMilestone = val; applyFilters(); });
+const tToggle = document.getElementById('type-toggle');
+if (tToggle) tToggle.dataset.defaultLabel = '유형별 보기';
+setupDropdown('type-toggle', 'type-menu', (val) => { activeType = val; applyFilters(); });
 
 // 바깥 클릭 시 닫기
 document.addEventListener('click', () => {
@@ -705,7 +675,7 @@ document.addEventListener('click', () => {
   document.querySelectorAll('.filter-toggle.open').forEach(t => t.classList.remove('open'));
 });
 
-// === 현행화 프롬프트 복사 — 가이드별 구조화된 프롬프트 생성 + 클립보드 복사 ===
+// === 변경 관리 프롬프트 복사 — 가이드별 구조화된 프롬프트 생성 + 클립보드 복사 ===
 function onStartUpdate(btn) {
   const source = btn.dataset.source === 'ghe' ? 'GHE 변경 감지' : '월별 배포 사항';
   const service = btn.dataset.service || '';

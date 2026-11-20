@@ -2,11 +2,16 @@ name: Poll and generate dashboard
 
 on:
   schedule:
-    # Weekdays 08:00 KST (23:00 UTC previous day)
-    - cron: '0 23 * * 0-3'
-    # Weekdays 14:00 KST (05:00 UTC)
-    - cron: '0 5 * * 1-5'
-  workflow_dispatch: {}
+    # 두레이 태스크: 매일 09:00 KST (00:00 UTC)
+    - cron: '0 0 * * 1-5'
+    # GHE 변경 감지 + 배포 사항: 매월 4주차 수요일 12:00 KST (03:00 UTC, 22-28일 중 수요일)
+    - cron: '0 3 22-28 * 3'
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Poll mode (dooray / ghe / 빈 값 = 전체)'
+        required: false
+        default: ''
 
 permissions:
   contents: write
@@ -27,8 +32,23 @@ jobs:
       - run: npm install
         shell: bash
 
-      - run: npm run poll
+      - name: Determine poll mode
+        id: mode
         shell: bash
+        run: |
+          if [ -n "${{ github.event.inputs.mode }}" ]; then
+            echo "value=${{ github.event.inputs.mode }}" >> "$GITHUB_OUTPUT"
+          elif [ "${{ github.event.schedule }}" = "0 0 * * 1-5" ]; then
+            echo "value=dooray" >> "$GITHUB_OUTPUT"
+          elif [ "${{ github.event.schedule }}" = "0 3 22-28 * 3" ]; then
+            echo "value=ghe" >> "$GITHUB_OUTPUT"
+          else
+            echo "value=" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Run poll
+        shell: bash
+        run: node src/poll.js ${{ steps.mode.outputs.value }}
         env:
           GHE_TOKEN: ${{ secrets.GHE_TOKEN }}
           DOORAY_API_TOKEN: ${{ secrets.DOORAY_API_TOKEN }}

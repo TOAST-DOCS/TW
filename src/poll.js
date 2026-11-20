@@ -2,7 +2,7 @@ const { discoverRepos, getBranch, hasTargetDir, getChangedFiles } = require('./g
 const { fetchGuideTasks, fetchDeployNotes, sendWebhook } = require('./dooray');
 const { loadState, saveState, loadJSON, saveJSON } = require('./state');
 const { generateSite } = require('./generate-site');
-const { loadGuides, analyzeChange, extractKeywordsFromText, findKeywordMatches } = require('./analyze');
+const { loadGuides, analyzeChange } = require('./analyze');
 const config = require('./config');
 const path = require('path');
 const fs = require('fs');
@@ -26,9 +26,30 @@ function findAffectedGuides(repoName, mappings) {
 }
 
 /**
- * GHE 변경 감지 (트랙 A)
+ * GHE 변경의 서비스와 매칭되는 배포 사항 텍스트 조회
  */
-async function pollGHE(guideMapping, guides) {
+function findDeployContext(repoName, guideMapping, deployNotes) {
+  // 리포 → 서비스명 역매핑
+  const services = guideMapping.mappings
+    .filter((m) => m.repos.includes(repoName))
+    .map((m) => m.service.toLowerCase());
+  if (services.length === 0 || !deployNotes.months) return [];
+
+  const contexts = [];
+  for (const month of deployNotes.months) {
+    for (const svc of month.services) {
+      if (services.some((s) => s.includes(svc.service.toLowerCase()) || svc.service.toLowerCase().includes(s))) {
+        contexts.push({ month: month.month, service: svc.service, changes: svc.changes });
+      }
+    }
+  }
+  return contexts;
+}
+
+/**
+ * GHE 변경 감지 (유일한 트리거)
+ */
+async function pollGHE(guideMapping, guides, deployNotes) {
   console.log(`[GHE] Polling ${config.GHE_ORG} on ${config.GHE_API}`);
   const state = loadState();
   const changes = [];
@@ -76,6 +97,7 @@ async function pollGHE(guideMapping, guides) {
           ? analysisResults
           : findAffectedGuides(repoName, guideMapping.mappings);
 
+        const deployContext = findDeployContext(repoName, guideMapping, deployNotes);
         changes.push({
           id: `ghe-${repoName}-${Date.now()}`,
           source: 'ghe',
@@ -87,6 +109,7 @@ async function pollGHE(guideMapping, guides) {
           files: diff.files.map((f) => ({ filename: f.filename, status: f.status, additions: f.additions, deletions: f.deletions, patch: f.patch || '' })),
           affectedGuides: affected,
           analysisMethod: analysisResults.length > 0 ? 'keyword' : 'repo-mapping',
+          deployContext,
           detectedAt: new Date().toISOString(),
         });
       }
@@ -123,56 +146,12 @@ async function pollDoorayTasks() {
 }
 
 /**
- * 월별 배포 사항 조회 (트랙 B)
+ * 월별 배포 사항 조회 (컨텍스트 데이터 — 단독 트리거 아님)
  */
-async function pollDeployNotes(guideMapping) {
+async function pollDeployNotes() {
   console.log(`[Dooray] Fetching deploy notes`);
   const months = await fetchDeployNotes();
   console.log(`  Found ${months.length} monthly deploy notes`);
-
-  // 각 서비스에 영향받는 가이드 매핑 (서비스명 + 키워드 분석)
-  const guides = loadGuides();
-  for (const month of months) {
-    for (const svc of month.services) {
-      // 1단계: 서비스명으로 후보 가이드 선정 (배포월 이전에 게시된 가이드만)
-      const candidates = guideMapping.mappings.filter((m) => {
-        const nameMatch =
-          m.service.toLowerCase().includes(svc.service.toLowerCase()) ||
-          svc.service.toLowerCase().includes(m.service.toLowerCase());
-        if (!nameMatch) return false;
-        // publishedAt이 배포 사항 월보다 이후면 제외 (가이드가 아직 없던 시점)
-        if (m.publishedAt && month.month < m.publishedAt.substring(0, 7)) return false;
-        return true;
-      });
-
-      // 2단계: 배포 사항 텍스트에서 키워드 추출 → 가이드 본문과 매칭
-      const keywords = extractKeywordsFromText(svc.changes);
-      if (keywords.length === 0 || guides.length === 0) {
-        // 키워드가 없으면 서비스명 매칭만으로 포함
-        svc.affectedGuides = candidates.map((m) => ({
-          guide: m.guide,
-          title: m.title,
-          assignee: m.assignee,
-        }));
-      } else {
-        const filtered = [];
-        for (const m of candidates) {
-          const guide = guides.find((g) => g.filename === m.guide);
-          if (!guide) continue;
-          const matches = findKeywordMatches(keywords, guide.content);
-          if (matches.length >= 3) {
-            filtered.push({
-              guide: m.guide,
-              title: m.title,
-              assignee: m.assignee,
-              matchedKeywords: matches.slice(0, 5).map((mt) => mt.keyword),
-            });
-          }
-        }
-        svc.affectedGuides = filtered;
-      }
-    }
-  }
 
   const result = {
     fetchedAt: new Date().toISOString(),
@@ -184,17 +163,15 @@ async function pollDeployNotes(guideMapping) {
 }
 
 /**
- * 현행화 알림 발송
+ * 변경 관리 알림 발송
  */
 async function notifyUpdates(gheChanges, deployNotes, resolved) {
   const resolvedKeys = new Set(
     (resolved.resolved || []).map((r) => r.updateId + '::' + (r.guide || ''))
   );
 
-  // GHE 변경 알림
   for (const change of gheChanges) {
     if (change.affectedGuides.length === 0) continue;
-    // 미처리 가이드만 필터
     const pendingGuides = change.affectedGuides.filter(
       (g) => !resolvedKeys.has(change.id + '::' + g.guide)
     );
@@ -207,10 +184,17 @@ async function notifyUpdates(gheChanges, deployNotes, resolved) {
       }
       return `• ${g.title} (담당: ${g.assignee})\n  → 동일 서비스의 문서가 변경되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.`;
     });
+
+    // 배포 사항 컨텍스트가 있으면 포함
+    const ctxLines = (change.deployContext || []).map(
+      (ctx) => `  📌 [${ctx.month} 배포 사항] ${ctx.changes.substring(0, 100)}`
+    );
+
     const message = [
-      '📋 [실전 가이드 현행화 확인 요청]',
+      '📋 [실전 가이드 변경 관리 확인 요청]',
       '',
       `${change.repo} 리포지터리에서 ko/ 디렉터리 내 ${change.mdChanges}개 파일이 변경되었습니다.`,
+      ...(ctxLines.length > 0 ? ['', '관련 배포 사항:', ...ctxLines] : []),
       '',
       '확인이 필요한 가이드:',
       ...guideLines,
@@ -219,31 +203,6 @@ async function notifyUpdates(gheChanges, deployNotes, resolved) {
     ].join('\n');
 
     await sendWebhook(message);
-  }
-
-  // 배포 사항 알림 (최신 월만)
-  if (deployNotes.months && deployNotes.months.length > 0) {
-    const latest = deployNotes.months[0];
-    const affectedServices = latest.services.filter(
-      (s) => s.affectedGuides && s.affectedGuides.length > 0
-    );
-
-    if (affectedServices.length > 0) {
-      const lines = affectedServices.map((s) => {
-        const guides = s.affectedGuides.map((g) => `  • ${g.title}`).join('\n');
-        return `[${s.service}] ${s.changes.substring(0, 80)}\n${guides}`;
-      });
-
-      const message = [
-        `📢 [${latest.month} 배포 사항 현행화 알림]`,
-        '',
-        ...lines,
-        '',
-        `👉 대시보드에서 확인: ${config.DASHBOARD_URL}`,
-      ].join('\n');
-
-      await sendWebhook(message);
-    }
   }
 }
 
@@ -281,7 +240,7 @@ async function sendReminders(gheUpdates, resolved) {
       `• ${g.title} (담당: ${g.assignee})`
     );
     const message = [
-      '🔔 [현행화 리마인드]',
+      '🔔 [변경 관리 리마인드]',
       '',
       `${change.repo} 리포지터리 변경 감지 후 7일이 경과했으나 아직 확인되지 않은 가이드가 있습니다.`,
       '',
@@ -484,7 +443,7 @@ async function checkPrStatuses(resolved) {
         // 머지 완료 알림
         if (newStatus === 'merged') {
           await sendWebhook([
-            '✅ [현행화 반영 완료]',
+            '✅ [변경 관리 반영 완료]',
             '',
             `PR #${item.prNumber}이 머지되었습니다.`,
             `• ${item.guide}`,
@@ -505,31 +464,52 @@ async function checkPrStatuses(resolved) {
 }
 
 /**
- * 메인 실행
+ * 모드 A: 두레이 태스크 + 사이트 생성 (매일 09:00 KST)
  */
-async function runPoll() {
-  console.log(`[${new Date().toISOString()}] Poll started`);
+async function runDooray() {
+  console.log(`[${new Date().toISOString()}] Dooray poll started`);
+
+  const doorayResult = await pollDoorayTasks();
+
+  const sitePath = generateSite();
+  console.log(`  Site generated: ${sitePath}`);
+
+  console.log(`[${new Date().toISOString()}] Dooray poll complete. ${doorayResult.tasks.length} tasks.`);
+}
+
+/**
+ * 모드 B: GHE 변경 감지 + 배포 사항 + 알림 + 사이트 생성 (매월 4주차 수요일 12:00 KST)
+ */
+async function runGHE() {
+  console.log(`[${new Date().toISOString()}] GHE poll started`);
 
   let guideMapping = loadGuideMapping();
   const guides = loadGuides();
   const resolved = loadJSON(config.RESOLVED_FILE, { resolved: [] });
   console.log(`[Analyze] Loaded ${guides.length} guide files for keyword matching`);
 
-  // 1. 두레이 태스크 조회
+  // 1. 두레이 태스크 조회 (guide-mapping 보강에 필요)
   const doorayResult = await pollDoorayTasks();
 
-  // 2. GHE 변경 감지 + 키워드 분석
-  const gheResult = await pollGHE(guideMapping, guides);
+  // 2. 월별 배포 사항 조회 (GHE 변경 감지 시 컨텍스트로 사용)
+  let deployResult = { fetchedAt: null, months: [] };
+  try {
+    deployResult = await pollDeployNotes();
+  } catch (err) {
+    console.error(`  [WARN] Deploy notes fetch failed: ${err.message}`);
+  }
 
-  // 3. guide-mapping 자동 보강
+  // 3. GHE 변경 감지 + 키워드 분석 + 배포 사항 컨텍스트 첨부
+  const gheResult = await pollGHE(guideMapping, guides, deployResult);
+
+  // 4. guide-mapping 자동 보강
   const syncCount = syncGuideMapping(guideMapping, doorayResult.tasks, gheResult.discoveredRepos);
   if (syncCount > 0) {
     console.log(`  Auto-synced ${syncCount} guide mapping(s)`);
-    // 매핑이 갱신됐으니 다시 로드
     guideMapping = loadGuideMapping();
   }
 
-  // 4. GHE 결과 저장
+  // 5. GHE 결과 저장
   const existing = loadJSON(config.RESULTS_FILE, { lastPoll: null, heartbeat: null, changes: [], history: [] });
   existing.lastPoll = new Date().toISOString();
   existing.heartbeat = {
@@ -538,9 +518,6 @@ async function runPoll() {
     repoNames: gheResult.discoveredRepos,
   };
   if (gheResult.changes.length > 0) {
-    // history에는 patch를 제거해서 저장 (파일 비대화 방지)
-    // 최신 changes에만 patch 보존 → 프롬프트 복사 시 사용
-    // 과거 건은 필요 시 스킬이 GHE API로 직접 조회
     const changesForHistory = gheResult.changes.map((c) => ({
       ...c,
       files: (c.files || []).map(({ patch, ...rest }) => rest),
@@ -553,21 +530,13 @@ async function runPoll() {
   existing.changes = gheResult.changes;
   saveJSON(config.RESULTS_FILE, existing);
 
-  // 5. 월별 배포 사항 조회
-  let deployResult = { fetchedAt: null, months: [] };
-  try {
-    deployResult = await pollDeployNotes(guideMapping);
-  } catch (err) {
-    console.error(`  [WARN] Deploy notes fetch failed: ${err.message}`);
-  }
-
-  // 6. 현행화 알림 발송
+  // 6. 변경 관리 알림 발송
   await notifyUpdates(gheResult.changes, deployResult, resolved);
 
   // 7. 7일 경과 미처리 건 리마인드
   const remindCount = await sendReminders(existing, resolved);
   if (remindCount > 0) {
-    saveJSON(config.RESULTS_FILE, existing); // 리마인드 이력 저장
+    saveJSON(config.RESULTS_FILE, existing);
     console.log(`  Sent ${remindCount} reminder(s)`);
   }
 
@@ -581,11 +550,26 @@ async function runPoll() {
   const sitePath = generateSite();
   console.log(`  Site generated: ${sitePath}`);
 
-  console.log(`[${new Date().toISOString()}] Poll complete. ${gheResult.changes.length} GHE changes, ${doorayResult.tasks.length} tasks.`);
+  console.log(`[${new Date().toISOString()}] GHE poll complete. ${gheResult.changes.length} GHE changes.`);
+}
+
+/**
+ * 메인 실행 — 인자로 모드 선택
+ *   dooray: 두레이 태스크 + 사이트 생성
+ *   ghe:    GHE diff + 배포 사항 + 알림 + 사이트 생성
+ *   (없음): 둘 다 실행 (수동 테스트용)
+ */
+async function runPoll(mode) {
+  if (mode === 'dooray') return runDooray();
+  if (mode === 'ghe') return runGHE();
+  // 모드 미지정: 전체 실행
+  await runDooray();
+  await runGHE();
 }
 
 if (require.main === module) {
-  runPoll().catch(console.error);
+  const mode = process.argv[2] || '';
+  runPoll(mode).catch(console.error);
 }
 
-module.exports = { runPoll };
+module.exports = { runPoll, runDooray, runGHE };
