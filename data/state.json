@@ -881,8 +881,8 @@
       "firstSeen": "2026-09-04T08:29:09.314Z"
     },
     "nhn-cloud-foundry": {
-      "lastSha": "023ed595abb9bf2c68f392fa9fda65cb2c726427",
-      "lastChecked": "2026-10-28T05:23:54.105Z",
+      "lastSha": "f3517d8c17b49500741d5a6c431ce33f15970235",
+      "lastChecked": "2026-11-22T22:57:44.343Z",
       "firstSeen": "2026-09-04T08:29:09.668Z"
     },
     "rds-integration-test": {
