@@ -28,13 +28,13 @@ jobs:
         id: mode
         run: |
           if ("${{ github.event.inputs.mode }}") {
-            "value=${{ github.event.inputs.mode }}" | Out-File -Append $env:GITHUB_OUTPUT -Encoding utf8
+            [IO.File]::AppendAllText($env:GITHUB_OUTPUT, "value=${{ github.event.inputs.mode }}`n")
           } elseif ("${{ github.event.schedule }}" -eq "0 0 * * 1-5") {
-            "value=dooray" | Out-File -Append $env:GITHUB_OUTPUT -Encoding utf8
+            [IO.File]::AppendAllText($env:GITHUB_OUTPUT, "value=dooray`n")
           } elseif ("${{ github.event.schedule }}" -eq "0 3 22-28 * 3") {
-            "value=ghe" | Out-File -Append $env:GITHUB_OUTPUT -Encoding utf8
+            [IO.File]::AppendAllText($env:GITHUB_OUTPUT, "value=ghe`n")
           } else {
-            "value=" | Out-File -Append $env:GITHUB_OUTPUT -Encoding utf8
+            [IO.File]::AppendAllText($env:GITHUB_OUTPUT, "value=`n")
           }
 
       - name: Run poll
@@ -51,8 +51,8 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config core.autocrlf false
           git add data/ docs/
-          git diff --cached --quiet && exit 0
+          $exitCode = 0; git diff --cached --quiet; if ($LASTEXITCODE -eq 0) { exit 0 }
           git commit -m "chore: update dashboard data [skip ci]"
-          git checkout -- .
+          git checkout "--" "."
           git pull --rebase
           git push
