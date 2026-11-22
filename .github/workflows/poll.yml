@@ -20,34 +20,24 @@ jobs:
   poll:
     runs-on: self-hosted
     steps:
-      - name: Verify tools in PATH
-        shell: bash
-        run: |
-          echo "node: $(node --version)"
-          echo "npm: $(npm --version)"
-          echo "git: $(git --version)"
-
       - uses: actions/checkout@v4
 
       - run: npm install
-        shell: bash
 
       - name: Determine poll mode
         id: mode
-        shell: bash
         run: |
-          if [ -n "${{ github.event.inputs.mode }}" ]; then
-            echo "value=${{ github.event.inputs.mode }}" >> "$GITHUB_OUTPUT"
-          elif [ "${{ github.event.schedule }}" = "0 0 * * 1-5" ]; then
-            echo "value=dooray" >> "$GITHUB_OUTPUT"
-          elif [ "${{ github.event.schedule }}" = "0 3 22-28 * 3" ]; then
-            echo "value=ghe" >> "$GITHUB_OUTPUT"
-          else
-            echo "value=" >> "$GITHUB_OUTPUT"
-          fi
+          if ("${{ github.event.inputs.mode }}") {
+            "value=${{ github.event.inputs.mode }}" | Out-File -Append $env:GITHUB_OUTPUT -Encoding utf8
+          } elseif ("${{ github.event.schedule }}" -eq "0 0 * * 1-5") {
+            "value=dooray" | Out-File -Append $env:GITHUB_OUTPUT -Encoding utf8
+          } elseif ("${{ github.event.schedule }}" -eq "0 3 22-28 * 3") {
+            "value=ghe" | Out-File -Append $env:GITHUB_OUTPUT -Encoding utf8
+          } else {
+            "value=" | Out-File -Append $env:GITHUB_OUTPUT -Encoding utf8
+          }
 
       - name: Run poll
-        shell: bash
         run: node src/poll.js ${{ steps.mode.outputs.value }}
         env:
           GHE_TOKEN: ${{ secrets.GHE_TOKEN }}
@@ -56,7 +46,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Commit updated data and site
-        shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
