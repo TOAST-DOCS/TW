@@ -1,115 +1,118 @@
-# RDS for MySQL 고가용성이 중단되거나 예기치 않은 장애 조치가 발생합니다
+# RDS for MySQL에서 예기치 않은 장애 조치가 발생합니다
 
 ## 증상
 
-RDS for MySQL 고가용성 구성에서 예기치 않은 장애 조치(Failover)가 발생합니다. 장애 조치가 진행되는 동안 데이터베이스 연결이 일시 중단되며, 장애 조치가 완료되면 기존 Primary는 Failed Over Primary로, Standby는 새 Primary로 역할이 변경됩니다.
+- **이벤트** 탭에 `INSTC_26_00`(DB 인스턴스 장애 조치 발생)과 `INSTC_26_01`(DB 인스턴스 장애 조치 완료) 이벤트가 기록됩니다.
+- 기존 Primary는 Failed Over Primary가 되고, Standby가 새 Primary가 됩니다.
+- 장애 조치가 진행되는 동안 애플리케이션 연결이 끊깁니다.
 
-DB 인스턴스 목록에서 해당 인스턴스를 선택한 뒤 하단 상세 화면의 **로그** 탭에서 `error.log`의 **로그 보기**를 클릭하면 다음과 같은 메시지가 나타납니다.
+> 📐 **다이어그램**: `#image_output/rds-ha-unexpected-failover-diagnosis-flow.svg`
+> 게시 시에는 이 안내를 삭제하고 이미지로 교체합니다.
 
-```text
-[ERROR] [MY-011161] [Server] Semi-sync master failed on net_flush() before waiting for slave reply.
-[Note] [MY-011171] [Server] Stop semi-sync binlog_dump to slave (server_id: {standby_server_id}).
-```
+## 원인 확인 전 알아두기
 
-에러 로그에 InnoDB의 디스크 flush 지연 메시지가 함께 나타나는 경우도 있습니다.
+장애 조치의 원인은 다양하며, 일부 현상만으로 원인을 특정할 수 없습니다. 원인을 확인하기 전에 다음 사항을 알아두세요.
 
-```text
-[Note] [MY-011953] [InnoDB] Page cleaner took 4392ms to flush 4000 and evict 0 pages
-```
+고가용성 감시 프로세스는 **Ping 간격**마다 Primary에 새로 접속해 쓰기(INSERT)를 시도합니다. MySQL의 기본 Ping 방식은 INSERT입니다. Ping 간격 안에 응답하지 않으면 실패 처리되며, 4회 연속으로 실패하고 추가 확인까지 실패하면 장애 조치를 수행합니다.
 
-`FLUSH TABLES WITH READ LOCK` 등 장시간 lock을 유발하는 쿼리가 원인인 경우에는 MHA(고가용성 감시) 로그에 다음과 같은 메시지가 나타납니다.
+따라서 문제는 장애 조치 발생 시각보다 **최소 4 × Ping 간격만큼 먼저** 시작되었습니다. 추가 확인에서 Primary가 응답하면 감시를 처음부터 다시 시작하므로, 문제는 이보다 훨씬 먼저 시작되었을 수도 있습니다.
 
-```text
-Got timeout on MySQL Ping(INSERT) child process and killed it!
-```
+장애 조치 과정에서 기존 Primary의 MySQL은 강제로 종료되거나 재부팅됩니다. 그래서 장애 조치 발생 시각 **이후**에 기록된 종료와 재시작 로그는 원인이 아닙니다.
 
-## 진단 흐름도
+원인을 확인할 대상은 새 Primary가 아니라 **Failed Over Primary**입니다. **서버 대시보드**는 장애 조치 직후에도 볼 수 있고, **로그** 탭은 Failed Over Primary 복구를 마친 뒤에 볼 수 있습니다.
 
-![](images/rds-ha-failover-cause-flow.svg)
+> [!WARNING]
+> **Failed Over Primary 재구축**을 수행하면 기존 Primary의 데이터와 함께 에러 로그, 슬로 쿼리 로그도 삭제됩니다.
+> 원인을 확인하려면 재구축 전에 반드시 **Failed Over Primary 복구**를 먼저 시도하세요.
 
-## 빠른 확인
+## 원인 확인
 
-장애 조치가 발생하면 RDS for MySQL 콘솔의 **이벤트** 탭에서 이벤트 코드 `INSTC_26_00`(DB 인스턴스 장애 조치 발생)과 `INSTC_26_01`(DB 인스턴스 장애 조치 완료) 이벤트를 확인할 수 있습니다. **이벤트 발생 일시**와 **이벤트 메시지**를 기록해 두세요. 이후 원인 분석과 고객지원 문의 시 필요합니다.
+아래 단계를 순서대로 진행하면 장애 조치의 원인을 좁히고 고가용성 구성을 복원할 수 있습니다.
 
-## 원인과 해결 방법
+### 1단계: 발생 일시와 Ping 간격 확인
 
-RDS for MySQL 고가용성 구성에서 Standby는 Primary의 상태를 주기적으로 확인(Ping)합니다. Ping이 4회 연속 실패하면 Primary가 서비스를 제공하지 못한다고 판단하여 자동으로 장애 조치를 수행합니다.
+1. **이벤트** 탭에서 `INSTC_26_00` 이벤트의 발생 일시를 기록합니다.
+2. DB 인스턴스 그룹 상세의 **기본 정보** 탭에서 Ping 간격과 Ping 방식을 확인합니다.
+3. 문제가 시작된 시점은 발생 일시에서 4 × Ping 간격을 뺀 시점보다 앞입니다.
+   - 예: Ping 간격이 3초면 12초 전, 60초면 4분 전, 600초면 40분 전입니다.
 
-### 원인 1: Primary-Standby 간 통신 장애
+### 2단계: 지표 확인
 
-Primary와 Standby는 서로 다른 가용성 영역(AZ)에 위치하며, 네트워크를 통해 데이터를 복제합니다. 두 인스턴스 사이의 통신에 장애가 발생하면 Standby가 Primary의 헬스체크에 연속으로 실패하고 장애 조치가 수행됩니다.
+장애 조치 직후에 Failed Over Primary를 선택하고 **서버 대시보드**를 엽니다.
 
-실제 사례에서 확인된 두 가지 패턴이 있습니다.
+1. 먼저 발생 일시 전 1시간의 지표를 넓게 보고, 값이 바뀌기 시작한 시점을 찾습니다.
+2. 그 시점부터 발생 일시까지를 **확인 구간**으로 정합니다.
+   - 1시간 안에서 바뀐 시점을 찾지 못하면 범위를 더 넓힙니다.
+3. 확인 구간에서 아래 표의 신호를 찾습니다.
 
-**패턴 A: 네트워크 통신 오류**
+기본 레이아웃에 없는 지표는 차트를 추가해서 확인합니다.
 
-Primary에서 Standby로의 데이터 전송이 실패하고, semi-sync 복제의 `net_flush()`가 실패합니다. 에러 로그에 통신 패킷 오류와 복제 중단 메시지가 나타납니다.
+| 지표 | 신호 | 추정 원인 |
+|---|---|---|
+| 스토리지 사용량(`STORAGE_USAGE`) | 100%에 도달함 | 스토리지 부족 |
+| 메모리 사용률(`MEMORY_USAGE`) | 100% 가까이 오른 뒤 발생 일시 **이전**에 급락함 | MySQL 프로세스 비정상 종료 |
+| 스토리지 I/O(`STORAGE_IO`), I/O 대기 CPU(`CPU_USAGE_IOWAIT`) | 확인 구간에 급증함 | 디스크 I/O 지연 |
+| CPU 사용률(`CPU_USAGE`), 세션 수(`CONNECTION`의 running) | CPU 100%가 지속되고, running 세션이 급증함 | 과부하 |
+| 위 지표 모두 | 특이점 없음 | 3단계에서 로그로 확인 |
 
-```text
-[ERROR] [MY-013129] [Server] A message intended for a client cannot be sent there as no client-session is attached. Therefore, we're sending the information to the error-log instead: MY-001158 - Got an error reading communication packets
-[ERROR] [MY-011161] [Server] Semi-sync master failed on net_flush() before waiting for slave reply.
-[Note] [MY-011171] [Server] Stop semi-sync binlog_dump to slave (server_id: {standby_server_id}).
-```
+### 3단계: 고가용성 복원과 로그 확인
 
-**패턴 B: 디스크 flush 지연이 동반되는 통신 오류**
+Failed Over Primary를 처리하기 전까지는 다음 장애 조치가 수행되지 않습니다.
+원인과 상관없이 아래 순서로 고가용성 구성을 복원합니다.
 
-InnoDB Page Cleaner의 디스크 flush 작업이 수 초 이상 지연되면서 통신 오류가 함께 발생합니다. 에러 로그에 flush 지연 메시지와 통신 오류 메시지가 함께 나타납니다.
+1. DB 인스턴스 목록에서 Failed Over Primary를 선택한 뒤 **Failed Over Primary 복구**를 클릭합니다.
+   - 복구는 기존 데이터를 유지한 채 복제만 다시 설정합니다.
+   - 복구가 끝나면 기존 Primary는 Standby가 됩니다.
+2. 복구에 실패할 경우 재구축을 시도하기 전에 먼저 [NHN Cloud 고객지원](https://www.nhncloud.com/kr/support/inquiry)에 문의하세요. 재구축 후에는 원인 분석에 필요한 로그가 삭제됩니다.
+3. 복구에 성공했다면 Standby가 된 기존 Primary를 선택하고, **로그** 탭에서 확인 구간의 내용을 확인합니다.
+   - 2단계에서 확인 구간을 정하지 못했다면 1단계에서 계산한 시점부터 발생 일시 전 1시간까지 확인합니다.
 
-```text
-[Note] [MY-011953] [InnoDB] Page cleaner took 4392ms to flush 4000 and evict 0 pages
-[ERROR] [MY-011161] [Server] Semi-sync master failed on net_flush() before waiting for slave reply.
-```
+| 로그 | 발생 일시 **이전**에 이런 내용이 있으면 | 추정 원인 |
+|---|---|---|
+| `error.log` | `No space left on device`, `Disk is full` | 스토리지 부족 |
+| `error.log` | `Page cleaner took ...ms` 반복 | 디스크 I/O 지연 |
+| `error.log` | `mysqld got signal`, InnoDB assertion 등 비정상 종료 기록 | MySQL 프로세스 비정상 종료 |
+| `slow_query.log` | 쓰기 쿼리 여러 개의 `Lock_time`이 크고 같은 시각에 끝남 | global lock |
 
-**해결 방법**
-
-장애 조치가 완료되면 Standby가 새 Primary로 승격되어 서비스가 자동으로 복구됩니다. 접속을 위한 내부 도메인의 A record가 새 Primary로 변경되므로 애플리케이션의 접속 정보를 수정할 필요는 없습니다. A record 변경에 약 3초가 소요되며, 실제 소요 시간은 클라이언트의 DNS 캐시 정책에 따라 달라질 수 있습니다.
-
-장애 조치 후 고가용성 구성을 복원하려면 다음 순서로 진행합니다.
-
-1. 장애 조치 후 기존 Primary는 Failed Over Primary 상태가 됩니다. Failed Over Primary를 복구하거나 재구축하기 전까지 장애 조치가 수행되지 않으므로, 고가용성 구성을 빠르게 복원하는 것이 중요합니다.
-2. **Failed Over Primary 복구**를 먼저 시도합니다. 데이터 정합성이 유지되었고 바이너리 로그가 유실되지 않았다면 복구에 성공합니다. DB 인스턴스 목록에서 Failed Over Primary를 선택한 뒤 드롭다운 메뉴에서 **Failed Over Primary 복구**를 클릭합니다.
-3. 복구에 실패하면 **Failed Over Primary 재구축**을 수행합니다. 재구축은 Failed Over Primary의 데이터를 모두 제거하고 새 Primary를 기반으로 다시 구성합니다.
-4. 데이터 보정이 필요한 경우 **Failed Over Primary 분리**를 선택할 수 있습니다. 분리하면 각각 독립된 DB 인스턴스로 운영되며, 분리 후에는 원래 구성으로 복구할 수 없습니다.
-5. 동일한 장애 조치가 반복되면 Standby가 위치한 장비의 통신 문제일 수 있습니다. 이 경우 고가용성을 비활성화한 뒤 다시 활성화하여 Standby를 새 장비에 재구성하거나, [NHN Cloud 고객지원](https://www.nhncloud.com/kr/support/inquiry)에 문의해 Standby 마이그레이션을 요청합니다.
+위 로그에 해당하는 내용이 없다면 네트워크나 호스트 문제일 수 있습니다. [NHN Cloud 고객지원](https://www.nhncloud.com/kr/support/inquiry)에 문의하세요.
 
 > [!NOTE]
-> RDS for MySQL에서 Primary와 Standby 간 바이너리 로그의 position 차이가 100,000,000 이상이면 장애 조치가 수행되지 않습니다. 복제 지연이 큰 상태에서는 고가용성 보호가 작동하지 않을 수 있습니다.
+> 복구와 재구축 모두 할 수 없고 기존 Primary의 데이터를 따로 보정해야 하는 경우에는 **Failed Over Primary 분리**를 선택할 수 있습니다.
+> 분리하면 두 DB 인스턴스가 각각 독립된 DB 인스턴스로 운영되며, 원래 구성으로 되돌릴 수 없습니다.
+> 재구축하려면 유효한 백업과 복원에 필요한 스토리지 여유가 있어야 합니다.
 
-### 원인 2: 장시간 쿼리·lock 경합으로 인한 헬스체크 실패
+## 추정 원인에 따른 해결 방법
 
-고가용성 감시 프로세스는 Primary의 `rds_maintenance` 데이터베이스에 주기적으로 INSERT를 수행해 상태를 확인합니다. global lock이 걸려 이 INSERT가 반복적으로 타임아웃되면 Ping 체크에 실패하고 장애 조치가 수행됩니다.
-
-실제 사례에서 고객 계정으로 `FLUSH TABLES WITH READ LOCK` 쿼리가 수행되어 global read lock이 발생했고, 고가용성 감시 계정이 `rds_maintenance` DB에 접근하지 못해 장애 조치가 발생한 패턴이 확인되었습니다.
-
-`FLUSH TABLES WITH READ LOCK` 외에도 다음과 같은 쿼리가 동일한 문제를 유발할 수 있습니다.
-
-- 대용량 테이블에 대한 장시간 DDL(`ALTER TABLE`, `CREATE INDEX` 등)
-- 오래 실행되는 트랜잭션이 점유한 lock과 다른 쿼리 사이의 경합
-- 장시간 실행되는 `mysqldump`(기본 옵션으로 `--lock-tables`가 활성화됨)
-
-**해결 방법**
-
-1. DB 인스턴스 하단 상세 화면의 **로그** 탭에서 `error.log`를 확인합니다. Ping 타임아웃 관련 메시지가 있는지, 장애 조치 발생 직전의 시간대에 어떤 로그가 남았는지 확인합니다.
-2. **서버 대시보드**에서 장애 조치 발생 시각 전후의 지표를 확인합니다. **기본 MySQL 지표** 레이아웃의 **Connection** 차트에서 **running**(활성 세션 수)이 급증했거나, **Queries Per Second** 차트에서 이상 패턴이 나타났다면 이 원인에 해당합니다.
-3. 장애 조치의 원인이 된 쿼리를 식별합니다. `FLUSH TABLES WITH READ LOCK`은 백업 도구나 복제 설정 과정에서 자동으로 수행되는 경우가 있습니다. 외부 백업 도구를 사용하고 있다면 RDS for MySQL 내장 백업 기능으로 대체하는 것을 검토합니다.
-4. 장시간 DDL은 서비스 부하가 적은 시간대에 수행하고, 작업 전에 DB 인스턴스 목록에서 Primary를 선택한 뒤 `…` 드롭다운 메뉴에서 **고가용성 일시 중지**를 클릭해 불필요한 장애 조치를 방지합니다. 작업이 끝나면 같은 메뉴에서 **고가용성 다시 시작**을 클릭합니다.
+| 추정 원인 | 해결 방법 | 비고 |
+| --- | --- | --- |
+| 스토리지 부족 | - 스토리지 크기를 늘립니다.<br>- 바이너리 로그 보관 기간을 줄이거나 불필요한 데이터를 정리합니다. | |
+| MySQL 프로세스 비정상 종료 | - 메모리 부족이 원인이면 메모리를 많이 쓰는 파라미터 값을 낮추거나 인스턴스 타입을 올립니다(예: `innodb_buffer_pool_size`, 세션별 버퍼).<br>- 메모리 부족이 아닌 비정상 종료 기록이 있으면 해당 로그를 첨부해 [NHN Cloud 고객지원](https://www.nhncloud.com/kr/support/inquiry)에 문의하세요. | |
+| 디스크 I/O 지연 | - 확인 구간에 대량 쓰기, 대용량 DDL, 데이터 마이그레이션과 같은 작업이 있었는지 확인합니다.<br>- 반복되면 스토리지 타입이나 크기의 변경을 검토합니다.<br>- 부하가 일시적이라면 Ping 간격을 늘리는 것도 방법입니다. 자세한 내용은 [문제 예방하기](#문제-예방하기)를 참고합니다. | |
+| 과부하 | - 슬로 쿼리 로그에서 확인 구간의 쿼리를 찾아 튜닝합니다.<br>- 부하가 계속 높다면 인스턴스 타입을 올리거나 읽기 복제본으로 읽기 부하를 나눕니다. | |
+| global lock | - `FLUSH TABLES WITH READ LOCK`이 실행되면 모든 쓰기가 막히고, 그 결과 감시 프로세스의 INSERT도 실패합니다.<br>- 확인 구간에 이 문을 실행하는 작업이 있었는지 확인합니다(예: 외부 백업 도구, `mysqldump --master-data`).<br>- 외부 백업 도구 대신 RDS for MySQL의 백업 기능을 사용합니다.<br>- 꼭 수행해야 하는 작업이면 Primary의 드롭다운 메뉴에서 **고가용성 일시 중지**를 클릭한 뒤 실행합니다.<br>- 작업이 끝나면 **고가용성 다시 시작**을 클릭합니다. | Ping 방식이 INSERT일 때만 해당합니다. |
 
 ## 문의하기
 
-위 방법으로 해결되지 않거나 장애 조치가 반복적으로 발생하면 [NHN Cloud 고객지원](https://www.nhncloud.com/kr/support/inquiry)에 문의하세요. 통신 장애는 인프라 측 확인이 필요한 경우가 있으며, Standby 마이그레이션 등 NHN Cloud의 조치가 필요할 수 있습니다. 문의 시 다음 정보를 함께 전달하면 빠른 진단에 도움이 됩니다.
+위 단계로 원인을 찾지 못했거나 복구에 실패했다면 [NHN Cloud 고객지원](https://www.nhncloud.com/kr/support/inquiry)에 문의하세요.
+아래 정보를 함께 보내 주시면 진단이 빨라집니다.
 
 - 장애 조치가 발생한 DB 인스턴스의 ID
-- 장애 조치가 발생한 시각(KST 기준)
-- DB 엔진 버전
-- **이벤트** 탭에 표시된 장애 조치 관련 이벤트 내용
-- **서버 대시보드**의 장애 조치 전후 시간대 지표 스크린샷
-- MySQL 에러 로그에서 장애 조치 전후의 로그(`SHOW VARIABLES LIKE 'log_error'`로 경로 확인)
-- 동일 증상의 반복 발생 여부와 발생 빈도
+- `INSTC_26_00` 이벤트 발생 일시
+- Ping 간격과 Ping 방식
+- 2단계와 3단계에서 확인한 항목과 결과(예: "지표 특이점 없음, error.log에 Page cleaner 메시지 있음")
+- 발생 일시 전 1시간의 서버 대시보드 스크린샷
+- 확인 구간의 `error.log` 내용(복구에 성공한 경우)
+- 같은 증상의 반복 여부와 발생 빈도
+- Failed Over Primary 복구 시도 여부와 결과
 
 ## 문제 예방하기
 
-- **Ping 간격을 워크로드에 맞게 조정**: DB 인스턴스 그룹 상세의 **기본 정보** 탭에서 Ping 간격을 확인할 수 있습니다. **수정**을 클릭하면 1~600초 범위에서 변경할 수 있습니다. 기본값은 3초이며, Ping 방식은 INSERT 또는 SELECT 중 선택할 수 있습니다. Ping 간격이 짧으면 일시적인 부하에도 장애 조치가 발생할 수 있으므로, I/O 부하가 높은 환경에서는 Ping 간격을 늘려 불필요한 장애 조치를 줄일 수 있습니다. 다만, Ping 간격이 너무 길면 실제 장애 감지가 늦어지므로 적절한 균형이 필요합니다.
-- **스토리지 사용량 모니터링**: Primary의 데이터 스토리지 사용량이 가득 차면 고가용성 감시 프로세스가 장애로 감지해 장애 조치를 수행합니다. DB 인스턴스 생성 시 **기본 알림**을 활성화하면 스토리지 사용량 95% 이상, 남은 사용량 5,120MB 이하 시 알림을 받을 수 있습니다. 이미 생성한 DB 인스턴스라면 **알림 그룹** 탭에서 직접 알림 그룹을 설정합니다.
-- **장시간 lock을 유발하는 쿼리 주의**: `FLUSH TABLES WITH READ LOCK`, 대용량 테이블 DDL, 장시간 `mysqldump` 등은 global lock을 유발해 헬스체크가 실패할 수 있습니다. 외부 백업 도구 대신 RDS for MySQL 내장 백업 기능을 사용하면 이 문제를 방지할 수 있습니다.
-- **장시간 작업 시 고가용성 일시 중지 활용**: 대량 INSERT, DDL 변경, 데이터 마이그레이션 등 장시간 부하가 예상되는 작업을 수행할 때는 DB 인스턴스 목록에서 Primary를 선택한 뒤 `…` 드롭다운 메뉴의 **고가용성 일시 중지**를 사용할 수 있습니다. 고가용성 일시 중지 중에는 장애를 감지하지 않으므로, 일시적인 부하로 인한 불필요한 장애 조치를 방지할 수 있습니다. 다만, 장시간 일시 중지 상태를 유지하면 실제 장애 시 보호받지 못하므로 작업이 끝나면 같은 메뉴에서 **고가용성 다시 시작**을 클릭합니다.
-
+- **슬로 쿼리 로그 활성화**: 장애가 난 뒤에는 쿼리를 확인할 수 없으므로 미리 켜 두어야 합니다.
+- **알림 그룹 설정**: CPU, 메모리, 스토리지 사용량에 알림을 걸어 두면 장애 조치로 이어지기 전에 알 수 있습니다.
+- **Ping 간격 검토**:
+  - 장애 감지에는 최소 `4 × Ping 간격`에 추가 확인 시간을 더한 만큼이 걸립니다(예: Ping 간격이 3초면 약 12~30초가 걸립니다).
+  - 간격을 늘리면 일시적인 부하로 생기는 장애 조치는 줄지만, 실제 장애를 감지하는 시간도 길어집니다.
+- **장시간 작업 전 고가용성 일시 중지**: 대량 쓰기, 대용량 DDL, 데이터 마이그레이션처럼 부하가 큰 작업은 고가용성을 일시 중지하고 수행합니다.
+  - 일시 중지 중에는 실제 장애가 나도 장애 조치가 수행되지 않습니다.
+  - 작업이 끝나면 바로 다시 시작합니다.
+- **재구축 전 문의**: 원인 분석이 필요하면 Failed Over Primary를 재구축하기 전에 [NHN Cloud 고객지원](https://www.nhncloud.com/kr/support/inquiry)에 문의하세요.
