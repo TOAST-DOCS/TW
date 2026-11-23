@@ -19,10 +19,27 @@ function formatDate(iso) {
   });
 }
 
+/**
+ * deployContext에서 가이드 publishedAt 이전 월을 제거
+ */
+function filterDeployContext(deployCtx, affectedGuides, guideMappings) {
+  if (!deployCtx || deployCtx.length === 0 || !affectedGuides || affectedGuides.length === 0) return deployCtx || [];
+  const publishDates = affectedGuides
+    .map((g) => {
+      const mapping = guideMappings.find((m) => m.guide === g.guide);
+      return mapping && mapping.publishedAt ? mapping.publishedAt.substring(0, 7) : null;
+    })
+    .filter(Boolean);
+  if (publishDates.length === 0) return deployCtx;
+  const cutoffMonth = publishDates.sort().pop();
+  return deployCtx.filter((ctx) => ctx.month > cutoffMonth);
+}
+
 function renderPage() {
   const tasks = loadJSON(config.DOORAY_TASKS_FILE, { fetchedAt: null, tasks: [] });
   const gheUpdates = loadJSON(config.RESULTS_FILE, { lastPoll: null, heartbeat: null, changes: [], history: [] });
   const resolved = loadJSON(config.RESOLVED_FILE, { resolved: [] });
+  const guideMapping = loadJSON(config.GUIDE_MAPPING_FILE, { mappings: [] });
 
   const resolvedGuideKeys = new Set((resolved.resolved || []).map((r) => r.updateId + '::' + (r.guide || '')));
 
@@ -407,7 +424,7 @@ footer { margin-top: 32px; text-align: center; font-size: 14px; color: var(--tex
   <div class="maint-section">
     ${pendingGheChanges.map((c) => {
       const assigneeList = (c.affectedGuides || []).map((g) => g.assignee).join(',');
-      const deployCtx = c.deployContext || [];
+      const deployCtx = filterDeployContext(c.deployContext, c.affectedGuides, guideMapping.mappings);
       return `
     <div class="maint-card" data-update-id="${esc(c.id)}" data-assignees="${esc(assigneeList)}">
       <div><span class="source ghe">cloud-docs</span><span class="repo">${esc(c.repo)}</span></div>
