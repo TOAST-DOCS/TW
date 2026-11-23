@@ -28,15 +28,31 @@ function findAffectedGuides(repoName, mappings) {
 /**
  * GHE 변경의 서비스와 매칭되는 배포 사항 텍스트 조회
  */
-function findDeployContext(repoName, guideMapping, deployNotes) {
+function findDeployContext(repoName, guideMapping, deployNotes, affectedGuides) {
   // 리포 → 서비스명 역매핑
   const services = guideMapping.mappings
     .filter((m) => m.repos.includes(repoName))
     .map((m) => m.service.toLowerCase());
   if (services.length === 0 || !deployNotes.months) return [];
 
+  // 영향받는 가이드 중 가장 최근 publishedAt을 기준으로 이후 월만 포함
+  let cutoffMonth = null;
+  if (affectedGuides && affectedGuides.length > 0) {
+    const publishDates = affectedGuides
+      .map((g) => {
+        const mapping = guideMapping.mappings.find((m) => m.guide === g.guide);
+        return mapping && mapping.publishedAt ? mapping.publishedAt.substring(0, 7) : null;
+      })
+      .filter(Boolean);
+    if (publishDates.length > 0) {
+      cutoffMonth = publishDates.sort().pop(); // 가장 최근 배포 월
+    }
+  }
+
   const contexts = [];
   for (const month of deployNotes.months) {
+    // cutoffMonth 이전 월은 건너뜀 (가이드 배포 시점에 이미 반영된 내용)
+    if (cutoffMonth && month.month <= cutoffMonth) continue;
     for (const svc of month.services) {
       if (services.some((s) => s.includes(svc.service.toLowerCase()) || svc.service.toLowerCase().includes(s))) {
         contexts.push({ month: month.month, service: svc.service, changes: svc.changes });
@@ -97,7 +113,7 @@ async function pollGHE(guideMapping, guides, deployNotes) {
           ? analysisResults
           : findAffectedGuides(repoName, guideMapping.mappings);
 
-        const deployContext = findDeployContext(repoName, guideMapping, deployNotes);
+        const deployContext = findDeployContext(repoName, guideMapping, deployNotes, affected);
         changes.push({
           id: `ghe-${repoName}-${Date.now()}`,
           source: 'ghe',
@@ -530,25 +546,25 @@ async function runGHE() {
   existing.changes = gheResult.changes;
   saveJSON(config.RESULTS_FILE, existing);
 
-  // 6. 변경 관리 알림 발송
-  await notifyUpdates(gheResult.changes, deployResult, resolved);
-
-  // 7. 7일 경과 미처리 건 리마인드
+  // 6. 7일 경과 미처리 건 리마인드 (사이트 생성 전에 데이터 반영)
   const remindCount = await sendReminders(existing, resolved);
   if (remindCount > 0) {
     saveJSON(config.RESULTS_FILE, existing);
     console.log(`  Sent ${remindCount} reminder(s)`);
   }
 
-  // 8. PR 상태 추적
+  // 7. PR 상태 추적
   const prUpdated = await checkPrStatuses(resolved);
   if (prUpdated > 0) {
     console.log(`  Updated ${prUpdated} PR status(es)`);
   }
 
-  // 9. 사이트 생성
+  // 8. 사이트 생성 (알림 발송 전에 완료 — 웹훅 링크 클릭 시 최신 사이트가 보이도록)
   const sitePath = generateSite();
   console.log(`  Site generated: ${sitePath}`);
+
+  // 9. 변경 관리 알림 발송 (사이트 생성 후 발송)
+  await notifyUpdates(gheResult.changes, deployResult, resolved);
 
   console.log(`[${new Date().toISOString()}] GHE poll complete. ${gheResult.changes.length} GHE changes.`);
 }
