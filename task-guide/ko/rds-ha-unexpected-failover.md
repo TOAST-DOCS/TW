@@ -6,8 +6,7 @@
 - 기존 Primary는 Failed Over Primary가 되고, Standby가 새 Primary가 됩니다.
 - 장애 조치가 진행되는 동안 애플리케이션 연결이 끊깁니다.
 
-> 📐 **다이어그램**: `#image_output/rds-ha-unexpected-failover-diagnosis-flow.svg`
-> 게시 시에는 이 안내를 삭제하고 이미지로 교체합니다.
+[예기치 않은 장애 조치 발생 시 진단 흐름도](rds-ha-unexpected-failover-diagnosis-flow)
 
 ## 원인 확인 전 알아두기
 
