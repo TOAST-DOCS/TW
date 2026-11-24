@@ -714,6 +714,71 @@ async function onGuideCheck(checkbox) {
   }
 }
 
+// === 페이지 로드 시 resolved 상태 동기화 ===
+(async function syncResolved() {
+  const pat = localStorage.getItem('gh-pat');
+  if (!pat) return;
+
+  try {
+    const headers = { Authorization: 'token ' + pat, Accept: 'application/vnd.github+json' };
+    const res = await fetch('https://api.github.com/repos/' + GH_REPO + '/contents/' + RESOLVED_PATH, { headers });
+    if (!res.ok) return;
+
+    const data = await res.json();
+    const resolved = JSON.parse(atob(data.content));
+    const resolvedKeys = new Set((resolved.resolved || []).map(r => r.updateId + '::' + (r.guide || '')));
+    if (resolvedKeys.size === 0) return;
+
+    // 1. 체크박스 복원
+    document.querySelectorAll('.guide-check input[type="checkbox"]').forEach(cb => {
+      const key = cb.dataset.updateId + '::' + cb.dataset.guide;
+      if (resolvedKeys.has(key) && !cb.checked) {
+        cb.checked = true;
+        cb.disabled = true;
+        const label = cb.nextElementSibling;
+        if (label) label.classList.add('checked');
+      }
+    });
+
+    // 2. 모든 가이드가 resolved된 카드 숨김
+    document.querySelectorAll('.maint-card').forEach(card => {
+      const checks = card.querySelectorAll('input[type="checkbox"]');
+      if (checks.length > 0 && [...checks].every(c => c.checked)) {
+        card.classList.add('all-checked');
+      }
+    });
+
+    // 3. 카운트 재계산
+    const visibleCards = document.querySelectorAll('.maint-card:not(.all-checked)').length;
+    // 요약 바 카운트
+    document.querySelectorAll('.gs-value').forEach(el => {
+      if (el.closest('.gs-item') && el.closest('.gs-item').textContent.includes('변경 관리')) {
+        el.textContent = visibleCards;
+        el.className = 'gs-value ' + (visibleCards > 0 ? 'danger' : 'success');
+      }
+    });
+    // 탭 배지
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      if (btn.dataset.tab === 'maintenance') {
+        const badge = btn.querySelector('.tab-badge');
+        if (visibleCards > 0) {
+          if (badge) { badge.textContent = visibleCards; }
+          else { btn.insertAdjacentHTML('beforeend', ' <span class="tab-badge">' + visibleCards + '</span>'); }
+        } else {
+          if (badge) badge.remove();
+        }
+      }
+    });
+    // 빈 상태 표시
+    if (visibleCards === 0 && !document.querySelector('#tab-maintenance .empty-state')) {
+      const section = document.querySelector('#tab-maintenance .maint-section');
+      if (section) section.insertAdjacentHTML('beforebegin', '<div class="empty-state"><div class="icon">&#10003;</div><p>변경 관리가 필요한 항목이 없습니다.</p></div>');
+    }
+  } catch (e) {
+    // 동기화 실패는 무시 — 다음 로드 시 재시도
+  }
+})();
+
 // === 완료 열 연도별 접기/펼치기 ===
 document.querySelectorAll('.year-toggle').forEach(btn => {
   btn.addEventListener('click', () => {
