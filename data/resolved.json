@@ -1,3 +1,12 @@
 {
-  "resolved": []
+  "resolved": [
+    {
+      "updateId": "ghe-Monitoring-Cloud-Monitoring-1795473729339",
+      "guide": "task-guide/ko/cloud-monitoring-alarm-policy.md",
+      "resolution": "no-change",
+      "reason": "대시보드에서 확인 완료 (수정 불필요)",
+      "resolvedBy": "대시보드",
+      "resolvedAt": "2026-11-24T00:08:24.283Z"
+    }
+  ]
 }
