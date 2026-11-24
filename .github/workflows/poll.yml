@@ -50,9 +50,39 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config core.autocrlf false
+
+          # 1. Check if poll produced any changes
           git add data/ docs/
-          $exitCode = 0; git diff --cached --quiet; if ($LASTEXITCODE -eq 0) { exit 0 }
+          git diff --cached --quiet
+          if ($LASTEXITCODE -eq 0) { Write-Host "No changes to commit"; exit 0 }
+
+          # 2. Check if resolved.json was modified by poll (checkPrStatuses)
+          git diff --cached --quiet -- data/resolved.json
+          $resolvedChanged = ($LASTEXITCODE -ne 0)
+
+          # 3. Save poll results to temp
+          $tmp = Join-Path $env:RUNNER_TEMP "poll-output"
+          New-Item "$tmp\data" -ItemType Directory -Force | Out-Null
+          New-Item "$tmp\docs" -ItemType Directory -Force | Out-Null
+          Copy-Item "data\*" "$tmp\data\" -Recurse -Force
+          Copy-Item "docs\*" "$tmp\docs\" -Recurse -Force
+
+          # 4. Reset to origin latest (preserves resolved.json from teammates)
+          git fetch origin master
+          git reset --hard origin/master
+
+          # 5. Restore poll results (resolved.json excluded)
+          Copy-Item "$tmp\data\*" "data\" -Recurse -Force -Exclude "resolved.json"
+          Copy-Item "$tmp\docs\*" "docs\" -Recurse -Force
+
+          # 6. Merge resolved.json if poll modified it (PR status updates only)
+          if ($resolvedChanged) {
+            node src/merge-resolved.js "$tmp\data\resolved.json" "data\resolved.json"
+          }
+
+          # 7. Commit and push
+          git add data/ docs/
+          git diff --cached --quiet
+          if ($LASTEXITCODE -eq 0) { Write-Host "No effective changes"; exit 0 }
           git commit -m "chore: update dashboard data [skip ci]"
-          git checkout "--" "."
-          git pull --rebase
           git push

@@ -179,47 +179,73 @@ async function pollDeployNotes() {
 }
 
 /**
- * 변경 관리 알림 발송
+ * 변경 관리 알림 발송 — 전체 변경을 단일 요약 메시지로 발송
  */
 async function notifyUpdates(gheChanges, deployNotes, resolved) {
   const resolvedKeys = new Set(
     (resolved.resolved || []).map((r) => r.updateId + '::' + (r.guide || ''))
   );
 
+  // 미처리 건이 있는 리포만 수집
+  const pendingRepos = [];
+  let totalGuides = 0;
   for (const change of gheChanges) {
     if (change.affectedGuides.length === 0) continue;
     const pendingGuides = change.affectedGuides.filter(
       (g) => !resolvedKeys.has(change.id + '::' + g.guide)
     );
     if (pendingGuides.length === 0) continue;
+    pendingRepos.push({ change, pendingGuides });
+    totalGuides += pendingGuides.length;
+  }
 
-    const guideLines = pendingGuides.map((g) => {
-      if (g.matches && g.matches.length > 0) {
-        const kwList = g.matches.map((m) => m.keyword).join(', ');
-        return `• ${g.title} (담당: ${g.assignee})\n  → 변경 diff에서 [${kwList}] 키워드가 확인되었으며, 해당 가이드에서도 동일 키워드를 포함하고 있어 변경 필요 여부를 확인해 주세요.`;
-      }
-      return `• ${g.title} (담당: ${g.assignee})\n  → 동일 서비스의 문서가 변경되었습니다. 가이드 내용에 영향이 있는지 확인해 주세요.`;
-    });
+  if (pendingRepos.length === 0) return;
 
-    // 배포 사항 컨텍스트가 있으면 포함
+  // 리포별 블록 조립
+  const MAX_MSG_LEN = 3800;
+  const repoBlocks = [];
+  for (const { change, pendingGuides } of pendingRepos) {
+    const lines = [`■ ${change.repo} (변경 파일 ${change.mdChanges}개)`];
+
     const ctxLines = (change.deployContext || []).map(
       (ctx) => `  📌 [${ctx.month} 배포 사항] ${ctx.changes.substring(0, 100)}`
     );
+    if (ctxLines.length > 0) lines.push(...ctxLines);
 
-    const message = [
-      '📋 [실전 가이드 변경 관리 확인 요청]',
-      '',
-      `${change.repo} 리포지터리에서 ko/ 디렉터리 내 ${change.mdChanges}개 파일이 변경되었습니다.`,
-      ...(ctxLines.length > 0 ? ['', '관련 배포 사항:', ...ctxLines] : []),
-      '',
-      '확인이 필요한 가이드:',
-      ...guideLines,
-      '',
-      `👉 대시보드에서 상세 확인: ${config.DASHBOARD_URL}`,
-    ].join('\n');
-
-    await sendWebhook(message);
+    for (const g of pendingGuides) {
+      if (g.matches && g.matches.length > 0) {
+        const kwList = g.matches.map((m) => m.keyword).join(', ');
+        lines.push(`  • ${g.title} (담당: ${g.assignee})`);
+        lines.push(`    → [${kwList}] 키워드 일치, 변경 필요 여부 확인 필요`);
+      } else {
+        lines.push(`  • ${g.title} (담당: ${g.assignee})`);
+        lines.push(`    → 동일 서비스 문서 변경, 가이드 영향 확인 필요`);
+      }
+    }
+    repoBlocks.push(lines.join('\n'));
   }
+
+  // 메시지 조립 (길이 초과 시 말줄임)
+  const header = [
+    '📋 [실전 가이드 변경 관리 확인 요청]',
+    '',
+    `${pendingRepos.length}개 리포지터리에서 변경이 감지되어 ${totalGuides}건의 가이드 확인이 필요합니다.`,
+    '',
+  ].join('\n');
+  const footer = `\n\n👉 대시보드에서 상세 확인: ${config.DASHBOARD_URL}`;
+
+  let body = '';
+  for (let i = 0; i < repoBlocks.length; i++) {
+    const candidate = body + (body ? '\n\n' : '') + repoBlocks[i];
+    if ((header + candidate + footer).length > MAX_MSG_LEN) {
+      const remaining = repoBlocks.length - i;
+      body += `\n\n... 외 ${remaining}개 리포지터리 (대시보드에서 확인)`;
+      break;
+    }
+    body = candidate;
+  }
+
+  await sendWebhook(header + body + footer);
 }
 
 /**
@@ -236,41 +262,48 @@ async function sendReminders(gheUpdates, resolved) {
   const now = Date.now();
   const SEVEN_DAYS = 7 * 24 * 60 * 60 * 1000;
   const newReminded = [];
+  const pendingRepos = [];
 
   const allChanges = (gheUpdates.history || []).flatMap((h) => h.changes || []);
 
   for (const change of allChanges) {
     if (!change.affectedGuides || change.affectedGuides.length === 0) continue;
-    if (reminded.has(change.id)) continue; // 이미 리마인드 발송함
+    if (reminded.has(change.id)) continue;
 
     const detected = new Date(change.detectedAt).getTime();
-    if (now - detected < SEVEN_DAYS) continue; // 7일 미경과
+    if (now - detected < SEVEN_DAYS) continue;
 
-    // 미처리 가이드만 필터
     const pending = change.affectedGuides.filter(
       (g) => !resolvedKeys.has(change.id + '::' + g.guide)
     );
-    if (pending.length === 0) continue; // 전부 처리됨
+    if (pending.length === 0) continue;
 
-    const guideLines = pending.map((g) =>
-      `• ${g.title} (담당: ${g.assignee})`
-    );
+    pendingRepos.push({ change, pending });
+    newReminded.push(change.id);
+    console.log(`  [REMIND] ${change.repo}: ${pending.length}건 미처리`);
+  }
+
+  // 단일 요약 메시지 발송
+  if (pendingRepos.length > 0) {
+    const totalGuides = pendingRepos.reduce((sum, r) => sum + r.pending.length, 0);
+    const repoBlocks = pendingRepos.map(({ change, pending }) => {
+      const guideLines = pending.map((g) => `  • ${g.title} (담당: ${g.assignee})`);
+      return `■ ${change.repo} (감지 후 7일 경과)\n${guideLines.join('\n')}`;
+    });
+
     const message = [
       '🔔 [변경 관리 리마인드]',
       '',
-      `${change.repo} 리포지터리 변경 감지 후 7일이 경과했으나 아직 확인되지 않은 가이드가 있습니다.`,
+      `${pendingRepos.length}개 리포지터리에서 변경 감지 후 7일이 경과했으나 확인되지 않은 가이드가 ${totalGuides}건 있습니다.`,
       '',
-      ...guideLines,
+      repoBlocks.join('\n\n'),
       '',
       `👉 대시보드에서 확인: ${config.DASHBOARD_URL}`,
     ].join('\n');
 
     await sendWebhook(message);
-    newReminded.push(change.id);
-    console.log(`  [REMIND] ${change.repo}: ${pending.length}건 미처리`);
   }
 
-  // 리마인드 이력 저장 (중복 발송 방지)
   if (newReminded.length > 0) {
     gheUpdates._reminded = [...(gheUpdates._reminded || []), ...newReminded];
   }
