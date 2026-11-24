@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-11-23T23:25:27.669Z",
+  "fetchedAt": "2026-11-24T23:51:14.788Z",
   "months": [
     {
       "month": "2026-11",
@@ -7,38 +7,123 @@
       "title": "[2026.11] NHN Cloud 주요 배포 사항입니다.",
       "services": [
         {
-          "service": "EventBus",
-          "changes": "* EventBus 서비스 출시",
+          "service": "콘솔 개편",
+          "changes": "* 사용자 편의 기능을 도입하고, 서비스/메뉴/리소스 접근을 효율적으로 할 수 있도록 UX 개선 * 메뉴 구조 개선 * 편의 기능 추가 * 즐겨찾기 * 최근 방문 * 통합 검색 * 조직 홈 / 프로젝트 홈 개편 * 콘솔 디자인 개편",
           "releaseNoteUrl": ""
         },
         {
-          "service": "Instance",
-          "changes": "* 즐겨찾기를 프로젝트 단위 공용 관리에서 사용자별 관리로 변경 (기존 즐겨찾기는 프로젝트 내 사용자 즐겨찾기로 이전)",
+          "service": "Instance Template",
+          "changes": "* 인스턴스 템플릿 버전 기능 추가(인스턴스, 스케일링 그룹 생성 시 템플릿 버전 선택)",
           "releaseNoteUrl": ""
         },
         {
-          "service": "KakaoTalk Bizmessage",
-          "changes": "* 비즈니스폼 버튼 및 업로드 지원 종료(카카오 비즈니스폼 서비스 종료) * 알림톡·브랜드 메시지 템플릿 등록·수정 시 비즈니스폼 버튼 사용 불가 * 기존 비즈니스폼 버튼 템플릿 2026년 12월 8일부터 발송 실패 처리 * 대체 발송 설정 시 SMS/LMS/MMS 발송 및 요금 부과",
+          "service": "Auto Scale",
+          "changes": "* 멤버 인스턴스를 스케일링 그룹의 현재 템플릿 버전으로 교체하는 기능 추가 * 감축 시 먼저 삭제할 인스턴스 기준 선택 및 멤버 인스턴스별 감축 보호 설정 기능 추가 * 스케일링 그룹 하나에 지표 정책과 스케줄 정책을 여러 개 추가하도록 개선 * 개편 내용은 한국(판교), 한국(평촌), 한국(광주) 리전에만 적용",
+          "releaseNoteUrl": ""
+        },
+        {
+          "service": "Cloud Functions",
+          "changes": "* Public API v1.0 권한을 API별로 세분화(기존 사용자는 ADMIN 역할로 변경 없이 이용 가능) * 콘솔의 함수 복사 기능 제공 종료",
+          "releaseNoteUrl": ""
+        },
+        {
+          "service": "NHN Kubernertes Service(NKS)",
+          "changes": "* Kubernetes v1.36.4 지원 * 플랫폼 버전 1.202611.0 추가(Kubernetes 호환 버전 v1.32\\~v1.36) * Kubernetes v1.34 이상 워커 노드에서 hosts.toml 레지스트리 설정이 이미지 pull에 적용되지 않는 문제 수정",
+          "releaseNoteUrl": ""
+        },
+        {
+          "service": "Load Balancer",
+          "changes": "* 리스너 헤더 설정 기능 추가(멤버로 보내는 요청에 헤더 추가, 같은 이름의 클라이언트 헤더는 로드 밸런서 값으로 덮어씀) * 인증서 자동 갱신 기능 추가(Certificate Manager 인증서를 사용하는 TERMINATED\\_HTTPS 리스너) * 프록시 프로토콜 v2 기능 추가(TCP, HTTPS 리스너) * 멤버 그룹별 멤버 타임아웃 설정 기능 ",
           "releaseNoteUrl": ""
         },
         {
           "service": "NAS",
-          "changes": "* 볼륨 복제 강제 중지 기능 추가 (복제 중지 진행 중에도 요청 가능) * 볼륨 복제 설정·시작·방향 변경 시 수신 볼륨 용량 검증 추가 * 복제 방향 변경을 복제 중지 상태에서만 가능하도록 변경 * 볼륨 사용 현황·복제 상태에 크기·복제 작업·용량 정보 추가",
+          "changes": "* 볼륨 복제 강제 중지 기능 추가 * 볼륨 사용 현황에 볼륨 크기와 데이터 저장 공간 크기 정보 추가 * 복제 상태에 진행 중인 복제 작업과 복제 용량 정보 추가 * 볼륨 복제 용량 검증 추가(데이터를 받는 볼륨이 보내는 볼륨보다 작으면 복제 불가) * 복제 방향 변경은 복제가 중지된 상태에서만 가능하도록 변경",
           "releaseNoteUrl": ""
         },
         {
           "service": "Object Storage",
-          "changes": "* (콘솔·API) 스토리지 계정당 컨테이너 최대 2,000개 제한 정책 추가 * (API) 스토리지 계정당 초당 5,000건 초과 읽기 요청 제한 정책 추가 * (콘솔) 복제 설정 화면에서 대상 컨테이너 바로 생성 기능 추가 * (콘솔) 복제 탭에서 복제 대기 이벤트 수 조회 기능 추가",
-          "releaseNoteUrl": ""
-        },
-        {
-          "service": "RDS for MariaDB",
-          "changes": "* 트랜잭션 로그 아카이빙 및 API v4.0 추가 * 장애 조치 진행 상황 표시 및 되돌리기 기능 추가 * DB 인스턴스 목록을 그룹 단위 표시로 변경 * 버그 수정 5건",
+          "changes": "* (콘솔, API) 스토리지 계정당 컨테이너 최대 2,000개 제한 정책 추가 * (콘솔) 복제 설정 화면에서 대상 컨테이너 생성 기능 추가(동일 프로젝트인 경우) * (콘솔) 복제 탭에서 복제 대기 중인 이벤트 수 조회 기능 추가 * (API) 스토리지 계정 단위 초당 5,000건 초과 읽기 요청에 대한 속도 제한 정책 추가",
           "releaseNoteUrl": ""
         },
         {
           "service": "RDS for MySQL",
-          "changes": "* (MySQL 8.4.13) 트랜잭션 로그 아카이빙 기능 추가, 시점 복원 지원 * API v4.0 추가, 아카이빙 설정·복원 구간 조회 API 제공 * 장애 조치 진행 상황 표시 및 되돌리기 기능 추가 * 버그 수정 3건, 바이너리 로그 미삭제·증분 백업 실패 등 수정",
+          "changes": "* MySQL 8.4.13 버전 추가 * 트랜잭션 로그 아카이빙 기능 추가(바이너리 로그를 Object Storage에 보관해 시점 복원에 사용, 보존 기간 1\\~35일) * API v4.0 추가(트랜잭션 로그 아카이빙 활성화/비활성화, DB 인스턴스 복원 가능 구간 조회) * 장애 조치 진행 상황 표시 및 장애 조치 되돌리기 기능 추가 * 기본 모니터링에",
+          "releaseNoteUrl": ""
+        },
+        {
+          "service": "RDS for MariaDB",
+          "changes": "* 트랜잭션 로그 아카이빙 기능 추가(바이너리 로그를 Object Storage에 보관해 시점 복원에 사용, 보존 기간 1\\~35일) * API v4.0 추가(트랜잭션 로그 아카이빙 활성화/비활성화, DB 인스턴스 복원 가능 구간 조회) * 장애 조치 진행 상황 표시 및 장애 조치 되돌리기 기능 추가 * 기본 모니터링에 Storage 상세 차트 추가 * D",
+          "releaseNoteUrl": ""
+        },
+        {
+          "service": "EasyCache",
+          "changes": "* Valkey 8.0.11, 8.1.10, 9.0.6, 9.1.2 지원 * 엔진 버전 업그레이드 시 업그레이드할 버전을 선택하는 기능 추가 * 고가용성 제어 노드의 시스템 지표 제공 * Valkey 9.1 이상 캐시의 ACL 표현식에 데이터베이스 단위 규칙 입력 지원 * CPU 사용률 지표에서 디스크 I/O 대기 시간 제외 * 캐시 생성 실패, 이벤트 구",
+          "releaseNoteUrl": ""
+        },
+        {
+          "service": "Cloud Monitoring",
+          "changes": "* 지표 조회 가능 서비스에 EventBus 추가(대시보드에서 지표 확인)",
+          "releaseNoteUrl": ""
+        },
+        {
+          "service": "Gamebase",
+          "changes": "* (Android) 렌더링 해상도를 낮추는 기능이 적용된 기기에서 약관 상세 화면이 크게 표시되어 일부가 잘리던 현상 수정 * (Unity: Windows, macOS, WebGL) 내부 로직 개선 * (Unity: Windows, macOS) CoreCLR 스크립팅 백엔드 지원 * (Unity: Windows, macOS, WebGL) 이용 정지 게임 ",
+          "releaseNoteUrl": ""
+        },
+        {
+          "service": "NHN AppGuard",
+          "changes": "* (iOS) 초기화 전에 설정한 User ID가 정상 반영되지 않는 문제 수정 * (iOS) 앱증명 처리 성능 최적화로 응답 속도 개선 * (iOS) Unreal 앱 및 앱증명 요청 타임아웃 시 비정상 종료가 발생할 수 있는 문제 수정 * (Unity, Unreal) iOS SDK 1.6.2 업데이트",
+          "releaseNoteUrl": ""
+        },
+        {
+          "service": "Secure Key Manager",
+          "changes": "* 인증서 파일(PKCS12)의 기본 암호화 알고리즘을 AES-256, SHA-256으로 변경하고, 인증서 발급 시 레거시(3DES/RC2) 방식 선택 옵션 추가 * 인증서 상세 정보 창에서 비밀번호를 가린 상태로 표시(표시 아이콘 클릭 시 확인)",
+          "releaseNoteUrl": ""
+        },
+        {
+          "service": "Notification Hub",
+          "changes": "* (콘솔) 발신 번호 등록 개수 제한 변경(조직 소유자 계정당 무선 1개, 유선 1개) * (콘솔) 발신 번호 사용 인증을 조직 관리자 메일 승인에서 발송 전 본인 인증으로 변경 * (API, 콘솔) 브랜드 메시지 자유 양식 발송 시 그룹 태그 키(groupTagKey) 지정 기능 추가",
+          "releaseNoteUrl": ""
+        },
+        {
+          "service": "SMS",
+          "changes": "* (콘솔) 발신 번호 등록 개수 제한 변경(조직 소유자 계정당 무선 1개, 유선 1개)",
+          "releaseNoteUrl": ""
+        },
+        {
+          "service": "Email",
+          "changes": "* (콘솔) 템플릿 관리 화면에 템플릿 ID 검색 추가 * (API) v1.5, v1.6, v1.7 API에 Secret Key 설정 기능과 Secret Key 확인 응답 헤더(X-Secret-Key-Verified) 추가",
+          "releaseNoteUrl": ""
+        },
+        {
+          "service": "KakaoTalk Bizmessage",
+          "changes": "* (API) 브랜드 메시지 자유형 bulk 발송 API 추가(수신자마다 다른 본문으로 한 번에 발송) * (API, 콘솔) 카카오 비즈니스폼 서비스 종료에 따라 비즈니스폼 버튼과 업로드 지원 종료(기존 비즈니스폼 버튼 템플릿은 2026년 12월 8일부터 발송 실패 처리) * (API, 콘솔) 브랜드 메시지, 친구톡 광고 메시지를 LMS/MMS로 대체 발송",
+          "releaseNoteUrl": ""
+        },
+        {
+          "service": "NHN Cloud Foundry",
+          "changes": "* (추천) 서빙 탭에 학습 완료 후 자동 배포 스위치 추가, 모델과 학습본을 서빙과 별개로 삭제 가능(서빙 중인 학습본은 삭제 불가) * (이상탐지·분석) 단변량 이상탐지 차트 기능 추가 * (콘솔) 전 메뉴 화면 개편 * (API) 앱 생성 시 콘솔과 같은 기준으로 클러스터에 자리가 없으면 생성 거절",
+          "releaseNoteUrl": ""
+        },
+        {
+          "service": "DataFlow",
+          "changes": "* CloudTrail 이벤트에 기록되는 일부 항목(인증 정보 등)을 마스킹하여 표시 * (NHN Cloud) Log \\& Crash Search 노드에 지연 윈도우 속성 추가 * 임시 저장된 플로우를 실행할 수 없도록 수정",
+          "releaseNoteUrl": ""
+        },
+        {
+          "service": "Pipeline",
+          "changes": "* Helm 릴리스 관리 신규 스테이지 추가(Helm Deploy, Helm Rollback, Helm Delete) * 스테이지 설정의 Dry Run 실행으로 실제 반영 전에 설정 검증 가능",
+          "releaseNoteUrl": ""
+        },
+        {
+          "service": "Certificate Manager",
+          "changes": "* (API v1.1, v1.3) 인증서 파일 교체 API 추가",
+          "releaseNoteUrl": ""
+        },
+        {
+          "service": "Public API",
+          "changes": "* (프레임워크 API) 서비스 비밀 키 재발급, 서비스 이전 비밀 키 만료 API 추가 * (프레임워크 API) 프로젝트에서 사용 중인 서비스 조회 API 응답에 이전 비밀 키(prevSecretKey) 추가",
           "releaseNoteUrl": ""
         }
       ]
