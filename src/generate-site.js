@@ -272,7 +272,10 @@ footer { margin-top: 32px; text-align: center; font-size: 14px; color: var(--tex
 <body>
 <div class="container">
   <header>
-    <h1>NHN Cloud 실전 가이드 작업 대시보드</h1>
+    <div>
+      <h1>NHN Cloud 실전 가이드 작업 대시보드</h1>
+      <p style="font-size:13px;color:var(--text-muted);margin-top:2px;">NHN Cloud 에셋파트</p>
+    </div>
     <div class="header-links">
       <a href="https://nhncloud.gitbook.io/partner" target="_blank" class="btn">실전 가이드</a>
       <a href="https://nhncorp.dooray.com/project/tasks/4254576973479504167" target="_blank" class="btn">월별 주요 배포 사항</a>
@@ -465,7 +468,7 @@ footer { margin-top: 32px; text-align: center; font-size: 14px; color: var(--tex
 
   </div><!-- /tab-maintenance -->
 
-  <footer><span id="gh-footer-status"></span> · 평일 09:00 KST 자동 갱신 · 마지막 갱신: ${formatDate(tasks.fetchedAt || gheUpdates.lastPoll)} · 마지막 생성: ${formatDate(new Date().toISOString())}</footer>
+  <footer><span id="gh-footer-status"></span> · 평일 09:00 KST 자동 갱신 · 마지막 갱신: ${formatDate(tasks.fetchedAt || gheUpdates.lastPoll)}</footer>
 </div>
 
 <script>
