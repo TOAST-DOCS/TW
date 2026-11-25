@@ -1,6 +1,6 @@
 {
   "_comment": "GHE cloud-docs 리포지터리 ↔ task-guide/ko/ 가이드 파일 매핑",
-  "_updated": "2026-11-19",
+  "_updated": "2026-11-25",
   "mappings": [
     {
       "guide": "task-guide/ko/cloud-functions-serverless-deploy.md",
@@ -39,7 +39,7 @@
       "repos": [
         "Gamebase"
       ],
-      "assignee": "미지정",
+      "assignee": "이종민",
       "publishedAt": "2026-09-17"
     },
     {
@@ -126,7 +126,7 @@
       "repos": [
         "Storage-Object-Storage"
       ],
-      "assignee": "이창훈",
+      "assignee": "하수진",
       "publishedAt": "2026-09-08"
     },
     {
@@ -179,7 +179,7 @@
         "Compute-Image",
         "Compute-Instance"
       ],
-      "assignee": "미정",
+      "assignee": "하수진",
       "publishedAt": "2026-10-14"
     },
     {
