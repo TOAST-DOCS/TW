@@ -321,6 +321,28 @@ function syncGuideMapping(guideMapping, doorayTasks, discoveredRepos) {
   const existingGuides = new Set(mappings.map((m) => m.guide));
   const existingTitles = new Set(mappings.map((m) => m.title.toLowerCase()));
 
+  // --- 기존 매핑의 assignee를 두레이 태스크 담당자와 동기화 ---
+  let synced = 0;
+  for (const m of mappings) {
+    const task = doorayTasks.find((t) => {
+      const cleanTitle = t.title.replace(/^\[(How-to|Troubleshooting)\]\s*/, '').trim();
+      return cleanTitle.toLowerCase() === m.title.toLowerCase();
+    });
+    if (!task || task.assignees.length === 0) continue;
+    const doorayAssignee = task.assignees[0];
+    if (m.assignee !== doorayAssignee) {
+      console.log(`  [SYNC] ${m.title}: "${m.assignee}" → "${doorayAssignee}"`);
+      m.assignee = doorayAssignee;
+      synced++;
+    }
+  }
+  if (synced > 0) {
+    guideMapping._updated = new Date().toISOString().slice(0, 10);
+    const p = path.resolve(__dirname, '..', config.GUIDE_MAPPING_FILE);
+    fs.writeFileSync(p, JSON.stringify(guideMapping, null, 2), 'utf-8');
+    console.log(`  [SYNC] ${synced} assignee(s) updated from Dooray tasks`);
+  }
+
   // 서비스→repos 룩업 테이블 (기존 매핑에서 구축)
   const serviceRepoMap = {};
   for (const m of mappings) {
@@ -519,6 +541,10 @@ async function runDooray() {
   console.log(`[${new Date().toISOString()}] Dooray poll started`);
 
   const doorayResult = await pollDoorayTasks();
+
+  // 두레이 담당자 → guide-mapping assignee 동기화
+  const guideMapping = loadGuideMapping();
+  syncGuideMapping(guideMapping, doorayResult.tasks, []);
 
   const sitePath = generateSite();
   console.log(`  Site generated: ${sitePath}`);
