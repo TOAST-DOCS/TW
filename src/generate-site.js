@@ -447,7 +447,7 @@ footer { margin-top: 32px; text-align: center; font-size: 14px; color: var(--tex
             ${esc(g.title)} <span style="color:var(--text-muted)">(${esc(g.assignee)})</span>
             <div class="check-info">${desc}</div>
           </label>
-          <button class="btn btn-primary btn-sm" onclick="onStartUpdate(this)" data-source="ghe" data-service="${esc(c.repo)}" data-summary="${esc(c.files ? c.files.map((f) => f.filename).join(', ') : '')}" data-patches="${esc(JSON.stringify((c.files || []).map((f) => ({ filename: f.filename, patch: f.patch || '' }))))}" data-diff-url="${esc(c.compareUrl || '')}" data-keywords="${esc(kwStr)}" data-update-id="${esc(c.id)}" data-guide="${esc(g.guide)}" data-guide-title="${esc(g.title)}" data-guide-assignee="${esc(g.assignee)}">현행화 프롬프트 복사</button>
+          <button class="btn btn-primary btn-sm" onclick="onStartUpdate(this)" data-source="ghe" data-service="${esc(c.repo)}" data-summary="${esc(c.files ? c.files.map((f) => f.filename).join(', ') : '')}" data-patches="${esc(JSON.stringify((c.files || []).map((f) => ({ filename: f.filename, patch: f.patch || '' }))))}" data-diff-url="${esc(c.compareUrl || '')}" data-keywords="${esc(kwStr)}" data-deploy-context="${esc(JSON.stringify(deployCtx))}" data-update-id="${esc(c.id)}" data-guide="${esc(g.guide)}" data-guide-title="${esc(g.title)}" data-guide-assignee="${esc(g.assignee)}">현행화 프롬프트 복사</button>
         </div>`;
         }).join('')}
       </div>
@@ -563,7 +563,7 @@ async function onGuideCheck(checkbox) {
       method: 'PUT',
       headers: { ...headers, 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        message: 'chore: 현행화 확인 완료 - ' + guide.split('/').pop(),
+        message: 'chore: 변경 관리 확인 완료 - ' + guide.split('/').pop(),
         content: btoa(unescape(encodeURIComponent(JSON.stringify(resolved, null, 2)))),
         sha: sha
       })
@@ -571,6 +571,9 @@ async function onGuideCheck(checkbox) {
 
     if (!putRes.ok) {
       const err = await putRes.json();
+      if (putRes.status === 409) {
+        throw new Error('다른 팀원이 동시에 수정했습니다. 새로고침 후 다시 시도해 주세요.');
+      }
       throw new Error(err.message || putRes.statusText);
     }
 
@@ -783,6 +786,18 @@ function onStartUpdate(btn) {
   ];
   if (diffUrl) lines.push('- diff 링크: ' + diffUrl);
   if (keywords) lines.push('- 매칭 키워드: ' + keywords);
+
+  // 관련 배포 사항
+  const deployRaw = btn.dataset.deployContext || '';
+  if (deployRaw) {
+    try {
+      const deployCtx = JSON.parse(deployRaw);
+      if (deployCtx.length > 0) {
+        const deployText = deployCtx.map(function(ctx) { return '[' + ctx.month + '] ' + ctx.changes; }).join(' / ');
+        lines.push('- 관련 배포 사항: ' + deployText);
+      }
+    } catch (e) { /* 파싱 실패 시 생략 */ }
+  }
 
   // diff 전문 포함
   if (patchesRaw) {
