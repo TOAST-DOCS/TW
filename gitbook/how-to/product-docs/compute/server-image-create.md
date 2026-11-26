@@ -19,7 +19,7 @@ tags:
 
 * 이미지를 생성할 인스턴스가 필요합니다. 이 가이드는 Ubuntu 인스턴스를 기준으로 설명합니다.
 * 이미지 생성 이후의 초기화 작업을 위해 인스턴스에 **최소 100KB의 여유 공간**이 필요합니다.
-* Linux 인스턴스는 이미지를 생성하기 전에 **machine-id를 초기화**하기를 권장합니다. 초기화하지 않으면 그 이미지로 생성한 인스턴스끼리 machine-id가 중복되어 예기치 못한 문제가 생길 수 있습니다. 절차는 [Linux machine-id 초기화 가이드](https://docs.nhncloud.com/ko/Compute/Image/ko/console-guide/#guide-for-initialization-of-linux-machine-id)를 참고하세요.
+* Linux 인스턴스는 이미지를 생성하기 전에 **machine-id를 초기화**하기를 권장합니다. 초기화하지 않으면 그 이미지로 생성한 인스턴스끼리 machine-id가 중복되어 예기치 못한 문제가 생길 수 있습니다. 절차는 <a href="https://docs.nhncloud.com/ko/Compute/Image/ko/console-guide/#guide-for-initialization-of-linux-machine-id" target="_blank">Linux machine-id 초기화 가이드</a>를 참고하세요.
 * Windows 인스턴스로 진행한다면 이미지를 생성하기 전에 **Sysprep으로 하드웨어와 사용자에 종속된 정보를 지우는 초기화 작업**이 필요하고, 초기화한 인스턴스를 중지한 다음 이미지를 생성합니다. 절차가 원본 이미지 버전에 따라 다르므로 [Windows Sysprep 가이드](https://docs.nhncloud.com/ko/Compute/Image/ko/console-guide/#guide-for-windows-sysprep)를 참고하세요.
 
 ## 이미지 생성하기
