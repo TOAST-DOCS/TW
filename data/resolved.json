@@ -7,6 +7,27 @@
       "reason": "대시보드에서 확인 완료 (수정 불필요)",
       "resolvedBy": "대시보드",
       "resolvedAt": "2026-11-24T00:08:24.283Z"
+    },
+    {
+      "updateId": "ghe-Floating-IP-1795564287869",
+      "guide": "task-guide/ko/l7-load-balancer-configuration.md",
+      "resolution": "no-change",
+      "reason": "Floating-IP API 토큰 발급 안내 변경 — 콘솔 기반 가이드와 무관",
+      "resolvedBy": "박선영",
+      "resolvedAt": "2026-11-27T10:00:00.000Z"
+    },
+    {
+      "updateId": "ghe-Network-Load-Balancer-1795564293962",
+      "guide": "task-guide/ko/l7-load-balancer-configuration.md",
+      "resolution": "committed",
+      "commitSha": "5d62aa5",
+      "changes": [
+        "L133: X-Forwarded 헤더 설정 → 헤더 설정 (UI 라벨 변경)",
+        "L133: 활성화/비활성화 → 추가/삭제 (목록 방식 UI 반영)",
+        "L135~139: 표에 헤더 값 열 추가, 헤더 순서 콘솔 UI에 맞춤"
+      ],
+      "resolvedBy": "박선영",
+      "resolvedAt": "2026-11-27T10:00:00.000Z"
     }
   ]
 }
