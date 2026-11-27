@@ -4,25 +4,33 @@
       "updateId": "ghe-Monitoring-Cloud-Monitoring-1795473729339",
       "guide": "task-guide/ko/cloud-monitoring-alarm-policy.md",
       "resolution": "no-change",
-      "reason": "Ã«ÂÂÃ¬ÂÂÃ«Â³Â´Ã«ÂÂÃ¬ÂÂÃ¬ÂÂ Ã­ÂÂÃ¬ÂÂ¸ Ã¬ÂÂÃ«Â£Â (Ã¬ÂÂÃ¬Â Â Ã«Â¶ÂÃ­ÂÂÃ¬ÂÂ)",
-      "resolvedBy": "Ã«ÂÂÃ¬ÂÂÃ«Â³Â´Ã«ÂÂ",
+      "reason": "ÃÂ«ÃÂÃÂÃÂ¬ÃÂÃÂÃÂ«ÃÂ³ÃÂ´ÃÂ«ÃÂÃÂÃÂ¬ÃÂÃÂÃÂ¬ÃÂÃÂ ÃÂ­ÃÂÃÂÃÂ¬ÃÂÃÂ¸ ÃÂ¬ÃÂÃÂÃÂ«ÃÂ£ÃÂ (ÃÂ¬ÃÂÃÂÃÂ¬ÃÂ ÃÂ ÃÂ«ÃÂ¶ÃÂÃÂ­ÃÂÃÂÃÂ¬ÃÂÃÂ)",
+      "resolvedBy": "ÃÂ«ÃÂÃÂÃÂ¬ÃÂÃÂÃÂ«ÃÂ³ÃÂ´ÃÂ«ÃÂÃÂ",
       "resolvedAt": "2026-11-24T00:08:24.283Z"
     },
     {
       "updateId": "ghe-Security-Groups-1795564299786",
       "guide": "task-guide/ko/security-groups-rule-design.md",
       "resolution": "no-change",
-      "reason": "ëìë³´ëìì íì¸ ìë£ (ìì  ë¶íì)",
-      "resolvedBy": "ëìë³´ë",
+      "reason": "Ã«ÂÂÃ¬ÂÂÃ«Â³Â´Ã«ÂÂÃ¬ÂÂÃ¬ÂÂ Ã­ÂÂÃ¬ÂÂ¸ Ã¬ÂÂÃ«Â£Â (Ã¬ÂÂÃ¬Â Â Ã«Â¶ÂÃ­ÂÂÃ¬ÂÂ)",
+      "resolvedBy": "Ã«ÂÂÃ¬ÂÂÃ«Â³Â´Ã«ÂÂ",
       "resolvedAt": "2026-11-25T05:56:37.348Z"
     },
     {
       "updateId": "ghe-Compute-Instance-1795564282359",
       "guide": "task-guide/ko/security-groups-rule-design.md",
       "resolution": "no-change",
+      "reason": "ëìë³´ëìì íì¸ ìë£ (ìì  ë¶íì)",
+      "resolvedBy": "ëìë³´ë",
+      "resolvedAt": "2026-11-25T06:25:13.455Z"
+    },
+    {
+      "updateId": "ghe-Floating-IP-1795564287869",
+      "guide": "task-guide/ko/l7-load-balancer-configuration.md",
+      "resolution": "no-change",
       "reason": "대시보드에서 확인 완료 (수정 불필요)",
       "resolvedBy": "대시보드",
-      "resolvedAt": "2026-11-25T06:25:13.455Z"
+      "resolvedAt": "2026-11-27T00:30:12.949Z"
     }
   ]
 }
