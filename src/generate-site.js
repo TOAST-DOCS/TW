@@ -55,11 +55,19 @@ function renderPage() {
   }
 
   // === 섹션 2: 변경 관리 목록 ===
+  // guide-mapping 최신 assignee 룩업 (저장된 history의 stale 값 교체용)
+  const assigneeLookup = {};
+  for (const m of guideMapping.mappings) { assigneeLookup[m.guide] = m.assignee; }
+
   // GHE 변경 중 미해결 건
   const pendingGheChanges = (gheUpdates.history || [])
     .flatMap((h) => h.changes || [])
     .filter((c) => {
       if (!c.affectedGuides || c.affectedGuides.length === 0) return false;
+      // affectedGuides의 assignee를 guide-mapping 최신값으로 갱신
+      for (const g of c.affectedGuides) {
+        if (assigneeLookup[g.guide]) g.assignee = assigneeLookup[g.guide];
+      }
       // 모든 가이드가 resolved된 카드는 제외
       const allResolved = c.affectedGuides.every((g) => resolvedGuideKeys.has(c.id + '::' + g.guide));
       return !allResolved;

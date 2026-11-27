@@ -1,7 +1,7 @@
 {
-  "lastPoll": "2026-11-23T23:25:48.150Z",
+  "lastPoll": "2026-11-26T23:00:16.732Z",
   "heartbeat": {
-    "timestamp": "2026-11-23T23:25:48.150Z",
+    "timestamp": "2026-11-26T23:00:16.732Z",
     "trackedRepos": 122,
     "repoNames": [
       "Database-Migration-Service",
@@ -128,31 +128,4013 @@
       "data-catalog"
     ]
   },
-  "changes": [
-    {
-      "id": "ghe-Image-1795476336650",
-      "source": "ghe",
-      "repo": "Image",
-      "previousSha": "3d14c218ed728c3c47b1825bf584b60521b5d347",
-      "currentSha": "74082921652631e8977a2b0f1deb3fe209e4b74e",
-      "compareUrl": "https://github.nhnent.com/cloud-docs/Image/compare/3d14c218ed728c3c47b1825bf584b60521b5d347...74082921652631e8977a2b0f1deb3fe209e4b74e",
-      "mdChanges": 1,
-      "files": [
-        {
-          "filename": "ko/error-code.md",
-          "status": "modified",
-          "additions": 57,
-          "deletions": 56,
-          "patch": "@@ -4,59 +4,60 @@\n ## Content Delivery > Image Manager > 오류 코드 { #content-delivery-image-manager-error-code }\n \n | resultCode | resultKey | resultMessage |\n-|---|---|----|\n-| 0 | SUCCESS | Success |\n-| 1 | PARTIAL_SUCCESS | Partial Success |\n-| 2 | UPLOAD_ALL_FAIL | Fail |\n-| -1 | FAIL | Unknown error. |\n-| 400 | BAD_REQUEST | It could not understand the request due to invalid syntax. |\n-| 401 | UNAUTHORIZED | Unauthorized |\n-| 403 | NOT_ALLOWED | Not Allowed. |\n-| 404 | NOT_FOUND | Please check your API Url, HTTP Method. |\n-| 415 | UNSUPPORTED_MEDIA_TYPE | Please check your Media type. Only can be using 'application/json' |\n-| 5000 | INVALID_PARAM | '{}' is invalid. |\n-| 5001 | INVALID_PARAM_MORE_THAN | '{}' must be more than '{}'. |\n-| 5002 | INVALID_PARAM_BETWEEN_THAN | '{}' must be more than '{}' or less than '{}'. |\n-| 5003 | INVALID_PARAM_NOT_DEFINED | '{}' is not defined. |\n-| 5004 | INVALID_PARAM_IS_NOT_NULL | '{}' must be not null |\n-| 5005 | INVALID_PARAM_EXTENSION | it must be '{}' |\n-| 5006 | INVALID_PARAM_IS_SAME | the value of '{}' and '{}' must be differed. |\n-| 5007 | INVALID_PARAM_NOT_TOGETHER | '{}' can not use with '{}'. |\n-| 10001 | INVALID_PARAMETERS | parameter is invalid. |\n-| 10002 | INVALID_FILES | There is not exist upload file or it is an invalid file. |\n-| 11001 | PATH_LENGTH_LIMIT | The max byte size of full path is 1024. |\n-| 11002 | FILENAME_LENGTH_LIMIT | It is 2 ~ 255 the length of file and folder. |\n-| 11003 | FILE_COUNT_LIMIT | It is 10,000 the max count of file and folder you can request. |\n-| 11004 | UPLOAD_SIZE_LIMIT | It was exceed the max volume you can upload at once. |\n-| 11050 | INVALID_FILENAME | Invalid Characters in File or Folder Name |\n-| 11051 | INVALID_URL | It is 80,443 the upload port count of URL. |\n-| 11060 | FILENAME_EMPTY | You must register the name of file or folder. |\n-| 20000 | FOLDER_DUPLICATED_NAME | There is already a folder at the given destination. path: {} |\n-| 20001 | FOLDER_NOT_EXISTS | No file was found at the specified path. |\n-| 20002 | INVALID_BASE_PATH | It does not exist upper folder. |\n-| 20010 | FILE_DUPLICATED_NAME | There is same file name. |\n-| 21002 | MARKED_ALREADY_DELETING | It was file or folder requested to delete. |\n-| 21003 | DELETE_FILE_COUNT_LIMIT | It is 10,000 the max count of file and folder you are able to delete. |\n-| 21011 | NO_FILE_TO_DELETE | It does not exist the data to delete. |\n-| 21030 | FAIL_TO_DELETE | It occurred some problem while deleting. |\n-| 22001 | FAIL_TO_CREATE_FOLDER | It occurred some problem while creating folder. |\n-| 23002 | FAIL_TO_META_IMAGES | It could not extract the image attribute. |\n-| 24001 | FAIL_TO_SWIFT_UPLOAD | The storage upload failed. |\n-| 24002 | FAIL_TO_SWIFT_DELETE_OBJECT | It occurred some proble while storage deleting |\n-| 24003 | FAIL_TO_SWIFT_CREATE_CONTAINER | Failed to create new swift container. |\n-| 24004 | FAIL_TO_SWIFT_SET_PRIVATE | Failed to set private swift container. |\n-| 24005 | FAIL_TO_SWIFT | The storage access was denied. |\n-| 30004 | INVALID_APPKEY | The authentication is invalid. |\n-| 30005 | INVALID_USER | The user is invalid. |\n-| 40000 | OPERATION_NOT_ALLOWED | You have no operation authority. |\n-| 40001 | OPERATION_FAIL | Failed to process the image operation. |\n-| 40002 | OPERATION_DUPLICATED_NAME | There is same name of Image Operation. |\n-| 40003 | OPERATION_NO_PROCESSING_OPTION | There are not any option for image processing. |\n-| 40004 | OPERATION_PARSING_FAIL | Failed to parsing the image operation. |\n-| 50001 | DUPLICATED_APPKEY | Failed to enable given appKey, since the appKey is already exist. |\n-| 50002 | FAIL_TO_ISSUE_NEW_MEMBERKEY | Failed to issue new memberKey. |\n-| 50003 | FAIL_TO_ENABLE_USER_INTERNAL_ERROR | Failed to enable appKey due to inter server error. |\n-| 50004 | SHORTAGE_MEMBERKEY | Available member key is shortage. |\n-| 50011 | PENDING_DELETE_ALL_JOB | Pending deleting all image files. |\n-| 50012 | FAIL_TO_EXIST_IMAGE_FILE | Remains image files. Please proceed delete all image files. |\n-| 50013 | FAIL_TO_DISABLE_USER_INTERNAL_ERROR | Failed to disable appKey due to inter server error. |\n+|------------|---|----|\n+| 0          | SUCCESS | Success |\n+| 1          | PARTIAL_SUCCESS | Partial Success |\n+| 2          | UPLOAD_ALL_FAIL | Fail |\n+| -1         | FAIL | Unknown error. |\n+| 400        | BAD_REQUEST | It could not understand the request due to invalid syntax. |\n+| 401        | UNAUTHORIZED | Unauthorized |\n+| 403        | NOT_ALLOWED | Not Allowed. |\n+| 404        | NOT_FOUND | Please check your API Url, HTTP Method. |\n+| 415        | UNSUPPORTED_MEDIA_TYPE | Please check your Media type. Only can be using 'application/json' |\n+| 5000       | INVALID_PARAM | '{}' is invalid. |\n+| 5001       | INVALID_PARAM_MORE_THAN | '{}' must be more than '{}'. |\n+| 5002       | INVALID_PARAM_BETWEEN_THAN | '{}' must be more than '{}' or less than '{}'. |\n+| 5003       | INVALID_PARAM_NOT_DEFINED | '{}' is not defined. |\n+| 5004       | INVALID_PARAM_IS_NOT_NULL | '{}' must be not null |\n+| 5005       | INVALID_PARAM_EXTENSION | it must be '{}' |\n+| 5006       | INVALID_PARAM_IS_SAME | the value of '{}' and '{}' must be differed. |\n+| 5007       | INVALID_PARAM_NOT_TOGETHER | '{}' can not use with '{}'. |\n+| 10001      | INVALID_PARAMETERS | parameter is invalid. |\n+| 10002      | INVALID_FILES | There is not exist upload file or it is an invalid file. |\n+| 11001      | PATH_LENGTH_LIMIT | The max byte size of full path is 1024. |\n+| 11002      | FILENAME_LENGTH_LIMIT | It is 2 ~ 255 the length of file and folder. |\n+| 11003      | FILE_COUNT_LIMIT | It is 10,000 the max count of file and folder you can request. |\n+| 11004      | UPLOAD_SIZE_LIMIT | It was exceed the max volume you can upload at once. |\n+| 11005      | UPLOAD_FILE_COUNT_LIMIT | The number of files uploaded in a single request exceeded the limit. |\n+| 11050      | INVALID_FILENAME | Invalid Characters in File or Folder Name |\n+| 11051      | INVALID_URL | It is 80,443 the upload port count of URL. |\n+| 11060      | FILENAME_EMPTY | You must register the name of file or folder. |\n+| 20000      | FOLDER_DUPLICATED_NAME | There is already a folder at the given destination. path: {} |\n+| 20001      | FOLDER_NOT_EXISTS | No file was found at the specified path. |\n+| 20002      | INVALID_BASE_PATH | It does not exist upper folder. |\n+| 20010      | FILE_DUPLICATED_NAME | There is same file name. |\n+| 21002      | MARKED_ALREADY_DELETING | It was file or folder requested to delete. |\n+| 21003      | DELETE_FILE_COUNT_LIMIT | It is 10,000 the max count of file and folder you are able to delete. |\n+| 21011      | NO_FILE_TO_DELETE | It does not exist the data to delete. |\n+| 21030      | FAIL_TO_DELETE | It occurred some problem while deleting. |\n+| 22001      | FAIL_TO_CREATE_FOLDER | It occurred some problem while creating folder. |\n+| 23002      | FAIL_TO_META_IMAGES | It could not extract the image attribute. |\n+| 24001      | FAIL_TO_SWIFT_UPLOAD | The storage upload failed. |\n+| 24002      | FAIL_TO_SWIFT_DELETE_OBJECT | It occurred some proble while storage deleting |\n+| 24003      | FAIL_TO_SWIFT_CREATE_CONTAINER | Failed to create new swift container. |\n+| 24004      | FAIL_TO_SWIFT_SET_PRIVATE | Failed to set private swift container. |\n+| 24005      | FAIL_TO_SWIFT | The storage access was denied. |\n+| 30004      | INVALID_APPKEY | The authentication is invalid. |\n+| 30005      | INVALID_USER | The user is invalid. |\n+| 40000      | OPERATION_NOT_ALLOWED | You have no operation authority. |\n+| 40001      | OPERATION_FAIL | Failed to process the image operation. |\n+| 40002      | OPERATION_DUPLICATED_NAME | There is same name of Image Operation. |\n+| 40003      | OPERATION_NO_PROCESSING_OPTION | There are not any option for image processing. |\n+| 40004      | OPERATION_PARSING_FAIL | Failed to parsing the image operation. |\n+| 50001      | DUPLICATED_APPKEY | Failed to enable given appKey, since the appKey is already exist. |\n+| 50002      | FAIL_TO_ISSUE_NEW_MEMBERKEY | Failed to issue new memberKey. |\n+| 50003      | FAIL_TO_ENABLE_USER_INTERNAL_ERROR | Failed to enable appKey due to inter server error. |\n+| 50004      | SHORTAGE_MEMBERKEY | Available member key is shortage. |\n+| 50011      | PENDING_DELETE_ALL_JOB | Pending deleting all image files. |\n+| 50012      | FAIL_TO_EXIST_IMAGE_FILE | Remains image files. Please proceed delete all image files. |\n+| 50013      | FAIL_TO_DISABLE_USER_INTERNAL_ERROR | Failed to disable appKey due to inter server error. |"
-        }
-      ],
-      "affectedGuides": [],
-      "analysisMethod": "repo-mapping",
-      "deployContext": [],
-      "detectedAt": "2026-11-23T23:25:36.650Z"
-    }
-  ],
+  "changes": [],
   "history": [
+    {
+      "pollDate": "2026-11-24T23:51:49.104Z",
+      "changes": [
+        {
+          "id": "ghe-EventBus-1795564277063",
+          "source": "ghe",
+          "repo": "EventBus",
+          "previousSha": "d6f9ef0af9c1fd42ed0ff589e0da79d4ed19bd2d",
+          "currentSha": "3eed58f2356fc2d1a1cf139e97e75df850ac2342",
+          "compareUrl": "https://github.nhnent.com/cloud-docs/EventBus/compare/d6f9ef0af9c1fd42ed0ff589e0da79d4ed19bd2d...3eed58f2356fc2d1a1cf139e97e75df850ac2342",
+          "mdChanges": 5,
+          "files": [
+            {
+              "filename": "ko/api-guide-v1.0.md",
+              "status": "added",
+              "additions": 209,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/console-guide.md",
+              "status": "modified",
+              "additions": 291,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/event-guide.md",
+              "status": "added",
+              "additions": 109,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/overview.md",
+              "status": "modified",
+              "additions": 85,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/release-notes.md",
+              "status": "modified",
+              "additions": 14,
+              "deletions": 0
+            }
+          ],
+          "affectedGuides": [],
+          "analysisMethod": "repo-mapping",
+          "deployContext": [],
+          "detectedAt": "2026-11-24T23:51:17.063Z"
+        },
+        {
+          "id": "ghe-Alimtalk-1795564277879",
+          "source": "ghe",
+          "repo": "Alimtalk",
+          "previousSha": "f401a19c4b181c20e70c64e0a84dcfd47521684d",
+          "currentSha": "9d0aa15877368da0650c499007af5c37a33e9e60",
+          "compareUrl": "https://github.nhnent.com/cloud-docs/Alimtalk/compare/f401a19c4b181c20e70c64e0a84dcfd47521684d...9d0aa15877368da0650c499007af5c37a33e9e60",
+          "mdChanges": 8,
+          "files": [
+            {
+              "filename": "ko/alimtalk-api-guide.md",
+              "status": "modified",
+              "additions": 6,
+              "deletions": 14
+            },
+            {
+              "filename": "ko/alimtalk-console-guide.md",
+              "status": "modified",
+              "additions": 0,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/common-api-guide.md",
+              "status": "modified",
+              "additions": 11,
+              "deletions": 11
+            },
+            {
+              "filename": "ko/friendtalk-api-guide.md",
+              "status": "modified",
+              "additions": 11,
+              "deletions": 8
+            },
+            {
+              "filename": "ko/friendtalk-console-guide.md",
+              "status": "modified",
+              "additions": 2,
+              "deletions": 5
+            },
+            {
+              "filename": "ko/friendtalkupgrade-api-guide.md",
+              "status": "modified",
+              "additions": 193,
+              "deletions": 44
+            },
+            {
+              "filename": "ko/friendtalkupgrade-console-guide.md",
+              "status": "modified",
+              "additions": 7,
+              "deletions": 6
+            },
+            {
+              "filename": "ko/release-notes.md",
+              "status": "modified",
+              "additions": 20,
+              "deletions": 1
+            }
+          ],
+          "affectedGuides": [],
+          "analysisMethod": "repo-mapping",
+          "deployContext": [],
+          "detectedAt": "2026-11-24T23:51:17.879Z"
+        },
+        {
+          "id": "ghe-Cloud-Scheduler-1795564279265",
+          "source": "ghe",
+          "repo": "Cloud-Scheduler",
+          "previousSha": "7b92baadae5728b4a25d7aec4e5599af6e4d0f4e",
+          "currentSha": "031b0cd43152dd3225e095f19561b67605430338",
+          "compareUrl": "https://github.nhnent.com/cloud-docs/Cloud-Scheduler/compare/7b92baadae5728b4a25d7aec4e5599af6e4d0f4e...031b0cd43152dd3225e095f19561b67605430338",
+          "mdChanges": 2,
+          "files": [
+            {
+              "filename": "ko/create-schedule.md",
+              "status": "modified",
+              "additions": 8,
+              "deletions": 7
+            },
+            {
+              "filename": "ko/release-notes.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 0
+            }
+          ],
+          "affectedGuides": [],
+          "analysisMethod": "repo-mapping",
+          "deployContext": [],
+          "detectedAt": "2026-11-24T23:51:19.265Z"
+        },
+        {
+          "id": "ghe-Colocation-Gateway-1795564279903",
+          "source": "ghe",
+          "repo": "Colocation-Gateway",
+          "previousSha": "18b1b0f73b717553f9756b315bc02551c85cb33b",
+          "currentSha": "d41223bdd6ee15700e64818295bc2867a554363b",
+          "compareUrl": "https://github.nhnent.com/cloud-docs/Colocation-Gateway/compare/18b1b0f73b717553f9756b315bc02551c85cb33b...d41223bdd6ee15700e64818295bc2867a554363b",
+          "mdChanges": 3,
+          "files": [
+            {
+              "filename": "ko/console-guide.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/public-api-gov.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/public-api.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            }
+          ],
+          "affectedGuides": [],
+          "analysisMethod": "repo-mapping",
+          "deployContext": [],
+          "detectedAt": "2026-11-24T23:51:19.903Z"
+        },
+        {
+          "id": "ghe-Compute-1795564280270",
+          "source": "ghe",
+          "repo": "Compute",
+          "previousSha": "eead03969f8c6790ed0c93118613ecf5a2dedd28",
+          "currentSha": "4af338ea463ec1fd7cb3224891d50a3749b30ef1",
+          "compareUrl": "https://github.nhnent.com/cloud-docs/Compute/compare/eead03969f8c6790ed0c93118613ecf5a2dedd28...4af338ea463ec1fd7cb3224891d50a3749b30ef1",
+          "mdChanges": 9,
+          "files": [
+            {
+              "filename": "ko/identity-api-ncgn.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 200
+            },
+            {
+              "filename": "ko/identity-api-ngoic.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 205
+            },
+            {
+              "filename": "ko/identity-api-ngovc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 205
+            },
+            {
+              "filename": "ko/identity-api-ngsc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 205
+            },
+            {
+              "filename": "ko/identity-api-ninc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 205
+            },
+            {
+              "filename": "ko/identity-api.md",
+              "status": "renamed",
+              "additions": 295,
+              "deletions": 212
+            },
+            {
+              "filename": "ko/release-notes-gov.md",
+              "status": "modified",
+              "additions": 21,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/release-notes-ncgn.md",
+              "status": "modified",
+              "additions": 20,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/release-notes.md",
+              "status": "modified",
+              "additions": 32,
+              "deletions": 6
+            }
+          ],
+          "affectedGuides": [
+            {
+              "guide": "task-guide/ko/instance-ssh-connection-failed.md",
+              "title": "인스턴스에 SSH로 접속되지 않습니다",
+              "assignee": "하수진",
+              "matchCount": 10,
+              "matches": [
+                {
+                  "keyword": "set",
+                  "line": 254,
+                  "context": "sudo vi /etc/default/grub.d/50-cloudimg-settings.cfg"
+                },
+                {
+                  "keyword": "Security",
+                  "line": 78,
+                  "context": "2. **보안 그룹**: **Network > Security Groups**에서 인스턴스에 적용된 보안 그룹을 선택하고 **보안 규칙** 탭에"
+                },
+                {
+                  "keyword": "준비",
+                  "line": 171,
+                  "context": "> 시리얼 콘솔은 다음 조건을 충족해야 사용할 수 있습니다. 준비 방법은 아래 **문제 예방하기**를 참고하세요."
+                },
+                {
+                  "keyword": "인프라",
+                  "line": 142,
+                  "context": "> - 인스턴스가 활성 상태여야 하고 기본 인프라 서비스 ADMIN 권한이 필요합니다."
+                },
+                {
+                  "keyword": "타입",
+                  "line": 20,
+                  "context": "- 인스턴스 타입 변경"
+                }
+              ]
+            },
+            {
+              "guide": "task-guide/ko/instance-creation-failed.md",
+              "title": "인스턴스 생성이 실패합니다",
+              "assignee": "하수진",
+              "matchCount": 6,
+              "matches": [
+                {
+                  "keyword": "API",
+                  "line": 5,
+                  "context": "NHN Cloud 콘솔 또는 API로 인스턴스를 생성했는데 다음 중 하나로 실패합니다."
+                },
+                {
+                  "keyword": "타입",
+                  "line": 10,
+                  "context": "개인 이미지로 생성하거나, 특정 가용성 영역과 인스턴스 타입 조합을 선택했을 때 주로 발생합니다."
+                },
+                {
+                  "keyword": "리전",
+                  "line": 57,
+                  "context": "인스턴스 타입은 리전과 가용성 영역에 따라 제공되는 구성이 다릅니다. 선택한 가용성 영역에 해당 타입을 배치할 수 없으면 생성에 실패하고 \"선택"
+                },
+                {
+                  "keyword": "image",
+                  "line": 12,
+                  "context": "![인스턴스 생성 실패 원인 판단 흐름](images/instance-creation-failed-flow.svg)"
+                },
+                {
+                  "keyword": "ID",
+                  "line": 46,
+                  "context": "| \"선택한 인스턴스 타입의 가용량이 부족하여 인스턴스를 생성할 수 없습니다.\"<br>API 응답: `Image {이미지 ID} property"
+                }
+              ]
+            }
+          ],
+          "analysisMethod": "keyword",
+          "deployContext": [
+            {
+              "month": "2026-11",
+              "service": "Instance Template",
+              "changes": "* 인스턴스 템플릿 버전 기능 추가(인스턴스, 스케일링 그룹 생성 시 템플릿 버전 선택)"
+            }
+          ],
+          "detectedAt": "2026-11-24T23:51:20.271Z"
+        },
+        {
+          "id": "ghe-Compute-Auto-Scale-1795564280696",
+          "source": "ghe",
+          "repo": "Compute-Auto-Scale",
+          "previousSha": "8c83359055d0c8f62f70cbe3a8bd61a6cf2bb186",
+          "currentSha": "c086ab32f261daad98d26f2267721613d178def5",
+          "compareUrl": "https://github.nhnent.com/cloud-docs/Compute-Auto-Scale/compare/8c83359055d0c8f62f70cbe3a8bd61a6cf2bb186...c086ab32f261daad98d26f2267721613d178def5",
+          "mdChanges": 11,
+          "files": [
+            {
+              "filename": "ko/_console-guide-v1.md",
+              "status": "renamed",
+              "additions": 13,
+              "deletions": 6
+            },
+            {
+              "filename": "ko/_overview-v1.md",
+              "status": "added",
+              "additions": 72,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/api-guide.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 4
+            },
+            {
+              "filename": "ko/console-guide-ncgn.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 240
+            },
+            {
+              "filename": "ko/console-guide-ngoic.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 240
+            },
+            {
+              "filename": "ko/console-guide-ngovc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 240
+            },
+            {
+              "filename": "ko/console-guide-ngsc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 240
+            },
+            {
+              "filename": "ko/console-guide-ninc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 240
+            },
+            {
+              "filename": "ko/console-guide.md",
+              "status": "modified",
+              "additions": 377,
+              "deletions": 201
+            },
+            {
+              "filename": "ko/error-code.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 4
+            },
+            {
+              "filename": "ko/overview.md",
+              "status": "modified",
+              "additions": 149,
+              "deletions": 39
+            }
+          ],
+          "affectedGuides": [],
+          "analysisMethod": "repo-mapping",
+          "deployContext": [],
+          "detectedAt": "2026-11-24T23:51:20.696Z"
+        },
+        {
+          "id": "ghe-Compute-Image-1795564281300",
+          "source": "ghe",
+          "repo": "Compute-Image",
+          "previousSha": "d0b2589650d27f57680aadde27d583914c82628e",
+          "currentSha": "d9e9a93360c9ec62430d1e59959d52988d4c9187",
+          "compareUrl": "https://github.nhnent.com/cloud-docs/Compute-Image/compare/d0b2589650d27f57680aadde27d583914c82628e...d9e9a93360c9ec62430d1e59959d52988d4c9187",
+          "mdChanges": 22,
+          "files": [
+            {
+              "filename": "ko/console-guide-gov.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 183
+            },
+            {
+              "filename": "ko/console-guide-ncgn.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 185
+            },
+            {
+              "filename": "ko/console-guide-ngoic.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 185
+            },
+            {
+              "filename": "ko/console-guide-ngovc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 185
+            },
+            {
+              "filename": "ko/console-guide-ngsc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 185
+            },
+            {
+              "filename": "ko/console-guide-ninc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 185
+            },
+            {
+              "filename": "ko/console-guide.md",
+              "status": "modified",
+              "additions": 2,
+              "deletions": 2
+            },
+            {
+              "filename": "ko/old/api-guide.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 134
+            },
+            {
+              "filename": "ko/old/error-code.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 4
+            },
+            {
+              "filename": "ko/overview-gov.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 41
+            },
+            {
+              "filename": "ko/overview-ncgn.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 41
+            },
+            {
+              "filename": "ko/overview-ngoic.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 41
+            },
+            {
+              "filename": "ko/overview-ngovc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 41
+            },
+            {
+              "filename": "ko/overview-ngsc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 41
+            },
+            {
+              "filename": "ko/overview-ninc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 41
+            },
+            {
+              "filename": "ko/overview.md",
+              "status": "modified",
+              "additions": 9,
+              "deletions": 6
+            },
+            {
+              "filename": "ko/public-api-gov.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 531
+            },
+            {
+              "filename": "ko/public-api-ngoic.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 517
+            },
+            {
+              "filename": "ko/public-api-ngovc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 517
+            },
+            {
+              "filename": "ko/public-api-ngsc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 517
+            },
+            {
+              "filename": "ko/public-api-ninc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 517
+            },
+            {
+              "filename": "ko/public-api.md",
+              "status": "modified",
+              "additions": 1018,
+              "deletions": 852
+            }
+          ],
+          "affectedGuides": [
+            {
+              "guide": "task-guide/ko/image-upload-via-api.md",
+              "title": "Image API로 외부 이미지 파일 등록하기",
+              "assignee": "하수진",
+              "matchCount": 18,
+              "matches": [
+                {
+                  "keyword": "Windows",
+                  "line": 195,
+                  "context": "- **Windows 이미지 등록**: `os_type`을 `windows`, `min_disk`를 50 이상으로 지정하며 U2 타입은 사용할 "
+                },
+                {
+                  "keyword": "자동으",
+                  "line": 155,
+                  "context": "인스턴스로 만든 개인 이미지에는 **사용 대상 서비스** 속성이 자동으로 설정되지만, API로 등록한 이미지에는 이 속성이 비어 있습니다. 속성"
+                },
+                {
+                  "keyword": "NHN",
+                  "line": 5,
+                  "context": "이미지는 운영체제와 애플리케이션을 담은 가상 디스크로, 인스턴스의 루트 블록 스토리지를 생성하는 데 사용됩니다. Image는 이 이미지를 생성하"
+                },
+                {
+                  "keyword": "Cloud",
+                  "line": 5,
+                  "context": "이미지는 운영체제와 애플리케이션을 담은 가상 디스크로, 인스턴스의 루트 블록 스토리지를 생성하는 데 사용됩니다. Image는 이 이미지를 생성하"
+                },
+                {
+                  "keyword": "구분",
+                  "line": 107,
+                  "context": "- `os_distro`, `os_version`: 콘솔 이미지 목록의 **OS** 열에 배포판 첫 글자를 대문자로 바꿔 `Ubuntu 22.0"
+                }
+              ]
+            },
+            {
+              "guide": "task-guide/ko/server-image-create.md",
+              "title": "Image로 인스턴스 복제하기",
+              "assignee": "미정",
+              "matchCount": 16,
+              "matches": [
+                {
+                  "keyword": "Sysprep",
+                  "line": 18,
+                  "context": "- Windows 인스턴스로 진행한다면 이미지를 생성하기 전에 **Sysprep으로 하드웨어와 사용자에 종속된 정보를 지우는 초기화 작업**이 "
+                },
+                {
+                  "keyword": "Windows",
+                  "line": 18,
+                  "context": "- Windows 인스턴스로 진행한다면 이미지를 생성하기 전에 **Sysprep으로 하드웨어와 사용자에 종속된 정보를 지우는 초기화 작업**이 "
+                },
+                {
+                  "keyword": "중지",
+                  "line": 11,
+                  "context": "![중지한 원본 인스턴스로 개인 이미지를 생성하고 그 이미지로 새 인스턴스를 생성하는 구성](images/server-image-create-f"
+                },
+                {
+                  "keyword": "NHN",
+                  "line": 5,
+                  "context": "이미지는 운영체제와 애플리케이션을 담은 가상 디스크로, 인스턴스의 루트 블록 스토리지를 생성하는 데 사용됩니다. Image는 이 이미지를 생성하"
+                },
+                {
+                  "keyword": "Cloud",
+                  "line": 5,
+                  "context": "이미지는 운영체제와 애플리케이션을 담은 가상 디스크로, 인스턴스의 루트 블록 스토리지를 생성하는 데 사용됩니다. Image는 이 이미지를 생성하"
+                }
+              ]
+            }
+          ],
+          "analysisMethod": "keyword",
+          "deployContext": [],
+          "detectedAt": "2026-11-24T23:51:21.300Z"
+        },
+        {
+          "id": "ghe-Compute-Image-Builder-1795564281712",
+          "source": "ghe",
+          "repo": "Compute-Image-Builder",
+          "previousSha": "7177c526b9a727d4786f78ea9fb0f585552fdf00",
+          "currentSha": "4a65dd5ac7c402d3efa82a2e1cea41ef17aeb7bd",
+          "compareUrl": "https://github.nhnent.com/cloud-docs/Compute-Image-Builder/compare/7177c526b9a727d4786f78ea9fb0f585552fdf00...4a65dd5ac7c402d3efa82a2e1cea41ef17aeb7bd",
+          "mdChanges": 5,
+          "files": [
+            {
+              "filename": "ko/component-guide-gov.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 954
+            },
+            {
+              "filename": "ko/component-guide.md",
+              "status": "modified",
+              "additions": 5,
+              "deletions": 3
+            },
+            {
+              "filename": "ko/console-guide-gov.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 89
+            },
+            {
+              "filename": "ko/overview-gov.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 23
+            },
+            {
+              "filename": "ko/overview.md",
+              "status": "modified",
+              "additions": 5,
+              "deletions": 4
+            }
+          ],
+          "affectedGuides": [],
+          "analysisMethod": "repo-mapping",
+          "deployContext": [],
+          "detectedAt": "2026-11-24T23:51:21.712Z"
+        },
+        {
+          "id": "ghe-Compute-Instance-1795564282359",
+          "source": "ghe",
+          "repo": "Compute-Instance",
+          "previousSha": "9ed12a7ffe03f616d2f744ea94438ee9d8403927",
+          "currentSha": "0f06488d91b936c831411ae634d8da967b82cb59",
+          "compareUrl": "https://github.nhnent.com/cloud-docs/Compute-Instance/compare/9ed12a7ffe03f616d2f744ea94438ee9d8403927...0f06488d91b936c831411ae634d8da967b82cb59",
+          "mdChanges": 32,
+          "files": [
+            {
+              "filename": "ko/component-guide-gov.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 1367
+            },
+            {
+              "filename": "ko/component-guide-ncgn.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 1208
+            },
+            {
+              "filename": "ko/component-guide-ngoic.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 1200
+            },
+            {
+              "filename": "ko/component-guide-ngovc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 1200
+            },
+            {
+              "filename": "ko/component-guide-ngsc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 1200
+            },
+            {
+              "filename": "ko/component-guide-ninc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 1200
+            },
+            {
+              "filename": "ko/component-guide.md",
+              "status": "modified",
+              "additions": 226,
+              "deletions": 7
+            },
+            {
+              "filename": "ko/console-guide-gov.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 511
+            },
+            {
+              "filename": "ko/console-guide-ncgn.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 511
+            },
+            {
+              "filename": "ko/console-guide-ngoic.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 511
+            },
+            {
+              "filename": "ko/console-guide-ngovc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 511
+            },
+            {
+              "filename": "ko/console-guide-ngsc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 511
+            },
+            {
+              "filename": "ko/console-guide-ninc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 511
+            },
+            {
+              "filename": "ko/console-guide.md",
+              "status": "modified",
+              "additions": 16,
+              "deletions": 13
+            },
+            {
+              "filename": "ko/overview-gov.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 204
+            },
+            {
+              "filename": "ko/overview-ncgn.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 204
+            },
+            {
+              "filename": "ko/overview-ngoic.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 204
+            },
+            {
+              "filename": "ko/overview-ngovc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 204
+            },
+            {
+              "filename": "ko/overview-ngsc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 204
+            },
+            {
+              "filename": "ko/overview-ninc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 204
+            },
+            {
+              "filename": "ko/overview.md",
+              "status": "modified",
+              "additions": 12,
+              "deletions": 6
+            },
+            {
+              "filename": "ko/public-api-gov.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 2044
+            },
+            {
+              "filename": "ko/public-api-ngoic.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/public-api-ngovc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/public-api-ngsc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/public-api-ninc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/public-api-v2-1-gov.md",
+              "status": "modified",
+              "additions": 0,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/public-api-v2-1.md",
+              "status": "modified",
+              "additions": 0,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/public-api.md",
+              "status": "modified",
+              "additions": 0,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/terraform-guide-gov.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/terraform-guide.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/troubleshooting-guide.md",
+              "status": "modified",
+              "additions": 0,
+              "deletions": 0
+            }
+          ],
+          "affectedGuides": [
+            {
+              "guide": "task-guide/ko/image-upload-via-api.md",
+              "title": "Image API로 외부 이미지 파일 등록하기",
+              "assignee": "하수진",
+              "matchCount": 16,
+              "matches": [
+                {
+                  "keyword": "Instance",
+                  "line": 34,
+                  "context": "- 등록한 이미지로 인스턴스를 생성해 확인하려면 인스턴스에 연결할 VPC와 서브넷, 키페어가 필요합니다. 기본 인프라 서비스를 처음 사용한다면 "
+                },
+                {
+                  "keyword": "Compute",
+                  "line": 32,
+                  "context": "| machine-id | 초기화 | 같은 이미지로 만든 인스턴스끼리 machine-id가 중복되지 않도록 비워 둡니다. 절차는 [Linux m"
+                },
+                {
+                  "keyword": "참고하세요",
+                  "line": 32,
+                  "context": "| machine-id | 초기화 | 같은 이미지로 만든 인스턴스끼리 machine-id가 중복되지 않도록 비워 둡니다. 절차는 [Linux m"
+                },
+                {
+                  "keyword": "NHN",
+                  "line": 5,
+                  "context": "이미지는 운영체제와 애플리케이션을 담은 가상 디스크로, 인스턴스의 루트 블록 스토리지를 생성하는 데 사용됩니다. Image는 이 이미지를 생성하"
+                },
+                {
+                  "keyword": "Cloud",
+                  "line": 5,
+                  "context": "이미지는 운영체제와 애플리케이션을 담은 가상 디스크로, 인스턴스의 루트 블록 스토리지를 생성하는 데 사용됩니다. Image는 이 이미지를 생성하"
+                }
+              ]
+            },
+            {
+              "guide": "task-guide/ko/instance-ssh-connection-failed.md",
+              "title": "인스턴스에 SSH로 접속되지 않습니다",
+              "assignee": "하수진",
+              "matchCount": 14,
+              "matches": [
+                {
+                  "keyword": "set",
+                  "line": 254,
+                  "context": "sudo vi /etc/default/grub.d/50-cloudimg-settings.cfg"
+                },
+                {
+                  "keyword": "Instance",
+                  "line": 35,
+                  "context": "1. **인스턴스 상태**: 콘솔 **Compute > Instance**에서 인스턴스를 선택하고 하단 상세 정보의 제목 옆에 표시되는 상태를 "
+                },
+                {
+                  "keyword": "Compute",
+                  "line": 35,
+                  "context": "1. **인스턴스 상태**: 콘솔 **Compute > Instance**에서 인스턴스를 선택하고 하단 상세 정보의 제목 옆에 표시되는 상태를 "
+                },
+                {
+                  "keyword": "참고하세요",
+                  "line": 102,
+                  "context": "1. SSL VPN에 로그인한 뒤 VPN 네트워크에 매핑된 플로팅 IP로 접속하세요. VPN 계정은 리전별로 신청해야 하므로 접속하려는 리전의 "
+                },
+                {
+                  "keyword": "etc",
+                  "line": 150,
+                  "context": "- `/etc/ssh/sshd_config`: 포트, 인증 방식, 접속 허용 계정"
+                }
+              ]
+            },
+            {
+              "guide": "task-guide/ko/security-groups-rule-design.md",
+              "title": "3티어 아키텍처에 맞는 Security Groups 규칙 설계하기",
+              "assignee": "박선영",
+              "matchCount": 12,
+              "matches": [
+                {
+                  "keyword": "Instance",
+                  "line": 203,
+                  "context": "보안 그룹을 연결하려면 **Compute > Instance**에서 인스턴스를 클릭한 뒤 **네트워크** 탭을 클릭합니다. 네트워크 인터페이스를"
+                },
+                {
+                  "keyword": "Compute",
+                  "line": 203,
+                  "context": "보안 그룹을 연결하려면 **Compute > Instance**에서 인스턴스를 클릭한 뒤 **네트워크** 탭을 클릭합니다. 네트워크 인터페이스를"
+                },
+                {
+                  "keyword": "참고하세요",
+                  "line": 255,
+                  "context": "- **인스턴스 추가**: 같은 티어에 인스턴스를 추가할 때는 해당 보안 그룹만 연결하면 됩니다. 규칙을 다시 만들 필요가 없습니다. 예를 들어"
+                },
+                {
+                  "keyword": "NHN",
+                  "line": 11,
+                  "context": "NHN Cloud에서 티어를 별도 인스턴스로 분리하면 다음과 같은 이점이 있습니다."
+                },
+                {
+                  "keyword": "Cloud",
+                  "line": 11,
+                  "context": "NHN Cloud에서 티어를 별도 인스턴스로 분리하면 다음과 같은 이점이 있습니다."
+                }
+              ]
+            },
+            {
+              "guide": "task-guide/ko/server-image-create.md",
+              "title": "Image로 인스턴스 복제하기",
+              "assignee": "미정",
+              "matchCount": 11,
+              "matches": [
+                {
+                  "keyword": "Instance",
+                  "line": 22,
+                  "context": "1. NHN Cloud 콘솔에서 **Compute > Instance**를 클릭하세요."
+                },
+                {
+                  "keyword": "Compute",
+                  "line": 17,
+                  "context": "- Linux 인스턴스는 이미지를 생성하기 전에 **machine-id를 초기화**하기를 권장합니다. 초기화하지 않으면 그 이미지로 생성한 인스"
+                },
+                {
+                  "keyword": "참고하세요",
+                  "line": 17,
+                  "context": "- Linux 인스턴스는 이미지를 생성하기 전에 **machine-id를 초기화**하기를 권장합니다. 초기화하지 않으면 그 이미지로 생성한 인스"
+                },
+                {
+                  "keyword": "NHN",
+                  "line": 5,
+                  "context": "이미지는 운영체제와 애플리케이션을 담은 가상 디스크로, 인스턴스의 루트 블록 스토리지를 생성하는 데 사용됩니다. Image는 이 이미지를 생성하"
+                },
+                {
+                  "keyword": "Cloud",
+                  "line": 5,
+                  "context": "이미지는 운영체제와 애플리케이션을 담은 가상 디스크로, 인스턴스의 루트 블록 스토리지를 생성하는 데 사용됩니다. Image는 이 이미지를 생성하"
+                }
+              ]
+            },
+            {
+              "guide": "task-guide/ko/instance-creation-failed.md",
+              "title": "인스턴스 생성이 실패합니다",
+              "assignee": "하수진",
+              "matchCount": 10,
+              "matches": [
+                {
+                  "keyword": "Instance",
+                  "line": 44,
+                  "context": "| 인스턴스 생성 화면의 **개인 이미지** 탭에 이미지가 보이지 않음 | 이미지의 **사용 대상 서비스**에 **Instance**가 선택되어"
+                },
+                {
+                  "keyword": "Compute",
+                  "line": 50,
+                  "context": "1. 이미지가 **개인 이미지** 탭에 보이지 않으면 **Compute > Image**에서 이미지를 선택하고 **수정**을 클릭한 다음 **이"
+                },
+                {
+                  "keyword": "참고하세요",
+                  "line": 24,
+                  "context": "프로젝트마다 사용할 수 있는 CPU와 메모리 총량이 쿼터로 정해져 있으며, 쿼터를 넘는 생성 요청은 거부됩니다. 사용하지 않는 인스턴스와 블록 "
+                },
+                {
+                  "keyword": "NHN",
+                  "line": 5,
+                  "context": "NHN Cloud 콘솔 또는 API로 인스턴스를 생성했는데 다음 중 하나로 실패합니다."
+                },
+                {
+                  "keyword": "Cloud",
+                  "line": 5,
+                  "context": "NHN Cloud 콘솔 또는 API로 인스턴스를 생성했는데 다음 중 하나로 실패합니다."
+                }
+              ]
+            },
+            {
+              "guide": "task-guide/ko/instance-internal-communication-failure.md",
+              "title": "인스턴스 간 내부 통신에 실패합니다",
+              "assignee": "박선영",
+              "matchCount": 9,
+              "matches": [
+                {
+                  "keyword": "set",
+                  "line": 136,
+                  "context": "sudo setenforce 0"
+                },
+                {
+                  "keyword": "list",
+                  "line": 49,
+                  "context": "- Linux: `sudo iptables -L -n` 또는 `sudo firewall-cmd --list-all`"
+                },
+                {
+                  "keyword": "Instance",
+                  "line": 69,
+                  "context": "1. **Network > Security Groups**에서 양쪽 인스턴스에 적용된 보안 그룹을 각각 선택합니다. 인스턴스에 적용된 보안 그룹"
+                },
+                {
+                  "keyword": "Compute",
+                  "line": 69,
+                  "context": "1. **Network > Security Groups**에서 양쪽 인스턴스에 적용된 보안 그룹을 각각 선택합니다. 인스턴스에 적용된 보안 그룹"
+                },
+                {
+                  "keyword": "NHN",
+                  "line": 188,
+                  "context": "위 방법으로 해결되지 않으면 [NHN Cloud 고객지원](https://www.nhncloud.com/kr/support/inquiry)에 문"
+                }
+              ]
+            },
+            {
+              "guide": "task-guide/ko/nhn-bastion-ssh-access-control.md",
+              "title": "NHN Bastion으로 SSH 접근 통제 구성하기",
+              "assignee": "박선영",
+              "matchCount": 9,
+              "matches": [
+                {
+                  "keyword": "참고하세요",
+                  "line": 154,
+                  "context": "- **임시 키**: **ID**에 운영체제 계정을 입력합니다. 일회성으로 발급되는 임시 SSH 키를 사용하므로 별도의 키 관리가 필요 없고, "
+                },
+                {
+                  "keyword": "NHN",
+                  "line": 1,
+                  "context": "# NHN Bastion으로 SSH 접근 통제 구성하기"
+                },
+                {
+                  "keyword": "Cloud",
+                  "line": 5,
+                  "context": "NHN Bastion은 NHN Cloud 인스턴스에 대한 SSH(Secure Shell) 접근을 중앙에서 통제하는 서버 접근 제어 서비스입니다."
+                },
+                {
+                  "keyword": "권장",
+                  "line": 121,
+                  "context": "보안 요건에 맞게 적절한 범위를 선택하세요. 운영 환경에서는 **자원 선택**으로 필요한 인스턴스만 지정하는 것을 권장합니다."
+                },
+                {
+                  "keyword": "있으며",
+                  "line": 5,
+                  "context": "NHN Bastion은 NHN Cloud 인스턴스에 대한 SSH(Secure Shell) 접근을 중앙에서 통제하는 서버 접근 제어 서비스입니다."
+                }
+              ]
+            }
+          ],
+          "analysisMethod": "keyword",
+          "deployContext": [
+            {
+              "month": "2026-11",
+              "service": "Instance Template",
+              "changes": "* 인스턴스 템플릿 버전 기능 추가(인스턴스, 스케일링 그룹 생성 시 템플릿 버전 선택)"
+            }
+          ],
+          "detectedAt": "2026-11-24T23:51:22.359Z"
+        },
+        {
+          "id": "ghe-Compute-Instance-Template-1795564282926",
+          "source": "ghe",
+          "repo": "Compute-Instance-Template",
+          "previousSha": "ebc8052d9a4f9901033e3b9c9ee697cc5c591cad",
+          "currentSha": "15e33960e9f9f19e953534422852bd6f6f528543",
+          "compareUrl": "https://github.nhnent.com/cloud-docs/Compute-Instance-Template/compare/ebc8052d9a4f9901033e3b9c9ee697cc5c591cad...15e33960e9f9f19e953534422852bd6f6f528543",
+          "mdChanges": 5,
+          "files": [
+            {
+              "filename": "ko/_console-guide-v1.md",
+              "status": "renamed",
+              "additions": 5,
+              "deletions": 6
+            },
+            {
+              "filename": "ko/_overview-v1.md",
+              "status": "added",
+              "additions": 22,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/console-guide-ngsc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 105
+            },
+            {
+              "filename": "ko/console-guide.md",
+              "status": "modified",
+              "additions": 328,
+              "deletions": 103
+            },
+            {
+              "filename": "ko/overview.md",
+              "status": "modified",
+              "additions": 61,
+              "deletions": 19
+            }
+          ],
+          "affectedGuides": [],
+          "analysisMethod": "repo-mapping",
+          "deployContext": [],
+          "detectedAt": "2026-11-24T23:51:22.926Z"
+        },
+        {
+          "id": "ghe-Data-Flow-1795564284382",
+          "source": "ghe",
+          "repo": "Data-Flow",
+          "previousSha": "65cae18d1c685cc7019296a85165e2f1756feb14",
+          "currentSha": "04d3aa186d01939e3a5a5d87a0445d25a320f670",
+          "compareUrl": "https://github.nhnent.com/cloud-docs/Data-Flow/compare/65cae18d1c685cc7019296a85165e2f1756feb14...04d3aa186d01939e3a5a5d87a0445d25a320f670",
+          "mdChanges": 3,
+          "files": [
+            {
+              "filename": "ko/error-code.md",
+              "status": "modified",
+              "additions": 5,
+              "deletions": 2
+            },
+            {
+              "filename": "ko/node-config-guide.md",
+              "status": "modified",
+              "additions": 22,
+              "deletions": 8
+            },
+            {
+              "filename": "ko/release-notes/2026.md",
+              "status": "modified",
+              "additions": 13,
+              "deletions": 1
+            }
+          ],
+          "affectedGuides": [],
+          "analysisMethod": "repo-mapping",
+          "deployContext": [],
+          "detectedAt": "2026-11-24T23:51:24.382Z"
+        },
+        {
+          "id": "ghe-Data-Query-1795564284997",
+          "source": "ghe",
+          "repo": "Data-Query",
+          "previousSha": "36a0fa6cea76cf406439acf8e8855b436367f30c",
+          "currentSha": "333edb49a3ed3f5e525381dbda5444b14d452ba4",
+          "compareUrl": "https://github.nhnent.com/cloud-docs/Data-Query/compare/36a0fa6cea76cf406439acf8e8855b436367f30c...333edb49a3ed3f5e525381dbda5444b14d452ba4",
+          "mdChanges": 1,
+          "files": [
+            {
+              "filename": "ko/console-user-guide.md",
+              "status": "modified",
+              "additions": 5,
+              "deletions": 5
+            }
+          ],
+          "affectedGuides": [],
+          "analysisMethod": "repo-mapping",
+          "deployContext": [],
+          "detectedAt": "2026-11-24T23:51:24.997Z"
+        },
+        {
+          "id": "ghe-E-mail-1795564286637",
+          "source": "ghe",
+          "repo": "E-mail",
+          "previousSha": "9fb3e63ef09e2e2c5dbafb99e66b0a1c74fe6e83",
+          "currentSha": "25c4a547acb4c5a27d30dcde86e902c8a1bdcd62",
+          "compareUrl": "https://github.nhnent.com/cloud-docs/E-mail/compare/9fb3e63ef09e2e2c5dbafb99e66b0a1c74fe6e83...25c4a547acb4c5a27d30dcde86e902c8a1bdcd62",
+          "mdChanges": 5,
+          "files": [
+            {
+              "filename": "ko/api-guide-v1.5.md",
+              "status": "modified",
+              "additions": 35,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/api-guide-v1.6.md",
+              "status": "modified",
+              "additions": 35,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/api-guide-v1.7.md",
+              "status": "modified",
+              "additions": 35,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/console-guide.md",
+              "status": "modified",
+              "additions": 12,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/release-notes.md",
+              "status": "modified",
+              "additions": 33,
+              "deletions": 2
+            }
+          ],
+          "affectedGuides": [],
+          "analysisMethod": "repo-mapping",
+          "deployContext": [],
+          "detectedAt": "2026-11-24T23:51:26.637Z"
+        },
+        {
+          "id": "ghe-easycache-1795564287053",
+          "source": "ghe",
+          "repo": "easycache",
+          "previousSha": "48f4f781f3a35cdc1d3479197d9d48ad1d8998c6",
+          "currentSha": "e3bc5b1056a55da55db5d52f6cbe9ccfebb68cce",
+          "compareUrl": "https://github.nhnent.com/cloud-docs/easycache/compare/48f4f781f3a35cdc1d3479197d9d48ad1d8998c6...e3bc5b1056a55da55db5d52f6cbe9ccfebb68cce",
+          "mdChanges": 9,
+          "files": [
+            {
+              "filename": "ko/console-guide/cache-gov.md",
+              "status": "modified",
+              "additions": 50,
+              "deletions": 24
+            },
+            {
+              "filename": "ko/console-guide/cache.md",
+              "status": "modified",
+              "additions": 29,
+              "deletions": 3
+            },
+            {
+              "filename": "ko/console-guide/notification-gov.md",
+              "status": "modified",
+              "additions": 3,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/console-guide/notification.md",
+              "status": "modified",
+              "additions": 6,
+              "deletions": 12
+            },
+            {
+              "filename": "ko/console-guide/server-dashboard-gov.md",
+              "status": "modified",
+              "additions": 4,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/console-guide/server-dashboard.md",
+              "status": "modified",
+              "additions": 9,
+              "deletions": 13
+            },
+            {
+              "filename": "ko/i18n/be_messages.md",
+              "status": "modified",
+              "additions": 8,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/release-notes-gov.md",
+              "status": "modified",
+              "additions": 16,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/release-notes.md",
+              "status": "modified",
+              "additions": 20,
+              "deletions": 1
+            }
+          ],
+          "affectedGuides": [],
+          "analysisMethod": "repo-mapping",
+          "deployContext": [],
+          "detectedAt": "2026-11-24T23:51:27.053Z"
+        },
+        {
+          "id": "ghe-Floating-IP-1795564287869",
+          "source": "ghe",
+          "repo": "Floating-IP",
+          "previousSha": "76316d3ff639003eeb8850b323f1980695eb3584",
+          "currentSha": "8fad70dca3474aba0d720f5a5d11ac884df88177",
+          "compareUrl": "https://github.nhnent.com/cloud-docs/Floating-IP/compare/76316d3ff639003eeb8850b323f1980695eb3584...8fad70dca3474aba0d720f5a5d11ac884df88177",
+          "mdChanges": 2,
+          "files": [
+            {
+              "filename": "ko/public-api-gov.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/public-api.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            }
+          ],
+          "affectedGuides": [
+            {
+              "guide": "task-guide/ko/l7-load-balancer-configuration.md",
+              "title": "URL 경로 기반으로 트래픽을 분산하는 L7 로드 밸런서 구성하기",
+              "assignee": "박선영",
+              "matchCount": 5,
+              "matches": [
+                {
+                  "keyword": "NHN",
+                  "line": 5,
+                  "context": "로드 밸런서는 여러 인스턴스에 트래픽을 분산해 처리량을 늘리고, 상태 확인으로 장애가 발생한 인스턴스를 자동으로 서비스에서 제외해 가용성을 높이"
+                },
+                {
+                  "keyword": "Cloud",
+                  "line": 5,
+                  "context": "로드 밸런서는 여러 인스턴스에 트래픽을 분산해 처리량을 늘리고, 상태 확인으로 장애가 발생한 인스턴스를 자동으로 서비스에서 제외해 가용성을 높이"
+                },
+                {
+                  "keyword": "Network",
+                  "line": 34,
+                  "context": "1. NHN Cloud 콘솔에서 **Network > Load Balancer**를 클릭하세요."
+                },
+                {
+                  "keyword": "nhncloud",
+                  "line": 49,
+                  "context": "그 외 항목(설명, 타입, IP 할당, 정적 라우트 등)의 전체 명세는 [Load Balancer 콘솔 사용 가이드](https://docs.n"
+                },
+                {
+                  "keyword": "참고하세요",
+                  "line": 49,
+                  "context": "그 외 항목(설명, 타입, IP 할당, 정적 라우트 등)의 전체 명세는 [Load Balancer 콘솔 사용 가이드](https://docs.n"
+                }
+              ]
+            }
+          ],
+          "analysisMethod": "keyword",
+          "deployContext": [
+            {
+              "month": "2026-11",
+              "service": "Load Balancer",
+              "changes": "* 리스너 헤더 설정 기능 추가(멤버로 보내는 요청에 헤더 추가, 같은 이름의 클라이언트 헤더는 로드 밸런서 값으로 덮어씀) * 인증서 자동 갱신 기능 추가(Certificate Manager 인증서를 사용하는 TERMINATED\\_HTTPS 리스너) * 프록시 프로토콜 v2 기능 추가(TCP, HTTPS 리스너) * 멤버 그룹별 멤버 타임아웃 설정 기능 "
+            }
+          ],
+          "detectedAt": "2026-11-24T23:51:27.869Z"
+        },
+        {
+          "id": "ghe-Gamebase-1795564288575",
+          "source": "ghe",
+          "repo": "Gamebase",
+          "previousSha": "25c73efef3064f6c9aa4e6f9e6711036ac3ef328",
+          "currentSha": "652e0e8d3337d59ea008836542faa13028265e59",
+          "compareUrl": "https://github.nhnent.com/cloud-docs/Gamebase/compare/25c73efef3064f6c9aa4e6f9e6711036ac3ef328...652e0e8d3337d59ea008836542faa13028265e59",
+          "mdChanges": 7,
+          "files": [
+            {
+              "filename": "ko/aos-purchase.md",
+              "status": "modified",
+              "additions": 4,
+              "deletions": 4
+            },
+            {
+              "filename": "ko/aos-started.md",
+              "status": "modified",
+              "additions": 10,
+              "deletions": 9
+            },
+            {
+              "filename": "ko/release-notes-android.md",
+              "status": "modified",
+              "additions": 12,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/release-notes-unity.md",
+              "status": "modified",
+              "additions": 32,
+              "deletions": 17
+            },
+            {
+              "filename": "ko/unity-purchase.md",
+              "status": "modified",
+              "additions": 2,
+              "deletions": 2
+            },
+            {
+              "filename": "ko/unity-started.md",
+              "status": "modified",
+              "additions": 2,
+              "deletions": 2
+            },
+            {
+              "filename": "ko/unreal-purchase.md",
+              "status": "modified",
+              "additions": 2,
+              "deletions": 2
+            }
+          ],
+          "affectedGuides": [
+            {
+              "guide": "task-guide/ko/gamebase-idp-google-connect.md",
+              "title": "Gamebase에 Google IdP를 연동해 소셜 로그인 구현하기",
+              "assignee": "이종민",
+              "matchCount": 12,
+              "matches": [
+                {
+                  "keyword": "NHN",
+                  "line": 5,
+                  "context": "Gamebase는 게임 개발에 필요한 로그인, 결제, 푸시 등 공통 기능을 제공하는 NHN Cloud의 게임 플랫폼입니다. Gamebase로 소"
+                },
+                {
+                  "keyword": "코드",
+                  "line": 31,
+                  "context": "> Android 단말의 Google Play services 버전이 낮으면 구버전 Google Sign-In API를 쓰는 레거시(legacy"
+                },
+                {
+                  "keyword": "참고하세요",
+                  "line": 22,
+                  "context": "> 이 가이드는 Android 앱을 기준으로 합니다. iOS 앱의 Google 로그인 설정은 [iOS SDK 사용 가이드 > 시작하기](http"
+                },
+                {
+                  "keyword": "Gamebase",
+                  "line": 1,
+                  "context": "# Gamebase에 Google IdP를 연동해 소셜 로그인 구현하기"
+                },
+                {
+                  "keyword": "게임",
+                  "line": 5,
+                  "context": "Gamebase는 게임 개발에 필요한 로그인, 결제, 푸시 등 공통 기능을 제공하는 NHN Cloud의 게임 플랫폼입니다. Gamebase로 소"
+                }
+              ]
+            },
+            {
+              "guide": "task-guide/ko/gamebase-push-message.md",
+              "title": "Gamebase 연동 후 푸시 메시지 발송까지 완료하기",
+              "assignee": "이종민",
+              "matchCount": 7,
+              "matches": [
+                {
+                  "keyword": "NHN",
+                  "line": 5,
+                  "context": "Gamebase는 게임 개발에 필요한 로그인, 결제, 푸시 등 공통 기능을 제공하는 NHN Cloud의 게임 플랫폼입니다. Gamebase는 내"
+                },
+                {
+                  "keyword": "코드",
+                  "line": 23,
+                  "context": "Firebase 프로젝트 생성, 앱 추가, `google-services.json` 배치는 [Android 프로젝트에 Firebase 추가](h"
+                },
+                {
+                  "keyword": "참고하세요",
+                  "line": 23,
+                  "context": "Firebase 프로젝트 생성, 앱 추가, `google-services.json` 배치는 [Android 프로젝트에 Firebase 추가](h"
+                },
+                {
+                  "keyword": "Gamebase",
+                  "line": 1,
+                  "context": "# Gamebase 연동 후 푸시 메시지 발송까지 완료하기"
+                },
+                {
+                  "keyword": "게임",
+                  "line": 5,
+                  "context": "Gamebase는 게임 개발에 필요한 로그인, 결제, 푸시 등 공통 기능을 제공하는 NHN Cloud의 게임 플랫폼입니다. Gamebase는 내"
+                }
+              ]
+            },
+            {
+              "guide": "task-guide/ko/gamebase-unconsumed-payment.md",
+              "title": "Gamebase 미소비 결제 건 조회하고 재처리하기",
+              "assignee": "미지정",
+              "matchCount": 7,
+              "matches": [
+                {
+                  "keyword": "IAP",
+                  "line": 5,
+                  "context": "Gamebase Purchase(IAP)는 Google Play, App Store, ONE Store 등 여러 스토어의 인앱 결제(in-app"
+                },
+                {
+                  "keyword": "Gamebase",
+                  "line": 1,
+                  "context": "# Gamebase 미소비 결제 건 조회하고 재처리하기"
+                },
+                {
+                  "keyword": "게임",
+                  "line": 5,
+                  "context": "Gamebase Purchase(IAP)는 Google Play, App Store, ONE Store 등 여러 스토어의 인앱 결제(in-app"
+                },
+                {
+                  "keyword": "결제",
+                  "line": 1,
+                  "context": "# Gamebase 미소비 결제 건 조회하고 재처리하기"
+                },
+                {
+                  "keyword": "Store",
+                  "line": 5,
+                  "context": "Gamebase Purchase(IAP)는 Google Play, App Store, ONE Store 등 여러 스토어의 인앱 결제(in-app"
+                }
+              ]
+            }
+          ],
+          "analysisMethod": "keyword",
+          "deployContext": [],
+          "detectedAt": "2026-11-24T23:51:28.575Z"
+        },
+        {
+          "id": "ghe-Internet-Gateway-1795564289494",
+          "source": "ghe",
+          "repo": "Internet-Gateway",
+          "previousSha": "7385ce16b075cec2330b0da93ba51b4033de82ee",
+          "currentSha": "f191c093aef121bba83e1c23ce067f7ee1a65c65",
+          "compareUrl": "https://github.nhnent.com/cloud-docs/Internet-Gateway/compare/7385ce16b075cec2330b0da93ba51b4033de82ee...f191c093aef121bba83e1c23ce067f7ee1a65c65",
+          "mdChanges": 2,
+          "files": [
+            {
+              "filename": "ko/public-api-gov.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/public-api.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            }
+          ],
+          "affectedGuides": [
+            {
+              "guide": "task-guide/ko/nat-gateway-private-subnet.md",
+              "title": "NAT Gateway로 프라이빗 서브넷 인터넷 연결 구성하기",
+              "assignee": "이종민",
+              "matchCount": 4,
+              "matches": [
+                {
+                  "keyword": "NHN",
+                  "line": 15,
+                  "context": "- 동작 확인 단계에서 프라이빗 서브넷의 인스턴스에 접속해야 하므로, 퍼블릭 서브넷에 직접 구성한 배스천 호스트(bastion host, 외부에"
+                },
+                {
+                  "keyword": "Cloud",
+                  "line": 15,
+                  "context": "- 동작 확인 단계에서 프라이빗 서브넷의 인스턴스에 접속해야 하므로, 퍼블릭 서브넷에 직접 구성한 배스천 호스트(bastion host, 외부에"
+                },
+                {
+                  "keyword": "Network",
+                  "line": 18,
+                  "context": "1. NHN Cloud 콘솔에서 **Network > Floating IP**를 클릭하세요."
+                },
+                {
+                  "keyword": "nhncloud",
+                  "line": 98,
+                  "context": "- **목적지별 경로 분리**: 대상 CIDR을 좁혀 특정 대역의 트래픽만 NAT Gateway로 보냅니다. [VPC 콘솔 사용 가이드](htt"
+                }
+              ]
+            }
+          ],
+          "analysisMethod": "keyword",
+          "deployContext": [],
+          "detectedAt": "2026-11-24T23:51:29.494Z"
+        },
+        {
+          "id": "ghe-kms-1795564290059",
+          "source": "ghe",
+          "repo": "kms",
+          "previousSha": "2a23e0f85794bd3a2627631d77a8d348cf87303c",
+          "currentSha": "dba675d183aef1e7f3be903b1af852c2f0d6a069",
+          "compareUrl": "https://github.nhnent.com/cloud-docs/kms/compare/2a23e0f85794bd3a2627631d77a8d348cf87303c...dba675d183aef1e7f3be903b1af852c2f0d6a069",
+          "mdChanges": 42,
+          "files": [
+            {
+              "filename": "ko/api-guide-v1.0-gov.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/api-guide-v1.0-ngoic.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/api-guide-v1.0-ngovc.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/api-guide-v1.0-ngsc.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/api-guide-v1.0-ninc.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/api-guide-v1.0.md",
+              "status": "modified",
+              "additions": 2,
+              "deletions": 3
+            },
+            {
+              "filename": "ko/api-guide-v1.2-gov.md",
+              "status": "modified",
+              "additions": 4,
+              "deletions": 2
+            },
+            {
+              "filename": "ko/api-guide-v1.2-ngoic.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/api-guide-v1.2-ngovc.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/api-guide-v1.2-ngsc.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/api-guide-v1.2-ninc.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/api-guide-v1.2.md",
+              "status": "modified",
+              "additions": 5,
+              "deletions": 4
+            },
+            {
+              "filename": "ko/api-guide-v1.3-gov.md",
+              "status": "modified",
+              "additions": 10,
+              "deletions": 8
+            },
+            {
+              "filename": "ko/api-guide-v1.3.md",
+              "status": "modified",
+              "additions": 11,
+              "deletions": 10
+            },
+            {
+              "filename": "ko/approval-feature.md",
+              "status": "modified",
+              "additions": 2,
+              "deletions": 3
+            },
+            {
+              "filename": "ko/console-guide-gov.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 197
+            },
+            {
+              "filename": "ko/console-guide.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 220
+            },
+            {
+              "filename": "ko/getting-started-gov.md",
+              "status": "modified",
+              "additions": 10,
+              "deletions": 3
+            },
+            {
+              "filename": "ko/getting-started-ppp.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/getting-started.md",
+              "status": "modified",
+              "additions": 12,
+              "deletions": 6
+            },
+            {
+              "filename": "ko/key-rotation-guide.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 2
+            },
+            {
+              "filename": "ko/overview-gov.md",
+              "status": "modified",
+              "additions": 14,
+              "deletions": 13
+            },
+            {
+              "filename": "ko/overview.md",
+              "status": "modified",
+              "additions": 0,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/release-notes-gov.md",
+              "status": "modified",
+              "additions": 5,
+              "deletions": 110
+            },
+            {
+              "filename": "ko/release-notes-gov/2023.md",
+              "status": "added",
+              "additions": 31,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/release-notes-gov/2024.md",
+              "status": "added",
+              "additions": 29,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/release-notes-gov/2025.md",
+              "status": "added",
+              "additions": 18,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/release-notes-gov/2026.md",
+              "status": "added",
+              "additions": 38,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/release-notes-ngoic.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/release-notes-ngovc.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/release-notes-ngsc.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/release-notes-ninc.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/release-notes.md",
+              "status": "modified",
+              "additions": 10,
+              "deletions": 267
+            },
+            {
+              "filename": "ko/release-notes/2019.md",
+              "status": "added",
+              "additions": 30,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/release-notes/2020.md",
+              "status": "added",
+              "additions": 9,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/release-notes/2021.md",
+              "status": "added",
+              "additions": 28,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/release-notes/2022.md",
+              "status": "added",
+              "additions": 43,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/release-notes/2023.md",
+              "status": "added",
+              "additions": 55,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/release-notes/2024.md",
+              "status": "added",
+              "additions": 43,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/release-notes/2025.md",
+              "status": "added",
+              "additions": 26,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/release-notes/2026.md",
+              "status": "added",
+              "additions": 55,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/troubleshooting-guide.md",
+              "status": "modified",
+              "additions": 47,
+              "deletions": 23
+            }
+          ],
+          "affectedGuides": [
+            {
+              "guide": "task-guide/ko/skm-api-call-with-user-access-key-token.md",
+              "title": "User Access Key 토큰으로 Secure Key Manager API 호출하기",
+              "assignee": "박선영",
+              "matchCount": 16,
+              "matches": [
+                {
+                  "keyword": "인증서",
+                  "line": 32,
+                  "context": "- **인증 방법**: 키 저장소에 접근할 클라이언트의 인증 방법을 선택합니다. **IPv4 주소**, **MAC 주소**, **클라이언트 인증"
+                },
+                {
+                  "keyword": "암호화",
+                  "line": 23,
+                  "context": "키 저장소는 암호화 키와 접근 제어 정보를 묶어서 관리하는 단위입니다. 기밀 데이터를 등록하려면 먼저 키 저장소를 만들어야 합니다."
+                },
+                {
+                  "keyword": "방식",
+                  "line": 7,
+                  "context": "서비스마다 지원하는 인증 방식이 다르므로, 사용할 API가 어떤 인증 방식을 지원하는지 [인증 방식 지원 현황](https://docs.nhnc"
+                },
+                {
+                  "keyword": "기본값",
+                  "line": 99,
+                  "context": "3. **User Access Key 생성** 창에서 토큰 유형과 유효 시간을 설정합니다. 이 가이드에서는 기본값인 **Opaque** 타입과 "
+                },
+                {
+                  "keyword": "타입",
+                  "line": 99,
+                  "context": "3. **User Access Key 생성** 창에서 토큰 유형과 유효 시간을 설정합니다. 이 가이드에서는 기본값인 **Opaque** 타입과 "
+                }
+              ]
+            },
+            {
+              "guide": "task-guide/ko/skm-key-management.md",
+              "title": "Secure Key Manager로 암호화 키 관리하기",
+              "assignee": "박선영",
+              "matchCount": 16,
+              "matches": [
+                {
+                  "keyword": "인증서",
+                  "line": 7,
+                  "context": "Secure Key Manager는 NHN Cloud에서 제공하는 키 관리 서비스입니다. 대칭 키(AES256), 비대칭 키(RSA2048), "
+                },
+                {
+                  "keyword": "암호화",
+                  "line": 1,
+                  "context": "# Secure Key Manager로 암호화 키 관리하기"
+                },
+                {
+                  "keyword": "방식",
+                  "line": 35,
+                  "context": "- **인증 방식 결합**: 활성화된 여러 인증 방법을 어떻게 결합할지 선택합니다. **모두 통과(AND)** 또는 **하나만 통과(OR)** "
+                },
+                {
+                  "keyword": "설명",
+                  "line": 9,
+                  "context": "여기에서는 Secure Key Manager에서 키 저장소를 만들고, 대칭 키를 등록한 뒤, API로 데이터를 암·복호화하는 방법을 살펴봅니다."
+                },
+                {
+                  "keyword": "저장할",
+                  "line": 203,
+                  "context": "| 암호화 | 데이터를 전송하거나 저장할 때 정보를 보호하기 위해 암호 키를 이용해 평문을 암호문으로 변환하는 과정 |"
+                }
+              ]
+            }
+          ],
+          "analysisMethod": "keyword",
+          "deployContext": [
+            {
+              "month": "2026-11",
+              "service": "Secure Key Manager",
+              "changes": "* 인증서 파일(PKCS12)의 기본 암호화 알고리즘을 AES-256, SHA-256으로 변경하고, 인증서 발급 시 레거시(3DES/RC2) 방식 선택 옵션 추가 * 인증서 상세 정보 창에서 비밀번호를 가린 상태로 표시(표시 아이콘 클릭 시 확인)"
+            }
+          ],
+          "detectedAt": "2026-11-24T23:51:30.059Z"
+        },
+        {
+          "id": "ghe-Load-Balancer-DSR-1795564290675",
+          "source": "ghe",
+          "repo": "Load-Balancer-DSR",
+          "previousSha": "b58b84332551539fc2dbd8e579609c831d49779f",
+          "currentSha": "7ff2b577b62e898c68d0ab3b7952f4395cb393eb",
+          "compareUrl": "https://github.nhnent.com/cloud-docs/Load-Balancer-DSR/compare/b58b84332551539fc2dbd8e579609c831d49779f...7ff2b577b62e898c68d0ab3b7952f4395cb393eb",
+          "mdChanges": 3,
+          "files": [
+            {
+              "filename": "ko/console-guide.md",
+              "status": "modified",
+              "additions": 3,
+              "deletions": 3
+            },
+            {
+              "filename": "ko/release-notes-gov.md",
+              "status": "added",
+              "additions": 9,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/release-notes.md",
+              "status": "added",
+              "additions": 11,
+              "deletions": 0
+            }
+          ],
+          "affectedGuides": [],
+          "analysisMethod": "repo-mapping",
+          "deployContext": [],
+          "detectedAt": "2026-11-24T23:51:30.675Z"
+        },
+        {
+          "id": "ghe-NAT-Gateway-1795564291592",
+          "source": "ghe",
+          "repo": "NAT-Gateway",
+          "previousSha": "4639a3009dc88e3f89d18e21e915a92e765b1174",
+          "currentSha": "4ccbda9f2e59c068cb2f517eaac74ac107028661",
+          "compareUrl": "https://github.nhnent.com/cloud-docs/NAT-Gateway/compare/4639a3009dc88e3f89d18e21e915a92e765b1174...4ccbda9f2e59c068cb2f517eaac74ac107028661",
+          "mdChanges": 8,
+          "files": [
+            {
+              "filename": "ko/console-guide.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/public-api-gov.md",
+              "status": "modified",
+              "additions": 5,
+              "deletions": 5
+            },
+            {
+              "filename": "ko/public-api-ncgn.md",
+              "status": "modified",
+              "additions": 4,
+              "deletions": 4
+            },
+            {
+              "filename": "ko/public-api-ngoic.md",
+              "status": "modified",
+              "additions": 4,
+              "deletions": 4
+            },
+            {
+              "filename": "ko/public-api-ngovc.md",
+              "status": "modified",
+              "additions": 4,
+              "deletions": 4
+            },
+            {
+              "filename": "ko/public-api-ngsc.md",
+              "status": "modified",
+              "additions": 4,
+              "deletions": 4
+            },
+            {
+              "filename": "ko/public-api-ninc.md",
+              "status": "modified",
+              "additions": 4,
+              "deletions": 4
+            },
+            {
+              "filename": "ko/public-api.md",
+              "status": "modified",
+              "additions": 5,
+              "deletions": 5
+            }
+          ],
+          "affectedGuides": [
+            {
+              "guide": "task-guide/ko/nat-gateway-private-subnet.md",
+              "title": "NAT Gateway로 프라이빗 서브넷 인터넷 연결 구성하기",
+              "assignee": "이종민",
+              "matchCount": 11,
+              "matches": [
+                {
+                  "keyword": "한국",
+                  "line": 14,
+                  "context": "- NAT Gateway는 한국(판교), 한국(평촌) 리전에서만 제공됩니다."
+                },
+                {
+                  "keyword": "평촌",
+                  "line": 14,
+                  "context": "- NAT Gateway는 한국(판교), 한국(평촌) 리전에서만 제공됩니다."
+                },
+                {
+                  "keyword": "리전",
+                  "line": 14,
+                  "context": "- NAT Gateway는 한국(판교), 한국(평촌) 리전에서만 제공됩니다."
+                },
+                {
+                  "keyword": "NAT",
+                  "line": 1,
+                  "context": "# NAT Gateway로 프라이빗 서브넷 인터넷 연결 구성하기"
+                },
+                {
+                  "keyword": "게이트웨이",
+                  "line": 5,
+                  "context": "NAT Gateway는 인스턴스의 사설 IP를 플로팅 IP(Floating IP)로 변환해 주는 관리형 서비스입니다. 인터넷 게이트웨이가 연결되"
+                }
+              ]
+            }
+          ],
+          "analysisMethod": "keyword",
+          "deployContext": [],
+          "detectedAt": "2026-11-24T23:51:31.592Z"
+        },
+        {
+          "id": "ghe-Network-1795564291930",
+          "source": "ghe",
+          "repo": "Network",
+          "previousSha": "6f0451581ae1ad5a81415ed4fd691d53634f848f",
+          "currentSha": "888494182f2b4b4f0e5ef7f4ad93dafbd56cbac9",
+          "compareUrl": "https://github.nhnent.com/cloud-docs/Network/compare/6f0451581ae1ad5a81415ed4fd691d53634f848f...888494182f2b4b4f0e5ef7f4ad93dafbd56cbac9",
+          "mdChanges": 7,
+          "files": [
+            {
+              "filename": "ko/release-notes-gov.md",
+              "status": "modified",
+              "additions": 13,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/release-notes-ncgn.md",
+              "status": "modified",
+              "additions": 12,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/release-notes-ngoic.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/release-notes-ngovc.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/release-notes-ngsc.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/release-notes-ninc.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/release-notes.md",
+              "status": "modified",
+              "additions": 34,
+              "deletions": 4
+            }
+          ],
+          "affectedGuides": [],
+          "analysisMethod": "repo-mapping",
+          "deployContext": [],
+          "detectedAt": "2026-11-24T23:51:31.930Z"
+        },
+        {
+          "id": "ghe-Network-ACL-1795564292364",
+          "source": "ghe",
+          "repo": "Network-ACL",
+          "previousSha": "0950217ba299fb72ff9a7921aec6419b72b797a2",
+          "currentSha": "5a030cd4b5d221177359da3dcccca3343338daba",
+          "compareUrl": "https://github.nhnent.com/cloud-docs/Network-ACL/compare/0950217ba299fb72ff9a7921aec6419b72b797a2...5a030cd4b5d221177359da3dcccca3343338daba",
+          "mdChanges": 10,
+          "files": [
+            {
+              "filename": "ko/console-guide.md",
+              "status": "modified",
+              "additions": 26,
+              "deletions": 2
+            },
+            {
+              "filename": "ko/public-api-gov.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/public-api.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/release-notes-gov.md",
+              "status": "added",
+              "additions": 7,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/release-notes-ncgn.md",
+              "status": "added",
+              "additions": 1,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/release-notes-ngoic.md",
+              "status": "added",
+              "additions": 5,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/release-notes-ngovc.md",
+              "status": "added",
+              "additions": 5,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/release-notes-ngsc.md",
+              "status": "added",
+              "additions": 5,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/release-notes-ninc.md",
+              "status": "added",
+              "additions": 5,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/release-notes.md",
+              "status": "added",
+              "additions": 29,
+              "deletions": 0
+            }
+          ],
+          "affectedGuides": [],
+          "analysisMethod": "repo-mapping",
+          "deployContext": [],
+          "detectedAt": "2026-11-24T23:51:32.364Z"
+        },
+        {
+          "id": "ghe-Network-Flow-Log-1795564293094",
+          "source": "ghe",
+          "repo": "Network-Flow-Log",
+          "previousSha": "c78996120df072a252a13d380cb47d3447332d99",
+          "currentSha": "8ad92c414933414de1a43426e17f40bd5e0fbc58",
+          "compareUrl": "https://github.nhnent.com/cloud-docs/Network-Flow-Log/compare/c78996120df072a252a13d380cb47d3447332d99...8ad92c414933414de1a43426e17f40bd5e0fbc58",
+          "mdChanges": 7,
+          "files": [
+            {
+              "filename": "ko/console-guide.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/public-api.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/release-notes-ngoic.md",
+              "status": "added",
+              "additions": 15,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/release-notes-ngovc.md",
+              "status": "added",
+              "additions": 15,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/release-notes-ngsc.md",
+              "status": "added",
+              "additions": 19,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/release-notes-ninc.md",
+              "status": "added",
+              "additions": 19,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/release-notes.md",
+              "status": "added",
+              "additions": 51,
+              "deletions": 0
+            }
+          ],
+          "affectedGuides": [],
+          "analysisMethod": "repo-mapping",
+          "deployContext": [],
+          "detectedAt": "2026-11-24T23:51:33.094Z"
+        },
+        {
+          "id": "ghe-Network-Load-Balancer-1795564293962",
+          "source": "ghe",
+          "repo": "Network-Load-Balancer",
+          "previousSha": "67f3cddf3d20fb384245d3f725c24974d8da3fd3",
+          "currentSha": "1d06e9023486ba1c495fab2ef4ea974b50e7ae97",
+          "compareUrl": "https://github.nhnent.com/cloud-docs/Network-Load-Balancer/compare/67f3cddf3d20fb384245d3f725c24974d8da3fd3...1d06e9023486ba1c495fab2ef4ea974b50e7ae97",
+          "mdChanges": 14,
+          "files": [
+            {
+              "filename": "ko/console-guide-gov.md",
+              "status": "modified",
+              "additions": 70,
+              "deletions": 17
+            },
+            {
+              "filename": "ko/console-guide-ngsc.md",
+              "status": "modified",
+              "additions": 9,
+              "deletions": 3
+            },
+            {
+              "filename": "ko/console-guide.md",
+              "status": "modified",
+              "additions": 77,
+              "deletions": 24
+            },
+            {
+              "filename": "ko/overview-gov.md",
+              "status": "modified",
+              "additions": 152,
+              "deletions": 16
+            },
+            {
+              "filename": "ko/overview-ncgn.md",
+              "status": "modified",
+              "additions": 153,
+              "deletions": 17
+            },
+            {
+              "filename": "ko/overview-ngsc.md",
+              "status": "modified",
+              "additions": 98,
+              "deletions": 6
+            },
+            {
+              "filename": "ko/overview.md",
+              "status": "modified",
+              "additions": 167,
+              "deletions": 18
+            },
+            {
+              "filename": "ko/public-api-gov.md",
+              "status": "modified",
+              "additions": 116,
+              "deletions": 35
+            },
+            {
+              "filename": "ko/public-api-ncgn.md",
+              "status": "modified",
+              "additions": 95,
+              "deletions": 30
+            },
+            {
+              "filename": "ko/public-api-ngoic.md",
+              "status": "modified",
+              "additions": 48,
+              "deletions": 11
+            },
+            {
+              "filename": "ko/public-api-ngovc.md",
+              "status": "modified",
+              "additions": 48,
+              "deletions": 11
+            },
+            {
+              "filename": "ko/public-api-ngsc.md",
+              "status": "modified",
+              "additions": 44,
+              "deletions": 7
+            },
+            {
+              "filename": "ko/public-api-ninc.md",
+              "status": "modified",
+              "additions": 44,
+              "deletions": 7
+            },
+            {
+              "filename": "ko/public-api.md",
+              "status": "modified",
+              "additions": 116,
+              "deletions": 34
+            }
+          ],
+          "affectedGuides": [
+            {
+              "guide": "task-guide/ko/l7-load-balancer-configuration.md",
+              "title": "URL 경로 기반으로 트래픽을 분산하는 L7 로드 밸런서 구성하기",
+              "assignee": "박선영",
+              "matchCount": 27,
+              "matches": [
+                {
+                  "keyword": "서버와",
+                  "line": 60,
+                  "context": "- **프로토콜**: 백엔드 서버와 통신할 프로토콜을 선택합니다. 일반적인 웹 서비스에서는 **HTTP**를 선택합니다."
+                },
+                {
+                  "keyword": "세션",
+                  "line": 63,
+                  "context": "- **세션 지속성**: 같은 클라이언트의 요청을 같은 서버로 계속 보내야 하는 경우(예: 로그인 세션 유지) 설정합니다. 상태를 유지하지 않는"
+                },
+                {
+                  "keyword": "유지",
+                  "line": 62,
+                  "context": "- **로드 밸런싱 방식**: 트래픽 분산 알고리즘을 선택합니다. **ROUND_ROBIN**은 요청을 순서대로 균등 분산하므로, 서버 성능이 "
+                },
+                {
+                  "keyword": "로드",
+                  "line": 1,
+                  "context": "# URL 경로 기반으로 트래픽을 분산하는 L7 로드 밸런서 구성하기"
+                },
+                {
+                  "keyword": "밸런서",
+                  "line": 1,
+                  "context": "# URL 경로 기반으로 트래픽을 분산하는 L7 로드 밸런서 구성하기"
+                }
+              ]
+            },
+            {
+              "guide": "task-guide/ko/load-balancer-member-inactive.md",
+              "title": "Load Balancer 멤버가 INACTIVE로 표시됩니다",
+              "assignee": "이종민",
+              "matchCount": 16,
+              "matches": [
+                {
+                  "keyword": "타임아웃",
+                  "line": 40,
+                  "context": "Load Balancer는 헬스 체크(콘솔의 **상태 확인**) 기능으로 멤버의 상태를 주기적으로 점검합니다. 설정된 프로토콜과 포트로 멤버 인"
+                },
+                {
+                  "keyword": "단위",
+                  "line": 36,
+                  "context": "> Load Balancer에 **IP 접근 제어 그룹**(Load Balancer로 유입되는 트래픽을 IP 단위로 허용하거나 차단하는 기능)을"
+                },
+                {
+                  "keyword": "동안",
+                  "line": 182,
+                  "context": "> 멤버를 삭제하는 동안 해당 멤버가 처리하던 트래픽은 나머지 멤버로 분산됩니다. 멤버가 1개뿐인 구성에서는 삭제와 재등록 사이에 서비스가 중단"
+                },
+                {
+                  "keyword": "설정한",
+                  "line": 36,
+                  "context": "> Load Balancer에 **IP 접근 제어 그룹**(Load Balancer로 유입되는 트래픽을 IP 단위로 허용하거나 차단하는 기능)을"
+                },
+                {
+                  "keyword": "설정하",
+                  "line": 36,
+                  "context": "> Load Balancer에 **IP 접근 제어 그룹**(Load Balancer로 유입되는 트래픽을 IP 단위로 허용하거나 차단하는 기능)을"
+                }
+              ]
+            }
+          ],
+          "analysisMethod": "keyword",
+          "deployContext": [
+            {
+              "month": "2026-11",
+              "service": "Load Balancer",
+              "changes": "* 리스너 헤더 설정 기능 추가(멤버로 보내는 요청에 헤더 추가, 같은 이름의 클라이언트 헤더는 로드 밸런서 값으로 덮어씀) * 인증서 자동 갱신 기능 추가(Certificate Manager 인증서를 사용하는 TERMINATED\\_HTTPS 리스너) * 프록시 프로토콜 v2 기능 추가(TCP, HTTPS 리스너) * 멤버 그룹별 멤버 타임아웃 설정 기능 "
+            }
+          ],
+          "detectedAt": "2026-11-24T23:51:33.962Z"
+        },
+        {
+          "id": "ghe-Network-VPC-1795564294291",
+          "source": "ghe",
+          "repo": "Network-VPC",
+          "previousSha": "98e5e4bc022744add7e64e592e80ffc1ae2d83ba",
+          "currentSha": "0f3a8b236ff7a0c780e8ac320644fd5cc53a19c8",
+          "compareUrl": "https://github.nhnent.com/cloud-docs/Network-VPC/compare/98e5e4bc022744add7e64e592e80ffc1ae2d83ba...0f3a8b236ff7a0c780e8ac320644fd5cc53a19c8",
+          "mdChanges": 4,
+          "files": [
+            {
+              "filename": "ko/public-api-compat-gov.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/public-api-compat.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/public-api-gov.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/public-api.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            }
+          ],
+          "affectedGuides": [
+            {
+              "guide": "task-guide/ko/instance-ssh-connection-failed.md",
+              "title": "인스턴스에 SSH로 접속되지 않습니다",
+              "assignee": "하수진",
+              "matchCount": 5,
+              "matches": [
+                {
+                  "keyword": "NHN",
+                  "line": 98,
+                  "context": "**NHN Cloud(공공기관용) 환경의 접속 경로**"
+                },
+                {
+                  "keyword": "Cloud",
+                  "line": 98,
+                  "context": "**NHN Cloud(공공기관용) 환경의 접속 경로**"
+                },
+                {
+                  "keyword": "Network",
+                  "line": 64,
+                  "context": "- 보안 그룹과 Network ACL이 SSH 포트를 허용합니다."
+                },
+                {
+                  "keyword": "nhncloud",
+                  "line": 102,
+                  "context": "1. SSL VPN에 로그인한 뒤 VPN 네트워크에 매핑된 플로팅 IP로 접속하세요. VPN 계정은 리전별로 신청해야 하므로 접속하려는 리전의 "
+                },
+                {
+                  "keyword": "참고하세요",
+                  "line": 102,
+                  "context": "1. SSL VPN에 로그인한 뒤 VPN 네트워크에 매핑된 플로팅 IP로 접속하세요. VPN 계정은 리전별로 신청해야 하므로 접속하려는 리전의 "
+                }
+              ]
+            },
+            {
+              "guide": "task-guide/ko/instance-internal-communication-failure.md",
+              "title": "인스턴스 간 내부 통신에 실패합니다",
+              "assignee": "박선영",
+              "matchCount": 4,
+              "matches": [
+                {
+                  "keyword": "NHN",
+                  "line": 188,
+                  "context": "위 방법으로 해결되지 않으면 [NHN Cloud 고객지원](https://www.nhncloud.com/kr/support/inquiry)에 문"
+                },
+                {
+                  "keyword": "Cloud",
+                  "line": 188,
+                  "context": "위 방법으로 해결되지 않으면 [NHN Cloud 고객지원](https://www.nhncloud.com/kr/support/inquiry)에 문"
+                },
+                {
+                  "keyword": "Network",
+                  "line": 47,
+                  "context": "1. 양쪽 인스턴스에 적용된 보안 그룹 규칙을 확인합니다. **Network > Security Groups**에서 해당 보안 그룹을 선택하면 "
+                },
+                {
+                  "keyword": "nhncloud",
+                  "line": 188,
+                  "context": "위 방법으로 해결되지 않으면 [NHN Cloud 고객지원](https://www.nhncloud.com/kr/support/inquiry)에 문"
+                }
+              ]
+            },
+            {
+              "guide": "task-guide/ko/nat-gateway-private-subnet.md",
+              "title": "NAT Gateway로 프라이빗 서브넷 인터넷 연결 구성하기",
+              "assignee": "이종민",
+              "matchCount": 4,
+              "matches": [
+                {
+                  "keyword": "NHN",
+                  "line": 15,
+                  "context": "- 동작 확인 단계에서 프라이빗 서브넷의 인스턴스에 접속해야 하므로, 퍼블릭 서브넷에 직접 구성한 배스천 호스트(bastion host, 외부에"
+                },
+                {
+                  "keyword": "Cloud",
+                  "line": 15,
+                  "context": "- 동작 확인 단계에서 프라이빗 서브넷의 인스턴스에 접속해야 하므로, 퍼블릭 서브넷에 직접 구성한 배스천 호스트(bastion host, 외부에"
+                },
+                {
+                  "keyword": "Network",
+                  "line": 18,
+                  "context": "1. NHN Cloud 콘솔에서 **Network > Floating IP**를 클릭하세요."
+                },
+                {
+                  "keyword": "nhncloud",
+                  "line": 98,
+                  "context": "- **목적지별 경로 분리**: 대상 CIDR을 좁혀 특정 대역의 트래픽만 NAT Gateway로 보냅니다. [VPC 콘솔 사용 가이드](htt"
+                }
+              ]
+            }
+          ],
+          "analysisMethod": "keyword",
+          "deployContext": [
+            {
+              "month": "2026-11",
+              "service": "Instance Template",
+              "changes": "* 인스턴스 템플릿 버전 기능 추가(인스턴스, 스케일링 그룹 생성 시 템플릿 버전 선택)"
+            }
+          ],
+          "detectedAt": "2026-11-24T23:51:34.291Z"
+        },
+        {
+          "id": "ghe-nhn-cloud-foundry-1795564294992",
+          "source": "ghe",
+          "repo": "nhn-cloud-foundry",
+          "previousSha": "f3517d8c17b49500741d5a6c431ce33f15970235",
+          "currentSha": "ea40992cd4d48b9c350640c7031d0c852eb142c8",
+          "compareUrl": "https://github.nhnent.com/cloud-docs/nhn-cloud-foundry/compare/f3517d8c17b49500741d5a6c431ce33f15970235...ea40992cd4d48b9c350640c7031d0c852eb142c8",
+          "mdChanges": 5,
+          "files": [
+            {
+              "filename": "ko/api-guide.md",
+              "status": "modified",
+              "additions": 107,
+              "deletions": 59
+            },
+            {
+              "filename": "ko/console-user-guide.md",
+              "status": "modified",
+              "additions": 525,
+              "deletions": 269
+            },
+            {
+              "filename": "ko/overview.md",
+              "status": "modified",
+              "additions": 5,
+              "deletions": 5
+            },
+            {
+              "filename": "ko/quick-start.md",
+              "status": "modified",
+              "additions": 102,
+              "deletions": 40
+            },
+            {
+              "filename": "ko/release-notes.md",
+              "status": "modified",
+              "additions": 29,
+              "deletions": 2
+            }
+          ],
+          "affectedGuides": [],
+          "analysisMethod": "repo-mapping",
+          "deployContext": [],
+          "detectedAt": "2026-11-24T23:51:34.992Z"
+        },
+        {
+          "id": "ghe-Private-DNS-1795564296669",
+          "source": "ghe",
+          "repo": "Private-DNS",
+          "previousSha": "49b13f3ded9b5e7b9f7eefb4b10af9c31c9233d6",
+          "currentSha": "6f3cbe5403a05980289e01ed19c038ab16d6bf41",
+          "compareUrl": "https://github.nhnent.com/cloud-docs/Private-DNS/compare/49b13f3ded9b5e7b9f7eefb4b10af9c31c9233d6...6f3cbe5403a05980289e01ed19c038ab16d6bf41",
+          "mdChanges": 7,
+          "files": [
+            {
+              "filename": "ko/public-api.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/release-notes-gov.md",
+              "status": "added",
+              "additions": 13,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/release-notes-ngoic.md",
+              "status": "added",
+              "additions": 7,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/release-notes-ngovc.md",
+              "status": "added",
+              "additions": 7,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/release-notes-ngsc.md",
+              "status": "added",
+              "additions": 7,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/release-notes-ninc.md",
+              "status": "added",
+              "additions": 7,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/release-notes.md",
+              "status": "added",
+              "additions": 22,
+              "deletions": 0
+            }
+          ],
+          "affectedGuides": [],
+          "analysisMethod": "repo-mapping",
+          "deployContext": [],
+          "detectedAt": "2026-11-24T23:51:36.669Z"
+        },
+        {
+          "id": "ghe-Quickstarts-1795564297637",
+          "source": "ghe",
+          "repo": "Quickstarts",
+          "previousSha": "24904653cce1a31b9ea21d3dd902df860609c27d",
+          "currentSha": "cc961943e5d91fb8348e2010968cb9401128b199",
+          "compareUrl": "https://github.nhnent.com/cloud-docs/Quickstarts/compare/24904653cce1a31b9ea21d3dd902df860609c27d...cc961943e5d91fb8348e2010968cb9401128b199",
+          "mdChanges": 12,
+          "files": [
+            {
+              "filename": "ko/backup-restore.md",
+              "status": "modified",
+              "additions": 14,
+              "deletions": 14
+            },
+            {
+              "filename": "ko/cleanup-resources.md",
+              "status": "modified",
+              "additions": 37,
+              "deletions": 36
+            },
+            {
+              "filename": "ko/configure-monitoring.md",
+              "status": "modified",
+              "additions": 14,
+              "deletions": 14
+            },
+            {
+              "filename": "ko/configure-security.md",
+              "status": "modified",
+              "additions": 13,
+              "deletions": 13
+            },
+            {
+              "filename": "ko/cost-management.md",
+              "status": "modified",
+              "additions": 16,
+              "deletions": 17
+            },
+            {
+              "filename": "ko/create-account.md",
+              "status": "modified",
+              "additions": 18,
+              "deletions": 15
+            },
+            {
+              "filename": "ko/create-database.md",
+              "status": "modified",
+              "additions": 8,
+              "deletions": 8
+            },
+            {
+              "filename": "ko/create-organization.md",
+              "status": "modified",
+              "additions": 16,
+              "deletions": 14
+            },
+            {
+              "filename": "ko/create-storage.md",
+              "status": "modified",
+              "additions": 11,
+              "deletions": 11
+            },
+            {
+              "filename": "ko/iam-accounts.md",
+              "status": "modified",
+              "additions": 29,
+              "deletions": 28
+            },
+            {
+              "filename": "ko/network-setup.md",
+              "status": "modified",
+              "additions": 19,
+              "deletions": 19
+            },
+            {
+              "filename": "ko/optimze-performance.md",
+              "status": "modified",
+              "additions": 15,
+              "deletions": 15
+            }
+          ],
+          "affectedGuides": [],
+          "analysisMethod": "repo-mapping",
+          "deployContext": [],
+          "detectedAt": "2026-11-24T23:51:37.637Z"
+        },
+        {
+          "id": "ghe-Security-Groups-1795564299786",
+          "source": "ghe",
+          "repo": "Security-Groups",
+          "previousSha": "0825a81702fee5d7f7be4a33b18005240c988baf",
+          "currentSha": "a351ca07c71b3d31b9c4022b12bc5308b5a524a2",
+          "compareUrl": "https://github.nhnent.com/cloud-docs/Security-Groups/compare/0825a81702fee5d7f7be4a33b18005240c988baf...a351ca07c71b3d31b9c4022b12bc5308b5a524a2",
+          "mdChanges": 2,
+          "files": [
+            {
+              "filename": "ko/public-api-gov.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/public-api.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            }
+          ],
+          "affectedGuides": [
+            {
+              "guide": "task-guide/ko/instance-ssh-connection-failed.md",
+              "title": "인스턴스에 SSH로 접속되지 않습니다",
+              "assignee": "하수진",
+              "matchCount": 5,
+              "matches": [
+                {
+                  "keyword": "NHN",
+                  "line": 98,
+                  "context": "**NHN Cloud(공공기관용) 환경의 접속 경로**"
+                },
+                {
+                  "keyword": "Cloud",
+                  "line": 98,
+                  "context": "**NHN Cloud(공공기관용) 환경의 접속 경로**"
+                },
+                {
+                  "keyword": "Network",
+                  "line": 64,
+                  "context": "- 보안 그룹과 Network ACL이 SSH 포트를 허용합니다."
+                },
+                {
+                  "keyword": "nhncloud",
+                  "line": 102,
+                  "context": "1. SSL VPN에 로그인한 뒤 VPN 네트워크에 매핑된 플로팅 IP로 접속하세요. VPN 계정은 리전별로 신청해야 하므로 접속하려는 리전의 "
+                },
+                {
+                  "keyword": "참고하세요",
+                  "line": 102,
+                  "context": "1. SSL VPN에 로그인한 뒤 VPN 네트워크에 매핑된 플로팅 IP로 접속하세요. VPN 계정은 리전별로 신청해야 하므로 접속하려는 리전의 "
+                }
+              ]
+            },
+            {
+              "guide": "task-guide/ko/security-groups-rule-design.md",
+              "title": "3티어 아키텍처에 맞는 Security Groups 규칙 설계하기",
+              "assignee": "박선영",
+              "matchCount": 5,
+              "matches": [
+                {
+                  "keyword": "NHN",
+                  "line": 11,
+                  "context": "NHN Cloud에서 티어를 별도 인스턴스로 분리하면 다음과 같은 이점이 있습니다."
+                },
+                {
+                  "keyword": "Cloud",
+                  "line": 11,
+                  "context": "NHN Cloud에서 티어를 별도 인스턴스로 분리하면 다음과 같은 이점이 있습니다."
+                },
+                {
+                  "keyword": "Network",
+                  "line": 50,
+                  "context": "1. NHN Cloud 콘솔에서 **Network > Security Groups**를 클릭하세요."
+                },
+                {
+                  "keyword": "nhncloud",
+                  "line": 255,
+                  "context": "- **인스턴스 추가**: 같은 티어에 인스턴스를 추가할 때는 해당 보안 그룹만 연결하면 됩니다. 규칙을 다시 만들 필요가 없습니다. 예를 들어"
+                },
+                {
+                  "keyword": "참고하세요",
+                  "line": 255,
+                  "context": "- **인스턴스 추가**: 같은 티어에 인스턴스를 추가할 때는 해당 보안 그룹만 연결하면 됩니다. 규칙을 다시 만들 필요가 없습니다. 예를 들어"
+                }
+              ]
+            },
+            {
+              "guide": "task-guide/ko/instance-internal-communication-failure.md",
+              "title": "인스턴스 간 내부 통신에 실패합니다",
+              "assignee": "박선영",
+              "matchCount": 4,
+              "matches": [
+                {
+                  "keyword": "NHN",
+                  "line": 188,
+                  "context": "위 방법으로 해결되지 않으면 [NHN Cloud 고객지원](https://www.nhncloud.com/kr/support/inquiry)에 문"
+                },
+                {
+                  "keyword": "Cloud",
+                  "line": 188,
+                  "context": "위 방법으로 해결되지 않으면 [NHN Cloud 고객지원](https://www.nhncloud.com/kr/support/inquiry)에 문"
+                },
+                {
+                  "keyword": "Network",
+                  "line": 47,
+                  "context": "1. 양쪽 인스턴스에 적용된 보안 그룹 규칙을 확인합니다. **Network > Security Groups**에서 해당 보안 그룹을 선택하면 "
+                },
+                {
+                  "keyword": "nhncloud",
+                  "line": 188,
+                  "context": "위 방법으로 해결되지 않으면 [NHN Cloud 고객지원](https://www.nhncloud.com/kr/support/inquiry)에 문"
+                }
+              ]
+            }
+          ],
+          "analysisMethod": "keyword",
+          "deployContext": [
+            {
+              "month": "2026-11",
+              "service": "Instance Template",
+              "changes": "* 인스턴스 템플릿 버전 기능 추가(인스턴스, 스케일링 그룹 생성 시 템플릿 버전 선택)"
+            }
+          ],
+          "detectedAt": "2026-11-24T23:51:39.786Z"
+        },
+        {
+          "id": "ghe-Service-Gateway-1795564300593",
+          "source": "ghe",
+          "repo": "Service-Gateway",
+          "previousSha": "22ca1b6b8b9d0d5062ed3a1f4aacf7640e7b7170",
+          "currentSha": "dfc91fec56e3a49e625e89de45c1db4a3d622099",
+          "compareUrl": "https://github.nhnent.com/cloud-docs/Service-Gateway/compare/22ca1b6b8b9d0d5062ed3a1f4aacf7640e7b7170...dfc91fec56e3a49e625e89de45c1db4a3d622099",
+          "mdChanges": 12,
+          "files": [
+            {
+              "filename": "ko/console-guide.md",
+              "status": "modified",
+              "additions": 53,
+              "deletions": 8
+            },
+            {
+              "filename": "ko/overview.md",
+              "status": "modified",
+              "additions": 3,
+              "deletions": 3
+            },
+            {
+              "filename": "ko/public-api-gov.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/public-api-ncgn.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 448
+            },
+            {
+              "filename": "ko/public-api.md",
+              "status": "modified",
+              "additions": 227,
+              "deletions": 100
+            },
+            {
+              "filename": "ko/service-endpoint-gov.md",
+              "status": "modified",
+              "additions": 16,
+              "deletions": 16
+            },
+            {
+              "filename": "ko/service-endpoint-ncgn.md",
+              "status": "modified",
+              "additions": 2,
+              "deletions": 2
+            },
+            {
+              "filename": "ko/service-endpoint-ngoic.md",
+              "status": "modified",
+              "additions": 2,
+              "deletions": 2
+            },
+            {
+              "filename": "ko/service-endpoint-ngovc.md",
+              "status": "modified",
+              "additions": 2,
+              "deletions": 2
+            },
+            {
+              "filename": "ko/service-endpoint-ngsc.md",
+              "status": "modified",
+              "additions": 2,
+              "deletions": 2
+            },
+            {
+              "filename": "ko/service-endpoint-ninc.md",
+              "status": "modified",
+              "additions": 2,
+              "deletions": 2
+            },
+            {
+              "filename": "ko/service-endpoint.md",
+              "status": "modified",
+              "additions": 30,
+              "deletions": 30
+            }
+          ],
+          "affectedGuides": [],
+          "analysisMethod": "repo-mapping",
+          "deployContext": [],
+          "detectedAt": "2026-11-24T23:51:40.593Z"
+        },
+        {
+          "id": "ghe-Storage-Block-Storage-1795564301924",
+          "source": "ghe",
+          "repo": "Storage-Block-Storage",
+          "previousSha": "f422406a1d454cb12f26d412a8d5067c83d9c9f2",
+          "currentSha": "3f4e022373c56d420caa6807888439b3cb5e03be",
+          "compareUrl": "https://github.nhnent.com/cloud-docs/Storage-Block-Storage/compare/f422406a1d454cb12f26d412a8d5067c83d9c9f2...3f4e022373c56d420caa6807888439b3cb5e03be",
+          "mdChanges": 26,
+          "files": [
+            {
+              "filename": "ko/api-guide.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 224
+            },
+            {
+              "filename": "ko/console-guide-gov.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 247
+            },
+            {
+              "filename": "ko/console-guide-ncgn.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 189
+            },
+            {
+              "filename": "ko/console-guide-ngoic.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 189
+            },
+            {
+              "filename": "ko/console-guide-ngovc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 189
+            },
+            {
+              "filename": "ko/console-guide-ngsc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 189
+            },
+            {
+              "filename": "ko/console-guide-ninc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 189
+            },
+            {
+              "filename": "ko/console-guide.md",
+              "status": "modified",
+              "additions": 79,
+              "deletions": 8
+            },
+            {
+              "filename": "ko/error-code.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 4
+            },
+            {
+              "filename": "ko/overview-gov.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 342
+            },
+            {
+              "filename": "ko/overview-ncgn.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 342
+            },
+            {
+              "filename": "ko/overview-ngoic.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 342
+            },
+            {
+              "filename": "ko/overview-ngovc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 342
+            },
+            {
+              "filename": "ko/overview-ngsc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 342
+            },
+            {
+              "filename": "ko/overview-ninc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 342
+            },
+            {
+              "filename": "ko/overview.md",
+              "status": "modified",
+              "additions": 2,
+              "deletions": 2
+            },
+            {
+              "filename": "ko/public-api-gov.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 926
+            },
+            {
+              "filename": "ko/public-api-ngoic.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 925
+            },
+            {
+              "filename": "ko/public-api-ngovc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 925
+            },
+            {
+              "filename": "ko/public-api-ngsc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 925
+            },
+            {
+              "filename": "ko/public-api-ninc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 925
+            },
+            {
+              "filename": "ko/public-api-v3-gov.md",
+              "status": "modified",
+              "additions": 927,
+              "deletions": 925
+            },
+            {
+              "filename": "ko/public-api-v3.md",
+              "status": "modified",
+              "additions": 940,
+              "deletions": 936
+            },
+            {
+              "filename": "ko/public-api.md",
+              "status": "modified",
+              "additions": 1137,
+              "deletions": 939
+            },
+            {
+              "filename": "ko/release-notes-gov.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/release-notes.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            }
+          ],
+          "affectedGuides": [],
+          "analysisMethod": "repo-mapping",
+          "deployContext": [],
+          "detectedAt": "2026-11-24T23:51:41.924Z"
+        },
+        {
+          "id": "ghe-Storage-Object-Storage-1795564303043",
+          "source": "ghe",
+          "repo": "Storage-Object-Storage",
+          "previousSha": "1835f899429ba9b7745fcac66b99ecf4d02e98f3",
+          "currentSha": "2b2a27657ff9711786b94dc2baf362d748349cea",
+          "compareUrl": "https://github.nhnent.com/cloud-docs/Storage-Object-Storage/compare/1835f899429ba9b7745fcac66b99ecf4d02e98f3...2b2a27657ff9711786b94dc2baf362d748349cea",
+          "mdChanges": 15,
+          "files": [
+            {
+              "filename": "ko/Overview.md",
+              "status": "modified",
+              "additions": 7,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/acl-guide.md",
+              "status": "modified",
+              "additions": 10,
+              "deletions": 7
+            },
+            {
+              "filename": "ko/api-guide.md",
+              "status": "modified",
+              "additions": 1680,
+              "deletions": 1706
+            },
+            {
+              "filename": "ko/cli-guide.md",
+              "status": "modified",
+              "additions": 3,
+              "deletions": 3
+            },
+            {
+              "filename": "ko/console-guide.md",
+              "status": "modified",
+              "additions": 45,
+              "deletions": 18
+            },
+            {
+              "filename": "ko/container-policy-guide.md",
+              "status": "modified",
+              "additions": 10,
+              "deletions": 9
+            },
+            {
+              "filename": "ko/data-migration-guide.md",
+              "status": "added",
+              "additions": 1119,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/presigned-url-guide.md",
+              "status": "modified",
+              "additions": 142,
+              "deletions": 154
+            },
+            {
+              "filename": "ko/release-notes-gov.md",
+              "status": "modified",
+              "additions": 13,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/release-notes-ncgn.md",
+              "status": "modified",
+              "additions": 13,
+              "deletions": 62
+            },
+            {
+              "filename": "ko/release-notes-ngcc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 161
+            },
+            {
+              "filename": "ko/release-notes.md",
+              "status": "modified",
+              "additions": 14,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/s3-api-guide.md",
+              "status": "modified",
+              "additions": 94,
+              "deletions": 80
+            },
+            {
+              "filename": "ko/third-party-tools-guide.md",
+              "status": "modified",
+              "additions": 8,
+              "deletions": 2
+            },
+            {
+              "filename": "ko/trouble-shooting-guide.md",
+              "status": "modified",
+              "additions": 5,
+              "deletions": 0
+            }
+          ],
+          "affectedGuides": [
+            {
+              "guide": "task-guide/ko/obs-access-control-cors.md",
+              "title": "Object Storage 컨테이너에 CORS 설정하기",
+              "assignee": "하수진",
+              "matchCount": 16,
+              "matches": [
+                {
+                  "keyword": "오브젝트",
+                  "line": 5,
+                  "context": "Object Storage는 데이터를 오브젝트 단위로 저장하는 스토리지 서비스입니다. 컨테이너에 올린 오브젝트는 URL로 접근할 수 있으므로, "
+                },
+                {
+                  "keyword": "스토리지",
+                  "line": 5,
+                  "context": "Object Storage는 데이터를 오브젝트 단위로 저장하는 스토리지 서비스입니다. 컨테이너에 올린 오브젝트는 URL로 접근할 수 있으므로, "
+                },
+                {
+                  "keyword": "API",
+                  "line": 7,
+                  "context": "다만 브라우저는 스크립트가 **다른 출처**의 응답을 읽지 못하도록 기본적으로 막습니다. 출처는 주소에서 프로토콜과 호스트, 포트만 떼어 낸 부"
+                },
+                {
+                  "keyword": "API로",
+                  "line": 108,
+                  "context": "- **콘솔 대신 API로 설정**: 컨테이너를 여러 개 운영한다면 API로 동일한 CORS 설정을 한 번에 적용할 수 있습니다. 자세한 내용은"
+                },
+                {
+                  "keyword": "사용하",
+                  "line": 27,
+                  "context": "> 컨테이너 앞에 CDN을 두었다면 컨테이너에 등록한 허용 출처만으로는 부족합니다. CDN은 원본 서버의 응답을 캐시에 담아 재사용하는데, 첫 "
+                }
+              ]
+            },
+            {
+              "guide": "task-guide/ko/obs-static-website-hosting.md",
+              "title": "Object Storage에 정적 웹사이트 호스팅하기",
+              "assignee": "이창훈",
+              "matchCount": 14,
+              "matches": [
+                {
+                  "keyword": "오브젝트",
+                  "line": 5,
+                  "context": "Object Storage는 데이터를 오브젝트 단위로 저장하는 스토리지 서비스입니다. 컨테이너에 올린 파일은 HTTP로 바로 내려받을 수 있어,"
+                },
+                {
+                  "keyword": "스토리지",
+                  "line": 5,
+                  "context": "Object Storage는 데이터를 오브젝트 단위로 저장하는 스토리지 서비스입니다. 컨테이너에 올린 파일은 HTTP로 바로 내려받을 수 있어,"
+                },
+                {
+                  "keyword": "API",
+                  "line": 122,
+                  "context": "`{Object Store 엔드포인트}`는 컨테이너 목록 위쪽의 **API 엔드포인트 설정**을 클릭하면 **Object Store** 항목에서"
+                },
+                {
+                  "keyword": "API로",
+                  "line": 145,
+                  "context": "- **배포 자동화**: Object Storage API나 S3 호환 API로 업로드하면 CI 파이프라인에서 배포할 수 있습니다. 자세한 내용"
+                },
+                {
+                  "keyword": "URL",
+                  "line": 21,
+                  "context": "정적 웹사이트 한 개가 컨테이너 한 개에 대응합니다. 컨테이너 이름이 웹사이트 URL의 경로에 그대로 들어가므로, 사이트를 식별할 수 있는 이름"
+                }
+              ]
+            }
+          ],
+          "analysisMethod": "keyword",
+          "deployContext": [
+            {
+              "month": "2026-11",
+              "service": "Object Storage",
+              "changes": "* (콘솔, API) 스토리지 계정당 컨테이너 최대 2,000개 제한 정책 추가 * (콘솔) 복제 설정 화면에서 대상 컨테이너 생성 기능 추가(동일 프로젝트인 경우) * (콘솔) 복제 탭에서 복제 대기 중인 이벤트 수 조회 기능 추가 * (API) 스토리지 계정 단위 초당 5,000건 초과 읽기 요청에 대한 속도 제한 정책 추가"
+            }
+          ],
+          "detectedAt": "2026-11-24T23:51:43.043Z"
+        },
+        {
+          "id": "ghe-Storage-Online-NAS-1795564303834",
+          "source": "ghe",
+          "repo": "Storage-Online-NAS",
+          "previousSha": "c4196c862e1b8ed15a0aeb382384dac7239a1d18",
+          "currentSha": "44ef9922d2d5ec8542f0c8df24682f6d19db628c",
+          "compareUrl": "https://github.nhnent.com/cloud-docs/Storage-Online-NAS/compare/c4196c862e1b8ed15a0aeb382384dac7239a1d18...44ef9922d2d5ec8542f0c8df24682f6d19db628c",
+          "mdChanges": 8,
+          "files": [
+            {
+              "filename": "ko/api-guide.md",
+              "status": "modified",
+              "additions": 109,
+              "deletions": 7
+            },
+            {
+              "filename": "ko/console-guide.md",
+              "status": "modified",
+              "additions": 46,
+              "deletions": 55
+            },
+            {
+              "filename": "ko/overview.md",
+              "status": "modified",
+              "additions": 2,
+              "deletions": 2
+            },
+            {
+              "filename": "ko/release-notes-gov.md",
+              "status": "modified",
+              "additions": 21,
+              "deletions": 0
+            },
+            {
+              "filename": "ko/release-notes-ncgn.md",
+              "status": "modified",
+              "additions": 8,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/release-notes.md",
+              "status": "modified",
+              "additions": 22,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/terraform-guide.md",
+              "status": "modified",
+              "additions": 2,
+              "deletions": 2
+            },
+            {
+              "filename": "ko/volume-connection-guide.md",
+              "status": "added",
+              "additions": 140,
+              "deletions": 0
+            }
+          ],
+          "affectedGuides": [],
+          "analysisMethod": "repo-mapping",
+          "deployContext": [],
+          "detectedAt": "2026-11-24T23:51:43.834Z"
+        },
+        {
+          "id": "ghe-TOAST-Cloud-1795564305061",
+          "source": "ghe",
+          "repo": "TOAST-Cloud",
+          "previousSha": "ded0a5a3122e2028e4740ec93937967b6e442048",
+          "currentSha": "67fed4a7900c2c2602cef75a20dd9707bebe25eb",
+          "compareUrl": "https://github.nhnent.com/cloud-docs/TOAST-Cloud/compare/ded0a5a3122e2028e4740ec93937967b6e442048...67fed4a7900c2c2602cef75a20dd9707bebe25eb",
+          "mdChanges": 45,
+          "files": [
+            {
+              "filename": "ko/console-guide-gov.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 2
+            },
+            {
+              "filename": "ko/console-guide-ncgn.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 2
+            },
+            {
+              "filename": "ko/console-guide-ngoic.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/console-guide-ngovc.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/console-guide-ngsc.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/console-guide-ninc.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/console-guide.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 2
+            },
+            {
+              "filename": "ko/console-role-guide-gov.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/console-role-guide-ncgn.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/console-role-guide.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/console-user-guide-ngsc.md",
+              "status": "modified",
+              "additions": 4,
+              "deletions": 4
+            },
+            {
+              "filename": "ko/overview.md",
+              "status": "modified",
+              "additions": 2,
+              "deletions": 2
+            },
+            {
+              "filename": "ko/public-api/appkey-gov.md",
+              "status": "modified",
+              "additions": 4,
+              "deletions": 7
+            },
+            {
+              "filename": "ko/public-api/appkey.md",
+              "status": "modified",
+              "additions": 4,
+              "deletions": 7
+            },
+            {
+              "filename": "ko/public-api/auth-method-overview-gov.md",
+              "status": "modified",
+              "additions": 0,
+              "deletions": 2
+            },
+            {
+              "filename": "ko/public-api/auth-method-overview.md",
+              "status": "modified",
+              "additions": 0,
+              "deletions": 2
+            },
+            {
+              "filename": "ko/public-api/framework-api-gov.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 3
+            },
+            {
+              "filename": "ko/public-api/framework-api.md",
+              "status": "modified",
+              "additions": 2,
+              "deletions": 4
+            },
+            {
+              "filename": "ko/public-api/iaas-token-gov.md",
+              "status": "modified",
+              "additions": 0,
+              "deletions": 2
+            },
+            {
+              "filename": "ko/public-api/iaas-token.md",
+              "status": "modified",
+              "additions": 0,
+              "deletions": 2
+            },
+            {
+              "filename": "ko/public-api/overview-gov.md",
+              "status": "modified",
+              "additions": 0,
+              "deletions": 2
+            },
+            {
+              "filename": "ko/public-api/overview.md",
+              "status": "modified",
+              "additions": 0,
+              "deletions": 2
+            },
+            {
+              "filename": "ko/public-api/partner-api-gov.md",
+              "status": "modified",
+              "additions": 0,
+              "deletions": 2
+            },
+            {
+              "filename": "ko/public-api/partner-api.md",
+              "status": "modified",
+              "additions": 0,
+              "deletions": 2
+            },
+            {
+              "filename": "ko/public-api/project-integrated-appkey-gov.md",
+              "status": "modified",
+              "additions": 3,
+              "deletions": 5
+            },
+            {
+              "filename": "ko/public-api/project-integrated-appkey.md",
+              "status": "modified",
+              "additions": 3,
+              "deletions": 5
+            },
+            {
+              "filename": "ko/public-api/release-notes-gov.md",
+              "status": "modified",
+              "additions": 28,
+              "deletions": 28
+            },
+            {
+              "filename": "ko/public-api/release-notes.md",
+              "status": "modified",
+              "additions": 33,
+              "deletions": 33
+            },
+            {
+              "filename": "ko/public-api/s3-api-credential-gov.md",
+              "status": "modified",
+              "additions": 0,
+              "deletions": 2
+            },
+            {
+              "filename": "ko/public-api/s3-api-credential.md",
+              "status": "modified",
+              "additions": 0,
+              "deletions": 2
+            },
+            {
+              "filename": "ko/public-api/service-api-gov.md",
+              "status": "modified",
+              "additions": 0,
+              "deletions": 2
+            },
+            {
+              "filename": "ko/public-api/service-api.md",
+              "status": "modified",
+              "additions": 0,
+              "deletions": 2
+            },
+            {
+              "filename": "ko/public-api/user-access-key-gov.md",
+              "status": "modified",
+              "additions": 4,
+              "deletions": 6
+            },
+            {
+              "filename": "ko/public-api/user-access-key-token-gov.md",
+              "status": "modified",
+              "additions": 4,
+              "deletions": 6
+            },
+            {
+              "filename": "ko/public-api/user-access-key-token.md",
+              "status": "modified",
+              "additions": 2,
+              "deletions": 4
+            },
+            {
+              "filename": "ko/public-api/user-access-key.md",
+              "status": "modified",
+              "additions": 4,
+              "deletions": 6
+            },
+            {
+              "filename": "ko/region-guide.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/resource-policy-gov.md",
+              "status": "modified",
+              "additions": 34,
+              "deletions": 34
+            },
+            {
+              "filename": "ko/resource-policy-ncgn.md",
+              "status": "modified",
+              "additions": 22,
+              "deletions": 22
+            },
+            {
+              "filename": "ko/resource-policy.md",
+              "status": "modified",
+              "additions": 48,
+              "deletions": 48
+            },
+            {
+              "filename": "ko/security-policy.md",
+              "status": "modified",
+              "additions": 9,
+              "deletions": 9
+            },
+            {
+              "filename": "ko/service-release-policy.md",
+              "status": "modified",
+              "additions": 4,
+              "deletions": 4
+            },
+            {
+              "filename": "ko/user-guide-ngoic.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/user-guide-ngovc.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/user-guide-ngsc.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            }
+          ],
+          "affectedGuides": [],
+          "analysisMethod": "repo-mapping",
+          "deployContext": [],
+          "detectedAt": "2026-11-24T23:51:45.061Z"
+        },
+        {
+          "id": "ghe-Traffic-Mirroring-1795564305402",
+          "source": "ghe",
+          "repo": "Traffic-Mirroring",
+          "previousSha": "cdab5a19525e579ffa85387e8555e173f83da805",
+          "currentSha": "8e9f012c477d22f2d398512838149c9625a9be12",
+          "compareUrl": "https://github.nhnent.com/cloud-docs/Traffic-Mirroring/compare/cdab5a19525e579ffa85387e8555e173f83da805...8e9f012c477d22f2d398512838149c9625a9be12",
+          "mdChanges": 4,
+          "files": [
+            {
+              "filename": "ko/console-guide.md",
+              "status": "modified",
+              "additions": 25,
+              "deletions": 10
+            },
+            {
+              "filename": "ko/overview.md",
+              "status": "modified",
+              "additions": 8,
+              "deletions": 3
+            },
+            {
+              "filename": "ko/public-api-gov.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/public-api.md",
+              "status": "modified",
+              "additions": 69,
+              "deletions": 20
+            }
+          ],
+          "affectedGuides": [],
+          "analysisMethod": "repo-mapping",
+          "deployContext": [],
+          "detectedAt": "2026-11-24T23:51:45.402Z"
+        },
+        {
+          "id": "ghe-Transit-Hub-1795564305688",
+          "source": "ghe",
+          "repo": "Transit-Hub",
+          "previousSha": "cad28ff54b64fedf8347b8f88e8052fa6a0f47e4",
+          "currentSha": "d43973c0e5c3fdc120ce3681325a2ff4d7d361f1",
+          "compareUrl": "https://github.nhnent.com/cloud-docs/Transit-Hub/compare/cad28ff54b64fedf8347b8f88e8052fa6a0f47e4...d43973c0e5c3fdc120ce3681325a2ff4d7d361f1",
+          "mdChanges": 2,
+          "files": [
+            {
+              "filename": "ko/public-api-gov.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/public-api.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            }
+          ],
+          "affectedGuides": [],
+          "analysisMethod": "repo-mapping",
+          "deployContext": [],
+          "detectedAt": "2026-11-24T23:51:45.688Z"
+        },
+        {
+          "id": "ghe-VPN-Gateway-1795564306491",
+          "source": "ghe",
+          "repo": "VPN-Gateway",
+          "previousSha": "841e3aea147d921158e0a3622fbf50f817cd97ac",
+          "currentSha": "87f629b9f8fdd58b7a6c253bfd0e94413639e64b",
+          "compareUrl": "https://github.nhnent.com/cloud-docs/VPN-Gateway/compare/841e3aea147d921158e0a3622fbf50f817cd97ac...87f629b9f8fdd58b7a6c253bfd0e94413639e64b",
+          "mdChanges": 3,
+          "files": [
+            {
+              "filename": "ko/console-guide.md",
+              "status": "modified",
+              "additions": 11,
+              "deletions": 8
+            },
+            {
+              "filename": "ko/overview.md",
+              "status": "modified",
+              "additions": 7,
+              "deletions": 4
+            },
+            {
+              "filename": "ko/release-notes.md",
+              "status": "added",
+              "additions": 58,
+              "deletions": 0
+            }
+          ],
+          "affectedGuides": [],
+          "analysisMethod": "repo-mapping",
+          "deployContext": [],
+          "detectedAt": "2026-11-24T23:51:46.491Z"
+        },
+        {
+          "id": "ghe-Support-Status-1795564307034",
+          "source": "ghe",
+          "repo": "Support-Status",
+          "previousSha": "10c1bd00ee6d5c1c6a28b66bfa32b341881afa0d",
+          "currentSha": "1e144d59d09bef1b0a9c6bf0b4eeb1c662901d98",
+          "compareUrl": "https://github.nhnent.com/cloud-docs/Support-Status/compare/10c1bd00ee6d5c1c6a28b66bfa32b341881afa0d...1e144d59d09bef1b0a9c6bf0b4eeb1c662901d98",
+          "mdChanges": 1,
+          "files": [
+            {
+              "filename": "ko/supported-authentication-methods.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            }
+          ],
+          "affectedGuides": [],
+          "analysisMethod": "repo-mapping",
+          "deployContext": [],
+          "detectedAt": "2026-11-24T23:51:47.034Z"
+        },
+        {
+          "id": "ghe-Container-Kubernetes-1795564307682",
+          "source": "ghe",
+          "repo": "Container-Kubernetes",
+          "previousSha": "cbfd0d5fc1835624cdfd8591d62fb67220b18bb4",
+          "currentSha": "522b842cb97d2a6994b7207e990dab40ffc01404",
+          "compareUrl": "https://github.nhnent.com/cloud-docs/Container-Kubernetes/compare/cbfd0d5fc1835624cdfd8591d62fb67220b18bb4...522b842cb97d2a6994b7207e990dab40ffc01404",
+          "mdChanges": 35,
+          "files": [
+            {
+              "filename": "ko/_release-notes-gov-ncgn.md",
+              "status": "renamed",
+              "additions": 61,
+              "deletions": 34
+            },
+            {
+              "filename": "ko/_release-notes-ngoic-ngovc.md",
+              "status": "renamed",
+              "additions": 10,
+              "deletions": 7
+            },
+            {
+              "filename": "ko/_release-notes-ngsc-ninc.md",
+              "status": "renamed",
+              "additions": 5,
+              "deletions": 5
+            },
+            {
+              "filename": "ko/backup-guide-gov.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 305
+            },
+            {
+              "filename": "ko/backup-guide.md",
+              "status": "modified",
+              "additions": 54,
+              "deletions": 11
+            },
+            {
+              "filename": "ko/gateway-api-guide-gov.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 592
+            },
+            {
+              "filename": "ko/gateway-api-guide.md",
+              "status": "modified",
+              "additions": 24,
+              "deletions": 15
+            },
+            {
+              "filename": "ko/istio-guide-gov.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 305
+            },
+            {
+              "filename": "ko/istio-guide.md",
+              "status": "modified",
+              "additions": 17,
+              "deletions": 12
+            },
+            {
+              "filename": "ko/overview.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 1
+            },
+            {
+              "filename": "ko/public-api-gov.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 2820
+            },
+            {
+              "filename": "ko/public-api-ngoic.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 2816
+            },
+            {
+              "filename": "ko/public-api-ngovc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 2816
+            },
+            {
+              "filename": "ko/public-api-ngsc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 2816
+            },
+            {
+              "filename": "ko/public-api-ninc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 2816
+            },
+            {
+              "filename": "ko/public-api.md",
+              "status": "modified",
+              "additions": 158,
+              "deletions": 145
+            },
+            {
+              "filename": "ko/release-notes-ncgn.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 403
+            },
+            {
+              "filename": "ko/release-notes-ngoic.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 90
+            },
+            {
+              "filename": "ko/release-notes-ninc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 90
+            },
+            {
+              "filename": "ko/release-notes.md",
+              "status": "modified",
+              "additions": 32,
+              "deletions": 13
+            },
+            {
+              "filename": "ko/troubleshooting-guide.md",
+              "status": "modified",
+              "additions": 72,
+              "deletions": 33
+            },
+            {
+              "filename": "ko/user-guide-gov.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 4721
+            },
+            {
+              "filename": "ko/user-guide-ncgn.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 4521
+            },
+            {
+              "filename": "ko/user-guide-ngoic.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 4457
+            },
+            {
+              "filename": "ko/user-guide-ngovc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 4457
+            },
+            {
+              "filename": "ko/user-guide-ngsc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 4457
+            },
+            {
+              "filename": "ko/user-guide-ninc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 4456
+            },
+            {
+              "filename": "ko/user-guide.md",
+              "status": "modified",
+              "additions": 756,
+              "deletions": 545
+            },
+            {
+              "filename": "ko/version-guide-gov.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 133
+            },
+            {
+              "filename": "ko/version-guide-ncgn.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 133
+            },
+            {
+              "filename": "ko/version-guide-ngoic.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 129
+            },
+            {
+              "filename": "ko/version-guide-ngovc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 129
+            },
+            {
+              "filename": "ko/version-guide-ngsc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 129
+            },
+            {
+              "filename": "ko/version-guide-ninc.md",
+              "status": "removed",
+              "additions": 0,
+              "deletions": 129
+            },
+            {
+              "filename": "ko/version-guide.md",
+              "status": "modified",
+              "additions": 43,
+              "deletions": 27
+            }
+          ],
+          "affectedGuides": [],
+          "analysisMethod": "repo-mapping",
+          "deployContext": [],
+          "detectedAt": "2026-11-24T23:51:47.682Z"
+        }
+      ]
+    },
     {
       "pollDate": "2026-11-23T23:25:48.150Z",
       "changes": [
